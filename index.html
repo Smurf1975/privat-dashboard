@@ -285,48 +285,96 @@
 
     <!-- ══ SMART HOME ══ -->
     <sc-if value="{{ isSmartHome }}" hint-placeholder-val="{{ false }}">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;">
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;grid-column:span 2;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:18px;">SENSORER · HOMEY <span style="{{ homeyBadgeStyle }}">{{ homeyBadge }}</span></div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+
+      <!-- TEMPERATUR -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;margin-bottom:14px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:18px;">TEMPERATUR · HOMEY <span style="{{ homeyBadgeStyle }}">{{ homeyBadge }}</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;">
+          <sc-for list="{{ smartHome.temps }}" as="t">
             <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
-              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">UTOMHUS</div>
-              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ smartHome.outdoorTempStr }}</div>
-              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">Utesensor</div>
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;letter-spacing:0.04em;">{{ t.label }}</div>
+              <div style="font-size:30px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ t.tempStr }}</div>
+              <div style="font-size:11px;color:rgba(238,240,245,0.38);margin-top:4px;">{{ t.subStr }}</div>
             </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
-              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">SOVRUM</div>
-              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ smartHome.bedroomTempStr }}</div>
-              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">{{ smartHome.bedroomHumidityStr }} RF</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
-              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">LUFTKVALITET PM2.5</div>
-              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:{{ smartHome.airColor }};">{{ smartHome.pm25Str }}</div>
-              <div style="font-size:11.5px;margin-top:4px;color:{{ smartHome.airColor }};">{{ smartHome.airStatus }}</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
-              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">YTTERDÖRR</div>
-              <div style="font-size:24px;font-weight:400;letter-spacing:-0.02em;margin-top:4px;color:{{ smartHome.doorColor }};">{{ smartHome.doorStatus }}</div>
-              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">{{ smartHome.doorBattStr }}</div>
-            </div>
+          </sc-for>
+          <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+            <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;letter-spacing:0.04em;">LUFTKVALITET PM2.5</div>
+            <div style="font-size:30px;font-weight:200;letter-spacing:-0.03em;color:{{ smartHome.airColor }};">{{ smartHome.pm25Str }}</div>
+            <div style="font-size:11px;color:{{ smartHome.airColor }};margin-top:4px;">{{ smartHome.airStatus }}</div>
           </div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VOLVO XC60</div>
-          <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;margin-bottom:6px;color:{{ smartHome.carBattColor }};">{{ smartHome.carBattStr }}</div>
-          <div style="font-size:13.5px;color:rgba(238,240,245,0.62);margin-bottom:4px;">{{ smartHome.carRangeStr }}</div>
-          <div style="font-size:12.5px;color:rgba(238,240,245,0.44);">{{ smartHome.carLocation }}</div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SCENER · HOMEY</div>
-          <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px;">
-            <sc-for list="{{ scenes }}" as="scene" hint-placeholder-count="5">
-              <button onClick="{{ scene.onClick }}" style="{{ scene.btnStyle }}">{{ scene.label }}</button>
-            </sc-for>
-          </div>
-          <div style="padding:11px 13px;background:rgba(255,255,255,0.03);border-radius:8px;font-size:12.5px;color:rgba(238,240,245,0.44);line-height:1.6;">Koppla Homey-flows till dessa knappar för direkt scenaktivering.</div>
         </div>
       </div>
+
+      <!-- RÖRELSE & AKTIVITET -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;margin-bottom:14px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">RÖRELSE & AKTIVITET</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ smartHome.motionRooms }}" as="mr">
+            <span style="{{ mr.pill }}">{{ mr.label }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- DÖRRAR + LAMPOR -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">DÖRRAR & LÅS</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <sc-for list="{{ smartHome.doors }}" as="dr">
+              <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:13px;">
+                <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:5px;letter-spacing:0.04em;">{{ dr.label }}</div>
+                <div style="font-size:17px;font-weight:500;color:{{ dr.color }};">{{ dr.status }}</div>
+                <div style="font-size:11px;color:rgba(238,240,245,0.35);margin-top:3px;">{{ dr.sub }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:4px;">LAMPOR PER RUM</div>
+          <div style="font-size:10px;color:rgba(238,240,245,0.32);margin-bottom:13px;">Klicka för att tänd / släck</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;">
+            <sc-for list="{{ smartHome.lampRooms }}" as="lr">
+              <div onclick="{{ lr.onClick }}" style="{{ lr.bgStyle }}">
+                <div style="font-size:18px;color:{{ lr.iconColor }};">💡</div>
+                <div style="font-size:12px;font-weight:500;color:{{ lr.textColor }};margin-top:4px;">{{ lr.label }}</div>
+                <div style="font-size:10px;color:rgba(238,240,245,0.32);margin-top:2px;">{{ lr.statusStr }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENER + ROCKY -->
+      <div style="display:grid;grid-template-columns:190px 1fr;gap:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SCENER</div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <sc-for list="{{ shScenes }}" as="sh">
+              <button onclick="{{ sh.onClick }}" style="{{ sh.btnStyle }}">{{ sh.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:16px;">🤖 ROCKY · STÄDNING</div>
+          <div style="margin-bottom:14px;">
+            <div style="font-size:10px;color:rgba(238,240,245,0.38);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Dammsug</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ rockyRooms }}" as="rr">
+                <button onclick="{{ rr.onDamm }}" style="{{ rr.dammStyle }}">{{ rr.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:rgba(238,240,245,0.38);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Dammsug & Moppa</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ rockyRooms }}" as="rr">
+                <button onclick="{{ rr.onMoppa }}" style="{{ rr.moppaStyle }}">{{ rr.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </sc-if>
 
     <!-- ══ BILAR ══ -->
@@ -935,6 +983,9 @@ class Component extends DCLogic {
     matsHome:false, nannyHome:false, simonHome:false, vanessaHome:false,
     matsLast:null, nannyLast:null, simonLast:null, vanessaLast:null,
     semesterMode:false, vakenMode:false,
+    entreTemp:null, hallenSimonTemp:null, badrumTemp:null,
+    balkongOpen:null, kylskapOpen:null, frysOpen:null,
+    motion:{}, lamps:{},
     // SMHI
     wxTemp:null, wxIcon:'⛅', wxCondition:'Laddar...', wxWind:null, wxHumidity:null, wxPrecip:null, wxFeels:null,
     wxHourly:[],
@@ -1577,6 +1628,30 @@ class Component extends DCLogic {
     }
   }
 
+  async triggerFlow(flowId, flowType = 'standard') {
+    try {
+      const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=triggerFlow`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ flowId, flowType }),
+      });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    } catch(e) { console.warn('triggerFlow:', e.message); }
+  }
+
+  async setLamps(deviceIds, value) {
+    try {
+      await Promise.all(deviceIds.map(id =>
+        fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=setCapability`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ deviceId: id, capability: 'onoff', value }),
+        })
+      ));
+      setTimeout(() => this.fetchHomey(), 2000);
+    } catch(e) { console.warn('setLamps:', e.message); }
+  }
+
   async fetchElpris() {
     try {
       const now = new Date();
@@ -1609,6 +1684,7 @@ class Component extends DCLogic {
       ytVideos, ytWatchLater, ytWlFound,
       spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
       lfcNext, lfcLast, lfcForm, lfcResults, lfcTable,
+      entreTemp, hallenSimonTemp, badrumTemp, balkongOpen, kylskapOpen, frysOpen, motion, lamps,
     } = this.state;
 
     const pad = n => String(n).padStart(2,'0');
@@ -1672,6 +1748,36 @@ class Component extends DCLogic {
       carAlertBg: carBattery!==null&&carBattery<20?'rgba(239,68,68,0.1)':'rgba(255,255,255,0.04)',
       carRangeStr: carRange!==null ? `${carRange} km räckvidd` : '',
       carLocation: carLocation || '—',
+      // Temperaturer (array för sc-for)
+      temps: [
+        { label:'UTOMHUS',       val:outdoorTemp,      sub:'Garden' },
+        { label:'SOVRUM',        val:bedroomTemp,       sub:bedroomHumidity!=null?`${Math.round(bedroomHumidity)}% RF`:'' },
+        { label:'ENTRÉ',         val:entreTemp,         sub:'' },
+        { label:'HALLEN SIMON',  val:hallenSimonTemp,   sub:'' },
+        { label:'BADRUM',        val:badrumTemp,        sub:'' },
+      ].map(t => ({ ...t, tempStr: t.val!=null?`${t.val.toFixed(1)}°`:'—', subStr:t.sub })),
+      // Rörelse per rum
+      motionRooms: [
+        { label:'Hall',         key:'hall' },
+        { label:'Hallen Simon', key:'hallenSimon' },
+        { label:'Entré',        key:'entre' },
+        { label:'Kök',          key:'kok' },
+        { label:'Sovrum',       key:'sovrum' },
+        { label:'Vardagsrum',   key:'vardagsrum' },
+        { label:'Badrum',       key:'badrum' },
+        { label:'Lilla Toalett',key:'lillaToalett' },
+        { label:'Vanessa',      key:'vanessa' },
+        { label:'Simon rum',    key:'simon' },
+      ].map(r => { const a = !!(motion[r.key]); return { ...r, pill:{padding:'5px 13px',borderRadius:'20px',fontSize:'12px',fontWeight:'500',background:a?'rgba(130,220,50,0.15)':'rgba(255,255,255,0.05)',color:a?G:'rgba(238,240,245,0.42)',border:`1px solid ${a?'rgba(130,220,50,0.3)':'rgba(255,255,255,0.08)'}`} }; }),
+      // Dörrar & lås
+      doors: [
+        { label:'YTTERDÖRR', status:doorLocked===null?'—':doorLocked?'🔒 Låst':'🔓 Olåst', color:doorLocked===null?'rgba(238,240,245,0.5)':doorLocked?G:R, sub:doorBattery!=null?`Batteri ${Math.round(doorBattery)}%`:'' },
+        { label:'BALKONG',   status:balkongOpen===null?'—':balkongOpen?'🪟 Öppen':'✓ Stängd',  color:balkongOpen===null?'rgba(238,240,245,0.5)':balkongOpen?O:G,  sub:'' },
+        { label:'KYLSKÅP',   status:kylskapOpen===null?'—':kylskapOpen?'⚠ Öppen':'✓ Stängd',  color:kylskapOpen===null?'rgba(238,240,245,0.5)':kylskapOpen?R:G,  sub:'' },
+        { label:'FRYS',      status:frysOpen===null?'—':frysOpen?'⚠ Öppen':'✓ Stängd',         color:frysOpen===null?'rgba(238,240,245,0.5)':frysOpen?R:G,         sub:'' },
+      ],
+      // Lampor per rum (klickbara)
+      lampRooms: (()=>{ const names={hall:'Hall',entre:'Entré',kok:'Kök',vardagsrum:'Vardagsrum',sovrum:'Sovrum',badrum:'Badrum',lillaToalett:'Lilla Toalett',vanessa:'Vanessa',simon:'Simon rum'}; return Object.entries(names).map(([key,label])=>{ const d=lamps[key]||{on:0,total:0,ids:[]}; const anyOn=d.on>0; return { key,label,on:d.on,total:d.total, statusStr:d.total===0?'—':`${d.on}/${d.total} på`, anyOn, iconColor:anyOn?'rgba(255,215,0,0.9)':'rgba(238,240,245,0.2)', textColor:anyOn?'#eef0f5':'rgba(238,240,245,0.38)', bgStyle:{cursor:d.total>0?'pointer':'default',borderRadius:'10px',padding:'12px 14px',background:anyOn?'rgba(255,215,0,0.07)':'rgba(255,255,255,0.03)',border:`1px solid ${anyOn?'rgba(255,215,0,0.18)':'rgba(255,255,255,0.07)'}`}, onClick:d.total>0?()=>this.setLamps(d.ids,!anyOn):null }; }); })(),
     };
 
     // ── Bilar ──
@@ -1851,6 +1957,33 @@ class Component extends DCLogic {
         border:`1px solid ${activeScene===s.id?A:'rgba(255,255,255,0.1)'}`,
         background:activeScene===s.id?'rgba(59,130,246,0.13)':'rgba(255,255,255,0.04)',
         color:activeScene===s.id?A:'rgba(238,240,245,0.72)'},
+    }));
+
+    // Smart Home scener (wired to Homey flows)
+    const shScenes = [
+      { label:'🌙 Sova', flowId:'f07d25ac-7378-4a68-99e2-6ec21bd0d865', flowType:'advanced' },
+      { label:'☀️ Vakna', flowId:'775a815f-44a9-4226-bb50-e2fed588f4a2', flowType:'standard' },
+    ].map(s => ({ ...s, onClick:()=>this.triggerFlow(s.flowId,s.flowType),
+      btnStyle:{display:'block',width:'100%',padding:'13px 18px',borderRadius:'10px',
+        border:'1px solid rgba(255,255,255,0.1)',background:'rgba(255,255,255,0.05)',
+        color:'#eef0f5',fontSize:'14px',fontWeight:'500',cursor:'pointer',fontFamily:'inherit',textAlign:'left'} }));
+
+    // Rocky städning per rum
+    const rockyRooms = [
+      { label:'Vardagsrum', damm:'1cea6180-081a-4b43-b512-af3371b88335', moppa:'fa92959d-2e7c-4d41-af70-6883b3396feb' },
+      { label:'Kök',        damm:'9663bf9a-3da1-4319-9e13-e7e2264486d0', moppa:'143e3847-549c-4149-8c8c-6b9c36df98ff' },
+      { label:'Hall',       damm:'a714915b-598a-4e0f-b614-504e3bf4aa0d', moppa:'6aac92e2-0c9d-4871-88e1-7e0187d5685e' },
+      { label:'Badrum',     damm:'13e00ae1-4416-467a-8d06-ad57070f75c9', moppa:'a1dfacd5-0c4c-489a-8548-98e23dc5c337' },
+      { label:'Sovrum',     damm:'17791733-5bcc-4d2c-995f-3d977da1c449', moppa:'293a4f18-f95b-49a9-b726-c3d709318c1a' },
+      { label:'Simon rum',  damm:'125c8e6b-d6c4-4cd6-9f5d-1d9f3980d99b', moppa:'4649025a-47fc-421b-b775-e9f5243853da' },
+      { label:'Vanessa',    damm:'25f1a737-3c6c-4a89-b509-63e5e1ab62ad', moppa:'0ce84fc4-33f5-41eb-b837-ef770fa9fc0f' },
+      { label:'Lilla Toalett', damm:'fd43cc40-2561-4b41-85d3-dc4f3b3de86b', moppa:'39d7f71d-a41e-46f8-866d-0716c854ac0e' },
+      { label:'Entré',      damm:'e9b23292-473a-4fb2-988c-4c3f35b27db5', moppa:'e9307994-3da6-4ed5-bf1c-4ddb6bad4dbc' },
+    ].map(r => ({ ...r,
+      onDamm:()=>this.triggerFlow(r.damm,'advanced'),
+      onMoppa:()=>this.triggerFlow(r.moppa,'advanced'),
+      dammStyle:{padding:'5px 11px',borderRadius:'6px',border:'1px solid rgba(255,255,255,0.1)',background:'rgba(255,255,255,0.05)',color:'rgba(238,240,245,0.78)',fontSize:'12px',cursor:'pointer',fontFamily:'inherit'},
+      moppaStyle:{padding:'5px 11px',borderRadius:'6px',border:'1px solid rgba(130,220,50,0.25)',background:'rgba(130,220,50,0.08)',color:G,fontSize:'12px',cursor:'pointer',fontFamily:'inherit'},
     }));
 
     // Calendar events – riktiga från Google om inloggad, annars demo
@@ -2074,7 +2207,7 @@ class Component extends DCLogic {
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
-      events, emails, tasks, weather, wHourly, smartHome, briefing,
+      events, emails, tasks, weather, wHourly, smartHome, briefing, shScenes, rockyRooms,
       bathing, bathingBadge, bathingBadgeStyle,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
