@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:#0e1018;overflow-x:hidden;}
+    button{font-family:inherit;cursor:pointer;}
+    ::-webkit-scrollbar{width:4px;height:4px;}
+    ::-webkit-scrollbar-track{background:transparent;}
+    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12);border-radius:2px;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+    @keyframes spin{to{transform:rotate(360deg);}}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</helmet>
+
+<div style="min-height:100vh;background:#0e1018;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#eef0f5;">
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:100;background:rgba(14,16,24,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1440px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:52px;gap:16px;">
+      <div style="flex-shrink:0;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;color:oklch(0.82 0.24 130);">LIFE</div>
+        <div style="font-size:7px;font-weight:600;letter-spacing:0.12em;color:rgba(238,240,245,0.25);text-transform:uppercase;">Command Center</div>
+      </div>
+      <div style="width:1px;height:20px;background:rgba(255,255,255,0.08);flex-shrink:0;"></div>
+      <nav style="display:flex;gap:1px;flex:1;overflow-x:auto;">
+        <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+          <button onClick="{{ tab.onClick }}" style="{{ tab.btnStyle }}">{{ tab.label }}</button>
+        </sc-for>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+        <sc-if value="{{ googleNotAuthed }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ loginGoogle }}" style="{{ googleBtnStyle }}">
+            <span style="font-size:13px;">🔑</span> Google
+          </button>
+        </sc-if>
+        <sc-if value="{{ spotifyNotAuthed }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ loginSpotify }}" style="{{ spotifyBtnStyle }}">
+            <span style="font-size:13px;">🎵</span> Spotify
+          </button>
+        </sc-if>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div style="{{ liveStyle }}"></div>
+          <span style="font-size:10px;color:rgba(238,240,245,0.35);letter-spacing:0.05em;">{{ refreshStr }}</span>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:21px;font-weight:300;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1;color:#eef0f5;">{{ timeStr }}</div>
+          <div style="font-size:9px;color:rgba(238,240,245,0.3);margin-top:2px;letter-spacing:0.03em;text-transform:capitalize;">{{ dateStr }}</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:1440px;margin:0 auto;padding:18px 24px 48px;">
+
+    <!-- ══ HEM ══ -->
+    <sc-if value="{{ isHem }}" hint-placeholder-val="{{ true }}">
+
+      <!-- AI BRIEFING -->
+      <div style="background:linear-gradient(135deg,rgba(130,220,50,0.07) 0%,rgba(14,16,24,0.3) 70%);border:1px solid rgba(130,220,50,0.18);border-radius:12px;padding:14px 18px;margin-bottom:14px;animation:fadeUp 0.35s ease both;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+          <span style="width:5px;height:5px;border-radius:50%;background:oklch(0.82 0.24 130);display:inline-block;animation:blink 2.4s ease infinite;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.82 0.24 130);">AI-BRIEFING · IDAG</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <sc-for list="{{ briefing }}" as="b" hint-placeholder-count="5">
+            <div style="display:flex;align-items:flex-start;gap:7px;flex:1;min-width:180px;">
+              <div style="width:3px;height:3px;border-radius:50%;background:oklch(0.82 0.24 130);margin-top:7px;flex-shrink:0;"></div>
+              <span style="font-size:13px;color:rgba(238,240,245,0.8);line-height:1.5;">{{ b.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- ROW 1 -->
+      <div style="{{ gridStyle }}">
+
+        <!-- WEATHER -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.05s both;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VÄDER · NYKÖPING <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">OPEN-METEO</span></div>
+          <div style="display:flex;align-items:flex-end;gap:14px;margin-bottom:14px;">
+            <div style="font-size:60px;font-weight:200;letter-spacing:-0.04em;line-height:1;color:#eef0f5;">{{ weather.tempStr }}</div>
+            <div style="padding-bottom:6px;">
+              <div style="font-size:13.5px;color:rgba(238,240,245,0.68);">{{ weather.condition }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:2px;">Känns som {{ weather.feelsLikeStr }}</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;margin-bottom:14px;flex-wrap:wrap;">
+            <span style="font-size:12.5px;color:rgba(238,240,245,0.68);">💨 {{ weather.wind }}</span>
+            <span style="font-size:12.5px;color:rgba(238,240,245,0.68);">💧 {{ weather.humidity }}%</span>
+            <span style="font-size:12.5px;color:rgba(238,240,245,0.68);">🌧 {{ weather.precip }}</span>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:12px;">
+            <div style="display:flex;gap:4px;overflow:hidden;">
+              <sc-for list="{{ wHourly }}" as="w" hint-placeholder-count="8">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;min-width:0;">
+                  <div style="font-size:10.5px;color:rgba(238,240,245,0.44);">{{ w.h }}</div>
+                  <div style="font-size:13.5px;line-height:1;">{{ w.icon }}</div>
+                  <div style="font-size:11.5px;font-weight:500;color:rgba(238,240,245,0.72);">{{ w.t }}°</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- CALENDAR -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.1s both;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">KALENDER · IDAG <span style="{{ calBadgeStyle }}">{{ calBadge }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <sc-for list="{{ events }}" as="ev" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;background:rgba(255,255,255,0.025);">
+                <div style="font-size:12.5px;font-variant-numeric:tabular-nums;color:rgba(238,240,245,0.62);flex-shrink:0;width:36px;">{{ ev.time }}</div>
+                <div style="{{ ev.dotStyle }}"></div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:13.5px;font-weight:500;color:#eef0f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ ev.title }}</div>
+                  <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:1px;">{{ ev.dur }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- MAIL -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.15s both;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">MAIL · PRIORITERADE <span style="{{ mailBadgeStyle }}">{{ mailBadge }}</span></div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ emails }}" as="em" hint-placeholder-count="5">
+              <div style="{{ em.rowStyle }}">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px;">
+                  <span style="font-size:12.5px;font-weight:600;color:rgba(238,240,245,0.82);">{{ em.from }}</span>
+                  <span style="font-size:10.5px;color:rgba(238,240,245,0.4);flex-shrink:0;margin-left:8px;">{{ em.time }}</span>
+                </div>
+                <div style="font-size:12.5px;color:rgba(238,240,245,0.52);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ em.subject }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ROW 2 -->
+      <div style="{{ gridStyle }}">
+
+        <!-- SMART HOME LIVE -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.2s both;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SMART HOME <span style="{{ homeyBadgeStyle }}">{{ homeyBadge }}</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:11px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:4px;">UTOMHUS</div>
+              <div style="font-size:28px;font-weight:300;letter-spacing:-0.02em;color:#eef0f5;">{{ smartHome.outdoorTempStr }}</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:11px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:4px;">SOVRUM</div>
+              <div style="font-size:28px;font-weight:300;letter-spacing:-0.02em;color:#eef0f5;">{{ smartHome.bedroomTempStr }}</div>
+              <div style="font-size:10.5px;color:rgba(238,240,245,0.44);margin-top:2px;">{{ smartHome.bedroomHumidityStr }} RF</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:2px;">PM2.5 LUFTKVALITET</div>
+              <div style="font-size:20px;font-weight:300;color:#eef0f5;">{{ smartHome.pm25Str }} <span style="font-size:11px;color:rgba(238,240,245,0.44);">μg/m³</span></div>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:{{ smartHome.airColor }};">{{ smartHome.airStatus }}</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:9px;display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-size:10.5px;color:rgba(238,240,245,0.52);">Ytterdörr</div>
+              <div style="font-size:11.5px;font-weight:600;color:{{ smartHome.doorColor }};">{{ smartHome.doorStatus }}</div>
+            </div>
+            <div style="background:{{ smartHome.carAlertBg }};border-radius:8px;padding:9px;display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-size:10.5px;color:rgba(238,240,245,0.52);">Volvo</div>
+              <div style="font-size:11.5px;font-weight:600;color:{{ smartHome.carBattColor }};">{{ smartHome.carBattStr }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESOR -->
+        <div style="{{ nextTrip.cardStyle }}">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">NÄSTA RESA <span style="{{ nextTrip.badgeStyle }}">{{ nextTrip.badge }}</span></div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;margin-bottom:10px;">
+            <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">{{ nextTrip.destination }}</div>
+            <div style="font-size:24px;font-weight:600;color:#eef0f5;margin-bottom:2px;">{{ nextTrip.daysLeft }} dagar</div>
+            <div style="font-size:12.5px;color:rgba(238,240,245,0.52);">{{ nextTrip.dates }}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:13.5px;">✈️</span>
+              <span style="font-size:12.5px;color:rgba(238,240,245,0.68);">{{ nextTrip.flight }}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:13.5px;">🏨</span>
+              <span style="font-size:12.5px;color:rgba(238,240,245,0.68);">{{ nextTrip.hotel }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPPGIFTER -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.3s both;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">UPPGIFTER <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">Demo</span></div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <sc-for list="{{ tasks }}" as="task" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;background:rgba(255,255,255,0.025);">
+                <div style="width:14px;height:14px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.2);flex-shrink:0;"></div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:13.5px;color:#eef0f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ task.title }}</div>
+                  <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:1px;">{{ task.due }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ROW 3 -->
+      <div style="{{ gridStyle2 }}">
+
+        <!-- ELPRIS LIVE -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.35s both;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">ELPRIS · SE3 <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">LIVE</span></div>
+            <div style="text-align:right;">
+              <div style="font-size:22px;font-weight:300;letter-spacing:-0.02em;color:#eef0f5;">{{ elCurrentStr }}</div>
+              <div style="font-size:11.5px;margin-top:2px;color:{{ elColor }};">{{ elRec }}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:64px;">
+            <sc-for list="{{ elBars }}" as="bar" hint-placeholder-count="24">
+              <div style="{{ bar.barStyle }}" title="{{ bar.price }}"></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:5px;">
+            <span style="font-size:10px;color:rgba(238,240,245,0.32);">00</span>
+            <span style="font-size:10px;color:rgba(238,240,245,0.32);">06</span>
+            <span style="font-size:10px;color:rgba(238,240,245,0.32);">12</span>
+            <span style="font-size:10px;color:rgba(238,240,245,0.32);">18</span>
+            <span style="font-size:10px;color:rgba(238,240,245,0.32);">23</span>
+          </div>
+        </div>
+
+        <!-- LIVERPOOL -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.4s both;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">LIVERPOOL FC</div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:13px;margin-bottom:10px;">
+            <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">NÄSTA MATCH</div>
+            <div style="font-size:19px;font-weight:600;color:#eef0f5;margin-bottom:3px;">vs {{ liverpool.nextOpp }}</div>
+            <div style="font-size:12.5px;color:rgba(238,240,245,0.62);">{{ liverpool.nextDate }}</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:1px;">{{ liverpool.nextVenue }} · {{ liverpool.nextComp }}</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-size:12.5px;color:rgba(238,240,245,0.62);">{{ liverpool.lastOpp }} <span style="color:oklch(0.65 0.15 145);font-weight:600;">{{ liverpool.lastScore }}</span></div>
+            <div style="display:flex;gap:4px;">
+              <sc-for list="{{ liverpool.form }}" as="f" hint-placeholder-count="5">
+                <div style="{{ f.circleStyle }}">{{ f.result }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- QUICK CONTROLS -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;animation:fadeUp 0.4s ease 0.45s both;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">SNABBKNAPPAR · HOMEY</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <sc-for list="{{ scenes }}" as="scene" hint-placeholder-count="5">
+            <button onClick="{{ scene.onClick }}" style="{{ scene.btnStyle }}">{{ scene.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+    </sc-if>
+
+    <!-- ══ SMART HOME ══ -->
+    <sc-if value="{{ isSmartHome }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;grid-column:span 2;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:18px;">SENSORER · HOMEY <span style="{{ homeyBadgeStyle }}">{{ homeyBadge }}</span></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">UTOMHUS</div>
+              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ smartHome.outdoorTempStr }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">Utesensor</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">SOVRUM</div>
+              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ smartHome.bedroomTempStr }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">{{ smartHome.bedroomHumidityStr }} RF</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">LUFTKVALITET PM2.5</div>
+              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:{{ smartHome.airColor }};">{{ smartHome.pm25Str }}</div>
+              <div style="font-size:11.5px;margin-top:4px;color:{{ smartHome.airColor }};">{{ smartHome.airStatus }}</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">YTTERDÖRR</div>
+              <div style="font-size:24px;font-weight:400;letter-spacing:-0.02em;margin-top:4px;color:{{ smartHome.doorColor }};">{{ smartHome.doorStatus }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">{{ smartHome.doorBattStr }}</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VOLVO XC60</div>
+          <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;margin-bottom:6px;color:{{ smartHome.carBattColor }};">{{ smartHome.carBattStr }}</div>
+          <div style="font-size:13.5px;color:rgba(238,240,245,0.62);margin-bottom:4px;">{{ smartHome.carRangeStr }}</div>
+          <div style="font-size:12.5px;color:rgba(238,240,245,0.44);">{{ smartHome.carLocation }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SCENER · HOMEY</div>
+          <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px;">
+            <sc-for list="{{ scenes }}" as="scene" hint-placeholder-count="5">
+              <button onClick="{{ scene.onClick }}" style="{{ scene.btnStyle }}">{{ scene.label }}</button>
+            </sc-for>
+          </div>
+          <div style="padding:11px 13px;background:rgba(255,255,255,0.03);border-radius:8px;font-size:12.5px;color:rgba(238,240,245,0.44);line-height:1.6;">Koppla Homey-flows till dessa knappar för direkt scenaktivering.</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ══ MEDIA ══ -->
+    <sc-if value="{{ isMedia }}" hint-placeholder-val="{{ false }}">
+      <div style="{{ mediaGridStyle }}">
+
+        <!-- SPOTIFY vänster -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:14px;">
+
+          <!-- Nu spelar -->
+          <sc-if value="{{ hasNowPlaying }}" hint-placeholder-val="{{ false }}">
+            <div style="background:rgba(30,215,96,0.07);border:1px solid rgba(30,215,96,0.18);border-radius:9px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+              <span style="font-size:9px;font-weight:700;letter-spacing:0.12em;color:oklch(0.65 0.15 145);">NU SPELAR</span>
+              <span style="font-size:12.5px;color:rgba(238,240,245,0.78);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ nowPlayingStr }}</span>
+            </div>
+          </sc-if>
+
+          <!-- Musikupptäckt -->
+          <div>
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">DAGENS MUSIKUPPTÄCKT <span style="{{ spotifyBadgeStyle }}">{{ spotifyBadge }}</span></div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:21px;font-weight:600;color:#eef0f5;margin-bottom:3px;">{{ discovery.artist }}</div>
+              <div style="font-size:12px;color:oklch(0.65 0.18 240);margin-bottom:8px;">{{ discovery.genre }}</div>
+              <div style="font-size:12.5px;color:rgba(238,240,245,0.58);line-height:1.6;">{{ discovery.desc }}</div>
+              <div style="font-size:11px;color:rgba(238,240,245,0.35);margin-top:6px;">{{ discovery.album }}</div>
+            </div>
+          </div>
+
+          <!-- Senast spelat -->
+          <div>
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:8px;">SENAST SPELAT</div>
+            <sc-for list="{{ recentTracks }}" as="track" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div style="width:32px;height:32px;border-radius:5px;background:rgba(59,130,246,0.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;">🎵</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:12.5px;font-weight:500;color:rgba(238,240,245,0.82);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ track.title }}</div>
+                  <div style="font-size:11px;color:rgba(238,240,245,0.4);">{{ track.artist }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- Podcasts -->
+          <div>
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:8px;">SENASTE PODCASTS</div>
+            <sc-for list="{{ podcasts }}" as="pod" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid rgba(255,255,255,0.04);">
+                <div style="width:32px;height:32px;border-radius:5px;background:rgba(30,215,96,0.12);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;">🎙</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:12.5px;color:rgba(238,240,245,0.8);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ pod.title }}</div>
+                  <div style="font-size:11px;color:rgba(238,240,245,0.38);">{{ pod.show }} · {{ pod.dur }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- Login om ej authed -->
+          <sc-if value="{{ spotifyNotAuthed }}" hint-placeholder-val="{{ false }}">
+            <div style="background:rgba(30,215,96,0.05);border:1px solid rgba(30,215,96,0.15);border-radius:9px;padding:14px;text-align:center;">
+              <div style="font-size:12.5px;color:rgba(238,240,245,0.5);margin-bottom:10px;">Logga in med Spotify för live-data</div>
+              <button onClick="{{ loginSpotify }}" style="padding:8px 20px;border-radius:8px;border:1px solid rgba(30,215,96,0.4);background:rgba(30,215,96,0.1);color:oklch(0.65 0.15 145);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">Logga in med Spotify</button>
+            </div>
+          </sc-if>
+
+        </div>
+
+        <!-- YOUTUBE mitten -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+
+          <!-- Nytt från kanaler -->
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">YOUTUBE · NYTT FRÅN KANALER <span style="{{ ytBadgeStyle }}">{{ ytBadge }}</span></div>
+            <sc-for list="{{ ytVideos }}" as="v" hint-placeholder-count="5">
+              <div onClick="{{ v.onClick }}" style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;">
+                <div style="width:64px;height:36px;border-radius:5px;background:rgba(255,0,0,0.1) url('{{ v.img }}') center/cover;flex-shrink:0;"></div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:12.5px;font-weight:500;color:rgba(238,240,245,0.85);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">{{ v.title }}</div>
+                  <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-top:3px;">{{ v.channel }} · {{ v.ago }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- Titta senare -->
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">TITTA SENARE</div>
+            <sc-for list="{{ ytWatchLater }}" as="w" hint-placeholder-count="4">
+              <div onClick="{{ w.onClick }}" style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;">
+                <div style="width:64px;height:36px;border-radius:5px;background:rgba(255,0,0,0.1) url('{{ w.img }}') center/cover;flex-shrink:0;"></div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:12.5px;font-weight:500;color:rgba(238,240,245,0.85);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">{{ w.title }}</div>
+                  <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-top:3px;">{{ w.channel }}</div>
+                </div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ ytWlEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:12px;color:rgba(238,240,245,0.42);line-height:1.6;padding:4px 0;">{{ ytWlHint }}</div>
+            </sc-if>
+          </div>
+
+        </div>
+
+        <!-- NYHETER höger -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:16px;">NYHETER &amp; TEKNIK</div>
+          <sc-for list="{{ news }}" as="n" hint-placeholder-count="5">
+            <div style="padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:10.5px;color:oklch(0.65 0.18 240);margin-bottom:4px;font-weight:600;letter-spacing:0.03em;">{{ n.src }}</div>
+              <div style="font-size:13.5px;color:rgba(238,240,245,0.85);line-height:1.45;margin-bottom:3px;">{{ n.title }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);">{{ n.time }} sedan</div>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+    </sc-if>
+
+    <!-- ══ SPORT & RESOR ══ -->
+    <sc-if value="{{ isSport }}" hint-placeholder-val="{{ false }}">
+
+      <!-- Sport: vänster = staplade kort, höger = PL-tabell full höjd -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch;">
+
+        <!-- Vänster: Nästa match + Senaste 5 (staplade) -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+
+          <!-- Nästa match -->
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">LIVERPOOL FC · NÄSTA MATCH</div>
+            <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.15);border-radius:9px;padding:16px;margin-bottom:12px;">
+              <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-bottom:6px;">{{ liverpool.nextComp }}</div>
+              <div style="font-size:26px;font-weight:700;color:#eef0f5;margin-bottom:4px;">vs {{ liverpool.nextOpp }}</div>
+              <div style="font-size:13px;color:rgba(238,240,245,0.62);margin-bottom:2px;">{{ liverpool.nextDate }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.4);">{{ liverpool.nextVenue }}</div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.5);">Senast: {{ liverpool.lastOpp }} <span style="color:oklch(0.65 0.15 145);font-weight:700;">{{ liverpool.lastScore }}</span></div>
+              <div style="display:flex;gap:4px;">
+                <sc-for list="{{ liverpool.form }}" as="f" hint-placeholder-count="5">
+                  <div style="{{ f.circleStyle }}">{{ f.result }}</div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <!-- Senaste 5 matcher -->
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SENASTE 5 MATCHER</div>
+            <sc-for list="{{ liverpool.results }}" as="r" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;margin-bottom:3px;background:rgba(255,255,255,0.025);">
+                <div style="width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;background:{{ r.result === 'W' ? 'rgba(34,197,94,0.15)' : r.result === 'D' ? 'rgba(255,255,255,0.08)' : 'rgba(239,68,68,0.15)' }};color:{{ r.result === 'W' ? 'oklch(0.65 0.15 145)' : r.result === 'D' ? 'rgba(238,240,245,0.45)' : 'oklch(0.6 0.18 15)' }};">{{ r.result }}</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:13px;font-weight:500;color:rgba(238,240,245,0.82);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ r.opp }} <span style="font-size:10px;color:rgba(238,240,245,0.35);">({{ r.venue }})</span></div>
+                  <div style="font-size:10.5px;color:rgba(238,240,245,0.38);">{{ r.comp }} · {{ r.date }}</div>
+                </div>
+                <div style="font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:rgba(238,240,245,0.75);flex-shrink:0;">{{ r.score }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+        </div>
+
+        <!-- Höger: PL Tabell (täcker båda vänstra korten) -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">PREMIER LEAGUE · TABELL 2024–25</div>
+          <div style="display:grid;grid-template-columns:18px 1fr 28px 28px 28px 32px;gap:0 6px;margin-bottom:6px;padding:0 4px;">
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);">#</span>
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);">Lag</span>
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">M</span>
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">GS</span>
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">GM</span>
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:right;">P</span>
+          </div>
+          <sc-for list="{{ liverpool.table }}" as="t" hint-placeholder-count="20">
+            <div style="display:grid;grid-template-columns:18px 1fr 28px 28px 28px 32px;gap:0 6px;padding:6px 4px;border-radius:6px;background:{{ t.isLfc ? 'rgba(200,16,46,0.08)' : 'transparent' }};border:{{ t.isLfc ? '1px solid rgba(200,16,46,0.2)' : '1px solid transparent' }};margin-bottom:1px;">
+              <span style="font-size:12px;color:rgba(238,240,245,0.4);font-variant-numeric:tabular-nums;">{{ t.pos }}</span>
+              <span style="font-size:12px;font-weight:{{ t.isLfc ? '600' : '400' }};color:{{ t.isLfc ? '#eef0f5' : 'rgba(238,240,245,0.72)' }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ t.name }}</span>
+              <span style="font-size:12px;color:rgba(238,240,245,0.45);text-align:center;font-variant-numeric:tabular-nums;">{{ t.played }}</span>
+              <span style="font-size:12px;color:rgba(238,240,245,0.45);text-align:center;font-variant-numeric:tabular-nums;">{{ t.won }}</span>
+              <span style="font-size:12px;color:rgba(238,240,245,0.45);text-align:center;font-variant-numeric:tabular-nums;">{{ t.gd }}</span>
+              <span style="font-size:13px;font-weight:700;color:{{ t.isLfc ? 'oklch(0.65 0.18 240)' : 'rgba(238,240,245,0.82)' }};text-align:right;font-variant-numeric:tabular-nums;">{{ t.pts }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+    </sc-if>
+
+    <!-- ══ VÄDER ══ -->
+    <sc-if value="{{ isVader }}" hint-placeholder-val="{{ false }}">
+
+      <!-- Nuläge rad -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">TEMPERATUR</div>
+          <div style="font-size:42px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;line-height:1;">{{ weather.tempStr }}</div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.44);margin-top:5px;">Känns som {{ weather.feelsLikeStr }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VÄDER</div>
+          <div style="font-size:32px;line-height:1;margin-bottom:6px;">{{ weather.condition }}</div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.44);">Open-Meteo · Nyköping</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VIND</div>
+          <div style="font-size:22px;font-weight:300;color:#eef0f5;line-height:1;margin-bottom:6px;">{{ weather.wind }}</div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.44);">💧 {{ weather.humidity }}% RF</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">NEDERBÖRD</div>
+          <div style="font-size:32px;font-weight:200;color:#eef0f5;line-height:1;margin-bottom:6px;">{{ weather.precip }}<span style="font-size:13px;color:rgba(238,240,245,0.4);"> mm/h</span></div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.44);">Nuvarande</div>
+        </div>
+      </div>
+
+      <!-- Regnradar + timprognos -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+
+        <!-- Regnradar iframe -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;">
+          <div style="padding:14px 18px 10px;display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">REGNRADAR · NYKÖPING</div>
+            <a href="https://regnradar.se/" target="_blank" style="font-size:11px;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Öppna ↗</a>
+          </div>
+          <div style="position:relative;overflow:hidden;height:480px;background:#070d0f;">
+            <img src="https://dela.regnradar.se/animation/latest3.gif"
+                 style="position:absolute;width:100%;height:auto;transform:scale(3);transform-origin:62% 67%;"
+                 alt="Regnradar Nyköping">
+            <div style="position:absolute;bottom:10px;right:12px;font-size:10px;color:rgba(238,240,245,0.3);">© SMHI · Met Norway</div>
+          </div>
+        </div>
+
+        <!-- Timprognos -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:16px;">TIMPROGNOS · 12H</div>
+          <sc-for list="{{ wHourly }}" as="w" hint-placeholder-count="12">
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <div style="font-size:13px;font-variant-numeric:tabular-nums;color:rgba(238,240,245,0.44);width:28px;flex-shrink:0;">{{ w.h }}</div>
+              <div style="font-size:17px;flex-shrink:0;">{{ w.icon }}</div>
+              <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:4px;height:5px;overflow:hidden;">
+                <div style="background:oklch(0.82 0.24 130);height:100%;border-radius:4px;width:{{ w.tPct }}%;max-width:100%;"></div>
+              </div>
+              <div style="font-size:14px;font-weight:500;color:#eef0f5;font-variant-numeric:tabular-nums;width:34px;text-align:right;flex-shrink:0;">{{ w.t }}°</div>
+              <div style="font-size:11px;font-variant-numeric:tabular-nums;color:rgba(59,130,246,0.7);width:28px;text-align:right;flex-shrink:0;">{{ w.precipPct }}%</div>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+
+    </sc-if>
+
+    <!-- ══ RESOR ══ -->
+    <sc-if value="{{ isResor }}" hint-placeholder-val="{{ false }}">
+
+      <!-- Rad 1: Hero-info (vänster) + Destinationsbild (höger) -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;align-items:stretch;">
+
+        <!-- Vänster: destination + resenärer -->
+        <div style="background:linear-gradient(135deg,rgba(130,220,50,0.09) 0%,rgba(14,16,24,0.25) 70%);border:1px solid rgba(130,220,50,0.2);border-radius:14px;padding:24px;animation:fadeUp 0.35s ease both;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:16px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:oklch(0.82 0.24 130);display:inline-block;animation:blink 2.4s ease infinite;flex-shrink:0;"></span>
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.82 0.24 130);">NÄSTA RESA</span>
+            <span style="{{ nextTrip.badgeStyle }}">{{ nextTrip.badge }}</span>
+          </div>
+          <div style="font-size:64px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;line-height:1;margin-bottom:6px;">{{ nextTrip.daysLeft }}<span style="font-size:24px;color:rgba(238,240,245,0.4);font-weight:300;"> dagar</span></div>
+          <div style="font-size:24px;font-weight:600;color:#eef0f5;margin-bottom:5px;letter-spacing:-0.01em;">{{ nextTrip.destination }}</div>
+          <div style="font-size:14px;color:rgba(238,240,245,0.52);margin-bottom:0;">{{ nextTrip.dates }}</div>
+          <!-- Resenärer -->
+          <div style="margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);margin-top:18px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VEM RESER</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <sc-for list="{{ nextTrip.travelers }}" as="tv" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border-radius:20px;padding:5px 11px 5px 5px;">
+                  <div style="width:26px;height:26px;border-radius:50%;background:{{ tv.color }};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0e1018;flex-shrink:0;">{{ tv.initial }}</div>
+                  <span style="font-size:13px;color:rgba(238,240,245,0.8);">{{ tv.name }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- Höger: Destinationsbild från Wikipedia -->
+        <div style="border-radius:14px;overflow:hidden;min-height:300px;background:#0d1117;position:relative;display:flex;align-items:center;justify-content:center;">
+          <sc-if value="{{ tripPhotoUrl }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ tripPhotoUrl }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="{{ tripPhotoCity }}">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 45%);"></div>
+            <div style="position:absolute;bottom:16px;left:18px;right:18px;">
+              <div style="font-size:20px;font-weight:600;color:#fff;letter-spacing:-0.01em;">{{ tripPhotoCity }}</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;">© Wikipedia / Wikimedia Commons</div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ !tripPhotoUrl }}" hint-placeholder-val="{{ false }}">
+            <div style="color:rgba(238,240,245,0.2);font-size:13px;">Laddar foto…</div>
+          </sc-if>
+        </div>
+
+      </div>
+
+      <!-- Rad 2: ATT GÖRA — AI-genererat baserat på familjeprofiler -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-top:0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">ATT GÖRA I {{ tripPhotoCity }} <span style="font-size:9px;font-weight:400;letter-spacing:0;color:oklch(0.65 0.18 240);">AI · ANPASSAT FÖR ER</span></div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <sc-if value="{{ tripActivitiesLoading }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:11px;color:rgba(238,240,245,0.35);">Hämtar förslag…</div>
+            </sc-if>
+            <button onClick="{{ refreshActivities }}" style="padding:4px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:rgba(238,240,245,0.5);font-size:11px;font-family:inherit;cursor:pointer;">↻ Hämta nya</button>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+          <sc-for list="{{ tripActivities }}" as="act" hint-placeholder-count="8">
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
+              <div style="font-size:22px;margin-bottom:6px;">{{ act.emoji }}</div>
+              <div style="font-size:13px;font-weight:600;color:rgba(238,240,245,0.88);margin-bottom:4px;line-height:1.3;">{{ act.name }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.42);line-height:1.45;">{{ act.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ !tripActivitiesLoading && tripActivities.length === 0 }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:12px;color:rgba(238,240,245,0.3);padding:8px 0;">Tryck "Hämta nya" för att ladda AI-förslag.</div>
+        </sc-if>
+      </div>
+
+      <!-- Rad 3: Hotell (vänster) + Flyg (höger) -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+
+        <!-- Hotell – alla bokade nätter -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px;">
+            <span style="font-size:22px;">🏨</span>
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">HOTELL</div>
+          </div>
+          <sc-for list="{{ nextTrip.hotelBookings }}" as="hb" hint-placeholder-count="2">
+            <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:15px;font-weight:500;color:#eef0f5;margin-bottom:3px;">{{ hb.title }}</div>
+              <div style="font-size:12.5px;color:rgba(238,240,245,0.48);">{{ hb.dates }}</div>
+              <div style="font-size:12px;color:oklch(0.82 0.24 130);margin-top:3px;font-weight:600;">{{ hb.nightsStr }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- Flyg -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px;">
+            <span style="font-size:22px;">✈️</span>
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">FLYG</div>
+          </div>
+          <div style="font-size:15px;font-weight:500;color:#eef0f5;margin-bottom:5px;">{{ nextTrip.flight }}</div>
+          <div style="font-size:13px;color:rgba(238,240,245,0.48);">{{ nextTrip.flightTime }}</div>
+        </div>
+
+      </div>
+
+    </sc-if>
+
+    <!-- ══ FAMILJ ══ -->
+    <sc-if value="{{ isFamilj }}" hint-placeholder-val="{{ false }}">
+
+      <!-- Översikt -->
+      <div style="background:linear-gradient(135deg,rgba(34,197,94,0.08) 0%,rgba(14,16,24,0.2) 70%);border:1px solid rgba(34,197,94,0.18);border-radius:12px;padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.65 0.15 145);margin-bottom:4px;">FAMILJ · HOMEY LIVE</div>
+          <div style="font-size:22px;font-weight:300;color:#eef0f5;">{{ familyHomeCount }} av 4 <span style="font-size:13px;color:rgba(238,240,245,0.5);">hemma just nu</span></div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <sc-for list="{{ familyMembers }}" as="m" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(255,255,255,0.05);border:2px solid {{ m.statusColor }};">{{ m.emoji }}</div>
+              <div style="{{ m.dotStyle }}"></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- Personkort -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
+        <sc-for list="{{ familyMembers }}" as="m" hint-placeholder-count="4">
+          <div style="{{ m.cardStyle }}">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">{{ m.emoji }}</div>
+              <div style="flex:1;min-width:0;">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px;">
+                  <span style="font-size:15px;font-weight:600;color:#eef0f5;">{{ m.name }}</span>
+                  <div style="{{ m.dotStyle }}"></div>
+                </div>
+                <div style="font-size:13px;font-weight:600;color:{{ m.statusColor }};">{{ m.statusLabel }}</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;">
+                <div style="font-size:10px;color:rgba(238,240,245,0.28);margin-bottom:2px;">SENAST AKTIV</div>
+                <div style="font-size:11.5px;color:rgba(238,240,245,0.5);">{{ m.last }}</div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- Info om OwnTracks -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">GPS-POSITION · FRAMTIDA INTEGRATION</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="padding:14px;background:rgba(255,255,255,0.03);border-radius:9px;">
+            <div style="font-size:12px;font-weight:600;color:rgba(238,240,245,0.65);margin-bottom:5px;">OwnTracks (rekommenderas)</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.38);line-height:1.6;">Open source · Privat · GPS-position i realtid · Fungerar med Homey via MQTT</div>
+          </div>
+          <div style="padding:14px;background:rgba(255,255,255,0.03);border-radius:9px;">
+            <div style="font-size:12px;font-weight:600;color:rgba(238,240,245,0.65);margin-bottom:5px;">Nuvarande data</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.38);line-height:1.6;">Hemma/borta-status hämtas live från Homey presence-sensorer var 5:e minut</div>
+          </div>
+        </div>
+      </div>
+
+    </sc-if>
+
+    <!-- ══ HÄLSA ══ -->
+    <sc-if value="{{ isHalsa }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SÖMN</div>
+          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.sleepH }}<span style="font-size:22px;color:rgba(238,240,245,0.44);">h</span></div>
+          <div style="font-size:13.5px;color:oklch(0.65 0.15 145);">{{ health.sleepQ }} · {{ health.sleepVs }} vs snitt</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">STEG IDAG</div>
+          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:8px;">{{ health.steps }}</div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:3px;height:3px;margin-bottom:5px;"><div style="{{ health.stepsBarStyle }}"></div></div>
+          <div style="font-size:11.5px;color:rgba(238,240,245,0.44);">{{ health.stepsPct }}% av {{ health.stepsGoal }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">PULS</div>
+          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.hr }}<span style="font-size:18px;color:rgba(238,240,245,0.44);"> bpm</span></div>
+          <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">Galaxy Watch · Vilopuls normal</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">STRESS</div>
+          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:oklch(0.65 0.15 145);margin-bottom:4px;">{{ health.stress }}</div>
+          <div style="font-size:13.5px;color:rgba(238,240,245,0.44);">Galaxy Watch · Samsung Health</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;grid-column:span 2;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">HÄLSOINSIKT</div>
+          <div style="font-size:13.5px;color:rgba(238,240,245,0.68);line-height:1.7;">Din sömn är bättre än genomsnittet senaste veckan ({{ health.sleepVs }}). Stressnivån är låg – bra dag för fokusarbete. Du är på {{ health.stepsPct }}% av ditt stegmål idag.</div>
+        </div>
+      </div>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // ── Supabase backend (proxy + Färdplan) ───────────────────────
+  // Homey-token ligger numera som secret i Supabase-funktionen "homey-proxy",
+  // INTE i klienten. anon-nyckeln nedan är publik by design (skyddad av RLS).
+  SB_URL  = 'https://ncgxerxkgoxptcwvramn.supabase.co';
+  SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jZ3hlcnhrZ294cHRjd3ZyYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3OTgzNDYsImV4cCI6MjA5NzM3NDM0Nn0.jzloqPSrAb5IDAKm2_AfHHgtOIWZHeVXmV6qsPOZMfc';
+  GOOGLE_CLIENT_ID = '528057161454-nqoqqa2juec30ca0kdov8rcoded2fg7p.apps.googleusercontent.com';
+  GOOGLE_SCOPES = 'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/youtube.readonly';
+  SPOTIFY_CLIENT_ID = '4b5da0f382364961bcb99ce481182812';
+  SPOTIFY_REDIRECT_URI = 'https://smurf1975.github.io/privat-dashboard';
+  SPOTIFY_SCOPES = 'user-read-recently-played user-top-read user-library-read user-read-currently-playing';
+
+  state = {
+    activeTab:'hem', activeScene:null, currentTime:new Date(), cols:3,
+    lastRefresh:null, homeyOk:false, homeyError:null,
+    // Homey live
+    outdoorTemp:null, bedroomTemp:null, bedroomHumidity:null,
+    pm25:null, filterLife:null,
+    elCurrentOre:null, elCheapest:'', elExpensive:'', elAvgToday:null,
+    doorLocked:null, doorBattery:null,
+    carBattery:null, carRange:null, carLocation:null, carLocked:null,
+    matsHome:false, nannyHome:false, simonHome:false, vanessaHome:false,
+    matsLast:null, nannyLast:null, simonLast:null, vanessaLast:null,
+    semesterMode:false, vakenMode:false,
+    // SMHI
+    wxTemp:null, wxIcon:'⛅', wxCondition:'Laddar...', wxWind:null, wxHumidity:null, wxPrecip:null, wxFeels:null,
+    wxHourly:[],
+    // Elpris hourly
+    elHourly:[],
+    // Liverpool
+    lfcNext:null, lfcLast:null, lfcForm:[], lfcResults:[], lfcTable:[],
+    // Google
+    googleAuthed:false, googleError:null, calEvents:[], gmailMsgs:[],
+    // Trip photo
+    tripPhotoUrl:'', tripPhotoCity:'',
+    // Trip activities
+    tripActivities:[], tripActivitiesCity:'', tripActivitiesLoading:false,
+    // YouTube
+    ytVideos:[], ytWatchLater:[], ytWlFound:false,
+    // Spotify
+    spotifyAuthed:false, spotifyToken:null,
+    spotifyRecent:[], spotifyPodcasts:[], spotifyDiscovery:null, spotifyNowPlaying:null,
+    spotifyLoading:false,
+    fardplanData:null,
+    fardplanBookings:[],
+  };
+
+  componentDidMount() {
+    this._tick = setInterval(() => this.setState({currentTime:new Date()}), 1000);
+    const upd = () => this.setState({cols: window.innerWidth<620?1:window.innerWidth<1100?2:3});
+    upd(); window.addEventListener('resize', upd); this._resize = upd;
+    // Test basic fetch capability
+    fetch('https://api.ipify.org?format=json')
+      .then(r => r.json())
+      .then(d => console.log('✅ Fetch works:', d.ip))
+      .catch(e => console.error('❌ Fetch blocked:', e.constructor?.name, e.message));
+    this.restoreCache();   // visa senaste kända värden direkt, innan API:erna svarar
+    this.fetchAll();
+    this.fetchLiverpool();
+    this._refresh = setInterval(() => this.fetchAll(), 5*60*1000);
+    this._lfcRefresh = setInterval(() => this.fetchLiverpool(), 60*60*1000);
+    this.initGoogle();
+    this.initSpotify();
+    this.loadFardplan();
+    this.initSupabase();
+  }
+
+  initGoogle() {
+    if (!window.google?.accounts?.oauth2) { this._gTry = (this._gTry||0)+1; if (this._gTry<40) setTimeout(()=>this.initGoogle(),400); return; }
+    this._tokenClient = window.google.accounts.oauth2.initTokenClient({
+      client_id: this.GOOGLE_CLIENT_ID,
+      scope: this.GOOGLE_SCOPES,
+      callback: (resp) => {
+        if (resp && resp.access_token) {
+          this._gToken = resp.access_token;
+          try { localStorage.setItem('lcc_gtoken', resp.access_token);
+            localStorage.setItem('lcc_gexp', String(Date.now()+(resp.expires_in||3600)*1000)); } catch(e){}
+          this.setState({googleAuthed:true, googleError:null});
+          this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube();
+        }
+      },
+    });
+    let stored, exp;
+    try { stored = localStorage.getItem('lcc_gtoken'); exp = parseInt(localStorage.getItem('lcc_gexp')||'0'); } catch(e){}
+    if (stored && Date.now() < exp) {
+      this._gToken = stored; this.setState({googleAuthed:true});
+      this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube();
+    }
+  }
+
+  loginGoogle() {
+    if (this._tokenClient) this._tokenClient.requestAccessToken({prompt:'consent'});
+  }
+
+  // ── Spotify PKCE ──────────────────────────────────────────────
+  async _pkceVerifier() {
+    const arr = new Uint8Array(64);
+    crypto.getRandomValues(arr);
+    return btoa(String.fromCharCode(...arr)).replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_').slice(0,128);
+  }
+  async _pkceChallenge(v) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(v));
+    return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
+  }
+
+  async initSpotify() {
+    // Handle callback with code
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+    if (code && state === localStorage.getItem('sp_state')) {
+      window.history.replaceState({}, '', window.location.pathname);
+      await this.exchangeSpotifyCode(code);
+      return;
+    }
+    // Try stored token
+    const token = localStorage.getItem('sp_token');
+    const exp   = parseInt(localStorage.getItem('sp_exp') || '0');
+    if (token && Date.now() < exp) {
+      this._spToken = token;
+      this.setState({ spotifyAuthed: true });
+      this.fetchSpotifyData();
+    }
+  }
+
+  loadFardplan() {
+    try {
+      const raw = localStorage.getItem('fardplan_next');
+      if (raw) this.setState({ fardplanData: JSON.parse(raw) });
+    } catch(e) { console.warn('Färdplan:', e.message); }
+    window.addEventListener('storage', e => {
+      if (e.key === 'fardplan_next') {
+        try { this.setState({ fardplanData: e.newValue ? JSON.parse(e.newValue) : null }); } catch(_) {}
+      }
+    });
+  }
+
+  initSupabase() {
+    const start = () => {
+      const db = window.supabase.createClient(this.SB_URL, this.SB_ANON);
+      this._sbClient = db;
+      const fetchAll = () =>
+        db.from('bookings').select('booking_data').order('start_date_time', { ascending: true })
+          .then(({ data }) => { if (data) this.setState({ fardplanBookings: data.map(r => r.booking_data) }); });
+      fetchAll();
+      db.channel('fp-lcc')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, fetchAll)
+        .subscribe();
+    };
+    if (window.supabase?.createClient) { start(); return; }
+    let n = 0;
+    const t = setInterval(() => { n++; if (window.supabase?.createClient) { clearInterval(t); start(); } else if (n > 40) clearInterval(t); }, 250);
+  }
+
+  async loginSpotify() {
+    const verifier   = await this._pkceVerifier();
+    const challenge  = await this._pkceChallenge(verifier);
+    const state      = Math.random().toString(36).slice(2);
+    localStorage.setItem('sp_verifier', verifier);
+    localStorage.setItem('sp_state', state);
+    const url = 'https://accounts.spotify.com/authorize?' + new URLSearchParams({
+      response_type: 'code', client_id: this.SPOTIFY_CLIENT_ID,
+      scope: this.SPOTIFY_SCOPES, redirect_uri: this.SPOTIFY_REDIRECT_URI,
+      state, code_challenge_method: 'S256', code_challenge: challenge,
+    });
+    window.location.href = url;
+  }
+
+  async exchangeSpotifyCode(code) {
+    const verifier = localStorage.getItem('sp_verifier');
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'authorization_code', code,
+        redirect_uri: this.SPOTIFY_REDIRECT_URI,
+        client_id: this.SPOTIFY_CLIENT_ID,
+        code_verifier: verifier,
+      }),
+    });
+    if (!res.ok) { console.error('Spotify token exchange failed', res.status); return; }
+    const data = await res.json();
+    this._spToken = data.access_token;
+    localStorage.setItem('sp_token',   data.access_token);
+    localStorage.setItem('sp_refresh', data.refresh_token || '');
+    localStorage.setItem('sp_exp',     String(Date.now() + (data.expires_in || 3600) * 1000));
+    this.setState({ spotifyAuthed: true });
+    this.fetchSpotifyData();
+  }
+
+  async refreshSpotifyToken() {
+    const refresh = localStorage.getItem('sp_refresh');
+    if (!refresh) { this.setState({ spotifyAuthed: false }); return; }
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token', refresh_token: refresh,
+        client_id: this.SPOTIFY_CLIENT_ID,
+      }),
+    });
+    if (!res.ok) { this.setState({ spotifyAuthed: false }); localStorage.removeItem('sp_token'); return; }
+    const data = await res.json();
+    this._spToken = data.access_token;
+    localStorage.setItem('sp_token', data.access_token);
+    localStorage.setItem('sp_exp',   String(Date.now() + (data.expires_in || 3600) * 1000));
+  }
+
+  async spFetch(url) {
+    let res = await fetch(url, { headers: { Authorization: `Bearer ${this._spToken}` } });
+    if (res.status === 401) { await this.refreshSpotifyToken(); if (!this._spToken) return null; res = await fetch(url, { headers: { Authorization: `Bearer ${this._spToken}` } }); }
+    if (!res.ok || res.status === 204) return null;
+    return res.json();
+  }
+
+  async fetchSpotifyData() {
+    if (!this._spToken) return;
+    this.setState({ spotifyLoading: true });
+    try {
+      // Now playing
+      const np = await this.spFetch('https://api.spotify.com/v1/me/player/currently-playing');
+      const nowPlaying = np?.item ? { title: np.item.name, artist: np.item.artists?.map(a=>a.name).join(', '), album: np.item.album?.name, img: np.item.album?.images?.[0]?.url } : null;
+
+      // Recently played tracks (last 8)
+      const rp = await this.spFetch('https://api.spotify.com/v1/me/player/recently-played?limit=8');
+      const recent = (rp?.items || []).map(i => ({
+        title:  i.track?.name || '—',
+        artist: i.track?.artists?.map(a=>a.name).join(', ') || '—',
+        img:    i.track?.album?.images?.[2]?.url || '',
+        playedAt: new Date(i.played_at),
+      }));
+
+      // Followed shows (podcasts)
+      const sh = await this.spFetch('https://api.spotify.com/v1/me/shows?limit=8');
+      const podcasts = await Promise.all((sh?.items || []).slice(0, 5).map(async s => {
+        const eps = await this.spFetch(`https://api.spotify.com/v1/shows/${s.show.id}/episodes?limit=1&market=SE`);
+        const ep = eps?.items?.[0];
+        return {
+          title: ep?.name || s.show?.name || '—',
+          show:  s.show?.name || '—',
+          dur:   ep?.duration_ms ? Math.round(ep.duration_ms/60000) + ' min' : '—',
+          img:   s.show?.images?.[1]?.url || s.show?.images?.[0]?.url || '',
+        };
+      }));
+
+      // Music discovery – välj en av dina toppartister du inte sett nyligen.
+      // (Spotifys /recommendations + /related-artists är deprecated, så vi använder top-artists + artist top-tracks.)
+      const ta = await this.spFetch('https://api.spotify.com/v1/me/top/artists?limit=50&time_range=long_term');
+      let discovery = null;
+      if (ta?.items?.length) {
+        const shown = JSON.parse(localStorage.getItem('sp_shown') || '[]').filter(s => Date.now()-s.ts < 30*24*3600*1000);
+        const shownIds = shown.map(s=>s.id);
+        const artist = ta.items.find(a => !shownIds.includes(a.id)) || ta.items[0];
+        if (artist) {
+          const tt = await this.spFetch(`https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=SE`);
+          const track = tt?.tracks?.[0];
+          const genres = artist.genres?.slice(0,2).join(' · ') || '';
+          discovery = { artist: artist.name || '—', album: track?.album?.name, img: artist.images?.[0]?.url || track?.album?.images?.[0]?.url, genre: genres, trackName: track?.name };
+          shown.push({ id: artist.id, ts: Date.now() });
+          localStorage.setItem('sp_shown', JSON.stringify(shown.slice(-100)));
+        }
+      }
+
+      this.setState({ spotifyRecent: recent, spotifyPodcasts: podcasts, spotifyDiscovery: discovery, spotifyNowPlaying: nowPlaying, spotifyLoading: false });
+    } catch(e) {
+      console.warn('Spotify data:', e.message);
+      this.setState({ spotifyLoading: false });
+    }
+  }
+
+  async fetchCalendar() {
+    if (!this._gToken) return;
+    try {
+      const now = new Date();
+      const start = new Date(now.getFullYear(),now.getMonth(),now.getDate()).toISOString();
+      const end = new Date(now.getFullYear(),now.getMonth(),now.getDate()+7).toISOString();
+      const url = `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${encodeURIComponent(start)}&timeMax=${encodeURIComponent(end)}&singleEvents=true&orderBy=startTime&maxResults=12`;
+      const res = await fetch(url, {headers:{Authorization:`Bearer ${this._gToken}`}});
+      if (res.status===401) { this._gToken=null; this.setState({googleAuthed:false}); try{localStorage.removeItem('lcc_gtoken');}catch(e){} return; }
+      if (!res.ok) throw new Error(`Cal ${res.status}`);
+      const data = await res.json();
+      const p2 = n => String(n).padStart(2,'0');
+      const events = (data.items||[]).map(e => {
+        const sdt = e.start?.dateTime || e.start?.date;
+        const d = new Date(sdt);
+        const isToday = d.toDateString()===now.toDateString();
+        return { time: e.start?.dateTime?`${p2(d.getHours())}:${p2(d.getMinutes())}`:'Heldag',
+          title: e.summary||'(ingen titel)',
+          dur: isToday?'Idag':d.toLocaleDateString('sv-SE',{weekday:'short',day:'numeric'}),
+          isToday };
+      });
+      this.setState({calEvents: events, googleError:null});
+    } catch(e){ console.error('Calendar:', e.message); this.setState({googleError:e.message}); }
+  }
+
+  async fetchGmail() {
+    if (!this._gToken) return;
+    try {
+      const lr = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages?q=is%3Aimportant+in%3Ainbox+newer_than%3A7d&maxResults=5', {headers:{Authorization:`Bearer ${this._gToken}`}});
+      if (!lr.ok) throw new Error(`Gmail ${lr.status}`);
+      const list = await lr.json();
+      const msgs = await Promise.all((list.messages||[]).slice(0,5).map(async m => {
+        const r = await fetch(`https://www.googleapis.com/gmail/v1/users/me/messages/${m.id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Date`, {headers:{Authorization:`Bearer ${this._gToken}`}});
+        const d = await r.json();
+        const hd = name => d.payload?.headers?.find(x=>x.name===name)?.value || '';
+        let from = hd('From').replace(/<[^>]*>/,'').replace(/"/g,'').trim();
+        const dt = new Date(parseInt(d.internalDate||'0'));
+        const today = new Date().toDateString()===dt.toDateString();
+        return { from: from||hd('From')||'—', subject: hd('Subject')||'(inget ämne)',
+          time: today?`${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`:dt.toLocaleDateString('sv-SE',{day:'numeric',month:'short'}),
+          u: 'medel' };
+      }));
+      this.setState({gmailMsgs: msgs});
+    } catch(e){ console.warn('Gmail:', e.message); }
+  }
+
+  async ytFetch(url) {
+    const res = await fetch(url, {headers:{Authorization:`Bearer ${this._gToken}`}});
+    if (res.status===401){ this._gToken=null; this.setState({googleAuthed:false}); try{localStorage.removeItem('lcc_gtoken');}catch(e){} return null; }
+    if (!res.ok || res.status===204) return null;
+    return res.json();
+  }
+
+  _ytRelTime(ts) {
+    if (!ts) return '';
+    const diff = Math.round((Date.now() - new Date(ts).getTime())/60000);
+    if (diff < 60)   return `${Math.max(1,diff)} min sedan`;
+    if (diff < 1440) return `${Math.floor(diff/60)} tim sedan`;
+    const dgr = Math.floor(diff/1440);
+    if (dgr < 7)  return `${dgr} dag${dgr>1?'ar':''} sedan`;
+    return `${Math.floor(dgr/7)} v sedan`;
+  }
+
+  async fetchYouTube() {
+    if (!this._gToken) return;
+    try {
+      // 1) Prenumerationer (kanaler du följer)
+      const subs = await this.ytFetch('https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true&maxResults=50&order=unread');
+      const channels = (subs?.items||[])
+        .map(s => ({ id: s.snippet?.resourceId?.channelId, title: s.snippet?.title }))
+        .filter(c => c.id);
+
+      // 2) Senaste uppladdningar – uploads-spellistan är UC→UU
+      const subset = channels.slice(0, 20);
+      const vids = [];
+      await Promise.all(subset.map(async c => {
+        const uploads = 'UU' + c.id.slice(2);
+        const pl = await this.ytFetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploads}&maxResults=2`);
+        (pl?.items||[]).forEach(it => {
+          const sn = it.snippet; const vid = sn?.resourceId?.videoId;
+          if (!vid) return;
+          vids.push({ title: sn.title, channel: sn.videoOwnerChannelTitle || c.title,
+            videoId: vid, img: sn.thumbnails?.medium?.url || sn.thumbnails?.default?.url || '',
+            published: sn.publishedAt });
+        });
+      }));
+      vids.sort((a,b) => new Date(b.published) - new Date(a.published));
+      const ytVideos = vids.slice(0,7).map(v => ({
+        title: v.title, channel: v.channel, img: v.img,
+        ago: this._ytRelTime(v.published),
+        onClick: () => window.open(`https://www.youtube.com/watch?v=${v.videoId}`, '_blank'),
+      }));
+
+      // 3) "Titta senare" – inbyggda WL går ej via API, läs en vanlig spellista med matchande namn
+      let ytWatchLater = [], ytWlFound = false;
+      const pls = await this.ytFetch('https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=50');
+      const wl = (pls?.items||[]).find(p => /titta\s*senare|watch\s*later|se\s*senare/i.test(p.snippet?.title||''));
+      if (wl) {
+        ytWlFound = true;
+        const items = await this.ytFetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${wl.id}&maxResults=8`);
+        ytWatchLater = (items?.items||[]).map(it => {
+          const sn = it.snippet; const vid = sn?.resourceId?.videoId;
+          return vid ? { title: sn.title, channel: sn.videoOwnerChannelTitle || '',
+            img: sn.thumbnails?.medium?.url || sn.thumbnails?.default?.url || '',
+            onClick: () => window.open(`https://www.youtube.com/watch?v=${vid}`, '_blank') } : null;
+        }).filter(Boolean);
+      }
+
+      this.setState({ ytVideos, ytWatchLater, ytWlFound });
+    } catch(e){ console.warn('YouTube:', e.message); }
+  }
+
+  async fetchTripActivities(city, travelers) {
+    if (!city) return;
+    this.setState({ tripActivitiesLoading: true });
+    try {
+      const PROXY = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/anthropic-proxy';
+      const res = await fetch(PROXY, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'activities', destination: city, travelers }),
+      });
+      const data = await res.json();
+      if (data.error) { console.warn('Activities proxy error:', data.error); this.setState({ tripActivitiesLoading: false }); return; }
+      // Extrahera JSON från första text-blocket
+      let json = null;
+      for (const b of (data.content || [])) {
+        if (b.type === 'text') {
+          const t = b.text || '';
+          // Försök direkt parse, annars hitta { ... } i texten
+          try { json = JSON.parse(t.replace(/```json|```/g,'').trim()); break; } catch(_) {}
+          const m = t.match(/\{[\s\S]*\}/);
+          if (m) { try { json = JSON.parse(m[0]); break; } catch(_) {} }
+        }
+      }
+      const activities = json?.activities || [];
+      this.setState({ tripActivities: activities, tripActivitiesCity: city, tripActivitiesLoading: false });
+    } catch(e) {
+      console.warn('Trip activities:', e.message);
+      this.setState({ tripActivitiesLoading: false });
+    }
+  }
+
+  async fetchTripPhoto(city) {
+    if (!city) return;
+    try {
+      for (const lang of ['sv', 'en']) {
+        const url = `https://${lang}.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(city)}&prop=pageimages&format=json&pithumbsize=900&origin=*`;
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        const data = await res.json();
+        const page = Object.values(data.query?.pages || {})[0];
+        const imgUrl = page?.thumbnail?.source;
+        if (imgUrl) { this.setState({ tripPhotoUrl: imgUrl, tripPhotoCity: city }); return; }
+      }
+    } catch(e) { console.warn('Trip photo:', e.message); }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._tick); clearInterval(this._refresh); clearInterval(this._lfcRefresh);
+    window.removeEventListener('resize', this._resize);
+  }
+
+  async fetchLiverpool() {
+    try {
+      const LFC_ID = '133602';
+      const [nextRes, lastRes, tableRes] = await Promise.all([
+        fetch(`https://www.thesportsdb.com/api/v1/json/3/eventsnext.php?id=${LFC_ID}`),
+        fetch(`https://www.thesportsdb.com/api/v1/json/3/eventslast.php?id=${LFC_ID}`),
+        fetch(`https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings`),
+      ]);
+      const nextData  = nextRes.ok  ? await nextRes.json()  : null;
+      const lastData  = lastRes.ok  ? await lastRes.json()  : null;
+      const tableData = tableRes.ok ? await tableRes.json() : null;
+
+      const next = nextData?.events?.[0] || null;
+      const last = lastData?.events?.slice(-1)?.[0] || null;
+      const lastFive = lastData?.events?.slice(-5) || [];
+
+      const fmt = dateStr => {
+        if (!dateStr) return '—';
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('sv-SE', {weekday:'short', day:'numeric', month:'short'});
+      };
+      const timeStr = (dateStr, timeStr) => {
+        if (!dateStr) return '';
+        const t = timeStr ? timeStr.slice(0,5) : '';
+        return t ? ` · ${t}` : '';
+      };
+
+      const form = lastFive.map(e => {
+        const isHome = e.strHomeTeam?.includes('Liverpool');
+        const homeScore = parseInt(e.intHomeScore ?? '-1');
+        const awayScore = parseInt(e.intAwayScore ?? '-1');
+        if (homeScore < 0) return 'P';
+        const won = isHome ? homeScore > awayScore : awayScore > homeScore;
+        const draw = homeScore === awayScore;
+        return won ? 'W' : draw ? 'D' : 'L';
+      });
+
+      // Last 5 results with details
+      const results = lastFive.map(e => {
+        const isHome = e.strHomeTeam?.includes('Liverpool');
+        const homeScore = parseInt(e.intHomeScore ?? '-1');
+        const awayScore = parseInt(e.intAwayScore ?? '-1');
+        const lfcScore  = isHome ? homeScore : awayScore;
+        const oppScore  = isHome ? awayScore : homeScore;
+        const result    = lfcScore > oppScore ? 'W' : lfcScore < oppScore ? 'L' : 'D';
+        return {
+          opp:    isHome ? e.strAwayTeam : e.strHomeTeam,
+          venue:  isHome ? 'H' : 'B',
+          score:  `${e.intHomeScore}–${e.intAwayScore}`,
+          lfcScore, oppScore, result,
+          date:   fmt(e.dateEvent),
+          comp:   e.strLeague || '',
+        };
+      });
+
+      // Premier League table – ESPN (alla 20 lag)
+      const espnEntries = tableData?.standings?.entries
+        || tableData?.standings?.[0]?.entries
+        || tableData?.children?.[0]?.standings?.entries
+        || tableData?.children?.[0]?.standings?.[0]?.entries
+        || [];
+      const getStat = (entry, name) => entry.stats?.find(s => s.name === name)?.value ?? 0;
+      const table = espnEntries.length > 0
+        ? espnEntries.map((entry, idx) => ({
+            pos:    idx + 1,
+            name:   entry.team?.displayName || '—',
+            played: getStat(entry, 'gamesPlayed'),
+            won:    getStat(entry, 'wins'),
+            drawn:  getStat(entry, 'ties'),
+            lost:   getStat(entry, 'losses'),
+            gd:     Math.round(getStat(entry, 'pointDifferential')),
+            pts:    getStat(entry, 'points'),
+            isLfc:  entry.team?.abbreviation === 'LIV' || (entry.team?.displayName||'').includes('Liverpool'),
+          }))
+        : (tableData?.table || []).map(t => ({   // TheSportsDB-fallback
+            pos: t.intRank, name: t.strTeam, played: t.intPlayed,
+            won: t.intWin, drawn: t.intDraw, lost: t.intLoss,
+            gd: parseInt(t.intGoalDifference||'0'), pts: t.intPoints,
+            isLfc: t.strTeam?.includes('Liverpool'),
+          }));
+
+      this.setState({
+        lfcResults: results,
+        lfcTable: table,
+        lfcNext: next ? {
+          opp: next.strHomeTeam?.includes('Liverpool') ? next.strAwayTeam : next.strHomeTeam,
+          home: next.strHomeTeam?.includes('Liverpool'),
+          date: fmt(next.dateEvent) + timeStr(next.dateEvent, next.strTime),
+          venue: next.strVenue || (next.strHomeTeam?.includes('Liverpool') ? 'Anfield' : '—'),
+          comp: next.strLeague || '—',
+          badge: next.strHomeTeam?.includes('Liverpool') ? next.strAwayTeamBadge : next.strHomeTeamBadge,
+        } : null,
+        lfcLast: last ? {
+          opp: last.strHomeTeam?.includes('Liverpool') ? last.strAwayTeam : last.strHomeTeam,
+          home: last.strHomeTeam?.includes('Liverpool'),
+          score: `${last.intHomeScore}–${last.intAwayScore}`,
+          date: fmt(last.dateEvent),
+        } : null,
+        lfcForm: form,
+      });
+      this.saveCache();
+    } catch(e) {
+      console.warn('Liverpool (TheSportsDB):', e.message);
+    }
+  }
+
+  // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable'];
+  saveCache() {
+    try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
+  }
+  restoreCache() {
+    try { const c = JSON.parse(localStorage.getItem('lcc_cache') || 'null'); if (c && typeof c === 'object') this.setState(c); } catch(e) {}
+  }
+
+  async fetchAll() {
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris()]);
+    this.setState({lastRefresh: new Date()});
+    this.saveCache();
+  }
+
+  async fetchHomey() {
+    try {
+      // Går via Supabase Edge Function "homey-proxy" – Homey-token ligger server-side.
+      const res = await fetch(`${this.SB_URL}/functions/v1/homey-proxy`, {
+        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const s = await res.json();
+      if (s.error) throw new Error(s.error);
+      this.setState({ ...s, homeyOk:true, homeyError:null });
+    } catch(e) {
+      const msg = e?.message || e?.name || String(e) || 'Nätverksfel';
+      console.warn('Homey-proxy:', msg);
+      this.setState({homeyOk:false, homeyError:msg});
+    }
+  }
+
+  // WMO-väderkod → ikon + svensk text
+  _wmo(code) {
+    const m = {
+      0:['☀️','Klart'], 1:['🌤','Mest klart'], 2:['⛅','Halvklart'], 3:['☁️','Mulet'],
+      45:['🌫','Dimma'], 48:['🌫','Underkyld dimma'],
+      51:['🌦','Lätt duggregn'], 53:['🌦','Duggregn'], 55:['🌦','Tätt duggregn'],
+      56:['🌧','Underkylt duggregn'], 57:['🌧','Underkylt duggregn'],
+      61:['🌧','Lätt regn'], 63:['🌧','Regn'], 65:['🌧','Kraftigt regn'],
+      66:['🌧','Underkylt regn'], 67:['🌧','Underkylt regn'],
+      71:['🌨','Lätt snöfall'], 73:['🌨','Snöfall'], 75:['🌨','Kraftigt snöfall'], 77:['🌨','Snökorn'],
+      80:['🌦','Regnskurar'], 81:['🌦','Regnskurar'], 82:['🌦','Kraftiga skurar'],
+      85:['🌨','Snöbyar'], 86:['🌨','Kraftiga snöbyar'],
+      95:['⛈','Åska'], 96:['⛈','Åska med hagel'], 99:['⛈','Åska med hagel'],
+    };
+    return m[code] || ['⛅','Växlande'];
+  }
+
+  async fetchSMHI() {
+    try {
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=58.753&longitude=17.006'
+        + '&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m'
+        + '&hourly=temperature_2m,weather_code,precipitation,precipitation_probability'
+        + '&timezone=Europe/Stockholm&forecast_days=2&wind_speed_unit=ms';
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Open-Meteo ${res.status}`);
+      const data = await res.json();
+      const c = data.current || {};
+      const h = data.hourly || {};
+      const dirs = ['N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSV','SV','VSV','V','VNV','NV','NNV'];
+      const wdStr = deg => deg != null ? dirs[Math.round(deg/22.5)%16] : '';
+      const [icon, cond] = this._wmo(c.weather_code);
+
+      // Timprognos: börja från aktuell timme, ta 12
+      const times = h.time || [];
+      const now = new Date();
+      let start = times.findIndex(t => new Date(t) >= now);
+      if (start < 0) start = 0;
+      const hourly = [];
+      for (let i = start; i < Math.min(start+12, times.length); i++) {
+        const code = h.weather_code?.[i];
+        hourly.push({
+          h: new Date(times[i]).getHours().toString().padStart(2,'0'),
+          t: h.temperature_2m?.[i] != null ? Math.round(h.temperature_2m[i]) : 0,
+          icon: this._wmo(code)[0],
+          tPct: h.temperature_2m?.[i] != null ? Math.round(Math.max(0,Math.min(100,(h.temperature_2m[i]+10)*100/50))) : 0,
+          precip: h.precipitation?.[i] != null ? parseFloat(h.precipitation[i].toFixed(1)) : 0,
+          precipPct: h.precipitation_probability?.[i] ?? 0,
+        });
+      }
+
+      this.setState({
+        wxTemp:      c.temperature_2m != null ? Math.round(c.temperature_2m) : null,
+        wxIcon:      icon,
+        wxCondition: cond,
+        wxFeels:     c.apparent_temperature != null ? Math.round(c.apparent_temperature) : null,
+        wxWind:      c.wind_speed_10m != null ? `${c.wind_speed_10m.toFixed(1)} m/s ${wdStr(c.wind_direction_10m)}`.trim() : null,
+        wxHumidity:  c.relative_humidity_2m != null ? Math.round(c.relative_humidity_2m) : null,
+        wxPrecip:    c.precipitation != null ? c.precipitation.toFixed(1) : null,
+        wxHourly:    hourly,
+      });
+    } catch(e) {
+      console.warn('Väder (Open-Meteo):', e.message || e.name || 'fetch blocked');
+    }
+  }
+
+  async fetchElpris() {
+    try {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth()+1).padStart(2,'0');
+      const d = String(now.getDate()).padStart(2,'0');
+      const res = await fetch(`https://www.elprisetjustnu.se/api/v1/prices/${y}/${m}-${d}_SE3.json`);
+      if (!res.ok) throw new Error(`Elpris ${res.status}`);
+      const data = await res.json();
+      this.setState({elHourly: data});
+    } catch(e) {
+      console.warn('Elpris (offline i preview):', e.message || e.name || 'fetch blocked');
+    }
+  }
+
+  renderVals() {
+    const {
+      activeTab, activeScene, currentTime, cols, lastRefresh,
+      homeyOk, homeyError,
+      outdoorTemp, bedroomTemp, bedroomHumidity, pm25, filterLife,
+      elCurrentOre, elCheapest, elExpensive, elAvgToday,
+      doorLocked, doorBattery, carBattery, carRange, carLocation,
+      matsHome, nannyHome, simonHome, vanessaHome, semesterMode, vakenMode,
+      matsLast, nannyLast, simonLast, vanessaLast,
+      wxTemp, wxIcon, wxCondition, wxFeels, wxWind, wxHumidity, wxPrecip, wxHourly,
+      elHourly, googleAuthed, googleError, calEvents, gmailMsgs,
+      ytVideos, ytWatchLater, ytWlFound,
+      spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
+      lfcNext, lfcLast, lfcForm, lfcResults, lfcTable,
+    } = this.state;
+
+    const pad = n => String(n).padStart(2,'0');
+    const h = currentTime.getHours();
+    const timeStr = `${pad(h)}:${pad(currentTime.getMinutes())}`;
+    const dateStr = currentTime.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'});
+
+    const A = 'oklch(0.65 0.18 240)';
+    const G = 'oklch(0.82 0.24 130)';
+    const O = 'oklch(0.75 0.14 65)';
+    const R = 'oklch(0.6 0.18 15)';
+
+    const gridStyle  = {display:'grid',gridTemplateColumns:`repeat(${cols},1fr)`,gap:'14px',marginBottom:'14px'};
+    const gridStyle2 = {display:'grid',gridTemplateColumns:cols>=3?'2fr 1fr':'1fr',gap:'14px',marginBottom:'14px'};
+    const mediaGridStyle = {display:'grid',gridTemplateColumns:cols>=3?'repeat(3,minmax(0,1fr))':cols===2?'repeat(2,minmax(0,1fr))':'1fr',gap:'14px',alignItems:'start'};
+
+    // Tabs
+    const tabDefs = [{id:'hem',label:'Hem'},{id:'smarthome',label:'Smart Home'},
+      {id:'media',label:'Media'},{id:'sport',label:'Sport'},{id:'resor',label:'Resor'},{id:'vader',label:'Väder'},{id:'halsa',label:'Hälsa'},
+      {id:'familj',label:'Familj'}];
+    const tabs = tabDefs.map(t => ({
+      ...t, onClick: () => this.setState({activeTab:t.id}),
+      btnStyle: {padding:'8px 18px 5px',borderRadius:'8px',border:'none',
+        borderBottom:`3px solid ${activeTab===t.id?G:'transparent'}`,
+        fontSize:'17px',fontWeight:activeTab===t.id?'600':'500',
+        fontFamily:'inherit',cursor:'pointer',transition:'all 0.15s',whiteSpace:'nowrap',
+        background:'transparent',
+        color: activeTab===t.id?G:'rgba(238,240,245,0.58)'},
+
+    }));
+
+    // Live indicator
+    const liveStyle = {width:'6px',height:'6px',borderRadius:'50%',flexShrink:0,
+      background: homeyOk ? G : homeyError ? R : O,
+      animation: homeyOk ? 'blink 3s ease infinite' : 'none'};
+    const refreshStr = lastRefresh
+      ? `Uppdaterad ${pad(lastRefresh.getHours())}:${pad(lastRefresh.getMinutes())}`
+      : 'Ansluter...';
+
+    // Homey badge
+    const homeyBadgeStyle = {fontSize:'9px',fontWeight:'600',padding:'2px 6px',borderRadius:'4px',
+      marginLeft:'8px',verticalAlign:'middle',
+      background: homeyOk?'rgba(34,197,94,0.15)':'rgba(239,68,68,0.15)',
+      color: homeyOk?G:R};
+    const homeyBadge = homeyOk ? '● LIVE' : homeyError ? '✕ FEL' : '◌ ...';
+
+    // Smart Home values
+    const smartHome = {
+      outdoorTempStr: outdoorTemp!==null ? `${outdoorTemp.toFixed(1)}°` : '—',
+      bedroomTempStr: bedroomTemp!==null ? `${bedroomTemp.toFixed(1)}°` : '—',
+      bedroomHumidityStr: bedroomHumidity!==null ? `${Math.round(bedroomHumidity)}%` : '—',
+      pm25Str: pm25!==null ? `${Math.round(pm25)}` : '—',
+      airStatus: pm25===null?'—':pm25<10?'Utmärkt':pm25<25?'Bra':pm25<50?'Acceptabelt':'Dålig',
+      airColor: pm25===null?'rgba(238,240,245,0.52)':pm25<10?G:pm25<25?A:pm25<50?O:R,
+      doorStatus: doorLocked===null?'—':doorLocked?'Låst':'Olåst',
+      doorColor: doorLocked===null?'rgba(238,240,245,0.52)':doorLocked?G:R,
+      doorBattStr: doorBattery!==null ? `Batteri ${Math.round(doorBattery)}%` : '',
+      carBattStr: carBattery!==null ? `${Math.round(carBattery)}%` : '—',
+      carBattColor: carBattery===null?'rgba(238,240,245,0.52)':carBattery<20?R:carBattery<50?O:G,
+      carAlertBg: carBattery!==null&&carBattery<20?'rgba(239,68,68,0.1)':'rgba(255,255,255,0.04)',
+      carRangeStr: carRange!==null ? `${carRange} km räckvidd` : '',
+      carLocation: carLocation || '—',
+    };
+
+    // Electricity
+    const elOre = elCurrentOre !== null ? elCurrentOre
+      : elHourly.length>0 ? (elHourly[h]?.SEK_per_kWh||0)*100 : null;
+    const elBars = elHourly.length>0
+      ? (() => {
+          const vals = elHourly.map(x=>x.SEK_per_kWh*100);
+          const mx = Math.max(...vals);
+          return vals.map((p,i)=>({
+            price: p.toFixed(1)+' öre',
+            barStyle:{flex:1,borderRadius:'2px 2px 0 0',minHeight:'3px',
+              height:Math.round((p/mx)*100)+'%',
+              background:i===h?'#fff':p>100?R:p<30?G:A,
+              opacity:i===h?1:0.5,transition:'opacity 0.3s'},
+          }));
+        })()
+      : Array.from({length:24},(_,i)=>({price:'—',
+          barStyle:{flex:1,borderRadius:'2px 2px 0 0',minHeight:'3px',height:'30%',
+            background:'rgba(238,240,245,0.15)',opacity:0.4}}));
+    const elCurrentStr = elOre!==null ? `${elOre.toFixed(1)} öre/kWh` : '—';
+    const elColor = elOre===null?A:elOre>100?R:elOre<30?G:A;
+    const elRec = elCheapest
+      ? `✓ Billigast: ${elCheapest.split(',')[0]}`
+      : elOre!==null ? (elOre<30?'✓ Bra tid att tvätta och ladda':elOre>100?'⚠ Undvik hög förbrukning':'— Normalt elpris') : '—';
+
+    // Weather
+    const weather = {
+      tempStr: wxTemp!==null ? `${wxTemp}°` : '—',
+      feelsLikeStr: wxFeels != null ? `${wxFeels}°` : '—',
+      condition: wxCondition || '—',
+      wind: wxWind || '—',
+      humidity: wxHumidity !== null ? wxHumidity : '—',
+      precip: wxPrecip!==null ? `${wxPrecip} mm/h` : '—',
+    };
+    const wHourly = wxHourly.length>0 ? wxHourly : [
+      {h:'09',t:17,icon:'⛅',tPct:54,precipPct:5,precip:0},
+      {h:'10',t:18,icon:'🌤',tPct:56,precipPct:5,precip:0},
+      {h:'11',t:19,icon:'🌤',tPct:58,precipPct:0,precip:0},
+      {h:'12',t:20,icon:'🌤',tPct:60,precipPct:0,precip:0},
+      {h:'13',t:20,icon:'⛅',tPct:60,precipPct:10,precip:0},
+      {h:'14',t:19,icon:'🌥',tPct:58,precipPct:25,precip:0},
+      {h:'15',t:18,icon:'🌦',tPct:56,precipPct:65,precip:0.3},
+      {h:'16',t:17,icon:'🌧',tPct:54,precipPct:90,precip:1.2},
+    ];
+
+    // Scenes
+    const sceneDefs = [{id:'home',label:'Hemma'},{id:'away',label:'Borta'},
+      {id:'night',label:'Natt'},{id:'movie',label:'Film'},{id:'clean',label:'Städning'}];
+    const scenes = sceneDefs.map(s => ({
+      ...s, onClick:()=>this.setState({activeScene:activeScene===s.id?null:s.id}),
+      btnStyle:{padding:'7px 17px',borderRadius:'8px',fontSize:'12.5px',fontWeight:'500',
+        fontFamily:'inherit',cursor:'pointer',transition:'all 0.15s',
+        border:`1px solid ${activeScene===s.id?A:'rgba(255,255,255,0.1)'}`,
+        background:activeScene===s.id?'rgba(59,130,246,0.13)':'rgba(255,255,255,0.04)',
+        color:activeScene===s.id?A:'rgba(238,240,245,0.72)'},
+    }));
+
+    // Calendar events – riktiga från Google om inloggad, annars demo
+    const dotS = c => ({width:'5px',height:'5px',borderRadius:'50%',background:c,flexShrink:0,marginTop:'2px'});
+    const demoEvents = [
+      {time:'09:00',title:'Standup',dur:'30 min',type:'meeting'},
+      {time:'11:00',title:'Produktmöte',dur:'60 min',type:'meeting'},
+      {time:'13:00',title:'Lunch med Erik',dur:'60 min',type:'personal'},
+      {time:'15:00',title:'Review session',dur:'90 min',type:'meeting'},
+      {time:'18:00',title:'Träning',dur:'60 min',type:'health'},
+    ];
+    const events = (googleAuthed && calEvents.length>0)
+      ? calEvents.map(e=>({...e,dotStyle:dotS(e.isToday?A:'rgba(238,240,245,0.3)')}))
+      : demoEvents.map(e=>({...e,dotStyle:dotS(e.type==='meeting'?A:e.type==='personal'?G:O)}));
+    const calBadge = googleAuthed ? (calEvents.length>0?'● LIVE':'◌ ...') : 'Demo';
+    const calBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',
+      color: googleAuthed?G:'rgba(238,240,245,0.25)'};
+
+    // Mail – riktiga från Gmail om inloggad, annars demo
+    const demoEmails = [
+      {from:'Erik Andersson',subject:'Offert Q3 – behöver svar idag',time:'08:12',u:'hög'},
+      {from:'Anna Lindqvist',subject:'Mötesagenda imorgon',time:'07:45',u:'medel'},
+      {from:'Hyresvärd AB',subject:'Underhåll vecka 26',time:'06:30',u:'medel'},
+      {from:'Johanna',subject:'Re: Planerna för helgen',time:'Igår',u:'låg'},
+      {from:'ICA Banken',subject:'Betalning mottagen',time:'Igår',u:'låg'},
+    ];
+    const emailSrc = (googleAuthed && gmailMsgs.length>0) ? gmailMsgs : demoEmails;
+    const emails = emailSrc.map(e=>({...e,subject:e.subject||'',rowStyle:{padding:'9px 10px',borderRadius:'7px',marginBottom:'2px',
+      borderLeft:`2px solid ${e.u==='hög'?R:e.u==='medel'?O:'rgba(255,255,255,0.1)'}`,
+      background:e.u==='hög'?'rgba(239,68,68,0.05)':'rgba(255,255,255,0.02)'}}));
+    const mailBadge = googleAuthed ? (gmailMsgs.length>0?'● LIVE':'◌ ...') : 'Demo';
+    const mailBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',
+      color: googleAuthed?G:'rgba(238,240,245,0.25)'};
+
+    // Google login
+    const googleNotAuthed = !googleAuthed;
+    const loginGoogle = () => this.loginGoogle();
+    const googleBtnStyle = {display:'flex',alignItems:'center',gap:'6px',padding:'5px 12px',
+      borderRadius:'7px',border:'1px solid rgba(255,255,255,0.12)',background:'rgba(255,255,255,0.05)',
+      color:'rgba(238,240,245,0.8)',fontSize:'12px',fontWeight:'500',fontFamily:'inherit',cursor:'pointer',whiteSpace:'nowrap'};
+
+    // Spotify
+    const spotifyNotAuthed = !spotifyAuthed;
+    const loginSpotify = () => this.loginSpotify();
+    const spotifyBtnStyle = {display:'flex',alignItems:'center',gap:'6px',padding:'5px 12px',
+      borderRadius:'7px',border:'1px solid rgba(30,215,96,0.3)',background:'rgba(30,215,96,0.08)',
+      color:'rgba(30,215,96,0.9)',fontSize:'12px',fontWeight:'500',fontFamily:'inherit',cursor:'pointer',whiteSpace:'nowrap'};
+    const spotifyBadge = spotifyAuthed ? (spotifyLoading ? '◌ ...' : '● LIVE') : 'Demo';
+    const spotifyBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',
+      color: spotifyAuthed ? 'oklch(0.65 0.15 145)' : 'rgba(238,240,245,0.25)'};
+
+    // Spotify display data – live or demo
+    const demoRecent = [
+      {title:'Viva la Vida',artist:'Coldplay',img:''},
+      {title:'Blinding Lights',artist:'The Weeknd',img:''},
+      {title:'Levitating',artist:'Dua Lipa',img:''},
+      {title:'As It Was',artist:'Harry Styles',img:''},
+    ];
+    const recentTracks = spotifyAuthed && spotifyRecent.length > 0 ? spotifyRecent : demoRecent;
+    const demoPodcasts = [
+      {title:'Därför är AI-agenter framtiden',show:'Framtidens Teknik',dur:'48 min',img:''},
+      {title:'Homey Pro vs Home Assistant 2025',show:'SmartHome Podden',dur:'62 min',img:''},
+      {title:'Produktivitetshacks för 2025',show:'Framgångspodden',dur:'35 min',img:''},
+    ];
+    const podcasts = spotifyAuthed && spotifyPodcasts.length > 0 ? spotifyPodcasts : demoPodcasts;
+    const demoDiscovery = {artist:'Floating Points',genre:'Electronic · Jazz',
+      desc:'Brittisk producent som blandar jazzharmonier med elektronisk textur.',album:'Promises (2021)',img:''};
+    const discovery = spotifyAuthed && spotifyDiscovery ? {
+      ...spotifyDiscovery,
+      desc:`Rekommenderas baserat på din musiktjänst. Utforska ${spotifyDiscovery.artist} – ${spotifyDiscovery.genre || 'ny artist'}.`,
+    } : demoDiscovery;
+
+    const nowPlayingStr = spotifyNowPlaying ? `🎵 ${spotifyNowPlaying.title} – ${spotifyNowPlaying.artist}` : '';
+    const hasNowPlaying = !!spotifyNowPlaying;
+
+    // YouTube – live eller demo
+    const demoYtVideos = [
+      {title:'Logga in med Google för dina YouTube-prenumerationer',channel:'YouTube',ago:'',img:'',onClick:loginGoogle},
+    ];
+    const ytVideosOut = (googleAuthed && ytVideos.length>0) ? ytVideos : demoYtVideos;
+    const ytBadge = googleAuthed ? (ytVideos.length>0?'● LIVE':'◌ ...') : 'Demo';
+    const ytBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',
+      color: googleAuthed?'oklch(0.6 0.22 25)':'rgba(238,240,245,0.25)'};
+    const ytWatchLaterOut = ytWatchLater || [];
+    const ytWlEmpty = googleAuthed && (!ytWlFound || ytWatchLaterOut.length===0);
+    const ytWlHint = !googleAuthed
+      ? 'Logga in med Google för att se din lista.'
+      : !ytWlFound
+        ? 'Skapa en spellista i YouTube som heter "Titta senare" och lägg videos i den – de visas här.'
+        : 'Inga videos i din "Titta senare"-spellista ännu.';
+
+    // Tasks (demo)
+    const tasks = [
+      {title:'Svara Erik – offert Q3',due:'Idag'},{title:'Boka service bilen',due:'Imorgon'},
+      {title:'Förbereda presentation',due:'Fre 27 jun'},{title:'Handla inför helgen',due:'Lördag'},
+      {title:'Ring mäklaren',due:'Måndag'},
+    ];
+
+    // Liverpool
+    const fI = r=>({result:r,circleStyle:{width:'24px',height:'24px',borderRadius:'50%',
+      background:r==='W'?'rgba(34,197,94,0.15)':r==='D'?'rgba(255,255,255,0.08)':'rgba(239,68,68,0.15)',
+      display:'flex',alignItems:'center',justifyContent:'center',fontSize:'9px',fontWeight:'700',
+      color:r==='W'?G:r==='D'?'rgba(238,240,245,0.45)':R}});
+
+    // Dynamic AI Briefing
+    const briefing = [];
+    briefing.push({text:'4 möten idag – Produktmötet 11:00 är ditt tyngsta block.'});
+    if (carBattery!==null&&carBattery<20)
+      briefing.push({text:`🚨 Volvo XC60 har ${Math.round(carBattery)}% batteri – ladda snarast! Bilen är vid ${carLocation||'okänd plats'}.`});
+    else
+      briefing.push({text:'Erik Andersson väntar svar på offert Q3 – deadline idag.'});
+    if (doorLocked===false)
+      briefing.push({text:'⚠ Ytterdörren är olåst – är det korrekt?'});
+    else if (wxTemp!==null)
+      briefing.push({text:`${wxTemp}°C i Nyköping idag ${wxIcon} – ${wxTemp<10?'ta ett extra lager':'bra väder för en promenad'}.`});
+    if (elOre!==null&&elOre<30)
+      briefing.push({text:`Elpriset är lågt just nu (${elOre.toFixed(1)} öre) – perfekt tid att köra tvättmaskin eller ladda bilen.`});
+    else if (elOre!==null&&elOre>100)
+      briefing.push({text:`Elpriset är högt (${elOre.toFixed(1)} öre/kWh) – undvik hög förbrukning just nu.`});
+    else
+      briefing.push({text:elCheapest?`Billigaste eltimmar idag: ${elCheapest}.`:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
+    if (briefing.length<5)
+      briefing.push({text:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
+
+    // ── Färdplan – nästa resa (läser från localStorage 'fardplan_next') ──
+    // ── Färdplan – nästa resa (Supabase live) ──
+    const fmtD = d => { if(!d) return ''; return new Date(d).toLocaleDateString('sv-SE',{day:'numeric',month:'short'}); };
+    const fpBookings = this.state.fardplanBookings || [];
+    const fpTrips = (() => {
+      const map = new Map();
+      for (const bk of fpBookings) {
+        const key = bk.tripLabel || 'Okänd resa';
+        if (!map.has(key)) map.set(key, []);
+        map.get(key).push(bk);
+      }
+      const out = [];
+      for (const [label, items] of map.entries()) {
+        const sorted = [...items].sort((a,bb) => new Date(a.startDateTime) - new Date(bb.startDateTime));
+        const start2 = sorted[0]?.startDateTime;
+        const end2 = sorted.reduce((lat, it) => {
+          const e2 = it.endDateTime || it.startDateTime;
+          return !lat || new Date(e2) > new Date(lat) ? e2 : lat;
+        }, null);
+        out.push({ label, bookings: sorted, start: start2, end: end2 });
+      }
+      out.sort((a,bb) => new Date(a.start) - new Date(bb.start));
+      return out;
+    })();
+    const todayMidnight = new Date(); todayMidnight.setHours(0,0,0,0);
+    const fpUpcoming = fpTrips.filter(t => new Date(t.end||t.start) >= todayMidnight);
+    const nearestFp = fpUpcoming[0] || null;
+    // Hämta destinationsfoto + aktiviteter när resa/stad byts
+    const _photoCity = nearestFp?.label?.split(/\s+/)[0] || '';
+    if (_photoCity && _photoCity !== this.state.tripPhotoCity) {
+      this.state.tripPhotoCity = _photoCity;
+      setTimeout(() => this.fetchTripPhoto(_photoCity), 0);
+    }
+    const _travelers = nearestFp ? Array.from(new Set(nearestFp.bookings.flatMap(b => b.travelers||[]))) : [];
+    if (_photoCity && _photoCity !== this.state.tripActivitiesCity && !this.state.tripActivitiesLoading) {
+      this.state.tripActivitiesCity = _photoCity;
+      setTimeout(() => this.fetchTripActivities(_photoCity, _travelers), 100);
+    }
+    const familyColors = {Mats:'#FDB454',Nanny:'#5FD3C4',Simon:'#9B8CF2',Vanessa:'#F27DAA'};
+    const nextTrip = nearestFp ? (() => {
+      const flB  = nearestFp.bookings.find(bk => bk.category === 'flight');
+      const htBs = nearestFp.bookings.filter(bk => bk.category === 'hotel');
+      const htB  = htBs[0];
+      const dL   = Math.max(0, Math.ceil((new Date(nearestFp.start) - new Date()) / 86400000));
+      const flTime = flB ? (() => {
+        const dd = new Date(flB.startDateTime);
+        const ds2 = dd.toLocaleDateString('sv-SE',{day:'numeric',month:'short'});
+        const hh = dd.getHours(), mm2 = dd.getMinutes();
+        const ts2 = (hh||mm2) ? `${String(hh).padStart(2,'0')}:${String(mm2).padStart(2,'0')}` : '';
+        return [ds2, ts2].filter(Boolean).join(' · ');
+      })() : '';
+      const htNote = htB ? (() => {
+        if (htB.endDateTime && htB.startDateTime) {
+          const n2 = Math.ceil((new Date(htB.endDateTime) - new Date(htB.startDateTime)) / 86400000);
+          return `${n2} nätter${htB.details ? ' · ' + htB.details : ''}`;
+        }
+        return htB.details || '';
+      })() : '';
+      const travNames = Array.from(new Set(nearestFp.bookings.flatMap(b => b.travelers||[])));
+      return {
+        destination: nearestFp.label.toUpperCase(),
+        daysLeft: dL,
+        dates: nearestFp.start && nearestFp.end
+          ? `${fmtD(nearestFp.start)} – ${fmtD(nearestFp.end)} ${new Date(nearestFp.end).getFullYear()}`
+          : '—',
+        flight: flB ? flB.title : '—',
+        flightTime: flTime,
+        hotel: htB ? htB.title : '—',
+        hotelNote: htNote,
+        travelers: travNames.map(n => ({name:n, initial:n[0], color:familyColors[n]||'rgba(238,240,245,0.4)'})),
+        hotelBookings: htBs.map(hb => {
+          const n3 = hb.endDateTime && hb.startDateTime
+            ? Math.ceil((new Date(hb.endDateTime) - new Date(hb.startDateTime)) / 86400000) : null;
+          return {
+            title: hb.title||'—',
+            dates: [hb.startDateTime ? fmtD(hb.startDateTime) : '', hb.endDateTime ? fmtD(hb.endDateTime) : ''].filter(Boolean).join(' – '),
+            nightsStr: n3 ? `${n3} nätter` : '',
+          };
+        }),
+        badge:'● LIVE',
+        badgeStyle:{fontSize:'9px',fontWeight:'600',letterSpacing:'0',marginLeft:'8px',verticalAlign:'middle',color:G},
+        cardStyle:{background:'#151821',border:`1px solid rgba(130,220,50,0.22)`,borderRadius:'12px',padding:'18px 20px',animation:'fadeUp 0.4s ease 0.25s both'},
+        sportCardStyle:{background:'#151821',border:`1px solid rgba(130,220,50,0.22)`,borderRadius:'12px',padding:'20px'},
+      };
+    })() : {
+      destination: fpBookings.length===0 ? 'ANSLUTER...' : 'INGA RESOR',
+      daysLeft:'—', dates:'—', flight:'—', flightTime:'', hotel:'—', hotelNote:'',
+      travelers:[{name:'Mats',initial:'M',color:'#FDB454'},{name:'Nanny',initial:'N',color:'#5FD3C4'},{name:'Simon',initial:'S',color:'#9B8CF2'},{name:'Vanessa',initial:'V',color:'#F27DAA'}],
+      hotelBookings:[{title:'Hotel Arts Barcelona',dates:'15 aug – 22 aug',nightsStr:'7 nätter'}],
+      badge: fpBookings.length===0 ? '◌ ...' : 'Tomt',
+      badgeStyle:{fontSize:'9px',fontWeight:'400',letterSpacing:'0',marginLeft:'8px',verticalAlign:'middle',color:'rgba(238,240,245,0.25)'},
+      cardStyle:{background:'#151821',border:'1px solid rgba(255,255,255,0.06)',borderRadius:'12px',padding:'18px 20px',animation:'fadeUp 0.4s ease 0.25s both'},
+      sportCardStyle:{background:'#151821',border:'1px solid rgba(255,255,255,0.06)',borderRadius:'12px',padding:'20px'},
+    };
+
+    return {
+      activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
+      liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
+      elBars, elCurrentStr, elColor, elRec,
+      events, emails, tasks, weather, wHourly, smartHome, briefing,
+      calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
+      googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
+      spotifyNotAuthed, loginSpotify, spotifyBtnStyle, spotifyBadge, spotifyBadgeStyle,
+      recentTracks, podcasts, discovery, nowPlayingStr, hasNowPlaying,
+      ytVideos: ytVideosOut, ytWatchLater: ytWatchLaterOut, ytBadge, ytBadgeStyle, ytWlEmpty, ytWlHint,
+      nextTrip, tripPhotoUrl: this.state.tripPhotoUrl, tripPhotoCity: _photoCity,
+      tripActivities: this.state.tripActivities, tripActivitiesLoading: this.state.tripActivitiesLoading,
+      refreshActivities: () => { this.setState({ tripActivitiesCity:'', tripActivities:[] }); },
+      isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome',
+      isMedia:activeTab==='media', isSport:activeTab==='sport', isResor:activeTab==='resor', isVader:activeTab==='vader', isHalsa:activeTab==='halsa',
+      isFamilj:activeTab==='familj',
+
+      // Family members
+      familyMembers: (() => {
+        const relTime = ts => {
+          if (!ts) return 'Okänd';
+          const ms = typeof ts === 'number' ? (ts < 1e12 ? ts*1000 : ts) : new Date(ts).getTime();
+          const diff = Math.round((Date.now() - ms) / 60000);
+          if (diff < 2)  return 'Just nu';
+          if (diff < 60) return `${diff} min sedan`;
+          if (diff < 1440) return `${Math.floor(diff/60)} tim sedan`;
+          return `${Math.floor(diff/1440)} dag sedan`;
+        };
+        return [
+          { name:'Mats',    emoji:'👨',  home:matsHome,    last:relTime(matsLast),    you:true  },
+          { name:'Nanny',   emoji:'👩',  home:nannyHome,   last:relTime(nannyLast),   you:false },
+          { name:'Simon',   emoji:'👦',  home:simonHome,   last:relTime(simonLast),   you:false },
+          { name:'Vanessa', emoji:'👧',  home:vanessaHome, last:relTime(vanessaLast), you:false },
+        ].map(m => ({
+          ...m,
+          statusLabel: m.home ? 'Hemma' : 'Borta',
+          cardStyle: {
+            background: m.home ? 'rgba(34,197,94,0.06)' : 'rgba(255,255,255,0.03)',
+            border: `1px solid ${m.home ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.07)'}`,
+            borderRadius:'12px', padding:'20px', display:'flex', flexDirection:'column', gap:'10px',
+          },
+          dotStyle: {
+            width:'8px', height:'8px', borderRadius:'50%', flexShrink:0,
+            background: m.home ? G : 'rgba(238,240,245,0.2)',
+            boxShadow: m.home ? `0 0 6px ${G}` : 'none',
+          },
+          statusColor: m.home ? G : 'rgba(238,240,245,0.35)',
+        }));
+      })(),
+      familyHomeCount: [matsHome,nannyHome,simonHome,vanessaHome].filter(Boolean).length,
+      liverpool: (() => {
+        const fI = r => ({result:r, circleStyle:{width:'24px',height:'24px',borderRadius:'50%',
+          background:r==='W'?'rgba(34,197,94,0.15)':r==='D'?'rgba(255,255,255,0.08)':'rgba(239,68,68,0.15)',
+          display:'flex',alignItems:'center',justifyContent:'center',fontSize:'9px',fontWeight:'700',
+          color:r==='W'?G:r==='D'?'rgba(238,240,245,0.45)':R}});
+        const live = !!lfcNext;
+        return {
+          nextOpp:   lfcNext?.opp   || 'Newcastle (B)',
+          nextDate:  lfcNext?.date  || 'Sön 23 aug · 17:30',
+          nextVenue: lfcNext?.venue || 'St James\' Park',
+          nextComp:  lfcNext?.comp  || 'Premier League',
+          nextHome:  lfcNext?.home  ?? false,
+          lastOpp:   lfcLast?.opp   || 'Man United',
+          lastScore: lfcLast?.score || '—',
+          lastDate:  lfcLast?.date  || '',
+          live,
+          form: (lfcForm.length>0 ? lfcForm : ['W','W','D','W','L']).map(fI),
+          results: lfcResults.length>0 ? lfcResults : [],
+          table: lfcTable.length>0 ? lfcTable : [],
+        };
+      })(),
+      health:{sleepH:7.5,sleepQ:'Bra',sleepVs:'+12%',steps:4823,stepsGoal:10000,stepsPct:48,
+        stepsBarStyle:{height:'3px',borderRadius:'3px',background:A,width:'48%'},hr:68,stress:'Låg'},
+      news:[{src:'Omni',title:'Sverige förhandlar om nytt energiavtal med EU',time:'2 tim'},
+        {src:'Omni',title:'Riksbanken lämnar styrräntan oförändrad',time:'3 tim'},
+        {src:'TechCrunch',title:'OpenAI lanserar ny modell med förbättrat minne',time:'1 tim'},
+        {src:'The Verge',title:'Samsung Galaxy Z Fold 7 – specifikationer läcker ut',time:'4 tim'},
+        {src:'Homey',title:'Nya energiintegrationer i Homey 2025.3',time:'5 tim'}],
+    };
+  }
+}
+</script>
+</body>
+</html>
