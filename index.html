@@ -929,10 +929,23 @@ class Component extends DCLogic {
     this.fetchLiverpool();
     this._refresh = setInterval(() => this.fetchAll(), 5*60*1000);
     this._lfcRefresh = setInterval(() => this.fetchLiverpool(), 60*60*1000);
+    this.scheduleMorningRefresh();   // garanterad ren uppdatering varje morgon kl 08:00
     this.initGoogle();
     this.initSpotify();
     this.loadFardplan();
     this.initSupabase();
+  }
+
+  scheduleMorningRefresh() {
+    // Räkna ut ms till nästa kl 08:00 och ladda om hela sidan då (färsk data + senaste kod).
+    // Efter omladdning körs componentDidMount igen och schemalägger nästa morgon.
+    const now = new Date();
+    const next = new Date(now);
+    next.setHours(8, 0, 0, 0);
+    if (next <= now) next.setDate(next.getDate() + 1);
+    const ms = next - now;
+    clearTimeout(this._morning);
+    this._morning = setTimeout(() => location.reload(), ms);
   }
 
   initGoogle() {
