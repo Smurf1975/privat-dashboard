@@ -331,8 +331,8 @@
 
     <!-- ══ BILAR ══ -->
     <sc-if value="{{ isBilar }}" hint-placeholder-val="{{ false }}">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin-bottom:14px;">
-        <sc-for list="{{ carList }}" as="car" hint-placeholder-count="2">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,460px));gap:14px;margin-bottom:14px;">
+        <sc-for list="{{ carList }}" as="car" hint-placeholder-count="1">
           <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;animation:fadeUp 0.35s ease both;">
             <!-- Foto -->
             <div style="height:185px;background:linear-gradient(135deg,#eef1f5 0%,#d8dde6 100%);display:flex;align-items:center;justify-content:center;padding:16px;">
@@ -1619,10 +1619,13 @@ class Component extends DCLogic {
       };
     };
     const carList = [
-      _carVM({ name:'MINI Cooper', sub:'Elbil', img:'mini.jpg', ok:miniOk,
-        batt:miniBattery, elRange:miniRange, range:null, locked:miniLocked,
-        location:miniLocation, distance:null, odometer:miniOdometer,
-        charging:miniCharging, chargingStatus:null, service:this.MINI_SERVICE }),
+      // MINI Cooper E (2026) – nya elbilen ligger på ny telematikplattform utan
+      // tredjepartskoppling (bimmer_connected/Homey når den ej). Vilande tills
+      // en integration finns; väck genom att avkommentera nedan + sätt miniOk-källa.
+      // _carVM({ name:'MINI Cooper', sub:'Elbil', img:'mini.jpg', ok:miniOk,
+      //   batt:miniBattery, elRange:miniRange, range:null, locked:miniLocked,
+      //   location:miniLocation, distance:null, odometer:miniOdometer,
+      //   charging:miniCharging, chargingStatus:null, service:this.MINI_SERVICE }),
       _carVM({ name:'Volvo XC60', sub:'Laddhybrid', img:'volvo.jpg', ok:homeyOk,
         batt:carBattery, elRange:volvoRangeBattery, range:carRange, locked:carLocked,
         location:carLocation, distance:volvoDistance, odometer:volvoOdometer,
