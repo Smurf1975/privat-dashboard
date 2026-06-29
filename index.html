@@ -1275,7 +1275,7 @@ class Component extends DCLogic {
   async fetchGmail() {
     if (!this._gToken) return;
     try {
-      const lr = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages?q=is%3Aimportant+in%3Ainbox+newer_than%3A7d&maxResults=5', {headers:{Authorization:`Bearer ${this._gToken}`}});
+      const lr = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages?q=is%3Aunread+in%3Ainbox&maxResults=8', {headers:{Authorization:`Bearer ${this._gToken}`}});
       if (!lr.ok) throw new Error(`Gmail ${lr.status}`);
       const list = await lr.json();
       const msgs = await Promise.all((list.messages||[]).slice(0,5).map(async m => {
