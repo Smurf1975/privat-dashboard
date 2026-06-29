@@ -373,13 +373,9 @@
                   <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">POSITION</div>
                   <div style="font-size:13.5px;color:rgba(238,240,245,0.78);">📍 {{ car.location }}</div>
                 </div>
-                <div>
+                <div style="grid-column:span 2;">
                   <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">MÄTARSTÄLLNING</div>
                   <div style="font-size:13.5px;color:rgba(238,240,245,0.78);">🛣️ {{ car.odometerStr }}</div>
-                </div>
-                <div>
-                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">NÄSTA SERVICE</div>
-                  <div style="font-size:13.5px;font-weight:500;color:{{ car.svcColor }};">🔧 {{ car.svcStr }}</div>
                 </div>
               </div>
             </div>
@@ -636,6 +632,31 @@
 
       </div>
 
+      <!-- Badvatten · Nyköping med omnejd -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-top:14px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">🏊 BADVATTEN · NYKÖPING MED OMNEJD <span style="{{ bathingBadgeStyle }}">{{ bathingBadge }}</span></div>
+          <a href="https://badplatsen.havochvatten.se/" target="_blank" style="font-size:11px;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Badplatsen ↗</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px;">
+          <sc-for list="{{ bathing }}" as="b" hint-placeholder-count="8">
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px;">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:5px;">
+                <div style="font-size:13.5px;font-weight:600;color:rgba(238,240,245,0.9);line-height:1.25;min-width:0;">{{ b.name }}</div>
+                <div style="font-size:27px;font-weight:200;letter-spacing:-0.03em;color:{{ b.tempColor }};flex-shrink:0;">{{ b.tempStr }}</div>
+              </div>
+              <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-bottom:11px;">{{ b.metaStr }}</div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="{{ b.qualityDotStyle }}"></span>
+                <span style="font-size:11.5px;color:rgba(238,240,245,0.72);">{{ b.qualityLabel }} kvalitet</span>
+              </div>
+              <div style="font-size:11px;color:oklch(0.72 0.18 30);margin-top:7px;font-weight:600;">{{ b.warnStr }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-size:10.5px;color:rgba(238,240,245,0.3);margin-top:14px;">Källa: Havs- och vattenmyndigheten · Badplatsen. Kvalitet = EU:s årsklassificering. Temperatur från senaste provtagning.</div>
+      </div>
+
     </sc-if>
 
     <!-- ══ RESOR ══ -->
@@ -872,6 +893,8 @@ class Component extends DCLogic {
     // SMHI
     wxTemp:null, wxIcon:'⛅', wxCondition:'Laddar...', wxWind:null, wxHumidity:null, wxPrecip:null, wxFeels:null,
     wxHourly:[],
+    // Badvatten (Havs- och vattenmyndigheten via bathing-proxy)
+    bathingSpots:[], bathingOk:false,
     // Elpris hourly
     elHourly:[],
     // Liverpool
@@ -1394,7 +1417,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -1481,6 +1504,21 @@ class Component extends DCLogic {
     }
   }
 
+  async fetchBathing() {
+    try {
+      const res = await fetch(`${this.SB_URL}/functions/v1/bathing-proxy`, {
+        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      this.setState({ bathingSpots: data.spots || [], bathingOk: true });
+    } catch(e) {
+      console.warn('Badvatten:', e.message || e.name || 'fetch blocked');
+      this.setState({ bathingOk: false });
+    }
+  }
+
   async fetchElpris() {
     try {
       const now = new Date();
@@ -1508,6 +1546,7 @@ class Component extends DCLogic {
       matsHome, nannyHome, simonHome, vanessaHome, semesterMode, vakenMode,
       matsLast, nannyLast, simonLast, vanessaLast,
       wxTemp, wxIcon, wxCondition, wxFeels, wxWind, wxHumidity, wxPrecip, wxHourly,
+      bathingSpots, bathingOk,
       elHourly, googleAuthed, googleError, calEvents, gmailMsgs,
       ytVideos, ytWatchLater, ytWlFound,
       spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
@@ -1675,6 +1714,25 @@ class Component extends DCLogic {
       {h:'15',t:18,icon:'🌦',tPct:56,precipPct:65,precip:0.3},
       {h:'16',t:17,icon:'🌧',tPct:54,precipPct:90,precip:1.2},
     ];
+
+    // Badvatten
+    const bathing = (bathingSpots||[]).map(s => ({
+      name: s.name,
+      water: s.water || '',
+      area: s.area,
+      hasTemp: s.tempFresh && s.temp!=null,
+      tempStr: (s.tempFresh && s.temp!=null) ? `${s.temp}°` : '—',
+      tempColor: (s.temp==null||!s.tempFresh) ? 'rgba(238,240,245,0.35)' : s.temp>=20?G : s.temp>=15?A : 'oklch(0.7 0.13 230)',
+      freshStr: s.daysAgo==null ? '' : (s.tempFresh ? (s.daysAgo<=1?'uppmätt idag':`uppmätt ${s.daysAgo} dgr sedan`) : 'ingen ny mätning'),
+      metaStr: [s.water, (s.daysAgo==null ? '' : (s.tempFresh ? (s.daysAgo<=1?'uppmätt idag':`uppmätt ${s.daysAgo} dgr sedan`) : 'ingen ny mätning'))].filter(Boolean).join(' · '),
+      qualityLabel: s.qualityLabel || '—',
+      qualityColor: s.qualityColor || 'rgba(238,240,245,0.5)',
+      qualityDotStyle: {width:'7px',height:'7px',borderRadius:'50%',background:s.qualityColor||'rgba(238,240,245,0.5)',flexShrink:0},
+      warnStr: s.blooming ? '⚠ Algblomning' : (s.warning ? `⚠ ${s.warning}` : ''),
+    }));
+    const bathingBadge = bathingOk ? '● LIVE' : '◌ ...';
+    const bathingBadgeStyle = {fontSize:'9px',fontWeight:'600',padding:'2px 6px',borderRadius:'4px',marginLeft:'8px',
+      verticalAlign:'middle',background:bathingOk?'rgba(34,197,94,0.15)':'rgba(255,255,255,0.08)',color:bathingOk?G:'rgba(238,240,245,0.4)'};
 
     // Scenes
     const sceneDefs = [{id:'home',label:'Hemma'},{id:'away',label:'Borta'},
@@ -1910,6 +1968,7 @@ class Component extends DCLogic {
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
       events, emails, tasks, weather, wHourly, smartHome, briefing,
+      bathing, bathingBadge, bathingBadgeStyle,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
       spotifyNotAuthed, loginSpotify, spotifyBtnStyle, spotifyBadge, spotifyBadgeStyle,
