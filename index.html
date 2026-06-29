@@ -329,6 +329,65 @@
       </div>
     </sc-if>
 
+    <!-- ══ BILAR ══ -->
+    <sc-if value="{{ isBilar }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin-bottom:14px;">
+        <sc-for list="{{ carList }}" as="car" hint-placeholder-count="2">
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;animation:fadeUp 0.35s ease both;">
+            <!-- Foto -->
+            <div style="height:185px;background:linear-gradient(135deg,#eef1f5 0%,#d8dde6 100%);display:flex;align-items:center;justify-content:center;padding:16px;">
+              <img src="{{ car.img }}" alt="{{ car.name }}" style="max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,0.28));">
+            </div>
+            <!-- Info -->
+            <div style="padding:22px;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;">
+                <div>
+                  <div style="font-size:20px;font-weight:600;color:#eef0f5;letter-spacing:-0.01em;">{{ car.name }}</div>
+                  <div style="font-size:12.5px;color:rgba(238,240,245,0.45);margin-top:2px;">{{ car.sub }}</div>
+                </div>
+                <span style="font-size:10px;font-weight:600;color:{{ car.statusColor }};white-space:nowrap;margin-top:4px;">{{ car.statusText }}</span>
+              </div>
+              <!-- Batteri -->
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:rgba(238,240,245,0.5);">🔋 Batteri</span>
+                <span style="font-size:32px;font-weight:200;letter-spacing:-0.03em;color:{{ car.battColor }};">{{ car.battStr }}</span>
+              </div>
+              <div style="height:10px;background:rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;margin-bottom:8px;">
+                <div style="{{ car.battBarStyle }}"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <span style="font-size:13.5px;color:rgba(238,240,245,0.7);">⚡ {{ car.rangeStr }}</span>
+                <span style="font-size:12px;font-weight:600;color:oklch(0.82 0.24 130);">{{ car.chargingStr }}</span>
+              </div>
+              <!-- Status grid -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);">
+                <div>
+                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">LÅS</div>
+                  <div style="font-size:14.5px;font-weight:500;color:{{ car.lockedColor }};">{{ car.lockedStr }}</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">STATUS</div>
+                  <div style="font-size:14.5px;font-weight:500;color:{{ car.homeColor }};">{{ car.homeStr }}</div>
+                </div>
+                <div style="grid-column:span 2;">
+                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">POSITION</div>
+                  <div style="font-size:13.5px;color:rgba(238,240,245,0.78);">📍 {{ car.location }}</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">MÄTARSTÄLLNING</div>
+                  <div style="font-size:13.5px;color:rgba(238,240,245,0.78);">🛣️ {{ car.odometerStr }}</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">NÄSTA SERVICE</div>
+                  <div style="font-size:13.5px;font-weight:500;color:{{ car.svcColor }};">🔧 {{ car.svcStr }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
     <!-- ══ MEDIA ══ -->
     <sc-if value="{{ isMedia }}" hint-placeholder-val="{{ false }}">
       <div style="{{ mediaGridStyle }}">
@@ -788,6 +847,10 @@ class Component extends DCLogic {
   SPOTIFY_REDIRECT_URI = 'https://smurf1975.github.io/privat-dashboard';
   SPOTIFY_SCOPES = 'user-read-recently-played user-top-read user-library-read user-read-currently-playing';
 
+  // Manuella service-datum (ISO yyyy-mm-dd). Sätt när du vet nästa servicetillfälle.
+  MINI_SERVICE  = '';
+  VOLVO_SERVICE = '';
+
   state = {
     activeTab:'hem', activeScene:null, currentTime:new Date(), cols:3,
     lastRefresh:null, homeyOk:false, homeyError:null,
@@ -797,6 +860,12 @@ class Component extends DCLogic {
     elCurrentOre:null, elCheapest:'', elExpensive:'', elAvgToday:null,
     doorLocked:null, doorBattery:null,
     carBattery:null, carRange:null, carLocation:null, carLocked:null,
+    // Bilar – Volvo extra (Homey)
+    volvoRangeBattery:null, volvoLat:null, volvoLng:null, volvoOdometer:null,
+    volvoCharging:null, volvoChargingStatus:null, volvoEngine:null, volvoDistance:null,
+    // Bilar – Mini (bimmer_connected via Supabase – ej kopplad än)
+    miniOk:false, miniBattery:null, miniRange:null, miniLocked:null, miniLocation:null,
+    miniLat:null, miniLng:null, miniOdometer:null, miniCharging:null, miniUpdated:null,
     matsHome:false, nannyHome:false, simonHome:false, vanessaHome:false,
     matsLast:null, nannyLast:null, simonLast:null, vanessaLast:null,
     semesterMode:false, vakenMode:false,
@@ -1433,7 +1502,9 @@ class Component extends DCLogic {
       homeyOk, homeyError,
       outdoorTemp, bedroomTemp, bedroomHumidity, pm25, filterLife,
       elCurrentOre, elCheapest, elExpensive, elAvgToday,
-      doorLocked, doorBattery, carBattery, carRange, carLocation,
+      doorLocked, doorBattery, carBattery, carRange, carLocation, carLocked,
+      volvoRangeBattery, volvoLat, volvoLng, volvoOdometer, volvoCharging, volvoChargingStatus, volvoEngine, volvoDistance,
+      miniOk, miniBattery, miniRange, miniLocked, miniLocation, miniLat, miniLng, miniOdometer, miniCharging, miniUpdated,
       matsHome, nannyHome, simonHome, vanessaHome, semesterMode, vakenMode,
       matsLast, nannyLast, simonLast, vanessaLast,
       wxTemp, wxIcon, wxCondition, wxFeels, wxWind, wxHumidity, wxPrecip, wxHourly,
@@ -1459,6 +1530,7 @@ class Component extends DCLogic {
 
     // Tabs
     const tabDefs = [{id:'hem',label:'Hem'},{id:'smarthome',label:'Smart Home'},
+      {id:'bilar',label:'Bilar'},
       {id:'media',label:'Media'},{id:'sport',label:'Sport'},{id:'resor',label:'Resor'},{id:'vader',label:'Väder'},{id:'halsa',label:'Hälsa'},
       {id:'familj',label:'Familj'}];
     const tabs = tabDefs.map(t => ({
@@ -1504,6 +1576,58 @@ class Component extends DCLogic {
       carRangeStr: carRange!==null ? `${carRange} km räckvidd` : '',
       carLocation: carLocation || '—',
     };
+
+    // ── Bilar ──
+    const _battCol = b => b==null ? 'rgba(238,240,245,0.4)' : b<20?R : b<50?O : G;
+    const _isHome = dist => {
+      if (!dist) return null;
+      const m = String(dist).match(/([\d.]+)\s*(km|m)/i);
+      if (!m) return null;
+      const meters = m[2].toLowerCase()==='km' ? parseFloat(m[1])*1000 : parseFloat(m[1]);
+      return meters < 300;
+    };
+    const _svc = ds => {
+      if (!ds) return { str:'Ej angivet', color:'rgba(238,240,245,0.4)' };
+      const d = new Date(ds);
+      const days = Math.round((d - Date.now())/86400000);
+      const s = d.toLocaleDateString('sv-SE',{day:'numeric',month:'short',year:'numeric'});
+      return { str: days>=0 ? `${s} · ${days} dgr` : `${s} · försenad`,
+               color: days<0?R : days<=30?O : 'rgba(238,240,245,0.7)' };
+    };
+    const _carVM = o => {
+      const home = _isHome(o.distance);
+      const charging = o.chargingStatus==='CHARGING' || o.charging==='charging';
+      const pluggedIn = o.charging==='plugged_in' || charging;
+      const svc = _svc(o.service);
+      return {
+        name:o.name, sub:o.sub, img:o.img,
+        statusText: o.ok ? '● LIVE' : 'Väntar på koppling',
+        statusColor: o.ok ? G : O,
+        battStr: o.batt!=null ? `${Math.round(o.batt)}%` : '—',
+        battColor: _battCol(o.batt),
+        battBarStyle: { height:'100%', width: o.batt!=null?`${Math.max(2,Math.min(100,o.batt))}%`:'0%',
+          background:_battCol(o.batt), borderRadius:'6px', transition:'width 0.6s ease' },
+        rangeStr: o.elRange!=null ? `${Math.round(o.elRange)} km el` : (o.range!=null?`${Math.round(o.range)} km`:'—'),
+        chargingStr: charging ? '⚡ Laddar' : pluggedIn ? '🔌 Inkopplad' : '',
+        lockedStr: o.locked==null ? '—' : o.locked ? '🔒 Låst' : '🔓 Olåst',
+        lockedColor: o.locked==null ? 'rgba(238,240,245,0.4)' : o.locked ? G : R,
+        homeStr: home===null ? '—' : home ? '🏠 Hemma' : '📍 Borta',
+        homeColor: home ? G : 'rgba(238,240,245,0.75)',
+        location: o.location || '—',
+        odometerStr: o.odometer!=null ? `${Math.round(o.odometer).toLocaleString('sv-SE')} km` : '—',
+        svcStr: svc.str, svcColor: svc.color,
+      };
+    };
+    const carList = [
+      _carVM({ name:'MINI Cooper', sub:'Elbil', img:'mini.jpg', ok:miniOk,
+        batt:miniBattery, elRange:miniRange, range:null, locked:miniLocked,
+        location:miniLocation, distance:null, odometer:miniOdometer,
+        charging:miniCharging, chargingStatus:null, service:this.MINI_SERVICE }),
+      _carVM({ name:'Volvo XC60', sub:'Laddhybrid', img:'volvo.jpg', ok:homeyOk,
+        batt:carBattery, elRange:volvoRangeBattery, range:carRange, locked:carLocked,
+        location:carLocation, distance:volvoDistance, odometer:volvoOdometer,
+        charging:volvoCharging, chargingStatus:volvoChargingStatus, service:this.VOLVO_SERVICE }),
+    ];
 
     // Electricity
     const elOre = elCurrentOre !== null ? elCurrentOre
@@ -1791,7 +1915,8 @@ class Component extends DCLogic {
       nextTrip, tripPhotoUrl: this.state.tripPhotoUrl, tripPhotoCity: _photoCity,
       tripActivities: this.state.tripActivities, tripActivitiesLoading: this.state.tripActivitiesLoading,
       refreshActivities: () => { this.setState({ tripActivitiesCity:'', tripActivities:[] }); },
-      isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome',
+      carList,
+      isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome', isBilar:activeTab==='bilar',
       isMedia:activeTab==='media', isSport:activeTab==='sport', isResor:activeTab==='resor', isVader:activeTab==='vader', isHalsa:activeTab==='halsa',
       isFamilj:activeTab==='familj',
 
