@@ -315,6 +315,20 @@
         </div>
       </div>
 
+      <!-- TV -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;margin-bottom:14px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">📺 TV</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <sc-for list="{{ smartHome.tvDevices }}" as="tv">
+            <div onclick="{{ tv.onClick }}" style="{{ tv.bgStyle }}">
+              <div style="font-size:24px;">📺</div>
+              <div style="font-size:13px;font-weight:600;color:{{ tv.textColor }};margin-top:6px;">{{ tv.label }}</div>
+              <div style="font-size:12px;font-weight:700;color:{{ tv.statusColor }};margin-top:3px;">{{ tv.status }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
       <!-- DÖRRAR + LAMPOR -->
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:14px;">
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
@@ -331,13 +345,19 @@
         </div>
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:4px;">LAMPOR PER RUM</div>
-          <div style="font-size:10px;color:rgba(238,240,245,0.32);margin-bottom:13px;">Klicka för att tänd / släck</div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;">
+          <div style="font-size:10px;color:rgba(238,240,245,0.32);margin-bottom:14px;">Klicka på en lampa för att tänd / släck</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
             <sc-for list="{{ smartHome.lampRooms }}" as="lr">
-              <div onclick="{{ lr.onClick }}" style="{{ lr.bgStyle }}">
-                <div style="font-size:18px;color:{{ lr.iconColor }};">💡</div>
-                <div style="font-size:12px;font-weight:500;color:{{ lr.textColor }};margin-top:4px;">{{ lr.label }}</div>
-                <div style="font-size:10px;color:rgba(238,240,245,0.32);margin-top:2px;">{{ lr.statusStr }}</div>
+              <div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                  <span style="font-size:12px;font-weight:600;color:{{ lr.textColor }};">💡 {{ lr.label }}</span>
+                  <span style="font-size:10px;color:rgba(238,240,245,0.35);">{{ lr.statusStr }}</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                  <sc-for list="{{ lr.devices }}" as="lamp">
+                    <button onclick="{{ lamp.onClick }}" style="{{ lamp.btnStyle }}">{{ lamp.name }}</button>
+                  </sc-for>
+                </div>
               </div>
             </sc-for>
           </div>
@@ -986,6 +1006,7 @@ class Component extends DCLogic {
     entreTemp:null, hallenSimonTemp:null, badrumTemp:null,
     balkongOpen:null, kylskapOpen:null, frysOpen:null,
     motion:{}, lamps:{},
+    tvVardagsrum:null, tvSovrum:null,
     // SMHI
     wxTemp:null, wxIcon:'⛅', wxCondition:'Laddar...', wxWind:null, wxHumidity:null, wxPrecip:null, wxFeels:null,
     wxHourly:[],
@@ -1685,6 +1706,7 @@ class Component extends DCLogic {
       spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
       lfcNext, lfcLast, lfcForm, lfcResults, lfcTable,
       entreTemp, hallenSimonTemp, badrumTemp, balkongOpen, kylskapOpen, frysOpen, motion, lamps,
+      tvVardagsrum, tvSovrum,
     } = this.state;
 
     const pad = n => String(n).padStart(2,'0');
@@ -1776,8 +1798,38 @@ class Component extends DCLogic {
         { label:'KYLSKÅP',   status:kylskapOpen===null?'—':kylskapOpen?'⚠ Öppen':'✓ Stängd',  color:kylskapOpen===null?'rgba(238,240,245,0.5)':kylskapOpen?R:G,  sub:'' },
         { label:'FRYS',      status:frysOpen===null?'—':frysOpen?'⚠ Öppen':'✓ Stängd',         color:frysOpen===null?'rgba(238,240,245,0.5)':frysOpen?R:G,         sub:'' },
       ],
-      // Lampor per rum (klickbara)
-      lampRooms: (()=>{ const names={hall:'Hall',entre:'Entré',kok:'Kök',vardagsrum:'Vardagsrum',sovrum:'Sovrum',badrum:'Badrum',lillaToalett:'Lilla Toalett',vanessa:'Vanessa',simon:'Simon rum'}; return Object.entries(names).map(([key,label])=>{ const d=lamps[key]||{on:0,total:0,ids:[]}; const anyOn=d.on>0; return { key,label,on:d.on,total:d.total, statusStr:d.total===0?'—':`${d.on}/${d.total} på`, anyOn, iconColor:anyOn?'rgba(255,215,0,0.9)':'rgba(238,240,245,0.2)', textColor:anyOn?'#eef0f5':'rgba(238,240,245,0.38)', bgStyle:{cursor:d.total>0?'pointer':'default',borderRadius:'10px',padding:'12px 14px',background:anyOn?'rgba(255,215,0,0.07)':'rgba(255,255,255,0.03)',border:`1px solid ${anyOn?'rgba(255,215,0,0.18)':'rgba(255,255,255,0.07)'}`}, onClick:d.total>0?()=>this.setLamps(d.ids,!anyOn):null }; }); })(),
+      // Lampor per rum med individuella enheter
+      lampRooms: (()=>{
+        const names={hall:'Hall',entre:'Entré',kok:'Kök',vardagsrum:'Vardagsrum',sovrum:'Sovrum',badrum:'Badrum',lillaToalett:'Lilla Toalett',vanessa:'Vanessa',simon:'Simon rum'};
+        return Object.entries(names).map(([key,label])=>{
+          const d=lamps[key]||{on:0,total:0,ids:[],devices:[]};
+          const anyOn=d.on>0;
+          const devices=(d.devices||[]).map(lamp=>({
+            name:lamp.name, on:lamp.on,
+            onClick:()=>this.setLamps([lamp.id],!lamp.on),
+            btnStyle:{padding:'4px 10px',borderRadius:'6px',fontSize:'11px',fontWeight:'500',fontFamily:'inherit',cursor:'pointer',transition:'all 0.15s',
+              border:`1px solid ${lamp.on?'rgba(255,215,0,0.3)':'rgba(255,255,255,0.1)'}`,
+              background:lamp.on?'rgba(255,215,0,0.1)':'rgba(255,255,255,0.04)',
+              color:lamp.on?'rgba(255,215,0,0.9)':'rgba(238,240,245,0.45)'},
+          }));
+          return {key,label,on:d.on,total:d.total,statusStr:d.total===0?'—':`${d.on}/${d.total} på`,anyOn,devices,
+            textColor:anyOn?'#eef0f5':'rgba(238,240,245,0.45)'};
+        });
+      })(),
+      // TV-apparater
+      tvDevices: [
+        {id:'8e693781-6233-4754-b709-75f6ff56560f',label:'Vardagsrum TV',on:tvVardagsrum},
+        {id:'eafa0b61-d634-413e-a645-8519b2e8b7f2',label:'Sovrum TV',on:tvSovrum},
+      ].map(tv=>{
+        const isOn=!!tv.on;
+        return {...tv,status:isOn?'● PÅ':'○ AV',
+          statusColor:isOn?A:'rgba(238,240,245,0.4)',
+          textColor:isOn?'#eef0f5':'rgba(238,240,245,0.5)',
+          bgStyle:{cursor:'pointer',padding:'16px 20px',borderRadius:'10px',minWidth:'140px',
+            background:isOn?'rgba(59,130,246,0.1)':'rgba(255,255,255,0.04)',
+            border:`1px solid ${isOn?'rgba(59,130,246,0.3)':'rgba(255,255,255,0.08)'}`},
+          onClick:()=>this.setLamps([tv.id],!isOn)};
+      }),
     };
 
     // ── Bilar ──
