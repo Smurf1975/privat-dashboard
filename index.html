@@ -331,57 +331,102 @@
 
     <!-- ══ BILAR ══ -->
     <sc-if value="{{ isBilar }}" hint-placeholder-val="{{ false }}">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,460px));gap:14px;margin-bottom:14px;">
-        <sc-for list="{{ carList }}" as="car" hint-placeholder-count="1">
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;animation:fadeUp 0.35s ease both;">
-            <!-- Foto -->
-            <div style="height:185px;background:linear-gradient(135deg,#eef1f5 0%,#d8dde6 100%);display:flex;align-items:center;justify-content:center;padding:16px;">
-              <img src="{{ car.img }}" alt="{{ car.name }}" style="max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,0.28));">
+
+      <!-- HERO: frilagd bil + nyckeltal -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;margin-bottom:14px;animation:fadeUp 0.35s ease both;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));">
+          <!-- Foto -->
+          <div style="position:relative;min-height:320px;background:radial-gradient(circle at 50% 60%, rgba(130,150,185,0.22) 0%, rgba(21,24,33,0) 68%);display:flex;align-items:center;justify-content:center;padding:36px;">
+            <div style="position:absolute;top:24px;left:26px;z-index:2;">
+              <div style="font-size:25px;font-weight:600;color:#eef0f5;letter-spacing:-0.01em;">Volvo XC60</div>
+              <div style="font-size:13px;color:rgba(238,240,245,0.5);margin-top:2px;">Laddhybrid</div>
             </div>
-            <!-- Info -->
-            <div style="padding:22px;">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;">
-                <div>
-                  <div style="font-size:20px;font-weight:600;color:#eef0f5;letter-spacing:-0.01em;">{{ car.name }}</div>
-                  <div style="font-size:12.5px;color:rgba(238,240,245,0.45);margin-top:2px;">{{ car.sub }}</div>
-                </div>
-                <span style="font-size:10px;font-weight:600;color:{{ car.statusColor }};white-space:nowrap;margin-top:4px;">{{ car.statusText }}</span>
+            <span style="position:absolute;top:26px;right:26px;z-index:2;font-size:10px;font-weight:700;letter-spacing:0.08em;color:{{ volvo.statusColor }};">{{ volvo.statusStr }}</span>
+            <img src="volvo.png" alt="Volvo XC60" style="max-width:100%;max-height:270px;object-fit:contain;filter:drop-shadow(0 26px 22px rgba(0,0,0,0.6));">
+          </div>
+          <!-- Nyckeltal -->
+          <div style="padding:32px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(255,255,255,0.05);">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(238,240,245,0.5);margin-bottom:8px;">🔋 Batteri</div>
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:14px;">
+              <div style="font-size:68px;font-weight:200;letter-spacing:-0.04em;color:{{ volvo.battColor }};line-height:0.9;">{{ volvo.battStr }}</div>
+              <div style="padding-bottom:9px;">
+                <div style="font-size:14px;color:rgba(238,240,245,0.78);">⚡ {{ volvo.elRangeStr }} el</div>
+                <div style="font-size:12.5px;color:rgba(238,240,245,0.4);margin-top:2px;">{{ volvo.totalRangeStr }} totalt</div>
               </div>
-              <!-- Batteri -->
-              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;">
-                <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:rgba(238,240,245,0.5);">🔋 Batteri</span>
-                <span style="font-size:32px;font-weight:200;letter-spacing:-0.03em;color:{{ car.battColor }};">{{ car.battStr }}</span>
+            </div>
+            <div style="height:12px;background:rgba(255,255,255,0.06);border-radius:7px;overflow:hidden;margin-bottom:26px;">
+              <div style="{{ volvo.battBarStyle }}"></div>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:11px;padding:15px;">
+                <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:6px;letter-spacing:0.04em;">LÅS</div>
+                <div style="font-size:17px;font-weight:500;color:{{ volvo.lockedColor }};">{{ volvo.lockedStr }}</div>
               </div>
-              <div style="height:10px;background:rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;margin-bottom:8px;">
-                <div style="{{ car.battBarStyle }}"></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-                <span style="font-size:13.5px;color:rgba(238,240,245,0.7);">⚡ {{ car.rangeStr }}</span>
-                <span style="font-size:12px;font-weight:600;color:oklch(0.82 0.24 130);">{{ car.chargingStr }}</span>
-              </div>
-              <!-- Status grid -->
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);">
-                <div>
-                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">LÅS</div>
-                  <div style="font-size:14.5px;font-weight:500;color:{{ car.lockedColor }};">{{ car.lockedStr }}</div>
-                </div>
-                <div>
-                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">STATUS</div>
-                  <div style="font-size:14.5px;font-weight:500;color:{{ car.homeColor }};">{{ car.homeStr }}</div>
-                </div>
-                <div style="grid-column:span 2;">
-                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">POSITION</div>
-                  <div style="font-size:13.5px;color:rgba(238,240,245,0.78);">📍 {{ car.location }}</div>
-                </div>
-                <div style="grid-column:span 2;">
-                  <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:4px;letter-spacing:0.04em;">MÄTARSTÄLLNING</div>
-                  <div style="font-size:13.5px;color:rgba(238,240,245,0.78);">🛣️ {{ car.odometerStr }}</div>
-                </div>
+              <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:11px;padding:15px;">
+                <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:6px;letter-spacing:0.04em;">STATUS</div>
+                <div style="font-size:17px;font-weight:500;color:{{ volvo.homeColor }};">{{ volvo.homeStr }}</div>
               </div>
             </div>
           </div>
-        </sc-for>
+        </div>
       </div>
+
+      <!-- Info-brickor -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
+          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">MÄTARSTÄLLNING</div>
+          <div style="font-size:19px;font-weight:300;color:#eef0f5;">🛣️ {{ volvo.odometerStr }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
+          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">EL-RÄCKVIDD</div>
+          <div style="font-size:19px;font-weight:300;color:#eef0f5;">⚡ {{ volvo.elRangeStr }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
+          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">TOTAL RÄCKVIDD</div>
+          <div style="font-size:19px;font-weight:300;color:#eef0f5;">🧭 {{ volvo.totalRangeStr }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
+          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">LADDNING</div>
+          <div style="font-size:19px;font-weight:300;color:{{ volvo.chargingColor }};">{{ volvo.chargingStr }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
+          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">MOTOR</div>
+          <div style="font-size:19px;font-weight:300;color:#eef0f5;">⚙️ {{ volvo.engineStr }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
+          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">UPPDATERAD</div>
+          <div style="font-size:19px;font-weight:300;color:#eef0f5;">🕐 {{ volvo.updatedStr }}</div>
+        </div>
+      </div>
+
+      <!-- Karta -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;">
+        <div style="padding:16px 20px 13px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">📍 Position · {{ volvo.location }}</div>
+          <a href="{{ volvo.map.link }}" target="_blank" style="font-size:11px;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Öppna i karta ↗</a>
+        </div>
+        <sc-if value="{{ volvo.map.ready }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative;height:380px;overflow:hidden;background:#0d1117;">
+            <div style="position:absolute;left:50%;top:50%;width:1024px;height:512px;display:grid;grid-template-columns:repeat(4,256px);grid-auto-rows:256px;transform:{{ volvo.map.transform }};filter:invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.95) saturate(0.85);">
+              <img src="{{ volvo.map.t0 }}" style="width:256px;height:256px;display:block;" alt="">
+              <img src="{{ volvo.map.t1 }}" style="width:256px;height:256px;display:block;" alt="">
+              <img src="{{ volvo.map.t2 }}" style="width:256px;height:256px;display:block;" alt="">
+              <img src="{{ volvo.map.t3 }}" style="width:256px;height:256px;display:block;" alt="">
+              <img src="{{ volvo.map.t4 }}" style="width:256px;height:256px;display:block;" alt="">
+              <img src="{{ volvo.map.t5 }}" style="width:256px;height:256px;display:block;" alt="">
+              <img src="{{ volvo.map.t6 }}" style="width:256px;height:256px;display:block;" alt="">
+              <img src="{{ volvo.map.t7 }}" style="width:256px;height:256px;display:block;" alt="">
+            </div>
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:oklch(0.82 0.24 130);border:3px solid #0e1018;box-shadow:0 0 0 5px rgba(130,220,50,0.22),0 3px 10px rgba(0,0,0,0.6);z-index:3;"></div>
+            <div style="position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 70px 12px rgba(13,17,23,0.75);"></div>
+            <div style="position:absolute;bottom:8px;right:11px;font-size:9px;color:rgba(238,240,245,0.4);z-index:3;">© OpenStreetMap</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ !volvo.map.ready }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:50px;text-align:center;color:rgba(238,240,245,0.3);font-size:13px;">Position ej tillgänglig</div>
+        </sc-if>
+      </div>
+
     </sc-if>
 
     <!-- ══ MEDIA ══ -->
@@ -1684,6 +1729,55 @@ class Component extends DCLogic {
         charging:volvoCharging, chargingStatus:volvoChargingStatus, service:this.VOLVO_SERVICE }),
     ];
 
+    // Volvo – detaljerad helsidesvy med minikarta
+    const _isHomeV = (() => {
+      const d = volvoDistance; if (!d) return null;
+      const m = String(d).match(/([\d.]+)\s*(km|m)/i); if (!m) return null;
+      const meters = m[2].toLowerCase()==='km' ? parseFloat(m[1])*1000 : parseFloat(m[1]);
+      return meters < 300;
+    })();
+    const _chg = (volvoChargingStatus==='CHARGING' || volvoCharging==='charging')
+      ? { str:'⚡ Laddar', color:G }
+      : (volvoCharging==='plugged_in') ? { str:'🔌 Inkopplad', color:A }
+      : { str:'Urkopplad', color:'rgba(238,240,245,0.6)' };
+    let _vmap = { ready:false, t0:'',t1:'',t2:'',t3:'',t4:'',t5:'',t6:'',t7:'', transform:'', link:'#' };
+    if (typeof volvoLat === 'number' && typeof volvoLng === 'number') {
+      const z=15, nn=Math.pow(2,z), latR=volvoLat*Math.PI/180;
+      const wx=(volvoLng+180)/360*nn;
+      const wy=(1 - Math.log(Math.tan(latR)+1/Math.cos(latR))/Math.PI)/2*nn;
+      const bX=Math.round(wx)-2, bY=Math.round(wy)-1;
+      const carPxX=(wx-bX)*256, carPxY=(wy-bY)*256;
+      const url=(c,r)=>`https://tile.openstreetmap.org/${z}/${bX+c}/${bY+r}.png`;
+      _vmap = {
+        ready:true,
+        t0:url(0,0), t1:url(1,0), t2:url(2,0), t3:url(3,0),
+        t4:url(0,1), t5:url(1,1), t6:url(2,1), t7:url(3,1),
+        transform:`translate(-50%,-50%) translate(${(512-carPxX).toFixed(0)}px, ${(256-carPxY).toFixed(0)}px)`,
+        link:`https://www.openstreetmap.org/?mlat=${volvoLat}&mlon=${volvoLng}#map=16/${volvoLat}/${volvoLng}`,
+      };
+    }
+    const volvo = {
+      ok: homeyOk,
+      statusStr: homeyOk ? '● LIVE' : '◌ ...',
+      statusColor: homeyOk ? G : 'rgba(238,240,245,0.4)',
+      battStr: carBattery!=null ? `${Math.round(carBattery)}%` : '—',
+      battColor: _battCol(carBattery),
+      battBarStyle: { height:'100%', width: carBattery!=null?`${Math.max(2,Math.min(100,carBattery))}%`:'0%',
+        background:_battCol(carBattery), borderRadius:'7px', transition:'width 0.6s ease' },
+      elRangeStr: volvoRangeBattery!=null ? `${Math.round(volvoRangeBattery)} km` : '—',
+      totalRangeStr: carRange!=null ? `${Math.round(carRange)} km` : '—',
+      lockedStr: carLocked==null ? '—' : carLocked ? '🔒 Låst' : '🔓 Olåst',
+      lockedColor: carLocked==null ? 'rgba(238,240,245,0.4)' : carLocked ? G : R,
+      homeStr: _isHomeV===null ? '—' : _isHomeV ? '🏠 Hemma' : '📍 Borta',
+      homeColor: _isHomeV ? G : 'rgba(238,240,245,0.8)',
+      location: carLocation || '—',
+      odometerStr: volvoOdometer!=null ? `${Math.round(volvoOdometer).toLocaleString('sv-SE')} km` : '—',
+      chargingStr: _chg.str, chargingColor: _chg.color,
+      engineStr: volvoEngine==null ? '—' : volvoEngine ? 'På' : 'Av',
+      updatedStr: lastRefresh ? `${pad(lastRefresh.getHours())}:${pad(lastRefresh.getMinutes())}` : '—',
+      map: _vmap,
+    };
+
     // Electricity
     const elOre = elCurrentOre !== null ? elCurrentOre
       : elHourly.length>0 ? (elHourly[h]?.SEK_per_kWh||0)*100 : null;
@@ -1990,7 +2084,7 @@ class Component extends DCLogic {
       nextTrip, tripPhotoUrl: this.state.tripPhotoUrl, tripPhotoCity: _photoCity,
       tripActivities: this.state.tripActivities, tripActivitiesLoading: this.state.tripActivitiesLoading,
       refreshActivities: () => { this.setState({ tripActivitiesCity:'', tripActivities:[] }); },
-      carList,
+      carList, volvo,
       isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome', isBilar:activeTab==='bilar',
       isMedia:activeTab==='media', isSport:activeTab==='sport', isResor:activeTab==='resor', isVader:activeTab==='vader', isHalsa:activeTab==='halsa',
       isFamilj:activeTab==='familj',
