@@ -356,7 +356,10 @@
           <div style="margin-top:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
               <span style="font-size:10px;color:rgba(238,240,245,0.44);letter-spacing:0.04em;text-transform:uppercase;">📷 Hall – Eufy</span>
-              <span style="font-size:10px;color:rgba(238,240,245,0.3);">{{ smartHome.hallCam.timeStr }}</span>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:10px;color:rgba(238,240,245,0.3);">{{ smartHome.hallCam.timeStr }}</span>
+                <button onclick="{{ smartHome.hallCam.onRefresh }}" style="{{ smartHome.hallCam.refreshStyle }}">{{ smartHome.hallCam.refreshLabel }}</button>
+              </div>
             </div>
             <sc-if value="{{ smartHome.hallCam.has }}">
               <img src="{{ smartHome.hallCam.url }}" style="width:100%;border-radius:9px;display:block;border:1px solid rgba(255,255,255,0.08);" alt="Hall" />
@@ -1040,7 +1043,7 @@ class Component extends DCLogic {
     pm25:null, filterLife:null,
     elCurrentOre:null, elCheapest:'', elExpensive:'', elAvgToday:null,
     doorLocked:null, doorBattery:null, frontDoorOpen:null,
-    hallCamUrl:null, hallCamTime:null,
+    hallCamUrl:null, hallCamTime:null, hallCamLoading:false,
     carBattery:null, carRange:null, carLocation:null, carLocked:null,
     // Bilar – Volvo extra (Homey)
     volvoRangeBattery:null, volvoLat:null, volvoLng:null, volvoOdometer:null,
@@ -1602,6 +1605,7 @@ class Component extends DCLogic {
   }
 
   async fetchHallCam() {
+    this.setState({ hallCamLoading: true });
     try {
       const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=cameraSnapshot`, {
         headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
@@ -1611,6 +1615,7 @@ class Component extends DCLogic {
       if (d.error) throw new Error(d.error);
       this.setState({ hallCamUrl: d.dataUrl || null, hallCamTime: d.lastUpdated || null });
     } catch(e) { console.warn('hallCam:', e.message); }
+    finally { this.setState({ hallCamLoading: false }); }
   }
 
   async fetchHomey() {
@@ -1758,7 +1763,7 @@ class Component extends DCLogic {
       homeyOk, homeyError,
       outdoorTemp, bedroomTemp, bedroomHumidity, pm25, filterLife,
       elCurrentOre, elCheapest, elExpensive, elAvgToday,
-      doorLocked, doorBattery, frontDoorOpen, hallCamUrl, hallCamTime, carBattery, carRange, carLocation, carLocked,
+      doorLocked, doorBattery, frontDoorOpen, hallCamUrl, hallCamTime, hallCamLoading, carBattery, carRange, carLocation, carLocked,
       volvoRangeBattery, volvoLat, volvoLng, volvoOdometer, volvoCharging, volvoChargingStatus, volvoEngine, volvoDistance,
       miniOk, miniBattery, miniRange, miniLocked, miniLocation, miniLat, miniLng, miniOdometer, miniCharging, miniUpdated,
       matsHome, nannyHome, simonHome, vanessaHome, semesterMode, vakenMode,
@@ -1871,7 +1876,12 @@ class Component extends DCLogic {
           const diff = Math.round((Date.now()-d.getTime())/60000);
           timeStr = diff<1 ? 'Just nu' : diff<60 ? `${diff} min sedan` : diff<1440 ? `${Math.round(diff/60)} h sedan` : `${Math.round(diff/1440)} d sedan`;
         }
-        return { has, url:hallCamUrl||'', timeStr };
+        return { has, url:hallCamUrl||'', timeStr,
+          onRefresh:()=>this.fetchHallCam(),
+          refreshLabel: hallCamLoading ? '⏳' : '🔄',
+          refreshStyle:{padding:'2px 8px',borderRadius:'6px',fontSize:'11px',cursor:hallCamLoading?'default':'pointer',fontFamily:'inherit',transition:'all 0.2s',
+            border:'1px solid rgba(255,255,255,0.1)',background:'rgba(255,255,255,0.05)',color:'rgba(238,240,245,0.6)',
+            animation:hallCamLoading?'blink 1s ease infinite':'none'} };
       })(),
       // Lampor per rum med individuella enheter
       lampRooms: (()=>{
