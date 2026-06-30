@@ -348,6 +348,9 @@
               <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:13px;">
                 <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:5px;letter-spacing:0.04em;">{{ dr.label }}</div>
                 <div style="font-size:17px;font-weight:500;color:{{ dr.color }};">{{ dr.status }}</div>
+                <sc-if value="{{ dr.status2 }}">
+                  <div style="font-size:15px;font-weight:500;color:{{ dr.color2 }};margin-top:4px;">{{ dr.status2 }}</div>
+                </sc-if>
                 <div style="font-size:11px;color:rgba(238,240,245,0.35);margin-top:3px;">{{ dr.sub }}</div>
               </div>
             </sc-for>
@@ -1862,8 +1865,10 @@ class Component extends DCLogic {
       ].map(r => { const a = !!(motion[r.key]); return { ...r, pill:{padding:'5px 13px',borderRadius:'20px',fontSize:'12px',fontWeight:'500',background:a?'rgba(130,220,50,0.15)':'rgba(255,255,255,0.05)',color:a?G:'rgba(238,240,245,0.42)',border:`1px solid ${a?'rgba(130,220,50,0.3)':'rgba(255,255,255,0.08)'}`} }; }),
       // Dörrar & lås
       doors: [
-        { label:'YTTERDÖRR · LÅS', status:doorLocked===null?'—':doorLocked?'🔒 Låst':'🔓 Olåst', color:doorLocked===null?'rgba(238,240,245,0.5)':doorLocked?G:R, sub:doorBattery!=null?`Batteri ${Math.round(doorBattery)}%`:'' },
-        { label:'YTTERDÖRR · DÖRR', status:frontDoorOpen===null?'—':frontDoorOpen?'🚪 Öppen':'✓ Stängd', color:frontDoorOpen===null?'rgba(238,240,245,0.5)':frontDoorOpen?O:G, sub:'' },
+        { label:'YTTERDÖRR',
+          status:doorLocked===null?'—':doorLocked?'🔒 Låst':'🔓 Olåst', color:doorLocked===null?'rgba(238,240,245,0.5)':doorLocked?G:R,
+          status2:frontDoorOpen===null?'—':frontDoorOpen?'🚪 Öppen':'✓ Stängd', color2:frontDoorOpen===null?'rgba(238,240,245,0.5)':frontDoorOpen?O:G,
+          sub:doorBattery!=null?`Batteri ${Math.round(doorBattery)}%`:'' },
         { label:'BALKONG',   status:balkongOpen===null?'—':balkongOpen?'🪟 Öppen':'✓ Stängd',  color:balkongOpen===null?'rgba(238,240,245,0.5)':balkongOpen?O:G,  sub:'' },
         { label:'KYLSKÅP',   status:kylskapOpen===null?'—':kylskapOpen?'⚠ Öppen':'✓ Stängd',  color:kylskapOpen===null?'rgba(238,240,245,0.5)':kylskapOpen?R:G,  sub:'' },
         { label:'FRYS',      status:frysOpen===null?'—':frysOpen?'⚠ Öppen':'✓ Stängd',         color:frysOpen===null?'rgba(238,240,245,0.5)':frysOpen?R:G,         sub:'' },
