@@ -364,8 +364,8 @@
         </div>
       </div>
 
-      <!-- SCENER + ROCKY -->
-      <div style="display:grid;grid-template-columns:190px 1fr;gap:14px;">
+      <!-- SCENER + ROCKY + STATUS -->
+      <div style="display:grid;grid-template-columns:190px 1fr 210px;gap:14px;">
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SCENER</div>
           <div style="display:flex;flex-direction:column;gap:9px;">
@@ -391,6 +391,37 @@
                 <button onclick="{{ rr.onMoppa }}" style="{{ rr.moppaStyle }}">{{ rr.label }}</button>
               </sc-for>
             </div>
+          </div>
+        </div>
+        <!-- Rocky status -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">STATUS</div>
+          <div style="text-align:center;padding:8px 0;">
+            <div style="font-size:38px;display:inline-block;animation:{{ rockyStatus.iconAnim }};">🤖</div>
+            <div style="font-size:13px;font-weight:700;margin-top:8px;color:{{ rockyStatus.statusColor }};">{{ rockyStatus.statusStr }}</div>
+            <sc-if value="{{ rockyStatus.cleaning }}">
+              <div style="font-size:11px;color:rgba(238,240,245,0.45);margin-top:3px;">{{ rockyStatus.roomStr }}</div>
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;color:rgba(238,240,245,0.38);">Batteri</span>
+              <span style="font-size:12px;font-weight:600;color:{{ rockyStatus.battColor }};">{{ rockyStatus.battStr }}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;color:rgba(238,240,245,0.38);">Suction</span>
+              <span style="font-size:12px;font-weight:600;color:rgba(238,240,245,0.7);">{{ rockyStatus.suctionStr }}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;color:rgba(238,240,245,0.38);">Läge</span>
+              <span style="font-size:12px;font-weight:600;color:rgba(238,240,245,0.7);">{{ rockyStatus.modeStr }}</span>
+            </div>
+            <sc-if value="{{ rockyStatus.mopOn }}">
+              <div style="font-size:10px;color:rgba(130,220,50,0.7);text-align:center;margin-top:2px;">💧 Mopp + Vatten</div>
+            </sc-if>
+            <sc-if value="{{ rockyStatus.stuck }}">
+              <div style="font-size:11px;font-weight:700;color:oklch(0.6 0.18 15);text-align:center;animation:blink 0.8s ease infinite;">⚠️ Fastnat!</div>
+            </sc-if>
           </div>
         </div>
       </div>
@@ -1007,6 +1038,7 @@ class Component extends DCLogic {
     balkongOpen:null, kylskapOpen:null, frysOpen:null,
     motion:{}, lamps:{},
     tvVardagsrum:null, tvSovrum:null,
+    rocky:null, rockyActiveRoom:null,
     // SMHI
     wxTemp:null, wxIcon:'⛅', wxCondition:'Laddar...', wxWind:null, wxHumidity:null, wxPrecip:null, wxFeels:null,
     wxHourly:[],
@@ -1706,7 +1738,7 @@ class Component extends DCLogic {
       spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
       lfcNext, lfcLast, lfcForm, lfcResults, lfcTable,
       entreTemp, hallenSimonTemp, badrumTemp, balkongOpen, kylskapOpen, frysOpen, motion, lamps,
-      tvVardagsrum, tvSovrum,
+      tvVardagsrum, tvSovrum, rocky, rockyActiveRoom,
     } = this.state;
 
     const pad = n => String(n).padStart(2,'0');
@@ -1800,7 +1832,7 @@ class Component extends DCLogic {
       ],
       // Lampor per rum med individuella enheter
       lampRooms: (()=>{
-        const names={hall:'Hall',entre:'Entré',kok:'Kök',vardagsrum:'Vardagsrum',sovrum:'Sovrum',badrum:'Badrum',lillaToalett:'Lilla Toalett',vanessa:'Vanessa',simon:'Simon rum'};
+        const names={hall:'Hall',entre:'Entré',kok:'Kök',vardagsrum:'Vardagsrum',sovrum:'Sovrum',badrum:'Badrum',lillaToalett:'Lilla Toalett',vanessa:'Vanessa',simon:'Simon rum',garden:'Garden'};
         return Object.entries(names).map(([key,label])=>{
           const d=lamps[key]||{on:0,total:0,ids:[],devices:[]};
           const anyOn=d.on>0;
@@ -2021,6 +2053,8 @@ class Component extends DCLogic {
         color:'#eef0f5',fontSize:'14px',fontWeight:'500',cursor:'pointer',fontFamily:'inherit',textAlign:'left'} }));
 
     // Rocky städning per rum
+    const _rockyIsCleaning = !!(rocky?.isCleaning);
+    const _activeRoom = _rockyIsCleaning ? rockyActiveRoom : null;
     const rockyRooms = [
       { label:'Vardagsrum', damm:'1cea6180-081a-4b43-b512-af3371b88335', moppa:'fa92959d-2e7c-4d41-af70-6883b3396feb' },
       { label:'Kök',        damm:'9663bf9a-3da1-4319-9e13-e7e2264486d0', moppa:'143e3847-549c-4149-8c8c-6b9c36df98ff' },
@@ -2031,12 +2065,44 @@ class Component extends DCLogic {
       { label:'Vanessa',    damm:'25f1a737-3c6c-4a89-b509-63e5e1ab62ad', moppa:'0ce84fc4-33f5-41eb-b837-ef770fa9fc0f' },
       { label:'Lilla Toalett', damm:'fd43cc40-2561-4b41-85d3-dc4f3b3de86b', moppa:'39d7f71d-a41e-46f8-866d-0716c854ac0e' },
       { label:'Entré',      damm:'e9b23292-473a-4fb2-988c-4c3f35b27db5', moppa:'e9307994-3da6-4ed5-bf1c-4ddb6bad4dbc' },
-    ].map(r => ({ ...r,
-      onDamm:()=>this.triggerFlow(r.damm,'advanced'),
-      onMoppa:()=>this.triggerFlow(r.moppa,'advanced'),
-      dammStyle:{padding:'5px 11px',borderRadius:'6px',border:'1px solid rgba(255,255,255,0.1)',background:'rgba(255,255,255,0.05)',color:'rgba(238,240,245,0.78)',fontSize:'12px',cursor:'pointer',fontFamily:'inherit'},
-      moppaStyle:{padding:'5px 11px',borderRadius:'6px',border:'1px solid rgba(130,220,50,0.25)',background:'rgba(130,220,50,0.08)',color:G,fontSize:'12px',cursor:'pointer',fontFamily:'inherit'},
-    }));
+    ].map(r => {
+      const isActive = _activeRoom === r.label;
+      return { ...r,
+        onDamm:()=>{ this.setState({rockyActiveRoom:r.label}); this.triggerFlow(r.damm,'advanced'); },
+        onMoppa:()=>{ this.setState({rockyActiveRoom:r.label}); this.triggerFlow(r.moppa,'advanced'); },
+        dammStyle:{padding:'5px 11px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
+          border:isActive?'1px solid rgba(255,180,0,0.6)':'1px solid rgba(255,255,255,0.1)',
+          background:isActive?'rgba(255,165,0,0.15)':'rgba(255,255,255,0.05)',
+          color:isActive?'rgba(255,200,50,0.95)':'rgba(238,240,245,0.78)',
+          animation:isActive?'blink 1.5s ease infinite':'none'},
+        moppaStyle:{padding:'5px 11px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
+          border:isActive?'1px solid rgba(255,180,0,0.6)':'1px solid rgba(130,220,50,0.25)',
+          background:isActive?'rgba(255,165,0,0.15)':'rgba(130,220,50,0.08)',
+          color:isActive?'rgba(255,200,50,0.95)':G,
+          animation:isActive?'blink 1.5s ease infinite':'none'},
+      };
+    });
+
+    // Rocky status panel
+    const rockyStatus = (()=>{
+      const r = rocky || {};
+      const cleaning = !!r.isCleaning;
+      const docked   = !!r.dock;
+      const batt     = r.battery ?? null;
+      const suction  = r.suction !== null && r.suction !== undefined ? Number(r.suction) : null;
+      const mopOn    = !!(r.mopAttached && r.waterBox);
+      const stuck    = !!r.stuck;
+      const paused   = !!r.paused;
+      const statusStr  = stuck ? '⚠️ Fastnat!' : cleaning && paused ? '⏸ Pausad' : cleaning ? '🤖 Städar...' : docked ? '⚡ Laddar' : '💤 Väntar';
+      const statusColor= stuck ? R : cleaning && !paused ? G : docked ? A : 'rgba(238,240,245,0.45)';
+      const modeStr    = cleaning ? (mopOn ? 'Dammsug + Moppa' : 'Dammsugning') : '—';
+      const suctionStr = suction===null?'—':suction>=104?'Max':suction>=103?'Hög':suction>=102?'Medium':'Tyst';
+      const battStr    = batt!==null?`${Math.round(batt)}%`:'—';
+      const battColor  = batt===null?'rgba(238,240,245,0.4)':batt<20?R:batt<50?O:G;
+      const roomStr    = cleaning && _activeRoom ? _activeRoom : '—';
+      const iconAnim   = cleaning && !paused ? 'spin 3s linear infinite' : 'none';
+      return { cleaning, docked, stuck, statusStr, statusColor, modeStr, suctionStr, battStr, battColor, roomStr, iconAnim, mopOn };
+    })();
 
     // Calendar events – riktiga från Google om inloggad, annars demo
     const dotS = c => ({width:'5px',height:'5px',borderRadius:'50%',background:c,flexShrink:0,marginTop:'2px'});
@@ -2259,7 +2325,7 @@ class Component extends DCLogic {
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
-      events, emails, tasks, weather, wHourly, smartHome, briefing, shScenes, rockyRooms,
+      events, emails, tasks, weather, wHourly, smartHome, briefing, shScenes, rockyRooms, rockyStatus,
       bathing, bathingBadge, bathingBadgeStyle,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
