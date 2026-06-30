@@ -392,6 +392,9 @@
               </sc-for>
             </div>
           </div>
+          <div style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.05);padding-top:12px;">
+            <button onclick="{{ rockyDockBtn.onClick }}" style="{{ rockyDockBtn.style }}">🏠 Återvänd till docka</button>
+          </div>
         </div>
         <!-- Rocky status -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px;">
@@ -2105,6 +2108,12 @@ class Component extends DCLogic {
       return { cleaning, docked, stuck, statusStr, statusColor, modeStr, suctionStr, battStr, battColor, roomStr, iconAnim, mopOn };
     })();
 
+    const rockyDockBtn = {
+      onClick: () => this.setCapability('dd5a4b9c-9130-45ef-9bcf-15f6f8d65b46', 'dock', true),
+      style: {padding:'5px 14px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
+        border:'1px solid rgba(100,150,255,0.3)',background:'rgba(100,150,255,0.07)',color:'rgba(150,190,255,0.85)'},
+    };
+
     // Calendar events – riktiga från Google om inloggad, annars demo
     const dotS = c => ({width:'5px',height:'5px',borderRadius:'50%',background:c,flexShrink:0,marginTop:'2px'});
     const demoEvents = [
@@ -2326,7 +2335,7 @@ class Component extends DCLogic {
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
-      events, emails, tasks, weather, wHourly, smartHome, briefing, shScenes, rockyRooms, rockyStatus,
+      events, emails, tasks, weather, wHourly, smartHome, briefing, shScenes, rockyRooms, rockyStatus, rockyDockBtn,
       bathing, bathingBadge, bathingBadgeStyle,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
