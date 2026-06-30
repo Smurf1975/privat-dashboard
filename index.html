@@ -423,7 +423,7 @@
               <div style="font-size:11px;font-weight:700;color:oklch(0.6 0.18 15);text-align:center;animation:blink 0.8s ease infinite;">⚠️ Fastnat!</div>
             </sc-if>
           </div>
-          <button onclick="{{ rockyDockBtn.onClick }}" style="{{ rockyDockBtn.style }}">🏠 Återvänd till docka</button>
+          <button onclick="{{ rockyDockBtn.onClick }}" style="{{ rockyDockBtn.style }}">{{ rockyDockBtn.label }}</button>
         </div>
       </div>
 
@@ -1039,7 +1039,7 @@ class Component extends DCLogic {
     balkongOpen:null, kylskapOpen:null, frysOpen:null,
     motion:{}, lamps:{},
     tvVardagsrum:null, tvSovrum:null,
-    rocky:null, rockyActiveRoom:null,
+    rocky:null, rockyActiveRoom:null, rockyReturning:false,
     // SMHI
     wxTemp:null, wxIcon:'⛅', wxCondition:'Laddar...', wxWind:null, wxHumidity:null, wxPrecip:null, wxFeels:null,
     wxHourly:[],
@@ -1594,7 +1594,10 @@ class Component extends DCLogic {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const s = await res.json();
       if (s.error) throw new Error(s.error);
-      this.setState({ ...s, homeyOk:true, homeyError:null });
+      const patch = { ...s, homeyOk:true, homeyError:null };
+      // Nollställ "återvänder"-flaggan så fort Homey rapporterar att han dockat
+      if (s.rocky?.dock) patch.rockyReturning = false;
+      this.setState(patch);
     } catch(e) {
       const msg = e?.message || e?.name || String(e) || 'Nätverksfel';
       console.warn('Homey-proxy:', msg);
@@ -1739,7 +1742,7 @@ class Component extends DCLogic {
       spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
       lfcNext, lfcLast, lfcForm, lfcResults, lfcTable,
       entreTemp, hallenSimonTemp, badrumTemp, balkongOpen, kylskapOpen, frysOpen, motion, lamps,
-      tvVardagsrum, tvSovrum, rocky, rockyActiveRoom,
+      tvVardagsrum, tvSovrum, rocky, rockyActiveRoom, rockyReturning,
     } = this.state;
 
     const pad = n => String(n).padStart(2,'0');
@@ -2070,8 +2073,8 @@ class Component extends DCLogic {
       const isDammActive  = _activeRoom && _activeRoom.label === r.label && _activeRoom.type === 'damm';
       const isMoppaActive = _activeRoom && _activeRoom.label === r.label && _activeRoom.type === 'moppa';
       return { ...r,
-        onDamm:()=>{ this.setState({rockyActiveRoom:{label:r.label,type:'damm'}}); this.triggerFlow(r.damm,'advanced'); },
-        onMoppa:()=>{ this.setState({rockyActiveRoom:{label:r.label,type:'moppa'}}); this.triggerFlow(r.moppa,'advanced'); },
+        onDamm:()=>{ this.setState({rockyActiveRoom:{label:r.label,type:'damm'},rockyReturning:false}); this.triggerFlow(r.damm,'advanced'); setTimeout(()=>this.fetchHomey(),4000); },
+        onMoppa:()=>{ this.setState({rockyActiveRoom:{label:r.label,type:'moppa'},rockyReturning:false}); this.triggerFlow(r.moppa,'advanced'); setTimeout(()=>this.fetchHomey(),4000); },
         dammStyle:{padding:'5px 11px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
           border:isDammActive?'1px solid rgba(255,180,0,0.6)':'1px solid rgba(255,255,255,0.1)',
           background:isDammActive?'rgba(255,165,0,0.15)':'rgba(255,255,255,0.05)',
@@ -2095,22 +2098,28 @@ class Component extends DCLogic {
       const mopOn    = !!(r.mopAttached && r.waterBox);
       const stuck    = !!r.stuck;
       const paused   = !!r.paused;
-      const statusStr  = stuck ? '⚠️ Fastnat!' : cleaning && paused ? '⏸ Pausad' : cleaning ? '🤖 Städar...' : docked ? '⚡ Laddar' : '💤 Väntar';
-      const statusColor= stuck ? R : cleaning && !paused ? G : docked ? A : 'rgba(238,240,245,0.45)';
-      const modeStr    = cleaning ? (mopOn ? 'Dammsug + Moppa' : 'Dammsugning') : '—';
+      const returning= !!rockyReturning && !docked;
+      const statusStr  = stuck ? '⚠️ Fastnat!' : returning ? '↩️ Återvänder...' : cleaning && paused ? '⏸ Pausad' : cleaning ? '🤖 Städar...' : docked ? '⚡ Laddar' : '💤 Väntar';
+      const statusColor= stuck ? R : returning ? 'rgba(150,190,255,0.95)' : cleaning && !paused ? G : docked ? A : 'rgba(238,240,245,0.45)';
+      const modeStr    = cleaning && !returning ? (mopOn ? 'Dammsug + Moppa' : 'Dammsugning') : '—';
       const suctionStr = suction===null?'—':suction>=104?'Max':suction>=103?'Hög':suction>=102?'Medium':'Tyst';
       const battStr    = batt!==null?`${Math.round(batt)}%`:'—';
       const battColor  = batt===null?'rgba(238,240,245,0.4)':batt<20?R:batt<50?O:G;
-      const roomStr    = docked ? '🏠 I dockan' : (cleaning && _activeRoom ? _activeRoom.label : '');
-      const showRoom   = docked || !!(cleaning && _activeRoom);
-      const iconAnim   = cleaning && !paused ? 'spin 3s linear infinite' : 'none';
-      return { cleaning, docked, stuck, statusStr, statusColor, modeStr, suctionStr, battStr, battColor, roomStr, showRoom, iconAnim, mopOn };
+      const roomStr    = returning ? '↩️ På väg till dockan' : docked ? '🏠 I dockan' : (cleaning && _activeRoom ? _activeRoom.label : '');
+      const showRoom   = returning || docked || !!(cleaning && _activeRoom);
+      const iconAnim   = (cleaning || returning) && !paused ? 'spin 3s linear infinite' : 'none';
+      return { cleaning, docked, stuck, returning, statusStr, statusColor, modeStr, suctionStr, battStr, battColor, roomStr, showRoom, iconAnim, mopOn };
     })();
 
+    const _dockReturning = !!rockyReturning && !rockyStatus.docked;
     const rockyDockBtn = {
-      onClick: () => this.triggerFlow('1ecc80a9-70c0-48e5-b9e3-ee7417fb76c8', 'advanced'),
+      onClick: () => { this.setState({rockyReturning:true, rockyActiveRoom:null}); this.triggerFlow('1ecc80a9-70c0-48e5-b9e3-ee7417fb76c8', 'advanced'); setTimeout(()=>this.fetchHomey(),4000); },
+      label: _dockReturning ? '↩️ Återvänder…' : '🏠 Återvänd till docka',
       style: {padding:'5px 14px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
-        border:'1px solid rgba(100,150,255,0.3)',background:'rgba(100,150,255,0.07)',color:'rgba(150,190,255,0.85)'},
+        border:_dockReturning?'1px solid rgba(150,190,255,0.6)':'1px solid rgba(100,150,255,0.3)',
+        background:_dockReturning?'rgba(100,150,255,0.18)':'rgba(100,150,255,0.07)',
+        color:_dockReturning?'rgba(180,210,255,0.95)':'rgba(150,190,255,0.85)',
+        animation:_dockReturning?'blink 1.5s ease infinite':'none'},
     };
 
     // Calendar events – riktiga från Google om inloggad, annars demo
