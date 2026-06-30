@@ -315,17 +315,27 @@
         </div>
       </div>
 
-      <!-- TV -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;margin-bottom:14px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">📺 TV</div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <sc-for list="{{ smartHome.tvDevices }}" as="tv">
-            <div onclick="{{ tv.onClick }}" style="{{ tv.bgStyle }}">
-              <div style="font-size:24px;">📺</div>
-              <div style="font-size:13px;font-weight:600;color:{{ tv.textColor }};margin-top:6px;">{{ tv.label }}</div>
-              <div style="font-size:12px;font-weight:700;color:{{ tv.statusColor }};margin-top:3px;">{{ tv.status }}</div>
-            </div>
-          </sc-for>
+      <!-- TV + SCENER -->
+      <div style="display:grid;grid-template-columns:1fr 230px;gap:14px;margin-bottom:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">📺 TV</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <sc-for list="{{ smartHome.tvDevices }}" as="tv">
+              <div onclick="{{ tv.onClick }}" style="{{ tv.bgStyle }}">
+                <div style="font-size:24px;">📺</div>
+                <div style="font-size:13px;font-weight:600;color:{{ tv.textColor }};margin-top:6px;">{{ tv.label }}</div>
+                <div style="font-size:12px;font-weight:700;color:{{ tv.statusColor }};margin-top:3px;">{{ tv.status }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">SCENER</div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <sc-for list="{{ shScenes }}" as="sh">
+              <button onclick="{{ sh.onClick }}" style="{{ sh.btnStyle }}">{{ sh.label }}</button>
+            </sc-for>
+          </div>
         </div>
       </div>
 
@@ -341,6 +351,19 @@
                 <div style="font-size:11px;color:rgba(238,240,245,0.35);margin-top:3px;">{{ dr.sub }}</div>
               </div>
             </sc-for>
+          </div>
+          <!-- Eufy Hall – senaste stillbild -->
+          <div style="margin-top:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:10px;color:rgba(238,240,245,0.44);letter-spacing:0.04em;text-transform:uppercase;">📷 Hall – Eufy</span>
+              <span style="font-size:10px;color:rgba(238,240,245,0.3);">{{ smartHome.hallCam.timeStr }}</span>
+            </div>
+            <sc-if value="{{ smartHome.hallCam.has }}">
+              <img src="{{ smartHome.hallCam.url }}" style="width:100%;border-radius:9px;display:block;border:1px solid rgba(255,255,255,0.08);" alt="Hall" />
+            </sc-if>
+            <sc-if value="{{ !smartHome.hallCam.has }}" hint-placeholder-val="{{ false }}">
+              <div style="width:100%;aspect-ratio:16/9;border-radius:9px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(238,240,245,0.25);font-size:12px;">Laddar kamerabild…</div>
+            </sc-if>
           </div>
         </div>
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
@@ -364,16 +387,8 @@
         </div>
       </div>
 
-      <!-- SCENER + ROCKY + STATUS -->
-      <div style="display:grid;grid-template-columns:190px 1fr 210px;gap:14px;">
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SCENER</div>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <sc-for list="{{ shScenes }}" as="sh">
-              <button onclick="{{ sh.onClick }}" style="{{ sh.btnStyle }}">{{ sh.label }}</button>
-            </sc-for>
-          </div>
-        </div>
+      <!-- ROCKY + STATUS -->
+      <div style="display:grid;grid-template-columns:1fr 210px;gap:14px;">
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:16px;">🤖 ROCKY · STÄDNING</div>
           <div style="margin-bottom:14px;">
@@ -1024,7 +1039,8 @@ class Component extends DCLogic {
     outdoorTemp:null, bedroomTemp:null, bedroomHumidity:null,
     pm25:null, filterLife:null,
     elCurrentOre:null, elCheapest:'', elExpensive:'', elAvgToday:null,
-    doorLocked:null, doorBattery:null,
+    doorLocked:null, doorBattery:null, frontDoorOpen:null,
+    hallCamUrl:null, hallCamTime:null,
     carBattery:null, carRange:null, carLocation:null, carLocked:null,
     // Bilar – Volvo extra (Homey)
     volvoRangeBattery:null, volvoLat:null, volvoLng:null, volvoOdometer:null,
@@ -1580,9 +1596,21 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
+  }
+
+  async fetchHallCam() {
+    try {
+      const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=cameraSnapshot`, {
+        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
+      });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const d = await r.json();
+      if (d.error) throw new Error(d.error);
+      this.setState({ hallCamUrl: d.dataUrl || null, hallCamTime: d.lastUpdated || null });
+    } catch(e) { console.warn('hallCam:', e.message); }
   }
 
   async fetchHomey() {
@@ -1730,7 +1758,7 @@ class Component extends DCLogic {
       homeyOk, homeyError,
       outdoorTemp, bedroomTemp, bedroomHumidity, pm25, filterLife,
       elCurrentOre, elCheapest, elExpensive, elAvgToday,
-      doorLocked, doorBattery, carBattery, carRange, carLocation, carLocked,
+      doorLocked, doorBattery, frontDoorOpen, hallCamUrl, hallCamTime, carBattery, carRange, carLocation, carLocked,
       volvoRangeBattery, volvoLat, volvoLng, volvoOdometer, volvoCharging, volvoChargingStatus, volvoEngine, volvoDistance,
       miniOk, miniBattery, miniRange, miniLocked, miniLocation, miniLat, miniLng, miniOdometer, miniCharging, miniUpdated,
       matsHome, nannyHome, simonHome, vanessaHome, semesterMode, vakenMode,
@@ -1829,11 +1857,22 @@ class Component extends DCLogic {
       ].map(r => { const a = !!(motion[r.key]); return { ...r, pill:{padding:'5px 13px',borderRadius:'20px',fontSize:'12px',fontWeight:'500',background:a?'rgba(130,220,50,0.15)':'rgba(255,255,255,0.05)',color:a?G:'rgba(238,240,245,0.42)',border:`1px solid ${a?'rgba(130,220,50,0.3)':'rgba(255,255,255,0.08)'}`} }; }),
       // Dörrar & lås
       doors: [
-        { label:'YTTERDÖRR', status:doorLocked===null?'—':doorLocked?'🔒 Låst':'🔓 Olåst', color:doorLocked===null?'rgba(238,240,245,0.5)':doorLocked?G:R, sub:doorBattery!=null?`Batteri ${Math.round(doorBattery)}%`:'' },
+        { label:'YTTERDÖRR · LÅS', status:doorLocked===null?'—':doorLocked?'🔒 Låst':'🔓 Olåst', color:doorLocked===null?'rgba(238,240,245,0.5)':doorLocked?G:R, sub:doorBattery!=null?`Batteri ${Math.round(doorBattery)}%`:'' },
+        { label:'YTTERDÖRR · DÖRR', status:frontDoorOpen===null?'—':frontDoorOpen?'🚪 Öppen':'✓ Stängd', color:frontDoorOpen===null?'rgba(238,240,245,0.5)':frontDoorOpen?O:G, sub:'' },
         { label:'BALKONG',   status:balkongOpen===null?'—':balkongOpen?'🪟 Öppen':'✓ Stängd',  color:balkongOpen===null?'rgba(238,240,245,0.5)':balkongOpen?O:G,  sub:'' },
         { label:'KYLSKÅP',   status:kylskapOpen===null?'—':kylskapOpen?'⚠ Öppen':'✓ Stängd',  color:kylskapOpen===null?'rgba(238,240,245,0.5)':kylskapOpen?R:G,  sub:'' },
         { label:'FRYS',      status:frysOpen===null?'—':frysOpen?'⚠ Öppen':'✓ Stängd',         color:frysOpen===null?'rgba(238,240,245,0.5)':frysOpen?R:G,         sub:'' },
       ],
+      hallCam: (()=>{
+        const has = !!hallCamUrl;
+        let timeStr = '';
+        if (hallCamTime) {
+          const d = new Date(hallCamTime);
+          const diff = Math.round((Date.now()-d.getTime())/60000);
+          timeStr = diff<1 ? 'Just nu' : diff<60 ? `${diff} min sedan` : diff<1440 ? `${Math.round(diff/60)} h sedan` : `${Math.round(diff/1440)} d sedan`;
+        }
+        return { has, url:hallCamUrl||'', timeStr };
+      })(),
       // Lampor per rum med individuella enheter
       lampRooms: (()=>{
         const names={hall:'Hall',entre:'Entré',kok:'Kök',vardagsrum:'Vardagsrum',sovrum:'Sovrum',badrum:'Badrum',lillaToalett:'Lilla Toalett',vanessa:'Vanessa',simon:'Simon rum',garden:'Garden'};
