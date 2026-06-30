@@ -399,7 +399,7 @@
           <div style="text-align:center;padding:8px 0;">
             <div style="font-size:38px;display:inline-block;animation:{{ rockyStatus.iconAnim }};">🤖</div>
             <div style="font-size:13px;font-weight:700;margin-top:8px;color:{{ rockyStatus.statusColor }};">{{ rockyStatus.statusStr }}</div>
-            <sc-if value="{{ rockyStatus.cleaning }}">
+            <sc-if value="{{ rockyStatus.showRoom }}">
               <div style="font-size:11px;color:rgba(238,240,245,0.45);margin-top:3px;">{{ rockyStatus.roomStr }}</div>
             </sc-if>
           </div>
@@ -2101,9 +2101,10 @@ class Component extends DCLogic {
       const suctionStr = suction===null?'—':suction>=104?'Max':suction>=103?'Hög':suction>=102?'Medium':'Tyst';
       const battStr    = batt!==null?`${Math.round(batt)}%`:'—';
       const battColor  = batt===null?'rgba(238,240,245,0.4)':batt<20?R:batt<50?O:G;
-      const roomStr    = cleaning && _activeRoom ? _activeRoom.label : '—';
+      const roomStr    = docked ? '🏠 I dockan' : (cleaning && _activeRoom ? _activeRoom.label : '');
+      const showRoom   = docked || !!(cleaning && _activeRoom);
       const iconAnim   = cleaning && !paused ? 'spin 3s linear infinite' : 'none';
-      return { cleaning, docked, stuck, statusStr, statusColor, modeStr, suctionStr, battStr, battColor, roomStr, iconAnim, mopOn };
+      return { cleaning, docked, stuck, statusStr, statusColor, modeStr, suctionStr, battStr, battColor, roomStr, showRoom, iconAnim, mopOn };
     })();
 
     const rockyDockBtn = {
