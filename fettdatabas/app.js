@@ -112,7 +112,7 @@ function renderLogin(authError) {
   app().innerHTML = `
   <div class="login"><div class="login-card">
     <div class="login-brand"><div class="login-logo">F</div>
-      <div><h1>Fettdatabas</h1><p>FUCHS · Teknik</p></div></div>
+      <div><h1>Fettdatabas</h1><p>Teknik</p></div></div>
     <p class="login-sub">Logga in med din jobbmail. Du får en inloggningslänk skickad — inget lösenord behövs.</p>
     ${authError ? `<div class="login-msg err">${esc(authError)}</div>` : ''}
     <form id="loginForm">
@@ -141,7 +141,7 @@ function renderLogin(authError) {
 function renderNoAccess() {
   app().innerHTML = `
   <div class="login"><div class="login-card">
-    <div class="login-brand"><div class="login-logo">F</div><div><h1>Fettdatabas</h1><p>FUCHS · Teknik</p></div></div>
+    <div class="login-brand"><div class="login-logo">F</div><div><h1>Fettdatabas</h1><p>Teknik</p></div></div>
     <div class="login-msg err" style="margin-top:20px">Kontot <b>${esc(state.session.user.email)}</b> finns inte på behörighetslistan.
       Be Mats lägga till dig innan du kan använda databasen.</div>
     <button class="login-btn" id="lo" style="margin-top:16px">Logga ut</button>
