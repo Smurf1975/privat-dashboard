@@ -69,7 +69,19 @@ const isEditor = () => state.me && ['admin', 'redaktor'].includes(state.me.roll)
 const isAdmin = () => state.me && state.me.roll === 'admin';
 
 // ---------- auth bootstrap ----------
+function consumeAuthErrorFromUrl() {
+  const hash = window.location.hash;
+  if (!hash.includes('error=')) return null;
+  const params = new URLSearchParams(hash.slice(1));
+  const desc = params.get('error_description');
+  const code = params.get('error_code');
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+  if (code === 'otp_expired') return 'Länken har redan använts eller gått ut. Be om en ny länk nedan — och öppna det senaste mailet, inte ett äldre.';
+  return desc ? decodeURIComponent(desc.replace(/\+/g, ' ')) : 'Inloggningen misslyckades. Be om en ny länk.';
+}
+
 async function boot() {
+  const authError = consumeAuthErrorFromUrl();
   const { data } = await sb.auth.getSession();
   state.session = data.session;
   if (state.session) await loadMe();
@@ -78,7 +90,7 @@ async function boot() {
     if (session && !state.me) { await loadMe(); render(); }
     if (!session && wasIn) { state.me = null; render(); }
   });
-  render();
+  render(authError);
 }
 
 async function loadMe() {
@@ -89,19 +101,20 @@ async function loadMe() {
 }
 
 // ---------- render root ----------
-function render() {
-  if (!state.session) return renderLogin();
+function render(authError) {
+  if (!state.session) return renderLogin(authError);
   if (!state.me) return renderNoAccess();
   renderShell();
 }
 
 // ---------- login ----------
-function renderLogin(msg) {
+function renderLogin(authError) {
   app().innerHTML = `
   <div class="login"><div class="login-card">
     <div class="login-brand"><div class="login-logo">F</div>
       <div><h1>Fettdatabas</h1><p>FUCHS · Teknik</p></div></div>
     <p class="login-sub">Logga in med din jobbmail. Du får en inloggningslänk skickad — inget lösenord behövs.</p>
+    ${authError ? `<div class="login-msg err">${esc(authError)}</div>` : ''}
     <form id="loginForm">
       <label for="email">E-postadress</label>
       <input id="email" type="email" placeholder="namn@företaget.se" autocomplete="email" required>
@@ -109,7 +122,6 @@ function renderLogin(msg) {
     </form>
     <div id="loginMsg"></div>
   </div></div>`;
-  if (msg) $('#loginMsg').outerHTML = msg;
   $('#loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = $('#email').value.trim();
