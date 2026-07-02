@@ -143,6 +143,8 @@ table.grid tr td:first-child{border-left:1px solid #e6ebef;border-radius:9px 0 0
 table.grid tr td:last-child{border-right:1px solid #e6ebef;border-radius:0 9px 9px 0}
 table.grid tr.clickable{cursor:pointer}
 table.grid tr.clickable:hover td{background:#f7fafd}
+/* Katalog: valfria kolumner (Temp, Fasta smörjämnen) döljs på smala skärmar */
+@media(max-width:960px){table.grid th.col-opt,table.grid td.col-opt{display:none}}
 .pill{display:inline-block;font:600 10px 'IBM Plex Mono';padding:3px 8px;border-radius:5px}
 .pill.fuchs{background:#e3eefb;color:var(--blue)}
 .pill.konk{background:#f0f2f4;color:#6b7b89}
@@ -190,4 +192,119 @@ table.grid tr.clickable:hover td{background:#f7fafd}
   .sbrand{padding:6px 10px}.nav{display:flex;flex-wrap:wrap}.sfoot{flex-direction:row;margin:0}
   .body2{grid-template-columns:1fr}.filt{border-right:0;border-bottom:1px solid var(--line)}
   .thd{display:none}.tr{grid-template-columns:1fr 1fr;gap:6px 10px}
+}
+
+/* ===== Välj fett ===== */
+.vf-body{display:grid;grid-template-columns:1fr;flex:1;min-height:0}
+@media(min-width:1000px){
+  .vf-body{grid-template-columns:400px 1fr}
+  .vf-form{border-right:1px solid var(--line);border-bottom:0!important}
+}
+.vf-form{padding:20px;background:#f6f8fa;overflow:auto;border-bottom:1px solid var(--line)}
+.vf-res{padding:20px 24px;overflow:auto;display:flex;flex-direction:column;gap:14px}
+
+/* lagertypsväljare */
+.vf-lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px}
+.vf-lcard{background:#fff;border:1px solid #dce2e8;border-radius:10px;padding:8px 6px 7px;text-align:center;cursor:pointer;transition:border-color .12s,box-shadow .12s,background .12s;outline:none}
+.vf-lcard:hover{border-color:#b4d3ef;box-shadow:0 3px 10px rgba(20,40,60,.08)}
+.vf-lcard:focus-visible{box-shadow:0 0 0 2px #b4d3ef}
+.vf-lcard.on{background:#e3eefb;border-color:var(--blue);box-shadow:0 0 0 1px var(--blue) inset}
+.vf-lcard svg{width:100%;max-width:62px;height:auto;display:block;margin:0 auto 5px}
+.vf-lname{font:600 10px/1.25 'Barlow';color:#3f515f;min-height:25px;display:flex;align-items:center;justify-content:center}
+.vf-lcard.on .vf-lname{color:var(--blue-dd)}
+
+/* formulär */
+.vf-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vf-field{display:flex;flex-direction:column;min-width:0}
+.vf-field label{font:600 9.5px 'IBM Plex Mono';letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.vf-field input,.vf-field select{width:100%;padding:9px 11px;border:1px solid #d5dde4;border-radius:9px;background:#fff;font:500 13.5px 'Barlow';color:#17242f;outline:none}
+.vf-field input.mono{font:500 13.5px 'IBM Plex Mono'}
+.vf-field input:focus,.vf-field select:focus{border-color:var(--blue)}
+.vf-field select{font-family:'Barlow'}
+.vf-hint{font:400 11px/1.45 'Barlow';color:#8a99a7;margin-top:4px}
+.vf-mode{display:flex;border:1px solid #b4d3ef;border-radius:9px;overflow:hidden;background:#fff;margin-bottom:12px}
+.vf-mode button{flex:1;padding:10px 8px;font:600 12.5px 'Barlow';color:var(--blue);background:#fff}
+.vf-mode button.on{background:var(--blue);color:#fff}
+.vf-fettfalt{background:#eef5fc;border:1px solid #cfe1f4;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.vf-calcbtn{width:100%;padding:13px;font-size:14px;margin-top:4px}
+
+/* resultat-kort */
+.vf-card{background:#fff;border:1px solid #e2e8ee;border-radius:12px;padding:16px 18px}
+.vf-kvgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.vf-kv{padding:13px 15px}
+.vf-kv.stor{grid-column:span 2;background:#f1f7fd;border-color:#cfe1f4}
+.vf-kv-l{font:600 9.5px 'IBM Plex Mono';letter-spacing:.06em;text-transform:uppercase;color:var(--muted2)}
+.vf-kv-v{font:700 21px 'IBM Plex Mono';color:#17242f;margin-top:5px;line-height:1.15}
+.vf-kv.stor .vf-kv-v{color:var(--blue-dd);font-size:24px}
+.vf-kv-v small{font-size:12px;font-weight:500;color:#6b7b89}
+.vf-kv-s{font:500 11.5px/1.5 'Barlow';color:#6b7b89;margin-top:5px}
+.vf-mot{margin:7px 0 0;padding-left:16px;font:500 12px/1.55 'Barlow';color:#4a5c6a;text-align:left}
+.vf-mot li{margin-bottom:2px}
+
+/* κ-gauge */
+.vf-gaugecard{border-color:#cfe1f4}
+.vf-gaugerow{display:flex;align-items:center;gap:20px;margin-top:10px;flex-wrap:wrap}
+.vf-kbig{font:700 30px 'IBM Plex Mono';line-height:1;white-space:nowrap}
+.vf-kbig.gron{color:#1c7a3d}.vf-kbig.rod{color:#b3261e}.vf-kbig.gul{color:#b3730c}
+.vf-gaugewrap{flex:1;min-width:220px;padding:6px 8px 18px}
+.vf-gauge{position:relative;height:14px;border-radius:7px;
+  background:linear-gradient(90deg,#e05a5a 0%,#e05a5a 16.4%,#4caf72 17%,#4caf72 66.4%,#e8c04a 67%,#e8c04a 100%)}
+.vf-needle{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1.5px;border-radius:2px;background:#17242f;box-shadow:0 0 0 1.5px #fff}
+.vf-gticks{position:relative;height:14px;margin-top:4px}
+.vf-gticks span{position:absolute;transform:translateX(-50%);font:500 10px 'IBM Plex Mono';color:#8a99a7}
+.vf-zonrub{font:700 14px 'Barlow';margin-top:12px}
+.vf-zonrub.gron{color:#1c7a3d}.vf-zonrub.rod{color:#b3261e}.vf-zonrub.gul{color:#b3730c}
+.vf-zontxt{font:500 12.5px/1.6 'Barlow';color:#4a5c6a;margin-top:3px}
+
+/* fyllnad & eftersmörjning */
+.vf-storrad{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:6px}
+.vf-big{font:700 30px 'IBM Plex Mono';color:var(--blue-dd);line-height:1}
+.vf-big-s{font:500 12px 'Barlow';color:#6b7b89}
+.vf-rad{font:500 13px/1.6 'Barlow';color:#3a4a57;margin-top:8px}
+.vf-rad.dim{color:#6b7b89}
+.vf-rad b.mono{font:600 13px 'IBM Plex Mono';color:#17242f}
+.vf-flagga{display:inline-block;font:600 10px 'IBM Plex Mono';color:#b3730c;background:#fbeed4;border-radius:5px;padding:2px 7px;margin-left:7px}
+.vf-esm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:10px}
+.vf-faktorer{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.vf-faktor{display:inline-flex;align-items:center;gap:7px;font:500 11.5px 'Barlow';color:#3f515f;background:#f2f5f8;border:1px solid #e0e5ea;border-radius:7px;padding:5px 9px}
+.vf-faktor b{font:600 11.5px 'IBM Plex Mono';color:var(--blue-dd)}
+.vf-rekrad{margin:12px 0 0}
+
+/* varningar */
+.vf-warn{background:#fbeed4;border-color:#eeda9d;color:#7a5306;margin-bottom:0}
+.vf-warn.rod{background:#fbe9e9;border-color:#eec2c2;color:#b3261e}
+
+/* "Så räknade jag" */
+.vf-details{background:#fff;border:1px solid #e2e8ee;border-radius:12px;padding:0}
+.vf-details summary{cursor:pointer;padding:14px 18px;font:600 12.5px 'Barlow';color:var(--blue-dd);list-style-position:inside}
+.vf-details[open] summary{border-bottom:1px solid #e7ecf0}
+.vf-steg{padding:13px 18px;border-bottom:1px solid #eef1f4}
+.vf-steg:last-child{border-bottom:0}
+.vf-steg-h{font:600 13px 'Barlow';color:#17242f;display:flex;align-items:center;gap:9px}
+.vf-steg-n{flex:none;font:600 10px 'IBM Plex Mono';color:var(--blue);background:#e3eefb;border-radius:5px;padding:2px 7px}
+.vf-formel{font:500 12px/1.6 'IBM Plex Mono';color:#243441;background:#f2f5f8;border-radius:7px;padding:9px 12px;margin-top:8px;overflow-x:auto;white-space:pre-wrap}
+.vf-steg-t{font:500 12.5px/1.6 'Barlow';color:#4a5c6a;margin-top:7px}
+
+/* produktrekommendationer */
+.vf-rek .tgo{margin-top:4px}
+.vf-prod{display:grid;grid-template-columns:96px 1fr auto;align-items:center;gap:14px;background:#fff;border:1px solid #e6ebef;border-radius:10px;padding:13px 15px;margin-top:9px;cursor:pointer;transition:box-shadow .12s}
+.vf-prod:hover{box-shadow:0 4px 14px rgba(20,40,60,.09)}
+.vf-prod:focus-visible{outline:none;box-shadow:0 0 0 2px #b4d3ef}
+.vf-prod-sim{display:flex;flex-direction:column;gap:5px}
+.vf-prod-mitt{min-width:0}
+.vf-prod-app{font:500 12px/1.5 'Barlow';color:#4a5c6a;margin-top:4px}
+.vf-prod-specs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:7px;font:500 11.5px 'Barlow';color:#6b7b89;align-items:center}
+.vf-prod-specs b{font:600 11.5px 'IBM Plex Mono';color:#243441}
+.vf-prod-k{text-align:center}
+.vf-kpill{display:inline-block;font:700 12.5px 'IBM Plex Mono';padding:7px 11px;border-radius:8px;line-height:1.3}
+.vf-kpill.gron{background:#e6f4ea;color:#1c7a3d}
+.vf-kpill.rod{background:#fbe9e9;color:#b3261e}
+.vf-kpill.gul{background:#fbeed4;color:#b3730c}
+.vf-kpill.okand{background:#f0f2f4;color:#8494a2;font:600 10.5px 'IBM Plex Mono'}
+.vf-kpill.okand small{font-size:9px;font-weight:500}
+@media(max-width:700px){
+  .vf-grid2{grid-template-columns:1fr}
+  .vf-kv.stor{grid-column:span 1}
+  .vf-prod{grid-template-columns:1fr;gap:8px}
+  .vf-prod-k{text-align:left}
 }

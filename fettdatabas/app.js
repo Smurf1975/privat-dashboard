@@ -389,7 +389,7 @@ async function renderKatalog(m) {
   await loadKatalog();
 }
 async function loadKatalog() {
-  let qb = sb.from('fett').select('id,produktnamn,producent,tillverkartyp,nlgi_klass,temperaturomrade_min,temperaturomrade_max,nsf_klass_food_grade,basolja,fortjockare')
+  let qb = sb.from('fett').select('id,produktnamn,producent,tillverkartyp,nlgi_klass,temperaturomrade_min,temperaturomrade_max,basolja,fortjockare,fasta_smorjamnen')
     .order('produktnamn').limit(1000);
   if (state.katalogFilter.typ !== 'alla') qb = qb.eq('tillverkartyp', state.katalogFilter.typ);
   const { data, error } = await qb;
@@ -400,15 +400,18 @@ function drawKatalog() {
   const q = state.katalogFilter.q.toLowerCase();
   const rows = state.katalog.filter(r => !q || (r.produktnamn + ' ' + r.producent).toLowerCase().includes(q));
   if ($('#kcount')) $('#kcount').textContent = `${rows.length} produkter`;
+  const dash = '<span style="color:#98a5b1">—</span>';
   const html = rows.length ? `<table class="grid"><thead><tr>
-    <th>Produkt</th><th>Tillverkare</th><th>Typ</th><th>NLGI</th><th>Temp.område</th><th>NSF</th></tr></thead><tbody>
+    <th>Produkt</th><th>Tillverkare</th><th>Förtjockare</th><th>Basolja</th><th>NLGI</th>
+    <th class="col-opt">Temp.område</th><th class="col-opt">Fasta smörjämnen</th></tr></thead><tbody>
     ${rows.map(r => `<tr class="clickable" data-id="${r.id}">
       <td style="font-weight:600;color:#17242f">${esc(r.produktnamn)}</td>
       <td>${esc(r.producent)}</td>
-      <td><span class="pill ${r.tillverkartyp === 'FUCHS' ? 'fuchs' : 'konk'}">${esc(r.tillverkartyp)}</span></td>
+      <td>${esc(arr(r.fortjockare)) || dash}</td>
+      <td>${esc(arr(r.basolja)) || dash}</td>
       <td class="mono">${esc(r.nlgi_klass ?? '—')}</td>
-      <td class="mono">${tempStr(r)}</td>
-      <td>${r.nsf_klass_food_grade && r.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd' ? `<span class="pill h1">${esc(r.nsf_klass_food_grade)}</span>` : '<span style="color:#98a5b1">—</span>'}</td>
+      <td class="mono col-opt">${tempStr(r)}</td>
+      <td class="col-opt">${esc(arr(r.fasta_smorjamnen)) || dash}</td>
     </tr>`).join('')}</tbody></table>` : `<div class="empty">Inga produkter matchar.</div>`;
   if ($('#ktable')) {
     $('#ktable').innerHTML = html;
