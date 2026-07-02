@@ -1,4 +1,4 @@
-// Fettdatabas — FUCHS smörjfett-jämförelse
+// Fettdatabas — smörjfett-jämförelse
 // Frontend-SPA. Auth via magic link, data via Supabase RLS, AI-matchning via edge function fett-sok.
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
@@ -96,7 +96,8 @@ async function boot() {
 async function loadMe() {
   const email = state.session.user.email;
   const { data, error } = await sb.from('app_anvandare').select('*').ilike('epost', email).maybeSingle();
-  if (error) { console.warn('loadMe', error.message); }
+  state.meError = error ? error.message : null;
+  if (error) console.warn('loadMe', error.message);
   state.me = data || null; // null => inloggad men inte på allowlist
 }
 
@@ -139,13 +140,17 @@ function renderLogin(authError) {
 }
 
 function renderNoAccess() {
+  const msg = state.meError
+    ? `Kunde inte verifiera behörigheten just nu (${esc(state.meError)}). Försök ladda om sidan.`
+    : `Kontot <b>${esc(state.session.user.email)}</b> finns inte på behörighetslistan. Be Mats lägga till dig innan du kan använda databasen.`;
   app().innerHTML = `
   <div class="login"><div class="login-card">
     <div class="login-brand"><div class="login-logo">F</div><div><h1>Fettdatabas</h1><p>Teknik</p></div></div>
-    <div class="login-msg err" style="margin-top:20px">Kontot <b>${esc(state.session.user.email)}</b> finns inte på behörighetslistan.
-      Be Mats lägga till dig innan du kan använda databasen.</div>
-    <button class="login-btn" id="lo" style="margin-top:16px">Logga ut</button>
+    <div class="login-msg err" style="margin-top:20px">${msg}</div>
+    ${state.meError ? '<button class="login-btn" id="reload" style="margin-top:16px">Ladda om</button>' : ''}
+    <button class="login-btn ${state.meError ? '' : ''}" id="lo" style="margin-top:10px;background:#8494a2">Logga ut</button>
   </div></div>`;
+  if (state.meError) $('#reload').addEventListener('click', () => location.reload());
   $('#lo').addEventListener('click', () => sb.auth.signOut());
 }
 
@@ -157,7 +162,7 @@ function renderShell() {
   app().innerHTML = `
   <div class="page"><div class="shell">
     <div class="side">
-      <div class="sbrand"><div class="slogo">F</div><div><div class="sbn">Fettdatabas</div><div class="sbs">FUCHS · Teknik</div></div></div>
+      <div class="sbrand"><div class="slogo">F</div><div><div class="sbn">Fettdatabas</div><div class="sbs">Teknik</div></div></div>
       <nav class="nav">${nav}</nav>
       <div class="sfoot">
         <div class="suser"><b>${esc(state.me.namn || state.me.epost)}</b><br><span class="srole">${esc(state.me.roll)}</span></div>
@@ -200,7 +205,7 @@ function renderSok(m) {
   const f = state.filters;
   m.innerHTML = `
     <div class="tbar">
-      <div><div class="ttl">Sök & översätt</div><div class="tsub">Hitta FUCHS-motsvarighet till en konkurrentprodukt</div></div>
+      <div><div class="ttl">Sök & översätt</div><div class="tsub">Hitta bästa motsvarighet till en konkurrentprodukt</div></div>
       <div class="tsearch"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>
         <input id="q" placeholder="t.ex. Klüber Isoflex NBU 15" value="${esc(state.query)}"></div>
       <button class="tgo" id="go">Översätt</button>
@@ -230,10 +235,10 @@ function renderSok(m) {
 }
 
 function renderSokResult() {
-  if (state.searching) return `<div class="empty"><span class="spinner"></span> AI analyserar och rankar FUCHS-produkter…</div>`;
+  if (state.searching) return `<div class="empty"><span class="spinner"></span> AI analyserar och rankar produkter…</div>`;
   const r = state.searchResult;
   if (!r) return `<div class="empty">Skriv in en konkurrentprodukt och tryck <b>Översätt</b>.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
-  if (!r.results || !r.results.length) return `<div class="empty">Inga FUCHS-produkter matchade. Prova att lätta på filtren.</div>`;
+  if (!r.results || !r.results.length) return `<div class="empty">Inga produkter matchade. Prova att lätta på filtren.</div>`;
   const comp = r.competitor;
   const note = r.note ? `<div class="ai-note"><span class="ai-chip">AI</span>${comp?.matched ? `Tolkade sökningen som <b>${esc(comp.produktnamn)}</b>${comp.producent ? ` (${esc(comp.producent)})` : ''}. ` : ''}${esc(r.note)}</div>` : '';
   const rows = r.results.map((x, i) => {
@@ -255,8 +260,8 @@ function renderSokResult() {
   }).join('');
   const fuchsCount = r.candidateCount ?? '';
   return `${note}
-    <div class="resh"><span class="t">${r.results.length} träffar${fuchsCount ? ` · <span>av ${fuchsCount} FUCHS</span>` : ''}</span><span class="s">Sortering: likhet ↓</span></div>
-    <div class="thd"><span>Likhet</span><span>FUCHS-produkt</span><span>NLGI</span><span>Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
+    <div class="resh"><span class="t">${r.results.length} träffar${fuchsCount ? ` · <span>av ${fuchsCount} i sortimentet</span>` : ''}</span><span class="s">Sortering: likhet ↓</span></div>
+    <div class="thd"><span>Likhet</span><span>Föreslagen produkt</span><span>NLGI</span><span>Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
     ${rows}`;
 }
 
@@ -306,7 +311,7 @@ function cmpVal(field, r) { if (!r) return null; return typeof field[1] === 'fun
 function deltaFor(cv, fv) {
   if (cv == null && fv == null) return '';
   if (String(cv ?? '').trim() === String(fv ?? '').trim()) return '<span class="dl eq">=</span>';
-  if (cv == null || cv === '' || cv === '—') return '<span class="dl u">FUCHS+</span>';
+  if (cv == null || cv === '' || cv === '—') return '<span class="dl u">Fördel</span>';
   return '<span class="dl d">Skillnad</span>';
 }
 
@@ -328,7 +333,7 @@ function renderJamforelse(m) {
     </div>
     <div style="padding:16px 26px 0"><button class="btn ghost" id="back">‹ Tillbaka till sökningen</button></div>
     <div class="cmp-wrap" style="padding:16px 26px 26px">
-      <div class="cgh"><div>Egenskap</div><div class="comp">Konkurrent${comp && !comp.matched ? ' (AI-tolkad)' : ''}</div><div class="fu">FUCHS · ${esc(fu.produktnamn)}</div><div class="dl">Δ</div></div>
+      <div class="cgh"><div>Egenskap</div><div class="comp">Konkurrent${comp && !comp.matched ? ' (AI-tolkad)' : ''}</div><div class="fu">Förslag · ${esc(fu.produktnamn)}</div><div class="dl">Δ</div></div>
       ${rows}
     </div>`;
   $('#back').addEventListener('click', () => { state.view = 'sok'; renderShell(); });
@@ -342,7 +347,7 @@ async function renderKatalog(m) {
     <div class="content">
       <div class="toolbar">
         <select class="selectbox" id="ktyp">
-          <option value="alla">Alla tillverkare</option><option value="FUCHS">Endast FUCHS</option><option value="Konkurrent">Endast konkurrenter</option></select>
+          <option value="alla">Alla tillverkare</option><option value="FUCHS">Endast eget sortiment</option><option value="Konkurrent">Endast konkurrenter</option></select>
         <span class="count" id="kcount"></span>
       </div>
       <div id="ktable"><div class="empty"><span class="spinner"></span> Laddar…</div></div>
