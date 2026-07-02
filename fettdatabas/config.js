@@ -4,4 +4,7 @@ window.FETT_CONFIG = {
   SUPABASE_KEY: 'sb_publishable_lUbpt8cdMSj73xRMr8TI5Q_sHZZRJPs',
   // Vart magic link-mailet skickar användaren tillbaka (måste ligga i Supabase Auth → Redirect URLs)
   REDIRECT_URL: window.location.origin + window.location.pathname,
+  // Mailadress dit tekniker vidarebefordrar nya produktblad (PDS/TDS). Sätts när Postmark inbound kopplats.
+  // Lämna tom sträng tills adressen finns — då visas en admin-notis istället.
+  INBOUND_EMAIL: '',
 };

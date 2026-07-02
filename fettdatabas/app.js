@@ -422,9 +422,20 @@ async function openProduct(id) {
 
 // ---------- 4. Granskningskö ----------
 async function renderGranskning(m) {
+  const inbox = (CFG.INBOUND_EMAIL || '').trim();
+  const inboxBox = inbox
+    ? `<div class="ai-note" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+         <span>📎 Skicka eller vidarebefordra nya produktblad <b>(PDS/TDS)</b> till adressen — AI:n tolkar dem och lägger dem här för granskning:</span>
+         <span class="mono" id="inboxAddr" style="background:#fff;border:1px solid #cfe1f4;border-radius:7px;padding:6px 10px;color:#00448a;font-weight:600">${esc(inbox)}</span>
+         <button class="btn ghost" id="copyInbox">Kopiera</button></div>`
+    : `<div class="ai-note">📎 Nya produktblad <b>(PDS/TDS)</b> mejlas in hit för AI-tolkning och granskning. <b>Adressen är inte konfigurerad än</b> — admin sätter <code>INBOUND_EMAIL</code> i config.js när Postmark inbound kopplats (se README steg 3).</div>`;
   m.innerHTML = `<div class="tbar"><div><div class="ttl">Granskningskö</div>
     <div class="tsub">Produktinfo inkommen via mail — AI-tolkad, väntar på godkännande</div></div></div>
-    <div class="content" id="gcontent"><div class="empty"><span class="spinner"></span> Laddar…</div></div>`;
+    <div class="content"><div>${inboxBox}</div>
+      <div id="gcontent"><div class="empty"><span class="spinner"></span> Laddar…</div></div></div>`;
+  if (inbox) $('#copyInbox')?.addEventListener('click', () => {
+    navigator.clipboard.writeText(inbox).then(() => toast('Adress kopierad'), () => toast(inbox));
+  });
   const { data, error } = await sb.from('inkommande_mail').select('*').order('created_at', { ascending: false }).limit(100);
   state.mail = error ? [] : data;
   const c = $('#gcontent');
