@@ -70,9 +70,15 @@
 
       <!-- AI BRIEFING -->
       <div style="background:linear-gradient(135deg,rgba(130,220,50,0.07) 0%,rgba(14,16,24,0.3) 70%);border:1px solid rgba(130,220,50,0.18);border-radius:12px;padding:14px 18px;margin-bottom:14px;animation:fadeUp 0.35s ease both;">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
-          <span style="width:5px;height:5px;border-radius:50%;background:oklch(0.82 0.24 130);display:inline-block;animation:blink 2.4s ease infinite;"></span>
-          <span style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.82 0.24 130);">AI-BRIEFING · IDAG</span>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:5px;height:5px;border-radius:50%;background:oklch(0.82 0.24 130);display:inline-block;animation:blink 2.4s ease infinite;"></span>
+            <span style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.82 0.24 130);">AI-BRIEFING · IDAG</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:10px;color:rgba(238,240,245,0.35);">{{ briefingBadge }}</span>
+            <button onclick="{{ briefingOnRefresh }}" style="padding:2px 8px;border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:rgba(238,240,245,0.6);">🔄</button>
+          </div>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
           <sc-for list="{{ briefing }}" as="b" hint-placeholder-count="5">
@@ -1045,6 +1051,7 @@ class Component extends DCLogic {
     outdoorTemp:null, bedroomTemp:null, bedroomHumidity:null,
     pm25:null, filterLife:null,
     elCurrentOre:null, elCheapest:'', elExpensive:'', elAvgToday:null,
+    aiBriefing:null, aiBriefingTime:null, aiBriefingLoading:false,
     doorLocked:null, doorBattery:null, frontDoorOpen:null,
     hallCamUrl:null, hallCamTime:null, hallCamLoading:false,
     carBattery:null, carRange:null, carLocation:null, carLocked:null,
@@ -1099,7 +1106,9 @@ class Component extends DCLogic {
     this.restoreCache();   // visa senaste kända värden direkt, innan API:erna svarar
     this.fetchAll();
     this.fetchLiverpool();
+    setTimeout(() => this.fetchAiBriefing(), 6000);   // vänta in Homey/Google-data innan AI-briefingen byggs
     this._refresh = setInterval(() => this.fetchAll(), 5*60*1000);
+    this._briefingRefresh = setInterval(() => this.fetchAiBriefing(), 30*60*1000);   // kollar var 30:e min, gör bara ett anrop om >4h gammal
     this._lfcRefresh = setInterval(() => this.fetchLiverpool(), 60*60*1000);
     this.scheduleMorningRefresh();   // garanterad ren uppdatering varje morgon kl 08:00
     this.initGoogle();
@@ -1466,6 +1475,62 @@ class Component extends DCLogic {
     }
   }
 
+  _buildBriefingSummary() {
+    const s = this.state;
+    const lines = [];
+    if (s.googleAuthed && s.calEvents?.length > 0) {
+      const today = s.calEvents.filter(e => e.isToday);
+      lines.push(`Möten idag (${today.length}): ` + today.map(e => `${e.time} ${e.title}`).join('; '));
+    } else {
+      lines.push('Kalender: ej inloggad (ingen mötesdata tillgänglig).');
+    }
+    if (s.googleAuthed && s.gmailMsgs?.length > 0) {
+      lines.push(`Olästa mail (${s.gmailMsgs.length}): ` + s.gmailMsgs.slice(0,3).map(m => `${m.from} – ${m.subject}`).join('; '));
+    }
+    if (s.doorLocked === false) lines.push('Ytterdörren är OLÅST just nu.');
+    if (s.frontDoorOpen) lines.push('Ytterdörren står ÖPPEN.');
+    if (s.carBattery != null) lines.push(`Volvo XC60 batteri: ${Math.round(s.carBattery)}%${s.carBattery<20?' (LÅGT, bör laddas)':''}, plats: ${s.carLocation||'okänd'}.`);
+    if (s.elCurrentOre != null) lines.push(`Elpris just nu: ${s.elCurrentOre.toFixed(1)} öre/kWh${s.elCheapest?`, billigast: ${s.elCheapest}`:''}${s.elExpensive?`, dyrast: ${s.elExpensive}`:''}.`);
+    if (s.wxTemp != null) lines.push(`Väder Nyköping: ${s.wxTemp}°C, ${s.wxCondition||''}.`);
+    if (s.lfcNext) lines.push(`Liverpool nästa match: ${s.lfcNext.opp} ${s.lfcNext.date} (${s.lfcNext.home?'hemma':'borta'}).`);
+    if (s.rocky?.isCleaning) lines.push('Rocky städar just nu.');
+    return lines.join('\n');
+  }
+
+  async fetchAiBriefing(force=false) {
+    const last = this.state.aiBriefingTime;
+    const FOUR_H = 4*60*60*1000;
+    if (!force && last && (Date.now()-last) < FOUR_H) return;
+    this.setState({ aiBriefingLoading: true });
+    try {
+      const PROXY = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/anthropic-proxy';
+      const summary = this._buildBriefingSummary();
+      const res = await fetch(PROXY, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'briefing', summary }),
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      let json = null;
+      for (const b of (data.content || [])) {
+        if (b.type === 'text') {
+          const t = (b.text || '').replace(/```json|```/g,'').trim();
+          try { json = JSON.parse(t); break; } catch(_) {}
+          const m = t.match(/\{[\s\S]*\}/);
+          if (m) { try { json = JSON.parse(m[0]); break; } catch(_) {} }
+        }
+      }
+      const bullets = json?.bullets || [];
+      if (bullets.length === 0) throw new Error('Tomt svar');
+      this.setState({ aiBriefing: bullets, aiBriefingTime: Date.now(), aiBriefingLoading: false });
+      this.saveCache();
+    } catch(e) {
+      console.warn('AI-briefing:', e.message);
+      this.setState({ aiBriefingLoading: false });
+    }
+  }
+
   async fetchTripPhoto(city) {
     if (!city) return;
     try {
@@ -1482,7 +1547,7 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
-    clearInterval(this._tick); clearInterval(this._refresh); clearInterval(this._lfcRefresh);
+    clearInterval(this._tick); clearInterval(this._refresh); clearInterval(this._lfcRefresh); clearInterval(this._briefingRefresh);
     window.removeEventListener('resize', this._resize);
   }
 
@@ -1593,7 +1658,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -1766,6 +1831,7 @@ class Component extends DCLogic {
       homeyOk, homeyError,
       outdoorTemp, bedroomTemp, bedroomHumidity, pm25, filterLife,
       elCurrentOre, elCheapest, elExpensive, elAvgToday,
+      aiBriefing, aiBriefingTime, aiBriefingLoading,
       doorLocked, doorBattery, frontDoorOpen, hallCamUrl, hallCamTime, hallCamLoading, carBattery, carRange, carLocation, carLocked,
       volvoRangeBattery, volvoLat, volvoLng, volvoOdometer, volvoCharging, volvoChargingStatus, volvoEngine, volvoDistance,
       miniOk, miniBattery, miniRange, miniLocked, miniLocation, miniLat, miniLng, miniOdometer, miniCharging, miniUpdated,
@@ -2278,25 +2344,32 @@ class Component extends DCLogic {
       display:'flex',alignItems:'center',justifyContent:'center',fontSize:'9px',fontWeight:'700',
       color:r==='W'?G:r==='D'?'rgba(238,240,245,0.45)':R}});
 
-    // Dynamic AI Briefing
-    const briefing = [];
-    briefing.push({text:'4 möten idag – Produktmötet 11:00 är ditt tyngsta block.'});
-    if (carBattery!==null&&carBattery<20)
-      briefing.push({text:`🚨 Volvo XC60 har ${Math.round(carBattery)}% batteri – ladda snarast! Bilen är vid ${carLocation||'okänd plats'}.`});
-    else
-      briefing.push({text:'Erik Andersson väntar svar på offert Q3 – deadline idag.'});
-    if (doorLocked===false)
-      briefing.push({text:'⚠ Ytterdörren är olåst – är det korrekt?'});
-    else if (wxTemp!==null)
-      briefing.push({text:`${wxTemp}°C i Nyköping idag ${wxIcon} – ${wxTemp<10?'ta ett extra lager':'bra väder för en promenad'}.`});
-    if (elOre!==null&&elOre<30)
-      briefing.push({text:`Elpriset är lågt just nu (${elOre.toFixed(1)} öre) – perfekt tid att köra tvättmaskin eller ladda bilen.`});
-    else if (elOre!==null&&elOre>100)
-      briefing.push({text:`Elpriset är högt (${elOre.toFixed(1)} öre/kWh) – undvik hög förbrukning just nu.`});
-    else
-      briefing.push({text:elCheapest?`Billigaste eltimmar idag: ${elCheapest}.`:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
-    if (briefing.length<5)
-      briefing.push({text:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
+    // AI-briefing (Haiku, cachad 4h) med regelbaserad fallback om AI:n inte svarat än
+    let briefing;
+    if (aiBriefing && aiBriefing.length > 0) {
+      briefing = aiBriefing.map(t => ({text:t}));
+    } else {
+      briefing = [];
+      briefing.push({text:'4 möten idag – Produktmötet 11:00 är ditt tyngsta block.'});
+      if (carBattery!==null&&carBattery<20)
+        briefing.push({text:`🚨 Volvo XC60 har ${Math.round(carBattery)}% batteri – ladda snarast! Bilen är vid ${carLocation||'okänd plats'}.`});
+      else
+        briefing.push({text:'Erik Andersson väntar svar på offert Q3 – deadline idag.'});
+      if (doorLocked===false)
+        briefing.push({text:'⚠ Ytterdörren är olåst – är det korrekt?'});
+      else if (wxTemp!==null)
+        briefing.push({text:`${wxTemp}°C i Nyköping idag ${wxIcon} – ${wxTemp<10?'ta ett extra lager':'bra väder för en promenad'}.`});
+      if (elOre!==null&&elOre<30)
+        briefing.push({text:`Elpriset är lågt just nu (${elOre.toFixed(1)} öre) – perfekt tid att köra tvättmaskin eller ladda bilen.`});
+      else if (elOre!==null&&elOre>100)
+        briefing.push({text:`Elpriset är högt (${elOre.toFixed(1)} öre/kWh) – undvik hög förbrukning just nu.`});
+      else
+        briefing.push({text:elCheapest?`Billigaste eltimmar idag: ${elCheapest}.`:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
+      if (briefing.length<5)
+        briefing.push({text:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
+    }
+    const briefingBadge = aiBriefingLoading ? '◌ Genererar…' : (aiBriefing ? '● AI' : 'Demo');
+    const briefingOnRefresh = () => this.fetchAiBriefing(true);
 
     // ── Färdplan – nästa resa (läser från localStorage 'fardplan_next') ──
     // ── Färdplan – nästa resa (Supabase live) ──
@@ -2397,7 +2470,7 @@ class Component extends DCLogic {
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
-      events, emails, tasks, weather, wHourly, smartHome, briefing, shScenes, rockyRooms, rockyStatus, rockyDockBtn,
+      events, emails, tasks, weather, wHourly, smartHome, briefing, briefingBadge, briefingOnRefresh, shScenes, rockyRooms, rockyStatus, rockyDockBtn,
       bathing, bathingBadge, bathingBadgeStyle,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
