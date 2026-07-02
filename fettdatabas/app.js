@@ -1,6 +1,8 @@
 // Fettdatabas — smörjfett-jämförelse
 // Frontend-SPA. Auth via magic link, data via Supabase RLS, AI-matchning via edge function fett-sok.
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+// OBS: "Välj fett" laddas lazy nedan (se renderMain). Slå på med VALJFETT_ENABLED
+// när valj-fett-calc.js är färdig — annars är fliken vilande.
 
 const CFG = window.FETT_CONFIG;
 const sb = createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY);
@@ -49,8 +51,11 @@ const F = {
     'Högtryck EP', 'Hög temperatur', 'Låg temperatur', 'Vattenexponering'],
 };
 
+// Slå på när valj-fett-calc.js är klar → då aktiveras "Välj fett"-fliken igen
+const VALJFETT_ENABLED = false;
+
 const NAV = [
-  ['sok', 'Sök & översätt'], ['katalog', 'Produktkatalog'],
+  ['sok', 'Sök & översätt'], ['valjfett', 'Välj fett'], ['katalog', 'Produktkatalog'],
   ['granskning', 'Granskningskö'], ['anvandare', 'Användare'],
 ];
 
@@ -67,6 +72,19 @@ function toast(msg) {
 }
 const isEditor = () => state.me && ['admin', 'redaktor'].includes(state.me.roll);
 const isAdmin = () => state.me && state.me.roll === 'admin';
+
+// Länk(ar) till användarens webbmail utifrån maildomän — för att snabbt öppna inkorgen
+function webmailLinks(email) {
+  const d = (email.split('@')[1] || '').toLowerCase();
+  if (/gmail|googlemail/.test(d)) return [{ label: 'Öppna Gmail', url: 'https://mail.google.com/mail/u/0/', primary: true }];
+  if (/outlook|hotmail|live|msn/.test(d)) return [{ label: 'Öppna Outlook', url: 'https://outlook.live.com/mail/', primary: true }];
+  if (/yahoo/.test(d)) return [{ label: 'Öppna Yahoo Mail', url: 'https://mail.yahoo.com/', primary: true }];
+  // Okänd företagsdomän: erbjud de två vanligaste (Google Workspace / Microsoft 365)
+  return [
+    { label: 'Öppna Gmail', url: 'https://mail.google.com/mail/u/0/', primary: true },
+    { label: 'Öppna Outlook', url: 'https://outlook.office.com/mail/', primary: false },
+  ];
+}
 
 // ---------- auth bootstrap ----------
 function consumeAuthErrorFromUrl() {
@@ -132,8 +150,11 @@ function renderLogin(authError) {
       $('#loginMsg').className = 'login-msg err'; $('#loginMsg').textContent = 'Kunde inte skicka: ' + error.message;
       btn.disabled = false; btn.textContent = 'Skicka inloggningslänk';
     } else {
+      const btns = webmailLinks(email).map(w =>
+        `<a class="login-btn" style="display:block;text-align:center;text-decoration:none;margin-top:10px;${w.primary ? '' : 'background:#eef5fc;color:var(--blue);border:1px solid #b4d3ef'}" href="${w.url}" target="_blank" rel="noopener">${w.label} ↗</a>`
+      ).join('');
       $('#loginMsg').className = 'login-msg ok';
-      $('#loginMsg').textContent = `Länk skickad till ${email}. Öppna mailet på den här enheten för att logga in.`;
+      $('#loginMsg').innerHTML = `Länk skickad till <b>${esc(email)}</b>. Öppna det <b>senaste</b> mailet och klicka länken — då loggas du in direkt.${btns}`;
       btn.textContent = 'Länk skickad ✓';
     }
   });
@@ -156,7 +177,7 @@ function renderNoAccess() {
 
 // ---------- shell ----------
 function renderShell() {
-  const nav = NAV.filter(([id]) => id !== 'anvandare' || isAdmin())
+  const nav = NAV.filter(([id]) => (id !== 'anvandare' || isAdmin()) && (id !== 'valjfett' || VALJFETT_ENABLED))
     .map(([id, label]) => `<a data-nav="${id}" class="${state.view === id ? 'on' : ''}">
       <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2.5"/></svg>${label}</a>`).join('');
   app().innerHTML = `
@@ -176,9 +197,19 @@ function renderShell() {
   renderMain();
 }
 
+const ctx = () => ({ sb, FN_URL, session: () => state.session, toast, esc, openProduct });
+
 function renderMain() {
   const m = $('#main');
   if (state.view === 'sok') return renderSok(m);
+  if (state.view === 'valjfett') {
+    if (!VALJFETT_ENABLED) { state.view = 'sok'; return renderSok(m); }
+    m.innerHTML = `<div class="empty"><span class="spinner"></span> Laddar…</div>`;
+    import('./valj-fett-vy.js')
+      .then(mod => mod.renderValjFett(m, ctx()))
+      .catch(() => { m.innerHTML = '<div class="empty">Välj fett kunde inte laddas (valj-fett-calc.js saknas).</div>'; });
+    return;
+  }
   if (state.view === 'katalog') return renderKatalog(m);
   if (state.view === 'jamforelse') return renderJamforelse(m);
   if (state.view === 'granskning') return renderGranskning(m);
