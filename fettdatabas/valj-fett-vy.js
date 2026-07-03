@@ -188,7 +188,7 @@ function formHtml() {
         ${fInput('d', 'd — innerdiameter (mm)', 't.ex. 50')}
         ${fInput('D', 'D — ytterdiameter (mm)', 't.ex. 90')}
         ${fInput('B', 'B / T / H — bredd (mm)', 't.ex. 20')}
-        ${fInput('massaKg', 'Lagermassa (kg)', 'valfri — ger exakt fyllnad')}
+        ${fInput('massaKg', 'Lagermassa (kg)', 'valfri', 'Lagrets vikt i kg (från katalog/förpackning) — ger exakt fyllnadsmängd istället för en uppskattning.')}
         ${fInput('varvtal', 'Varvtal (r/min)', 't.ex. 1 500')}
         ${fInput('drifttemp', 'Drifttemperatur (°C)', '70')}
         ${fInput('omgivningstemp', 'Lägsta omgivningstemp (°C)', '20')}
