@@ -150,6 +150,12 @@ table.grid tr.clickable:hover td{background:#f7fafd}
 .dropdown-panel{position:absolute;top:calc(100% + 6px);left:0;z-index:30;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(20,40,60,.16);padding:10px;min-width:210px;max-height:360px;overflow:auto}
 #kolBtn{cursor:pointer}
 #ktable{overflow-x:auto}
+/* Klickbara rubrikfilter i katalogen */
+.th-filter{cursor:pointer;user-select:none;display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+.th-filter:hover{color:var(--blue)}
+.fnl{color:#b0bcc7;font-size:10px}
+.fnl.on{color:var(--blue)}
+table.grid th:has(.fnl.on){color:var(--blue)}
 .pill{display:inline-block;font:600 10px 'IBM Plex Mono';padding:3px 8px;border-radius:5px}
 .pill.fuchs{background:#e3eefb;color:var(--blue)}
 .pill.konk{background:#f0f2f4;color:#6b7b89}

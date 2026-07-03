@@ -52,7 +52,7 @@ const F = {
 };
 
 // Slå på när valj-fett-calc.js är klar → då aktiveras "Välj fett"-fliken igen
-const VALJFETT_ENABLED = true;
+const VALJFETT_ENABLED = false;
 
 const NAV = [
   ['sok', 'Sök & översätt'], ['valjfett', 'Välj fett'], ['katalog', 'Produktkatalog'],
@@ -407,6 +407,60 @@ function sparaKatalogKol() {
   localStorage.setItem('fett_katalog_kol', JSON.stringify(state.katalogKol));
 }
 
+// Kolumner som går att filtrera i rubriken (kategoriska). Returnerar värde(n) per rad.
+const KATALOG_FILTERBARA = {
+  producent: r => [r.producent],
+  tillverkartyp: r => [r.tillverkartyp],
+  produkttyp: r => [r.produkttyp],
+  fortjockare: r => r.fortjockare || [],
+  basolja: r => r.basolja || [],
+  nlgi: r => [r.nlgi_klass],
+  fasta: r => r.fasta_smorjamnen || [],
+  epaw: r => [r.ep_aw_tillsatser],
+  nsf: r => [r.nsf_klass_food_grade],
+  pfas: r => [r.pfas_status],
+  tillampning: r => r.tillampningsomrade || [],
+  farg: r => [r.farg],
+  status: r => [r.status],
+};
+
+function closeKolFilter() { const p = $('#fcolPanel'); if (p) p.remove(); }
+document.addEventListener('click', closeKolFilter); // stäng rubrikfilter vid klick utanför
+
+function openKolFilter(colKey, anchorEl) {
+  closeKolFilter();
+  const col = KATALOG_KOLUMNER.find(c => c.key === colKey);
+  const getVals = KATALOG_FILTERBARA[colKey];
+  const counts = new Map();
+  state.katalog.forEach(r => getVals(r).forEach(v => { if (v != null && v !== '') counts.set(v, (counts.get(v) || 0) + 1); }));
+  const values = [...counts.keys()].sort((a, b) => String(a).localeCompare(String(b), 'sv', { numeric: true }));
+  const sel = state.katalogKolFilter[colKey] || [];
+  const rect = anchorEl.getBoundingClientRect();
+  const panel = document.createElement('div');
+  panel.className = 'dropdown-panel'; panel.id = 'fcolPanel';
+  panel.style.position = 'fixed';
+  panel.style.top = (rect.bottom + 4) + 'px';
+  panel.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - 250)) + 'px';
+  panel.innerHTML = `<div style="font:600 10px 'IBM Plex Mono';text-transform:uppercase;letter-spacing:.06em;color:#8494a2;padding:2px 4px 8px">Filtrera: ${esc(col.label)}</div>`
+    + (values.length ? values.map(v => `<label class="ck" data-fv="${esc(v)}" style="padding:5px 4px"><span class="box ${sel.includes(v) ? 'on' : ''}"></span>${esc(v)} <span style="color:#8494a2;font-size:11px">(${counts.get(v)})</span></label>`).join('')
+      : '<div style="color:#8494a2;font-size:12px;padding:6px 4px">Inga värden</div>')
+    + `<div style="border-top:1px solid #e6ebef;margin-top:6px;padding-top:8px;display:flex;justify-content:space-between">
+        <button class="btn ghost" id="fcolClear" type="button">Rensa</button>
+        <button class="btn pri" id="fcolClose" type="button">Klar</button></div>`;
+  document.body.appendChild(panel);
+  panel.addEventListener('click', e => e.stopPropagation());
+  panel.querySelectorAll('label.ck').forEach(l => l.addEventListener('click', () => {
+    const v = l.dataset.fv;
+    const cur = state.katalogKolFilter[colKey] ? [...state.katalogKolFilter[colKey]] : [];
+    const i = cur.indexOf(v); i < 0 ? cur.push(v) : cur.splice(i, 1);
+    if (cur.length) state.katalogKolFilter[colKey] = cur; else delete state.katalogKolFilter[colKey];
+    l.querySelector('.box').classList.toggle('on');
+    drawKatalog();
+  }));
+  $('#fcolClear').addEventListener('click', () => { delete state.katalogKolFilter[colKey]; closeKolFilter(); drawKatalog(); });
+  $('#fcolClose').addEventListener('click', closeKolFilter);
+}
+
 async function renderKatalog(m) {
   m.innerHTML = `<div class="tbar"><div><div class="ttl">Produktkatalog</div><div class="tsub">Alla produkter i databasen</div></div>
     <div class="tsearch"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>
@@ -469,18 +523,38 @@ async function loadKatalog() {
   drawKatalog();
 }
 function drawKatalog() {
+  if (!state.katalogKolFilter) state.katalogKolFilter = {};
   const q = state.katalogFilter.q.toLowerCase();
-  const rows = state.katalog.filter(r => !q || (r.produktnamn + ' ' + r.producent).toLowerCase().includes(q));
+  let rows = state.katalog.filter(r => !q || (r.produktnamn + ' ' + r.producent).toLowerCase().includes(q));
+  // kolumnfilter (rubrik-dropdowns) — kombineras med AND mellan kolumner
+  const aktivaFilter = Object.entries(state.katalogKolFilter);
+  for (const [k, vals] of aktivaFilter) {
+    const getVals = KATALOG_FILTERBARA[k];
+    rows = rows.filter(r => getVals(r).some(v => vals.includes(v)));
+  }
   if ($('#kcount')) $('#kcount').textContent = `${rows.length} produkter`;
+
   const kol = katalogValdaKolumner();
-  const html = rows.length ? `<table class="grid"><thead><tr>
-    ${kol.map(c => `<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>
+  const filterrad = aktivaFilter.length
+    ? `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        ${aktivaFilter.map(([k, vals]) => { const c = KATALOG_KOLUMNER.find(x => x.key === k); return `<span class="pill" style="background:#e3eefb;color:var(--blue)">${esc(c.label)}: ${vals.map(esc).join(', ')}</span>`; }).join('')}
+        <button class="btn ghost" id="rensaFilter" type="button">Rensa alla filter</button></div>`
+    : '';
+  const th = c => {
+    if (!KATALOG_FILTERBARA[c.key]) return `<th>${esc(c.label)}</th>`;
+    const on = state.katalogKolFilter[c.key]?.length ? ' on' : '';
+    return `<th><span class="th-filter" data-fcol="${c.key}">${esc(c.label)} <span class="fnl${on}">▾</span></span></th>`;
+  };
+  const html = rows.length ? `${filterrad}<table class="grid"><thead><tr>
+    ${kol.map(th).join('')}</tr></thead><tbody>
     ${rows.map(r => `<tr class="clickable" data-id="${r.id}">
       ${kol.map(c => `<td${c.mono ? ' class="mono"' : ''}>${c.cell(r)}</td>`).join('')}
-    </tr>`).join('')}</tbody></table>` : `<div class="empty">Inga produkter matchar.</div>`;
+    </tr>`).join('')}</tbody></table>` : `${filterrad}<div class="empty">Inga produkter matchar.</div>`;
   if ($('#ktable')) {
     $('#ktable').innerHTML = html;
     $('#ktable').querySelectorAll('[data-id]').forEach(tr => tr.addEventListener('click', () => openProduct(tr.dataset.id)));
+    $('#ktable').querySelectorAll('.th-filter').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); openKolFilter(el.dataset.fcol, el); }));
+    const rf = $('#rensaFilter'); if (rf) rf.addEventListener('click', () => { state.katalogKolFilter = {}; drawKatalog(); });
   }
 }
 
