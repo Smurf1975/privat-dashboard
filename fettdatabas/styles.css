@@ -145,6 +145,11 @@ table.grid tr.clickable{cursor:pointer}
 table.grid tr.clickable:hover td{background:#f7fafd}
 /* Katalog: valfria kolumner (Temp, Fasta smörjämnen) döljs på smala skärmar */
 @media(max-width:960px){table.grid th.col-opt,table.grid td.col-opt{display:none}}
+/* Kolumnväljare-dropdown */
+.dropdown{position:relative;display:inline-block}
+.dropdown-panel{position:absolute;top:calc(100% + 6px);left:0;z-index:30;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(20,40,60,.16);padding:10px;min-width:210px;max-height:360px;overflow:auto}
+#kolBtn{cursor:pointer}
+#ktable{overflow-x:auto}
 .pill{display:inline-block;font:600 10px 'IBM Plex Mono';padding:3px 8px;border-radius:5px}
 .pill.fuchs{background:#e3eefb;color:var(--blue)}
 .pill.konk{background:#f0f2f4;color:#6b7b89}

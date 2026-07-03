@@ -371,6 +371,42 @@ function renderJamforelse(m) {
 }
 
 // ---------- 3. Produktkatalog ----------
+const DASH = '<span style="color:#98a5b1">—</span>';
+// Alla valbara kolumner. fast:true = kan inte stängas av (produktidentitet).
+const KATALOG_KOLUMNER = [
+  { key: 'produkt', label: 'Produkt', fast: true, cell: r => `<span style="font-weight:600;color:#17242f">${esc(r.produktnamn)}</span>` },
+  { key: 'producent', label: 'Tillverkare', cell: r => esc(r.producent) || DASH },
+  { key: 'tillverkartyp', label: 'Typ', cell: r => `<span class="pill ${r.tillverkartyp === 'FUCHS' ? 'fuchs' : 'konk'}">${esc(r.tillverkartyp)}</span>` },
+  { key: 'produkttyp', label: 'Produkttyp', cell: r => esc(r.produkttyp) || DASH },
+  { key: 'fortjockare', label: 'Förtjockare', cell: r => esc(arr(r.fortjockare)) || DASH },
+  { key: 'basolja', label: 'Basolja', cell: r => esc(arr(r.basolja)) || DASH },
+  { key: 'nlgi', label: 'NLGI', mono: true, cell: r => esc(r.nlgi_klass ?? '—') },
+  { key: 'visk40', label: 'Visk. 40°C', mono: true, cell: r => r.viskositet_40c != null ? esc(r.viskositet_40c) : DASH },
+  { key: 'visk100', label: 'Visk. 100°C', mono: true, cell: r => r.viskositet_100c != null ? esc(r.viskositet_100c) : DASH },
+  { key: 'temp', label: 'Temp.område', mono: true, cell: r => tempStr(r) },
+  { key: 'droppunkt', label: 'Droppunkt', mono: true, cell: r => r.droppunkt != null ? '>' + esc(r.droppunkt) + '°C' : DASH },
+  { key: 'fasta', label: 'Fasta smörjämnen', cell: r => esc(arr(r.fasta_smorjamnen)) || DASH },
+  { key: 'epaw', label: 'EP/AW', cell: r => esc(r.ep_aw_tillsatser) || DASH },
+  { key: 'nsf', label: 'NSF', cell: r => (r.nsf_klass_food_grade && r.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd') ? `<span class="pill h1">${esc(r.nsf_klass_food_grade)}</span>` : DASH },
+  { key: 'pfas', label: 'PFAS', cell: r => esc(r.pfas_status) || DASH },
+  { key: 'tillampning', label: 'Tillämpning', cell: r => esc(arr(r.tillampningsomrade)) || DASH },
+  { key: 'artikelnummer', label: 'Art.nr', mono: true, cell: r => esc(r.artikelnummer) || DASH },
+  { key: 'farg', label: 'Färg', cell: r => esc(r.farg) || DASH },
+  { key: 'status', label: 'Status', cell: r => esc(r.status) || DASH },
+];
+const KATALOG_DEFAULT = ['produkt', 'producent', 'fortjockare', 'basolja', 'nlgi', 'temp', 'fasta'];
+function katalogValdaKolumner() {
+  if (!state.katalogKol) {
+    let saved; try { saved = JSON.parse(localStorage.getItem('fett_katalog_kol')); } catch { /* ignore */ }
+    state.katalogKol = (Array.isArray(saved) && saved.length) ? saved : [...KATALOG_DEFAULT];
+  }
+  // returnera i KATALOG_KOLUMNER-ordning, alltid med fasta kolumner först
+  return KATALOG_KOLUMNER.filter(c => c.fast || state.katalogKol.includes(c.key));
+}
+function sparaKatalogKol() {
+  localStorage.setItem('fett_katalog_kol', JSON.stringify(state.katalogKol));
+}
+
 async function renderKatalog(m) {
   m.innerHTML = `<div class="tbar"><div><div class="ttl">Produktkatalog</div><div class="tsub">Alla produkter i databasen</div></div>
     <div class="tsearch"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>
@@ -379,6 +415,10 @@ async function renderKatalog(m) {
       <div class="toolbar">
         <select class="selectbox" id="ktyp">
           <option value="alla">Alla tillverkare</option><option value="FUCHS">Endast eget sortiment</option><option value="Konkurrent">Endast konkurrenter</option></select>
+        <div class="dropdown" id="kolDrop">
+          <button class="selectbox" id="kolBtn" type="button">⚙ Kolumner ▾</button>
+          <div class="dropdown-panel hidden" id="kolPanel"></div>
+        </div>
         <span class="count" id="kcount"></span>
       </div>
       <div id="ktable"><div class="empty"><span class="spinner"></span> Laddar…</div></div>
@@ -386,10 +426,42 @@ async function renderKatalog(m) {
   $('#ktyp').value = state.katalogFilter.typ;
   $('#kq').addEventListener('input', e => { state.katalogFilter.q = e.target.value; drawKatalog(); });
   $('#ktyp').addEventListener('change', e => { state.katalogFilter.typ = e.target.value; loadKatalog(); });
+  wireKolumnDropdown();
   await loadKatalog();
 }
+
+function renderKolPanel() {
+  const panel = $('#kolPanel'); if (!panel) return;
+  panel.innerHTML = KATALOG_KOLUMNER.map(c => {
+    const on = c.fast || state.katalogKol.includes(c.key);
+    return `<label class="ck" data-kol="${c.key}" style="padding:5px 4px;${c.fast ? 'opacity:.55;cursor:default' : ''}">
+      <span class="box ${on ? 'on' : ''}"></span>${esc(c.label)}${c.fast ? ' <span style="font-size:10px;color:#8494a2">(fast)</span>' : ''}
+    </label>`;
+  }).join('') + `<div style="border-top:1px solid #e6ebef;margin-top:6px;padding-top:8px;display:flex;justify-content:space-between">
+      <button class="btn ghost" id="kolReset" type="button">Återställ</button>
+      <button class="btn pri" id="kolClose" type="button">Klar</button></div>`;
+  panel.querySelectorAll('label.ck').forEach(l => {
+    const c = KATALOG_KOLUMNER.find(k => k.key === l.dataset.kol);
+    if (c.fast) return;
+    l.addEventListener('click', () => {
+      const idx = state.katalogKol.indexOf(c.key);
+      idx < 0 ? state.katalogKol.push(c.key) : state.katalogKol.splice(idx, 1);
+      sparaKatalogKol(); renderKolPanel(); drawKatalog();
+    });
+  });
+  $('#kolReset').addEventListener('click', () => { state.katalogKol = [...KATALOG_DEFAULT]; sparaKatalogKol(); renderKolPanel(); drawKatalog(); });
+  $('#kolClose').addEventListener('click', () => panel.classList.add('hidden'));
+}
+function wireKolumnDropdown() {
+  katalogValdaKolumner(); // säkerställ att state.katalogKol finns
+  const panel = $('#kolPanel');
+  $('#kolBtn').addEventListener('click', (e) => { e.stopPropagation(); panel.classList.toggle('hidden'); });
+  panel.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', () => panel.classList.add('hidden'));
+  renderKolPanel();
+}
 async function loadKatalog() {
-  let qb = sb.from('fett').select('id,produktnamn,producent,tillverkartyp,nlgi_klass,temperaturomrade_min,temperaturomrade_max,basolja,fortjockare,fasta_smorjamnen')
+  let qb = sb.from('fett').select('id,produktnamn,producent,tillverkartyp,produkttyp,fortjockare,basolja,nlgi_klass,viskositet_40c,viskositet_100c,temperaturomrade_min,temperaturomrade_max,droppunkt,fasta_smorjamnen,ep_aw_tillsatser,nsf_klass_food_grade,pfas_status,tillampningsomrade,artikelnummer,farg,status')
     .order('produktnamn').limit(1000);
   if (state.katalogFilter.typ !== 'alla') qb = qb.eq('tillverkartyp', state.katalogFilter.typ);
   const { data, error } = await qb;
@@ -400,18 +472,11 @@ function drawKatalog() {
   const q = state.katalogFilter.q.toLowerCase();
   const rows = state.katalog.filter(r => !q || (r.produktnamn + ' ' + r.producent).toLowerCase().includes(q));
   if ($('#kcount')) $('#kcount').textContent = `${rows.length} produkter`;
-  const dash = '<span style="color:#98a5b1">—</span>';
+  const kol = katalogValdaKolumner();
   const html = rows.length ? `<table class="grid"><thead><tr>
-    <th>Produkt</th><th>Tillverkare</th><th>Förtjockare</th><th>Basolja</th><th>NLGI</th>
-    <th class="col-opt">Temp.område</th><th class="col-opt">Fasta smörjämnen</th></tr></thead><tbody>
+    ${kol.map(c => `<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>
     ${rows.map(r => `<tr class="clickable" data-id="${r.id}">
-      <td style="font-weight:600;color:#17242f">${esc(r.produktnamn)}</td>
-      <td>${esc(r.producent)}</td>
-      <td>${esc(arr(r.fortjockare)) || dash}</td>
-      <td>${esc(arr(r.basolja)) || dash}</td>
-      <td class="mono">${esc(r.nlgi_klass ?? '—')}</td>
-      <td class="mono col-opt">${tempStr(r)}</td>
-      <td class="col-opt">${esc(arr(r.fasta_smorjamnen)) || dash}</td>
+      ${kol.map(c => `<td${c.mono ? ' class="mono"' : ''}>${c.cell(r)}</td>`).join('')}
     </tr>`).join('')}</tbody></table>` : `<div class="empty">Inga produkter matchar.</div>`;
   if ($('#ktable')) {
     $('#ktable').innerHTML = html;
