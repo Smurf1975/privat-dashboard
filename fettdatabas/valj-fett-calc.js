@@ -149,7 +149,7 @@ export function beraknaValjFett(input) {
 
   // --- validering ---
   const lagertyp = kravEnum('lagertyp', input.lagertyp, Object.keys(LAGERTYPER));
-  const d = kravTal('d (håldiameter)', input.d, 3, 1500);
+  const d = kravTal('d (innerdiameter)', input.d, 3, 1500);
   const D = kravTal('D (ytterdiameter)', input.D, 4, 2500);
   if (D <= d) throw new Error('D måste vara större än d.');
   const B = kravTal('B (bredd)', input.B, 1, 1000);

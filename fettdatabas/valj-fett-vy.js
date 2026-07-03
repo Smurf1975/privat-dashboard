@@ -185,7 +185,7 @@ function formHtml() {
     <div class="fg"><div class="fh">Lagertyp</div><div class="vf-lgrid">${kort}</div></div>
     <div class="fg"><div class="fh">Mått &amp; drift</div>
       <div class="vf-grid2">
-        ${fInput('d', 'd — håldiameter (mm)', 't.ex. 50')}
+        ${fInput('d', 'd — innerdiameter (mm)', 't.ex. 50')}
         ${fInput('D', 'D — ytterdiameter (mm)', 't.ex. 90')}
         ${fInput('B', 'B / T / H — bredd (mm)', 't.ex. 20')}
         ${fInput('massaKg', 'Lagermassa (kg)', 'valfri — ger exakt fyllnad')}
