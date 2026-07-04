@@ -205,7 +205,13 @@ export function beraknaValjFett(input) {
   let kontroll = null;
   if (fett) {
     const v100Uppskattad = fett.v100 == null;
-    const v100 = fett.v100 ?? estimeraV100(fett.v40, fett.viBas);
+    let v100 = fett.v100;
+    if (v100 == null) {
+      v100 = estimeraV100(fett.v40, fett.viBas);
+      // Väldigt tunna basoljor (ν40 ≲ 4) ger uppskattad ν100 nära ASTM D341:s giltighetsgräns
+      // → be om uppmätt ν100 i stället för att låta viskositetsberäkningen kasta ett kryptiskt fel.
+      if (!(v100 > 1.6)) throw new Error('Basoljan är för tunn för att uppskatta ν100 automatiskt — ange uppmätt ν100 från databladet.');
+    }
     const nu = visk40TillVid(drift, fett.v40, v100);
     const kappa = nu / nu1;
     const zon = kappa < 0.1 ? 'under_0_1' : kappa < 1 ? '0_1_till_1' : kappa <= 4 ? '1_till_4' : 'over_4';
