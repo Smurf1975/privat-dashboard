@@ -270,6 +270,15 @@ table.grid th:has(.fnl.on){color:var(--blue)}
 .vf-zonrub.gron{color:#1c7a3d}.vf-zonrub.rod{color:#b3261e}.vf-zonrub.gul{color:#b3730c}
 .vf-zontxt{font:500 12.5px/1.6 'Barlow';color:#4a5c6a;margin-top:3px}
 
+/* kravprofil-chips */
+.vf-kravcard{border-color:#cfe1f4;background:#fbfdff}
+.vf-kravchips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.vf-kravchip{font:600 11.5px 'IBM Plex Mono';color:#3a4a57;background:#eef3f8;border:1px solid #dbe6f0;border-radius:6px;padding:5px 9px}
+.vf-kravchip.pri{color:#fff;background:var(--blue);border-color:var(--blue)}
+.vf-kravchip.nsf{color:#1c7a3d;background:#e5f5eb;border-color:#bfe3cc}
+.vf-kravchip.ep{color:#b3730c;background:#fbf1de;border-color:#eed9ac}
+.vf-kravchip.vatten{color:#0d6ea8;background:#e2f1fb;border-color:#bcdcf0}
+
 /* fyllnad & eftersmörjning */
 .vf-storrad{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:6px}
 .vf-big{font:700 30px 'IBM Plex Mono';color:var(--blue-dd);line-height:1}

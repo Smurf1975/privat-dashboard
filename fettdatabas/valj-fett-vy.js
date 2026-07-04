@@ -331,7 +331,27 @@ function resultHtml() {
   if (!r) return `<div class="empty">Välj lagertyp och fyll i mått, varvtal och temperatur —<br>
     resultatet visas här direkt: κ-värde, viskositets- och NLGI-förslag,<br>fyllnadsmängd och eftersmörjningsintervall.</div>`;
   return gaugeHtml(r) + nyckeltalHtml(r) + fyllnadHtml(r) + eftersmorjningHtml(r)
-    + varningarHtml(r) + forklaringHtml(r) + rekSektionHtml(r);
+    + varningarHtml(r) + kravProfilHtml(r) + forklaringHtml(r) + rekSektionHtml(r);
+}
+
+// Synlig sammanfattning av vad fettet ska uppfylla — så teknikern ser kravet även utan
+// att hämta AI-produktförslag (som kräver uppkoppling). Testar-anmärkning 2026-07-04.
+function kravProfilHtml(r) {
+  const k = r.krav; if (!k) return '';
+  const chips = [];
+  const push = (txt, kls = '') => chips.push(`<span class="vf-kravchip ${kls}">${esc(txt)}</span>`);
+  push(`ν40 ${fmt(k.visk40Min, 0)}–${fmt(k.visk40Max, 0)} mm²/s`, 'pri');
+  if (Array.isArray(k.nlgi) && k.nlgi.length) push(`NLGI ${k.nlgi.join('/')}`);
+  push(`Temp ${fmt(k.tempMin, 0)}…${fmt(k.tempMax, 0)} °C`);
+  if (k.nsf) push(`NSF ${k.nsf}`, 'nsf');
+  if (k.ep) push('EP/AW-tillsatser', 'ep');
+  if (k.vattenbestandig) push('Vattenbeständig', 'vatten');
+  if (k.hogvarv) push('Höghastighetsfett');
+  if (k.lagvarv) push('Lågvarv – hög basviskositet');
+  return `<div class="vf-card vf-kravcard">
+    <div class="fh">Kravprofil — leta efter ett fett som uppfyller</div>
+    <div class="vf-kravchips">${chips.join('')}</div>
+  </div>`;
 }
 
 function zonKlass(kappa) { return kappa < 1 ? 'rod' : kappa <= 4 ? 'gron' : 'gul'; }

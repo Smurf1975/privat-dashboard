@@ -416,6 +416,9 @@ export function beraknaValjFett(input) {
     lagvarv: regim === 'lagvarv',
   };
 
+  // Renumrera stegen löpande (steg 3–4 finns bara i kontroll-läge → annars hoppade numren 1,2,5,…)
+  forklaring.forEach((f, i) => { f.steg = i + 1; });
+
   return {
     dm: rund(dm, 1), ndm: Math.round(ndm), regim,
     nu1: rund(nu1, 2),
