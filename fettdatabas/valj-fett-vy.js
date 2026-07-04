@@ -210,9 +210,10 @@ function formHtml() {
         <button type="button" data-lage="kontrollera" class="${S.lage === 'kontrollera' ? 'on' : ''}">Kontrollera eget fett</button>
       </div>
       <div id="vfFett" class="vf-fettfalt ${S.lage === 'kontrollera' ? '' : 'hidden'}">
+        <div class="vf-hint" style="margin:0 0 10px">Det räcker med <b>ν40 + basoljetyp</b> — det finns på nästan alla fettdatablad. ν100 är valfri och ger bara ett smalare κ-spann.</div>
         <div class="vf-grid2">
-          ${fInput('visk40', 'ν40 — basoljeviskositet (mm²/s)', 't.ex. 220')}
-          ${fInput('visk100', 'ν100 (mm²/s)', 'valfri — uppskattas ur VI')}
+          ${fInput('visk40', 'ν40 — basoljeviskositet (mm²/s)', 't.ex. 220', 'Står på databladet (grundolja/base oil, 40 °C).')}
+          ${fInput('visk100', 'ν100 (mm²/s)', 'valfri — uppskattas annars', 'Bonus. Lämna tom om den saknas på databladet.')}
         </div>
         ${fSelect('basolja', 'Basoljetyp (ger antaget VI)', BASOLJOR.map(b => [b[0], `${b[1]} — VI ≈ ${b[2]}`]))}
       </div>
@@ -340,21 +341,34 @@ function gaugeHtml(r) {
   const varde = k ? k.kappa : (r.forslag?.kappaMal ?? 2);
   const pct = Math.max(0, Math.min(6, varde)) / 6 * 100;
   const zon = zonKlass(varde);
+  const band = k && k.kappaBand ? k.kappaBand : null;
   const ticks = [0, 1, 2, 3, 4, 5, 6].map(t => `<span style="left:${t / 6 * 100}%">${t}</span>`).join('');
+  // Skuggat osäkerhetsband på skalan (när ν100 uppskattats)
+  const bandHtml = band ? (() => {
+    const lo = Math.max(0, Math.min(6, band[0])) / 6 * 100;
+    const hi = Math.max(0, Math.min(6, band[1])) / 6 * 100;
+    return `<span class="vf-band" style="left:${lo}%;width:${Math.max(0, hi - lo)}%"></span>`;
+  })() : '';
   const stor = k
-    ? `<div class="vf-kbig ${zon}">κ = ${fmt(k.kappa, k.kappa < 10 ? 2 : 1)}</div>`
+    ? `<div class="vf-kbig ${zon}">κ ${band ? '≈' : '='} ${fmt(k.kappa, k.kappa < 10 ? 2 : 1)}</div>`
     : `<div class="vf-kbig gron">mål κ = ${fmt(r.forslag?.kappaMal ?? 2, 0)}</div>`;
+  const spann = band
+    ? `<div class="vf-kspann">uppskattat spann <b>${fmt(band[0], band[0] < 10 ? 1 : 0)}–${fmt(band[1], band[1] < 10 ? 1 : 0)}</b></div>` : '';
   const rub = k ? (k.tolkning?.rubrik ?? '') : 'Förslags-läge';
   const txt = k ? (k.tolkning?.text ?? '')
     : `Basoljeviskositeten dimensioneras mot κ = ${fmt(r.forslag?.kappaMal ?? 2, 0)} — god fullfilmsmarginal utan onödig friktionsvärme.`;
   const uppsk = k && k.v100Uppskattad
-    ? `<div class="vf-hint">ν100 uppskattad ur antaget VI — ange uppmätt ν100 för högre precision.</div>` : '';
+    ? `<div class="vf-hint">ν100 uppskattad ur basoljetyp (antaget VI). ${band
+        ? (k.straddlarGrans
+          ? '<b>Bandet korsar en zongräns</b> — här avgör basoljevalet. Ange uppmätt ν100 för säkert svar.'
+          : 'Bandet visar hur mycket VI-antagandet påverkar κ — smalt band = försumbart.')
+        : 'Ange uppmätt ν100 för högre precision.'}</div>` : '';
   return `<div class="vf-card vf-gaugecard">
     <div class="fh">Smörjfilmskvot κ (ISO 281)</div>
     <div class="vf-gaugerow">
-      ${stor}
+      <div>${stor}${spann}</div>
       <div class="vf-gaugewrap">
-        <div class="vf-gauge"><span class="vf-needle ${zon}" style="left:${pct}%"></span></div>
+        <div class="vf-gauge">${bandHtml}<span class="vf-needle ${zon}" style="left:${pct}%"></span></div>
         <div class="vf-gticks">${ticks}</div>
       </div>
     </div>

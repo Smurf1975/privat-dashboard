@@ -260,7 +260,10 @@ table.grid th:has(.fnl.on){color:var(--blue)}
 .vf-gaugewrap{flex:1;min-width:220px;padding:6px 8px 18px}
 .vf-gauge{position:relative;height:14px;border-radius:7px;
   background:linear-gradient(90deg,#e05a5a 0%,#e05a5a 16.4%,#4caf72 17%,#4caf72 66.4%,#e8c04a 67%,#e8c04a 100%)}
-.vf-needle{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1.5px;border-radius:2px;background:#17242f;box-shadow:0 0 0 1.5px #fff}
+.vf-band{position:absolute;top:-3px;bottom:-3px;border-radius:5px;background:rgba(23,36,47,.22);border:1px solid rgba(23,36,47,.35);box-shadow:0 0 0 1px rgba(255,255,255,.5)}
+.vf-needle{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1.5px;border-radius:2px;background:#17242f;box-shadow:0 0 0 1.5px #fff;z-index:1}
+.vf-kspann{font:600 12px 'IBM Plex Mono';color:#5a6b7a;margin-top:5px}
+.vf-kspann b{color:#17242f}
 .vf-gticks{position:relative;height:14px;margin-top:4px}
 .vf-gticks span{position:absolute;transform:translateX(-50%);font:500 10px 'IBM Plex Mono';color:#8a99a7}
 .vf-zonrub{font:700 14px 'Barlow';margin-top:12px}

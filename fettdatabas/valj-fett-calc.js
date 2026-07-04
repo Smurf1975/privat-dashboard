@@ -215,17 +215,44 @@ export function beraknaValjFett(input) {
     const nu = visk40TillVid(drift, fett.v40, v100);
     const kappa = nu / nu1;
     const zon = kappa < 0.1 ? 'under_0_1' : kappa < 1 ? '0_1_till_1' : kappa <= 4 ? '1_till_4' : 'over_4';
+
+    // κ-osäkerhetsband: när ν100 uppskattats ur basoljetyp (VI) vet vi inte exakt hur oljan
+    // tunnas med temperaturen. Vi räknar κ över ett rimligt VI-spann (±20 VI, familjespridning)
+    // kombinerat med estimatorns ±8 % modellfel, och tar min/max. Bandet blir smalt nära 40 °C
+    // (då spelar VI knappt roll) och brett vid höga drifttemperaturer — precis den bedömning
+    // teknikern behöver: "spelar min basolje-gissning roll här?".
+    let kappaBand = null;
+    if (v100Uppskattad) {
+      const korner = [];
+      for (const vi of [Math.max(40, fett.viBas - 20), fett.viBas + 20]) {
+        const v100c0 = estimeraV100(fett.v40, vi);
+        for (const f of [0.92, 1.08]) {
+          const v100c = Math.min(v100c0 * f, fett.v40 * 0.55);
+          if (v100c > 1.6) { try { korner.push(visk40TillVid(drift, fett.v40, v100c) / nu1); } catch { /* hoppa ogiltig hörna */ } }
+        }
+      }
+      if (korner.length >= 2) {
+        const lo = Math.min(...korner), hi = Math.max(...korner);
+        if (isFinite(lo) && isFinite(hi) && hi - lo > 0.02) kappaBand = [lo, hi];
+      }
+    }
     const tolkningar = {
       under_0_1: { rubrik: 'Gränsskiktssmörjning — otillräckligt', text: 'Lasten bärs av ytojämnheterna, inte av oljefilmen. Livslängdsmodellen (ISO 281) gäller inte under κ = 0,1 — dimensionera efter statisk säkerhetsfaktor s0 och använd fett med EP/AW och/eller fasta smörjämnen.' },
       '0_1_till_1': { rubrik: 'Otillräcklig smörjfilm (blandfriktion)', text: 'Viss metallkontakt förekommer. EP/AW-tillsatser rekommenderas (under 80 °C kan κEP = 1 tillgodoräknas i aSKF). Överväg högre basoljeviskositet eller bättre kylning.' },
       '1_till_4': { rubrik: 'Målzon — god smörjfilm', text: 'Basoljeviskositeten räcker för att separera ytorna; vid κ ≈ 4 nås full EHD-film. Bra balans mellan filmbildning och friktionsförluster.' },
       over_4: { rubrik: 'Mer viskositet än nödvändigt', text: 'Ingen ytterligare livslängdsvinst över κ = 4 — men ökad friktionsvärme och startmoment. Kan ändå vara motiverat vid start-stopp-drift eller temperaturvariationer.' },
     };
-    kontroll = { nu, kappa, tolkning: { zon, ...tolkningar[zon] }, v100Uppskattad };
+    // Spänner osäkerhetsbandet över en zongräns (κ=1 eller κ=4)? Då är basoljevalet avgörande.
+    const straddlarGrans = kappaBand
+      ? (kappaBand[0] < 1 && kappaBand[1] >= 1) || (kappaBand[0] <= 4 && kappaBand[1] > 4)
+      : false;
+    kontroll = { nu, kappa, tolkning: { zon, ...tolkningar[zon] }, v100Uppskattad,
+      kappaBand: kappaBand ? [rund(kappaBand[0], 2), rund(kappaBand[1], 2)] : null, straddlarGrans };
     forklaring.push({
       steg: 3, rubrik: 'Driftviskositet för valt fett (ASTM D341)',
       formel: `ν(${drift} °C) = ${rund(nu)} mm²/s  (ν40 = ${fett.v40}, ν100 = ${rund(v100)}${v100Uppskattad ? ' — uppskattad ur VI ' + fett.viBas : ''})`,
-      text: 'Viskositet–temperatur-sambandet loglog(ν+0,7) = A − B·log(T) ger fettets verkliga viskositet i lagret.',
+      text: 'Viskositet–temperatur-sambandet loglog(ν+0,7) = A − B·log(T) ger fettets verkliga viskositet i lagret.'
+        + (kappaBand ? ` Eftersom ν100 uppskattats visas κ som ett spann (${rund(kappaBand[0], 2)}–${rund(kappaBand[1], 2)}) för ett rimligt VI-intervall.` : ''),
     });
     forklaring.push({
       steg: 4, rubrik: 'Kappavärde',
@@ -236,6 +263,7 @@ export function beraknaValjFett(input) {
       varningar.push(`κ = ${rund(kappa, 2)} < 1 — otillräcklig smörjfilm vid ${drift} °C. Välj EP/AW-fett och överväg högre viskositet; under κ 0,1 gäller ej livslängdsmodellen (statisk dimensionering).`);
     }
     if (fett.viBas >= 240) varningar.push('Silikon-/högVI-basolja: VI-uppskattningen är osäker — använd uppmätta ν40/ν100 från databladet.');
+    if (straddlarGrans) varningar.push(`κ-osäkerheten (${rund(kontroll.kappaBand[0], 2)}–${rund(kontroll.kappaBand[1], 2)}) spänner över en smörjzonsgräns eftersom ν100 är uppskattat — här avgör basoljevalet bedömningen. Leta upp uppmätt ν100 från databladet för säkert svar.`);
   }
 
   // --- steg 5: föreslagen viskositet (mål κ = 2) ---
@@ -394,6 +422,7 @@ export function beraknaValjFett(input) {
     kontroll: kontroll ? {
       nu: rund(kontroll.nu, 1), kappa: rund(kontroll.kappa, 2),
       tolkning: kontroll.tolkning, v100Uppskattad: kontroll.v100Uppskattad,
+      kappaBand: kontroll.kappaBand, straddlarGrans: kontroll.straddlarGrans,
     } : null,
     forslag, nlgi, fyllnad, eftersmorjning, varningar, forklaring, krav,
   };
