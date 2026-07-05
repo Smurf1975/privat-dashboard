@@ -25,7 +25,8 @@ function tidStr(h) {
 const S = {
   lagertyp: 'spårkullager',
   d: '', D: '', B: '', massaKg: '',
-  varvtal: '', drifttemp: '70', omgivningstemp: '20',
+  rorelse: 'roterande', varvtal: '', oscAmplitud: '', oscFrekvens: '',
+  drifttemp: '70', omgivningstemp: '20',
   belastning: 'medel', omgivning: ['ren'], orientering: 'horisontell',
   vibration: 'lag', ytterringsrotation: false, eftersmorjningsmetod: 'sida',
   lage: 'foresla',                 // 'foresla' | 'kontrollera'
@@ -170,6 +171,9 @@ const TIPS = {
   B: 'Lagrets bredd i mm. För koniska rullager: använd måttet T. För axiallager: höjden H.',
   massaKg: 'Lagrets vikt i kg (från katalog eller förpackning). Ger exakt fyllnadsmängd i stället för en uppskattning.',
   varvtal: 'Driftvarvtal i varv/min. Vid variabelt varvtal: räkna på det mest kritiska fallet (lägst varv + högst last, och högsta varvet var för sig).',
+  rorelse: 'Kontinuerlig rotation eller oscillerande/pendlande rörelse (t.ex. länkarmar, styrleder, svängkransar, ventilmanöverdon). Oscillation är den svåraste smörjsituationen — filmen kollapsar vid varje vändpunkt.',
+  oscAmplitud: 'Vinkelutslag åt ena hållet, i grader (±β). T.ex. en arm som pendlar 30° totalt har β = 15°. Små utslag (< 3°) ger extrem risk för falsk brinelling.',
+  oscFrekvens: 'Antal hela svängningscykler per minut (fram och tillbaka = 1 cykel).',
   drifttemp: 'Lagrets verkliga temperatur i drift — inte omgivningens. Styr både viskositeten och smörjintervallet. Mät om det går.',
   omgivningstemp: 'Lägsta temperatur vid start/omgivning. Avgör om fettet blir för styvt vid kallstart.',
   belastning: 'Grovt lastförhållande C/P: lätt ≈ C/P ≥ 15, medel ≈ 10, tung ≈ 5, mycket tung < 4. Påverkar smörjintervallet kraftigt.',
@@ -237,7 +241,16 @@ function formHtml() {
         ${fInput('D', 'D — ytterdiameter (mm)', 't.ex. 90')}
         ${fInput('B', 'B / T / H — bredd (mm)', 't.ex. 20')}
         ${fInput('massaKg', 'Lagermassa (kg)', 'valfri')}
-        ${fInput('varvtal', 'Varvtal (r/min)', 't.ex. 1 500')}
+      </div>
+      ${fSelect('rorelse', 'Rörelsetyp', [['roterande', 'Kontinuerlig rotation'], ['oscillerande', 'Oscillerande / pendlande']])}
+      <div class="vf-grid2" style="margin-top:10px">
+        <div id="vfVarvtalWrap" style="display:${S.rorelse === 'oscillerande' ? 'none' : 'contents'}">
+          ${fInput('varvtal', 'Varvtal (r/min)', 't.ex. 1 500')}
+        </div>
+        <div id="vfOscWrap" style="display:${S.rorelse === 'oscillerande' ? 'contents' : 'none'}">
+          ${fInput('oscAmplitud', 'Vinkelutslag ±β (grader)', 't.ex. 15')}
+          ${fInput('oscFrekvens', 'Frekvens (cykler/min)', 't.ex. 60')}
+        </div>
         ${fInput('drifttemp', 'Drifttemperatur (°C)', '70')}
         ${fInput('omgivningstemp', 'Lägsta omgivningstemp (°C)', '20')}
       </div>
@@ -296,6 +309,11 @@ function bindForm(m) {
   });
   form.querySelectorAll('select[data-f]').forEach(sel => sel.addEventListener('change', () => {
     S[sel.dataset.f] = sel.value;
+    if (sel.dataset.f === 'rorelse') {
+      const osc = S.rorelse === 'oscillerande';
+      form.querySelector('#vfVarvtalWrap').style.display = osc ? 'none' : 'contents';
+      form.querySelector('#vfOscWrap').style.display = osc ? 'contents' : 'none';
+    }
     recalc(false);
   }));
   form.querySelector('#vfYtter').addEventListener('click', (e) => {
@@ -336,12 +354,16 @@ function bindForm(m) {
 // ---------- beräkning ----------
 function byggInput() {
   const d = num(S.d), D = num(S.D), B = num(S.B), varvtal = num(S.varvtal);
+  const oscA = num(S.oscAmplitud), oscF = num(S.oscFrekvens);
   const drift = num(S.drifttemp), omg = num(S.omgivningstemp);
+  const osc = S.rorelse === 'oscillerande';
   const saknas = [];
   if (d == null) saknas.push('d');
   if (D == null) saknas.push('D');
   if (B == null) saknas.push('B');
-  if (varvtal == null) saknas.push('varvtal');
+  if (!osc && varvtal == null) saknas.push('varvtal');
+  if (osc && oscA == null) saknas.push('vinkelutslag ±β');
+  if (osc && oscF == null) saknas.push('frekvens');
   if (drift == null) saknas.push('drifttemperatur');
   if (omg == null) saknas.push('omgivningstemperatur');
   let fett = null;
@@ -352,7 +374,8 @@ function byggInput() {
   }
   if (saknas.length) return { saknas };
   return { input: {
-    lagertyp: S.lagertyp, d, D, B, massaKg: num(S.massaKg), varvtal,
+    lagertyp: S.lagertyp, d, D, B, massaKg: num(S.massaKg),
+    rorelse: S.rorelse, varvtal, oscAmplitud: oscA, oscFrekvens: oscF,
     drifttemp: drift, omgivningstemp: omg,
     belastning: S.belastning, omgivning: S.omgivning, orientering: S.orientering,
     vibration: S.vibration, ytterringsrotation: S.ytterringsrotation,
@@ -418,6 +441,8 @@ function kravProfilHtml(r) {
   push(`Temp ${fmt(k.tempMin, 0)}…${fmt(k.tempMax, 0)} °C`);
   if (k.nsf) push(`NSF ${k.nsf}`, 'nsf');
   if (k.ep) push('EP/AW-tillsatser', 'ep');
+  if (k.fastaSmorjamnen) push('Fasta smörjämnen (vita fasta)', 'ep');
+  if (k.oscillerande) push('Oscillerande rörelse', 'ep');
   if (k.vattenbestandig) push('Vattenbeständig', 'vatten');
   if (k.hogvarv) push('Höghastighetsfett');
   if (k.lagvarv) push('Lågvarv – hög basviskositet');
@@ -485,7 +510,8 @@ function nyckeltalHtml(r) {
     ? `fönster κ 1–4: ${fmt(f.visk40Fonster[0], 0)}–${fmt(f.visk40Fonster[1], 0)} mm²/s` : '';
   const kort = [
     kvKort('d<sub>m</sub> medeldiameter', `${fmt(r.dm, 1)} <small>mm</small>`, ''),
-    kvKort('n·d<sub>m</sub> hastighetsfaktor', `${fmt(r.ndm, 0)}`, esc(reg)),
+    kvKort('n·d<sub>m</sub> hastighetsfaktor', `${fmt(r.ndm, 0)}`,
+      esc(reg) + (r.rorelse === 'oscillerande' ? ` · oscillerande, n<sub>ekv</sub> ≈ ${fmt(r.nEkv, 1)} r/min` : '')),
     kvKort('ν₁ — krävd referensviskositet', `${fmt(r.nu1, 1)} <small>mm²/s</small>`, 'vid drifttemperatur (ISO 281)'),
   ];
   if (r.kontroll) kort.push(kvKort('ν — valt fett vid drifttemp', `${fmt(r.kontroll.nu, 1)} <small>mm²/s</small>`, 'ASTM D341'));
@@ -637,7 +663,10 @@ function byggKontext() {
   const l = (arr, v) => { const hit = arr.find(x => x[0] === v); return hit ? hit[1] : v; };
   const delar = [
     `${lagerNamn(i.lagertyp)} ${fmt(i.d, 0)}×${fmt(i.D, 0)}×${fmt(i.B, 0)} mm`,
-    `${fmt(i.varvtal, 0)} r/min`, `${fmt(i.drifttemp, 0)} °C drift (min ${fmt(i.omgivningstemp, 0)} °C)`,
+    i.rorelse === 'oscillerande'
+      ? `oscillerande ±${fmt(i.oscAmplitud, 1)}° vid ${fmt(i.oscFrekvens, 0)} cykler/min (fretting-risk — kräver fasta smörjämnen)`
+      : `${fmt(i.varvtal, 0)} r/min`,
+    `${fmt(i.drifttemp, 0)} °C drift (min ${fmt(i.omgivningstemp, 0)} °C)`,
     l(BELASTNING, i.belastning),
     'miljö: ' + (Array.isArray(i.omgivning) ? i.omgivning : [i.omgivning]).map(o => l(OMGIVNING, o)).join(' + '),
     l(ORIENTERING, i.orientering), `vibration: ${l(VIBRATION, i.vibration)}`,

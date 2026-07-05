@@ -155,7 +155,19 @@ export function beraknaValjFett(input) {
   if (D <= d) throw new Error('D måste vara större än d.');
   const B = kravTal('B (bredd)', input.B, 1, 1000);
   const massaKg = (input.massaKg == null || input.massaKg === '') ? null : kravTal('lagermassa', input.massaKg, 0.001, 5000);
-  const n = kravTal('varvtal', input.varvtal, 0.1, 200000);
+
+  // Rörelsetyp: kontinuerlig rotation (default) eller oscillerande/pendlande.
+  // Vid oscillation anges vinkelutslag ±β [grader] och frekvens [cykler/min] i stället för varvtal.
+  // Ekvivalent varvtal: per cykel sveper ringen 4β grader (−β→+β→−β) ⇒ n_ekv = f·4β/360 [r/min].
+  const rorelse = kravEnum('rörelsetyp', input.rorelse ?? 'roterande', ['roterande', 'oscillerande']);
+  let n, oscAmplitud = null, oscFrekvens = null;
+  if (rorelse === 'oscillerande') {
+    oscAmplitud = kravTal('vinkelutslag ±β', input.oscAmplitud, 0.1, 170);
+    oscFrekvens = kravTal('svängningsfrekvens', input.oscFrekvens, 0.1, 6000);
+    n = Math.max(0.1, oscFrekvens * 4 * oscAmplitud / 360);
+  } else {
+    n = kravTal('varvtal', input.varvtal, 0.1, 200000);
+  }
   const drift = kravTal('drifttemperatur', input.drifttemp, -60, 250);
   const omg = kravTal('omgivningstemperatur', input.omgivningstemp, -60, 250);
   const belastning = kravEnum('belastning', input.belastning, Object.keys(BELASTNING_FAKTOR));
@@ -189,15 +201,37 @@ export function beraknaValjFett(input) {
   const ndm = n * dm;
   const hogGrans = dm <= 200 ? 500000 : 400000;
   const regim = ndm < 10000 ? 'lagvarv' : ndm > hogGrans ? 'hogvarv' : 'normal';
+  if (rorelse === 'oscillerande') {
+    forklaring.push({
+      steg: 0, rubrik: 'Oscillerande rörelse — ekvivalent varvtal',
+      formel: `n_ekv = f·4β/360 = ${oscFrekvens} · 4·${oscAmplitud}/360 = ${rund(n, 1)} r/min`,
+      text: 'Vid pendlande rörelse sveper ringen 4β grader per cykel. Det ekvivalenta varvtalet används för viskositets- och intervallberäkningen — men vid varje vändpunkt går hastigheten genom noll och oljefilmen kollapsar, så verklig smörjning är sämre än siffrorna antyder. Därför krävs EP/AW och fasta smörjämnen.',
+    });
+  }
   forklaring.push({
     steg: 1, rubrik: 'Medeldiameter och hastighetsfaktor',
-    formel: `dm = 0,5·(d + D) = 0,5·(${d} + ${D}) = ${rund(dm)} mm;   n·dm = ${n} · ${rund(dm)} = ${Math.round(ndm).toLocaleString('sv-SE')}`,
+    formel: `dm = 0,5·(d + D) = 0,5·(${d} + ${D}) = ${rund(dm)} mm;   ${rorelse === 'oscillerande' ? 'n_ekv' : 'n'}·dm = ${rund(n, 1)} · ${rund(dm)} = ${Math.round(ndm).toLocaleString('sv-SE')}`,
     text: regim === 'lagvarv'
       ? 'n·dm < 10 000 — lågvarvsregim: lastbärande film kräver hög basoljeviskositet.'
       : regim === 'hogvarv'
         ? `n·dm > ${hogGrans.toLocaleString('sv-SE')} — högvarvsregim: låg krävd viskositet, välj lågviskös basolja och kanalbildande fett.`
         : 'Normal hastighetsregim.',
   });
+
+  // Oscillation: riskklass utifrån vinkelutslaget. Små utslag ⇒ rullkropparnas kontaktzoner
+  // överlappar aldrig ⇒ fettet pressas bort och återflödar inte ⇒ falsk brinelling/fretting.
+  // (Ingenjörsmässiga gränser — exakt kritisk vinkel beror på rullkroppsdelningen 360/z.)
+  let oscRisk = null; // 'extrem' | 'hog' | 'mattlig'
+  if (rorelse === 'oscillerande') {
+    oscRisk = oscAmplitud < 3 ? 'extrem' : oscAmplitud < 15 ? 'hog' : 'mattlig';
+    if (oscRisk === 'extrem') {
+      varningar.push(`Vinkelutslag ±${oscAmplitud}° är mycket litet — extrem risk för falsk brinelling/fretting: kontaktzonerna överlappar aldrig och fettet återflödar inte. Kräver fett med vita fasta smörjämnen (alt. MoS2) + EP/AW, täta små eftersmörjningsdoser (gärna automatisk doserare), och om möjligt regelbunden genomrotation av lagret.`);
+    } else if (oscRisk === 'hog') {
+      varningar.push(`Oscillerande rörelse ±${oscAmplitud}° — hög frettingrisk vid vändpunkterna där oljefilmen kollapsar. Välj fett med fasta smörjämnen (vita fasta för rena/livsmedelsnära miljöer, annars även MoS2/grafit) och EP/AW-tillsatser.`);
+    } else {
+      varningar.push(`Oscillerande rörelse ±${oscAmplitud}° — filmen kollapsar vid varje vändpunkt. Fett med EP/AW rekommenderas, gärna med fasta smörjämnen som reservsmörjning.`);
+    }
+  }
 
   // --- steg 2: ν1 ---
   const nu1 = nominellViskositet(n, dm);
@@ -271,6 +305,7 @@ export function beraknaValjFett(input) {
       varningar.push(`κ = ${rund(kappa, 2)} < 1 — otillräcklig smörjfilm vid ${drift} °C. Välj EP/AW-fett och överväg högre viskositet; under κ 0,1 gäller ej livslängdsmodellen (statisk dimensionering).`);
     }
     if (fett.viBas >= 240) varningar.push('Silikon-/högVI-basolja: VI-uppskattningen är osäker — använd uppmätta ν40/ν100 från databladet.');
+    if (rorelse === 'oscillerande') varningar.push(`κ = ${rund(kappa, 2)} är räknat på ekvivalent varvtal — vid vändpunkterna är den verkliga filmen tunnare än κ antyder. Bedöm fettet på EP/AW och fasta smörjämnen snarare än enbart κ.`);
     if (straddlarGrans) varningar.push(`κ-osäkerheten (${rund(kontroll.kappaBand[0], 2)}–${rund(kontroll.kappaBand[1], 2)}) spänner över en smörjzonsgräns eftersom ν100 är uppskattat — här avgör basoljevalet bedömningen. Leta upp uppmätt ν100 från databladet för säkert svar.`);
   }
 
@@ -310,6 +345,7 @@ export function beraknaValjFett(input) {
   if (vibration === 'hog') { poang['2'] += 1; poang['3'] += 1; nlgiMot.push('Hög vibrationsnivå: mekaniskt stabilt fett (NLGI 2–3, t.ex. polyurea/litiumkomplex/kalciumsulfonat).'); }
   if (omg < -30) { poang['1'] += 2; nlgiMot.push('Låg starttemperatur: mjukare fett (NLGI 1–2) på syntetbas säkrar startsmörjning.'); }
   if (harMiljo('vattentvatt', 'livsmedel')) { poang['2'] += 1; nlgiMot.push('Spolning/tvättmiljö: NLGI 2 med vattenresistent förtjockare (kalciumsulfonat/aluminiumkomplex).'); }
+  if (rorelse === 'oscillerande') { poang['1'] += 1; poang['2'] += 1; nlgiMot.push('Oscillerande rörelse: vidhäftande fett (NLGI 1–2) med vita fasta smörjämnen som bär lasten vid vändpunkterna — god oljeavskiljning (blödning) hjälper återsmörjningen.'); }
   if (!nlgiMot.length) nlgiMot.push('Normalförhållanden — NLGI 2 är standardvalet för rullningslager.');
   const nlgiForslag = Object.entries(poang).sort((a, b) => b[1] - a[1] || Number(a[0]) - Number(b[0])).slice(0, 2)
     .filter(([, p], i) => i === 0 || p > 0).map(([k]) => k)
@@ -379,6 +415,10 @@ export function beraknaValjFett(input) {
   if (orientering === 'vertikal') laddaFaktor('Vertikal axel', 0.5);
   laddaFaktor(`Vibration (${vibration})`, VIBRATION_FAKTOR[vibration]);
   if (ytterrot) laddaFaktor('Roterande ytterring', 0.6);
+  // Oscillation: fettet omfördelas aldrig som vid rotation — kraftigt kortat intervall,
+  // hårdare ju mindre vinkelutslaget är (fretting-riskklassen ovan styr).
+  if (rorelse === 'oscillerande') laddaFaktor(`Oscillerande rörelse (±${oscAmplitud}°)`,
+    oscRisk === 'extrem' ? 0.15 : oscRisk === 'hog' ? 0.3 : 0.5);
   // Flera miljöer: den svåraste (lägsta faktorn) styr — standard SKF-förenkling (föroreningsnivå
   // är en enskild svårighetsgrad, inte multiplikativ). Alla valda listas, den styrande markeras.
   const miljoFaktor = Math.min(...omgivning.map(o => MILJO_FAKTOR[o]));
@@ -424,7 +464,10 @@ export function beraknaValjFett(input) {
     tempMin: omg,
     nsf: harMiljo('livsmedel') ? 'H1' : null,
     vattenbestandig: harMiljo('fuktig', 'vattentvatt', 'livsmedel'),
-    ep: (kontroll ? kontroll.kappa < 1 : false) || belastning === 'tung' || belastning === 'mycket_tung',
+    ep: (kontroll ? kontroll.kappa < 1 : false) || belastning === 'tung' || belastning === 'mycket_tung'
+      || rorelse === 'oscillerande',
+    fastaSmorjamnen: rorelse === 'oscillerande',   // vita fasta bär lasten vid vändpunkterna
+    oscillerande: rorelse === 'oscillerande',
     hogvarv: regim === 'hogvarv',
     lagvarv: regim === 'lagvarv',
   };
@@ -434,6 +477,7 @@ export function beraknaValjFett(input) {
 
   return {
     dm: rund(dm, 1), ndm: Math.round(ndm), regim,
+    rorelse, nEkv: rorelse === 'oscillerande' ? rund(n, 1) : null, oscRisk,
     nu1: rund(nu1, 2),
     kontroll: kontroll ? {
       nu: rund(kontroll.nu, 1), kappa: rund(kontroll.kappa, 2),
