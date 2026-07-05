@@ -2,6 +2,7 @@
 // Konsumerar beräkningsmodulen valj-fett-calc.js (Agent 1) och edge-funktionen fett-rekommendation (Agent 3).
 // Exponerar renderValjFett(m, ctx) där ctx = { sb, FN_URL, session, toast, esc, openProduct }.
 import { beraknaValjFett, visk40TillVid, estimeraV100, ISO_VG, LAGERTYPER } from './valj-fett-calc.js';
+import { kollaByte, FORTJOCKARE, BASOLJA, KOMP_KALLA, KOMP_SYNKAD } from './fett-kompatibilitet.js';
 
 // ---------- utils (lokal esc-kopia, samma mönster som app.js) ----------
 const esc = (v) => v == null ? '' : String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -33,6 +34,8 @@ const S = {
   visk40: '', visk100: '', basolja: 'mineral',
   resultat: null, resultatFel: null, sisteInput: null,
   rek: null, rekFel: null, rekLaddar: false,
+  // fettbyte-kompatibilitet
+  kGammalFort: '', kGammalBas: '', kNyFort: '', kNyBas: '', kResultat: null, kFel: null, kOppen: false,
 };
 let CTX = null;
 
@@ -159,9 +162,11 @@ export function renderValjFett(m, ctx) {
     <div class="vf-body">
       <div class="vf-form" id="vfForm">${formHtml()}</div>
       <div class="vf-res" id="vfRes">${resultHtml()}</div>
-    </div>`;
+    </div>
+    <div id="vfKomp">${kompHtml()}</div>`;
   bindForm(m);
   bindRes(m);
+  bindKomp(m);
 }
 
 // ---------- förklaringar (visas som tooltip vid hover/fokus på rubriken) ----------
@@ -580,6 +585,84 @@ function forklaringHtml(r) {
     </div>`).join('');
   if (!steg) return '';
   return `<details class="vf-details"><summary>Så räknade jag — stegvis formelgenomgång</summary>${steg}</details>`;
+}
+
+// ---------- fettbyte: kompatibilitetskoll ----------
+function fortOpts(sel) {
+  return `<option value="">— välj förtjockare —</option>` +
+    FORTJOCKARE.map(f => `<option value="${esc(f.key)}" ${sel === f.key ? 'selected' : ''}>${esc(f.namn)}</option>`).join('');
+}
+function basOpts(sel) {
+  return `<option value="">— basolja (valfri) —</option>` +
+    BASOLJA.map(b => `<option value="${esc(b.key)}" ${sel === b.key ? 'selected' : ''}>${esc(b.namn)}</option>`).join('');
+}
+
+function kompResultHtml() {
+  if (S.kFel) return `<div class="ai-note vf-warn">⚠ ${esc(S.kFel)}</div>`;
+  const r = S.kResultat;
+  if (!r) return `<div class="vf-hint" style="margin-top:4px">Välj förtjockare för både nuvarande och nytt fett — basoljan är valfri men ger säkrare svar.</div>`;
+  const s = r.sammantaget;
+  const rad = (label, cell) => cell
+    ? `<div class="vf-komp-rad"><span>${label}</span><span class="vf-kbadge ${cell.klass}">${cell.symbol} ${esc(cell.rubrik)}</span>${cell.notis ? `<span class="vf-komp-notis">${esc(cell.notis)}</span>` : ''}</div>`
+    : '';
+  return `
+    <div class="vf-komp-dom ${s.klass}">
+      <div class="vf-komp-symbol">${s.symbol}</div>
+      <div><div class="vf-komp-verdikt">${esc(s.rubrik)}</div>
+        <div class="vf-komp-atgard">${esc(r.atgard)}</div></div>
+    </div>
+    ${rad('Förtjockare', r.fort)}
+    ${rad('Basolja', r.bas)}`;
+}
+
+function kompHtml() {
+  return `<div class="vf-card vf-kompcard">
+    <button type="button" class="vf-komp-head" id="vfKompToggle" aria-expanded="${S.kOppen}">
+      <span class="fh" style="margin:0">🔄 Fettbyte — kan jag byta fett?</span>
+      <span class="vf-komp-chev">${S.kOppen ? '▾' : '▸'}</span>
+    </button>
+    <div class="vf-komp-body ${S.kOppen ? '' : 'hidden'}">
+      <div class="vf-hint" style="margin:2px 0 12px">Kontrollerar blandbarhet mellan gammalt och nytt fett i lagret. Att byta till ett inkompatibelt fett kan bryta ned förtjockaren och orsaka haveri.</div>
+      <div class="vf-komp-grid">
+        <div class="vf-komp-col"><div class="vf-komp-coltitle">Nuvarande fett i lagret</div>
+          <div class="vf-field"><label for="vf_kGammalFort">Förtjockare</label><select id="vf_kGammalFort" data-kf="kGammalFort">${fortOpts(S.kGammalFort)}</select></div>
+          <div class="vf-field"><label for="vf_kGammalBas">Basolja</label><select id="vf_kGammalBas" data-kf="kGammalBas">${basOpts(S.kGammalBas)}</select></div>
+        </div>
+        <div class="vf-komp-arrow">→</div>
+        <div class="vf-komp-col"><div class="vf-komp-coltitle">Nytt fett</div>
+          <div class="vf-field"><label for="vf_kNyFort">Förtjockare</label><select id="vf_kNyFort" data-kf="kNyFort">${fortOpts(S.kNyFort)}</select></div>
+          <div class="vf-field"><label for="vf_kNyBas">Basolja</label><select id="vf_kNyBas" data-kf="kNyBas">${basOpts(S.kNyBas)}</select></div>
+        </div>
+      </div>
+      <div id="vfKompRes" class="vf-komp-res">${kompResultHtml()}</div>
+      <div class="vf-komp-kalla">Källa: ${esc(KOMP_KALLA)}. Synkad ${esc(KOMP_SYNKAD)}. Vid tveksamhet — testa enligt ASTM D6185 eller kontakta leverantören.</div>
+    </div>
+  </div>`;
+}
+
+function kompRakna() {
+  S.kFel = null; S.kResultat = null;
+  if (S.kGammalFort && S.kNyFort) {
+    try { S.kResultat = kollaByte({ fort: S.kGammalFort, bas: S.kGammalBas || null }, { fort: S.kNyFort, bas: S.kNyBas || null }); }
+    catch (e) { S.kFel = e && e.message ? e.message : 'Kunde inte bedöma bytet.'; }
+  }
+  const el = document.getElementById('vfKompRes');
+  if (el) el.innerHTML = kompResultHtml();
+}
+
+function bindKomp(root) {
+  const toggle = root.querySelector('#vfKompToggle');
+  if (toggle) toggle.addEventListener('click', () => {
+    S.kOppen = !S.kOppen;
+    const body = root.querySelector('.vf-komp-body');
+    body.classList.toggle('hidden', !S.kOppen);
+    toggle.setAttribute('aria-expanded', String(S.kOppen));
+    root.querySelector('.vf-komp-chev').textContent = S.kOppen ? '▾' : '▸';
+  });
+  root.querySelectorAll('[data-kf]').forEach(sel => sel.addEventListener('change', () => {
+    S[sel.dataset.kf] = sel.value;
+    kompRakna();
+  }));
 }
 
 // ---------- produktrekommendation ----------

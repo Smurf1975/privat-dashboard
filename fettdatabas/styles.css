@@ -286,6 +286,31 @@ table.grid th:has(.fnl.on){color:var(--blue)}
 .vf-kravchip.ep{color:#b3730c;background:#fbf1de;border-color:#eed9ac}
 .vf-kravchip.vatten{color:#0d6ea8;background:#e2f1fb;border-color:#bcdcf0}
 
+/* fettbyte — kompatibilitetskoll */
+.vf-kompcard{margin:0 20px 22px}
+.vf-komp-head{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;padding:2px 0;cursor:pointer;text-align:left}
+.vf-komp-chev{color:var(--blue);font-size:14px}
+.vf-komp-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:start}
+.vf-komp-col{display:flex;flex-direction:column;gap:10px}
+.vf-komp-coltitle{font:700 11px 'Barlow';text-transform:uppercase;letter-spacing:.04em;color:var(--blue)}
+.vf-komp-arrow{align-self:center;font:700 20px 'Barlow';color:#9db0c0;padding-top:18px}
+.vf-komp-res{margin-top:14px}
+.vf-komp-dom{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:10px;border:1px solid}
+.vf-komp-dom.gron{background:#e9f7ef;border-color:#b6e0c4}
+.vf-komp-dom.gul{background:#fdf4e3;border-color:#efd9a8}
+.vf-komp-dom.rod{background:#fceceb;border-color:#f1c3bf}
+.vf-komp-symbol{font-size:22px;line-height:1.1}
+.vf-komp-verdikt{font:700 14px 'Barlow'}
+.vf-komp-dom.gron .vf-komp-verdikt{color:#1c7a3d}.vf-komp-dom.gul .vf-komp-verdikt{color:#b3730c}.vf-komp-dom.rod .vf-komp-verdikt{color:#b3261e}
+.vf-komp-atgard{font:500 12.5px/1.55 'Barlow';color:#3a4a57;margin-top:3px}
+.vf-komp-rad{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font:600 12px 'Barlow';color:#4a5c6a}
+.vf-komp-rad>span:first-child{min-width:84px;color:#8494a2}
+.vf-kbadge{font:600 11px 'IBM Plex Mono';padding:3px 8px;border-radius:6px}
+.vf-kbadge.gron{color:#1c7a3d;background:#e5f5eb}.vf-kbadge.gul{color:#b3730c;background:#fbf1de}.vf-kbadge.rod{color:#b3261e;background:#fbe6e4}
+.vf-komp-notis{font:500 11.5px/1.5 'Barlow';color:#6b7a87;flex:1;min-width:160px}
+.vf-komp-kalla{font:400 10.5px/1.5 'Barlow';color:#98a5b1;margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+@media (max-width:640px){.vf-komp-grid{grid-template-columns:1fr}.vf-komp-arrow{transform:rotate(90deg);padding:0}}
+
 /* fyllnad & eftersmörjning */
 .vf-storrad{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:6px}
 .vf-big{font:700 30px 'IBM Plex Mono';color:var(--blue-dd);line-height:1}
