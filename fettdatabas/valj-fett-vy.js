@@ -26,7 +26,7 @@ const S = {
   lagertyp: 'spårkullager',
   d: '', D: '', B: '', massaKg: '',
   varvtal: '', drifttemp: '70', omgivningstemp: '20',
-  belastning: 'medel', omgivning: 'ren', orientering: 'horisontell',
+  belastning: 'medel', omgivning: ['ren'], orientering: 'horisontell',
   vibration: 'lag', ytterringsrotation: false, eftersmorjningsmetod: 'sida',
   lage: 'foresla',                 // 'foresla' | 'kontrollera'
   visk40: '', visk100: '', basolja: 'mineral',
@@ -163,15 +163,63 @@ export function renderValjFett(m, ctx) {
   bindRes(m);
 }
 
+// ---------- förklaringar (visas som tooltip vid hover/fokus på rubriken) ----------
+const TIPS = {
+  d: 'Lagrets innerdiameter (borrning) i mm — det mått som sitter på axeln. T.ex. 6210 → 50 mm.',
+  D: 'Lagrets ytterdiameter i mm. T.ex. 6210 → 90 mm.',
+  B: 'Lagrets bredd i mm. För koniska rullager: använd måttet T. För axiallager: höjden H.',
+  massaKg: 'Lagrets vikt i kg (från katalog eller förpackning). Ger exakt fyllnadsmängd i stället för en uppskattning.',
+  varvtal: 'Driftvarvtal i varv/min. Vid variabelt varvtal: räkna på det mest kritiska fallet (lägst varv + högst last, och högsta varvet var för sig).',
+  drifttemp: 'Lagrets verkliga temperatur i drift — inte omgivningens. Styr både viskositeten och smörjintervallet. Mät om det går.',
+  omgivningstemp: 'Lägsta temperatur vid start/omgivning. Avgör om fettet blir för styvt vid kallstart.',
+  belastning: 'Grovt lastförhållande C/P: lätt ≈ C/P ≥ 15, medel ≈ 10, tung ≈ 5, mycket tung < 4. Påverkar smörjintervallet kraftigt.',
+  omgivning: 'Välj alla miljöfaktorer som gäller — ett lager kan vara både dammigt och fuktigt. Den svåraste miljön styr smörjintervallet.',
+  orientering: 'Horisontell eller vertikal axel. Vertikal axel halverar smörjintervallet eftersom fettet rinner undan från lagret.',
+  vibration: 'Vibrations- och stötnivå. Hög vibration kortar smörjintervallet och kräver ett mekaniskt stabilt fett.',
+  eftersmorjningsmetod: 'Från sidan = fettet pressas in vid lagrets sida och måste vandra genom det. W33 = smörjspår/hål i ytterringen som når löpbanan direkt (mindre mängd behövs, samma intervall).',
+  visk40: 'Basoljans viskositet vid 40 °C (mm²/s). Står på nästan alla fettdatablad som "grundolja/base oil".',
+  visk100: 'Basoljans viskositet vid 100 °C. Valfri bonus — lämna tom om den saknas, då uppskattas den ur basoljetypen.',
+  basolja: 'Typ av basolja. Ger ett antaget viskositetsindex (VI) som används för att uppskatta hur oljan tunnas ut med temperaturen.',
+  ytterringsrotation: 'Kryssa i om ytterringen roterar (t.ex. hjulnav) i stället för innerringen. Ger kortare smörjintervall.',
+};
+function tipBadge(key) {
+  const t = TIPS[key];
+  return t ? `<span class="vf-tip" tabindex="0" role="img" aria-label="${esc(t)}" data-tip="${esc(t)}">?</span>` : '';
+}
+
+// Fixed-positionerad tooltip (aldrig klippt av formulärets overflow). En delad bubbla på body.
+let tipEl = null;
+function showTip(target) {
+  const txt = target.getAttribute('data-tip'); if (!txt) return;
+  if (!tipEl) { tipEl = document.createElement('div'); tipEl.className = 'vf-tipbubble'; document.body.appendChild(tipEl); }
+  tipEl.textContent = txt;
+  tipEl.style.display = 'block';
+  tipEl.style.left = '0px'; tipEl.style.top = '0px';           // mät i övre hörnet först
+  const r = target.getBoundingClientRect(), tr = tipEl.getBoundingClientRect();
+  let left = r.left + r.width / 2 - tr.width / 2;
+  left = Math.max(10, Math.min(left, window.innerWidth - tr.width - 10));
+  let top = r.top - tr.height - 9;
+  if (top < 8) top = r.bottom + 9;                              // vänd nedåt om det inte får plats ovanför
+  tipEl.style.left = `${left}px`; tipEl.style.top = `${top}px`;
+}
+function hideTip() { if (tipEl) tipEl.style.display = 'none'; }
+function bindTips(root) {
+  root.addEventListener('mouseover', e => { const t = e.target.closest('.vf-tip'); if (t) showTip(t); });
+  root.addEventListener('mouseout', e => { const t = e.target.closest('.vf-tip'); if (t) hideTip(); });
+  root.addEventListener('focusin', e => { const t = e.target.closest('.vf-tip'); if (t) showTip(t); });
+  root.addEventListener('focusout', e => { const t = e.target.closest('.vf-tip'); if (t) hideTip(); });
+  root.addEventListener('click', e => { if (e.target.closest('.vf-tip')) { e.preventDefault(); e.stopPropagation(); } });
+}
+
 // ---------- formulär ----------
-function fInput(key, label, ph = '', hint = '') {
-  return `<div class="vf-field"><label for="vf_${key}">${label}</label>
+function fInput(key, label, ph = '') {
+  return `<div class="vf-field"><label for="vf_${key}">${label}${tipBadge(key)}</label>
     <input id="vf_${key}" class="mono" data-f="${key}" inputmode="decimal" autocomplete="off"
-      placeholder="${esc(ph)}" value="${esc(S[key])}">${hint ? `<div class="vf-hint">${hint}</div>` : ''}</div>`;
+      placeholder="${esc(ph)}" value="${esc(S[key])}"></div>`;
 }
 function fSelect(key, label, opts) {
   const o = opts.map(([v, l]) => `<option value="${esc(v)}" ${S[key] === v ? 'selected' : ''}>${esc(l)}</option>`).join('');
-  return `<div class="vf-field"><label for="vf_${key}">${label}</label>
+  return `<div class="vf-field"><label for="vf_${key}">${label}${tipBadge(key)}</label>
     <select id="vf_${key}" data-f="${key}">${o}</select></div>`;
 }
 
@@ -188,21 +236,25 @@ function formHtml() {
         ${fInput('d', 'd — innerdiameter (mm)', 't.ex. 50')}
         ${fInput('D', 'D — ytterdiameter (mm)', 't.ex. 90')}
         ${fInput('B', 'B / T / H — bredd (mm)', 't.ex. 20')}
-        ${fInput('massaKg', 'Lagermassa (kg)', 'valfri', 'Lagrets vikt i kg (från katalog/förpackning) — ger exakt fyllnadsmängd istället för en uppskattning.')}
+        ${fInput('massaKg', 'Lagermassa (kg)', 'valfri')}
         ${fInput('varvtal', 'Varvtal (r/min)', 't.ex. 1 500')}
         ${fInput('drifttemp', 'Drifttemperatur (°C)', '70')}
         ${fInput('omgivningstemp', 'Lägsta omgivningstemp (°C)', '20')}
       </div>
     </div>
     <div class="fg"><div class="fh">Förhållanden</div>
+      <div class="vf-field">
+        <label>Omgivande miljö${tipBadge('omgivning')}<span class="vf-multi">flera val möjliga</span></label>
+        <div class="vf-chips" id="vfOmg">${OMGIVNING.map(([v, l]) =>
+          `<span class="chip ${S.omgivning.includes(v) ? 'on' : ''}" data-omg="${esc(v)}" role="button" tabindex="0">${esc(l)}</span>`).join('')}</div>
+      </div>
       <div class="vf-grid2">
         ${fSelect('belastning', 'Belastning', BELASTNING)}
-        ${fSelect('omgivning', 'Omgivande miljö', OMGIVNING)}
         ${fSelect('orientering', 'Axelorientering', ORIENTERING)}
         ${fSelect('vibration', 'Vibrationsnivå', VIBRATION)}
         ${fSelect('eftersmorjningsmetod', 'Eftersmörjning', METOD)}
       </div>
-      <div class="ck" id="vfYtter"><span class="box ${S.ytterringsrotation ? 'on' : ''}"></span>Roterande ytterring</div>
+      <div class="ck" id="vfYtter"><span class="box ${S.ytterringsrotation ? 'on' : ''}"></span>Roterande ytterring${tipBadge('ytterringsrotation')}</div>
     </div>
     <div class="fg"><div class="fh">Läge</div>
       <div class="vf-mode" role="tablist">
@@ -212,8 +264,8 @@ function formHtml() {
       <div id="vfFett" class="vf-fettfalt ${S.lage === 'kontrollera' ? '' : 'hidden'}">
         <div class="vf-hint" style="margin:0 0 10px">Det räcker med <b>ν40 + basoljetyp</b> — det finns på nästan alla fettdatablad. ν100 är valfri och ger bara ett smalare κ-spann.</div>
         <div class="vf-grid2">
-          ${fInput('visk40', 'ν40 — basoljeviskositet (mm²/s)', 't.ex. 220', 'Står på databladet (grundolja/base oil, 40 °C).')}
-          ${fInput('visk100', 'ν100 (mm²/s)', 'valfri — uppskattas annars', 'Bonus. Lämna tom om den saknas på databladet.')}
+          ${fInput('visk40', 'ν40 — basoljeviskositet (mm²/s)', 't.ex. 220')}
+          ${fInput('visk100', 'ν100 (mm²/s)', 'valfri — uppskattas annars')}
         </div>
         ${fSelect('basolja', 'Basoljetyp (ger antaget VI)', BASOLJOR.map(b => [b[0], `${b[1]} — VI ≈ ${b[2]}`]))}
       </div>
@@ -246,10 +298,31 @@ function bindForm(m) {
     S[sel.dataset.f] = sel.value;
     recalc(false);
   }));
-  form.querySelector('#vfYtter').addEventListener('click', () => {
+  form.querySelector('#vfYtter').addEventListener('click', (e) => {
+    if (e.target.closest('.vf-tip')) return;   // klick på info-ikonen ska inte kryssa
     S.ytterringsrotation = !S.ytterringsrotation;
     form.querySelector('#vfYtter .box').classList.toggle('on', S.ytterringsrotation);
     recalc(false);
+  });
+  bindTips(form);
+  // Omgivande miljö — flerval. "Ren och torr" är exklusivt (utesluter övriga och vice versa).
+  form.querySelectorAll('[data-omg]').forEach(el => {
+    const valj = () => {
+      const v = el.dataset.omg;
+      let arr = S.omgivning.slice();
+      if (v === 'ren') arr = ['ren'];
+      else {
+        arr = arr.filter(x => x !== 'ren');
+        const i = arr.indexOf(v);
+        i < 0 ? arr.push(v) : arr.splice(i, 1);
+        if (!arr.length) arr = ['ren'];
+      }
+      S.omgivning = arr;
+      form.querySelectorAll('[data-omg]').forEach(c => c.classList.toggle('on', S.omgivning.includes(c.dataset.omg)));
+      recalc(false);
+    };
+    el.addEventListener('click', valj);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); valj(); } });
   });
   form.querySelectorAll('[data-lage]').forEach(b => b.addEventListener('click', () => {
     S.lage = b.dataset.lage;
@@ -565,8 +638,9 @@ function byggKontext() {
   const delar = [
     `${lagerNamn(i.lagertyp)} ${fmt(i.d, 0)}×${fmt(i.D, 0)}×${fmt(i.B, 0)} mm`,
     `${fmt(i.varvtal, 0)} r/min`, `${fmt(i.drifttemp, 0)} °C drift (min ${fmt(i.omgivningstemp, 0)} °C)`,
-    l(BELASTNING, i.belastning), l(OMGIVNING, i.omgivning), l(ORIENTERING, i.orientering),
-    `vibration: ${l(VIBRATION, i.vibration)}`,
+    l(BELASTNING, i.belastning),
+    'miljö: ' + (Array.isArray(i.omgivning) ? i.omgivning : [i.omgivning]).map(o => l(OMGIVNING, o)).join(' + '),
+    l(ORIENTERING, i.orientering), `vibration: ${l(VIBRATION, i.vibration)}`,
   ];
   if (i.ytterringsrotation) delar.push('roterande ytterring');
   delar.push(`eftersmörjning ${l(METOD, i.eftersmorjningsmetod)}`);
@@ -575,7 +649,8 @@ function byggKontext() {
     beskrivning: delar.join(', ').slice(0, 480),
     lagertyp: lagerNamn(i.lagertyp), d: i.d, D: i.D, B: i.B,
     varvtal: i.varvtal, drifttemp: i.drifttemp, omgivningstemp: i.omgivningstemp,
-    belastning: i.belastning, omgivning: i.omgivning,
+    belastning: i.belastning,
+    omgivning: (Array.isArray(i.omgivning) ? i.omgivning : [i.omgivning]).join(', '),
     orientering: i.orientering, vibration: i.vibration,
   };
 }

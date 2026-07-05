@@ -35,6 +35,7 @@ export const LAGERTYPER = {
 
 const BELASTNING_FAKTOR = { latt: 1.0, medel: 0.6, tung: 0.3, mycket_tung: 0.1 }; // ~C/P 15/10/5/<4 ur SKF-diagrammets kurvskara
 const MILJO_FAKTOR = { ren: 1.0, dammig: 0.7, fuktig: 0.5, vattentvatt: 0.25, livsmedel: 0.25, kemisk: 0.5 };
+const MILJO_NAMN = { ren: 'ren', dammig: 'dammig', fuktig: 'fuktig', vattentvatt: 'vattentvätt', livsmedel: 'livsmedel', kemisk: 'kemisk' };
 const VIBRATION_FAKTOR = { lag: 1.0, medel: 0.75, hog: 0.5 };
 
 // ---------- hjälpare ----------
@@ -158,7 +159,14 @@ export function beraknaValjFett(input) {
   const drift = kravTal('drifttemperatur', input.drifttemp, -60, 250);
   const omg = kravTal('omgivningstemperatur', input.omgivningstemp, -60, 250);
   const belastning = kravEnum('belastning', input.belastning, Object.keys(BELASTNING_FAKTOR));
-  const omgivning = kravEnum('omgivning', input.omgivning, Object.keys(MILJO_FAKTOR));
+  // Omgivning kan vara flera samtidigt (t.ex. dammig + fuktig). Accepterar array eller enskild
+  // sträng (bakåtkompatibelt). Tom → 'ren'. 'ren' + annat → 'ren' faller bort (irrelevant, faktor 1).
+  let omgArr = Array.isArray(input.omgivning) ? input.omgivning : [input.omgivning];
+  omgArr = [...new Set(omgArr.filter(x => x != null && x !== ''))];
+  if (!omgArr.length) omgArr = ['ren'];
+  omgArr.forEach(o => kravEnum('omgivning', o, Object.keys(MILJO_FAKTOR)));
+  const omgivning = omgArr.length > 1 ? omgArr.filter(o => o !== 'ren') : omgArr;
+  const harMiljo = (...vals) => omgivning.some(o => vals.includes(o));
   const orientering = kravEnum('orientering', input.orientering, ['horisontell', 'vertikal']);
   const vibration = kravEnum('vibration', input.vibration, Object.keys(VIBRATION_FAKTOR));
   const metod = kravEnum('eftersmörjningsmetod', input.eftersmorjningsmetod, ['sida', 'centrumhal']);
@@ -301,7 +309,7 @@ export function beraknaValjFett(input) {
   if (orientering === 'vertikal') { poang['2'] += 1; poang['3'] += 2; nlgiMot.push('Vertikal axel: styvare fett (NLGI 2–3) motverkar avrinning.'); }
   if (vibration === 'hog') { poang['2'] += 1; poang['3'] += 1; nlgiMot.push('Hög vibrationsnivå: mekaniskt stabilt fett (NLGI 2–3, t.ex. polyurea/litiumkomplex/kalciumsulfonat).'); }
   if (omg < -30) { poang['1'] += 2; nlgiMot.push('Låg starttemperatur: mjukare fett (NLGI 1–2) på syntetbas säkrar startsmörjning.'); }
-  if (['vattentvatt', 'livsmedel'].includes(omgivning)) { poang['2'] += 1; nlgiMot.push('Spolning/tvättmiljö: NLGI 2 med vattenresistent förtjockare (kalciumsulfonat/aluminiumkomplex).'); }
+  if (harMiljo('vattentvatt', 'livsmedel')) { poang['2'] += 1; nlgiMot.push('Spolning/tvättmiljö: NLGI 2 med vattenresistent förtjockare (kalciumsulfonat/aluminiumkomplex).'); }
   if (!nlgiMot.length) nlgiMot.push('Normalförhållanden — NLGI 2 är standardvalet för rullningslager.');
   const nlgiForslag = Object.entries(poang).sort((a, b) => b[1] - a[1] || Number(a[0]) - Number(b[0])).slice(0, 2)
     .filter(([, p], i) => i === 0 || p > 0).map(([k]) => k)
@@ -327,7 +335,7 @@ export function beraknaValjFett(input) {
     gramStandard: rund(friVolym * 0.9, 0),      // fettdensitet ~0,9 g/cm³
     gramPfpe: rund(friVolym * 1.9, 0),          // PFPE ~1,9 g/cm³
     arUppskattning,
-    husText: regim === 'lagvarv' && ['dammig', 'fuktig', 'vattentvatt', 'kemisk'].includes(omgivning)
+    husText: regim === 'lagvarv' && harMiljo('dammig', 'fuktig', 'vattentvatt', 'kemisk')
       ? 'Husfyllnad: lågvarv + föroreningar — fyll 70–100 % av husets fria volym som barriär.'
       : metod === 'sida'
         ? 'Husfyllnad vid sidosmörjning: ca 40 % av husets fria volym initialt.'
@@ -371,7 +379,12 @@ export function beraknaValjFett(input) {
   if (orientering === 'vertikal') laddaFaktor('Vertikal axel', 0.5);
   laddaFaktor(`Vibration (${vibration})`, VIBRATION_FAKTOR[vibration]);
   if (ytterrot) laddaFaktor('Roterande ytterring', 0.6);
-  laddaFaktor(`Miljö (${omgivning})`, MILJO_FAKTOR[omgivning]);
+  // Flera miljöer: den svåraste (lägsta faktorn) styr — standard SKF-förenkling (föroreningsnivå
+  // är en enskild svårighetsgrad, inte multiplikativ). Alla valda listas, den styrande markeras.
+  const miljoFaktor = Math.min(...omgivning.map(o => MILJO_FAKTOR[o]));
+  const styrMiljo = omgivning.reduce((a, o) => MILJO_FAKTOR[o] < MILJO_FAKTOR[a] ? o : a, omgivning[0]);
+  const miljoNamn = omgivning.map(o => MILJO_NAMN[o] || o).join(' + ');
+  laddaFaktor(omgivning.length > 1 ? `Miljö (${miljoNamn} → svårast: ${MILJO_NAMN[styrMiljo] || styrMiljo})` : `Miljö (${miljoNamn})`, miljoFaktor);
   tf = Math.max(0, Math.min(30000, tf));
 
   let rekommendation;
@@ -409,8 +422,8 @@ export function beraknaValjFett(input) {
     nlgi: nlgiForslag,
     tempMax: drift,
     tempMin: omg,
-    nsf: omgivning === 'livsmedel' ? 'H1' : null,
-    vattenbestandig: ['fuktig', 'vattentvatt', 'livsmedel'].includes(omgivning),
+    nsf: harMiljo('livsmedel') ? 'H1' : null,
+    vattenbestandig: harMiljo('fuktig', 'vattentvatt', 'livsmedel'),
     ep: (kontroll ? kontroll.kappa < 1 : false) || belastning === 'tung' || belastning === 'mycket_tung',
     hogvarv: regim === 'hogvarv',
     lagvarv: regim === 'lagvarv',

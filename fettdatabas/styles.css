@@ -227,7 +227,14 @@ table.grid th:has(.fnl.on){color:var(--blue)}
 /* formulär */
 .vf-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .vf-field{display:flex;flex-direction:column;min-width:0}
-.vf-field label{font:600 9.5px 'IBM Plex Mono';letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.vf-field label{display:flex;align-items:center;gap:6px;font:600 9.5px 'IBM Plex Mono';letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+/* info-ikon + tooltip (hover/fokus på rubriken) */
+.vf-tip{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:#c4d2df;color:#fff;font:700 10px 'Barlow';letter-spacing:0;text-transform:none;cursor:help;flex:none;user-select:none}
+.vf-tip:hover,.vf-tip:focus{background:var(--blue);outline:none}
+.vf-tipbubble{position:fixed;z-index:9999;display:none;max-width:260px;background:#17242f;color:#fff;font:500 12px/1.5 'Barlow';letter-spacing:0;text-transform:none;padding:9px 12px;border-radius:9px;box-shadow:0 8px 26px rgba(0,0,0,.28);pointer-events:none}
+.vf-multi{margin-left:auto;font:600 8.5px 'IBM Plex Mono';letter-spacing:.04em;text-transform:none;color:#7d8b98;background:#eef3f8;border:1px solid #dbe6f0;border-radius:5px;padding:2px 6px}
+.vf-chips{display:flex;flex-wrap:wrap;gap:6px}
+.vf-chips .chip{cursor:pointer;user-select:none}
 .vf-field input,.vf-field select{width:100%;padding:9px 11px;border:1px solid #d5dde4;border-radius:9px;background:#fff;font:500 13.5px 'Barlow';color:#17242f;outline:none}
 .vf-field input.mono{font:500 13.5px 'IBM Plex Mono'}
 .vf-field input:focus,.vf-field select:focus{border-color:var(--blue)}
