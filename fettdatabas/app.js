@@ -28,31 +28,92 @@ const state = {
   users: [],
 };
 
-// ---------- filter-definitioner (label -> matchvärden i DB) ----------
+// ---------- filter-definitioner (label -> matchvärden i DB, inkl. stavvarianter) ----------
+// Varje val fångar alla varianter som finns i databasen (datan är delvis ostädad).
 const F = {
   basolja: [
-    ['Mineral', ['Mineralisk Grupp I', 'Mineralisk Grupp II', 'Mineralisk']],
-    ['PAO (syntet)', ['PAO']], ['Ester', ['Ester']], ['Polyglykol (PAG)', ['Polyglykol']],
-    ['White oil', ['White oil']], ['Silikon', ['Silikon']], ['PFPE', ['PFPE']],
+    ['Mineralisk', ['Mineralisk Grupp I', 'Mineralisk Grupp II', 'Mineralisk Grupp I/II', 'Mineralisk', 'Mineralolja', 'Medicinsk vit mineralolja']],
+    ['PAO', ['PAO']],
+    ['Ester', ['Ester', 'Syntetisk ester']],
+    ['Polyglykol (PAG)', ['Polyglykol', 'PAG', 'PG/PAG']],
+    ['White oil', ['White oil']],
+    ['Silikon', ['Silikon', 'Silikone', 'Siliconolja', 'Fluorosilikon']],
+    ['PFPE', ['PFPE', 'Fluorerad olja (PFPE)']],
+    ['Vegetabilisk/nedbrytbar', ['Vegetabilisk', 'Biologiskt nedbrytbar basolja']],
+    ['Syntetisk (övrig)', ['Syntetisk', 'Fullsyntetisk', 'Semi-syntetisk', 'Delsyntetisk', 'PIB']],
+    ['Övrigt', ['Övrigt']],
   ],
   fortjockare: [
-    ['Litium', ['Litium']], ['Litiumkomplex', ['Litiumkomplex']], ['Kalcium', ['Kalcium']],
-    ['Kalciumkomplex', ['Kalciumkomplex']], ['Kalciumsulfonat', ['Kalciumsulfonat']],
-    ['Aluminiumkomplex', ['Aluminiumkomplex']], ['Polyurea', ['Polyurea']],
-    ['Natriumkomplex', ['Natriumkomplex']], ['Bentonit', ['Bentonit']], ['PTFE', ['PTFE']],
+    ['Litium', ['Litium']],
+    ['Litiumkomplex', ['Litiumkomplex']],
+    ['Litium/Kalcium', ['Litium/Kalcium', 'Litium-Kalcium']],
+    ['Kalcium', ['Kalcium', 'Kalciumtvål']],
+    ['Kalciumkomplex', ['Kalciumkomplex']],
+    ['Kalciumsulfonat', ['Kalciumsulfonat']],
+    ['Aluminiumkomplex', ['Aluminiumkomplex', 'Aluminium']],
+    ['Polyurea', ['Polyurea']],
+    ['Natrium', ['Natrium']],
+    ['Natriumkomplex', ['Natriumkomplex']],
+    ['Barium', ['Barium', 'Bariumkomplex']],
+    ['Bentonit', ['Bentonit']],
+    ['PTFE', ['PTFE', 'PTFE-förtjockare', 'PTFE-telomer']],
+    ['Silika (SiO₂)', ['Silikagel (SiO2)', 'Silikat', 'Silicon']],
+    ['Oorganisk', ['Oorganisk', 'Inorganisk']],
+    ['Koppar', ['Koppartvål']],
+    ['Övrigt', ['Övrigt', 'Komplex', 'Varierar', 'Metalltvål', 'Organisk', 'Aluminiumkomplex + Polyurea', 'Fluorerad förtjockare']],
   ],
   fasta: [
-    ['Vita fasta', ['Vita fasta smörjämnen']], ['PTFE', ['PTFE']], ['MoS₂', ['MoS2']],
-    ['Grafit', ['Grafit']], ['BN (bornitrid)', ['BN (bornitrid)', 'BN']],
+    ['Vita fasta', ['Vita fasta smörjämnen', 'Vita fasta smörjmedel']],
+    ['PTFE', ['PTFE']],
+    ['MoS₂', ['MoS2']],
+    ['Grafit', ['Grafit']],
+    ['BN (bornitrid)', ['BN (bornitrid)', 'BN']],
+    ['Koppar', ['Koppar']],
+    ['Titandioxid (TiO₂)', ['Titandioxid']],
+    ['Aluminiumpulver', ['Aluminiumpulver']],
+    ['Inga', ['Inga']],
   ],
-  nlgi: ['000', '00', '0', '1', '1.5', '2', '2.5', '3'],
-  nsf: ['H1', 'H2', 'H3'],
-  tillampning: ['Rullager', 'Glidlager', 'Kullager', 'Spindellager', 'Kugghjul', 'Skruvförband',
-    'Högtryck EP', 'Hög temperatur', 'Låg temperatur', 'Vattenexponering'],
+  nlgi: ['000', '00', '0', '1', '1.5', '2', '2.5', '3', '4', '5', '6'],
+  nsf: ['H1', 'H2', 'H3', '3H'],
+  tillampning: [
+    ['Rullager', ['Rullager', 'Rullager vid höga temperaturer']],
+    ['Glidlager', ['Glidlager', 'Ledlager', 'Bussningar', 'Glidytor', 'Glidbanor', 'Mekaniska glidbanor']],
+    ['Kullager', ['Kullager']],
+    ['Spindellager', ['Spindellager', 'Spindlar', 'Höghastighetslager', 'Höghastighetsapplikationer']],
+    ['Elmotorlager', ['Elektromotorer', 'Elmotorer', 'Elektriska motorer', 'Elmotorslager', 'Fläktlager']],
+    ['Kugghjul/växlar (stängda)', ['Kugghjul', 'Kuggväxlar', 'Kuggmekanismer', 'Reduktionsenheter', 'Transmissioner', 'Snäckväxlar']],
+    ['Öppna kugg/kuggväxlar', ['Öppna kugghjul', 'Öppna kuggväxlar']],
+    ['Kedjor', ['Kedjor', 'Kedjesmörjning', 'Sågkedjor', 'Harvesterkedjor', 'Lödmaskinkedjor']],
+    ['Räls/spår', ['Räls', 'Spårsmörjning', 'Spårväxelsmörjning', 'Hjulflänsar', 'Järnväg', 'Järnvägsfordon', 'Tunnelbana', 'Vagnaxlar']],
+    ['Skruv/gängförband', ['Skruvar och infästningar', 'Skruvar', 'Gängförband', 'Skruvanslutningar', 'Bultar', 'Fittings']],
+    ['Ventiler', ['Ventiler', 'Gasventiler', 'Ångventiler']],
+    ['Tätningar/O-ringar', ['Tätningar', 'O-ringar']],
+    ['Högtryck / EP', ['Högtryck EP', 'Höglastlager', 'Höglastapplikationer', 'Hög last', 'Extremtrycksapplikationer', 'Hydraulhammare']],
+    ['Hög temperatur', ['Hög temperatur', 'Högtempapplikationer', 'Extremtemperatur', 'Härdugnar', 'Ugnar', 'Roterugnar', 'Torkugnar']],
+    ['Låg temperatur', ['Låg temperatur', 'Lågtemperatur', 'Lågtemperaturapplikationer']],
+    ['Vattenexponering', ['Vattenexponering', 'Vattenutsatta miljöer', 'Vattenpumpar', 'Marin', 'Offshore']],
+    ['Livsmedelsindustri', ['Livsmedelsindustri', 'Livsmedel', 'Livsmedelsmaskineri', 'Dryckesproduktion', 'Slakteri', 'Livsmedels-/farmaindustri']],
+    ['Elektriska kontakter', ['Elektriska kontakter', 'Kontaktdon', 'Högspänningskontakter', 'Ställverkskontakter', 'Guld-kontakter']],
+    ['Plast/gummi', ['Plast och gummi', 'Plast', 'Gummi', 'Plast- och gummismörjning']],
+    ['Vakuum', ['Vakuum', 'Högvakuum', 'Vakuumutrustning']],
+    ['Centralsmörjning', ['Centralsmörjning', 'Automatsmörjare', 'Centralsystem', 'Smörjsystem', 'Matarsystem']],
+    ['Tung industri', ['Kranar', 'Tung industri', 'Gruvindustri', 'Gruvdrift', 'Stålverk', 'Stålindustri', 'Cementindustri', 'Pappersmaskiner', 'Pappersindustri']],
+  ],
 };
+// Expandera valda etiketter till DB-varianter innan sökning
+function expandFilter(kind, labels) {
+  const defs = F[kind];
+  if (!Array.isArray(labels) || !labels.length) return [];
+  const out = [];
+  for (const lab of labels) {
+    const def = Array.isArray(defs) ? defs.find(d => (Array.isArray(d) ? d[0] : d) === lab) : null;
+    if (Array.isArray(def)) out.push(...def[1]); else out.push(lab);
+  }
+  return [...new Set(out)];
+}
 
 // Slå på när valj-fett-calc.js är klar → då aktiveras "Välj fett"-fliken igen
-const VALJFETT_ENABLED = true;
+const VALJFETT_ENABLED = false;
 
 const NAV = [
   ['sok', 'Sök & översätt'], ['valjfett', 'Välj fett'], ['katalog', 'Produktkatalog'],
@@ -301,11 +362,21 @@ async function doSearch() {
   if (!q) { toast('Skriv in en produkt att översätta'); return; }
   state.query = q; state.searching = true; state.searchResult = null;
   $('#res').innerHTML = renderSokResult();
+  const f = state.filters;
+  const expanded = {
+    basolja: expandFilter('basolja', f.basolja),
+    fortjockare: expandFilter('fortjockare', f.fortjockare),
+    fasta: expandFilter('fasta', f.fasta),
+    tillampning: expandFilter('tillampning', f.tillampning),
+    nlgi: f.nlgi || [],
+    nsf: f.nsf || [],
+    ptfeFri: !!f.ptfeFri,
+  };
   try {
     const res = await fetch(`${FN_URL}/fett-sok`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${state.session.access_token}` },
-      body: JSON.stringify({ query: q, filters: state.filters }),
+      body: JSON.stringify({ query: q, filters: expanded }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Sökningen misslyckades');
