@@ -300,7 +300,7 @@ function renderSok(m) {
       <div><div class="ttl">Sök & översätt</div><div class="tsub">Hitta bästa motsvarighet till en konkurrentprodukt</div></div>
       <div class="tsearch"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>
         <input id="q" placeholder="t.ex. Klüber Isoflex NBU 15" value="${esc(state.query)}"></div>
-      <button class="tgo" id="go">Översätt</button>
+      <button class="tgo" id="go"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-2px;margin-right:6px"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>Sök</button>
     </div>
     <div class="body2">
       <div class="filt">
@@ -329,7 +329,7 @@ function renderSok(m) {
 function renderSokResult() {
   if (state.searching) return `<div class="empty"><span class="spinner"></span> AI analyserar och rankar produkter…</div>`;
   const r = state.searchResult;
-  if (!r) return `<div class="empty">Skriv in en konkurrentprodukt och tryck <b>Översätt</b>.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
+  if (!r) return `<div class="empty">Skriv in en konkurrentprodukt och tryck <b>Sök</b>.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
   if (!r.results || !r.results.length) return `<div class="empty">Inga produkter matchade. Prova att lätta på filtren.</div>`;
   const comp = r.competitor;
   const note = r.note ? `<div class="ai-note"><span class="ai-chip">AI</span>${comp?.matched ? `Tolkade sökningen som <b>${esc(comp.produktnamn)}</b>${comp.producent ? ` (${esc(comp.producent)})` : ''}. ` : ''}${esc(r.note)}</div>` : '';
