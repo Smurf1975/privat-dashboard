@@ -74,7 +74,13 @@ const F = {
     ['Inga', ['Inga']],
   ],
   nlgi: ['000', '00', '0', '1', '1.5', '2', '2.5', '3', '4', '5', '6'],
-  nsf: ['H1', 'H2', '3H'],
+  // H1 breddas till att även matcha 3H-produkter (3H innebär i praktiken alltid H1-registrering).
+  // 3H hålls strikt — inte alla H1-produkter är 3H.
+  nsf: [
+    ['H1', ['H1', '3H']],
+    ['H2', ['H2']],
+    ['3H', ['3H']],
+  ],
   tillampning: [
     ['Rullager', ['Rullager', 'Rullager vid höga temperaturer']],
     ['Glidlager', ['Glidlager', 'Ledlager', 'Bussningar', 'Glidytor', 'Glidbanor', 'Mekaniska glidbanor']],
@@ -368,7 +374,7 @@ async function doSearch() {
     fasta: expandFilter('fasta', f.fasta),
     tillampning: expandFilter('tillampning', f.tillampning),
     nlgi: f.nlgi || [],
-    nsf: f.nsf || [],
+    nsf: expandFilter('nsf', f.nsf),
     ptfeFri: !!f.ptfeFri,
   };
   try {
