@@ -119,7 +119,7 @@ function expandFilter(kind, labels) {
 }
 
 // Slå på när valj-fett-calc.js är klar → då aktiveras "Välj fett"-fliken igen
-const VALJFETT_ENABLED = false;
+const VALJFETT_ENABLED = true;
 
 const NAV = [
   ['sok', 'Sök & översätt'], ['valjfett', 'Välj fett'], ['katalog', 'Produktkatalog'],

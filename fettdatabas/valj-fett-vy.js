@@ -2,7 +2,7 @@
 // Konsumerar beräkningsmodulen valj-fett-calc.js (Agent 1) och edge-funktionen fett-rekommendation (Agent 3).
 // Exponerar renderValjFett(m, ctx) där ctx = { sb, FN_URL, session, toast, esc, openProduct }.
 import { beraknaValjFett, visk40TillVid, estimeraV100, ISO_VG, LAGERTYPER } from './valj-fett-calc.js';
-import { kollaByte, FORTJOCKARE, BASOLJA, KOMP_KALLA, KOMP_SYNKAD } from './fett-kompatibilitet.js';
+import { kollaByte, fortNyckelFranDb, basNyckelFranDb, FORTJOCKARE, BASOLJA, KOMP_KALLA, KOMP_SYNKAD } from './fett-kompatibilitet.js';
 
 // ---------- utils (lokal esc-kopia, samma mönster som app.js) ----------
 const esc = (v) => v == null ? '' : String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -36,6 +36,8 @@ const S = {
   rek: null, rekFel: null, rekLaddar: false,
   // fettbyte-kompatibilitet
   kGammalFort: '', kGammalBas: '', kNyFort: '', kNyBas: '', kResultat: null, kFel: null, kOppen: false,
+  // nuvarande fett i lagret (valfritt) — driver kompatibilitetsbadge på produktförslag
+  nuvarandeFort: '', nuvarandeBas: '',
 };
 let CTX = null;
 
@@ -190,6 +192,7 @@ const TIPS = {
   visk100: 'Basoljans viskositet vid 100 °C. Valfri bonus — lämna tom om den saknas, då uppskattas den ur basoljetypen.',
   basolja: 'Typ av basolja. Ger ett antaget viskositetsindex (VI) som används för att uppskatta hur oljan tunnas ut med temperaturen.',
   ytterringsrotation: 'Kryssa i om ytterringen roterar (t.ex. hjulnav) i stället för innerringen. Ger kortare smörjintervall.',
+  nuvarandeFort: 'Vad som redan sitter i lagret (om känt). Används för att varna om ett föreslaget fett är inkompatibelt med det gamla vid byte — allt kan inte blandas, se kortet "Fettbyte" nedan.',
 };
 function tipBadge(key) {
   const t = TIPS[key];
@@ -273,6 +276,12 @@ function formHtml() {
         ${fSelect('eftersmorjningsmetod', 'Eftersmörjning', METOD)}
       </div>
       <div class="ck" id="vfYtter"><span class="box ${S.ytterringsrotation ? 'on' : ''}"></span>Roterande ytterring${tipBadge('ytterringsrotation')}</div>
+    </div>
+    <div class="fg"><div class="fh">Nuvarande fett i lagret <span class="vf-multi">valfritt</span>${tipBadge('nuvarandeFort')}</div>
+      <div class="vf-grid2">
+        <div class="vf-field"><label for="vf_nuvarandeFort">Förtjockare</label><select id="vf_nuvarandeFort" data-f="nuvarandeFort">${fortOpts(S.nuvarandeFort)}</select></div>
+        <div class="vf-field"><label for="vf_nuvarandeBas">Basolja</label><select id="vf_nuvarandeBas" data-f="nuvarandeBas">${basOpts(S.nuvarandeBas)}</select></div>
+      </div>
     </div>
     <div class="fg"><div class="fh">Läge</div>
       <div class="vf-mode" role="tablist">
@@ -713,12 +722,26 @@ function produktKappa(p) {
   } catch { return null; }
 }
 
+// Kompatibilitet mellan nuvarande fett i lagret (om angivet) och en föreslagen produkt.
+function produktKompatibilitet(p) {
+  if (!S.nuvarandeFort) return null;
+  try {
+    const nyFort = fortNyckelFranDb(p.fortjockare);
+    if (!nyFort) return null;
+    return kollaByte({ fort: S.nuvarandeFort, bas: S.nuvarandeBas || null },
+      { fort: nyFort, bas: basNyckelFranDb(p.basolja) });
+  } catch { return null; }
+}
+
 function prodHtml(p) {
   const lam = Math.max(0, Math.min(100, Math.round(Number(p.lamplighet) || 0)));
   const kappa = produktKappa(p);
   const kHtml = kappa == null
     ? `<span class="vf-kpill okand">κ okänt<br><small>(viskositet saknas)</small></span>`
     : `<span class="vf-kpill ${zonKlass(kappa)}">κ ≈ ${fmt(kappa, 1)}</span>`;
+  const komp = produktKompatibilitet(p);
+  const kompHtml = komp
+    ? `<span class="vf-kbadge ${komp.sammantaget.klass}" title="${esc(komp.atgard)}">🔄 ${komp.sammantaget.symbol} byte</span>` : '';
   const temp = (p.temperaturomrade_min != null || p.temperaturomrade_max != null)
     ? `${p.temperaturomrade_min ?? '?'}…${p.temperaturomrade_max ?? '?'} °C` : '—';
   const nsf = (p.nsf_klass_food_grade && p.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd')
@@ -733,7 +756,7 @@ function prodHtml(p) {
         <span>NLGI <b class="mono">${esc(p.nlgi_klass ?? '—')}</b></span>
         <span>ν40 <b class="mono">${p.viskositet_40c != null ? fmt(p.viskositet_40c, 0) + ' mm²/s' : '—'}</b></span>
         <span class="mono">${esc(temp)}</span>
-        ${nsf}
+        ${nsf}${kompHtml}
       </div>
     </div>
     <div class="vf-prod-k">${kHtml}</div>
@@ -757,6 +780,8 @@ function byggKontext() {
   if (i.ytterringsrotation) delar.push('roterande ytterring');
   delar.push(`eftersmörjning ${l(METOD, i.eftersmorjningsmetod)}`);
   if (i.fett) delar.push(`kontroll av eget fett ν40=${fmt(i.fett.visk40, 0)} mm²/s`);
+  const nuvarandeFortNamn = S.nuvarandeFort ? (FORTJOCKARE.find(f => f.key === S.nuvarandeFort)?.namn || S.nuvarandeFort) : null;
+  if (nuvarandeFortNamn) delar.push(`nuvarande fett i lagret: ${nuvarandeFortNamn}${S.nuvarandeBas ? ' / ' + (BASOLJA.find(b => b.key === S.nuvarandeBas)?.namn || S.nuvarandeBas) : ''}`);
   return {
     beskrivning: delar.join(', ').slice(0, 480),
     lagertyp: lagerNamn(i.lagertyp), d: i.d, D: i.D, B: i.B,
@@ -764,6 +789,7 @@ function byggKontext() {
     belastning: i.belastning,
     omgivning: (Array.isArray(i.omgivning) ? i.omgivning : [i.omgivning]).join(', '),
     orientering: i.orientering, vibration: i.vibration,
+    nuvarandeFort: S.nuvarandeFort || null, nuvarandeBas: S.nuvarandeBas || null,
   };
 }
 
