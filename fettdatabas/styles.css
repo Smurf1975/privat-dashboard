@@ -39,7 +39,12 @@ a{color:inherit;text-decoration:none}
 .shell{background:var(--panel);border-radius:15px;overflow:hidden;box-shadow:0 12px 40px rgba(28,44,60,.14);display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 44px)}
 .side{background:var(--blue-d);padding:16px 12px;display:flex;flex-direction:column;gap:3px}
 .sbrand{display:flex;align-items:center;gap:10px;padding:6px 10px 20px}
-.slogo{width:33px;height:33px;border-radius:8px;background:linear-gradient(150deg,#2f8fd8,#005CA9);display:flex;align-items:center;justify-content:center;font:800 17px 'Barlow';color:#fff}
+.slogo{width:36px;height:36px;border-radius:9px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.slogo img{width:100%;height:100%;object-fit:contain}
+/* Logotyp (lockup) på inloggnings-/ingen-åtkomst-sidan */
+.login-lockup{text-align:center;margin-bottom:16px}
+.login-lockup img{width:250px;max-width:82%;height:auto;display:block;margin:0 auto}
+.login-eyebrow{font:600 9px 'IBM Plex Mono';letter-spacing:.16em;text-transform:uppercase;color:#8aa7c6;margin-top:4px}
 .sbn{font:700 15px 'Barlow';color:#eaf0f4;line-height:1.05}
 .sbs{font:500 8.5px 'IBM Plex Mono';letter-spacing:.14em;color:#a9c6e6;text-transform:uppercase;margin-top:3px}
 .nav a{display:flex;align-items:center;gap:11px;font:500 13.5px 'Barlow';color:#cfe0f2;padding:11px 12px;border-radius:9px;cursor:pointer}

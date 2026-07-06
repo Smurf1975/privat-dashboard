@@ -191,8 +191,7 @@ function render(authError) {
 function renderLogin(authError) {
   app().innerHTML = `
   <div class="login"><div class="login-card">
-    <div class="login-brand"><div class="login-logo">F</div>
-      <div><h1>Fettdatabas</h1><p>Teknik</p></div></div>
+    <div class="login-lockup"><img src="logo-lockup.png" alt="Fettdatabas"><div class="login-eyebrow">Teknik</div></div>
     <p class="login-sub">Logga in med din jobbmail. Du får en inloggningslänk skickad — inget lösenord behövs.</p>
     ${authError ? `<div class="login-msg err">${esc(authError)}</div>` : ''}
     <form id="loginForm">
@@ -227,7 +226,7 @@ function renderNoAccess() {
     : `Kontot <b>${esc(state.session.user.email)}</b> finns inte på behörighetslistan. Be Mats lägga till dig innan du kan använda databasen.`;
   app().innerHTML = `
   <div class="login"><div class="login-card">
-    <div class="login-brand"><div class="login-logo">F</div><div><h1>Fettdatabas</h1><p>Teknik</p></div></div>
+    <div class="login-lockup"><img src="logo-lockup.png" alt="Fettdatabas"><div class="login-eyebrow">Teknik</div></div>
     <div class="login-msg err" style="margin-top:20px">${msg}</div>
     ${state.meError ? '<button class="login-btn" id="reload" style="margin-top:16px">Ladda om</button>' : ''}
     <button class="login-btn ${state.meError ? '' : ''}" id="lo" style="margin-top:10px;background:#8494a2">Logga ut</button>
@@ -244,7 +243,7 @@ function renderShell() {
   app().innerHTML = `
   <div class="page"><div class="shell">
     <div class="side">
-      <div class="sbrand"><div class="slogo">F</div><div><div class="sbn">Fettdatabas</div><div class="sbs">Teknik</div></div></div>
+      <div class="sbrand"><div class="slogo"><img src="logo-ikon.png" alt=""></div><div><div class="sbn">Fettdatabas</div><div class="sbs">Teknik</div></div></div>
       <nav class="nav">${nav}</nav>
       <div class="sfoot">
         <div class="suser"><b>${esc(state.me.namn || state.me.epost)}</b><br><span class="srole">${esc(state.me.roll)}</span></div>
