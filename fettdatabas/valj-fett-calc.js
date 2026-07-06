@@ -183,6 +183,11 @@ export function beraknaValjFett(input) {
   const vibration = kravEnum('vibration', input.vibration, Object.keys(VIBRATION_FAKTOR));
   const metod = kravEnum('eftersmörjningsmetod', input.eftersmorjningsmetod, ['sida', 'centrumhal']);
   const ytterrot = !!input.ytterringsrotation;
+  // Tätning: öppet lager (extern smörjning, default) eller tätat (2RS kontakttätning / 2Z skölddäck).
+  // De flesta tätade lager är fabriksfyllda för livstidssmörjning — varken eftersmörjningsbart
+  // eller fettvalsbart i efterhand (specialvarianter med smörjnippel finns men är undantag).
+  const tatning = kravEnum('tätning', input.tatning ?? 'oppet', ['oppet', '2rs', '2z']);
+  const tatat = tatning !== 'oppet';
 
   let fett = null;
   if (input.fett) {
@@ -217,6 +222,16 @@ export function beraknaValjFett(input) {
         ? `n·dm > ${hogGrans.toLocaleString('sv-SE')} — högvarvsregim: låg krävd viskositet, välj lågviskös basolja och kanalbildande fett.`
         : 'Normal hastighetsregim.',
   });
+
+  // Tätade lager: kontakttätningar (2RS) ger tätningsfriktion som sänker tillåten hastighet jämfört
+  // med öppna lager; skölddäck (2Z) är beröringsfria och skyddar sämre mot föroreningar/fukt än 2RS.
+  // Ingenjörsråd, inga hårda gränser — exakt hastighetsgräns beror på lagrets specifika utförande.
+  if (tatning === '2rs' && regim === 'hogvarv') {
+    varningar.push('Kontakttätningar (2RS/RS) ger tätningsfriktion som sänker lagrets tillåtna hastighet jämfört med öppna lager — kontrollera tillverkarens hastighetsgräns för denna tätade variant. Överväg skölddäck (2Z) eller öppet lager med separat extern tätning vid höga varvtal.');
+  }
+  if (tatning === '2z' && harMiljo('dammig', 'fuktig', 'vattentvatt', 'livsmedel', 'kemisk')) {
+    varningar.push('Skölddäck (2Z/ZZ) är beröringsfria och skyddar sämre mot damm, fukt och vatten än kontakttätningar (2RS) — överväg 2RS eller en separat extern tätningslösning i denna miljö.');
+  }
 
   // Oscillation: riskklass utifrån vinkelutslaget. Små utslag ⇒ rullkropparnas kontaktzoner
   // överlappar aldrig ⇒ fettet pressas bort och återflödar inte ⇒ falsk brinelling/fretting.
@@ -371,29 +386,35 @@ export function beraknaValjFett(input) {
     gramStandard: rund(friVolym * 0.9, 0),      // fettdensitet ~0,9 g/cm³
     gramPfpe: rund(friVolym * 1.9, 0),          // PFPE ~1,9 g/cm³
     arUppskattning,
-    husText: regim === 'lagvarv' && harMiljo('dammig', 'fuktig', 'vattentvatt', 'kemisk')
-      ? 'Husfyllnad: lågvarv + föroreningar — fyll 70–100 % av husets fria volym som barriär.'
-      : metod === 'sida'
-        ? 'Husfyllnad vid sidosmörjning: ca 40 % av husets fria volym initialt.'
-        : 'Husfyllnad vid centrumhålssmörjning (W33): ca 20 % av husets fria volym initialt.',
+    tatat,
+    husText: tatat
+      ? 'Lagret är tätat och fabriksfyllt av tillverkaren — det finns ingen extern husfyllnad att komplettera. Siffrorna ovan är referens (t.ex. för jämförelse mot en öppen variant), inget du fyller på själv.'
+      : regim === 'lagvarv' && harMiljo('dammig', 'fuktig', 'vattentvatt', 'kemisk')
+        ? 'Husfyllnad: lågvarv + föroreningar — fyll 70–100 % av husets fria volym som barriär.'
+        : metod === 'sida'
+          ? 'Husfyllnad vid sidosmörjning: ca 40 % av husets fria volym initialt.'
+          : 'Husfyllnad vid centrumhålssmörjning (W33): ca 20 % av husets fria volym initialt.',
   };
   forklaring.push({
     steg: 6, rubrik: 'Fyllnadsmängd i lagret (SKF)',
     formel: massaKg != null && !arUppskattning
       ? `V = π/4·B·(D²−d²)·10⁻³ − M/(7,8·10⁻³) = ${rund(annulusCm3, 1)} − ${rund(massaKg / 7.8e-3, 1)} = ${rund(friVolym, 1)} cm³ ⇒ ${fyllnad.gramStandard} g`
       : `V ≈ 0,30 · π/4·B·(D²−d²)·10⁻³ = 0,30 · ${rund(annulusCm3, 1)} = ${rund(friVolym, 1)} cm³ ⇒ ${fyllnad.gramStandard} g (uppskattning)`,
-    text: 'Lagrets fria volym fylls helt vid montering (gram = V·0,9 för standardfett, V·1,9 för PFPE). Husets fria volym fylls delvis enligt eftersmörjningsmetoden.',
+    text: 'Lagrets fria volym fylls helt vid montering (gram = V·0,9 för standardfett, V·1,9 för PFPE). Husets fria volym fylls delvis enligt eftersmörjningsmetoden.'
+      + (tatat ? ' OBS: lagret är tätat (fabriksfyllt) — denna beräkning är referens, inte en åtgärd du utför själv.' : ''),
   });
 
-  // --- steg 8: efterfyllnadsmängd Gp ---
-  const gp = (metod === 'sida' ? 0.005 : 0.002) * D * B;
-  forklaring.push({
-    steg: 7, rubrik: 'Efterfyllnadsmängd (SKF)',
-    formel: `Gp = ${metod === 'sida' ? '0,005' : '0,002'}·D·B = ${metod === 'sida' ? '0,005' : '0,002'} · ${D} · ${B} = ${rund(gp, 1)} g`,
-    text: metod === 'sida'
-      ? 'Påfyllning från lagrets sida (inget W33-spår): fettet måste vandra genom lagret för att nå löpbanorna — därför större mängd per tillfälle (0,005·D·B) och 40 % initial husfyllnad.'
-      : 'Påfyllning genom smörjhål och W33-spår i ytterringen: fettet når löpbanorna direkt — därför räcker mindre mängd per tillfälle (0,002·D·B) och 20 % initial husfyllnad. Intervallet påverkas inte av påförselvägen — det styrs av fettets åldring (temperatur, varvtal, last, miljö).',
-  });
+  // --- steg 8: efterfyllnadsmängd Gp (endast öppna lager — tätade lager kan inte efterfyllas) ---
+  const gp = tatat ? null : (metod === 'sida' ? 0.005 : 0.002) * D * B;
+  if (!tatat) {
+    forklaring.push({
+      steg: 7, rubrik: 'Efterfyllnadsmängd (SKF)',
+      formel: `Gp = ${metod === 'sida' ? '0,005' : '0,002'}·D·B = ${metod === 'sida' ? '0,005' : '0,002'} · ${D} · ${B} = ${rund(gp, 1)} g`,
+      text: metod === 'sida'
+        ? 'Påfyllning från lagrets sida (inget W33-spår): fettet måste vandra genom lagret för att nå löpbanorna — därför större mängd per tillfälle (0,005·D·B) och 40 % initial husfyllnad.'
+        : 'Påfyllning genom smörjhål och W33-spår i ytterringen: fettet når löpbanorna direkt — därför räcker mindre mängd per tillfälle (0,002·D·B) och 20 % initial husfyllnad. Intervallet påverkas inte av påförselvägen — det styrs av fettets åldring (temperatur, varvtal, last, miljö).',
+    });
+  }
 
   // --- steg 9: eftersmörjningsintervall ---
   const bf = LAGERTYPER[lagertyp].bf;
@@ -428,7 +449,12 @@ export function beraknaValjFett(input) {
   tf = Math.max(0, Math.min(30000, tf));
 
   let rekommendation;
-  if (tf < 250) rekommendation = 'Mycket kort intervall — montera automatisk smörjapparat (t.ex. engångs- eller flerpunktsdoserare) eller gå över till oljesmörjning.';
+  if (tatat) {
+    const typNamn = tatning === '2rs' ? 'kontakttätning (2RS/RS)' : 'skölddäck (2Z/ZZ)';
+    rekommendation = tf < 250
+      ? `Mycket kort förväntad fettlivslängd (≈ ${Math.round(tf).toLocaleString('sv-SE')} h) för ett tätat lager (${typNamn}) i dessa förhållanden. Eftersmörjning är inte möjlig utan att bryta tätningen — överväg i stället ett öppet lager med extern smörjning.`
+      : `Lagret är tätat (${typNamn}) och fabriksfyllt för livstidssmörjning — eftersmörjning är varken avsedd eller möjlig utan att bryta tätningen (vilket upphäver skyddet mot föroreningar). Byt hela lagret när fettlivslängden (≈ ${Math.round(tf).toLocaleString('sv-SE')} h, se L10 nedan) närmar sig, eller vid tecken på försämrad smörjning (ökat ljud, vibration eller temperatur).`;
+  } else if (tf < 250) rekommendation = 'Mycket kort intervall — montera automatisk smörjapparat (t.ex. engångs- eller flerpunktsdoserare) eller gå över till oljesmörjning.';
   else if (tf < 1000) rekommendation = `Efterfyll ${rund(gp, 1)} g var ${Math.round(tf).toLocaleString('sv-SE')}:e drifttimme — en automatisk enpunktsdoserare avlastar underhållet.`;
   else rekommendation = `Efterfyll ${rund(gp, 1)} g var ${Math.round(tf).toLocaleString('sv-SE')}:e drifttimme. Vid längre stillestånd: rotera axeln några varv efter fyllning så fettet fördelas.`;
   if (drift > 110) varningar.push(`Drifttemperatur ${drift} °C över 110 °C — kräver högtemperaturfett (polyurea, litiumkomplex, kalciumsulfonatkomplex eller PFPE) med droppunkt klart över drifttemperaturen. Kontrollera fettets övre brukstemperatur.`);
@@ -438,20 +464,26 @@ export function beraknaValjFett(input) {
   if (LAGERTYPER[lagertyp].bf >= 50) varningar.push('Sfäriskt axialrullager: SKF rekommenderar ofta oljesmörjning — fettintervallet blir mycket kort.');
 
   const eftersmorjning = {
-    gpGram: rund(gp, 1),
-    metodText: metod === 'sida'
-      ? 'Gp = 0,005·D·B — från sidan (utan W33): fettet ska vandra genom lagret, större mängd'
-      : 'Gp = 0,002·D·B — via W33-spåret i ytterringen: når löpbanan direkt, mindre mängd',
+    gpGram: tatat ? null : rund(gp, 1),
+    metodText: tatat
+      ? `Tätat lager (${tatning === '2rs' ? '2RS/RS kontakttätning' : '2Z/ZZ skölddäck'}) — fabriksfyllt, ingen efterfyllnad möjlig`
+      : metod === 'sida'
+        ? 'Gp = 0,005·D·B — från sidan (utan W33): fettet ska vandra genom lagret, större mängd'
+        : 'Gp = 0,002·D·B — via W33-spåret i ytterringen: når löpbanan direkt, mindre mängd',
     tfBasH: Math.round(tfBasH),
     tfH: Math.round(tf),
     l10H: Math.round(Math.min(30000 * 2.7, tf * 2.7)),
     faktorer,
     rekommendation,
+    tatat, tatning,
   };
   forklaring.push({
-    steg: 8, rubrik: 'Eftersmörjningsintervall',
+    steg: 8, rubrik: tatat ? 'Förväntad fettlivslängd (bytesintervall)' : 'Eftersmörjningsintervall',
     formel: `bf·n·dm = ${bf} · ${Math.round(ndm).toLocaleString('sv-SE')} = ${Math.round(A).toLocaleString('sv-SE')} ⇒ t_f(bas) ≈ ${Math.round(tfBasH).toLocaleString('sv-SE')} h; justerat: ${Math.round(tf).toLocaleString('sv-SE')} h`,
-    text: `Basintervall ur SKF-diagrammet (70 °C, C/P ≥ 15, ren miljö), därefter ${faktorer.length} justeringsfaktor(er). t_f är L1-fettlivslängd — L10 ≈ 2,7·t_f = ${eftersmorjning.l10H.toLocaleString('sv-SE')} h. Uppskattning — verifiera kritiska fall i SKF Product Select eller med FUCHS teknisk support.`,
+    text: (tatat
+      ? `Basintervall ur SKF-diagrammet, därefter ${faktorer.length} justeringsfaktor(er) — tolkat som lagrets förväntade fettlivslängd eftersom eftersmörjning inte är möjlig i ett tätat lager. `
+      : `Basintervall ur SKF-diagrammet (70 °C, C/P ≥ 15, ren miljö), därefter ${faktorer.length} justeringsfaktor(er). `)
+      + `t_f är L1-fettlivslängd — L10 ≈ 2,7·t_f = ${eftersmorjning.l10H.toLocaleString('sv-SE')} h. Uppskattning — verifiera kritiska fall i SKF Product Select eller med FUCHS teknisk support.`,
   });
 
   // --- kravprofil för produktsök ---

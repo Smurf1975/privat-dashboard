@@ -29,7 +29,7 @@ const S = {
   rorelse: 'roterande', varvtal: '', oscAmplitud: '', oscFrekvens: '',
   drifttemp: '70', omgivningstemp: '20',
   belastning: 'medel', omgivning: ['ren'], orientering: 'horisontell',
-  vibration: 'lag', ytterringsrotation: false, eftersmorjningsmetod: 'sida',
+  vibration: 'lag', ytterringsrotation: false, eftersmorjningsmetod: 'sida', tatning: 'oppet',
   lage: 'foresla',                 // 'foresla' | 'kontrollera'
   visk40: '', visk100: '', basolja: 'mineral',
   resultat: null, resultatFel: null, sisteInput: null,
@@ -61,6 +61,7 @@ const OMGIVNING = [['ren', 'Ren och torr'], ['dammig', 'Dammig'], ['fuktig', 'Fu
 const ORIENTERING = [['horisontell', 'Horisontell axel'], ['vertikal', 'Vertikal axel']];
 const VIBRATION = [['lag', 'Låg'], ['medel', 'Medel'], ['hog', 'Hög']];
 const METOD = [['sida', 'Från sidan'], ['centrumhal', 'Genom centrumhål (W33)']];
+const TATNING = [['oppet', 'Öppet (extern smörjning)'], ['2rs', 'Tätat — kontakttätning (2RS/RS)'], ['2z', 'Tätat — skölddäck (2Z/ZZ)']];
 const BASOLJOR = [['mineral', 'Mineralolja', 95], ['pao', 'PAO (syntet)', 145], ['ester', 'Ester', 140],
   ['polyglykol', 'Polyglykol (PAG)', 210], ['silikon', 'Silikon', 250], ['pfpe', 'PFPE', 130],
   ['whiteoil', 'White oil', 95]];
@@ -188,6 +189,7 @@ const TIPS = {
   orientering: 'Horisontell eller vertikal axel. Vertikal axel halverar smörjintervallet eftersom fettet rinner undan från lagret.',
   vibration: 'Vibrations- och stötnivå. Hög vibration kortar smörjintervallet och kräver ett mekaniskt stabilt fett.',
   eftersmorjningsmetod: 'Från sidan = fettet pressas in vid lagrets sida och måste vandra genom det. W33 = smörjspår/hål i ytterringen som når löpbanan direkt (mindre mängd behövs, samma intervall).',
+  tatning: 'Öppet lager smörjs och eftersmörjs manuellt. Tätade lager (2RS/kontakttätning, 2Z/skölddäck) är oftast fabriksfyllda för livstidssmörjning — går varken att eftersmörja eller välja fett för i efterhand (bestäms av lagertillverkaren vid beställning). Kontakttätningar (2RS) tätar bättre men har lägre hastighetsgräns; skölddäck (2Z) tål högre varvtal men skyddar sämre mot föroreningar.',
   visk40: 'Basoljans viskositet vid 40 °C (mm²/s). Står på nästan alla fettdatablad som "grundolja/base oil".',
   visk100: 'Basoljans viskositet vid 100 °C. Valfri bonus — lämna tom om den saknas, då uppskattas den ur basoljetypen.',
   basolja: 'Typ av basolja. Ger ett antaget viskositetsindex (VI) som används för att uppskatta hur oljan tunnas ut med temperaturen.',
@@ -270,10 +272,13 @@ function formHtml() {
           `<span class="chip ${S.omgivning.includes(v) ? 'on' : ''}" data-omg="${esc(v)}" role="button" tabindex="0">${esc(l)}</span>`).join('')}</div>
       </div>
       <div class="vf-grid2">
+        ${fSelect('tatning', 'Tätning', TATNING)}
         ${fSelect('belastning', 'Belastning', BELASTNING)}
         ${fSelect('orientering', 'Axelorientering', ORIENTERING)}
         ${fSelect('vibration', 'Vibrationsnivå', VIBRATION)}
-        ${fSelect('eftersmorjningsmetod', 'Eftersmörjning', METOD)}
+        <div id="vfMetodWrap" style="display:${S.tatning !== 'oppet' ? 'none' : 'contents'}">
+          ${fSelect('eftersmorjningsmetod', 'Eftersmörjning', METOD)}
+        </div>
       </div>
       <div class="ck" id="vfYtter"><span class="box ${S.ytterringsrotation ? 'on' : ''}"></span>Roterande ytterring${tipBadge('ytterringsrotation')}</div>
     </div>
@@ -327,6 +332,9 @@ function bindForm(m) {
       const osc = S.rorelse === 'oscillerande';
       form.querySelector('#vfVarvtalWrap').style.display = osc ? 'none' : 'contents';
       form.querySelector('#vfOscWrap').style.display = osc ? 'contents' : 'none';
+    }
+    if (sel.dataset.f === 'tatning') {
+      form.querySelector('#vfMetodWrap').style.display = S.tatning !== 'oppet' ? 'none' : 'contents';
     }
     recalc(false);
   }));
@@ -393,7 +401,7 @@ function byggInput() {
     drifttemp: drift, omgivningstemp: omg,
     belastning: S.belastning, omgivning: S.omgivning, orientering: S.orientering,
     vibration: S.vibration, ytterringsrotation: S.ytterringsrotation,
-    eftersmorjningsmetod: S.eftersmorjningsmetod, fett,
+    eftersmorjningsmetod: S.eftersmorjningsmetod, tatning: S.tatning, fett,
   } };
 }
 
@@ -558,13 +566,18 @@ function eftersmorjningHtml(r) {
   const fakt = (e.faktorer || []).map(f =>
     `<span class="vf-faktor"><span>${esc(f.namn)}</span><b class="mono">×${fmt(f.varde, 2)}</b></span>`).join('');
   const tfTid = tidStr(e.tfH), l10Tid = tidStr(e.l10H);
-  return `<div class="vf-card">
-    <div class="fh">Eftersmörjning</div>
-    <div class="vf-esm-grid">
-      <div><div class="vf-kv-l">Efterfyllnadsmängd G<sub>p</sub></div>
+  const forstaRuta = e.tatat
+    ? `<div><div class="vf-kv-l">Efterfyllnad</div>
+        <div class="vf-kv-v mono" style="font-size:14px">Ej möjlig 🔒</div>
+        ${e.metodText ? `<div class="vf-kv-s">${esc(e.metodText)}</div>` : ''}</div>`
+    : `<div><div class="vf-kv-l">Efterfyllnadsmängd G<sub>p</sub></div>
         <div class="vf-kv-v mono">${fmt(e.gpGram, 1)} <small>g</small></div>
-        ${e.metodText ? `<div class="vf-kv-s">${esc(e.metodText)}</div>` : ''}</div>
-      <div><div class="vf-kv-l">Intervall t<sub>f</sub></div>
+        ${e.metodText ? `<div class="vf-kv-s">${esc(e.metodText)}</div>` : ''}</div>`;
+  return `<div class="vf-card">
+    <div class="fh">${e.tatat ? 'Fettlivslängd (tätat lager)' : 'Eftersmörjning'}</div>
+    <div class="vf-esm-grid">
+      ${forstaRuta}
+      <div><div class="vf-kv-l">${e.tatat ? 'Förväntad fettlivslängd' : 'Intervall t'}<sub>${e.tatat ? '' : 'f'}</sub></div>
         <div class="vf-kv-v mono">${fmt(e.tfH, 0)} <small>h</small></div>
         <div class="vf-kv-s">${esc(tfTid)}</div></div>
       <div><div class="vf-kv-l">Basintervall (70 °C, ren, C/P ≥ 15)</div>
@@ -778,7 +791,11 @@ function byggKontext() {
     l(ORIENTERING, i.orientering), `vibration: ${l(VIBRATION, i.vibration)}`,
   ];
   if (i.ytterringsrotation) delar.push('roterande ytterring');
-  delar.push(`eftersmörjning ${l(METOD, i.eftersmorjningsmetod)}`);
+  if (i.tatning && i.tatning !== 'oppet') {
+    delar.push(`tätat lager (${i.tatning === '2rs' ? '2RS kontakttätning' : '2Z skölddäck'}) — fabriksfyllt, inget eftersmörjningsbehov`);
+  } else {
+    delar.push(`eftersmörjning ${l(METOD, i.eftersmorjningsmetod)}`);
+  }
   if (i.fett) delar.push(`kontroll av eget fett ν40=${fmt(i.fett.visk40, 0)} mm²/s`);
   const nuvarandeFortNamn = S.nuvarandeFort ? (FORTJOCKARE.find(f => f.key === S.nuvarandeFort)?.namn || S.nuvarandeFort) : null;
   if (nuvarandeFortNamn) delar.push(`nuvarande fett i lagret: ${nuvarandeFortNamn}${S.nuvarandeBas ? ' / ' + (BASOLJA.find(b => b.key === S.nuvarandeBas)?.namn || S.nuvarandeBas) : ''}`);
