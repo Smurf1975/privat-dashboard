@@ -519,3 +519,66 @@ export function beraknaValjFett(input) {
     forslag, nlgi, fyllnad, eftersmorjning, varningar, forklaring, krav,
   };
 }
+
+// ---------- duty cycle: flera driftpunkter ----------
+// SKF/ISO 281-praxis: en applikation med varierande varvtal/last/temperatur ska INTE bara
+// dimensioneras för en genomsnittspunkt — kontrollera de kritiska driftfallen var för sig
+// (lägst varv + högst temperatur ger typiskt högst krävd viskositet; tyngsta/hetaste
+// kombinationen ger typiskt kortast smörjintervall). Denna funktion kör den befintliga,
+// redan validerade motorn en gång per driftpunkt och pekar ut vilken punkt som styr.
+//
+// bas: gemensamma lagerparametrar (lagertyp, d, D, B, massaKg, omgivningstemp, omgivning,
+//      orientering, vibration, ytterringsrotation, eftersmorjningsmetod, tatning, fett).
+//      rorelse tvingas till 'roterande' — duty cycle-analys stöds inte för oscillerande rörelse.
+// punkter: [{ namn, varvtal, drifttemp, belastning }, …] (1–6 st)
+export function beraknaDriftcykel(bas, punkter) {
+  if (!bas || typeof bas !== 'object') throw new Error('Saknar gemensamma lagerparametrar.');
+  if (!Array.isArray(punkter) || punkter.length < 1) throw new Error('Ange minst en driftpunkt.');
+  if (punkter.length > 6) throw new Error('Max 6 driftpunkter i en duty cycle-analys.');
+
+  const rader = punkter.map((p, i) => {
+    const namn = (p.namn && String(p.namn).trim().slice(0, 40)) || `Punkt ${i + 1}`;
+    try {
+      const resultat = beraknaValjFett({
+        ...bas, rorelse: 'roterande',
+        varvtal: p.varvtal, drifttemp: p.drifttemp, belastning: p.belastning,
+      });
+      return { namn, resultat, fel: null };
+    } catch (e) {
+      return { namn, resultat: null, fel: e && e.message ? e.message : 'Beräkningen misslyckades.' };
+    }
+  });
+
+  const giltiga = rader.map((r, i) => ({ ...r, i })).filter(r => r.resultat);
+  if (!giltiga.length) throw new Error('Ingen driftpunkt kunde beräknas — kontrollera indata för samtliga punkter.');
+
+  // Styrande för viskositetsval: den punkt som kräver högst ν40 (typiskt lägst varv + hetast).
+  const styrVisk = giltiga.reduce((a, b) => b.resultat.forslag.nu40Krav > a.resultat.forslag.nu40Krav ? b : a);
+  // Styrande för smörjintervall: den punkt som ger kortast beräknat intervall (hårdast belastad/varmast).
+  const styrIntervall = giltiga.reduce((a, b) => b.resultat.eftersmorjning.tfH < a.resultat.eftersmorjning.tfH ? b : a);
+  // Styrande för κ (kontroll-läge): lägst κ, dvs sämst smörjfilm för det valda fettet.
+  const harKontroll = giltiga.every(r => r.resultat.kontroll);
+  const styrKappa = harKontroll ? giltiga.reduce((a, b) => b.resultat.kontroll.kappa < a.resultat.kontroll.kappa ? b : a) : null;
+
+  // NLGI: skärningsmängd om punkterna är överens, annars unionen (med flagga om de motsäger varandra).
+  const nlgiSets = giltiga.map(r => r.resultat.nlgi.forslag);
+  const nlgiIntersection = nlgiSets.reduce((a, b) => a.filter(x => b.includes(x)));
+  const nlgiUnion = [...new Set(nlgiSets.flat())].sort((a, b) => Number(a) - Number(b));
+  const nlgiKonflikt = nlgiSets.length > 1 && nlgiIntersection.length === 0;
+
+  return {
+    rader,
+    styrandeViskIndex: styrVisk.i,
+    styrandeIntervallIndex: styrIntervall.i,
+    styrandeKappaIndex: styrKappa ? styrKappa.i : null,
+    sammanfattning: {
+      isoVg: styrVisk.resultat.forslag.isoVg,
+      nu40Krav: styrVisk.resultat.forslag.nu40Krav,
+      tfMinH: styrIntervall.resultat.eftersmorjning.tfH,
+      l10MinH: styrIntervall.resultat.eftersmorjning.l10H,
+      nlgiForslag: nlgiKonflikt ? nlgiUnion : nlgiIntersection,
+      nlgiKonflikt, nlgiUnion,
+      kappaMin: styrKappa ? styrKappa.resultat.kontroll.kappa : null,
+    },
+  };
+}

@@ -1,7 +1,7 @@
 // Välj fett — lagerbaserad fettväljare (UI-modul)
 // Konsumerar beräkningsmodulen valj-fett-calc.js (Agent 1) och edge-funktionen fett-rekommendation (Agent 3).
 // Exponerar renderValjFett(m, ctx) där ctx = { sb, FN_URL, session, toast, esc, openProduct }.
-import { beraknaValjFett, visk40TillVid, estimeraV100, ISO_VG, LAGERTYPER } from './valj-fett-calc.js';
+import { beraknaValjFett, visk40TillVid, estimeraV100, ISO_VG, LAGERTYPER, beraknaDriftcykel } from './valj-fett-calc.js';
 import { kollaByte, fortNyckelFranDb, basNyckelFranDb, FORTJOCKARE, BASOLJA, KOMP_KALLA, KOMP_SYNKAD } from './fett-kompatibilitet.js';
 
 // ---------- utils (lokal esc-kopia, samma mönster som app.js) ----------
@@ -38,6 +38,8 @@ const S = {
   kGammalFort: '', kGammalBas: '', kNyFort: '', kNyBas: '', kResultat: null, kFel: null, kOppen: false,
   // nuvarande fett i lagret (valfritt) — driver kompatibilitetsbadge på produktförslag
   nuvarandeFort: '', nuvarandeBas: '',
+  // duty cycle — flera driftpunkter (kallstart/normal/toppbelastning m.m.)
+  duty: { oppen: false, punkter: [], resultat: null, fel: null },
 };
 let CTX = null;
 
@@ -166,10 +168,12 @@ export function renderValjFett(m, ctx) {
       <div class="vf-form" id="vfForm">${formHtml()}</div>
       <div class="vf-res" id="vfRes">${resultHtml()}</div>
     </div>
-    <div id="vfKomp">${kompHtml()}</div>`;
+    <div id="vfKomp">${kompHtml()}</div>
+    <div id="vfDuty">${dutyHtml()}</div>`;
   bindForm(m);
   bindRes(m);
   bindKomp(m);
+  bindDuty(m);
 }
 
 // ---------- förklaringar (visas som tooltip vid hover/fokus på rubriken) ----------
@@ -685,6 +689,181 @@ function bindKomp(root) {
     S[sel.dataset.kf] = sel.value;
     kompRakna();
   }));
+}
+
+// ---------- duty cycle: flera driftpunkter ----------
+const DUTY_MAX = 6;
+function dutyRadHtml(p, i) {
+  const kanTaBort = S.duty.punkter.length > 1;
+  return `<div class="vf-duty-rad" data-durad="${i}">
+    <input class="vf-duty-namn" data-duf="namn" placeholder="t.ex. Kallstart" value="${esc(p.namn)}">
+    <input class="mono" data-duf="varvtal" inputmode="decimal" placeholder="Varvtal (r/min)" value="${esc(p.varvtal)}">
+    <input class="mono" data-duf="drifttemp" inputmode="decimal" placeholder="Drifttemp (°C)" value="${esc(p.drifttemp)}">
+    <select data-duf="belastning">${BELASTNING.map(([v, l]) => `<option value="${esc(v)}" ${p.belastning === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>
+    <button type="button" class="vf-duty-rm" data-durm="${i}" ${kanTaBort ? '' : 'disabled'} aria-label="Ta bort driftpunkt">×</button>
+  </div>`;
+}
+
+function dutyBodyHtml() {
+  if (S.rorelse === 'oscillerande') {
+    return `<div class="vf-hint" style="margin:2px 0 0">Duty cycle-analys stöds för kontinuerlig rotation just nu — inte för oscillerande rörelse.</div>`;
+  }
+  const rader = S.duty.punkter.map(dutyRadHtml).join('');
+  const laggTillBtn = S.duty.punkter.length < DUTY_MAX
+    ? `<button type="button" class="btn ghost" id="vfDutyAdd" style="margin-top:8px">+ Lägg till driftpunkt</button>` : '';
+  return `
+    <div class="vf-hint" style="margin:2px 0 12px">Räkna flera driftlägen (t.ex. kallstart, normal drift, toppbelastning) i stället för bara en punkt. Verktyget pekar ut vilket läge som faktiskt är dimensionerande — ofta lägst varv + hetast för viskositet, tyngst + varmast för smörjintervall.</div>
+    <div class="vf-duty-head-row">
+      <span>Namn</span><span>Varvtal</span><span>Temp</span><span>Belastning</span><span></span>
+    </div>
+    <div id="vfDutyRader">${rader}</div>
+    ${laggTillBtn}
+    <button type="button" class="tgo vf-calcbtn" id="vfDutyCalc" style="margin-top:14px">Beräkna duty cycle</button>
+    <div id="vfDutyRes" class="vf-duty-res">${dutyResultHtml()}</div>`;
+}
+
+function dutyHtml() {
+  return `<div class="vf-card vf-kompcard">
+    <button type="button" class="vf-komp-head" id="vfDutyToggle" aria-expanded="${S.duty.oppen}">
+      <span class="fh" style="margin:0">🔁 Duty cycle — flera driftpunkter</span>
+      <span class="vf-komp-chev">${S.duty.oppen ? '▾' : '▸'}</span>
+    </button>
+    <div class="vf-komp-body ${S.duty.oppen ? '' : 'hidden'}" id="vfDutyBody">${dutyBodyHtml()}</div>
+  </div>`;
+}
+
+function dutyResultHtml() {
+  if (S.duty.fel) return `<div class="ai-note vf-warn rod">⚠ ${esc(S.duty.fel)}</div>`;
+  const r = S.duty.resultat;
+  if (!r) return '';
+  const felRader = r.rader.filter(x => x.fel);
+  const felHtml = felRader.length
+    ? felRader.map(x => `<div class="ai-note vf-warn rod">⚠ ${esc(x.namn)}: ${esc(x.fel)}</div>`).join('') : '';
+  const rows = r.rader.map((x, i) => {
+    if (!x.resultat) return '';
+    const res = x.resultat;
+    const viskCell = res.kontroll
+      ? `<span class="vf-kbadge ${zonKlass(res.kontroll.kappa)}">κ ${fmt(res.kontroll.kappa, 2)}</span>`
+      : `<span class="mono">${esc(res.forslag.isoVg)}</span>`;
+    const badges = [];
+    if (i === r.styrandeViskIndex) badges.push('<span class="vf-duty-badge">Styr viskositet</span>');
+    if (i === r.styrandeIntervallIndex) badges.push('<span class="vf-duty-badge gul">Styr intervall</span>');
+    if (r.styrandeKappaIndex != null && i === r.styrandeKappaIndex) badges.push('<span class="vf-duty-badge rod">Lägst κ</span>');
+    return `<div class="vf-duty-resrad">
+      <span class="tpn">${esc(x.namn)}</span>
+      <span class="mono">${fmt(res.ndm, 0)}</span>
+      ${viskCell}
+      <span class="mono">${fmt(res.eftersmorjning.tfH, 0)} h</span>
+      <span class="vf-duty-badges">${badges.join('')}</span>
+    </div>`;
+  }).join('');
+  const s = r.sammanfattning;
+  const nlgiRad = s.nlgiKonflikt
+    ? `<div class="ai-note vf-warn">⚠ Driftpunkterna pekar mot olika NLGI (${s.nlgiUnion.join('/')}) utan gemensam nämnare — välj utifrån det mest kritiska driftläget eller kontakta teknisk support.</div>`
+    : `<div class="vf-kv-s">Gemensamt NLGI-förslag: <b>${s.nlgiForslag.join('/')}</b></div>`;
+  const kappaRad = s.kappaMin != null
+    ? `<div class="vf-kv-s">Lägsta κ över driftcykeln: <b class="mono">${fmt(s.kappaMin, 2)}</b> (${esc(r.rader[r.styrandeKappaIndex].namn)})</div>` : '';
+  return `
+    <div class="vf-duty-thead">
+      <span>Driftpunkt</span><span>n·d<sub>m</sub></span><span>Viskositet/κ</span><span>Intervall</span><span></span>
+    </div>
+    ${rows}
+    ${felHtml}
+    <div class="vf-card" style="margin-top:12px;background:#f6f9fc">
+      <div class="fh">Sammanfattning — dimensionera efter mest krävande punkt</div>
+      <div class="vf-kv-s">Föreslagen basoljeviskositet: <b>${esc(s.isoVg)}</b> (styrs av <b>${esc(r.rader[r.styrandeViskIndex].namn)}</b>)</div>
+      ${nlgiRad}
+      <div class="vf-kv-s">Kortaste smörjintervall: <b class="mono">${fmt(s.tfMinH, 0)} h</b> (styrs av <b>${esc(r.rader[r.styrandeIntervallIndex].namn)}</b>)${tidStr(s.tfMinH) ? ' — ' + esc(tidStr(s.tfMinH)) : ''}</div>
+      ${kappaRad}
+    </div>`;
+}
+
+function byggDutyBas() {
+  const d = num(S.d), D = num(S.D), B = num(S.B), omg = num(S.omgivningstemp);
+  const saknas = [];
+  if (d == null) saknas.push('d'); if (D == null) saknas.push('D'); if (B == null) saknas.push('B');
+  if (omg == null) saknas.push('lägsta omgivningstemperatur');
+  if (saknas.length) return { saknas };
+  let fett = null;
+  if (S.lage === 'kontrollera') {
+    const v40 = num(S.visk40);
+    if (v40 != null) fett = { visk40: v40, visk100: num(S.visk100), viBas: BASOLJA_VI[S.basolja] ?? 95 };
+  }
+  return { bas: {
+    lagertyp: S.lagertyp, d, D, B, massaKg: num(S.massaKg), omgivningstemp: omg,
+    omgivning: S.omgivning, orientering: S.orientering, vibration: S.vibration,
+    ytterringsrotation: S.ytterringsrotation, eftersmorjningsmetod: S.eftersmorjningsmetod,
+    tatning: S.tatning, fett,
+  } };
+}
+
+function dutyRakna() {
+  const b = byggDutyBas();
+  if (b.saknas) { S.duty.fel = 'Fyll i huvudformulärets ' + b.saknas.join(', ') + ' innan duty cycle kan beräknas.'; S.duty.resultat = null; updateDuty(); return; }
+  const punkter = S.duty.punkter.map(p => ({ namn: p.namn, varvtal: num(p.varvtal), drifttemp: num(p.drifttemp), belastning: p.belastning }));
+  if (punkter.some(p => p.varvtal == null || p.drifttemp == null)) {
+    S.duty.fel = 'Ange varvtal och drifttemperatur för varje driftpunkt.'; S.duty.resultat = null; updateDuty(); return;
+  }
+  try {
+    S.duty.resultat = beraknaDriftcykel(b.bas, punkter);
+    S.duty.fel = null;
+  } catch (e) {
+    S.duty.fel = e && e.message ? e.message : 'Duty cycle-beräkningen misslyckades.';
+    S.duty.resultat = null;
+  }
+  updateDuty();
+}
+
+function updateDuty() {
+  const el = document.getElementById('vfDutyRes');
+  if (el) el.innerHTML = dutyResultHtml();
+}
+
+function redrawDutyBody(root) {
+  const body = root.querySelector('#vfDutyBody');
+  if (body) { body.innerHTML = dutyBodyHtml(); bindDutyBody(root); }
+}
+
+function bindDutyBody(root) {
+  root.querySelectorAll('[data-durad]').forEach(rad => {
+    rad.querySelectorAll('[data-duf]').forEach(el => el.addEventListener('input', () => {
+      S.duty.punkter[Number(rad.dataset.durad)][el.dataset.duf] = el.value;
+    }));
+    rad.querySelectorAll('select[data-duf]').forEach(el => el.addEventListener('change', () => {
+      S.duty.punkter[Number(rad.dataset.durad)][el.dataset.duf] = el.value;
+    }));
+  });
+  root.querySelectorAll('[data-durm]').forEach(btn => btn.addEventListener('click', () => {
+    if (S.duty.punkter.length <= 1) return;
+    S.duty.punkter.splice(Number(btn.dataset.durm), 1);
+    redrawDutyBody(root);
+  }));
+  const addBtn = root.querySelector('#vfDutyAdd');
+  if (addBtn) addBtn.addEventListener('click', () => {
+    S.duty.punkter.push({ namn: '', varvtal: '', drifttemp: S.drifttemp || '', belastning: S.belastning || 'medel' });
+    redrawDutyBody(root);
+  });
+  const calcBtn = root.querySelector('#vfDutyCalc');
+  if (calcBtn) calcBtn.addEventListener('click', dutyRakna);
+}
+
+function bindDuty(root) {
+  const toggle = root.querySelector('#vfDutyToggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', () => {
+    S.duty.oppen = !S.duty.oppen;
+    if (S.duty.oppen && !S.duty.punkter.length) {
+      // Seed första raden med huvudformulärets aktuella värden — mindre omskrivning för användaren.
+      S.duty.punkter.push({ namn: 'Normal drift', varvtal: S.varvtal || '', drifttemp: S.drifttemp || '', belastning: S.belastning || 'medel' });
+    }
+    const body = root.querySelector('#vfDutyBody');
+    body.innerHTML = dutyBodyHtml();
+    body.classList.toggle('hidden', !S.duty.oppen);
+    bindDutyBody(root);
+    toggle.setAttribute('aria-expanded', String(S.duty.oppen));
+    root.querySelector('#vfDutyToggle .vf-komp-chev').textContent = S.duty.oppen ? '▾' : '▸';
+  });
+  bindDutyBody(root);
 }
 
 // ---------- produktrekommendation ----------

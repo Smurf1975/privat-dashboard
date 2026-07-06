@@ -316,6 +316,24 @@ table.grid th:has(.fnl.on){color:var(--blue)}
 .vf-komp-kalla{font:400 10.5px/1.5 'Barlow';color:#98a5b1;margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
 @media (max-width:640px){.vf-komp-grid{grid-template-columns:1fr}.vf-komp-arrow{transform:rotate(90deg);padding:0}}
 
+/* duty cycle — flera driftpunkter */
+.vf-duty-head-row,.vf-duty-rad{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr 28px;gap:8px;align-items:center}
+.vf-duty-head-row{font:600 10px 'IBM Plex Mono';letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.vf-duty-rad{margin-bottom:8px}
+.vf-duty-rad input,.vf-duty-rad select{width:100%;padding:8px 10px;border:1px solid #d5dde4;border-radius:8px;background:#fff;font:500 12.5px 'Barlow';color:#17242f;outline:none}
+.vf-duty-rad input:focus,.vf-duty-rad select:focus{border-color:var(--blue)}
+.vf-duty-rad input.mono{font:500 12.5px 'IBM Plex Mono'}
+.vf-duty-rm{width:26px;height:26px;border-radius:7px;background:#fbeceb;color:#b3261e;font:700 14px 'Barlow';line-height:1}
+.vf-duty-rm:hover{background:#f6d9d7}
+.vf-duty-rm:disabled{opacity:.3;cursor:default}
+.vf-duty-thead{display:grid;grid-template-columns:1.3fr .8fr .8fr .8fr 1.5fr;gap:8px;padding:0 2px 8px;font:600 10px 'IBM Plex Mono';letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);margin-bottom:6px}
+.vf-duty-resrad{display:grid;grid-template-columns:1.3fr .8fr .8fr .8fr 1.5fr;gap:8px;align-items:center;padding:8px 2px;border-bottom:1px solid #f0f3f6}
+.vf-duty-badges{display:flex;gap:5px;flex-wrap:wrap}
+.vf-duty-badge{font:600 9.5px 'IBM Plex Mono';padding:3px 7px;border-radius:5px;background:#e3eefb;color:var(--blue)}
+.vf-duty-badge.gul{background:#fbf1de;color:#b3730c}
+.vf-duty-badge.rod{background:#fbe6e4;color:#b3261e}
+@media (max-width:700px){.vf-duty-head-row,.vf-duty-rad,.vf-duty-thead,.vf-duty-resrad{grid-template-columns:1fr 1fr}}
+
 /* fyllnad & eftersmörjning */
 .vf-storrad{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:6px}
 .vf-big{font:700 30px 'IBM Plex Mono';color:var(--blue-dd);line-height:1}
