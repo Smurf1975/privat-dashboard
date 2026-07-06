@@ -74,7 +74,7 @@ const F = {
     ['Inga', ['Inga']],
   ],
   nlgi: ['000', '00', '0', '1', '1.5', '2', '2.5', '3', '4', '5', '6'],
-  nsf: ['H1', 'H2', 'H3', '3H'],
+  nsf: ['H1', 'H2', '3H'],
   tillampning: [
     ['Rullager', ['Rullager', 'Rullager vid höga temperaturer']],
     ['Glidlager', ['Glidlager', 'Ledlager', 'Bussningar', 'Glidytor', 'Glidbanor', 'Mekaniska glidbanor']],
