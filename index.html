@@ -21,7 +21,7 @@
     @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
     @keyframes spin{to{transform:rotate(360deg);}}
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </helmet>
 
@@ -1095,14 +1095,14 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
-    this._tick = setInterval(() => this.setState({currentTime:new Date()}), 1000);
+    // Klockan visar bara HH:MM – rendera om först när minuten faktiskt byts
+    // (istället för varje sekund; hela renderVals + all DOM-ombindning körs vid varje setState).
+    this._tick = setInterval(() => {
+      const now = new Date();
+      if (now.getMinutes() !== this.state.currentTime.getMinutes()) this.setState({currentTime: now});
+    }, 1000);
     const upd = () => this.setState({cols: window.innerWidth<620?1:window.innerWidth<1100?2:3});
     upd(); window.addEventListener('resize', upd); this._resize = upd;
-    // Test basic fetch capability
-    fetch('https://api.ipify.org?format=json')
-      .then(r => r.json())
-      .then(d => console.log('✅ Fetch works:', d.ip))
-      .catch(e => console.error('❌ Fetch blocked:', e.constructor?.name, e.message));
     this.restoreCache();   // visa senaste kända värden direkt, innan API:erna svarar
     this.fetchAll();
     this.fetchLiverpool();
@@ -1244,6 +1244,8 @@ class Component extends DCLogic {
     });
     if (!res.ok) { console.error('Spotify token exchange failed', res.status); return; }
     const data = await res.json();
+    localStorage.removeItem('sp_verifier');
+    localStorage.removeItem('sp_state');
     this._spToken = data.access_token;
     localStorage.setItem('sp_token',   data.access_token);
     localStorage.setItem('sp_refresh', data.refresh_token || '');
@@ -1819,7 +1821,20 @@ class Component extends DCLogic {
       const res = await fetch(`https://www.elprisetjustnu.se/api/v1/prices/${y}/${m}-${d}_SE3.json`);
       if (!res.ok) throw new Error(`Elpris ${res.status}`);
       const data = await res.json();
-      this.setState({elHourly: data});
+      // API:et ger sedan 15-min-handeln 96 kvartspriser per dygn (tidigare 24 timpriser).
+      // Grafen och "pris just nu" indexerar på timme (0–23), så aggregera till timmedel.
+      let hourly = data;
+      if (Array.isArray(data) && data.length > 25) {
+        const buckets = Array.from({length:24}, () => []);
+        for (const e of data) {
+          const hh = new Date(e.time_start).getHours();
+          if (buckets[hh]) buckets[hh].push(e.SEK_per_kWh);
+        }
+        hourly = buckets.map(arr => ({
+          SEK_per_kWh: arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : null,
+        }));
+      }
+      this.setState({elHourly: hourly});
     } catch(e) {
       console.warn('Elpris (offline i preview):', e.message || e.name || 'fetch blocked');
     }
@@ -2337,12 +2352,6 @@ class Component extends DCLogic {
       {title:'Förbereda presentation',due:'Fre 27 jun'},{title:'Handla inför helgen',due:'Lördag'},
       {title:'Ring mäklaren',due:'Måndag'},
     ];
-
-    // Liverpool
-    const fI = r=>({result:r,circleStyle:{width:'24px',height:'24px',borderRadius:'50%',
-      background:r==='W'?'rgba(34,197,94,0.15)':r==='D'?'rgba(255,255,255,0.08)':'rgba(239,68,68,0.15)',
-      display:'flex',alignItems:'center',justifyContent:'center',fontSize:'9px',fontWeight:'700',
-      color:r==='W'?G:r==='D'?'rgba(238,240,245,0.45)':R}});
 
     // AI-briefing (Haiku, cachad 4h) med regelbaserad fallback om AI:n inte svarat än
     let briefing;
