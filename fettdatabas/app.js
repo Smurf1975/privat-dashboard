@@ -133,6 +133,34 @@ const esc = (v) => v == null ? '' : String(v).replace(/[&<>"]/g, c => ({ '&': '&
 const arr = (a) => Array.isArray(a) ? a.filter(Boolean).join(', ') : (a || '');
 const tempStr = (r) => (r.temperaturomrade_min != null || r.temperaturomrade_max != null)
   ? `${r.temperaturomrade_min ?? '?'}…${r.temperaturomrade_max ?? '?'}°C` : '—';
+
+// Empty-state ikoner (delade, samma linjevikt som sökfältets förstoringsglas)
+const ICO_SEARCH = `<svg class="empty-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="6.5"/><line x1="15" y1="15" x2="21" y2="21"/></svg>`;
+const ICO_INBOX = `<svg class="empty-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3.5 12h5l1.8 2.8h3.4L15.5 12h5"/><path d="M5.2 12 3.5 5h17l-1.7 7"/><path d="M3.5 12v6.2c0 .7.5 1.3 1.2 1.3h14.6c.7 0 1.2-.6 1.2-1.3V12"/></svg>`;
+
+// Skeleton-rader för Sök & översätt (fyller samma gridkolumner som riktiga träffar → ingen layoutförskjutning)
+function skeletonSokRows(n) {
+  const bar = (w, h = 12) => `<span class="sk" style="width:${w};height:${h}px"></span>`;
+  return Array.from({ length: n }).map(() => `<div class="tr sk-tr">
+    <div class="tsim">${bar('30px', 15)}</div>
+    <div>${bar('62%', 14)}<div style="margin-top:7px">${bar('34%', 10)}</div></div>
+    <div class="cell num">${bar('16px')}</div>
+    <div class="cell num">${bar('58px')}</div>
+    <div class="cell">${bar('64px')}</div>
+    <div class="cell">${bar('64px')}</div>
+    <div>${bar('28px')}</div>
+    <div>${bar('58px', 28)}</div>
+  </div>`).join('');
+}
+// Skeleton-tabell för Produktkatalog — bygger på samma kolumner som är valda, så headern står kvar under laddning
+function drawKatalogSkeleton() {
+  const el = $('#ktable'); if (!el) return;
+  const kol = katalogValdaKolumner();
+  const widths = ['70%', '45%', '85%', '55%', '30%', '60%', '40%'];
+  el.innerHTML = `<table class="grid"><thead><tr>${kol.map(c => `<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>
+    ${Array.from({ length: 7 }).map((_, ri) => `<tr>${kol.map((c, ci) => `<td><span class="sk" style="width:${widths[(ri + ci) % widths.length]};height:12px"></span></td>`).join('')}</tr>`).join('')}
+  </tbody></table>`;
+}
 function toast(msg) {
   const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
   document.body.appendChild(t); setTimeout(() => t.remove(), 2600);
@@ -332,10 +360,13 @@ function renderSok(m) {
 }
 
 function renderSokResult() {
-  if (state.searching) return `<div class="empty"><span class="spinner"></span> AI analyserar och rankar produkter…</div>`;
+  if (state.searching) return `
+    <div class="ai-note ai-note-loading"><span class="ai-chip">AI</span>Analyserar och rankar produkter…</div>
+    <div class="thd"><span>Likhet</span><span>Föreslagen produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
+    ${skeletonSokRows(3)}`;
   const r = state.searchResult;
-  if (!r) return `<div class="empty">Skriv in en konkurrentprodukt och tryck <b>Sök</b>.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
-  if (!r.results || !r.results.length) return `<div class="empty">Inga produkter matchade. Prova att lätta på filtren.</div>`;
+  if (!r) return `<div class="empty">${ICO_SEARCH}Skriv in en konkurrentprodukt och tryck <b>Sök</b>.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
+  if (!r.results || !r.results.length) return `<div class="empty">${ICO_SEARCH}Inga produkter matchade. Prova att lätta på filtren.</div>`;
   const comp = r.competitor;
   const note = r.note ? `<div class="ai-note"><span class="ai-chip">AI</span>${comp?.matched ? `Tolkade sökningen som <b>${esc(comp.produktnamn)}</b>${comp.producent ? ` (${esc(comp.producent)})` : ''}. ` : ''}${esc(r.note)}</div>` : '';
   const rows = r.results.map((x, i) => {
@@ -347,8 +378,8 @@ function renderSokResult() {
     return `<div class="tr ${best}" data-jmp="${x.id}">
       <div class="tsim"><span class="tsn" ${col}>${x.likhet}%</span><div class="tbrz"><i style="width:${x.likhet}%;${bar}"></i></div></div>
       <div><div class="tpn">${esc(x.produktnamn)} ${tag}</div><div class="tps">${esc(x.producent)}${x.motivering ? ' · ' + esc(x.motivering) : ''}</div></div>
-      <div class="cell">${esc(x.nlgi_klass ?? '—')}</div>
-      <div class="cell">${tempStr(x)}</div>
+      <div class="cell num">${esc(x.nlgi_klass ?? '—')}</div>
+      <div class="cell num">${tempStr(x)}</div>
       <div class="cell">${esc(arr(x.basolja) || '—')}</div>
       <div class="cell">${esc(arr(x.fortjockare) || '—')}</div>
       ${nsf}
@@ -358,7 +389,7 @@ function renderSokResult() {
   const fuchsCount = r.candidateCount ?? '';
   return `${note}
     <div class="resh"><span class="t">${r.results.length} träffar${fuchsCount ? ` · <span>av ${fuchsCount} i sortimentet</span>` : ''}</span><span class="s">Sortering: likhet ↓</span></div>
-    <div class="thd"><span>Likhet</span><span>Föreslagen produkt</span><span>NLGI</span><span>Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
+    <div class="thd"><span>Likhet</span><span>Föreslagen produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
     ${rows}`;
 }
 
@@ -456,11 +487,11 @@ const KATALOG_KOLUMNER = [
   { key: 'produkttyp', label: 'Produkttyp', cell: r => esc(r.produkttyp) || DASH },
   { key: 'fortjockare', label: 'Förtjockare', cell: r => esc(arr(r.fortjockare)) || DASH },
   { key: 'basolja', label: 'Basolja', cell: r => esc(arr(r.basolja)) || DASH },
-  { key: 'nlgi', label: 'NLGI', mono: true, cell: r => esc(r.nlgi_klass ?? '—') },
-  { key: 'visk40', label: 'Visk. 40°C', mono: true, cell: r => r.viskositet_40c != null ? esc(r.viskositet_40c) : DASH },
-  { key: 'visk100', label: 'Visk. 100°C', mono: true, cell: r => r.viskositet_100c != null ? esc(r.viskositet_100c) : DASH },
-  { key: 'temp', label: 'Temp.område', mono: true, cell: r => tempStr(r) },
-  { key: 'droppunkt', label: 'Droppunkt', mono: true, cell: r => r.droppunkt != null ? '>' + esc(r.droppunkt) + '°C' : DASH },
+  { key: 'nlgi', label: 'NLGI', mono: true, num: true, cell: r => esc(r.nlgi_klass ?? '—') },
+  { key: 'visk40', label: 'Visk. 40°C', mono: true, num: true, cell: r => r.viskositet_40c != null ? esc(r.viskositet_40c) : DASH },
+  { key: 'visk100', label: 'Visk. 100°C', mono: true, num: true, cell: r => r.viskositet_100c != null ? esc(r.viskositet_100c) : DASH },
+  { key: 'temp', label: 'Temp.område', mono: true, num: true, cell: r => tempStr(r) },
+  { key: 'droppunkt', label: 'Droppunkt', mono: true, num: true, cell: r => r.droppunkt != null ? '>' + esc(r.droppunkt) + '°C' : DASH },
   { key: 'fasta', label: 'Fasta smörjämnen', cell: r => esc(arr(r.fasta_smorjamnen)) || DASH },
   { key: 'epaw', label: 'EP/AW', cell: r => esc(r.ep_aw_tillsatser) || DASH },
   { key: 'nsf', label: 'NSF', cell: r => (r.nsf_klass_food_grade && r.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd') ? `<span class="pill h1">${esc(r.nsf_klass_food_grade)}</span>` : DASH },
@@ -545,23 +576,33 @@ async function renderKatalog(m) {
       <div class="toolbar">
         <select class="selectbox" id="ktyp">
           <option value="alla">Alla tillverkare</option><option value="FUCHS">Endast eget sortiment</option><option value="Konkurrent">Endast konkurrenter</option></select>
-        <div class="dropdown" id="kolDrop">
-          <button class="selectbox" id="kolBtn" type="button">⚙ Kolumner ▾</button>
-          <div class="dropdown-panel hidden" id="kolPanel"></div>
-        </div>
+        <button class="selectbox" id="kolBtn" type="button">⚙ Kolumner ▾</button>
         <span class="count" id="kcount"></span>
       </div>
-      <div id="ktable"><div class="empty"><span class="spinner"></span> Laddar…</div></div>
+      <div id="ktable"></div>
     </div>`;
   $('#ktyp').value = state.katalogFilter.typ;
   $('#kq').addEventListener('input', e => { state.katalogFilter.q = e.target.value; drawKatalog(); });
   $('#ktyp').addEventListener('change', e => { state.katalogFilter.typ = e.target.value; loadKatalog(); });
-  wireKolumnDropdown();
+  $('#kolBtn').addEventListener('click', e => { e.stopPropagation(); openKolPanel(e.currentTarget); });
+  drawKatalogSkeleton();
   await loadKatalog();
 }
 
-function renderKolPanel() {
-  const panel = $('#kolPanel'); if (!panel) return;
+// Kolumnväljaren renderas till document.body med fast position (undviker att klippas
+// av .content{overflow:auto} — samma mönster som openKolFilter för rubrikfiltren).
+function closeKolPanel() { const p = $('#kolPanel'); if (p) p.remove(); }
+document.addEventListener('click', closeKolPanel);
+
+function openKolPanel(anchorEl) {
+  closeKolPanel();
+  katalogValdaKolumner(); // säkerställ att state.katalogKol finns
+  const rect = anchorEl.getBoundingClientRect();
+  const panel = document.createElement('div');
+  panel.className = 'dropdown-panel'; panel.id = 'kolPanel';
+  panel.style.position = 'fixed';
+  panel.style.top = (rect.bottom + 4) + 'px';
+  panel.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - 230)) + 'px';
   panel.innerHTML = KATALOG_KOLUMNER.map(c => {
     const on = c.fast || state.katalogKol.includes(c.key);
     return `<label class="ck" data-kol="${c.key}" style="padding:5px 4px;${c.fast ? 'opacity:.55;cursor:default' : ''}">
@@ -570,25 +611,19 @@ function renderKolPanel() {
   }).join('') + `<div style="border-top:1px solid #e6ebef;margin-top:6px;padding-top:8px;display:flex;justify-content:space-between">
       <button class="btn ghost" id="kolReset" type="button">Återställ</button>
       <button class="btn pri" id="kolClose" type="button">Klar</button></div>`;
+  document.body.appendChild(panel);
+  panel.addEventListener('click', e => e.stopPropagation());
   panel.querySelectorAll('label.ck').forEach(l => {
     const c = KATALOG_KOLUMNER.find(k => k.key === l.dataset.kol);
     if (c.fast) return;
     l.addEventListener('click', () => {
       const idx = state.katalogKol.indexOf(c.key);
       idx < 0 ? state.katalogKol.push(c.key) : state.katalogKol.splice(idx, 1);
-      sparaKatalogKol(); renderKolPanel(); drawKatalog();
+      sparaKatalogKol(); openKolPanel(anchorEl); drawKatalog();
     });
   });
-  $('#kolReset').addEventListener('click', () => { state.katalogKol = [...KATALOG_DEFAULT]; sparaKatalogKol(); renderKolPanel(); drawKatalog(); });
-  $('#kolClose').addEventListener('click', () => panel.classList.add('hidden'));
-}
-function wireKolumnDropdown() {
-  katalogValdaKolumner(); // säkerställ att state.katalogKol finns
-  const panel = $('#kolPanel');
-  $('#kolBtn').addEventListener('click', (e) => { e.stopPropagation(); panel.classList.toggle('hidden'); });
-  panel.addEventListener('click', e => e.stopPropagation());
-  document.addEventListener('click', () => panel.classList.add('hidden'));
-  renderKolPanel();
+  $('#kolReset').addEventListener('click', () => { state.katalogKol = [...KATALOG_DEFAULT]; sparaKatalogKol(); openKolPanel(anchorEl); drawKatalog(); });
+  $('#kolClose').addEventListener('click', closeKolPanel);
 }
 async function loadKatalog() {
   let qb = sb.from('fett').select('id,produktnamn,producent,tillverkartyp,produkttyp,fortjockare,basolja,nlgi_klass,viskositet_40c,viskositet_100c,temperaturomrade_min,temperaturomrade_max,droppunkt,fasta_smorjamnen,ep_aw_tillsatser,nsf_klass_food_grade,pfas_status,tillampningsomrade,artikelnummer,farg,status')
@@ -617,15 +652,16 @@ function drawKatalog() {
         <button class="btn ghost" id="rensaFilter" type="button">Rensa alla filter</button></div>`
     : '';
   const th = c => {
-    if (!KATALOG_FILTERBARA[c.key]) return `<th>${esc(c.label)}</th>`;
+    const cls = c.num ? ' class="num"' : '';
+    if (!KATALOG_FILTERBARA[c.key]) return `<th${cls}>${esc(c.label)}</th>`;
     const on = state.katalogKolFilter[c.key]?.length ? ' on' : '';
-    return `<th><span class="th-filter" data-fcol="${c.key}">${esc(c.label)} <span class="fnl${on}">▾</span></span></th>`;
+    return `<th${cls}><span class="th-filter" data-fcol="${c.key}">${esc(c.label)} <span class="fnl${on}">▾</span></span></th>`;
   };
   const html = rows.length ? `${filterrad}<table class="grid"><thead><tr>
     ${kol.map(th).join('')}</tr></thead><tbody>
     ${rows.map(r => `<tr class="clickable" data-id="${r.id}">
-      ${kol.map(c => `<td${c.mono ? ' class="mono"' : ''}>${c.cell(r)}</td>`).join('')}
-    </tr>`).join('')}</tbody></table>` : `${filterrad}<div class="empty">Inga produkter matchar.</div>`;
+      ${kol.map(c => { const cls = [c.mono ? 'mono' : '', c.num ? 'num' : ''].filter(Boolean).join(' '); return `<td${cls ? ` class="${cls}"` : ''}>${c.cell(r)}</td>`; }).join('')}
+    </tr>`).join('')}</tbody></table>` : `${filterrad}<div class="empty">${ICO_SEARCH}Inga produkter matchar.</div>`;
   if ($('#ktable')) {
     $('#ktable').innerHTML = html;
     $('#ktable').querySelectorAll('[data-id]').forEach(tr => tr.addEventListener('click', () => openProduct(tr.dataset.id)));
@@ -688,7 +724,7 @@ async function renderGranskning(m) {
   const { data, error } = await sb.from('inkommande_mail').select('*').order('created_at', { ascending: false }).limit(100);
   state.mail = error ? [] : data;
   const c = $('#gcontent');
-  if (!state.mail.length) { c.innerHTML = `<div class="empty">Inget i kön just nu. Mail som skickas till inkorgen dyker upp här för granskning.</div>`; return; }
+  if (!state.mail.length) { c.innerHTML = `<div class="empty">${ICO_INBOX}Inget i kön just nu. Mail som skickas till inkorgen dyker upp här för granskning.</div>`; return; }
   const statusPill = s => ({ 'Ny': 'new', 'Importerad': 'ok', 'Avvisad': 'rej', 'Granskad': 'warn' }[s] || 'konk');
   c.innerHTML = `<table class="grid"><thead><tr><th>Ämne</th><th>Från</th><th>Föreslagen produkt</th><th>Inkom</th><th>Status</th></tr></thead><tbody>
     ${state.mail.map(r => `<tr class="clickable" data-mid="${r.id}">
