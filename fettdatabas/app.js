@@ -345,12 +345,14 @@ function renderSok(m) {
         <div class="fg"><div class="fh">NLGI-klass</div><div class="chips">${chipRow('nlgi', F.nlgi, f.nlgi)}</div></div>
         <div class="fg"><div class="fh">Tillämpning</div><div class="chips">${chipRow('tillampning', F.tillampning, f.tillampning)}</div></div>
         <div class="fg"><div class="fh">NSF-klass</div><div class="chips">${chipRow('nsf', F.nsf, f.nsf)}</div></div>
+        <button class="tgo" id="goBottom" style="width:100%;justify-content:center;display:flex;align-items:center"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-2px;margin-right:6px"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>Sök</button>
       </div>
       <div class="res" id="res">${renderSokResult()}</div>
     </div>`;
 
   $('#q').addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
   $('#go').addEventListener('click', doSearch);
+  $('#goBottom').addEventListener('click', doSearch);
   m.querySelectorAll('[data-filter]').forEach(el => el.addEventListener('click', () => {
     const k = el.dataset.filter, v = el.dataset.val;
     if (k === 'ptfeFri') state.filters.ptfeFri = !state.filters.ptfeFri;
@@ -368,7 +370,12 @@ function renderSokResult() {
   if (!r) return `<div class="empty">${ICO_SEARCH}Skriv in en konkurrentprodukt och tryck <b>Sök</b>.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
   if (!r.results || !r.results.length) return `<div class="empty">${ICO_SEARCH}Inga produkter matchade. Prova att lätta på filtren.</div>`;
   const comp = r.competitor;
-  const note = r.note ? `<div class="ai-note"><span class="ai-chip">AI</span>${comp?.matched ? `Tolkade sökningen som <b>${esc(comp.produktnamn)}</b>${comp.producent ? ` (${esc(comp.producent)})` : ''}. ` : ''}${esc(r.note)}</div>` : '';
+  const uncertain = r.uncertain || comp?.matched === false;
+  const uncertainMsg = uncertain
+    ? `<b>Hittade inte "${esc(state.query)}" i databasen</b> — AI har gissat egenskaper utifrån namnet${comp?.produkttypGissad ? ' (inkl. produkttyp)' : ''}. Dubbelkolla mot verkligt datablad innan du litar på resultatet. `
+    : `Tolkade sökningen som <b>${esc(comp?.produktnamn)}</b>${comp?.producent ? ` (${esc(comp.producent)})` : ''}. `;
+  const noteCls = uncertain || r.typMismatch ? 'ai-note warn' : 'ai-note';
+  const note = (r.note || uncertain) ? `<div class="${noteCls}"><span class="ai-chip">${uncertain || r.typMismatch ? '⚠' : 'AI'}</span>${uncertainMsg}${esc(r.note || '')}</div>` : '';
   const rows = r.results.map((x, i) => {
     const best = i === 0 ? 'best' : '';
     const col = i === 0 ? '' : `style="color:#5a9bd4"`, bar = i === 0 ? '' : `background:#5a9bd4`;

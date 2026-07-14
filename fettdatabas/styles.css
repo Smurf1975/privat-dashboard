@@ -119,6 +119,9 @@ a{color:inherit;text-decoration:none}
 
 .ai-note{background:#eef5fc;border:1px solid #cfe1f4;border-radius:10px;padding:12px 15px;font:500 13px/1.55 'Barlow';color:#2c4a63;margin-bottom:16px}
 .ai-note b{color:var(--blue-dd)}
+.ai-note.warn{background:#fbeed4;border-color:#eeda9d;color:#7a5306}
+.ai-note.warn b{color:#7a5306}
+.ai-note.warn .ai-chip{color:#7a5306;background:#f5dfab}
 .ai-chip{display:inline-block;font:600 9px 'IBM Plex Mono';letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:#dcebfa;border-radius:5px;padding:3px 7px;margin-right:8px}
 
 /* ---------- Comparison ---------- */
