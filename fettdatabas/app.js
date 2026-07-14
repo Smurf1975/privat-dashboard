@@ -691,6 +691,8 @@ async function openProduct(id) {
     ['Fasta smörjämnen', arr(r.fasta_smorjamnen)], ['EP/AW-tillsatser', r.ep_aw_tillsatser],
     ['NSF food grade', r.nsf_klass_food_grade], ['ISO 21469', r.iso_21469],
     ['PFAS-status', r.pfas_status], ['REACH', r.reach_status],
+    ['Faropiktogram', arr(r.sds_piktogram)], ['H-fraser', arr(r.sds_h_fraser)],
+    ['EUH-fraser', arr(r.sds_euh_fraser)], ['SDS revisionsdatum', r.sds_revisionsdatum],
     ['Tillämpning', arr(r.tillampningsomrade)], ['OEM-godkännanden', r.oem_godkannanden],
     ['Artikelnummer', r.artikelnummer], ['Status', r.status],
   ].filter(x => x[1]);
