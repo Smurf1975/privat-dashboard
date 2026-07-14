@@ -17,7 +17,9 @@ const state = {
   query: '',
   filters: { basolja: [], fortjockare: [], fasta: [], ptfeFri: false, nlgi: [], nsf: [], tillampning: [] },
   searching: false,
+  searchMode: null,    // 'translate' (konkurrent→FUCHS via AI) | 'browse' (bara filter, ingen AI)
   searchResult: null, // { competitor, results, note }
+  browseResult: null,  // FUCHS-rader vid filterbläddring utan konkurrentnamn
   // jämförelse
   compare: null,      // { competitor, fuchs }
   // katalog
@@ -116,6 +118,25 @@ function expandFilter(kind, labels) {
     if (Array.isArray(def)) out.push(...def[1]); else out.push(lab);
   }
   return [...new Set(out)];
+}
+const overlaps = (a, b) => Array.isArray(a) && a.some(x => b.includes(x));
+
+// Bläddra FUCHS-sortimentet enbart via filter, utan konkurrentprodukt/AI (snabbt, ingen kostnad).
+async function browseFuchs(expanded) {
+  let qb = sb.from('fett')
+    .select('id,produktnamn,producent,nlgi_klass,temperaturomrade_min,temperaturomrade_max,basolja,fortjockare,fasta_smorjamnen,nsf_klass_food_grade,tillampningsomrade')
+    .eq('tillverkartyp', 'FUCHS').neq('status', 'Utgången').order('produktnamn').limit(300);
+  if (expanded.nlgi.length) qb = qb.in('nlgi_klass', expanded.nlgi);
+  if (expanded.nsf.length) qb = qb.in('nsf_klass_food_grade', expanded.nsf);
+  const { data, error } = await qb;
+  if (error) throw new Error(error.message);
+  let rows = data || [];
+  if (expanded.basolja.length) rows = rows.filter(r => overlaps(r.basolja, expanded.basolja));
+  if (expanded.fortjockare.length) rows = rows.filter(r => overlaps(r.fortjockare, expanded.fortjockare));
+  if (expanded.fasta.length) rows = rows.filter(r => overlaps(r.fasta_smorjamnen, expanded.fasta));
+  if (expanded.ptfeFri) rows = rows.filter(r => !(Array.isArray(r.fasta_smorjamnen) && r.fasta_smorjamnen.includes('PTFE')));
+  if (expanded.tillampning.length) rows = rows.filter(r => overlaps(r.tillampningsomrade, expanded.tillampning));
+  return rows;
 }
 
 // Slå på när valj-fett-calc.js är klar → då aktiveras "Välj fett"-fliken igen
@@ -362,12 +383,37 @@ function renderSok(m) {
 }
 
 function renderSokResult() {
+  if (state.searching && state.searchMode === 'browse') return `
+    <div class="thd"><span></span><span>FUCHS-produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
+    ${skeletonSokRows(3)}`;
   if (state.searching) return `
     <div class="ai-note ai-note-loading"><span class="ai-chip">AI</span>Analyserar och rankar produkter…</div>
     <div class="thd"><span>Likhet</span><span>Föreslagen produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
     ${skeletonSokRows(3)}`;
+  if (state.searchMode === 'browse') {
+    const rows = state.browseResult;
+    if (!rows) return `<div class="empty">${ICO_SEARCH}Skriv in en konkurrentprodukt, eller välj filter till vänster och tryck <b>Sök</b> för att bläddra FUCHS-sortimentet direkt.</div>`;
+    if (!rows.length) return `<div class="empty">${ICO_SEARCH}Inga FUCHS-produkter matchade filtren. Prova att lätta på dem.</div>`;
+    const rowsHtml = rows.map(x => {
+      const nsf = (x.nsf_klass_food_grade && x.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd')
+        ? `<span class="nsf">${esc(x.nsf_klass_food_grade)}</span>` : `<div class="cell dim">—</div>`;
+      return `<div class="tr" data-open="${x.id}">
+        <div></div>
+        <div><div class="tpn">${esc(x.produktnamn)}</div><div class="tps">${esc(x.producent)}</div></div>
+        <div class="cell num">${esc(x.nlgi_klass ?? '—')}</div>
+        <div class="cell num">${tempStr(x)}</div>
+        <div class="cell">${esc(arr(x.basolja) || '—')}</div>
+        <div class="cell">${esc(arr(x.fortjockare) || '—')}</div>
+        ${nsf}
+        <div class="jmp">Visa ›</div>
+      </div>`;
+    }).join('');
+    return `<div class="resh"><span class="t">${rows.length} FUCHS-produkter matchar filtren</span></div>
+      <div class="thd"><span></span><span>FUCHS-produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
+      ${rowsHtml}`;
+  }
   const r = state.searchResult;
-  if (!r) return `<div class="empty">${ICO_SEARCH}Skriv in en konkurrentprodukt och tryck <b>Sök</b>.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
+  if (!r) return `<div class="empty">${ICO_SEARCH}Skriv in en konkurrentprodukt och tryck <b>Sök</b> — eller välj filter till vänster för att bläddra FUCHS-sortimentet direkt.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
   if (!r.results || !r.results.length) return `<div class="empty">${ICO_SEARCH}Inga produkter matchade. Prova att lätta på filtren.</div>`;
   const comp = r.competitor;
   const uncertain = r.uncertain || comp?.matched === false;
@@ -402,10 +448,11 @@ function renderSokResult() {
 
 async function doSearch() {
   const q = ($('#q')?.value || '').trim();
-  if (!q) { toast('Skriv in en produkt att översätta'); return; }
-  state.query = q; state.searching = true; state.searchResult = null;
-  $('#res').innerHTML = renderSokResult();
   const f = state.filters;
+  const anyFilterActive = f.basolja.length || f.fortjockare.length || f.fasta.length || f.ptfeFri
+    || f.nlgi.length || f.tillampning.length || f.nsf.length;
+  if (!q && !anyFilterActive) { toast('Skriv in en produkt eller välj minst ett filter'); return; }
+
   const expanded = {
     basolja: expandFilter('basolja', f.basolja),
     fortjockare: expandFilter('fortjockare', f.fortjockare),
@@ -415,6 +462,27 @@ async function doSearch() {
     nsf: expandFilter('nsf', f.nsf),
     ptfeFri: !!f.ptfeFri,
   };
+
+  state.query = q;
+  if (!q) {
+    // Inget konkurrentnamn men filter valda: bläddra FUCHS-sortimentet direkt (ingen AI).
+    state.searchMode = 'browse'; state.searching = true; state.browseResult = null; state.searchResult = null;
+    $('#res').innerHTML = renderSokResult();
+    try {
+      state.browseResult = await browseFuchs(expanded);
+    } catch (e) {
+      toast('Fel: ' + e.message); state.browseResult = [];
+    } finally {
+      state.searching = false;
+      if ($('#res')) $('#res').innerHTML = renderSokResult();
+      $('#res')?.querySelectorAll('[data-open]').forEach(el =>
+        el.addEventListener('click', () => openProduct(el.dataset.open)));
+    }
+    return;
+  }
+
+  state.searchMode = 'translate'; state.searching = true; state.searchResult = null; state.browseResult = null;
+  $('#res').innerHTML = renderSokResult();
   try {
     const res = await fetch(`${FN_URL}/fett-sok`, {
       method: 'POST',
