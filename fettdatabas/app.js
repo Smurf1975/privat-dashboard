@@ -160,10 +160,11 @@ const ICO_SEARCH = `<svg class="empty-ico" viewBox="0 0 24 24" fill="none" strok
 const ICO_INBOX = `<svg class="empty-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3.5 12h5l1.8 2.8h3.4L15.5 12h5"/><path d="M5.2 12 3.5 5h17l-1.7 7"/><path d="M3.5 12v6.2c0 .7.5 1.3 1.2 1.3h14.6c.7 0 1.2-.6 1.2-1.3V12"/></svg>`;
 
 // Skeleton-rader för Sök & översätt (fyller samma gridkolumner som riktiga träffar → ingen layoutförskjutning)
-function skeletonSokRows(n) {
+function skeletonSokRows(n, browse) {
   const bar = (w, h = 12) => `<span class="sk" style="width:${w};height:${h}px"></span>`;
-  return Array.from({ length: n }).map(() => `<div class="tr sk-tr">
-    <div class="tsim">${bar('30px', 15)}</div>
+  const lead = browse ? '' : `<div class="tsim">${bar('30px', 15)}</div>`;
+  return Array.from({ length: n }).map(() => `<div class="tr sk-tr${browse ? ' browse' : ''}">
+    ${lead}
     <div>${bar('62%', 14)}<div style="margin-top:7px">${bar('34%', 10)}</div></div>
     <div class="cell num">${bar('16px')}</div>
     <div class="cell num">${bar('58px')}</div>
@@ -392,8 +393,8 @@ function renderSok(m) {
 
 function renderSokResult() {
   if (state.searching && state.searchMode === 'browse') return `
-    <div class="thd"><span></span><span>FUCHS-produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
-    ${skeletonSokRows(3)}`;
+    <div class="thd browse"><span>FUCHS-produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
+    ${skeletonSokRows(3, true)}`;
   if (state.searching) return `
     <div class="ai-note ai-note-loading"><span class="ai-chip">AI</span>Analyserar och rankar produkter…</div>
     <div class="thd"><span>Likhet</span><span>Föreslagen produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
@@ -405,8 +406,7 @@ function renderSokResult() {
     const rowsHtml = rows.map(x => {
       const nsf = (x.nsf_klass_food_grade && x.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd')
         ? `<span class="nsf">${esc(x.nsf_klass_food_grade)}</span>` : `<div class="cell dim">—</div>`;
-      return `<div class="tr" data-open="${x.id}">
-        <div></div>
+      return `<div class="tr browse" data-open="${x.id}">
         <div><div class="tpn">${esc(x.produktnamn)}</div><div class="tps">${esc(x.producent)}</div></div>
         <div class="cell num">${esc(x.nlgi_klass ?? '—')}</div>
         <div class="cell num">${tempStr(x)}</div>
@@ -417,7 +417,7 @@ function renderSokResult() {
       </div>`;
     }).join('');
     return `<div class="resh"><span class="t">${rows.length} FUCHS-produkter matchar filtren</span></div>
-      <div class="thd"><span></span><span>FUCHS-produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
+      <div class="thd browse"><span>FUCHS-produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
       ${rowsHtml}`;
   }
   const r = state.searchResult;
