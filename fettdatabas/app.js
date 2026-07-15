@@ -358,6 +358,7 @@ function renderSok(m) {
     </div>
     <div class="body2">
       <div class="filt">
+        <div class="filt-intro">Filtrera FUCHS-sortimentet — välj egenskaper och tryck <b>Sök på filter</b> längst ner.</div>
         <div class="fg"><div class="fh">Basolja</div>${ckRow('basolja', F.basolja, f.basolja)}</div>
         <div class="fg"><div class="fh">Förtjockare</div><div class="chips">${chipRow('fortjockare', F.fortjockare, f.fortjockare)}</div></div>
         <div class="fg"><div class="fh">Fasta smörjämnen</div>
@@ -366,14 +367,21 @@ function renderSok(m) {
         <div class="fg"><div class="fh">NLGI-klass</div><div class="chips">${chipRow('nlgi', F.nlgi, f.nlgi)}</div></div>
         <div class="fg"><div class="fh">Tillämpning</div><div class="chips">${chipRow('tillampning', F.tillampning, f.tillampning)}</div></div>
         <div class="fg"><div class="fh">NSF-klass</div><div class="chips">${chipRow('nsf', F.nsf, f.nsf)}</div></div>
-        <button class="tgo" id="goBottom" style="width:100%;justify-content:center;display:flex;align-items:center"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-2px;margin-right:6px"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>Sök</button>
+        <div class="filt-actions">
+          <button class="tgo" id="goBottom" style="width:100%;justify-content:center;display:flex;align-items:center"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-2px;margin-right:6px"><circle cx="7" cy="7" r="4.5"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></svg>Sök på filter</button>
+          <button class="filt-clear" id="clearFilters" type="button">Rensa filter</button>
+        </div>
       </div>
       <div class="res" id="res">${renderSokResult()}</div>
     </div>`;
 
   $('#q').addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
   $('#go').addEventListener('click', doSearch);
-  $('#goBottom').addEventListener('click', doSearch);
+  $('#goBottom').addEventListener('click', doBrowse);
+  $('#clearFilters').addEventListener('click', () => {
+    state.filters = { basolja: [], fortjockare: [], fasta: [], ptfeFri: false, nlgi: [], nsf: [], tillampning: [] };
+    renderSok(m);
+  });
   m.querySelectorAll('[data-filter]').forEach(el => el.addEventListener('click', () => {
     const k = el.dataset.filter, v = el.dataset.val;
     if (k === 'ptfeFri') state.filters.ptfeFri = !state.filters.ptfeFri;
@@ -413,7 +421,7 @@ function renderSokResult() {
       ${rowsHtml}`;
   }
   const r = state.searchResult;
-  if (!r) return `<div class="empty">${ICO_SEARCH}Skriv in en konkurrentprodukt och tryck <b>Sök</b> — eller välj filter till vänster för att bläddra FUCHS-sortimentet direkt.<br>AI:n förstår även ofullständiga eller felstavade namn.</div>`;
+  if (!r) return `<div class="empty">${ICO_SEARCH}<b>Två sätt att söka:</b><br>Skriv en konkurrentprodukt uppe till höger och tryck <b>Sök</b> → AI hittar närmaste FUCHS-motsvarighet.<br>Eller välj filter till vänster och tryck <b>Sök på filter</b> → bläddra FUCHS-sortimentet direkt.</div>`;
   if (!r.results || !r.results.length) return `<div class="empty">${ICO_SEARCH}Inga produkter matchade. Prova att lätta på filtren.</div>`;
   const comp = r.competitor;
   const uncertain = r.uncertain || comp?.matched === false;
@@ -446,14 +454,14 @@ function renderSokResult() {
     ${rows}`;
 }
 
-async function doSearch() {
-  const q = ($('#q')?.value || '').trim();
+function aktivaFilter() {
   const f = state.filters;
-  const anyFilterActive = f.basolja.length || f.fortjockare.length || f.fasta.length || f.ptfeFri
-    || f.nlgi.length || f.tillampning.length || f.nsf.length;
-  if (!q && !anyFilterActive) { toast('Skriv in en produkt eller välj minst ett filter'); return; }
-
-  const expanded = {
+  return !!(f.basolja.length || f.fortjockare.length || f.fasta.length || f.ptfeFri
+    || f.nlgi.length || f.tillampning.length || f.nsf.length);
+}
+function byggExpanderadeFilter() {
+  const f = state.filters;
+  return {
     basolja: expandFilter('basolja', f.basolja),
     fortjockare: expandFilter('fortjockare', f.fortjockare),
     fasta: expandFilter('fasta', f.fasta),
@@ -462,32 +470,39 @@ async function doSearch() {
     nsf: expandFilter('nsf', f.nsf),
     ptfeFri: !!f.ptfeFri,
   };
+}
+
+// Nedre knappen: bläddra FUCHS-sortimentet enbart på valda filter. Aldrig konkurrentprodukt/AI.
+async function doBrowse() {
+  if (!aktivaFilter()) { toast('Välj minst ett filter till vänster'); return; }
+  state.searchMode = 'browse'; state.searching = true; state.browseResult = null; state.searchResult = null;
+  if ($('#res')) $('#res').innerHTML = renderSokResult();
+  try {
+    state.browseResult = await browseFuchs(byggExpanderadeFilter());
+  } catch (e) {
+    toast('Fel: ' + e.message); state.browseResult = [];
+  } finally {
+    state.searching = false;
+    if ($('#res')) $('#res').innerHTML = renderSokResult();
+    $('#res')?.querySelectorAll('[data-open]').forEach(el =>
+      el.addEventListener('click', () => openProduct(el.dataset.open)));
+  }
+}
+
+// Övre knappen / Enter: översätt en konkurrentprodukt (AI). Om sökrutan är tom men filter
+// finns faller den tillbaka till filterbläddring, så knappen aldrig känns "död".
+async function doSearch() {
+  const q = ($('#q')?.value || '').trim();
+  if (!q) { if (aktivaFilter()) return doBrowse(); toast('Skriv in en konkurrentprodukt'); return; }
 
   state.query = q;
-  if (!q) {
-    // Inget konkurrentnamn men filter valda: bläddra FUCHS-sortimentet direkt (ingen AI).
-    state.searchMode = 'browse'; state.searching = true; state.browseResult = null; state.searchResult = null;
-    $('#res').innerHTML = renderSokResult();
-    try {
-      state.browseResult = await browseFuchs(expanded);
-    } catch (e) {
-      toast('Fel: ' + e.message); state.browseResult = [];
-    } finally {
-      state.searching = false;
-      if ($('#res')) $('#res').innerHTML = renderSokResult();
-      $('#res')?.querySelectorAll('[data-open]').forEach(el =>
-        el.addEventListener('click', () => openProduct(el.dataset.open)));
-    }
-    return;
-  }
-
   state.searchMode = 'translate'; state.searching = true; state.searchResult = null; state.browseResult = null;
   $('#res').innerHTML = renderSokResult();
   try {
     const res = await fetch(`${FN_URL}/fett-sok`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${state.session.access_token}` },
-      body: JSON.stringify({ query: q, filters: expanded }),
+      body: JSON.stringify({ query: q, filters: byggExpanderadeFilter() }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Sökningen misslyckades');
