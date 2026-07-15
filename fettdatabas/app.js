@@ -402,7 +402,8 @@ function renderSokResult() {
   if (state.searchMode === 'browse') {
     const rows = state.browseResult;
     if (!rows) return `<div class="empty">${ICO_SEARCH}Skriv in en konkurrentprodukt, eller välj filter till vänster och tryck <b>Sök</b> för att bläddra FUCHS-sortimentet direkt.</div>`;
-    if (!rows.length) return `<div class="empty">${ICO_SEARCH}Inga FUCHS-produkter matchade filtren. Prova att lätta på dem.</div>`;
+    const aktiva = aktivaFilterChips();
+    if (!rows.length) return `${aktiva}<div class="empty">${ICO_SEARCH}Inga FUCHS-produkter matchade <b>alla</b> valda filter samtidigt. Ta bort något ovan — filter i olika grupper kombineras (t.ex. basolja <b>och</b> förtjockare).</div>`;
     const rowsHtml = rows.map(x => {
       const nsf = (x.nsf_klass_food_grade && x.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd')
         ? `<span class="nsf">${esc(x.nsf_klass_food_grade)}</span>` : `<div class="cell dim">—</div>`;
@@ -416,7 +417,7 @@ function renderSokResult() {
         <div class="jmp">Visa ›</div>
       </div>`;
     }).join('');
-    return `<div class="resh"><span class="t">${rows.length} FUCHS-produkter matchar filtren</span></div>
+    return `${aktiva}<div class="resh"><span class="t">${rows.length} FUCHS-produkter matchar filtren</span></div>
       <div class="thd browse"><span>FUCHS-produkt</span><span class="num">NLGI</span><span class="num">Temp.område</span><span>Basolja</span><span>Förtjockare</span><span>NSF</span><span></span></div>
       ${rowsHtml}`;
   }
@@ -458,6 +459,19 @@ function aktivaFilter() {
   const f = state.filters;
   return !!(f.basolja.length || f.fortjockare.length || f.fasta.length || f.ptfeFri
     || f.nlgi.length || f.tillampning.length || f.nsf.length);
+}
+// Chips som visar alla aktiva filter (grupperade) så användaren ser hela kombinationen.
+function aktivaFilterChips() {
+  const f = state.filters;
+  const grp = [
+    ['Basolja', f.basolja], ['Förtjockare', f.fortjockare], ['Fasta', f.fasta],
+    ['NLGI', f.nlgi], ['Tillämpning', f.tillampning], ['NSF', f.nsf],
+  ].filter(g => g[1].length);
+  if (f.ptfeFri) grp.push(['', ['Endast PTFE-fri']]);
+  if (!grp.length) return '';
+  const chips = grp.map(([namn, vals]) =>
+    `<span class="pill" style="background:#e3eefb;color:var(--blue)">${namn ? esc(namn) + ': ' : ''}${vals.map(esc).join(', ')}</span>`).join('');
+  return `<div class="aktiva-filter">${chips}<span class="aktiva-hint">Grupper kombineras (och); värden inom en grupp är eller.</span></div>`;
 }
 function byggExpanderadeFilter() {
   const f = state.filters;
