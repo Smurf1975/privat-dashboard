@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dashboard",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "8117"],
+      "port": 8117
+    },
+    {
+      "name": "fettdatabas",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "4173", "--directory", "C:\\Users\\mats\\Documents\\Claude Co-Work OS\\Apps & Dashboards\\Smörjmedelsdatabas\\app"],
+      "port": 4173
+    },
+    {
+      "name": "fettdatabas-valjfett",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "4919", "--directory", "C:\\Users\\mats\\Documents\\Claude Co-Work OS\\Apps & Dashboards\\Smörjmedelsdatabas\\app"],
+      "port": 4919
+    },
+    {
+      "name": "fettdatabas-verify",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "4820", "--directory", "C:\\Users\\mats\\Documents\\Claude Co-Work OS\\Apps & Dashboards\\Smörjmedelsdatabas\\app"],
+      "port": 4820
+    }
+  ]
+}

@@ -29,7 +29,7 @@ const S = {
   rorelse: 'roterande', varvtal: '', oscAmplitud: '', oscFrekvens: '',
   drifttemp: '70', omgivningstemp: '20',
   belastning: 'medel', omgivning: ['ren'], orientering: 'horisontell',
-  vibration: 'lag', ytterringsrotation: false, eftersmorjningsmetod: 'sida', tatning: 'oppet',
+  vibration: 'lag', ytterringsrotation: false, eftersmorjningsmetod: 'sida', tatning: 'oppet', vfd: false,
   lage: 'foresla',                 // 'foresla' | 'kontrollera'
   visk40: '', visk100: '', basolja: 'mineral',
   resultat: null, resultatFel: null, sisteInput: null,
@@ -198,6 +198,7 @@ const TIPS = {
   visk100: 'Basoljans viskositet vid 100 °C. Valfri bonus — lämna tom om den saknas, då uppskattas den ur basoljetypen.',
   basolja: 'Typ av basolja. Ger ett antaget viskositetsindex (VI) som används för att uppskatta hur oljan tunnas ut med temperaturen.',
   ytterringsrotation: 'Kryssa i om ytterringen roterar (t.ex. hjulnav) i stället för innerringen. Ger kortare smörjintervall.',
+  vfd: 'Frekvensomriktare (VFD) switchar spänningen snabbt (PWM), vilket kan ge lagerströmmar som slår igenom smörjfilmen som gnistor (EDM) — gropbildning, "frosting" eller "fluting". Detta är ett elektriskt problem, inte ett smörjfilmsproblem — kappavärdet fångar det inte. Kryssa i om motorn styrs av en frekvensomriktare.',
   nuvarandeFort: 'Vad som redan sitter i lagret (om känt). Används för att varna om ett föreslaget fett är inkompatibelt med det gamla vid byte — allt kan inte blandas, se kortet "Fettbyte" nedan.',
 };
 function tipBadge(key) {
@@ -285,6 +286,7 @@ function formHtml() {
         </div>
       </div>
       <div class="ck" id="vfYtter"><span class="box ${S.ytterringsrotation ? 'on' : ''}"></span>Roterande ytterring${tipBadge('ytterringsrotation')}</div>
+      <div class="ck" id="vfVfd"><span class="box ${S.vfd ? 'on' : ''}"></span>Motorn drivs av frekvensomriktare (VFD)${tipBadge('vfd')}</div>
     </div>
     <div class="fg"><div class="fh">Nuvarande fett i lagret <span class="vf-multi">valfritt</span>${tipBadge('nuvarandeFort')}</div>
       <div class="vf-grid2">
@@ -348,6 +350,12 @@ function bindForm(m) {
     form.querySelector('#vfYtter .box').classList.toggle('on', S.ytterringsrotation);
     recalc(false);
   });
+  form.querySelector('#vfVfd').addEventListener('click', (e) => {
+    if (e.target.closest('.vf-tip')) return;
+    S.vfd = !S.vfd;
+    form.querySelector('#vfVfd .box').classList.toggle('on', S.vfd);
+    recalc(false);
+  });
   bindTips(form);
   // Omgivande miljö — flerval. "Ren och torr" är exklusivt (utesluter övriga och vice versa).
   form.querySelectorAll('[data-omg]').forEach(el => {
@@ -405,7 +413,7 @@ function byggInput() {
     drifttemp: drift, omgivningstemp: omg,
     belastning: S.belastning, omgivning: S.omgivning, orientering: S.orientering,
     vibration: S.vibration, ytterringsrotation: S.ytterringsrotation,
-    eftersmorjningsmetod: S.eftersmorjningsmetod, tatning: S.tatning, fett,
+    eftersmorjningsmetod: S.eftersmorjningsmetod, tatning: S.tatning, vfd: S.vfd, fett,
   } };
 }
 
@@ -469,6 +477,7 @@ function kravProfilHtml(r) {
   if (k.ep) push('EP/AW-tillsatser', 'ep');
   if (k.fastaSmorjamnen) push('Fasta smörjämnen (vita fasta)', 'ep');
   if (k.oscillerande) push('Oscillerande rörelse', 'ep');
+  if (k.ledandeFett) push('Elektriskt ledande (VFD)', 'ep');
   if (k.vattenbestandig) push('Vattenbeständig', 'vatten');
   if (k.hogvarv) push('Höghastighetsfett');
   if (k.lagvarv) push('Lågvarv – hög basviskositet');
@@ -793,7 +802,7 @@ function byggDutyBas() {
     lagertyp: S.lagertyp, d, D, B, massaKg: num(S.massaKg), omgivningstemp: omg,
     omgivning: S.omgivning, orientering: S.orientering, vibration: S.vibration,
     ytterringsrotation: S.ytterringsrotation, eftersmorjningsmetod: S.eftersmorjningsmetod,
-    tatning: S.tatning, fett,
+    tatning: S.tatning, vfd: S.vfd, fett,
   } };
 }
 
@@ -925,6 +934,19 @@ function produktKompatibilitet(p) {
   } catch { return null; }
 }
 
+// Samma tvåstegssignal som edge-funktionen: uttalat "elektriskt ledande" text (starkt) eller
+// grafit i fasta smörjämnen (svagare — leder ström men produkten är sällan avsedd för det).
+const LEDANDE_NEGATION = /(ej|inte|icke)\s+elektriskt\s+ledande|isolerande|\bisolator\b/i;
+const LEDANDE_POSITIV = /elektriskt ledande|conductive grease|kolsvart|carbon black|antistatisk/i;
+function produktLedande(p) {
+  if (!S.vfd) return null;
+  const text = `${p.spec_sammanfattning || ''} ${p.kommentarer || ''}`;
+  if (LEDANDE_NEGATION.test(text)) return null;
+  if (LEDANDE_POSITIV.test(text)) return 'text';
+  if (Array.isArray(p.fasta_smorjamnen) && p.fasta_smorjamnen.some(f => String(f).toLowerCase().includes('grafit'))) return 'grafit';
+  return null;
+}
+
 function prodHtml(p) {
   const lam = Math.max(0, Math.min(100, Math.round(Number(p.lamplighet) || 0)));
   const kappa = produktKappa(p);
@@ -934,6 +956,11 @@ function prodHtml(p) {
   const komp = produktKompatibilitet(p);
   const kompHtml = komp
     ? `<span class="vf-kbadge ${komp.sammantaget.klass}" title="${esc(komp.atgard)}">🔄 ${komp.sammantaget.symbol} byte</span>` : '';
+  const ledande = produktLedande(p);
+  const ledandeHtml = ledande === 'text'
+    ? `<span class="vf-kbadge gron" title="Uttalat utvecklad som elektriskt ledande fett">⚡ Ledande</span>`
+    : ledande === 'grafit'
+      ? `<span class="vf-kbadge gul" title="Innehåller grafit — viss ledningsförmåga, ej uttalat avsedd för elektrisk avledning">⚡ Grafit (viss ledning)</span>` : '';
   const temp = (p.temperaturomrade_min != null || p.temperaturomrade_max != null)
     ? `${p.temperaturomrade_min ?? '?'}…${p.temperaturomrade_max ?? '?'} °C` : '—';
   const nsf = (p.nsf_klass_food_grade && p.nsf_klass_food_grade !== 'Ej livsmedelsgodkänd')
@@ -948,7 +975,7 @@ function prodHtml(p) {
         <span>NLGI <b class="mono">${esc(p.nlgi_klass ?? '—')}</b></span>
         <span>ν40 <b class="mono">${p.viskositet_40c != null ? fmt(p.viskositet_40c, 0) + ' mm²/s' : '—'}</b></span>
         <span class="mono">${esc(temp)}</span>
-        ${nsf}${kompHtml}
+        ${nsf}${kompHtml}${ledandeHtml}
       </div>
     </div>
     <div class="vf-prod-k">${kHtml}</div>
@@ -975,6 +1002,7 @@ function byggKontext() {
   } else {
     delar.push(`eftersmörjning ${l(METOD, i.eftersmorjningsmetod)}`);
   }
+  if (i.vfd) delar.push('motorn drivs av frekvensomriktare (VFD) — risk för lagerströmmar/EDM, elektriskt ledande fett prioriteras');
   if (i.fett) delar.push(`kontroll av eget fett ν40=${fmt(i.fett.visk40, 0)} mm²/s`);
   const nuvarandeFortNamn = S.nuvarandeFort ? (FORTJOCKARE.find(f => f.key === S.nuvarandeFort)?.namn || S.nuvarandeFort) : null;
   if (nuvarandeFortNamn) delar.push(`nuvarande fett i lagret: ${nuvarandeFortNamn}${S.nuvarandeBas ? ' / ' + (BASOLJA.find(b => b.key === S.nuvarandeBas)?.namn || S.nuvarandeBas) : ''}`);

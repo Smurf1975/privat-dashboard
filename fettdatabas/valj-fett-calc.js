@@ -188,6 +188,11 @@ export function beraknaValjFett(input) {
   // eller fettvalsbart i efterhand (specialvarianter med smörjnippel finns men är undantag).
   const tatning = kravEnum('tätning', input.tatning ?? 'oppet', ['oppet', '2rs', '2z']);
   const tatat = tatning !== 'oppet';
+  // VFD/frekvensomriktardrift: PWM-switchning ger axelspänning (common-mode voltage) som slår
+  // igenom smörjfilmen som gnistor (EDM) — gropbildning/frosting/fluting, oberoende av att
+  // lagret är mekaniskt rätt smort. Kappa/viskositet fångar inte detta — det är ett elektriskt
+  // problem, inte ett smörjfilmsproblem. Fettvalet kan bara vara EN av flera motåtgärder.
+  const vfd = !!input.vfd;
 
   let fett = null;
   if (input.fett) {
@@ -231,6 +236,10 @@ export function beraknaValjFett(input) {
   }
   if (tatning === '2z' && harMiljo('dammig', 'fuktig', 'vattentvatt', 'livsmedel', 'kemisk')) {
     varningar.push('Skölddäck (2Z/ZZ) är beröringsfria och skyddar sämre mot damm, fukt och vatten än kontakttätningar (2RS) — överväg 2RS eller en separat extern tätningslösning i denna miljö.');
+  }
+
+  if (vfd) {
+    varningar.push('Motorn drivs av frekvensomriktare (VFD) — PWM-switchningen kan ge lagerströmmar (axelspänning) som slår igenom smörjfilmen som gnistor (EDM): gropbildning, "frosting" eller "fluting" i löpbanorna, även vid ett mekaniskt helt korrekt smort lager. Elektriskt ledande fett (kolsvarts-/grafitfyllt) kan avleda strömmen, men löser sällan problemet ensamt — kombinera med isolerade (keramiska hybrid-)lager och/eller axeljordningsborste vid högre risknivå.');
   }
 
   // Oscillation: riskklass utifrån vinkelutslaget. Små utslag ⇒ rullkropparnas kontaktzoner
@@ -500,6 +509,7 @@ export function beraknaValjFett(input) {
       || rorelse === 'oscillerande',
     fastaSmorjamnen: rorelse === 'oscillerande',   // vita fasta bär lasten vid vändpunkterna
     oscillerande: rorelse === 'oscillerande',
+    ledandeFett: vfd,   // VFD-drift: föredra elektriskt ledande fett (avleder lagerströmmar)
     hogvarv: regim === 'hogvarv',
     lagvarv: regim === 'lagvarv',
   };

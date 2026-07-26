@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell",
+      "mcp__21b7e6c8-1358-4eb2-91eb-6eee36b69318",
+      "mcp__00958596-7fac-4d58-b612-bf3f6ba6c5a0",
+      "mcp__00958596-7fac-4d58-b612-bf3f6ba6c5a0__tavily_search",
+      "mcp__00958596-7fac-4d58-b612-bf3f6ba6c5a0__tavily_extract",
+      "mcp__00958596-7fac-4d58-b612-bf3f6ba6c5a0__tavily_crawl",
+      "mcp__00958596-7fac-4d58-b612-bf3f6ba6c5a0__tavily_map",
+      "mcp__00958596-7fac-4d58-b612-bf3f6ba6c5a0__tavily_research",
+      "mcp__cd51e42d-f7c2-4c5f-b103-a55257115818__execute_sql"
+    ]
+  }
+}

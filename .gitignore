@@ -1,0 +1,11 @@
+.vercel
+.env*
+
+# Byggartefakt – genereras vid deploy
+dashboard-deploy.zip
+
+# Verktygscache och lokala maskininställningar
+.impeccable/
+.claude/skills/
+.claude/settings.local.json
+.claude/scheduled_tasks.lock

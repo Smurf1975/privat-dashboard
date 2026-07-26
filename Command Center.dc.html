@@ -2,26 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Enmark Command Center</title>
-
-<!-- Installerbar app (PWA) -->
-<link rel="manifest" href="./manifest.webmanifest">
-<meta name="theme-color" content="#0e1018">
-<link rel="icon" href="./icon-192.png" type="image/png">
-<!-- iOS läser inte manifestet — behöver egna taggar -->
-<link rel="apple-touch-icon" href="./apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Enmark">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
-  }
-</script>
 </head>
 <body>
 <x-dc>
@@ -39,7 +21,7 @@
     @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
     @keyframes spin{to{transform:rotate(360deg);}}
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </helmet>
 
@@ -88,15 +70,9 @@
 
       <!-- AI BRIEFING -->
       <div style="background:linear-gradient(135deg,rgba(130,220,50,0.07) 0%,rgba(14,16,24,0.3) 70%);border:1px solid rgba(130,220,50,0.18);border-radius:12px;padding:14px 18px;margin-bottom:14px;animation:fadeUp 0.35s ease both;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-          <div style="display:flex;align-items:center;gap:6px;">
-            <span style="width:5px;height:5px;border-radius:50%;background:oklch(0.82 0.24 130);display:inline-block;animation:blink 2.4s ease infinite;"></span>
-            <span style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.82 0.24 130);">AI-BRIEFING · IDAG</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:10px;color:rgba(238,240,245,0.35);">{{ briefingBadge }}</span>
-            <button onclick="{{ briefingOnRefresh }}" style="padding:2px 8px;border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:rgba(238,240,245,0.6);">🔄</button>
-          </div>
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+          <span style="width:5px;height:5px;border-radius:50%;background:oklch(0.82 0.24 130);display:inline-block;animation:blink 2.4s ease infinite;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.82 0.24 130);">AI-BRIEFING · IDAG</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
           <sc-for list="{{ briefing }}" as="b" hint-placeholder-count="5">
@@ -113,7 +89,7 @@
 
         <!-- WEATHER -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.05s both;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VÄDER · NYKÖPING <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">OPEN-METEO</span></div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VÄDER · NYKÖPING <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">SMHI</span></div>
           <div style="display:flex;align-items:flex-end;gap:14px;margin-bottom:14px;">
             <div style="font-size:60px;font-weight:200;letter-spacing:-0.04em;line-height:1;color:#eef0f5;">{{ weather.tempStr }}</div>
             <div style="padding-bottom:6px;">
@@ -309,274 +285,53 @@
 
     <!-- ══ SMART HOME ══ -->
     <sc-if value="{{ isSmartHome }}" hint-placeholder-val="{{ false }}">
-
-      <!-- TEMPERATUR -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;margin-bottom:14px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:18px;">TEMPERATUR · HOMEY <span style="{{ homeyBadgeStyle }}">{{ homeyBadge }}</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;">
-          <sc-for list="{{ smartHome.temps }}" as="t">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;grid-column:span 2;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:18px;">SENSORER · HOMEY <span style="{{ homeyBadgeStyle }}">{{ homeyBadge }}</span></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
             <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
-              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;letter-spacing:0.04em;">{{ t.label }}</div>
-              <div style="font-size:30px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ t.tempStr }}</div>
-              <div style="font-size:11px;color:rgba(238,240,245,0.38);margin-top:4px;">{{ t.subStr }}</div>
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">UTOMHUS</div>
+              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ smartHome.outdoorTempStr }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">Utesensor</div>
             </div>
-          </sc-for>
-          <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
-            <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;letter-spacing:0.04em;">LUFTKVALITET PM2.5</div>
-            <div style="font-size:30px;font-weight:200;letter-spacing:-0.03em;color:{{ smartHome.airColor }};">{{ smartHome.pm25Str }}</div>
-            <div style="font-size:11px;color:{{ smartHome.airColor }};margin-top:4px;">{{ smartHome.airStatus }}</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RÖRELSE & AKTIVITET -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;margin-bottom:14px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">RÖRELSE & AKTIVITET</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <sc-for list="{{ smartHome.motionRooms }}" as="mr">
-            <span style="{{ mr.pill }}">{{ mr.label }}</span>
-          </sc-for>
-        </div>
-      </div>
-
-      <!-- TV + SCENER -->
-      <div style="display:grid;grid-template-columns:1fr 230px;gap:14px;margin-bottom:14px;">
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">📺 TV</div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <sc-for list="{{ smartHome.tvDevices }}" as="tv">
-              <div onclick="{{ tv.onClick }}" style="{{ tv.bgStyle }}">
-                <div style="font-size:24px;">📺</div>
-                <div style="font-size:13px;font-weight:600;color:{{ tv.textColor }};margin-top:6px;">{{ tv.label }}</div>
-                <div style="font-size:12px;font-weight:700;color:{{ tv.statusColor }};margin-top:3px;">{{ tv.status }}</div>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">SCENER</div>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <sc-for list="{{ shScenes }}" as="sh">
-              <button onclick="{{ sh.onClick }}" style="{{ sh.btnStyle }}">{{ sh.label }}</button>
-            </sc-for>
-          </div>
-        </div>
-      </div>
-
-      <!-- DÖRRAR + LAMPOR -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:14px;">
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">DÖRRAR & LÅS</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-            <sc-for list="{{ smartHome.doors }}" as="dr">
-              <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:13px;">
-                <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:5px;letter-spacing:0.04em;">{{ dr.label }}</div>
-                <div style="font-size:17px;font-weight:500;color:{{ dr.color }};">{{ dr.status }}</div>
-                <sc-if value="{{ dr.status2 }}">
-                  <div style="font-size:15px;font-weight:500;color:{{ dr.color2 }};margin-top:4px;">{{ dr.status2 }}</div>
-                </sc-if>
-                <div style="font-size:11px;color:rgba(238,240,245,0.35);margin-top:3px;">{{ dr.sub }}</div>
-              </div>
-            </sc-for>
-          </div>
-          <!-- Eufy Hall – senaste stillbild -->
-          <div style="margin-top:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <span style="font-size:10px;color:rgba(238,240,245,0.44);letter-spacing:0.04em;text-transform:uppercase;">📷 Hall – Eufy</span>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:10px;color:rgba(238,240,245,0.3);">{{ smartHome.hallCam.timeStr }}</span>
-                <button onclick="{{ smartHome.hallCam.onRefresh }}" style="{{ smartHome.hallCam.refreshStyle }}">{{ smartHome.hallCam.refreshLabel }}</button>
-              </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">SOVRUM</div>
+              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;">{{ smartHome.bedroomTempStr }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">{{ smartHome.bedroomHumidityStr }} RF</div>
             </div>
-            <sc-if value="{{ smartHome.hallCam.has }}">
-              <img src="{{ smartHome.hallCam.url }}" style="width:100%;border-radius:9px;display:block;border:1px solid rgba(255,255,255,0.08);" alt="Hall" />
-            </sc-if>
-            <sc-if value="{{ !smartHome.hallCam.has }}" hint-placeholder-val="{{ false }}">
-              <div style="width:100%;aspect-ratio:16/9;border-radius:9px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(238,240,245,0.25);font-size:12px;">Laddar kamerabild…</div>
-            </sc-if>
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">LUFTKVALITET PM2.5</div>
+              <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;color:{{ smartHome.airColor }};">{{ smartHome.pm25Str }}</div>
+              <div style="font-size:11.5px;margin-top:4px;color:{{ smartHome.airColor }};">{{ smartHome.airStatus }}</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;">
+              <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">YTTERDÖRR</div>
+              <div style="font-size:24px;font-weight:400;letter-spacing:-0.02em;margin-top:4px;color:{{ smartHome.doorColor }};">{{ smartHome.doorStatus }}</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:4px;">{{ smartHome.doorBattStr }}</div>
+            </div>
           </div>
         </div>
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:4px;">LAMPOR PER RUM</div>
-          <div style="font-size:10px;color:rgba(238,240,245,0.32);margin-bottom:14px;">Klicka på en lampa för att tänd / släck</div>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <sc-for list="{{ smartHome.lampRooms }}" as="lr">
-              <div>
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-                  <span style="font-size:12px;font-weight:600;color:{{ lr.textColor }};">💡 {{ lr.label }}</span>
-                  <span style="font-size:10px;color:rgba(238,240,245,0.35);">{{ lr.statusStr }}</span>
-                </div>
-                <div style="display:flex;flex-wrap:wrap;gap:5px;">
-                  <sc-for list="{{ lr.devices }}" as="lamp">
-                    <button onclick="{{ lamp.onClick }}" style="{{ lamp.btnStyle }}">{{ lamp.name }}</button>
-                  </sc-for>
-                </div>
-              </div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VOLVO XC60</div>
+          <div style="font-size:36px;font-weight:200;letter-spacing:-0.03em;margin-bottom:6px;color:{{ smartHome.carBattColor }};">{{ smartHome.carBattStr }}</div>
+          <div style="font-size:13.5px;color:rgba(238,240,245,0.62);margin-bottom:4px;">{{ smartHome.carRangeStr }}</div>
+          <div style="font-size:12.5px;color:rgba(238,240,245,0.44);">{{ smartHome.carLocation }}</div>
+        </div>
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SCENER · HOMEY</div>
+          <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px;">
+            <sc-for list="{{ scenes }}" as="scene" hint-placeholder-count="5">
+              <button onClick="{{ scene.onClick }}" style="{{ scene.btnStyle }}">{{ scene.label }}</button>
             </sc-for>
           </div>
+          <div style="padding:11px 13px;background:rgba(255,255,255,0.03);border-radius:8px;font-size:12.5px;color:rgba(238,240,245,0.44);line-height:1.6;">Koppla Homey-flows till dessa knappar för direkt scenaktivering.</div>
         </div>
       </div>
-
-      <!-- ROCKY + STATUS -->
-      <div style="display:grid;grid-template-columns:1fr 210px;gap:14px;">
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:16px;">🤖 ROCKY · STÄDNING</div>
-          <div style="margin-bottom:14px;">
-            <div style="font-size:10px;color:rgba(238,240,245,0.38);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Dammsug</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              <sc-for list="{{ rockyRooms }}" as="rr">
-                <button onclick="{{ rr.onDamm }}" style="{{ rr.dammStyle }}">{{ rr.label }}</button>
-              </sc-for>
-            </div>
-          </div>
-          <div>
-            <div style="font-size:10px;color:rgba(238,240,245,0.38);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Dammsug & Moppa</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              <sc-for list="{{ rockyRooms }}" as="rr">
-                <button onclick="{{ rr.onMoppa }}" style="{{ rr.moppaStyle }}">{{ rr.label }}</button>
-              </sc-for>
-            </div>
-          </div>
-        </div>
-        <!-- Rocky status -->
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">Status Rocky</div>
-          <div style="text-align:center;padding:8px 0;">
-            <div style="font-size:38px;display:inline-block;animation:{{ rockyStatus.iconAnim }};">🤖</div>
-            <div style="font-size:13px;font-weight:700;margin-top:8px;color:{{ rockyStatus.statusColor }};">{{ rockyStatus.statusStr }}</div>
-            <sc-if value="{{ rockyStatus.showRoom }}">
-              <div style="font-size:11px;color:rgba(238,240,245,0.45);margin-top:3px;">{{ rockyStatus.roomStr }}</div>
-            </sc-if>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <span style="font-size:11px;color:rgba(238,240,245,0.38);">Batteri</span>
-              <span style="font-size:12px;font-weight:600;color:{{ rockyStatus.battColor }};">{{ rockyStatus.battStr }}</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <span style="font-size:11px;color:rgba(238,240,245,0.38);">Suction</span>
-              <span style="font-size:12px;font-weight:600;color:rgba(238,240,245,0.7);">{{ rockyStatus.suctionStr }}</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <span style="font-size:11px;color:rgba(238,240,245,0.38);">Läge</span>
-              <span style="font-size:12px;font-weight:600;color:rgba(238,240,245,0.7);">{{ rockyStatus.modeStr }}</span>
-            </div>
-            <sc-if value="{{ rockyStatus.mopOn }}">
-              <div style="font-size:10px;color:rgba(130,220,50,0.7);text-align:center;margin-top:2px;">💧 Mopp + Vatten</div>
-            </sc-if>
-            <sc-if value="{{ rockyStatus.stuck }}">
-              <div style="font-size:11px;font-weight:700;color:oklch(0.6 0.18 15);text-align:center;animation:blink 0.8s ease infinite;">⚠️ Fastnat!</div>
-            </sc-if>
-          </div>
-          <button onclick="{{ rockyDockBtn.onClick }}" style="{{ rockyDockBtn.style }}">{{ rockyDockBtn.label }}</button>
-        </div>
-      </div>
-
-    </sc-if>
-
-    <!-- ══ BILAR ══ -->
-    <sc-if value="{{ isBilar }}" hint-placeholder-val="{{ false }}">
-
-      <!-- HERO: frilagd bil + nyckeltal -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;margin-bottom:14px;animation:fadeUp 0.35s ease both;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));">
-          <!-- Foto -->
-          <div style="position:relative;min-height:320px;background:radial-gradient(circle at 50% 60%, rgba(130,150,185,0.22) 0%, rgba(21,24,33,0) 68%);display:flex;align-items:center;justify-content:center;padding:36px;">
-            <div style="position:absolute;top:24px;left:26px;z-index:2;">
-              <div style="font-size:25px;font-weight:600;color:#eef0f5;letter-spacing:-0.01em;">Volvo XC60</div>
-              <div style="font-size:13px;color:rgba(238,240,245,0.5);margin-top:2px;">Laddhybrid</div>
-            </div>
-            <span style="position:absolute;top:26px;right:26px;z-index:2;font-size:10px;font-weight:700;letter-spacing:0.08em;color:{{ volvo.statusColor }};">{{ volvo.statusStr }}</span>
-            <img src="volvo-new.jpg" alt="Volvo XC60" style="max-width:100%;max-height:285px;object-fit:contain;mix-blend-mode:screen;">
-          </div>
-          <!-- Nyckeltal -->
-          <div style="padding:32px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(255,255,255,0.05);">
-            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(238,240,245,0.5);margin-bottom:8px;">🔋 Batteri</div>
-            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:14px;">
-              <div style="font-size:68px;font-weight:200;letter-spacing:-0.04em;color:{{ volvo.battColor }};line-height:0.9;">{{ volvo.battStr }}</div>
-              <div style="padding-bottom:9px;">
-                <div style="font-size:14px;color:rgba(238,240,245,0.78);">⚡ {{ volvo.elRangeStr }} el</div>
-                <div style="font-size:12.5px;color:rgba(238,240,245,0.4);margin-top:2px;">{{ volvo.totalRangeStr }} totalt</div>
-              </div>
-            </div>
-            <div style="height:12px;background:rgba(255,255,255,0.06);border-radius:7px;overflow:hidden;margin-bottom:26px;">
-              <div style="{{ volvo.battBarStyle }}"></div>
-            </div>
-            <div style="display:flex;gap:12px;">
-              <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:11px;padding:15px;">
-                <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:6px;letter-spacing:0.04em;">LÅS</div>
-                <div style="font-size:17px;font-weight:500;color:{{ volvo.lockedColor }};">{{ volvo.lockedStr }}</div>
-              </div>
-              <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:11px;padding:15px;">
-                <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:6px;letter-spacing:0.04em;">STATUS</div>
-                <div style="font-size:17px;font-weight:500;color:{{ volvo.homeColor }};">{{ volvo.homeStr }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Info-brickor -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px;">
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
-          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">MÄTARSTÄLLNING</div>
-          <div style="font-size:19px;font-weight:300;color:#eef0f5;">🛣️ {{ volvo.odometerStr }}</div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
-          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">EL-RÄCKVIDD</div>
-          <div style="font-size:19px;font-weight:300;color:#eef0f5;">⚡ {{ volvo.elRangeStr }}</div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
-          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">TOTAL RÄCKVIDD</div>
-          <div style="font-size:19px;font-weight:300;color:#eef0f5;">🧭 {{ volvo.totalRangeStr }}</div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
-          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">LADDNING</div>
-          <div style="font-size:19px;font-weight:300;color:{{ volvo.chargingColor }};">{{ volvo.chargingStr }}</div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
-          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">MOTOR</div>
-          <div style="font-size:19px;font-weight:300;color:#eef0f5;">⚙️ {{ volvo.engineStr }}</div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 18px;">
-          <div style="font-size:10px;color:rgba(238,240,245,0.4);margin-bottom:7px;letter-spacing:0.04em;">UPPDATERAD</div>
-          <div style="font-size:19px;font-weight:300;color:#eef0f5;">🕐 {{ volvo.updatedStr }}</div>
-        </div>
-      </div>
-
-      <!-- Karta -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;">
-        <div style="padding:16px 20px 13px;display:flex;align-items:center;justify-content:space-between;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">📍 Position · {{ volvo.location }}</div>
-          <a href="{{ volvo.map.link }}" target="_blank" style="font-size:11px;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Öppna i karta ↗</a>
-        </div>
-        <sc-if value="{{ volvo.map.ready }}" hint-placeholder-val="{{ false }}">
-          <div style="position:relative;height:380px;overflow:hidden;background:#0d1117;">
-            <div style="position:absolute;left:50%;top:50%;width:1024px;height:512px;display:grid;grid-template-columns:repeat(4,256px);grid-auto-rows:256px;transform:{{ volvo.map.transform }};filter:invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.95) saturate(0.85);">
-              <img src="{{ volvo.map.t0 }}" style="width:256px;height:256px;display:block;" alt="">
-              <img src="{{ volvo.map.t1 }}" style="width:256px;height:256px;display:block;" alt="">
-              <img src="{{ volvo.map.t2 }}" style="width:256px;height:256px;display:block;" alt="">
-              <img src="{{ volvo.map.t3 }}" style="width:256px;height:256px;display:block;" alt="">
-              <img src="{{ volvo.map.t4 }}" style="width:256px;height:256px;display:block;" alt="">
-              <img src="{{ volvo.map.t5 }}" style="width:256px;height:256px;display:block;" alt="">
-              <img src="{{ volvo.map.t6 }}" style="width:256px;height:256px;display:block;" alt="">
-              <img src="{{ volvo.map.t7 }}" style="width:256px;height:256px;display:block;" alt="">
-            </div>
-            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:oklch(0.82 0.24 130);border:3px solid #0e1018;box-shadow:0 0 0 5px rgba(130,220,50,0.22),0 3px 10px rgba(0,0,0,0.6);z-index:3;"></div>
-            <div style="position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 70px 12px rgba(13,17,23,0.75);"></div>
-            <div style="position:absolute;bottom:8px;right:11px;font-size:9px;color:rgba(238,240,245,0.4);z-index:3;">© OpenStreetMap</div>
-          </div>
-        </sc-if>
-        <sc-if value="{{ !volvo.map.ready }}" hint-placeholder-val="{{ false }}">
-          <div style="padding:50px;text-align:center;color:rgba(238,240,245,0.3);font-size:13px;">Position ej tillgänglig</div>
-        </sc-if>
-      </div>
-
     </sc-if>
 
     <!-- ══ MEDIA ══ -->
     <sc-if value="{{ isMedia }}" hint-placeholder-val="{{ false }}">
-      <div style="{{ mediaGridStyle }}">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
 
         <!-- SPOTIFY vänster -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:14px;">
@@ -635,42 +390,6 @@
               <button onClick="{{ loginSpotify }}" style="padding:8px 20px;border-radius:8px;border:1px solid rgba(30,215,96,0.4);background:rgba(30,215,96,0.1);color:oklch(0.65 0.15 145);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">Logga in med Spotify</button>
             </div>
           </sc-if>
-
-        </div>
-
-        <!-- YOUTUBE mitten -->
-        <div style="display:flex;flex-direction:column;gap:14px;">
-
-          <!-- Nytt från kanaler -->
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">YOUTUBE · NYTT FRÅN KANALER <span style="{{ ytBadgeStyle }}">{{ ytBadge }}</span></div>
-            <sc-for list="{{ ytVideos }}" as="v" hint-placeholder-count="5">
-              <div onClick="{{ v.onClick }}" style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;">
-                <div style="width:64px;height:36px;border-radius:5px;background:rgba(255,0,0,0.1) url('{{ v.img }}') center/cover;flex-shrink:0;"></div>
-                <div style="flex:1;min-width:0;">
-                  <div style="font-size:12.5px;font-weight:500;color:rgba(238,240,245,0.85);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">{{ v.title }}</div>
-                  <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-top:3px;">{{ v.channel }} · {{ v.ago }}</div>
-                </div>
-              </div>
-            </sc-for>
-          </div>
-
-          <!-- Titta senare -->
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">TITTA SENARE</div>
-            <sc-for list="{{ ytWatchLater }}" as="w" hint-placeholder-count="4">
-              <div onClick="{{ w.onClick }}" style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;">
-                <div style="width:64px;height:36px;border-radius:5px;background:rgba(255,0,0,0.1) url('{{ w.img }}') center/cover;flex-shrink:0;"></div>
-                <div style="flex:1;min-width:0;">
-                  <div style="font-size:12.5px;font-weight:500;color:rgba(238,240,245,0.85);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">{{ w.title }}</div>
-                  <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-top:3px;">{{ w.channel }}</div>
-                </div>
-              </div>
-            </sc-for>
-            <sc-if value="{{ ytWlEmpty }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size:12px;color:rgba(238,240,245,0.42);line-height:1.6;padding:4px 0;">{{ ytWlHint }}</div>
-            </sc-if>
-          </div>
 
         </div>
 
@@ -773,7 +492,7 @@
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VÄDER</div>
           <div style="font-size:32px;line-height:1;margin-bottom:6px;">{{ weather.condition }}</div>
-          <div style="font-size:12px;color:rgba(238,240,245,0.44);">Open-Meteo · Nyköping</div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.44);">SMHI · Nyköping</div>
         </div>
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VIND</div>
@@ -822,31 +541,6 @@
 
       </div>
 
-      <!-- Badvatten · Nyköping med omnejd -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-top:14px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">🏊 BADVATTEN · NYKÖPING MED OMNEJD <span style="{{ bathingBadgeStyle }}">{{ bathingBadge }}</span></div>
-          <a href="https://badplatsen.havochvatten.se/" target="_blank" style="font-size:11px;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Badplatsen ↗</a>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px;">
-          <sc-for list="{{ bathing }}" as="b" hint-placeholder-count="8">
-            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px;">
-              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:5px;">
-                <div style="font-size:13.5px;font-weight:600;color:rgba(238,240,245,0.9);line-height:1.25;min-width:0;">{{ b.name }}</div>
-                <div style="font-size:27px;font-weight:200;letter-spacing:-0.03em;color:{{ b.tempColor }};flex-shrink:0;">{{ b.tempStr }}</div>
-              </div>
-              <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-bottom:11px;">{{ b.metaStr }}</div>
-              <div style="display:flex;align-items:center;gap:6px;">
-                <span style="{{ b.qualityDotStyle }}"></span>
-                <span style="font-size:11.5px;color:rgba(238,240,245,0.72);">{{ b.qualityLabel }} kvalitet</span>
-              </div>
-              <div style="font-size:11px;color:oklch(0.72 0.18 30);margin-top:7px;font-weight:600;">{{ b.warnStr }}</div>
-            </div>
-          </sc-for>
-        </div>
-        <div style="font-size:10.5px;color:rgba(238,240,245,0.3);margin-top:14px;">Källa: Havs- och vattenmyndigheten · Badplatsen. Kvalitet = EU:s årsklassificering. Temperatur från senaste provtagning.</div>
-      </div>
-
     </sc-if>
 
     <!-- ══ RESOR ══ -->
@@ -879,49 +573,12 @@
           </div>
         </div>
 
-        <!-- Höger: Destinationsbild från Wikipedia -->
-        <div style="border-radius:14px;overflow:hidden;min-height:300px;background:#0d1117;position:relative;display:flex;align-items:center;justify-content:center;">
-          <sc-if value="{{ tripPhotoUrl }}" hint-placeholder-val="{{ false }}">
-            <img src="{{ tripPhotoUrl }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="{{ tripPhotoCity }}">
-            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 45%);"></div>
-            <div style="position:absolute;bottom:16px;left:18px;right:18px;">
-              <div style="font-size:20px;font-weight:600;color:#fff;letter-spacing:-0.01em;">{{ tripPhotoCity }}</div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;">© Wikipedia / Wikimedia Commons</div>
-            </div>
-          </sc-if>
-          <sc-if value="{{ !tripPhotoUrl }}" hint-placeholder-val="{{ false }}">
-            <div style="color:rgba(238,240,245,0.2);font-size:13px;">Laddar foto…</div>
-          </sc-if>
-        </div>
+        <!-- Höger: Destinationsbild -->
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="resor-destination" placeholder="Dra hit ett foto av destinationen" shape="rounded" radius="14" style="width:100%;min-height:300px;display:block;" hint-size="100%,300px"></x-import>
 
       </div>
 
-      <!-- Rad 2: ATT GÖRA — AI-genererat baserat på familjeprofiler -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-top:0;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">ATT GÖRA I {{ tripPhotoCity }} <span style="font-size:9px;font-weight:400;letter-spacing:0;color:oklch(0.65 0.18 240);">AI · ANPASSAT FÖR ER</span></div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <sc-if value="{{ tripActivitiesLoading }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size:11px;color:rgba(238,240,245,0.35);">Hämtar förslag…</div>
-            </sc-if>
-            <button onClick="{{ refreshActivities }}" style="padding:4px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:rgba(238,240,245,0.5);font-size:11px;font-family:inherit;cursor:pointer;">↻ Hämta nya</button>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-          <sc-for list="{{ tripActivities }}" as="act" hint-placeholder-count="8">
-            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
-              <div style="font-size:22px;margin-bottom:6px;">{{ act.emoji }}</div>
-              <div style="font-size:13px;font-weight:600;color:rgba(238,240,245,0.88);margin-bottom:4px;line-height:1.3;">{{ act.name }}</div>
-              <div style="font-size:11.5px;color:rgba(238,240,245,0.42);line-height:1.45;">{{ act.desc }}</div>
-            </div>
-          </sc-for>
-        </div>
-        <sc-if value="{{ !tripActivitiesLoading && tripActivities.length === 0 }}" hint-placeholder-val="{{ false }}">
-          <div style="font-size:12px;color:rgba(238,240,245,0.3);padding:8px 0;">Tryck "Hämta nya" för att ladda AI-förslag.</div>
-        </sc-if>
-      </div>
-
-      <!-- Rad 3: Hotell (vänster) + Flyg (höger) -->
+      <!-- Rad 2: Hotell (vänster, alla nätter) + Flyg (höger) -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
 
         <!-- Hotell – alla bokade nätter -->
@@ -1052,15 +709,11 @@ class Component extends DCLogic {
   // INTE i klienten. anon-nyckeln nedan är publik by design (skyddad av RLS).
   SB_URL  = 'https://ncgxerxkgoxptcwvramn.supabase.co';
   SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jZ3hlcnhrZ294cHRjd3ZyYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3OTgzNDYsImV4cCI6MjA5NzM3NDM0Nn0.jzloqPSrAb5IDAKm2_AfHHgtOIWZHeVXmV6qsPOZMfc';
-  GOOGLE_CLIENT_ID = '528057161454-nqoqqa2juec30ca0kdov8rcoded2fg7p.apps.googleusercontent.com';
-  GOOGLE_SCOPES = 'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/youtube.readonly';
+  GOOGLE_CLIENT_ID = '85210960613-8nvglhjb36ivoubq73r0871rsqn1kbic.apps.googleusercontent.com';
+  GOOGLE_SCOPES = 'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/gmail.readonly';
   SPOTIFY_CLIENT_ID = '4b5da0f382364961bcb99ce481182812';
-  SPOTIFY_REDIRECT_URI = 'https://privat-dashboard-inky.vercel.app';
+  SPOTIFY_REDIRECT_URI = 'https://exquisite-cobbler-ef3439.netlify.app';
   SPOTIFY_SCOPES = 'user-read-recently-played user-top-read user-library-read user-read-currently-playing';
-
-  // Manuella service-datum (ISO yyyy-mm-dd). Sätt när du vet nästa servicetillfälle.
-  MINI_SERVICE  = '';
-  VOLVO_SERVICE = '';
 
   state = {
     activeTab:'hem', activeScene:null, currentTime:new Date(), cols:3,
@@ -1069,80 +722,46 @@ class Component extends DCLogic {
     outdoorTemp:null, bedroomTemp:null, bedroomHumidity:null,
     pm25:null, filterLife:null,
     elCurrentOre:null, elCheapest:'', elExpensive:'', elAvgToday:null,
-    aiBriefing:null, aiBriefingTime:null, aiBriefingLoading:false,
-    doorLocked:null, doorBattery:null, frontDoorOpen:null,
-    hallCamUrl:null, hallCamTime:null, hallCamLoading:false,
+    doorLocked:null, doorBattery:null,
     carBattery:null, carRange:null, carLocation:null, carLocked:null,
-    // Bilar – Volvo extra (Homey)
-    volvoRangeBattery:null, volvoLat:null, volvoLng:null, volvoOdometer:null,
-    volvoCharging:null, volvoChargingStatus:null, volvoEngine:null, volvoDistance:null,
-    // Bilar – Mini (bimmer_connected via Supabase – ej kopplad än)
-    miniOk:false, miniBattery:null, miniRange:null, miniLocked:null, miniLocation:null,
-    miniLat:null, miniLng:null, miniOdometer:null, miniCharging:null, miniUpdated:null,
     matsHome:false, nannyHome:false, simonHome:false, vanessaHome:false,
     matsLast:null, nannyLast:null, simonLast:null, vanessaLast:null,
     semesterMode:false, vakenMode:false,
-    entreTemp:null, hallenSimonTemp:null, badrumTemp:null,
-    balkongOpen:null, kylskapOpen:null, frysOpen:null,
-    motion:{}, lamps:{},
-    tvVardagsrum:null, tvSovrum:null,
-    rocky:null, rockyActiveRoom:null, rockyReturning:false,
     // SMHI
     wxTemp:null, wxIcon:'⛅', wxCondition:'Laddar...', wxWind:null, wxHumidity:null, wxPrecip:null, wxFeels:null,
     wxHourly:[],
-    // Badvatten (Havs- och vattenmyndigheten via bathing-proxy)
-    bathingSpots:[], bathingOk:false,
     // Elpris hourly
     elHourly:[],
     // Liverpool
     lfcNext:null, lfcLast:null, lfcForm:[], lfcResults:[], lfcTable:[],
     // Google
     googleAuthed:false, googleError:null, calEvents:[], gmailMsgs:[],
-    // Trip photo
-    tripPhotoUrl:'', tripPhotoCity:'',
-    // Trip activities
-    tripActivities:[], tripActivitiesCity:'', tripActivitiesLoading:false,
-    // YouTube
-    ytVideos:[], ytWatchLater:[], ytWlFound:false,
     // Spotify
     spotifyAuthed:false, spotifyToken:null,
     spotifyRecent:[], spotifyPodcasts:[], spotifyDiscovery:null, spotifyNowPlaying:null,
     spotifyLoading:false,
+    fardplanData:null,
     fardplanBookings:[],
   };
 
   componentDidMount() {
-    // Klockan visar bara HH:MM – rendera om först när minuten faktiskt byts
-    // (istället för varje sekund; hela renderVals + all DOM-ombindning körs vid varje setState).
-    this._tick = setInterval(() => {
-      const now = new Date();
-      if (now.getMinutes() !== this.state.currentTime.getMinutes()) this.setState({currentTime: now});
-    }, 1000);
+    this._tick = setInterval(() => this.setState({currentTime:new Date()}), 1000);
     const upd = () => this.setState({cols: window.innerWidth<620?1:window.innerWidth<1100?2:3});
     upd(); window.addEventListener('resize', upd); this._resize = upd;
+    // Test basic fetch capability
+    fetch('https://api.ipify.org?format=json')
+      .then(r => r.json())
+      .then(d => console.log('✅ Fetch works:', d.ip))
+      .catch(e => console.error('❌ Fetch blocked:', e.constructor?.name, e.message));
     this.restoreCache();   // visa senaste kända värden direkt, innan API:erna svarar
     this.fetchAll();
     this.fetchLiverpool();
-    setTimeout(() => this.fetchAiBriefing(), 6000);   // vänta in Homey/Google-data innan AI-briefingen byggs
     this._refresh = setInterval(() => this.fetchAll(), 5*60*1000);
-    this._briefingRefresh = setInterval(() => this.fetchAiBriefing(), 30*60*1000);   // kollar var 30:e min, gör bara ett anrop om >4h gammal
     this._lfcRefresh = setInterval(() => this.fetchLiverpool(), 60*60*1000);
-    this.scheduleMorningRefresh();   // garanterad ren uppdatering varje morgon kl 08:00
     this.initGoogle();
     this.initSpotify();
+    this.loadFardplan();
     this.initSupabase();
-  }
-
-  scheduleMorningRefresh() {
-    // Räkna ut ms till nästa kl 08:00 och ladda om hela sidan då (färsk data + senaste kod).
-    // Efter omladdning körs componentDidMount igen och schemalägger nästa morgon.
-    const now = new Date();
-    const next = new Date(now);
-    next.setHours(8, 0, 0, 0);
-    if (next <= now) next.setDate(next.getDate() + 1);
-    const ms = next - now;
-    clearTimeout(this._morning);
-    this._morning = setTimeout(() => location.reload(), ms);
   }
 
   initGoogle() {
@@ -1153,11 +772,10 @@ class Component extends DCLogic {
       callback: (resp) => {
         if (resp && resp.access_token) {
           this._gToken = resp.access_token;
-          const exp = Date.now()+(resp.expires_in||3600)*1000;
           try { localStorage.setItem('lcc_gtoken', resp.access_token);
-            localStorage.setItem('lcc_gexp', String(exp)); } catch(e){}
+            localStorage.setItem('lcc_gexp', String(Date.now()+(resp.expires_in||3600)*1000)); } catch(e){}
           this.setState({googleAuthed:true, googleError:null});
-          this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube();
+          this.fetchCalendar(); this.fetchGmail();
         }
       },
     });
@@ -1165,11 +783,8 @@ class Component extends DCLogic {
     try { stored = localStorage.getItem('lcc_gtoken'); exp = parseInt(localStorage.getItem('lcc_gexp')||'0'); } catch(e){}
     if (stored && Date.now() < exp) {
       this._gToken = stored; this.setState({googleAuthed:true});
-      this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube();
+      this.fetchCalendar(); this.fetchGmail();
     }
-    // Ingen automatisk förnyelse: GIS token client öppnar ALLTID ett popup-fönster,
-    // även med prompt:''. Utan användarklick blockerar webbläsaren det. Äkta
-    // persistent Google-inloggning kräver server-side OAuth med refresh-token.
   }
 
   loginGoogle() {
@@ -1204,15 +819,19 @@ class Component extends DCLogic {
       this._spToken = token;
       this.setState({ spotifyAuthed: true });
       this.fetchSpotifyData();
-    } else if (localStorage.getItem('sp_refresh')) {
-      // Access-token dör efter en timme. Refresh-token gör det inte — förnya tyst
-      // istället för att visa inloggningsknappen (annars måste man logga in varje dag).
-      await this.refreshSpotifyToken();
-      if (this._spToken) {
-        this.setState({ spotifyAuthed: true });
-        this.fetchSpotifyData();
-      }
     }
+  }
+
+  loadFardplan() {
+    try {
+      const raw = localStorage.getItem('fardplan_next');
+      if (raw) this.setState({ fardplanData: JSON.parse(raw) });
+    } catch(e) { console.warn('Färdplan:', e.message); }
+    window.addEventListener('storage', e => {
+      if (e.key === 'fardplan_next') {
+        try { this.setState({ fardplanData: e.newValue ? JSON.parse(e.newValue) : null }); } catch(_) {}
+      }
+    });
   }
 
   initSupabase() {
@@ -1260,8 +879,6 @@ class Component extends DCLogic {
     });
     if (!res.ok) { console.error('Spotify token exchange failed', res.status); return; }
     const data = await res.json();
-    localStorage.removeItem('sp_verifier');
-    localStorage.removeItem('sp_state');
     this._spToken = data.access_token;
     localStorage.setItem('sp_token',   data.access_token);
     localStorage.setItem('sp_refresh', data.refresh_token || '');
@@ -1291,7 +908,7 @@ class Component extends DCLogic {
   async spFetch(url) {
     let res = await fetch(url, { headers: { Authorization: `Bearer ${this._spToken}` } });
     if (res.status === 401) { await this.refreshSpotifyToken(); if (!this._spToken) return null; res = await fetch(url, { headers: { Authorization: `Bearer ${this._spToken}` } }); }
-    if (!res.ok || res.status === 204) return null;
+    if (!res.ok) return null;
     return res.json();
   }
 
@@ -1312,17 +929,13 @@ class Component extends DCLogic {
         playedAt: new Date(i.played_at),
       }));
 
-      // Followed shows (podcasts)
-      const sh = await this.spFetch('https://api.spotify.com/v1/me/shows?limit=8');
-      const podcasts = await Promise.all((sh?.items || []).slice(0, 5).map(async s => {
-        const eps = await this.spFetch(`https://api.spotify.com/v1/shows/${s.show.id}/episodes?limit=1&market=SE`);
-        const ep = eps?.items?.[0];
-        return {
-          title: ep?.name || s.show?.name || '—',
-          show:  s.show?.name || '—',
-          dur:   ep?.duration_ms ? Math.round(ep.duration_ms/60000) + ' min' : '—',
-          img:   s.show?.images?.[1]?.url || s.show?.images?.[0]?.url || '',
-        };
+      // Saved episodes / podcasts
+      const ep = await this.spFetch('https://api.spotify.com/v1/me/episodes?limit=5');
+      const podcasts = (ep?.items || []).map(i => ({
+        title: i.episode?.name || '—',
+        show:  i.episode?.show?.name || '—',
+        dur:   i.episode?.duration_ms ? Math.round(i.episode.duration_ms/60000) + ' min' : '—',
+        img:   i.episode?.images?.[1]?.url || '',
       }));
 
       // Music discovery – välj en av dina toppartister du inte sett nyligen.
@@ -1378,7 +991,7 @@ class Component extends DCLogic {
   async fetchGmail() {
     if (!this._gToken) return;
     try {
-      const lr = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages?q=is%3Aunread+in%3Ainbox&maxResults=8', {headers:{Authorization:`Bearer ${this._gToken}`}});
+      const lr = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages?q=is%3Aimportant+in%3Ainbox+newer_than%3A7d&maxResults=5', {headers:{Authorization:`Bearer ${this._gToken}`}});
       if (!lr.ok) throw new Error(`Gmail ${lr.status}`);
       const list = await lr.json();
       const msgs = await Promise.all((list.messages||[]).slice(0,5).map(async m => {
@@ -1396,176 +1009,8 @@ class Component extends DCLogic {
     } catch(e){ console.warn('Gmail:', e.message); }
   }
 
-  async ytFetch(url) {
-    const res = await fetch(url, {headers:{Authorization:`Bearer ${this._gToken}`}});
-    if (res.status===401){ this._gToken=null; this.setState({googleAuthed:false}); try{localStorage.removeItem('lcc_gtoken');}catch(e){} return null; }
-    if (!res.ok || res.status===204) return null;
-    return res.json();
-  }
-
-  _ytRelTime(ts) {
-    if (!ts) return '';
-    const diff = Math.round((Date.now() - new Date(ts).getTime())/60000);
-    if (diff < 60)   return `${Math.max(1,diff)} min sedan`;
-    if (diff < 1440) return `${Math.floor(diff/60)} tim sedan`;
-    const dgr = Math.floor(diff/1440);
-    if (dgr < 7)  return `${dgr} dag${dgr>1?'ar':''} sedan`;
-    return `${Math.floor(dgr/7)} v sedan`;
-  }
-
-  async fetchYouTube() {
-    if (!this._gToken) return;
-    try {
-      // 1) Prenumerationer (kanaler du följer)
-      const subs = await this.ytFetch('https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true&maxResults=50&order=unread');
-      const channels = (subs?.items||[])
-        .map(s => ({ id: s.snippet?.resourceId?.channelId, title: s.snippet?.title }))
-        .filter(c => c.id);
-
-      // 2) Senaste uppladdningar – uploads-spellistan är UC→UU
-      const subset = channels.slice(0, 20);
-      const vids = [];
-      await Promise.all(subset.map(async c => {
-        const uploads = 'UU' + c.id.slice(2);
-        const pl = await this.ytFetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploads}&maxResults=2`);
-        (pl?.items||[]).forEach(it => {
-          const sn = it.snippet; const vid = sn?.resourceId?.videoId;
-          if (!vid) return;
-          vids.push({ title: sn.title, channel: sn.videoOwnerChannelTitle || c.title,
-            videoId: vid, img: sn.thumbnails?.medium?.url || sn.thumbnails?.default?.url || '',
-            published: sn.publishedAt });
-        });
-      }));
-      vids.sort((a,b) => new Date(b.published) - new Date(a.published));
-      const ytVideos = vids.slice(0,7).map(v => ({
-        title: v.title, channel: v.channel, img: v.img,
-        ago: this._ytRelTime(v.published),
-        onClick: () => window.open(`https://www.youtube.com/watch?v=${v.videoId}`, '_blank'),
-      }));
-
-      // 3) "Titta senare" – inbyggda WL går ej via API, läs en vanlig spellista med matchande namn
-      let ytWatchLater = [], ytWlFound = false;
-      const pls = await this.ytFetch('https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=50');
-      const wl = (pls?.items||[]).find(p => /titta\s*senare|watch\s*later|se\s*senare/i.test(p.snippet?.title||''));
-      if (wl) {
-        ytWlFound = true;
-        const items = await this.ytFetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${wl.id}&maxResults=8`);
-        ytWatchLater = (items?.items||[]).map(it => {
-          const sn = it.snippet; const vid = sn?.resourceId?.videoId;
-          return vid ? { title: sn.title, channel: sn.videoOwnerChannelTitle || '',
-            img: sn.thumbnails?.medium?.url || sn.thumbnails?.default?.url || '',
-            onClick: () => window.open(`https://www.youtube.com/watch?v=${vid}`, '_blank') } : null;
-        }).filter(Boolean);
-      }
-
-      this.setState({ ytVideos, ytWatchLater, ytWlFound });
-    } catch(e){ console.warn('YouTube:', e.message); }
-  }
-
-  async fetchTripActivities(city, travelers) {
-    if (!city) return;
-    this.setState({ tripActivitiesLoading: true });
-    try {
-      const PROXY = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/anthropic-proxy';
-      const res = await fetch(PROXY, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'activities', destination: city, travelers }),
-      });
-      const data = await res.json();
-      if (data.error) { console.warn('Activities proxy error:', data.error); this.setState({ tripActivitiesLoading: false }); return; }
-      // Extrahera JSON från första text-blocket
-      let json = null;
-      for (const b of (data.content || [])) {
-        if (b.type === 'text') {
-          const t = b.text || '';
-          // Försök direkt parse, annars hitta { ... } i texten
-          try { json = JSON.parse(t.replace(/```json|```/g,'').trim()); break; } catch(_) {}
-          const m = t.match(/\{[\s\S]*\}/);
-          if (m) { try { json = JSON.parse(m[0]); break; } catch(_) {} }
-        }
-      }
-      const activities = json?.activities || [];
-      this.setState({ tripActivities: activities, tripActivitiesCity: city, tripActivitiesLoading: false });
-    } catch(e) {
-      console.warn('Trip activities:', e.message);
-      this.setState({ tripActivitiesLoading: false });
-    }
-  }
-
-  _buildBriefingSummary() {
-    const s = this.state;
-    const lines = [];
-    if (s.googleAuthed && s.calEvents?.length > 0) {
-      const today = s.calEvents.filter(e => e.isToday);
-      lines.push(`Möten idag (${today.length}): ` + today.map(e => `${e.time} ${e.title}`).join('; '));
-    } else {
-      lines.push('Kalender: ej inloggad (ingen mötesdata tillgänglig).');
-    }
-    if (s.googleAuthed && s.gmailMsgs?.length > 0) {
-      lines.push(`Olästa mail (${s.gmailMsgs.length}): ` + s.gmailMsgs.slice(0,3).map(m => `${m.from} – ${m.subject}`).join('; '));
-    }
-    if (s.doorLocked === false) lines.push('Ytterdörren är OLÅST just nu.');
-    if (s.frontDoorOpen) lines.push('Ytterdörren står ÖPPEN.');
-    if (s.carBattery != null) lines.push(`Volvo XC60 batteri: ${Math.round(s.carBattery)}%${s.carBattery<20?' (LÅGT, bör laddas)':''}, plats: ${s.carLocation||'okänd'}.`);
-    if (s.elCurrentOre != null) lines.push(`Elpris just nu: ${s.elCurrentOre.toFixed(1)} öre/kWh${s.elCheapest?`, billigast: ${s.elCheapest}`:''}${s.elExpensive?`, dyrast: ${s.elExpensive}`:''}.`);
-    if (s.wxTemp != null) lines.push(`Väder Nyköping: ${s.wxTemp}°C, ${s.wxCondition||''}.`);
-    if (s.lfcNext) lines.push(`Liverpool nästa match: ${s.lfcNext.opp} ${s.lfcNext.date} (${s.lfcNext.home?'hemma':'borta'}).`);
-    if (s.rocky?.isCleaning) lines.push('Rocky städar just nu.');
-    return lines.join('\n');
-  }
-
-  async fetchAiBriefing(force=false) {
-    const last = this.state.aiBriefingTime;
-    const FOUR_H = 4*60*60*1000;
-    if (!force && last && (Date.now()-last) < FOUR_H) return;
-    this.setState({ aiBriefingLoading: true });
-    try {
-      const PROXY = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/anthropic-proxy';
-      const summary = this._buildBriefingSummary();
-      const res = await fetch(PROXY, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'briefing', summary }),
-      });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      let json = null;
-      for (const b of (data.content || [])) {
-        if (b.type === 'text') {
-          const t = (b.text || '').replace(/```json|```/g,'').trim();
-          try { json = JSON.parse(t); break; } catch(_) {}
-          const m = t.match(/\{[\s\S]*\}/);
-          if (m) { try { json = JSON.parse(m[0]); break; } catch(_) {} }
-        }
-      }
-      const bullets = json?.bullets || [];
-      if (bullets.length === 0) throw new Error('Tomt svar');
-      this.setState({ aiBriefing: bullets, aiBriefingTime: Date.now(), aiBriefingLoading: false });
-      this.saveCache();
-    } catch(e) {
-      console.warn('AI-briefing:', e.message);
-      this.setState({ aiBriefingLoading: false });
-    }
-  }
-
-  async fetchTripPhoto(city) {
-    if (!city) return;
-    try {
-      for (const lang of ['sv', 'en']) {
-        const url = `https://${lang}.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(city)}&prop=pageimages&format=json&pithumbsize=900&origin=*`;
-        const res = await fetch(url);
-        if (!res.ok) continue;
-        const data = await res.json();
-        const page = Object.values(data.query?.pages || {})[0];
-        const imgUrl = page?.thumbnail?.source;
-        if (imgUrl) { this.setState({ tripPhotoUrl: imgUrl, tripPhotoCity: city }); return; }
-      }
-    } catch(e) { console.warn('Trip photo:', e.message); }
-  }
-
   componentWillUnmount() {
-    clearInterval(this._tick); clearInterval(this._refresh); clearInterval(this._lfcRefresh); clearInterval(this._briefingRefresh);
+    clearInterval(this._tick); clearInterval(this._refresh); clearInterval(this._lfcRefresh);
     window.removeEventListener('resize', this._resize);
   }
 
@@ -1676,7 +1121,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -1685,23 +1130,9 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
-  }
-
-  async fetchHallCam() {
-    this.setState({ hallCamLoading: true });
-    try {
-      const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=cameraSnapshot`, {
-        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
-      });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const d = await r.json();
-      if (d.error) throw new Error(d.error);
-      this.setState({ hallCamUrl: d.dataUrl || null, hallCamTime: d.lastUpdated || null });
-    } catch(e) { console.warn('hallCam:', e.message); }
-    finally { this.setState({ hallCamLoading: false }); }
   }
 
   async fetchHomey() {
@@ -1713,10 +1144,7 @@ class Component extends DCLogic {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const s = await res.json();
       if (s.error) throw new Error(s.error);
-      const patch = { ...s, homeyOk:true, homeyError:null };
-      // Nollställ "återvänder"-flaggan så fort Homey rapporterar att han dockat
-      if (s.rocky?.dock) patch.rockyReturning = false;
-      this.setState(patch);
+      this.setState({ ...s, homeyOk:true, homeyError:null });
     } catch(e) {
       const msg = e?.message || e?.name || String(e) || 'Nätverksfel';
       console.warn('Homey-proxy:', msg);
@@ -1724,108 +1152,59 @@ class Component extends DCLogic {
     }
   }
 
-  // WMO-väderkod → ikon + svensk text
-  _wmo(code) {
-    const m = {
-      0:['☀️','Klart'], 1:['🌤','Mest klart'], 2:['⛅','Halvklart'], 3:['☁️','Mulet'],
-      45:['🌫','Dimma'], 48:['🌫','Underkyld dimma'],
-      51:['🌦','Lätt duggregn'], 53:['🌦','Duggregn'], 55:['🌦','Tätt duggregn'],
-      56:['🌧','Underkylt duggregn'], 57:['🌧','Underkylt duggregn'],
-      61:['🌧','Lätt regn'], 63:['🌧','Regn'], 65:['🌧','Kraftigt regn'],
-      66:['🌧','Underkylt regn'], 67:['🌧','Underkylt regn'],
-      71:['🌨','Lätt snöfall'], 73:['🌨','Snöfall'], 75:['🌨','Kraftigt snöfall'], 77:['🌨','Snökorn'],
-      80:['🌦','Regnskurar'], 81:['🌦','Regnskurar'], 82:['🌦','Kraftiga skurar'],
-      85:['🌨','Snöbyar'], 86:['🌨','Kraftiga snöbyar'],
-      95:['⛈','Åska'], 96:['⛈','Åska med hagel'], 99:['⛈','Åska med hagel'],
-    };
-    return m[code] || ['⛅','Växlande'];
-  }
-
   async fetchSMHI() {
     try {
-      const url = 'https://api.open-meteo.com/v1/forecast?latitude=58.753&longitude=17.006'
-        + '&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m'
-        + '&hourly=temperature_2m,weather_code,precipitation,precipitation_probability'
-        + '&timezone=Europe/Stockholm&forecast_days=2&wind_speed_unit=ms';
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`Open-Meteo ${res.status}`);
+      const res = await fetch(
+        'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/17.006/lat/58.753/data.json'
+      );
+      if (!res.ok) throw new Error(`SMHI ${res.status}`);
       const data = await res.json();
-      const c = data.current || {};
-      const h = data.hourly || {};
-      const dirs = ['N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSV','SV','VSV','V','VNV','NV','NNV'];
-      const wdStr = deg => deg != null ? dirs[Math.round(deg/22.5)%16] : '';
-      const [icon, cond] = this._wmo(c.weather_code);
-
-      // Timprognos: börja från aktuell timme, ta 12
-      const times = h.time || [];
       const now = new Date();
-      let start = times.findIndex(t => new Date(t) >= now);
-      if (start < 0) start = 0;
-      const hourly = [];
-      for (let i = start; i < Math.min(start+12, times.length); i++) {
-        const code = h.weather_code?.[i];
-        hourly.push({
-          h: new Date(times[i]).getHours().toString().padStart(2,'0'),
-          t: h.temperature_2m?.[i] != null ? Math.round(h.temperature_2m[i]) : 0,
-          icon: this._wmo(code)[0],
-          tPct: h.temperature_2m?.[i] != null ? Math.round(Math.max(0,Math.min(100,(h.temperature_2m[i]+10)*100/50))) : 0,
-          precip: h.precipitation?.[i] != null ? parseFloat(h.precipitation[i].toFixed(1)) : 0,
-          precipPct: h.precipitation_probability?.[i] ?? 0,
-        });
-      }
-
+      const series = data.timeSeries || [];
+      const current = series.find(ts => new Date(ts.validTime) >= now) || series[0];
+      const p = (ts, name) => ts?.parameters?.find(x => x.name===name)?.values?.[0] ?? null;
+      const symMap = {1:'☀️',2:'🌤',3:'🌤',4:'⛅',5:'🌥',6:'☁️',7:'🌫',8:'🌦',9:'🌦',
+        10:'⛈',11:'⛈',12:'🌨',13:'🌨',14:'❄️',15:'❄️',16:'🌧',17:'🌧',18:'⛈',19:'⛈',
+        20:'🌨',21:'🌨',22:'❄️',23:'❄️'};
+      const condMap = {1:'Klart',2:'Nästan klart',3:'Delvis molnigt',4:'Halvklart',5:'Molnigt',
+        6:'Mulet',7:'Dimma',8:'Regnskurar',9:'Kraftiga skurar',10:'Åskskurar',16:'Regn',17:'Kraftigt regn',
+        22:'Snö',23:'Kraftigt snöfall'};
+      const dirs = ['N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSV','SV','VSV','V','VNV','NV','NNV'];
+      const wdStr = deg => deg !== null ? dirs[Math.round(deg/22.5)%16] : '';
+      const symb = p(current,'Wsymb2');
+      const ws = p(current,'ws'), wd = p(current,'wd');
+      const feelsLike = (() => {
+        const t = p(current,'t'); if (t===null) return null;
+        if (ws && ws > 3) return Math.round(t - ws * 0.4);
+        return Math.round(t);
+      })();
       this.setState({
-        wxTemp:      c.temperature_2m != null ? Math.round(c.temperature_2m) : null,
-        wxIcon:      icon,
-        wxCondition: cond,
-        wxFeels:     c.apparent_temperature != null ? Math.round(c.apparent_temperature) : null,
-        wxWind:      c.wind_speed_10m != null ? `${c.wind_speed_10m.toFixed(1)} m/s ${wdStr(c.wind_direction_10m)}`.trim() : null,
-        wxHumidity:  c.relative_humidity_2m != null ? Math.round(c.relative_humidity_2m) : null,
-        wxPrecip:    c.precipitation != null ? c.precipitation.toFixed(1) : null,
-        wxHourly:    hourly,
+        wxTemp:      p(current,'t') !== null ? Math.round(p(current,'t')) : null,
+        wxIcon:      symMap[symb] || '⛅',
+        wxCondition: condMap[symb] || 'Växlande',
+        wxFeels:     feelsLike,
+        wxWind:      ws !== null ? `${ws.toFixed(1)} m/s ${wdStr(wd)}`.trim() : null,
+        wxHumidity:  p(current,'r') !== null ? Math.round(p(current,'r')) : null,
+        wxPrecip:    p(current,'pmean') !== null ? p(current,'pmean').toFixed(1) : null,
+        wxHourly:    series.slice(0,12).map(ts=>({
+          h: new Date(ts.validTime).getHours().toString().padStart(2,'0'),
+          t: p(ts,'t') !== null ? Math.round(p(ts,'t')) : 0,
+          icon: symMap[p(ts,'Wsymb2')] || '⛅',
+          tPct: p(ts,'t') !== null ? Math.round(Math.max(0,Math.min(100,(p(ts,'t')+10)*100/50))) : 0,
+          precip: p(ts,'pmean') !== null ? parseFloat(p(ts,'pmean').toFixed(1)) : 0,
+          precipPct: (() => {
+            const pmin=p(ts,'pmin'), pmed=p(ts,'pmedian'), pmx=p(ts,'pmax'), pmn=p(ts,'pmean');
+            if (pmin!==null&&pmin>0) return 90;
+            if (pmed!==null&&pmed>0) return 65;
+            if (pmn!==null&&pmn>0) return 30;
+            if (pmx!==null&&pmx>0) return 15;
+            return 0;
+          })(),
+        })),
       });
     } catch(e) {
-      console.warn('Väder (Open-Meteo):', e.message || e.name || 'fetch blocked');
+      console.warn('SMHI (offline i preview):', e.message || e.name || 'fetch blocked');
     }
-  }
-
-  async fetchBathing() {
-    try {
-      const res = await fetch(`${this.SB_URL}/functions/v1/bathing-proxy`, {
-        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      this.setState({ bathingSpots: data.spots || [], bathingOk: true });
-    } catch(e) {
-      console.warn('Badvatten:', e.message || e.name || 'fetch blocked');
-      this.setState({ bathingOk: false });
-    }
-  }
-
-  async triggerFlow(flowId, flowType = 'standard') {
-    try {
-      const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=triggerFlow`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ flowId, flowType }),
-      });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    } catch(e) { console.warn('triggerFlow:', e.message); }
-  }
-
-  async setLamps(deviceIds, value) {
-    try {
-      await Promise.all(deviceIds.map(id =>
-        fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=setCapability`, {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ deviceId: id, capability: 'onoff', value }),
-        })
-      ));
-      setTimeout(() => this.fetchHomey(), 2000);
-    } catch(e) { console.warn('setLamps:', e.message); }
   }
 
   async fetchElpris() {
@@ -1837,20 +1216,7 @@ class Component extends DCLogic {
       const res = await fetch(`https://www.elprisetjustnu.se/api/v1/prices/${y}/${m}-${d}_SE3.json`);
       if (!res.ok) throw new Error(`Elpris ${res.status}`);
       const data = await res.json();
-      // API:et ger sedan 15-min-handeln 96 kvartspriser per dygn (tidigare 24 timpriser).
-      // Grafen och "pris just nu" indexerar på timme (0–23), så aggregera till timmedel.
-      let hourly = data;
-      if (Array.isArray(data) && data.length > 25) {
-        const buckets = Array.from({length:24}, () => []);
-        for (const e of data) {
-          const hh = new Date(e.time_start).getHours();
-          if (buckets[hh]) buckets[hh].push(e.SEK_per_kWh);
-        }
-        hourly = buckets.map(arr => ({
-          SEK_per_kWh: arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : null,
-        }));
-      }
-      this.setState({elHourly: hourly});
+      this.setState({elHourly: data});
     } catch(e) {
       console.warn('Elpris (offline i preview):', e.message || e.name || 'fetch blocked');
     }
@@ -1862,20 +1228,13 @@ class Component extends DCLogic {
       homeyOk, homeyError,
       outdoorTemp, bedroomTemp, bedroomHumidity, pm25, filterLife,
       elCurrentOre, elCheapest, elExpensive, elAvgToday,
-      aiBriefing, aiBriefingTime, aiBriefingLoading,
-      doorLocked, doorBattery, frontDoorOpen, hallCamUrl, hallCamTime, hallCamLoading, carBattery, carRange, carLocation, carLocked,
-      volvoRangeBattery, volvoLat, volvoLng, volvoOdometer, volvoCharging, volvoChargingStatus, volvoEngine, volvoDistance,
-      miniOk, miniBattery, miniRange, miniLocked, miniLocation, miniLat, miniLng, miniOdometer, miniCharging, miniUpdated,
+      doorLocked, doorBattery, carBattery, carRange, carLocation,
       matsHome, nannyHome, simonHome, vanessaHome, semesterMode, vakenMode,
       matsLast, nannyLast, simonLast, vanessaLast,
       wxTemp, wxIcon, wxCondition, wxFeels, wxWind, wxHumidity, wxPrecip, wxHourly,
-      bathingSpots, bathingOk,
       elHourly, googleAuthed, googleError, calEvents, gmailMsgs,
-      ytVideos, ytWatchLater, ytWlFound,
       spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
       lfcNext, lfcLast, lfcForm, lfcResults, lfcTable,
-      entreTemp, hallenSimonTemp, badrumTemp, balkongOpen, kylskapOpen, frysOpen, motion, lamps,
-      tvVardagsrum, tvSovrum, rocky, rockyActiveRoom, rockyReturning,
     } = this.state;
 
     const pad = n => String(n).padStart(2,'0');
@@ -1890,11 +1249,9 @@ class Component extends DCLogic {
 
     const gridStyle  = {display:'grid',gridTemplateColumns:`repeat(${cols},1fr)`,gap:'14px',marginBottom:'14px'};
     const gridStyle2 = {display:'grid',gridTemplateColumns:cols>=3?'2fr 1fr':'1fr',gap:'14px',marginBottom:'14px'};
-    const mediaGridStyle = {display:'grid',gridTemplateColumns:cols>=3?'repeat(3,minmax(0,1fr))':cols===2?'repeat(2,minmax(0,1fr))':'1fr',gap:'14px',alignItems:'start'};
 
     // Tabs
     const tabDefs = [{id:'hem',label:'Hem'},{id:'smarthome',label:'Smart Home'},
-      {id:'bilar',label:'Bil'},
       {id:'media',label:'Media'},{id:'sport',label:'Sport'},{id:'resor',label:'Resor'},{id:'vader',label:'Väder'},{id:'halsa',label:'Hälsa'},
       {id:'familj',label:'Familj'}];
     const tabs = tabDefs.map(t => ({
@@ -1939,188 +1296,6 @@ class Component extends DCLogic {
       carAlertBg: carBattery!==null&&carBattery<20?'rgba(239,68,68,0.1)':'rgba(255,255,255,0.04)',
       carRangeStr: carRange!==null ? `${carRange} km räckvidd` : '',
       carLocation: carLocation || '—',
-      // Temperaturer (array för sc-for)
-      temps: [
-        { label:'UTOMHUS',       val:outdoorTemp,      sub:'Garden' },
-        { label:'SOVRUM',        val:bedroomTemp,       sub:bedroomHumidity!=null?`${Math.round(bedroomHumidity)}% RF`:'' },
-        { label:'ENTRÉ',         val:entreTemp,         sub:'' },
-        { label:'HALLEN SIMON',  val:hallenSimonTemp,   sub:'' },
-        { label:'BADRUM',        val:badrumTemp,        sub:'' },
-      ].map(t => ({ ...t, tempStr: t.val!=null?`${t.val.toFixed(1)}°`:'—', subStr:t.sub })),
-      // Rörelse per rum
-      motionRooms: [
-        { label:'Hall',         key:'hall' },
-        { label:'Hallen Simon', key:'hallenSimon' },
-        { label:'Entré',        key:'entre' },
-        { label:'Kök',          key:'kok' },
-        { label:'Sovrum',       key:'sovrum' },
-        { label:'Vardagsrum',   key:'vardagsrum' },
-        { label:'Badrum',       key:'badrum' },
-        { label:'Lilla Toalett',key:'lillaToalett' },
-        { label:'Vanessa',      key:'vanessa' },
-        { label:'Simon rum',    key:'simon' },
-      ].map(r => { const a = !!(motion[r.key]); return { ...r, pill:{padding:'5px 13px',borderRadius:'20px',fontSize:'12px',fontWeight:'500',background:a?'rgba(130,220,50,0.15)':'rgba(255,255,255,0.05)',color:a?G:'rgba(238,240,245,0.42)',border:`1px solid ${a?'rgba(130,220,50,0.3)':'rgba(255,255,255,0.08)'}`} }; }),
-      // Dörrar & lås
-      doors: [
-        { label:'YTTERDÖRR',
-          status:doorLocked===null?'—':doorLocked?'🔒 Låst':'🔓 Olåst', color:doorLocked===null?'rgba(238,240,245,0.5)':doorLocked?G:R,
-          status2:frontDoorOpen===null?'—':frontDoorOpen?'🚪 Öppen':'✓ Stängd', color2:frontDoorOpen===null?'rgba(238,240,245,0.5)':frontDoorOpen?O:G,
-          sub:doorBattery!=null?`Batteri ${Math.round(doorBattery)}%`:'' },
-        { label:'BALKONG',   status:balkongOpen===null?'—':balkongOpen?'🪟 Öppen':'✓ Stängd',  color:balkongOpen===null?'rgba(238,240,245,0.5)':balkongOpen?O:G,  sub:'' },
-        { label:'KYLSKÅP',   status:kylskapOpen===null?'—':kylskapOpen?'⚠ Öppen':'✓ Stängd',  color:kylskapOpen===null?'rgba(238,240,245,0.5)':kylskapOpen?R:G,  sub:'' },
-        { label:'FRYS',      status:frysOpen===null?'—':frysOpen?'⚠ Öppen':'✓ Stängd',         color:frysOpen===null?'rgba(238,240,245,0.5)':frysOpen?R:G,         sub:'' },
-      ],
-      hallCam: (()=>{
-        const has = !!hallCamUrl;
-        let timeStr = '';
-        if (hallCamTime) {
-          const d = new Date(hallCamTime);
-          const diff = Math.round((Date.now()-d.getTime())/60000);
-          timeStr = diff<1 ? 'Just nu' : diff<60 ? `${diff} min sedan` : diff<1440 ? `${Math.round(diff/60)} h sedan` : `${Math.round(diff/1440)} d sedan`;
-        }
-        return { has, url:hallCamUrl||'', timeStr,
-          onRefresh:()=>this.fetchHallCam(),
-          refreshLabel: hallCamLoading ? '⏳' : '🔄',
-          refreshStyle:{padding:'2px 8px',borderRadius:'6px',fontSize:'11px',cursor:hallCamLoading?'default':'pointer',fontFamily:'inherit',transition:'all 0.2s',
-            border:'1px solid rgba(255,255,255,0.1)',background:'rgba(255,255,255,0.05)',color:'rgba(238,240,245,0.6)',
-            animation:hallCamLoading?'blink 1s ease infinite':'none'} };
-      })(),
-      // Lampor per rum med individuella enheter
-      lampRooms: (()=>{
-        const names={hall:'Hall',entre:'Entré',kok:'Kök',vardagsrum:'Vardagsrum',sovrum:'Sovrum',badrum:'Badrum',lillaToalett:'Lilla Toalett',vanessa:'Vanessa',simon:'Simon rum',garden:'Garden'};
-        return Object.entries(names).map(([key,label])=>{
-          const d=lamps[key]||{on:0,total:0,ids:[],devices:[]};
-          const anyOn=d.on>0;
-          const devices=(d.devices||[]).map(lamp=>({
-            name:lamp.name, on:lamp.on,
-            onClick:()=>this.setLamps([lamp.id],!lamp.on),
-            btnStyle:{padding:'4px 10px',borderRadius:'6px',fontSize:'11px',fontWeight:'500',fontFamily:'inherit',cursor:'pointer',transition:'all 0.15s',
-              border:`1px solid ${lamp.on?'rgba(255,215,0,0.3)':'rgba(255,255,255,0.1)'}`,
-              background:lamp.on?'rgba(255,215,0,0.1)':'rgba(255,255,255,0.04)',
-              color:lamp.on?'rgba(255,215,0,0.9)':'rgba(238,240,245,0.45)'},
-          }));
-          return {key,label,on:d.on,total:d.total,statusStr:d.total===0?'—':`${d.on}/${d.total} på`,anyOn,devices,
-            textColor:anyOn?'#eef0f5':'rgba(238,240,245,0.45)'};
-        });
-      })(),
-      // TV-apparater
-      tvDevices: [
-        {id:'8e693781-6233-4754-b709-75f6ff56560f',label:'Vardagsrum TV',on:tvVardagsrum},
-        {id:'eafa0b61-d634-413e-a645-8519b2e8b7f2',label:'Sovrum TV',on:tvSovrum},
-      ].map(tv=>{
-        const isOn=!!tv.on;
-        return {...tv,status:isOn?'● PÅ':'○ AV',
-          statusColor:isOn?A:'rgba(238,240,245,0.4)',
-          textColor:isOn?'#eef0f5':'rgba(238,240,245,0.5)',
-          bgStyle:{cursor:'pointer',padding:'16px 20px',borderRadius:'10px',minWidth:'140px',
-            background:isOn?'rgba(59,130,246,0.1)':'rgba(255,255,255,0.04)',
-            border:`1px solid ${isOn?'rgba(59,130,246,0.3)':'rgba(255,255,255,0.08)'}`},
-          onClick:()=>this.setLamps([tv.id],!isOn)};
-      }),
-    };
-
-    // ── Bilar ──
-    const _battCol = b => b==null ? 'rgba(238,240,245,0.4)' : b<20?R : b<50?O : G;
-    const _isHome = dist => {
-      if (!dist) return null;
-      const m = String(dist).match(/([\d.]+)\s*(km|m)/i);
-      if (!m) return null;
-      const meters = m[2].toLowerCase()==='km' ? parseFloat(m[1])*1000 : parseFloat(m[1]);
-      return meters < 300;
-    };
-    const _svc = ds => {
-      if (!ds) return { str:'Ej angivet', color:'rgba(238,240,245,0.4)' };
-      const d = new Date(ds);
-      const days = Math.round((d - Date.now())/86400000);
-      const s = d.toLocaleDateString('sv-SE',{day:'numeric',month:'short',year:'numeric'});
-      return { str: days>=0 ? `${s} · ${days} dgr` : `${s} · försenad`,
-               color: days<0?R : days<=30?O : 'rgba(238,240,245,0.7)' };
-    };
-    const _carVM = o => {
-      const home = _isHome(o.distance);
-      const charging = o.chargingStatus==='CHARGING' || o.charging==='charging';
-      const pluggedIn = o.charging==='plugged_in' || charging;
-      const svc = _svc(o.service);
-      return {
-        name:o.name, sub:o.sub, img:o.img,
-        statusText: o.ok ? '● LIVE' : 'Väntar på koppling',
-        statusColor: o.ok ? G : O,
-        battStr: o.batt!=null ? `${Math.round(o.batt)}%` : '—',
-        battColor: _battCol(o.batt),
-        battBarStyle: { height:'100%', width: o.batt!=null?`${Math.max(2,Math.min(100,o.batt))}%`:'0%',
-          background:_battCol(o.batt), borderRadius:'6px', transition:'width 0.6s ease' },
-        rangeStr: o.elRange!=null ? `${Math.round(o.elRange)} km el` : (o.range!=null?`${Math.round(o.range)} km`:'—'),
-        chargingStr: charging ? '⚡ Laddar' : pluggedIn ? '🔌 Inkopplad' : '',
-        lockedStr: o.locked==null ? '—' : o.locked ? '🔒 Låst' : '🔓 Olåst',
-        lockedColor: o.locked==null ? 'rgba(238,240,245,0.4)' : o.locked ? G : R,
-        homeStr: home===null ? '—' : home ? '🏠 Hemma' : '📍 Borta',
-        homeColor: home ? G : 'rgba(238,240,245,0.75)',
-        location: o.location || '—',
-        odometerStr: o.odometer!=null ? `${Math.round(o.odometer).toLocaleString('sv-SE')} km` : '—',
-        svcStr: svc.str, svcColor: svc.color,
-      };
-    };
-    const carList = [
-      // MINI Cooper E (2026) – nya elbilen ligger på ny telematikplattform utan
-      // tredjepartskoppling (bimmer_connected/Homey når den ej). Vilande tills
-      // en integration finns; väck genom att avkommentera nedan + sätt miniOk-källa.
-      // _carVM({ name:'MINI Cooper', sub:'Elbil', img:'mini.jpg', ok:miniOk,
-      //   batt:miniBattery, elRange:miniRange, range:null, locked:miniLocked,
-      //   location:miniLocation, distance:null, odometer:miniOdometer,
-      //   charging:miniCharging, chargingStatus:null, service:this.MINI_SERVICE }),
-      _carVM({ name:'Volvo XC60', sub:'Laddhybrid', img:'volvo.jpg', ok:homeyOk,
-        batt:carBattery, elRange:volvoRangeBattery, range:carRange, locked:carLocked,
-        location:carLocation, distance:volvoDistance, odometer:volvoOdometer,
-        charging:volvoCharging, chargingStatus:volvoChargingStatus, service:this.VOLVO_SERVICE }),
-    ];
-
-    // Volvo – detaljerad helsidesvy med minikarta
-    const _isHomeV = (() => {
-      const d = volvoDistance; if (!d) return null;
-      const m = String(d).match(/([\d.]+)\s*(km|m)/i); if (!m) return null;
-      const meters = m[2].toLowerCase()==='km' ? parseFloat(m[1])*1000 : parseFloat(m[1]);
-      return meters < 300;
-    })();
-    const _chg = (volvoChargingStatus==='CHARGING' || volvoCharging==='charging')
-      ? { str:'⚡ Laddar', color:G }
-      : (volvoCharging==='plugged_in') ? { str:'🔌 Inkopplad', color:A }
-      : { str:'Urkopplad', color:'rgba(238,240,245,0.6)' };
-    let _vmap = { ready:false, t0:'',t1:'',t2:'',t3:'',t4:'',t5:'',t6:'',t7:'', transform:'', link:'#' };
-    if (typeof volvoLat === 'number' && typeof volvoLng === 'number') {
-      const z=15, nn=Math.pow(2,z), latR=volvoLat*Math.PI/180;
-      const wx=(volvoLng+180)/360*nn;
-      const wy=(1 - Math.log(Math.tan(latR)+1/Math.cos(latR))/Math.PI)/2*nn;
-      const bX=Math.round(wx)-2, bY=Math.round(wy)-1;
-      const carPxX=(wx-bX)*256, carPxY=(wy-bY)*256;
-      const url=(c,r)=>`https://tile.openstreetmap.org/${z}/${bX+c}/${bY+r}.png`;
-      _vmap = {
-        ready:true,
-        t0:url(0,0), t1:url(1,0), t2:url(2,0), t3:url(3,0),
-        t4:url(0,1), t5:url(1,1), t6:url(2,1), t7:url(3,1),
-        transform:`translate(-50%,-50%) translate(${(512-carPxX).toFixed(0)}px, ${(256-carPxY).toFixed(0)}px)`,
-        link:`https://www.openstreetmap.org/?mlat=${volvoLat}&mlon=${volvoLng}#map=16/${volvoLat}/${volvoLng}`,
-      };
-    }
-    const volvo = {
-      ok: homeyOk,
-      statusStr: homeyOk ? '● LIVE' : '◌ ...',
-      statusColor: homeyOk ? G : 'rgba(238,240,245,0.4)',
-      battStr: carBattery!=null ? `${Math.round(carBattery)}%` : '—',
-      battColor: _battCol(carBattery),
-      battBarStyle: { height:'100%', width: carBattery!=null?`${Math.max(2,Math.min(100,carBattery))}%`:'0%',
-        background:_battCol(carBattery), borderRadius:'7px', transition:'width 0.6s ease' },
-      elRangeStr: volvoRangeBattery!=null ? `${Math.round(volvoRangeBattery)} km` : '—',
-      totalRangeStr: carRange!=null ? `${Math.round(carRange)} km` : '—',
-      lockedStr: carLocked==null ? '—' : carLocked ? '🔒 Låst' : '🔓 Olåst',
-      lockedColor: carLocked==null ? 'rgba(238,240,245,0.4)' : carLocked ? G : R,
-      homeStr: _isHomeV===null ? '—' : _isHomeV ? '🏠 Hemma' : '📍 Borta',
-      homeColor: _isHomeV ? G : 'rgba(238,240,245,0.8)',
-      location: carLocation || '—',
-      odometerStr: volvoOdometer!=null ? `${Math.round(volvoOdometer).toLocaleString('sv-SE')} km` : '—',
-      chargingStr: _chg.str, chargingColor: _chg.color,
-      engineStr: volvoEngine==null ? '—' : volvoEngine ? 'På' : 'Av',
-      updatedStr: lastRefresh ? `${pad(lastRefresh.getHours())}:${pad(lastRefresh.getMinutes())}` : '—',
-      map: _vmap,
     };
 
     // Electricity
@@ -2167,25 +1342,6 @@ class Component extends DCLogic {
       {h:'16',t:17,icon:'🌧',tPct:54,precipPct:90,precip:1.2},
     ];
 
-    // Badvatten
-    const bathing = (bathingSpots||[]).map(s => ({
-      name: s.name,
-      water: s.water || '',
-      area: s.area,
-      hasTemp: s.tempFresh && s.temp!=null,
-      tempStr: (s.tempFresh && s.temp!=null) ? `${s.temp}°` : '—',
-      tempColor: (s.temp==null||!s.tempFresh) ? 'rgba(238,240,245,0.35)' : s.temp>=20?G : s.temp>=15?A : 'oklch(0.7 0.13 230)',
-      freshStr: s.daysAgo==null ? '' : (s.tempFresh ? (s.daysAgo<=1?'uppmätt idag':`uppmätt ${s.daysAgo} dgr sedan`) : 'ingen ny mätning'),
-      metaStr: [s.water, (s.daysAgo==null ? '' : (s.tempFresh ? (s.daysAgo<=1?'uppmätt idag':`uppmätt ${s.daysAgo} dgr sedan`) : 'ingen ny mätning'))].filter(Boolean).join(' · '),
-      qualityLabel: s.qualityLabel || '—',
-      qualityColor: s.qualityColor || 'rgba(238,240,245,0.5)',
-      qualityDotStyle: {width:'7px',height:'7px',borderRadius:'50%',background:s.qualityColor||'rgba(238,240,245,0.5)',flexShrink:0},
-      warnStr: s.blooming ? '⚠ Algblomning' : (s.warning ? `⚠ ${s.warning}` : ''),
-    }));
-    const bathingBadge = bathingOk ? '● LIVE' : '◌ ...';
-    const bathingBadgeStyle = {fontSize:'9px',fontWeight:'600',padding:'2px 6px',borderRadius:'4px',marginLeft:'8px',
-      verticalAlign:'middle',background:bathingOk?'rgba(34,197,94,0.15)':'rgba(255,255,255,0.08)',color:bathingOk?G:'rgba(238,240,245,0.4)'};
-
     // Scenes
     const sceneDefs = [{id:'home',label:'Hemma'},{id:'away',label:'Borta'},
       {id:'night',label:'Natt'},{id:'movie',label:'Film'},{id:'clean',label:'Städning'}];
@@ -2197,81 +1353,6 @@ class Component extends DCLogic {
         background:activeScene===s.id?'rgba(59,130,246,0.13)':'rgba(255,255,255,0.04)',
         color:activeScene===s.id?A:'rgba(238,240,245,0.72)'},
     }));
-
-    // Smart Home scener (wired to Homey flows)
-    const shScenes = [
-      { label:'🌙 Sova', flowId:'f07d25ac-7378-4a68-99e2-6ec21bd0d865', flowType:'advanced' },
-      { label:'☀️ Vakna', flowId:'775a815f-44a9-4226-bb50-e2fed588f4a2', flowType:'standard' },
-    ].map(s => ({ ...s, onClick:()=>this.triggerFlow(s.flowId,s.flowType),
-      btnStyle:{display:'block',width:'100%',padding:'13px 18px',borderRadius:'10px',
-        border:'1px solid rgba(255,255,255,0.1)',background:'rgba(255,255,255,0.05)',
-        color:'#eef0f5',fontSize:'14px',fontWeight:'500',cursor:'pointer',fontFamily:'inherit',textAlign:'left'} }));
-
-    // Rocky städning per rum
-    const _rockyIsCleaning = !!(rocky?.isCleaning);
-    const _activeRoom = _rockyIsCleaning ? rockyActiveRoom : null;
-    const rockyRooms = [
-      { label:'Vardagsrum', damm:'1cea6180-081a-4b43-b512-af3371b88335', moppa:'fa92959d-2e7c-4d41-af70-6883b3396feb' },
-      { label:'Kök',        damm:'9663bf9a-3da1-4319-9e13-e7e2264486d0', moppa:'143e3847-549c-4149-8c8c-6b9c36df98ff' },
-      { label:'Hall',       damm:'a714915b-598a-4e0f-b614-504e3bf4aa0d', moppa:'6aac92e2-0c9d-4871-88e1-7e0187d5685e' },
-      { label:'Badrum',     damm:'13e00ae1-4416-467a-8d06-ad57070f75c9', moppa:'a1dfacd5-0c4c-489a-8548-98e23dc5c337' },
-      { label:'Sovrum',     damm:'17791733-5bcc-4d2c-995f-3d977da1c449', moppa:'293a4f18-f95b-49a9-b726-c3d709318c1a' },
-      { label:'Simon rum',  damm:'125c8e6b-d6c4-4cd6-9f5d-1d9f3980d99b', moppa:'4649025a-47fc-421b-b775-e9f5243853da' },
-      { label:'Vanessa',    damm:'25f1a737-3c6c-4a89-b509-63e5e1ab62ad', moppa:'0ce84fc4-33f5-41eb-b837-ef770fa9fc0f' },
-      { label:'Lilla Toalett', damm:'fd43cc40-2561-4b41-85d3-dc4f3b3de86b', moppa:'39d7f71d-a41e-46f8-866d-0716c854ac0e' },
-      { label:'Entré',      damm:'e9b23292-473a-4fb2-988c-4c3f35b27db5', moppa:'e9307994-3da6-4ed5-bf1c-4ddb6bad4dbc' },
-    ].map(r => {
-      const isDammActive  = _activeRoom && _activeRoom.label === r.label && _activeRoom.type === 'damm';
-      const isMoppaActive = _activeRoom && _activeRoom.label === r.label && _activeRoom.type === 'moppa';
-      return { ...r,
-        onDamm:()=>{ this.setState({rockyActiveRoom:{label:r.label,type:'damm'},rockyReturning:false}); this.triggerFlow(r.damm,'advanced'); setTimeout(()=>this.fetchHomey(),4000); },
-        onMoppa:()=>{ this.setState({rockyActiveRoom:{label:r.label,type:'moppa'},rockyReturning:false}); this.triggerFlow(r.moppa,'advanced'); setTimeout(()=>this.fetchHomey(),4000); },
-        dammStyle:{padding:'5px 11px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
-          border:isDammActive?'1px solid rgba(255,180,0,0.6)':'1px solid rgba(255,255,255,0.1)',
-          background:isDammActive?'rgba(255,165,0,0.15)':'rgba(255,255,255,0.05)',
-          color:isDammActive?'rgba(255,200,50,0.95)':'rgba(238,240,245,0.78)',
-          animation:isDammActive?'blink 1.5s ease infinite':'none'},
-        moppaStyle:{padding:'5px 11px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
-          border:isMoppaActive?'1px solid rgba(255,180,0,0.6)':'1px solid rgba(130,220,50,0.25)',
-          background:isMoppaActive?'rgba(255,165,0,0.15)':'rgba(130,220,50,0.08)',
-          color:isMoppaActive?'rgba(255,200,50,0.95)':G,
-          animation:isMoppaActive?'blink 1.5s ease infinite':'none'},
-      };
-    });
-
-    // Rocky status panel
-    const rockyStatus = (()=>{
-      const r = rocky || {};
-      const cleaning = !!r.isCleaning;
-      const docked   = !!r.dock;
-      const batt     = r.battery ?? null;
-      const suction  = r.suction !== null && r.suction !== undefined ? Number(r.suction) : null;
-      const mopOn    = !!(r.mopAttached && r.waterBox);
-      const stuck    = !!r.stuck;
-      const paused   = !!r.paused;
-      const returning= !!rockyReturning && !docked;
-      const statusStr  = stuck ? '⚠️ Fastnat!' : returning ? '↩️ Återvänder...' : cleaning && paused ? '⏸ Pausad' : cleaning ? '🤖 Städar...' : docked ? '⚡ Laddar' : '💤 Väntar';
-      const statusColor= stuck ? R : returning ? 'rgba(150,190,255,0.95)' : cleaning && !paused ? G : docked ? A : 'rgba(238,240,245,0.45)';
-      const modeStr    = cleaning && !returning ? (mopOn ? 'Dammsug + Moppa' : 'Dammsugning') : '—';
-      const suctionStr = suction===null?'—':suction>=104?'Max':suction>=103?'Hög':suction>=102?'Medium':'Tyst';
-      const battStr    = batt!==null?`${Math.round(batt)}%`:'—';
-      const battColor  = batt===null?'rgba(238,240,245,0.4)':batt<20?R:batt<50?O:G;
-      const roomStr    = returning ? '↩️ På väg till dockan' : docked ? '🏠 I dockan' : (cleaning && _activeRoom ? _activeRoom.label : '');
-      const showRoom   = returning || docked || !!(cleaning && _activeRoom);
-      const iconAnim   = (cleaning || returning) && !paused ? 'spin 3s linear infinite' : 'none';
-      return { cleaning, docked, stuck, returning, statusStr, statusColor, modeStr, suctionStr, battStr, battColor, roomStr, showRoom, iconAnim, mopOn };
-    })();
-
-    const _dockReturning = !!rockyReturning && !rockyStatus.docked;
-    const rockyDockBtn = {
-      onClick: () => { this.setState({rockyReturning:true, rockyActiveRoom:null}); this.triggerFlow('1ecc80a9-70c0-48e5-b9e3-ee7417fb76c8', 'advanced'); setTimeout(()=>this.fetchHomey(),4000); },
-      label: _dockReturning ? '↩️ Återvänder…' : '🏠 Återvänd till docka',
-      style: {padding:'5px 14px',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',transition:'all 0.2s',
-        border:_dockReturning?'1px solid rgba(150,190,255,0.6)':'1px solid rgba(100,150,255,0.3)',
-        background:_dockReturning?'rgba(100,150,255,0.18)':'rgba(100,150,255,0.07)',
-        color:_dockReturning?'rgba(180,210,255,0.95)':'rgba(150,190,255,0.85)',
-        animation:_dockReturning?'blink 1.5s ease infinite':'none'},
-    };
 
     // Calendar events – riktiga från Google om inloggad, annars demo
     const dotS = c => ({width:'5px',height:'5px',borderRadius:'50%',background:c,flexShrink:0,marginTop:'2px'});
@@ -2346,22 +1427,6 @@ class Component extends DCLogic {
     const nowPlayingStr = spotifyNowPlaying ? `🎵 ${spotifyNowPlaying.title} – ${spotifyNowPlaying.artist}` : '';
     const hasNowPlaying = !!spotifyNowPlaying;
 
-    // YouTube – live eller demo
-    const demoYtVideos = [
-      {title:'Logga in med Google för dina YouTube-prenumerationer',channel:'YouTube',ago:'',img:'',onClick:loginGoogle},
-    ];
-    const ytVideosOut = (googleAuthed && ytVideos.length>0) ? ytVideos : demoYtVideos;
-    const ytBadge = googleAuthed ? (ytVideos.length>0?'● LIVE':'◌ ...') : 'Demo';
-    const ytBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',
-      color: googleAuthed?'oklch(0.6 0.22 25)':'rgba(238,240,245,0.25)'};
-    const ytWatchLaterOut = ytWatchLater || [];
-    const ytWlEmpty = googleAuthed && (!ytWlFound || ytWatchLaterOut.length===0);
-    const ytWlHint = !googleAuthed
-      ? 'Logga in med Google för att se din lista.'
-      : !ytWlFound
-        ? 'Skapa en spellista i YouTube som heter "Titta senare" och lägg videos i den – de visas här.'
-        : 'Inga videos i din "Titta senare"-spellista ännu.';
-
     // Tasks (demo)
     const tasks = [
       {title:'Svara Erik – offert Q3',due:'Idag'},{title:'Boka service bilen',due:'Imorgon'},
@@ -2369,32 +1434,31 @@ class Component extends DCLogic {
       {title:'Ring mäklaren',due:'Måndag'},
     ];
 
-    // AI-briefing (Haiku, cachad 4h) med regelbaserad fallback om AI:n inte svarat än
-    let briefing;
-    if (aiBriefing && aiBriefing.length > 0) {
-      briefing = aiBriefing.map(t => ({text:t}));
-    } else {
-      briefing = [];
-      briefing.push({text:'4 möten idag – Produktmötet 11:00 är ditt tyngsta block.'});
-      if (carBattery!==null&&carBattery<20)
-        briefing.push({text:`🚨 Volvo XC60 har ${Math.round(carBattery)}% batteri – ladda snarast! Bilen är vid ${carLocation||'okänd plats'}.`});
-      else
-        briefing.push({text:'Erik Andersson väntar svar på offert Q3 – deadline idag.'});
-      if (doorLocked===false)
-        briefing.push({text:'⚠ Ytterdörren är olåst – är det korrekt?'});
-      else if (wxTemp!==null)
-        briefing.push({text:`${wxTemp}°C i Nyköping idag ${wxIcon} – ${wxTemp<10?'ta ett extra lager':'bra väder för en promenad'}.`});
-      if (elOre!==null&&elOre<30)
-        briefing.push({text:`Elpriset är lågt just nu (${elOre.toFixed(1)} öre) – perfekt tid att köra tvättmaskin eller ladda bilen.`});
-      else if (elOre!==null&&elOre>100)
-        briefing.push({text:`Elpriset är högt (${elOre.toFixed(1)} öre/kWh) – undvik hög förbrukning just nu.`});
-      else
-        briefing.push({text:elCheapest?`Billigaste eltimmar idag: ${elCheapest}.`:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
-      if (briefing.length<5)
-        briefing.push({text:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
-    }
-    const briefingBadge = aiBriefingLoading ? '◌ Genererar…' : (aiBriefing ? '● AI' : 'Demo');
-    const briefingOnRefresh = () => this.fetchAiBriefing(true);
+    // Liverpool
+    const fI = r=>({result:r,circleStyle:{width:'24px',height:'24px',borderRadius:'50%',
+      background:r==='W'?'rgba(34,197,94,0.15)':r==='D'?'rgba(255,255,255,0.08)':'rgba(239,68,68,0.15)',
+      display:'flex',alignItems:'center',justifyContent:'center',fontSize:'9px',fontWeight:'700',
+      color:r==='W'?G:r==='D'?'rgba(238,240,245,0.45)':R}});
+
+    // Dynamic AI Briefing
+    const briefing = [];
+    briefing.push({text:'4 möten idag – Produktmötet 11:00 är ditt tyngsta block.'});
+    if (carBattery!==null&&carBattery<20)
+      briefing.push({text:`🚨 Volvo XC60 har ${Math.round(carBattery)}% batteri – ladda snarast! Bilen är vid ${carLocation||'okänd plats'}.`});
+    else
+      briefing.push({text:'Erik Andersson väntar svar på offert Q3 – deadline idag.'});
+    if (doorLocked===false)
+      briefing.push({text:'⚠ Ytterdörren är olåst – är det korrekt?'});
+    else if (wxTemp!==null)
+      briefing.push({text:`${wxTemp}°C i Nyköping idag ${wxIcon} – ${wxTemp<10?'ta ett extra lager':'bra väder för en promenad'}.`});
+    if (elOre!==null&&elOre<30)
+      briefing.push({text:`Elpriset är lågt just nu (${elOre.toFixed(1)} öre) – perfekt tid att köra tvättmaskin eller ladda bilen.`});
+    else if (elOre!==null&&elOre>100)
+      briefing.push({text:`Elpriset är högt (${elOre.toFixed(1)} öre/kWh) – undvik hög förbrukning just nu.`});
+    else
+      briefing.push({text:elCheapest?`Billigaste eltimmar idag: ${elCheapest}.`:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
+    if (briefing.length<5)
+      briefing.push({text:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
 
     // ── Färdplan – nästa resa (läser från localStorage 'fardplan_next') ──
     // ── Färdplan – nästa resa (Supabase live) ──
@@ -2423,20 +1487,7 @@ class Component extends DCLogic {
     const todayMidnight = new Date(); todayMidnight.setHours(0,0,0,0);
     const fpUpcoming = fpTrips.filter(t => new Date(t.end||t.start) >= todayMidnight);
     const nearestFp = fpUpcoming[0] || null;
-    // Hämta destinationsfoto + aktiviteter när resa/stad byts
-    const _photoCity = nearestFp?.label?.split(/\s+/)[0] || '';
-    if (_photoCity && _photoCity !== this.state.tripPhotoCity) {
-      this.state.tripPhotoCity = _photoCity;
-      setTimeout(() => this.fetchTripPhoto(_photoCity), 0);
-    }
-    const _travelers = nearestFp ? Array.from(new Set(nearestFp.bookings.flatMap(b => b.travelers||[]))) : [];
-    if (_photoCity && _photoCity !== this.state.tripActivitiesCity && !this.state.tripActivitiesLoading) {
-      this.state.tripActivitiesCity = _photoCity;
-      setTimeout(() => this.fetchTripActivities(_photoCity, _travelers), 100);
-    }
-    // Nycklar i gemener + matcha på förnamn — Färdplan skriver "MATS"/"Mats Enmark" ibland
-    const familyColors = {mats:'#FDB454',nanny:'#5FD3C4',simon:'#9B8CF2',vanessa:'#F27DAA'};
-    const famColor = n => familyColors[(n||'').trim().split(/\s+/)[0].toLowerCase()] || 'rgba(238,240,245,0.4)';
+    const familyColors = {Mats:'#FDB454',Nanny:'#5FD3C4',Simon:'#9B8CF2',Vanessa:'#F27DAA'};
     const nextTrip = nearestFp ? (() => {
       const flB  = nearestFp.bookings.find(bk => bk.category === 'flight');
       const htBs = nearestFp.bookings.filter(bk => bk.category === 'hotel');
@@ -2467,7 +1518,7 @@ class Component extends DCLogic {
         flightTime: flTime,
         hotel: htB ? htB.title : '—',
         hotelNote: htNote,
-        travelers: travNames.map(n => ({name:n, initial:(n[0]||'?').toUpperCase(), color:famColor(n)})),
+        travelers: travNames.map(n => ({name:n, initial:n[0], color:familyColors[n]||'rgba(238,240,245,0.4)'})),
         hotelBookings: htBs.map(hb => {
           const n3 = hb.endDateTime && hb.startDateTime
             ? Math.ceil((new Date(hb.endDateTime) - new Date(hb.startDateTime)) / 86400000) : null;
@@ -2494,21 +1545,16 @@ class Component extends DCLogic {
     };
 
     return {
-      activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
+      activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, scenes,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
-      events, emails, tasks, weather, wHourly, smartHome, briefing, briefingBadge, briefingOnRefresh, shScenes, rockyRooms, rockyStatus, rockyDockBtn,
-      bathing, bathingBadge, bathingBadgeStyle,
+      events, emails, tasks, weather, wHourly, smartHome, briefing,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
       spotifyNotAuthed, loginSpotify, spotifyBtnStyle, spotifyBadge, spotifyBadgeStyle,
       recentTracks, podcasts, discovery, nowPlayingStr, hasNowPlaying,
-      ytVideos: ytVideosOut, ytWatchLater: ytWatchLaterOut, ytBadge, ytBadgeStyle, ytWlEmpty, ytWlHint,
-      nextTrip, tripPhotoUrl: this.state.tripPhotoUrl, tripPhotoCity: _photoCity,
-      tripActivities: this.state.tripActivities, tripActivitiesLoading: this.state.tripActivitiesLoading,
-      refreshActivities: () => { this.setState({ tripActivitiesCity:'', tripActivities:[] }); },
-      carList, volvo,
-      isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome', isBilar:activeTab==='bilar',
+      nextTrip,
+      isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome',
       isMedia:activeTab==='media', isSport:activeTab==='sport', isResor:activeTab==='resor', isVader:activeTab==='vader', isHalsa:activeTab==='halsa',
       isFamilj:activeTab==='familj',
 
