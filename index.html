@@ -864,12 +864,16 @@
           <sc-if value="{{ fpLogin.show }}">
             <!-- bookings har RLS: kräver inloggad Färdplan-medlem -->
             <div style="font-size:24px;font-weight:600;color:#eef0f5;margin-bottom:6px;letter-spacing:-0.01em;">Färdplan ej ansluten</div>
-            <div style="font-size:13px;color:rgba(238,240,245,0.5);line-height:1.5;margin-bottom:16px;">Dina resor är skyddade och kräver inloggning. Länken skickas till mats@enmarks.se.</div>
+            <div style="font-size:13px;color:rgba(238,240,245,0.5);line-height:1.5;margin-bottom:16px;">Dina resor är skyddade och kräver inloggning. En 6-siffrig kod skickas till mats@enmarks.se.</div>
             <sc-if value="{{ !fpLogin.sent }}" hint-placeholder-val="{{ false }}">
               <button onclick="{{ fpLogin.onClick }}" style="{{ fpLogin.btnStyle }}">{{ fpLogin.label }}</button>
             </sc-if>
             <sc-if value="{{ fpLogin.sent }}">
-              <div style="font-size:13px;color:oklch(0.82 0.24 130);line-height:1.5;">✓ Länk skickad — öppna mailet på den här enheten.</div>
+              <div style="font-size:13px;color:oklch(0.82 0.24 130);line-height:1.5;margin-bottom:12px;">✓ Kod skickad — kolla mailen.</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button onclick="{{ fpLogin.onEnterCode }}" style="{{ fpLogin.btnStyle }}">{{ fpLogin.codeLabel }}</button>
+                <button onclick="{{ fpLogin.onClick }}" style="{{ fpLogin.linkStyle }}">Skicka ny kod</button>
+              </div>
             </sc-if>
             <sc-if value="{{ fpLogin.error }}">
               <div style="font-size:12px;color:oklch(0.6 0.18 15);margin-top:8px;">{{ fpLogin.error }}</div>
@@ -1325,18 +1329,32 @@ class Component extends DCLogic {
     const t = setInterval(() => { n++; if (window.supabase?.createClient) { clearInterval(t); start(); } else if (n > 40) clearInterval(t); }, 250);
   }
 
-  // Färdplan-inloggning: magisk länk via e-post (samma mekanism som Färdplan-appen).
+  // Färdplan-inloggning: 6-siffrig kod via e-post.
+  // Supabase e-postmallar är PROJEKTGEMENSAMMA och Magic Link-mallen skickar
+  // {{ .Token }} (kod), inte {{ .ConfirmationURL }} — satt av fettdatabas-appen.
+  // Därför verifyOtp och ingen redirect. Ändra inte mallen: det bryter de andra apparna.
   // ponytail: e-posten hårdkodad – fardplan_users innehåller bara mats@enmarks.se.
-  // Lägg till ett inmatningsfält om fler medlemmar tillkommer.
   async sendFardplanLink() {
     if (!this._sbClient || this.state.fpSending) return;
     this.setState({ fpSending: true, fpLinkError: null });
-    const { error } = await this._sbClient.auth.signInWithOtp({
-      email: 'mats@enmarks.se',
-      options: { emailRedirectTo: window.location.origin + window.location.pathname },
-    });
+    const { error } = await this._sbClient.auth.signInWithOtp({ email: 'mats@enmarks.se' });
     this.setState({ fpSending: false, fpLinkSent: !error,
-      fpLinkError: error ? 'Kunde inte skicka länken. Försök igen om en stund.' : null });
+      fpLinkError: error ? 'Kunde inte skicka koden. Försök igen om en stund.' : null });
+  }
+
+  // Runtimen stödjer bara onclick och renderar om varje sekund (klockan), så ett
+  // textfält i mallen tappar inmatningen. Webbläsarens egen dialog har ingen DOM-state.
+  async enterFardplanCode() {
+    if (!this._sbClient) return;
+    const kod = (window.prompt('Ange den 6-siffriga koden från mailet') || '').replace(/\D/g, '');
+    if (!kod) return;
+    this.setState({ fpSending: true, fpLinkError: null });
+    const { error } = await this._sbClient.auth.verifyOtp({
+      email: 'mats@enmarks.se', token: kod, type: 'email',
+    });
+    this.setState({ fpSending: false,
+      fpLinkError: error ? 'Koden gick inte igenom — den gäller i 1 timme och bara en gång.' : null,
+      fpLinkSent: !!error });
   }
 
   async logoutFardplan() {
@@ -2612,8 +2630,10 @@ class Component extends DCLogic {
       show: !this.state.fpAuthed,
       sent: !!this.state.fpLinkSent,
       error: this.state.fpLinkError || '',
-      label: this.state.fpSending ? 'Skickar…' : 'Skicka inloggningslänk',
+      label: this.state.fpSending ? 'Skickar…' : 'Skicka inloggningskod',
+      codeLabel: this.state.fpSending ? 'Kontrollerar…' : 'Ange kod',
       onClick: () => this.sendFardplanLink(),
+      onEnterCode: () => this.enterFardplanCode(),
       onLogout: () => this.logoutFardplan(),
       email: this.state.fpEmail || '',
       btnStyle:{padding:'8px 16px',borderRadius:'8px',fontSize:'13px',fontWeight:'500',cursor:'pointer',fontFamily:'inherit',
