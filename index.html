@@ -1077,7 +1077,10 @@ class Component extends DCLogic {
   SB_URL  = 'https://ncgxerxkgoxptcwvramn.supabase.co';
   SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jZ3hlcnhrZ294cHRjd3ZyYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3OTgzNDYsImV4cCI6MjA5NzM3NDM0Nn0.jzloqPSrAb5IDAKm2_AfHHgtOIWZHeVXmV6qsPOZMfc';
   GOOGLE_CLIENT_ID = '528057161454-nqoqqa2juec30ca0kdov8rcoded2fg7p.apps.googleusercontent.com';
-  GOOGLE_SCOPES = 'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/youtube.readonly';
+  // calendar.events (skriv) delas med Färdplan, som hämtar access-token via
+  // samma google-proxy istället för en egen OAuth-klient. Ersätter inte
+  // calendar.readonly — events ger inte åtkomst till kalenderlistan.
+  GOOGLE_SCOPES = 'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/youtube.readonly';
   SPOTIFY_CLIENT_ID = '4b5da0f382364961bcb99ce481182812';
   SPOTIFY_REDIRECT_URI = 'https://privat-dashboard-inky.vercel.app';
   SPOTIFY_SCOPES = 'user-read-recently-played user-top-read user-library-read user-read-currently-playing';
@@ -1153,9 +1156,8 @@ class Component extends DCLogic {
     this._briefingRefresh = setInterval(() => this.fetchAiBriefing(), 30*60*1000);   // kollar var 30:e min, gör bara ett anrop om >4h gammal
     this._lfcRefresh = setInterval(() => this.fetchLiverpool(), 60*60*1000);
     this.scheduleMorningRefresh();   // garanterad ren uppdatering varje morgon kl 08:00
-    this.initGoogle();
     this.initSpotify();
-    this.initSupabase();
+    this.initSupabase();   // startar initGoogle() först när Supabase-sessionen finns
   }
 
   scheduleMorningRefresh() {
@@ -1203,6 +1205,26 @@ class Component extends DCLogic {
 
   fetchGoogleAll() { this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube(); }
 
+  // Proxyn är publik (verify_jwt måste vara false för CORS-preflight, och
+  // anon-nyckeln ligger ändå i den här filen). Den släpper därför bara igenom
+  // en riktig inloggad session — samma inloggning som Färdplan använder.
+  async _sbAuth() {
+    if (!this._sbClient) return null;
+    const { data } = await this._sbClient.auth.getSession();
+    return data?.session?.access_token || null;
+  }
+
+  // Headers för de skyddade proxyerna (homey + anthropic). Returnerar null utan
+  // inloggning — anon-nyckeln duger inte: den är publik och gav vem som helst
+  // kontroll över låset och över Claude-krediterna.
+  async _authHeaders(withBody) {
+    const t = await this._sbAuth();
+    if (!t) return null;
+    const h = { Authorization: `Bearer ${t}`, apikey: this.SB_ANON };
+    if (withBody) h['Content-Type'] = 'application/json';
+    return h;
+  }
+
   // Returnerar en giltig access-token, eller null om Google-inloggning saknas.
   // Marginal på 2 min så en token inte hinner dö mitt i ett anrop.
   async _ensureGoogleToken() {
@@ -1210,7 +1232,11 @@ class Component extends DCLogic {
     if (this._gPending) return this._gPending;          // undvik parallella förnyelser
     this._gPending = (async () => {
       try {
-        const r = await fetch(`${this.GOOGLE_PROXY}?action=token`, {method:'POST'});
+        const sb = await this._sbAuth();
+        if (!sb) throw new Error('not_signed_in');
+        const r = await fetch(`${this.GOOGLE_PROXY}?action=token`, {
+          method:'POST', headers:{Authorization:`Bearer ${sb}`},
+        });
         const d = await r.json();
         if (!r.ok || !d.access_token) throw new Error(d.error || `proxy ${r.status}`);
         this._gToken = d.access_token;
@@ -1229,7 +1255,11 @@ class Component extends DCLogic {
     return this._gPending;
   }
 
-  loginGoogle() {
+  async loginGoogle() {
+    if (!await this._sbAuth()) {
+      window.alert('Logga in på dashboarden först (Färdplan-fliken, 6-siffrig kod). Google-kopplingen kräver en inloggad session.');
+      return;
+    }
     const state = Math.random().toString(36).slice(2);
     localStorage.setItem('g_state', state);
     // access_type=offline + prompt=consent krävs, annars får proxyn ingen refresh-token.
@@ -1247,8 +1277,12 @@ class Component extends DCLogic {
 
   async exchangeGoogleCode(code) {
     try {
+      const sb = await this._sbAuth();
+      if (!sb) throw new Error('not_signed_in');
       const r = await fetch(`${this.GOOGLE_PROXY}?action=exchange`, {
-        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({code}),
+        method:'POST',
+        headers:{'Content-Type':'application/json', Authorization:`Bearer ${sb}`},
+        body: JSON.stringify({code}),
       });
       const d = await r.json();
       if (!r.ok || !d.access_token) throw new Error(d.error || `proxy ${r.status}`);
@@ -1314,7 +1348,16 @@ class Component extends DCLogic {
       // Utan session ger anon-nyckeln 0 rader helt tyst — därav inloggningen nedan.
       const onSession = session => {
         this.setState({ fpAuthed: !!session, fpEmail: session?.user?.email || null });
-        if (!session) return;
+        if (!session) { this.setState({ googleAuthed: false }); return; }
+        // google-proxy kräver en inloggad användare. Utan session finns ingen
+        // Google-data att hämta, så init körs först här (en gång).
+        // Samma sak gäller homey-proxy — den kräver också inloggning nu.
+        if (!this._googleInit) {
+          this._googleInit = true;
+          this.initGoogle();
+          this.fetchHomey();
+          this.fetchHallCam();
+        }
         fetchAll();
         if (this._fpChannel) return;               // prenumerera bara en gång
         this._fpChannel = db.channel('fp-lcc')
@@ -1600,9 +1643,10 @@ class Component extends DCLogic {
     this.setState({ tripActivitiesLoading: true });
     try {
       const PROXY = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/anthropic-proxy';
+      const headers = await this._authHeaders(true);
+      if (!headers) { this.setState({ tripActivitiesLoading: false }); return; }
       const res = await fetch(PROXY, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers,
         body: JSON.stringify({ type: 'activities', destination: city, travelers }),
       });
       const data = await res.json();
@@ -1656,9 +1700,11 @@ class Component extends DCLogic {
     try {
       const PROXY = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/anthropic-proxy';
       const summary = this._buildBriefingSummary();
+      // Proxyn kräver inloggning. Utan session behålls den regelbaserade listan.
+      const headers = await this._authHeaders(true);
+      if (!headers) { this.setState({ aiBriefingLoading: false }); return; }
       const res = await fetch(PROXY, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers,
         body: JSON.stringify({ type: 'briefing', summary }),
       });
       const data = await res.json();
@@ -1824,11 +1870,11 @@ class Component extends DCLogic {
   }
 
   async fetchHallCam() {
+    const headers = await this._authHeaders();
+    if (!headers) return;
     this.setState({ hallCamLoading: true });
     try {
-      const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=cameraSnapshot`, {
-        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
-      });
+      const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=cameraSnapshot`, { headers });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const d = await r.json();
       if (d.error) throw new Error(d.error);
@@ -1840,9 +1886,11 @@ class Component extends DCLogic {
   async fetchHomey() {
     try {
       // Går via Supabase Edge Function "homey-proxy" – Homey-token ligger server-side.
-      const res = await fetch(`${this.SB_URL}/functions/v1/homey-proxy`, {
-        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON },
-      });
+      // Proxyn kräver inloggad session; utan den hämtas ingenting (fetchHomey
+      // körs om från initSupabase när sessionen kommit).
+      const headers = await this._authHeaders();
+      if (!headers) { this.setState({homeyOk:false, homeyError:'Ej inloggad'}); return; }
+      const res = await fetch(`${this.SB_URL}/functions/v1/homey-proxy`, { headers });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const s = await res.json();
       if (s.error) throw new Error(s.error);
@@ -1939,9 +1987,10 @@ class Component extends DCLogic {
 
   async triggerFlow(flowId, flowType = 'standard') {
     try {
+      const headers = await this._authHeaders(true);
+      if (!headers) throw new Error('Ej inloggad');
       const r = await fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=triggerFlow`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON, 'Content-Type': 'application/json' },
+        method: 'POST', headers,
         body: JSON.stringify({ flowId, flowType }),
       });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -1950,10 +1999,11 @@ class Component extends DCLogic {
 
   async setLamps(deviceIds, value) {
     try {
+      const headers = await this._authHeaders(true);
+      if (!headers) throw new Error('Ej inloggad');
       await Promise.all(deviceIds.map(id =>
         fetch(`${this.SB_URL}/functions/v1/homey-proxy?action=setCapability`, {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${this.SB_ANON}`, 'apikey': this.SB_ANON, 'Content-Type': 'application/json' },
+          method: 'POST', headers,
           body: JSON.stringify({ deviceId: id, capability: 'onoff', value }),
         })
       ));
