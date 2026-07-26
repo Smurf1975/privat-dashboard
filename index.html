@@ -40,7 +40,6 @@
     @keyframes spin{to{transform:rotate(360deg);}}
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </helmet>
 
 <div style="min-height:100vh;background:#0e1018;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#eef0f5;">
@@ -862,11 +861,28 @@
             <span style="font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.82 0.24 130);">NÄSTA RESA</span>
             <span style="{{ nextTrip.badgeStyle }}">{{ nextTrip.badge }}</span>
           </div>
-          <div style="font-size:64px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;line-height:1;margin-bottom:6px;">{{ nextTrip.daysLeft }}<span style="font-size:24px;color:rgba(238,240,245,0.4);font-weight:300;"> dagar</span></div>
-          <div style="font-size:24px;font-weight:600;color:#eef0f5;margin-bottom:5px;letter-spacing:-0.01em;">{{ nextTrip.destination }}</div>
-          <div style="font-size:14px;color:rgba(238,240,245,0.52);margin-bottom:0;">{{ nextTrip.dates }}</div>
+          <sc-if value="{{ fpLogin.show }}">
+            <!-- bookings har RLS: kräver inloggad Färdplan-medlem -->
+            <div style="font-size:24px;font-weight:600;color:#eef0f5;margin-bottom:6px;letter-spacing:-0.01em;">Färdplan ej ansluten</div>
+            <div style="font-size:13px;color:rgba(238,240,245,0.5);line-height:1.5;margin-bottom:16px;">Dina resor är skyddade och kräver inloggning. Länken skickas till mats@enmarks.se.</div>
+            <sc-if value="{{ !fpLogin.sent }}" hint-placeholder-val="{{ false }}">
+              <button onclick="{{ fpLogin.onClick }}" style="{{ fpLogin.btnStyle }}">{{ fpLogin.label }}</button>
+            </sc-if>
+            <sc-if value="{{ fpLogin.sent }}">
+              <div style="font-size:13px;color:oklch(0.82 0.24 130);line-height:1.5;">✓ Länk skickad — öppna mailet på den här enheten.</div>
+            </sc-if>
+            <sc-if value="{{ fpLogin.error }}">
+              <div style="font-size:12px;color:oklch(0.6 0.18 15);margin-top:8px;">{{ fpLogin.error }}</div>
+            </sc-if>
+          </sc-if>
+          <sc-if value="{{ !fpLogin.show }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:64px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;line-height:1;margin-bottom:6px;">{{ nextTrip.daysLeft }}<span style="font-size:24px;color:rgba(238,240,245,0.4);font-weight:300;"> dagar</span></div>
+            <div style="font-size:24px;font-weight:600;color:#eef0f5;margin-bottom:5px;letter-spacing:-0.01em;">{{ nextTrip.destination }}</div>
+            <div style="font-size:14px;color:rgba(238,240,245,0.52);margin-bottom:0;">{{ nextTrip.dates }}</div>
+          </sc-if>
           <!-- Resenärer -->
           <div style="margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);margin-top:18px;">
+            <sc-if value="{{ !fpLogin.show }}" hint-placeholder-val="{{ true }}">
             <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VEM RESER</div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <sc-for list="{{ nextTrip.travelers }}" as="tv" hint-placeholder-count="4">
@@ -876,6 +892,10 @@
                 </div>
               </sc-for>
             </div>
+            </sc-if>
+            <sc-if value="{{ fpLogin.show }}">
+              <div style="font-size:11px;color:rgba(238,240,245,0.3);">Loggar du in visas resenärer, hotell och flyg här.</div>
+            </sc-if>
           </div>
         </div>
 
@@ -1109,6 +1129,7 @@ class Component extends DCLogic {
     spotifyRecent:[], spotifyPodcasts:[], spotifyDiscovery:null, spotifyNowPlaying:null,
     spotifyLoading:false,
     fardplanBookings:[],
+    fpAuthed:false, fpEmail:null, fpLinkSent:false, fpLinkError:null, fpSending:false,
   };
 
   componentDidMount() {
@@ -1145,35 +1166,98 @@ class Component extends DCLogic {
     this._morning = setTimeout(() => location.reload(), ms);
   }
 
-  initGoogle() {
-    if (!window.google?.accounts?.oauth2) { this._gTry = (this._gTry||0)+1; if (this._gTry<40) setTimeout(()=>this.initGoogle(),400); return; }
-    this._tokenClient = window.google.accounts.oauth2.initTokenClient({
-      client_id: this.GOOGLE_CLIENT_ID,
-      scope: this.GOOGLE_SCOPES,
-      callback: (resp) => {
-        if (resp && resp.access_token) {
-          this._gToken = resp.access_token;
-          const exp = Date.now()+(resp.expires_in||3600)*1000;
-          try { localStorage.setItem('lcc_gtoken', resp.access_token);
-            localStorage.setItem('lcc_gexp', String(exp)); } catch(e){}
-          this.setState({googleAuthed:true, googleError:null});
-          this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube();
-        }
-      },
-    });
+  // ── Google auth-code-flow via google-proxy ────────────────────
+  // GIS/implicit flow gav bara 1h-tokens utan refresh-token, och tyst förnyelse
+  // gick inte (popup blockeras utan användarklick). Nu byts auth-koden mot tokens
+  // i edge-funktionen `google-proxy`, som håller refresh-token server-side.
+  // Klienten ser bara kortlivade access-tokens.
+  GOOGLE_PROXY = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/google-proxy';
+
+  async initGoogle() {
+    // Callback från Googles samtyckessida
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    if (code && params.get('state') === localStorage.getItem('g_state')) {
+      window.history.replaceState({}, '', window.location.pathname);
+      localStorage.removeItem('g_state');
+      await this.exchangeGoogleCode(code);
+      return;
+    }
+    // Sparad access-token som fortfarande lever – använd direkt
     let stored, exp;
     try { stored = localStorage.getItem('lcc_gtoken'); exp = parseInt(localStorage.getItem('lcc_gexp')||'0'); } catch(e){}
-    if (stored && Date.now() < exp) {
-      this._gToken = stored; this.setState({googleAuthed:true});
-      this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube();
+    if (stored && Date.now() < exp - 120000) {
+      this._gToken = stored; this._gExp = exp;
+      this.setState({googleAuthed:true});
+      this.fetchGoogleAll();
+      return;
     }
-    // Ingen automatisk förnyelse: GIS token client öppnar ALLTID ett popup-fönster,
-    // även med prompt:''. Utan användarklick blockerar webbläsaren det. Äkta
-    // persistent Google-inloggning kräver server-side OAuth med refresh-token.
+    // Annars: låt proxyn förnya tyst. Finns ingen refresh-token server-side
+    // faller vi tillbaka på inloggningsknappen (som förut).
+    if (await this._ensureGoogleToken()) this.fetchGoogleAll();
+  }
+
+  fetchGoogleAll() { this.fetchCalendar(); this.fetchGmail(); this.fetchYouTube(); }
+
+  // Returnerar en giltig access-token, eller null om Google-inloggning saknas.
+  // Marginal på 2 min så en token inte hinner dö mitt i ett anrop.
+  async _ensureGoogleToken() {
+    if (this._gToken && Date.now() < (this._gExp||0) - 120000) return this._gToken;
+    if (this._gPending) return this._gPending;          // undvik parallella förnyelser
+    this._gPending = (async () => {
+      try {
+        const r = await fetch(`${this.GOOGLE_PROXY}?action=token`, {method:'POST'});
+        const d = await r.json();
+        if (!r.ok || !d.access_token) throw new Error(d.error || `proxy ${r.status}`);
+        this._gToken = d.access_token;
+        this._gExp = Date.now() + (d.expires_in || 3600) * 1000;
+        try { localStorage.setItem('lcc_gtoken', this._gToken);
+          localStorage.setItem('lcc_gexp', String(this._gExp)); } catch(e){}
+        if (!this.state.googleAuthed) this.setState({googleAuthed:true, googleError:null});
+        return this._gToken;
+      } catch(e) {
+        this._gToken = null; this._gExp = 0;
+        try { localStorage.removeItem('lcc_gtoken'); localStorage.removeItem('lcc_gexp'); } catch(e2){}
+        if (this.state.googleAuthed) this.setState({googleAuthed:false});
+        return null;
+      } finally { this._gPending = null; }
+    })();
+    return this._gPending;
   }
 
   loginGoogle() {
-    if (this._tokenClient) this._tokenClient.requestAccessToken({prompt:'consent'});
+    const state = Math.random().toString(36).slice(2);
+    localStorage.setItem('g_state', state);
+    // access_type=offline + prompt=consent krävs, annars får proxyn ingen refresh-token.
+    window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + new URLSearchParams({
+      client_id: this.GOOGLE_CLIENT_ID,
+      redirect_uri: this.SPOTIFY_REDIRECT_URI,   // samma app-URL, registrerad i Google Cloud
+      response_type: 'code',
+      scope: this.GOOGLE_SCOPES,
+      access_type: 'offline',
+      prompt: 'consent',
+      include_granted_scopes: 'true',
+      state,
+    });
+  }
+
+  async exchangeGoogleCode(code) {
+    try {
+      const r = await fetch(`${this.GOOGLE_PROXY}?action=exchange`, {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({code}),
+      });
+      const d = await r.json();
+      if (!r.ok || !d.access_token) throw new Error(d.error || `proxy ${r.status}`);
+      this._gToken = d.access_token;
+      this._gExp = Date.now() + (d.expires_in || 3600) * 1000;
+      try { localStorage.setItem('lcc_gtoken', this._gToken);
+        localStorage.setItem('lcc_gexp', String(this._gExp)); } catch(e){}
+      this.setState({googleAuthed:true, googleError:null});
+      this.fetchGoogleAll();
+    } catch(e) {
+      console.error('Google exchange:', e.message);
+      this.setState({googleAuthed:false, googleError:e.message});
+    }
   }
 
   // ── Spotify PKCE ──────────────────────────────────────────────
@@ -1222,14 +1306,43 @@ class Component extends DCLogic {
       const fetchAll = () =>
         db.from('bookings').select('booking_data').order('start_date_time', { ascending: true })
           .then(({ data }) => { if (data) this.setState({ fardplanBookings: data.map(r => r.booking_data) }); });
-      fetchAll();
-      db.channel('fp-lcc')
-        .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, fetchAll)
-        .subscribe();
+      // bookings har RLS: bara inloggad medlem (fardplan_users) får läsa.
+      // Utan session ger anon-nyckeln 0 rader helt tyst — därav inloggningen nedan.
+      const onSession = session => {
+        this.setState({ fpAuthed: !!session, fpEmail: session?.user?.email || null });
+        if (!session) return;
+        fetchAll();
+        if (this._fpChannel) return;               // prenumerera bara en gång
+        this._fpChannel = db.channel('fp-lcc')
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, fetchAll)
+          .subscribe();
+      };
+      db.auth.getSession().then(({ data }) => onSession(data.session));
+      db.auth.onAuthStateChange((_e, session) => onSession(session));
     };
     if (window.supabase?.createClient) { start(); return; }
     let n = 0;
     const t = setInterval(() => { n++; if (window.supabase?.createClient) { clearInterval(t); start(); } else if (n > 40) clearInterval(t); }, 250);
+  }
+
+  // Färdplan-inloggning: magisk länk via e-post (samma mekanism som Färdplan-appen).
+  // ponytail: e-posten hårdkodad – fardplan_users innehåller bara mats@enmarks.se.
+  // Lägg till ett inmatningsfält om fler medlemmar tillkommer.
+  async sendFardplanLink() {
+    if (!this._sbClient || this.state.fpSending) return;
+    this.setState({ fpSending: true, fpLinkError: null });
+    const { error } = await this._sbClient.auth.signInWithOtp({
+      email: 'mats@enmarks.se',
+      options: { emailRedirectTo: window.location.origin + window.location.pathname },
+    });
+    this.setState({ fpSending: false, fpLinkSent: !error,
+      fpLinkError: error ? 'Kunde inte skicka länken. Försök igen om en stund.' : null });
+  }
+
+  async logoutFardplan() {
+    if (!this._sbClient) return;
+    await this._sbClient.auth.signOut();
+    this.setState({ fardplanBookings: [], fpLinkSent: false });
   }
 
   async loginSpotify() {
@@ -1351,14 +1464,16 @@ class Component extends DCLogic {
   }
 
   async fetchCalendar() {
-    if (!this._gToken) return;
+    if (!await this._ensureGoogleToken()) return;
     try {
       const now = new Date();
       const start = new Date(now.getFullYear(),now.getMonth(),now.getDate()).toISOString();
       const end = new Date(now.getFullYear(),now.getMonth(),now.getDate()+7).toISOString();
       const url = `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${encodeURIComponent(start)}&timeMax=${encodeURIComponent(end)}&singleEvents=true&orderBy=startTime&maxResults=12`;
       const res = await fetch(url, {headers:{Authorization:`Bearer ${this._gToken}`}});
-      if (res.status===401) { this._gToken=null; this.setState({googleAuthed:false}); try{localStorage.removeItem('lcc_gtoken');}catch(e){} return; }
+      // 401 = token död i förtid. Släng den; nästa fetch ber proxyn om en ny.
+      // Kan proxyn inte förnya sätter _ensureGoogleToken googleAuthed:false.
+      if (res.status===401) { this._gToken=null; this._gExp=0; return; }
       if (!res.ok) throw new Error(`Cal ${res.status}`);
       const data = await res.json();
       const p2 = n => String(n).padStart(2,'0');
@@ -1376,7 +1491,7 @@ class Component extends DCLogic {
   }
 
   async fetchGmail() {
-    if (!this._gToken) return;
+    if (!await this._ensureGoogleToken()) return;
     try {
       const lr = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages?q=is%3Aunread+in%3Ainbox&maxResults=8', {headers:{Authorization:`Bearer ${this._gToken}`}});
       if (!lr.ok) throw new Error(`Gmail ${lr.status}`);
@@ -1398,7 +1513,7 @@ class Component extends DCLogic {
 
   async ytFetch(url) {
     const res = await fetch(url, {headers:{Authorization:`Bearer ${this._gToken}`}});
-    if (res.status===401){ this._gToken=null; this.setState({googleAuthed:false}); try{localStorage.removeItem('lcc_gtoken');}catch(e){} return null; }
+    if (res.status===401){ this._gToken=null; this._gExp=0; return null; }
     if (!res.ok || res.status===204) return null;
     return res.json();
   }
@@ -1414,7 +1529,7 @@ class Component extends DCLogic {
   }
 
   async fetchYouTube() {
-    if (!this._gToken) return;
+    if (!await this._ensureGoogleToken()) return;
     try {
       // 1) Prenumerationer (kanaler du följer)
       const subs = await this.ytFetch('https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true&maxResults=50&order=unread');
@@ -2483,17 +2598,32 @@ class Component extends DCLogic {
         sportCardStyle:{background:'#151821',border:`1px solid rgba(130,220,50,0.22)`,borderRadius:'12px',padding:'20px'},
       };
     })() : {
-      destination: fpBookings.length===0 ? 'ANSLUTER...' : 'INGA RESOR',
+      destination: !this.state.fpAuthed ? 'EJ INLOGGAD' : (fpBookings.length===0 ? 'INGA RESOR' : 'INGA KOMMANDE RESOR'),
       daysLeft:'—', dates:'—', flight:'—', flightTime:'', hotel:'—', hotelNote:'',
-      travelers:[{name:'Mats',initial:'M',color:'#FDB454'},{name:'Nanny',initial:'N',color:'#5FD3C4'},{name:'Simon',initial:'S',color:'#9B8CF2'},{name:'Vanessa',initial:'V',color:'#F27DAA'}],
-      hotelBookings:[{title:'Hotel Arts Barcelona',dates:'15 aug – 22 aug',nightsStr:'7 nätter'}],
-      badge: fpBookings.length===0 ? '◌ ...' : 'Tomt',
+      travelers:[],
+      hotelBookings:[],
+      badge: !this.state.fpAuthed ? '○ Ej inloggad' : 'Tomt',
       badgeStyle:{fontSize:'9px',fontWeight:'400',letterSpacing:'0',marginLeft:'8px',verticalAlign:'middle',color:'rgba(238,240,245,0.25)'},
       cardStyle:{background:'#151821',border:'1px solid rgba(255,255,255,0.06)',borderRadius:'12px',padding:'18px 20px',animation:'fadeUp 0.4s ease 0.25s both'},
       sportCardStyle:{background:'#151821',border:'1px solid rgba(255,255,255,0.06)',borderRadius:'12px',padding:'20px'},
     };
 
+    const fpLogin = {
+      show: !this.state.fpAuthed,
+      sent: !!this.state.fpLinkSent,
+      error: this.state.fpLinkError || '',
+      label: this.state.fpSending ? 'Skickar…' : 'Skicka inloggningslänk',
+      onClick: () => this.sendFardplanLink(),
+      onLogout: () => this.logoutFardplan(),
+      email: this.state.fpEmail || '',
+      btnStyle:{padding:'8px 16px',borderRadius:'8px',fontSize:'13px',fontWeight:'500',cursor:'pointer',fontFamily:'inherit',
+        border:'1px solid rgba(130,220,50,0.3)',background:'rgba(130,220,50,0.1)',color:G},
+      linkStyle:{padding:'2px 8px',borderRadius:'6px',fontSize:'10px',cursor:'pointer',fontFamily:'inherit',
+        border:'1px solid rgba(255,255,255,0.1)',background:'rgba(255,255,255,0.04)',color:'rgba(238,240,245,0.45)'},
+    };
+
     return {
+      fpLogin,
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
