@@ -1702,7 +1702,16 @@ class Component extends DCLogic {
     lines.push(hemma.length ? `Hemma just nu: ${hemma.join(', ')}.` : 'Ingen är hemma just nu.');
     if (s.doorLocked === false) lines.push('Ytterdörren är OLÅST just nu.');
     if (s.frontDoorOpen) lines.push('Ytterdörren står ÖPPEN.');
-    if (s.carBattery != null) lines.push(`Volvo XC60 batteri: ${Math.round(s.carBattery)}%${s.carBattery<20?' (LÅGT, bör laddas)':''}, plats: ${s.carLocation||'okänd'}.`);
+    // Total räckvidd, inte batteri — bilen är laddhybrid och Homey har ingen
+    // bensinmätare. `range` = bensin + el, vilket är det som betyder något
+    // inför en resa. Batterinivån skickas medvetet INTE med.
+    if (s.carRange != null) lines.push(`Volvo XC60 total räckvidd: ${Math.round(s.carRange)} km (bensin + el), plats: ${s.carLocation||'okänd'}.`);
+    // Kommande resa från Färdplan — behövs för att räckviddsregeln ska kunna slå till.
+    const resa = (s.fardplanBookings||[])
+      .map(b => ({ t:new Date(b?.startDateTime), title:b?.title }))
+      .filter(x => x.title && !isNaN(x.t) && (x.t - now) > -6*3600e3 && (x.t - now) < 48*3600e3)
+      .sort((a,b) => a.t - b.t)[0];
+    if (resa) lines.push(`Resa inom närmaste dygnet: ${resa.title}, ${resa.t.toLocaleString('sv-SE',{weekday:'long',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}.`);
     if (s.elCurrentOre != null) lines.push(`Elpris just nu: ${s.elCurrentOre.toFixed(1)} öre/kWh${s.elCheapest?`, billigast: ${s.elCheapest}`:''}${s.elExpensive?`, dyrast: ${s.elExpensive}`:''}.`);
     if (s.wxTemp != null) lines.push(`Väder Nyköping: ${s.wxTemp}°C, ${s.wxCondition||''}.`);
     if (s.lfcNext) lines.push(`Liverpool nästa match: ${s.lfcNext.opp} ${s.lfcNext.date} (${s.lfcNext.home?'hemma':'borta'}).`);
