@@ -101,7 +101,8 @@
           <sc-for list="{{ briefing }}" as="b" hint-placeholder-count="5">
             <div style="display:flex;align-items:flex-start;gap:7px;flex:1;min-width:180px;">
               <div style="width:3px;height:3px;border-radius:50%;background:oklch(0.82 0.24 130);margin-top:7px;flex-shrink:0;"></div>
-              <span style="font-size:13px;color:rgba(238,240,245,0.8);line-height:1.5;">{{ b.text }}</span>
+              <span style="font-size:13px;color:rgba(238,240,245,0.8);line-height:1.5;flex:1;">{{ b.text }}</span>
+              <button onclick="{{ b.onDown }}" title="Inte relevant – lär Clabbe varför" style="{{ b.downStyle }}">👎</button>
             </div>
           </sc-for>
         </div>
@@ -1182,6 +1183,15 @@ class Component extends DCLogic {
   async initGoogle() {
     // Callback från Googles samtyckessida
     const params = new URLSearchParams(window.location.search);
+    // ?reconnect=1 tvingar fram ny consent även när en token redan finns.
+    // Utan den här vägen syns ingen inloggningsknapp så länge den gamla
+    // token går att förnya — och då går utökade scopes aldrig att begära.
+    if (params.get('reconnect') === '1') {
+      window.history.replaceState({}, '', window.location.pathname);
+      try { localStorage.removeItem('lcc_gtoken'); localStorage.removeItem('lcc_gexp'); } catch(e){}
+      await this.loginGoogle();
+      return;
+    }
     const code = params.get('code');
     if (code && params.get('state') === localStorage.getItem('g_state')) {
       window.history.replaceState({}, '', window.location.pathname);
@@ -1680,8 +1690,16 @@ class Component extends DCLogic {
       lines.push('Kalender: ej inloggad (ingen mötesdata tillgänglig).');
     }
     if (s.googleAuthed && s.gmailMsgs?.length > 0) {
-      lines.push(`Olästa mail (${s.gmailMsgs.length}): ` + s.gmailMsgs.slice(0,3).map(m => `${m.from} – ${m.subject}`).join('; '));
+      // Avsändare och ämne måste hållas isär, annars slår modellen ihop dem
+      // och hittar på fel avsändare ("mail från Mats Enmark – Edenred...").
+      lines.push(`Olästa mail (${s.gmailMsgs.length}): ` +
+        s.gmailMsgs.slice(0,3).map(m => `avsändare "${m.from}" med ämnet "${m.subject}"`).join('; '));
     }
+    // Klockslag och hemmavaro behövs för att regeln om ytterdörren ska gå att tillämpa.
+    const now = new Date();
+    lines.push(`Klockan är nu ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}.`);
+    const hemma = [s.matsHome&&'Mats', s.nannyHome&&'Nanny', s.simonHome&&'Simon', s.vanessaHome&&'Vanessa'].filter(Boolean);
+    lines.push(hemma.length ? `Hemma just nu: ${hemma.join(', ')}.` : 'Ingen är hemma just nu.');
     if (s.doorLocked === false) lines.push('Ytterdörren är OLÅST just nu.');
     if (s.frontDoorOpen) lines.push('Ytterdörren står ÖPPEN.');
     if (s.carBattery != null) lines.push(`Volvo XC60 batteri: ${Math.round(s.carBattery)}%${s.carBattery<20?' (LÅGT, bör laddas)':''}, plats: ${s.carLocation||'okänd'}.`);
@@ -1726,6 +1744,26 @@ class Component extends DCLogic {
       console.warn('AI-briefing:', e.message);
       this.setState({ aiBriefingLoading: false });
     }
+  }
+
+  // 👎 på en briefing-punkt: fråga varför, spara som permanent regel server-side.
+  // En mening om VARFÖR är värd mer än hundra tummar — regeln gäller för alltid,
+  // på alla enheter, och går in i prompten nästa gång briefingen byggs.
+  async rejectBullet(text) {
+    const varfor = (window.prompt(
+      `Varför var den här punkten inte bra?\n\n"${text}"\n\nSkriv kort, t.ex. "elräckvidd spelar ingen roll, bilen är laddhybrid".`
+    ) || '').trim();
+    if (!varfor) return;
+    try {
+      const headers = await this._authHeaders(true);
+      if (!headers) return;
+      const r = await fetch('https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/anthropic-proxy', {
+        method: 'POST', headers,
+        body: JSON.stringify({ type: 'briefing-rule', rule: varfor }),
+      });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      this.fetchAiBriefing(true);   // bygg om direkt så du ser effekten
+    } catch(e) { console.warn('briefing-rule:', e.message); }
   }
 
   async fetchTripPhoto(city) {
@@ -2553,9 +2591,15 @@ class Component extends DCLogic {
     ];
 
     // AI-briefing (Haiku, cachad 4h) med regelbaserad fallback om AI:n inte svarat än
+    // 👎 visas bara på äkta AI-punkter — att underkänna demotext vore meningslöst.
+    // Runtimen har ingen sc-if inuti sc-for, så knappen döljs med style i stället.
+    const downStyle = {padding:'0 4px',borderRadius:'5px',fontSize:'11px',lineHeight:'1.4',cursor:'pointer',
+      fontFamily:'inherit',border:'1px solid rgba(255,255,255,0.08)',background:'rgba(255,255,255,0.04)',
+      color:'rgba(238,240,245,0.3)',flexShrink:0,marginTop:'2px'};
+    const downHidden = {display:'none'};
     let briefing;
     if (aiBriefing && aiBriefing.length > 0) {
-      briefing = aiBriefing.map(t => ({text:t}));
+      briefing = aiBriefing.map(t => ({text:t, onDown: () => this.rejectBullet(t), downStyle}));
     } else {
       briefing = [];
       briefing.push({text:'4 möten idag – Produktmötet 11:00 är ditt tyngsta block.'});
@@ -2575,6 +2619,7 @@ class Component extends DCLogic {
         briefing.push({text:elCheapest?`Billigaste eltimmar idag: ${elCheapest}.`:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
       if (briefing.length<5)
         briefing.push({text:'Liverpool möter Arsenal på söndag kl 17:30 på Anfield.'});
+      briefing.forEach(b => { b.onDown = () => {}; b.downStyle = downHidden; });
     }
     const briefingBadge = aiBriefingLoading ? '◌ Genererar…' : (aiBriefing ? '● AI' : 'Demo');
     const briefingOnRefresh = () => this.fetchAiBriefing(true);
