@@ -113,7 +113,7 @@
 
         <!-- WEATHER -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.05s both;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VÄDER · NYKÖPING <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">OPEN-METEO</span></div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VÄDER · NYKÖPING <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">YR · MET NORWAY</span></div>
           <div style="display:flex;align-items:flex-end;gap:14px;margin-bottom:14px;">
             <div style="font-size:60px;font-weight:200;letter-spacing:-0.04em;line-height:1;color:#eef0f5;">{{ weather.tempStr }}</div>
             <div style="padding-bottom:6px;">
@@ -773,7 +773,7 @@
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VÄDER</div>
           <div style="font-size:32px;line-height:1;margin-bottom:6px;">{{ weather.condition }}</div>
-          <div style="font-size:12px;color:rgba(238,240,245,0.44);">Open-Meteo · Nyköping</div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.44);">YR · MET Norway · Nyköping</div>
         </div>
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">VIND</div>
@@ -1686,6 +1686,10 @@ class Component extends DCLogic {
     if (s.googleAuthed && s.calEvents?.length > 0) {
       const today = s.calEvents.filter(e => e.isToday);
       lines.push(`Möten idag (${today.length}): ` + today.map(e => `${e.time} ${e.title}`).join('; '));
+      // Morgondagen behövs för tanka-påminnelsen — en lång körning i morgon
+      // bitti måste flaggas ikväll, inte samma morgon.
+      const imorgon = s.calEvents.filter(e => !e.isToday).slice(0, 4);
+      if (imorgon.length) lines.push('Kommande i kalendern: ' + imorgon.map(e => `${e.dur} ${e.time} ${e.title}`).join('; '));
     } else {
       lines.push('Kalender: ej inloggad (ingen mötesdata tillgänglig).');
     }
@@ -1952,68 +1956,29 @@ class Component extends DCLogic {
     }
   }
 
-  // WMO-väderkod → ikon + svensk text
-  _wmo(code) {
-    const m = {
-      0:['☀️','Klart'], 1:['🌤','Mest klart'], 2:['⛅','Halvklart'], 3:['☁️','Mulet'],
-      45:['🌫','Dimma'], 48:['🌫','Underkyld dimma'],
-      51:['🌦','Lätt duggregn'], 53:['🌦','Duggregn'], 55:['🌦','Tätt duggregn'],
-      56:['🌧','Underkylt duggregn'], 57:['🌧','Underkylt duggregn'],
-      61:['🌧','Lätt regn'], 63:['🌧','Regn'], 65:['🌧','Kraftigt regn'],
-      66:['🌧','Underkylt regn'], 67:['🌧','Underkylt regn'],
-      71:['🌨','Lätt snöfall'], 73:['🌨','Snöfall'], 75:['🌨','Kraftigt snöfall'], 77:['🌨','Snökorn'],
-      80:['🌦','Regnskurar'], 81:['🌦','Regnskurar'], 82:['🌦','Kraftiga skurar'],
-      85:['🌨','Snöbyar'], 86:['🌨','Kraftiga snöbyar'],
-      95:['⛈','Åska'], 96:['⛈','Åska med hagel'], 99:['⛈','Åska med hagel'],
-    };
-    return m[code] || ['⛅','Växlande'];
-  }
-
+  // Väder från YR / MET Norway via weather-proxy. Symboltolkning, "känns som"
+  // och timprognos görs server-side, så den här behöver bara mappa fälten.
+  // Proxyn krävs för att met.no fordrar en identifierande User-Agent, som en
+  // webbläsare inte kan sätta. Behåller namnet fetchSMHI – anropas från fetchAll.
   async fetchSMHI() {
     try {
-      const url = 'https://api.open-meteo.com/v1/forecast?latitude=58.753&longitude=17.006'
-        + '&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m'
-        + '&hourly=temperature_2m,weather_code,precipitation,precipitation_probability'
-        + '&timezone=Europe/Stockholm&forecast_days=2&wind_speed_unit=ms';
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`Open-Meteo ${res.status}`);
-      const data = await res.json();
-      const c = data.current || {};
-      const h = data.hourly || {};
-      const dirs = ['N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSV','SV','VSV','V','VNV','NV','NNV'];
-      const wdStr = deg => deg != null ? dirs[Math.round(deg/22.5)%16] : '';
-      const [icon, cond] = this._wmo(c.weather_code);
-
-      // Timprognos: börja från aktuell timme, ta 12
-      const times = h.time || [];
-      const now = new Date();
-      let start = times.findIndex(t => new Date(t) >= now);
-      if (start < 0) start = 0;
-      const hourly = [];
-      for (let i = start; i < Math.min(start+12, times.length); i++) {
-        const code = h.weather_code?.[i];
-        hourly.push({
-          h: new Date(times[i]).getHours().toString().padStart(2,'0'),
-          t: h.temperature_2m?.[i] != null ? Math.round(h.temperature_2m[i]) : 0,
-          icon: this._wmo(code)[0],
-          tPct: h.temperature_2m?.[i] != null ? Math.round(Math.max(0,Math.min(100,(h.temperature_2m[i]+10)*100/50))) : 0,
-          precip: h.precipitation?.[i] != null ? parseFloat(h.precipitation[i].toFixed(1)) : 0,
-          precipPct: h.precipitation_probability?.[i] ?? 0,
-        });
-      }
-
+      const res = await fetch(`${this.SB_URL}/functions/v1/weather-proxy`);
+      if (!res.ok) throw new Error(`weather-proxy ${res.status}`);
+      const w = await res.json();
+      if (w.error) throw new Error(w.error);
       this.setState({
-        wxTemp:      c.temperature_2m != null ? Math.round(c.temperature_2m) : null,
-        wxIcon:      icon,
-        wxCondition: cond,
-        wxFeels:     c.apparent_temperature != null ? Math.round(c.apparent_temperature) : null,
-        wxWind:      c.wind_speed_10m != null ? `${c.wind_speed_10m.toFixed(1)} m/s ${wdStr(c.wind_direction_10m)}`.trim() : null,
-        wxHumidity:  c.relative_humidity_2m != null ? Math.round(c.relative_humidity_2m) : null,
-        wxPrecip:    c.precipitation != null ? c.precipitation.toFixed(1) : null,
-        wxHourly:    hourly,
+        wxTemp:      w.temp,
+        wxIcon:      w.icon || '⛅',
+        wxCondition: w.condition || '—',
+        wxFeels:     w.feels,
+        wxWind:      w.wind != null ? `${w.wind.toFixed(1)} m/s ${w.windDir||''}`.trim() : null,
+        wxHumidity:  w.humidity,
+        wxPrecip:    w.precip != null ? w.precip.toFixed(1) : null,
+        wxHourly:    w.hourly || [],
       });
     } catch(e) {
-      console.warn('Väder (Open-Meteo):', e.message || e.name || 'fetch blocked');
+      // Behåll senast kända värden (restoreCache) hellre än att tömma kortet.
+      console.warn('Väder (YR):', e.message || e.name || 'fetch blocked');
     }
   }
 
