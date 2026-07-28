@@ -175,7 +175,7 @@
       </div>
 
       <!-- ROW 2 -->
-      <div style="{{ gridStyle }}">
+      <div style="{{ gridStyle4 }}">
 
         <!-- SMART HOME LIVE -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.2s both;">
@@ -244,6 +244,23 @@
               </div>
             </sc-for>
           </div>
+        </div>
+
+        <!-- MATSEDEL -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.35s both;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SKOLLUNCH <span style="{{ matsedel.badgeStyle }}">{{ matsedel.badge }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <sc-for list="{{ matsedel.days }}" as="d" hint-placeholder-count="5">
+              <div style="{{ d.rowStyle }}">
+                <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:{{ d.dayColor }};width:34px;flex-shrink:0;">{{ d.short }}</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:13px;color:#eef0f5;line-height:1.35;">{{ d.lunch }}</div>
+                  <div style="font-size:11.5px;color:rgba(238,240,245,0.4);margin-top:1px;">{{ d.veg }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="{{ matsedel.noteStyle }}">{{ matsedel.note }}</div>
         </div>
 
       </div>
@@ -1120,6 +1137,8 @@ class Component extends DCLogic {
     wxHourly:[],
     // Badvatten (Havs- och vattenmyndigheten via bathing-proxy)
     bathingSpots:[], bathingOk:false,
+    // Skollunch (Kunskapsskolan Nyköping via matsedel-proxy)
+    lunchDays:[], lunchWeek:null, lunchStale:false,
     // Elpris hourly
     elHourly:[],
     // Liverpool
@@ -1906,7 +1925,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -1915,7 +1934,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -1980,6 +1999,22 @@ class Component extends DCLogic {
       // Behåll senast kända värden (restoreCache) hellre än att tömma kortet.
       console.warn('Väder (YR):', e.message || e.name || 'fetch blocked');
     }
+  }
+
+  // Skollunch. Skolan har ingen matsedels-API — proxyn skrapar deras
+  // vecko-PDF. Misslyckas det svarar den 200 med tom lista, så kortet
+  // degraderar i stället för att krascha.
+  async fetchLunch() {
+    try {
+      const res = await fetch(`${this.SB_URL}/functions/v1/matsedel-proxy`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const d = await res.json();
+      this.setState({
+        lunchDays: d.days || [],
+        lunchWeek: d.week ?? null,
+        lunchStale: !!d.stale,
+      });
+    } catch(e) { console.warn('Matsedel:', e.message); }
   }
 
   async fetchBathing() {
@@ -2085,6 +2120,9 @@ class Component extends DCLogic {
 
     const gridStyle  = {display:'grid',gridTemplateColumns:`repeat(${cols},1fr)`,gap:'14px',marginBottom:'14px'};
     const gridStyle2 = {display:'grid',gridTemplateColumns:cols>=3?'2fr 1fr':'1fr',gap:'14px',marginBottom:'14px'};
+    // Rad 2 rymmer fyra kort. På smala skärmar följer den samma trappa som
+    // resten (3→2→1), annars blir korten obrukbart smala i mobilen.
+    const gridStyle4 = {display:'grid',gridTemplateColumns:`repeat(${cols>=3?4:cols},1fr)`,gap:'14px',marginBottom:'14px'};
     const mediaGridStyle = {display:'grid',gridTemplateColumns:cols>=3?'repeat(3,minmax(0,1fr))':cols===2?'repeat(2,minmax(0,1fr))':'1fr',gap:'14px',alignItems:'start'};
 
     // Tabs
@@ -2377,6 +2415,37 @@ class Component extends DCLogic {
       qualityDotStyle: {width:'7px',height:'7px',borderRadius:'50%',background:s.qualityColor||'rgba(238,240,245,0.5)',flexShrink:0},
       warnStr: s.blooming ? '⚠ Algblomning' : (s.warning ? `⚠ ${s.warning}` : ''),
     }));
+    // ── Skollunch ────────────────────────────────────────────────
+    // Dagens rad markeras grön. Skolan ligger ofta en vecka efter och under
+    // lov ligger sista terminsveckan kvar — då säger badgen vilken vecka det
+    // faktiskt är, i stället för att låtsas att menyn är aktuell.
+    const lunchRaw = this.state.lunchDays || [];
+    const lunchWeek = this.state.lunchWeek;
+    const lunchStale = this.state.lunchStale;
+    const lunchTodayIdx = (new Date().getDay() + 6) % 7;   // 0 = måndag
+    const matsedel = {
+      days: lunchRaw.map((d, i) => {
+        const isToday = !lunchStale && i === lunchTodayIdx;
+        return {
+          short: (d.day || '').slice(0, 3),
+          lunch: d.lunch || '—',
+          veg: d.veg ? `Veg: ${d.veg}` : '',
+          dayColor: isToday ? G : 'rgba(238,240,245,0.35)',
+          rowStyle: {display:'flex',alignItems:'flex-start',gap:'9px',padding:'8px 10px',borderRadius:'7px',
+            background: isToday ? 'rgba(130,220,50,0.09)' : 'rgba(255,255,255,0.025)'},
+        };
+      }),
+      badge: lunchRaw.length === 0 ? 'Ingen meny' : (lunchStale ? `V.${lunchWeek}` : '● LIVE'),
+      badgeStyle: {fontSize:'9px',fontWeight:'600',padding:'2px 6px',borderRadius:'4px',marginLeft:'8px',
+        letterSpacing:'0.04em',background:'rgba(255,255,255,0.05)',
+        color: lunchRaw.length && !lunchStale ? G : 'rgba(238,240,245,0.3)'},
+      note: lunchRaw.length === 0
+        ? 'Skolan har ingen meny uppe just nu.'
+        : (lunchStale ? `Senast publicerade menyn är vecka ${lunchWeek}.` : ''),
+      noteStyle: {fontSize:'11px',color:'rgba(238,240,245,0.32)',marginTop:'10px',
+        display: (lunchRaw.length === 0 || lunchStale) ? 'block' : 'none'},
+    };
+
     const bathingBadge = bathingOk ? '● LIVE' : '◌ ...';
     const bathingBadgeStyle = {fontSize:'9px',fontWeight:'600',padding:'2px 6px',borderRadius:'4px',marginLeft:'8px',
       verticalAlign:'middle',background:bathingOk?'rgba(34,197,94,0.15)':'rgba(255,255,255,0.08)',color:bathingOk?G:'rgba(238,240,245,0.4)'};
@@ -2717,7 +2786,7 @@ class Component extends DCLogic {
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
       events, emails, tasks, weather, wHourly, smartHome, briefing, briefingBadge, briefingOnRefresh, shScenes, rockyRooms, rockyStatus, rockyDockBtn,
-      bathing, bathingBadge, bathingBadgeStyle,
+      bathing, bathingBadge, bathingBadgeStyle, matsedel, gridStyle4,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
       spotifyNotAuthed, loginSpotify, spotifyBtnStyle, spotifyBadge, spotifyBadgeStyle,
