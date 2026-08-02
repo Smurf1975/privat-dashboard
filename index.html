@@ -1720,7 +1720,11 @@ class Component extends DCLogic {
     }
     // Klockslag och hemmavaro behövs för att regeln om ytterdörren ska gå att tillämpa.
     const now = new Date();
-    lines.push(`Klockan är nu ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}.`);
+    // Klockslagen nedan är REDAN lokal svensk tid. Utan den upplysningen har
+    // modellen räknat om dem och lagt på en timme (08:30 → 09:30).
+    lines.push(`Klockan är nu ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')} `
+      + `${now.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'})}. `
+      + `ALLA klockslag i denna data är redan svensk lokaltid — räkna aldrig om dem.`);
     const hemma = [s.matsHome&&'Mats', s.nannyHome&&'Nanny', s.simonHome&&'Simon', s.vanessaHome&&'Vanessa'].filter(Boolean);
     lines.push(hemma.length ? `Hemma just nu: ${hemma.join(', ')}.` : 'Ingen är hemma just nu.');
     if (s.doorLocked === false) lines.push('Ytterdörren är OLÅST just nu.');
