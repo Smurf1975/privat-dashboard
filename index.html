@@ -1838,15 +1838,27 @@ class Component extends DCLogic {
       const last = lastData?.events?.slice(-1)?.[0] || null;
       const lastFive = lastData?.events?.slice(-5) || [];
 
-      const fmt = dateStr => {
-        if (!dateStr) return '—';
-        const d = new Date(dateStr);
+      // TheSportsDB levererar strTimestamp och strTime i UTC, UTAN Z-suffix.
+      // `new Date('2026-08-02T23:00:00')` tolkas då som lokal tid och matchen
+      // hamnar två timmar fel. Tvinga UTC och låt webbläsaren räkna om.
+      // (strTimeLocal är arenans lokaltid, inte vår – använd den inte.)
+      const kickoff = e => {
+        const raw = e?.strTimestamp || (e?.dateEvent && e?.strTime ? `${e.dateEvent}T${e.strTime}` : null);
+        if (!raw) return null;
+        const iso = raw.replace(' ', 'T');
+        const d = new Date(/([Zz]|[+-]\d{2}:?\d{2})$/.test(iso) ? iso : iso + 'Z');
+        return isNaN(d) ? null : d;
+      };
+      // Datumet måste komma från kickoff, inte dateEvent: 23:00 UTC den 2:a
+      // är 01:00 den 3:e hos oss.
+      const fmt = e => {
+        const d = typeof e === 'string' ? new Date(e) : kickoff(e);
+        if (!d || isNaN(d)) return '—';
         return d.toLocaleDateString('sv-SE', {weekday:'short', day:'numeric', month:'short'});
       };
-      const timeStr = (dateStr, timeStr) => {
-        if (!dateStr) return '';
-        const t = timeStr ? timeStr.slice(0,5) : '';
-        return t ? ` · ${t}` : '';
+      const timeStr = e => {
+        const d = kickoff(e);
+        return d ? ` · ${d.toLocaleTimeString('sv-SE', {hour:'2-digit', minute:'2-digit'})}` : '';
       };
 
       const form = lastFive.map(e => {
@@ -1872,7 +1884,7 @@ class Component extends DCLogic {
           venue:  isHome ? 'H' : 'B',
           score:  `${e.intHomeScore}–${e.intAwayScore}`,
           lfcScore, oppScore, result,
-          date:   fmt(e.dateEvent),
+          date:   fmt(e),
           comp:   e.strLeague || '',
         };
       });
@@ -1909,7 +1921,7 @@ class Component extends DCLogic {
         lfcNext: next ? {
           opp: next.strHomeTeam?.includes('Liverpool') ? next.strAwayTeam : next.strHomeTeam,
           home: next.strHomeTeam?.includes('Liverpool'),
-          date: fmt(next.dateEvent) + timeStr(next.dateEvent, next.strTime),
+          date: fmt(next) + timeStr(next),
           venue: next.strVenue || (next.strHomeTeam?.includes('Liverpool') ? 'Anfield' : '—'),
           comp: next.strLeague || '—',
           badge: next.strHomeTeam?.includes('Liverpool') ? next.strAwayTeamBadge : next.strHomeTeamBadge,
@@ -1918,7 +1930,7 @@ class Component extends DCLogic {
           opp: last.strHomeTeam?.includes('Liverpool') ? last.strAwayTeam : last.strHomeTeam,
           home: last.strHomeTeam?.includes('Liverpool'),
           score: `${last.intHomeScore}–${last.intAwayScore}`,
-          date: fmt(last.dateEvent),
+          date: fmt(last),
         } : null,
         lfcForm: form,
       });
