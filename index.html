@@ -232,18 +232,19 @@
 
         <!-- UPPGIFTER -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.3s both;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">UPPGIFTER <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">Demo</span></div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">UPPGIFTER <span style="{{ tasksBadgeStyle }}">{{ tasksBadge }}</span></div>
           <div style="display:flex;flex-direction:column;gap:2px;">
             <sc-for list="{{ tasks }}" as="task" hint-placeholder-count="5">
               <div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;background:rgba(255,255,255,0.025);">
                 <div style="width:14px;height:14px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.2);flex-shrink:0;"></div>
                 <div style="flex:1;min-width:0;">
                   <div style="font-size:13.5px;color:#eef0f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ task.title }}</div>
-                  <div style="font-size:11.5px;color:rgba(238,240,245,0.44);margin-top:1px;">{{ task.due }}</div>
+                  <div style="{{ task.dueStyle }}">{{ task.due }}</div>
                 </div>
               </div>
             </sc-for>
           </div>
+          <div style="{{ tasksNoteStyle }}">{{ tasksNote }}</div>
         </div>
 
         <!-- MATSEDEL -->
@@ -310,16 +311,6 @@
           </div>
         </div>
 
-      </div>
-
-      <!-- QUICK CONTROLS -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;animation:fadeUp 0.4s ease 0.45s both;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">SNABBKNAPPAR · HOMEY</div>
-        <div style="display:flex;gap:7px;flex-wrap:wrap;">
-          <sc-for list="{{ scenes }}" as="scene" hint-placeholder-count="5">
-            <button onClick="{{ scene.onClick }}" style="{{ scene.btnStyle }}">{{ scene.label }}</button>
-          </sc-for>
-        </div>
       </div>
 
     </sc-if>
@@ -1139,6 +1130,8 @@ class Component extends DCLogic {
     bathingSpots:[], bathingOk:false,
     // Skollunch (Kunskapsskolan Nyköping via matsedel-proxy)
     lunchDays:[], lunchWeek:null, lunchStale:false,
+    // Uppgifter – VoxMats (voxmats_items) + Familjeappen (familj_todos)
+    todoItems:[], todosOk:false,
     // Elpris hourly
     elHourly:[],
     // Liverpool
@@ -1386,6 +1379,7 @@ class Component extends DCLogic {
           this.initGoogle();
           this.fetchHomey();
           this.fetchHallCam();
+          this.fetchTodos();
         }
         fetchAll();
         if (this._fpChannel) return;               // prenumerera bara en gång
@@ -1950,7 +1944,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2015,6 +2009,40 @@ class Component extends DCLogic {
       // Behåll senast kända värden (restoreCache) hellre än att tömma kortet.
       console.warn('Väder (YR):', e.message || e.name || 'fetch blocked');
     }
+  }
+
+  // Uppgifter från två appar i samma Supabase-projekt. Läses direkt med den
+  // inloggade sessionen — RLS gör jobbet: voxmats_items är låst till Mats
+  // e-post, och familj_todos släpper bara igenom hans egna rader, så barnens
+  // uppgifter kan inte råka hamna här.
+  async fetchTodos() {
+    const db = this._sbClient;
+    if (!db) return;
+    try {
+      const [vox, fam] = await Promise.all([
+        db.from('voxmats_items').select('id,content,due_date,created_at')
+          .eq('kind','uppgift').eq('done',false).eq('included',true),
+        db.from('familj_todos').select('id,title,created_at').eq('done',false),
+      ]);
+      const items = [
+        ...(vox.data || []).map(r => ({
+          id:`v${r.id}`, title:r.content, src:'Anteckning',
+          due:r.due_date || null, created:r.created_at,
+        })),
+        ...(fam.data || []).map(r => ({
+          id:`f${r.id}`, title:r.title, src:'Familj',
+          due:null, created:r.created_at,
+        })),
+      ].filter(t => t.title);
+      // Med förfallodatum först, tidigast överst; odaterade sist, nyast överst.
+      items.sort((a,b) => {
+        if (a.due && b.due) return a.due < b.due ? -1 : a.due > b.due ? 1 : 0;
+        if (a.due) return -1;
+        if (b.due) return 1;
+        return (b.created||'').localeCompare(a.created||'');
+      });
+      this.setState({ todoItems: items, todosOk: !vox.error && !fam.error });
+    } catch(e) { console.warn('Uppgifter:', e.message); }
   }
 
   // Skollunch. Skolan har ingen matsedels-API — proxyn skrapar deras
@@ -2466,18 +2494,6 @@ class Component extends DCLogic {
     const bathingBadgeStyle = {fontSize:'9px',fontWeight:'600',padding:'2px 6px',borderRadius:'4px',marginLeft:'8px',
       verticalAlign:'middle',background:bathingOk?'rgba(34,197,94,0.15)':'rgba(255,255,255,0.08)',color:bathingOk?G:'rgba(238,240,245,0.4)'};
 
-    // Scenes
-    const sceneDefs = [{id:'home',label:'Hemma'},{id:'away',label:'Borta'},
-      {id:'night',label:'Natt'},{id:'movie',label:'Film'},{id:'clean',label:'Städning'}];
-    const scenes = sceneDefs.map(s => ({
-      ...s, onClick:()=>this.setState({activeScene:activeScene===s.id?null:s.id}),
-      btnStyle:{padding:'7px 17px',borderRadius:'8px',fontSize:'12.5px',fontWeight:'500',
-        fontFamily:'inherit',cursor:'pointer',transition:'all 0.15s',
-        border:`1px solid ${activeScene===s.id?A:'rgba(255,255,255,0.1)'}`,
-        background:activeScene===s.id?'rgba(59,130,246,0.13)':'rgba(255,255,255,0.04)',
-        color:activeScene===s.id?A:'rgba(238,240,245,0.72)'},
-    }));
-
     // Smart Home scener (wired to Homey flows)
     const shScenes = [
       { label:'🌙 Sova', flowId:'f07d25ac-7378-4a68-99e2-6ec21bd0d865', flowType:'advanced' },
@@ -2642,12 +2658,45 @@ class Component extends DCLogic {
         ? 'Skapa en spellista i YouTube som heter "Titta senare" och lägg videos i den – de visas här.'
         : 'Inga videos i din "Titta senare"-spellista ännu.';
 
-    // Tasks (demo)
-    const tasks = [
+    // ── Uppgifter: VoxMats + Familjeappen ────────────────────────
+    // Förfallodatum i klartext. Försenat markeras rött — det är hela poängen
+    // med att ha listan på Hem-sidan.
+    const todoItems = this.state.todoItems || [];
+    const todosOk = this.state.todosOk;
+    const dayMs = 86400000;
+    const midnight = new Date(); midnight.setHours(0,0,0,0);
+    const dueLabel = iso => {
+      if (!iso) return null;
+      const d = new Date(`${iso}T00:00:00`);
+      const diff = Math.round((d - midnight) / dayMs);
+      if (diff < 0)  return { text: diff === -1 ? 'Igår' : `${Math.abs(diff)} dgr sen`, late: true };
+      if (diff === 0) return { text: 'Idag', late: false };
+      if (diff === 1) return { text: 'Imorgon', late: false };
+      return { text: d.toLocaleDateString('sv-SE',{weekday:'short',day:'numeric',month:'short'}), late: false };
+    };
+    const demoTasks = [
       {title:'Svara Erik – offert Q3',due:'Idag'},{title:'Boka service bilen',due:'Imorgon'},
       {title:'Förbereda presentation',due:'Fre 27 jun'},{title:'Handla inför helgen',due:'Lördag'},
       {title:'Ring mäklaren',due:'Måndag'},
     ];
+    const tasksLive = todosOk && todoItems.length > 0;
+    const tasks = tasksLive
+      ? todoItems.slice(0, 6).map(t => {
+          const d = dueLabel(t.due);
+          return {
+            title: t.title,
+            due: d ? `${d.text} · ${t.src}` : t.src,
+            dueStyle: {fontSize:'11.5px',marginTop:'1px',
+              color: d?.late ? 'oklch(0.68 0.19 25)' : 'rgba(238,240,245,0.44)'},
+          };
+        })
+      : demoTasks.map(t => ({...t, dueStyle:{fontSize:'11.5px',marginTop:'1px',color:'rgba(238,240,245,0.44)'}}));
+    const tasksBadge = tasksLive ? '● LIVE' : (todosOk ? 'Klart' : 'Demo');
+    const tasksBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',marginLeft:'8px',
+      color: tasksLive ? G : 'rgba(238,240,245,0.25)'};
+    const tasksNote = todosOk && todoItems.length === 0 ? 'Inga öppna uppgifter. Snyggt.' : '';
+    const tasksNoteStyle = {fontSize:'11px',color:'rgba(238,240,245,0.32)',marginTop:'10px',
+      display: tasksNote ? 'block' : 'none'};
 
     // AI-briefing (Haiku, cachad 4h) med regelbaserad fallback om AI:n inte svarat än
     // 👎 visas bara på äkta AI-punkter — att underkänna demotext vore meningslöst.
@@ -2798,10 +2847,11 @@ class Component extends DCLogic {
 
     return {
       fpLogin,
-      activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle, scenes,
+      activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
-      events, emails, tasks, weather, wHourly, smartHome, briefing, briefingBadge, briefingOnRefresh, shScenes, rockyRooms, rockyStatus, rockyDockBtn,
+      events, emails, tasks, tasksBadge, tasksBadgeStyle, tasksNote, tasksNoteStyle,
+      weather, wHourly, smartHome, briefing, briefingBadge, briefingOnRefresh, shScenes, rockyRooms, rockyStatus, rockyDockBtn,
       bathing, bathingBadge, bathingBadgeStyle, matsedel, gridStyle4,
       calBadge, calBadgeStyle, mailBadge, mailBadgeStyle,
       googleAuthed, googleNotAuthed, loginGoogle, googleBtnStyle,
