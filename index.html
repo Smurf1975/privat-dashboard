@@ -684,14 +684,21 @@
 
         <!-- NYHETER höger -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:16px;">NYHETER &amp; TEKNIK</div>
-          <sc-for list="{{ news }}" as="n" hint-placeholder-count="5">
-            <div style="padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-              <div style="font-size:10.5px;color:oklch(0.65 0.18 240);margin-bottom:4px;font-weight:600;letter-spacing:0.03em;">{{ n.src }}</div>
-              <div style="font-size:13.5px;color:rgba(238,240,245,0.85);line-height:1.45;margin-bottom:3px;">{{ n.title }}</div>
-              <div style="font-size:11.5px;color:rgba(238,240,245,0.44);">{{ n.time }} sedan</div>
-            </div>
-          </sc-for>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">NYHETER &amp; TEKNIK <span style="{{ newsBadgeStyle }}">{{ newsBadge }}</span></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            <sc-for list="{{ newsCats }}" as="c">
+              <button onclick="{{ c.onClick }}" style="{{ c.btnStyle }}">{{ c.label }}</button>
+            </sc-for>
+          </div>
+          <div style="max-height:560px;overflow-y:auto;">
+            <sc-for list="{{ news }}" as="n" hint-placeholder-count="5">
+              <a href="{{ n.url }}" target="_blank" rel="noopener" style="display:block;text-decoration:none;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                <div style="font-size:10.5px;color:{{ n.catColor }};margin-bottom:4px;font-weight:600;letter-spacing:0.03em;">{{ n.src }}</div>
+                <div style="font-size:13.5px;color:rgba(238,240,245,0.85);line-height:1.45;margin-bottom:3px;">{{ n.title }}</div>
+                <div style="font-size:11.5px;color:rgba(238,240,245,0.44);">{{ n.time }}</div>
+              </a>
+            </sc-for>
+          </div>
         </div>
 
       </div>
@@ -1132,6 +1139,8 @@ class Component extends DCLogic {
     lunchDays:[], lunchWeek:null, lunchStale:false,
     // Uppgifter – VoxMats (voxmats_items) + Familjeappen (familj_todos)
     todoItems:[], todosOk:false,
+    // Nyheter (news-proxy: AI, teknik, smart home, sport)
+    newsItems:[], newsCat:'all',
     // Elpris hourly
     elHourly:[],
     // Liverpool
@@ -1944,7 +1953,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchNews()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2043,6 +2052,19 @@ class Component extends DCLogic {
       });
       this.setState({ todoItems: items, todosOk: !vox.error && !fam.error });
     } catch(e) { console.warn('Uppgifter:', e.message); }
+  }
+
+  // Nyheter via news-proxy (RSS-källorna saknar CORS, därav proxyn).
+  async fetchNews() {
+    try {
+      // limit=120 = allt i cachen. Lägre tak kapar de glesa kategorierna
+      // (smart home-poster är äldre än 60:e sport-posten) och då blir
+      // filterknappen tom trots att proxyn har innehåll.
+      const res = await fetch(`${this.SB_URL}/functions/v1/news-proxy?limit=120`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const d = await res.json();
+      if (Array.isArray(d.items) && d.items.length) this.setState({ newsItems: d.items });
+    } catch(e) { console.warn('Nyheter:', e.message); }
   }
 
   // Skollunch. Skolan har ingen matsedels-API — proxyn skrapar deras
@@ -2658,6 +2680,33 @@ class Component extends DCLogic {
         ? 'Skapa en spellista i YouTube som heter "Titta senare" och lägg videos i den – de visas här.'
         : 'Inga videos i din "Titta senare"-spellista ännu.';
 
+    // ── Nyheter: news-proxy (AI · teknik · smart home · sport) ──
+    const newsCat = this.state.newsCat;
+    const newsRaw = this.state.newsItems || [];
+    const CAT_COLORS = { ai:'oklch(0.75 0.18 300)', tech:'oklch(0.65 0.18 240)',
+      home:'oklch(0.82 0.24 130)', sport:'oklch(0.7 0.19 55)' };
+    const news = (newsCat==='all' ? newsRaw : newsRaw.filter(n => n.cat===newsCat))
+      .slice(0, 30)
+      .map(n => ({
+        src: n.src, title: n.title, url: n.url,
+        time: n.ts ? this._ytRelTime(n.ts) : '',
+        catColor: CAT_COLORS[n.cat] || 'rgba(238,240,245,0.5)',
+      }));
+    const newsCats = [
+      {id:'all',label:'Allt'},{id:'ai',label:'AI'},{id:'tech',label:'Teknik'},
+      {id:'home',label:'Smart home'},{id:'sport',label:'Sport'},
+    ].map(c => ({
+      ...c, onClick: () => this.setState({newsCat: c.id}),
+      btnStyle: {padding:'4px 12px',borderRadius:'7px',fontSize:'11.5px',fontWeight:'500',
+        fontFamily:'inherit',cursor:'pointer',
+        border:`1px solid ${newsCat===c.id?'rgba(130,220,50,0.4)':'rgba(255,255,255,0.1)'}`,
+        background:newsCat===c.id?'rgba(130,220,50,0.12)':'rgba(255,255,255,0.04)',
+        color:newsCat===c.id?G:'rgba(238,240,245,0.6)'},
+    }));
+    const newsBadge = newsRaw.length ? '● LIVE' : 'Demo';
+    const newsBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',marginLeft:'8px',
+      color: newsRaw.length ? G : 'rgba(238,240,245,0.25)'};
+
     // ── Uppgifter: VoxMats + Familjeappen ────────────────────────
     // Förfallodatum i klartext. Försenat markeras rött — det är hela poängen
     // med att ha listan på Hem-sidan.
@@ -2922,11 +2971,7 @@ class Component extends DCLogic {
       })(),
       health:{sleepH:7.5,sleepQ:'Bra',sleepVs:'+12%',steps:4823,stepsGoal:10000,stepsPct:48,
         stepsBarStyle:{height:'3px',borderRadius:'3px',background:A,width:'48%'},hr:68,stress:'Låg'},
-      news:[{src:'Omni',title:'Sverige förhandlar om nytt energiavtal med EU',time:'2 tim'},
-        {src:'Omni',title:'Riksbanken lämnar styrräntan oförändrad',time:'3 tim'},
-        {src:'TechCrunch',title:'OpenAI lanserar ny modell med förbättrat minne',time:'1 tim'},
-        {src:'The Verge',title:'Samsung Galaxy Z Fold 7 – specifikationer läcker ut',time:'4 tim'},
-        {src:'Homey',title:'Nya energiintegrationer i Homey 2025.3',time:'5 tim'}],
+      news, newsCats, newsBadge, newsBadgeStyle,
     };
   }
 }
