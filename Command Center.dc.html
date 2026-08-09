@@ -206,22 +206,6 @@
           </div>
         </div>
 
-        <!-- FAMILJEN (Enmarks Familjeapp) -->
-        <div style="{{ familj.cardStyle }}">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">FAMILJEN</div>
-          <div style="background:rgba(255,255,255,0.04);border-radius:9px;padding:14px;margin-bottom:10px;">
-            <div style="font-size:10px;color:rgba(238,240,245,0.44);margin-bottom:6px;">INKÖPSLISTAN</div>
-            <div style="font-size:24px;font-weight:600;color:#eef0f5;margin-bottom:2px;">{{ familj.varor }} varor</div>
-            <div style="font-size:12.5px;color:rgba(238,240,245,0.52);">{{ familj.senast }}</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px;">
-            <sc-for list="{{ familj.lista }}" as="v" hint-placeholder-count="4">
-              <div style="font-size:12.5px;color:rgba(238,240,245,0.68);">{{ v.text }}</div>
-            </sc-for>
-          </div>
-          <div style="font-size:12px;font-weight:600;color:{{ familj.godkannColor }};">⭐ {{ familj.godkanna }}</div>
-        </div>
-
         <!-- UPPGIFTER -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.3s both;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">UPPGIFTER <span style="font-size:9px;font-weight:400;letter-spacing:0;color:rgba(238,240,245,0.25);">Demo</span></div>
@@ -758,7 +742,6 @@ class Component extends DCLogic {
     spotifyLoading:false,
     fardplanData:null,
     fardplanBookings:[],
-    familjFeed:null,
   };
 
   componentDidMount() {
@@ -779,21 +762,6 @@ class Component extends DCLogic {
     this.initSpotify();
     this.loadFardplan();
     this.initSupabase();
-    this.fetchFamilj();
-    this._familjRefresh = setInterval(() => this.fetchFamilj(), 5*60*1000);
-  }
-
-  // Familjeappen: läser via widget-koden (SECURITY DEFINER-funktion, ingen inloggning behövs)
-  FAMILJ_KOD = '3T3997DK27XW';
-  fetchFamilj() {
-    fetch(`${this.SB_URL}/rest/v1/rpc/familj_widget_feed`, {
-      method: 'POST',
-      headers: { apikey: this.SB_ANON, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ kod: this.FAMILJ_KOD }),
-    })
-      .then(r => r.json())
-      .then(d => { if (d && !d.error) this.setState({ familjFeed: d }); })
-      .catch(e => console.warn('Familjeappen svarar inte:', e.message));
   }
 
   initGoogle() {
@@ -1516,20 +1484,6 @@ class Component extends DCLogic {
       out.sort((a,bb) => new Date(a.start) - new Date(bb.start));
       return out;
     })();
-    // ── Familjeappen (läser familj_widget_feed) ──
-    const ff = this.state.familjFeed;
-    const familj = {
-      cardStyle: ff
-        ? 'background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;'
-        : 'display:none;',
-      varor: ff ? String(ff.shopping_count ?? 0) : '0',
-      senast: ff && ff.last_shopped && ff.last_shopped !== 'null'
-        ? `Senast handlat ${ff.last_shopped}` : 'Inte handlat ännu',
-      lista: (ff?.shopping || []).slice(0, 4).map(v => ({ text: `${v.icon || '🛒'}  ${v.name}` })),
-      godkanna: ff && ff.att_godkanna ? `${ff.att_godkanna} att godkänna` : 'Inget att godkänna',
-      godkannColor: ff && ff.att_godkanna ? '#FDB454' : 'rgba(238,240,245,0.44)',
-    };
-
     const todayMidnight = new Date(); todayMidnight.setHours(0,0,0,0);
     const fpUpcoming = fpTrips.filter(t => new Date(t.end||t.start) >= todayMidnight);
     const nearestFp = fpUpcoming[0] || null;
