@@ -2057,10 +2057,10 @@ class Component extends DCLogic {
   // Nyheter via news-proxy (RSS-källorna saknar CORS, därav proxyn).
   async fetchNews() {
     try {
-      // limit=120 = allt i cachen. Lägre tak kapar de glesa kategorierna
-      // (smart home-poster är äldre än 60:e sport-posten) och då blir
-      // filterknappen tom trots att proxyn har innehåll.
-      const res = await fetch(`${this.SB_URL}/functions/v1/news-proxy?limit=120`);
+      // limit=200 = allt i cachen (45 tech + 3×30 övriga = 135). Lägre tak
+      // kapar de glesa kategorierna — äldre smart home-poster åker ut före
+      // färsk sport — och då blir filterknappen tom trots att proxyn har data.
+      const res = await fetch(`${this.SB_URL}/functions/v1/news-proxy?limit=200`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const d = await res.json();
       if (Array.isArray(d.items) && d.items.length) this.setState({ newsItems: d.items });
