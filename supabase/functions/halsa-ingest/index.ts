@@ -14,7 +14,7 @@ const supabase = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
 );
 
-const MAX_BODY_BYTES = 5 * 1024 * 1024;
+const MAX_BODY_BYTES = 20 * 1024 * 1024;  // första synken (48h, täta pulsserier) kan vara stor
 const ALLOWED_SOURCES = new Set(["hc_webhook", "samsung_export", "manual"]);
 
 // Payloadnycklar → kanonisk metric + enhet + kandidatfält för värdet.
@@ -22,8 +22,9 @@ const ALLOWED_SOURCES = new Set(["hc_webhook", "samsung_export", "manual"]);
 // verklig payload i Fas 1 — okända nycklar/format räknas som skipped, aldrig krasch.
 const METRICS: Record<string, { metric: string; unit: string; fields: string[] }> = {
   steps:                  { metric: "steps",              unit: "count", fields: ["count", "value", "steps"] },
-  heart_rate:             { metric: "heart_rate",         unit: "bpm",   fields: ["bpm", "beats_per_minute", "value"] },
-  resting_heart_rate:     { metric: "resting_heart_rate", unit: "bpm",   fields: ["bpm", "beats_per_minute", "value"] },
+  // Verifierat mot verklig payload 2026-08-12: bucketade pulsposter har avg/min/max
+  heart_rate:             { metric: "heart_rate",         unit: "bpm",   fields: ["bpm", "beats_per_minute", "avg", "value"] },
+  resting_heart_rate:     { metric: "resting_heart_rate", unit: "bpm",   fields: ["bpm", "beats_per_minute", "avg", "value"] },
   heart_rate_variability: { metric: "hrv",                unit: "ms",    fields: ["rmssd", "heart_rate_variability_millis", "value"] },
   weight:                 { metric: "weight_kg",          unit: "kg",    fields: ["weight_kg", "kilograms", "weight", "value"] },
   body_fat:               { metric: "body_fat_pct",       unit: "pct",   fields: ["percentage", "body_fat_percentage", "value"] },
@@ -57,6 +58,15 @@ function constantTimeEq(a: string, b: string): boolean {
   let diff = 0;
   for (let i = 0; i < ab.length; i++) diff |= ab[i] ^ bb[i];
   return diff === 0;
+}
+
+// Stora payloads: upsert i batchar så PostgREST-anropen håller sig rimliga.
+async function chunkUpsert(table: string, rows: Record<string, unknown>[], onConflict: string): Promise<string | null> {
+  for (let i = 0; i < rows.length; i += 1000) {
+    const { error } = await supabase.from(table).upsert(rows.slice(i, i + 1000), { onConflict });
+    if (error) return error.message;
+  }
+  return null;
 }
 
 let cachedSecrets: string[] | null = null;
@@ -144,9 +154,8 @@ Deno.serve(async (req) => {
   }
 
   if (metricRows.length) {
-    const { error } = await supabase.from("halsa_metrics")
-      .upsert(metricRows, { onConflict: "metric,ts,dedup_end_ts,source" });
-    if (error) { errors += metricRows.length; errMsgs.push(`metrics: ${error.message}`); }
+    const err = await chunkUpsert("halsa_metrics", metricRows, "metric,ts,dedup_end_ts,source");
+    if (err) { errors += metricRows.length; errMsgs.push(`metrics: ${err}`); }
     else upserted += metricRows.length;
   }
 
@@ -167,9 +176,8 @@ Deno.serve(async (req) => {
       bump(end);
     }
     if (sleepRows.length) {
-      const { error } = await supabase.from("halsa_sleep_sessions")
-        .upsert(sleepRows, { onConflict: "start_ts,source" });
-      if (error) { errors += sleepRows.length; errMsgs.push(`sleep: ${error.message}`); }
+      const err = await chunkUpsert("halsa_sleep_sessions", sleepRows, "start_ts,source");
+      if (err) { errors += sleepRows.length; errMsgs.push(`sleep: ${err}`); }
       else upserted += sleepRows.length;
     }
   }
