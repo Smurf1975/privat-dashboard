@@ -34,7 +34,7 @@ En rad per mätvärde. `ts` = mätpunkt eller intervallstart (UTC). `end_ts` = i
 | metric | enhet | typ | källfält (HC Webhook) |
 |---|---|---|---|
 | `steps` | count | intervall | `steps[].count` |
-| `heart_rate` | bpm | punkt | `heart_rate[].bpm` |
+| `heart_rate` | bpm | punkt | `heart_rate[].avg` (5-min-buckets; `bpm` vid full upplösning) — verifierat 2026-08-12 |
 | `resting_heart_rate` | bpm | punkt | `resting_heart_rate[].bpm` |
 | `hrv` | ms | punkt | `heart_rate_variability[].rmssd` |
 | `weight_kg` | kg | punkt | `weight[].weight_kg` |
@@ -89,7 +89,7 @@ Båda är vanliga vyer med `security_invoker = true` → RLS på undertabellerna
 
 ## Kända begränsningar (Fas 0)
 
-1. Payloadens fältnamn overifierade mot verklig HC Webhook-data (ponytail ovan) — Fas 1-uppgift.
+1. Payloadens fältnamn verifierade mot verklig data 2026-08-12 för steps/heart_rate/exercise/total_calories (221 poster, 0 skipped). Sömn, vikt, HRV m.fl. återstår att se i verklig payload. Bonus: posterna bär `metadata.data_origin` (käll-app!) — sparas i `raw`; kan bli eget `origin_app`-fält om behov uppstår (ändrar inte `source`-semantiken, Ä5).
 2. Raderingar i Health Connect propageras inte (bryggan skickar inga deletes) — manuell SQL-städning vid behov.
 3. Bryggans lookback är 48 h — luckor däröver kräver recovery (se `HEALTH-RECOVERY.md`).
 4. Empty-staten med aktiv session är verifierad i kod men inte i browser (kräver inloggad session — verifieras av Mats vid deploy).
