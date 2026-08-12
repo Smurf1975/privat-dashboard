@@ -1069,35 +1069,57 @@
 
     </sc-if>
 
-    <!-- ══ HÄLSA ══ -->
+    <!-- ══ HÄLSA ══ (riktig data via halsa_daily_v/halsa_status_v — ingen demo) -->
     <sc-if value="{{ isHalsa }}" hint-placeholder-val="{{ false }}">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SÖMN</div>
-          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.sleepH }}<span style="font-size:22px;color:rgba(238,240,245,0.44);">h</span></div>
-          <div style="font-size:13.5px;color:oklch(0.65 0.15 145);">{{ health.sleepQ }} · {{ health.sleepVs }} vs snitt</div>
+
+      <sc-if value="{{ health.loading }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:34px 28px;text-align:center;color:rgba(238,240,245,0.44);font-size:13.5px;">Hämtar hälsodata…</div>
+      </sc-if>
+
+      <sc-if value="{{ health.empty }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:38px 28px;text-align:center;">
+          <div style="font-size:15px;font-weight:600;color:#c8ccd6;margin-bottom:8px;">Ingen hälsodata ännu</div>
+          <div style="font-size:13px;color:rgba(238,240,245,0.44);line-height:1.7;max-width:430px;margin:0 auto;">Grunden är på plats och väntar på första synken från telefonen via Health Connect. Sömn, steg, puls och vikt visas här automatiskt när synken är igång.</div>
         </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">STEG IDAG</div>
-          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:8px;">{{ health.steps }}</div>
-          <div style="background:rgba(255,255,255,0.08);border-radius:3px;height:3px;margin-bottom:5px;"><div style="{{ health.stepsBarStyle }}"></div></div>
-          <div style="font-size:11.5px;color:rgba(238,240,245,0.44);">{{ health.stepsPct }}% av {{ health.stepsGoal }}</div>
+      </sc-if>
+
+      <sc-if value="{{ health.errorOnly }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(224,140,140,0.22);border-radius:12px;padding:30px 28px;text-align:center;">
+          <div style="font-size:14px;font-weight:600;color:#e08c8c;margin-bottom:6px;">Kunde inte hämta hälsodata</div>
+          <div style="font-size:12.5px;color:rgba(238,240,245,0.44);">{{ health.error }}</div>
         </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">PULS</div>
-          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.hr }}<span style="font-size:18px;color:rgba(238,240,245,0.44);"> bpm</span></div>
-          <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">Galaxy Watch · Vilopuls normal</div>
+      </sc-if>
+
+      <sc-if value="{{ health.hasData }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SÖMN INATT</div>
+            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.sleepH }}<span style="font-size:22px;color:rgba(238,240,245,0.44);">{{ health.sleepUnit }}</span></div>
+            <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">{{ health.sleepRange }}</div>
+          </div>
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">STEG IDAG</div>
+            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:8px;">{{ health.steps }}</div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:3px;height:3px;margin-bottom:5px;"><div style="{{ health.stepsBarStyle }}"></div></div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.44);">{{ health.stepsPct }}% av {{ health.stepsGoal }}</div>
+          </div>
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VILOPULS</div>
+            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.restingHr }}<span style="font-size:18px;color:rgba(238,240,245,0.44);">{{ health.restingUnit }}</span></div>
+            <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">{{ health.hrDetail }}</div>
+          </div>
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VIKT</div>
+            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.weight }}<span style="font-size:18px;color:rgba(238,240,245,0.44);">{{ health.weightUnit }}</span></div>
+            <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">{{ health.weightDetail }}</div>
+          </div>
+          <div style="grid-column:span 2;display:flex;justify-content:space-between;align-items:center;gap:12px;background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:13px 20px;">
+            <div style="font-size:12px;color:rgba(238,240,245,0.44);">{{ health.syncText }}</div>
+            <div style="font-size:11.5px;color:#e0b34c;">{{ health.staleBadge }}</div>
+          </div>
         </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">STRESS</div>
-          <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:oklch(0.65 0.15 145);margin-bottom:4px;">{{ health.stress }}</div>
-          <div style="font-size:13.5px;color:rgba(238,240,245,0.44);">Galaxy Watch · Samsung Health</div>
-        </div>
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;grid-column:span 2;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">HÄLSOINSIKT</div>
-          <div style="font-size:13.5px;color:rgba(238,240,245,0.68);line-height:1.7;">Din sömn är bättre än genomsnittet senaste veckan ({{ health.sleepVs }}). Stressnivån är låg – bra dag för fokusarbete. Du är på {{ health.stepsPct }}% av ditt stegmål idag.</div>
-        </div>
-      </div>
+      </sc-if>
+
     </sc-if>
 
   </main>
@@ -1178,6 +1200,8 @@ class Component extends DCLogic {
     spotifyLoading:false,
     fardplanBookings:[],
     fpAuthed:false, fpEmail:null, fpLinkSent:false, fpLinkError:null, fpSending:false,
+    // Hälsa (halsa_daily_v + halsa_status_v — RLS ger endast Mats rader)
+    halsaDaily:[], halsaStatus:null, halsaOk:true, halsaError:null, halsaLoaded:false,
   };
 
   componentDidMount() {
@@ -1398,7 +1422,7 @@ class Component extends DCLogic {
       // Utan session ger anon-nyckeln 0 rader helt tyst — därav inloggningen nedan.
       const onSession = session => {
         this.setState({ fpAuthed: !!session, fpEmail: session?.user?.email || null });
-        if (!session) { this.setState({ googleAuthed: false }); return; }
+        if (!session) { this.setState({ googleAuthed: false, halsaLoaded: true, halsaOk: false, halsaError: 'Ej inloggad' }); return; }
         // google-proxy kräver en inloggad användare. Utan session finns ingen
         // Google-data att hämta, så init körs först här (en gång).
         // Samma sak gäller homey-proxy — den kräver också inloggning nu.
@@ -1409,6 +1433,7 @@ class Component extends DCLogic {
           this.fetchHallCam();
           this.fetchTodos();
           this.fetchFamiljeapp();
+          this.fetchHalsa();
         }
         fetchAll();
         if (this._fpChannel) return;               // prenumerera bara en gång
@@ -1964,7 +1989,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -1973,7 +1998,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2072,6 +2097,26 @@ class Component extends DCLogic {
       });
       this.setState({ todoItems: items, todosOk: !vox.error && !fam.error });
     } catch(e) { console.warn('Uppgifter:', e.message); }
+  }
+
+  // Hälsa: dagsvyn + statusvyn (aldrig råtabellerna). RLS släpper bara igenom
+  // Mats session; övriga får tomma svar. Stale-logiken ligger i renderVals.
+  async fetchHalsa() {
+    const db = this._sbClient;
+    if (!db) return;
+    try {
+      const [daily, status] = await Promise.all([
+        db.from('halsa_daily_v').select('*').order('day', { ascending: false }).limit(7),
+        db.from('halsa_status_v').select('*').maybeSingle(),
+      ]);
+      if (daily.error) throw daily.error;
+      if (status.error) throw status.error;
+      this.setState({ halsaDaily: daily.data || [], halsaStatus: status.data || null,
+                      halsaOk: true, halsaError: null, halsaLoaded: true });
+    } catch(e) {
+      console.warn('Hälsa:', e.message);
+      this.setState({ halsaOk: false, halsaError: e.message || 'Nätverksfel', halsaLoaded: true });
+    }
   }
 
   // Familjeappen: inköpslistan + vad som väntar på godkännande. Samma inloggade
@@ -3028,8 +3073,52 @@ class Component extends DCLogic {
           table: lfcTable.length>0 ? lfcTable : [],
         };
       })(),
-      health:{sleepH:7.5,sleepQ:'Bra',sleepVs:'+12%',steps:4823,stepsGoal:10000,stepsPct:48,
-        stepsBarStyle:{height:'3px',borderRadius:'3px',background:A,width:'48%'},hr:68,stress:'Låg'},
+      health:(() => {
+        const rows = this.state.halsaDaily || [];
+        const st = this.state.halsaStatus || {};
+        const hasData = rows.length > 0 || st.latest_record_ts != null || st.last_sync_at != null;
+        const err = !this.state.halsaOk;
+        const todayKey = new Date().toLocaleDateString('sv-SE');       // lokal dag YYYY-MM-DD, matchar vyns Europe/Stockholm-gruppering
+        const d0 = rows.find(r => r.day === todayKey) || null;
+        const n1 = v => v == null ? null : Math.round(Number(v));
+        const hhmm = iso => iso ? new Date(iso).toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}) : null;
+        // Ä3: stale-tröskel — mer än 24 h utan lyckad synk ⇒ markera datan som gammal
+        const STALE_TIMMAR = 24;
+        const lastSync = st.last_sync_at ? new Date(st.last_sync_at) : null;
+        const stale = !!lastSync && (Date.now() - lastSync.getTime()) > STALE_TIMMAR*3600e3;
+        const goal = 10000;
+        const steps = d0?.steps != null ? Number(d0.steps) : null;
+        const pct = steps != null ? Math.min(100, Math.round(steps/goal*100)) : 0;
+        const sleepH = d0?.sleep_hours != null ? (Math.round(Number(d0.sleep_hours)*10)/10).toLocaleString('sv-SE') : null;
+        const weight = st.latest_weight != null ? Number(st.latest_weight).toLocaleString('sv-SE',{maximumFractionDigits:1}) : null;
+        const resting = n1(d0?.resting_heart_rate) ?? n1(st.latest_resting_hr);
+        const syncBits = [ lastSync
+          ? 'Senast synkad ' + lastSync.toLocaleString('sv-SE',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})
+          : 'Ingen synk från telefonen ännu' ];
+        if (err) syncBits.push('kunde inte uppdatera — visar senast kända värden');
+        return {
+          loading: !this.state.halsaLoaded && !hasData && !err,
+          empty: this.state.halsaLoaded && !err && !hasData,
+          errorOnly: err && !hasData,
+          hasData,
+          error: this.state.halsaError || 'Okänt fel',
+          sleepH: sleepH ?? '–', sleepUnit: sleepH ? ' h' : '',
+          sleepRange: d0?.sleep_start ? `${hhmm(d0.sleep_start)}–${hhmm(d0.wake_time)}` : 'Ingen sömndata inatt',
+          steps: steps != null ? steps.toLocaleString('sv-SE') : '–',
+          stepsGoal: goal.toLocaleString('sv-SE'), stepsPct: pct,
+          stepsBarStyle:{height:'3px',borderRadius:'3px',background:A,width:pct+'%'},
+          restingHr: resting ?? '–', restingUnit: resting != null ? ' bpm' : '',
+          hrDetail: d0?.avg_heart_rate != null
+            ? `Snitt ${n1(d0.avg_heart_rate)} · Max ${n1(d0.max_heart_rate)} bpm idag`
+            : 'Ingen pulsdata idag',
+          weight: weight ?? '–', weightUnit: weight ? ' kg' : '',
+          weightDetail: st.latest_body_fat != null
+            ? `Kroppsfett ${Number(st.latest_body_fat).toLocaleString('sv-SE',{maximumFractionDigits:1})} %`
+            : (st.latest_weight_ts ? 'Vägd ' + new Date(st.latest_weight_ts).toLocaleDateString('sv-SE') : 'Ingen vägning ännu'),
+          syncText: syncBits.join(' · '),
+          staleBadge: stale ? '⚠ Äldre än 24 h' : '',
+        };
+      })(),
       news, newsCats, newsBadge, newsBadgeStyle,
     };
   }
