@@ -177,8 +177,14 @@ Deno.serve(async (req) => {
       received++;
       if (r === null || typeof r !== "object") { noteSkip("sleep", r); continue; }
       const rec = r as Record<string, unknown>;
-      const start = iso(rec.session_start_time) ?? iso(rec.start_time);
       const end = iso(rec.session_end_time) ?? iso(rec.end_time);
+      // Verklig payload 2026-08-13: ingen session_start_time — härled starten ur
+      // första fasens start_time, annars slut minus duration_seconds.
+      const firstStage = Array.isArray(rec.stages) ? (rec.stages[0] as Record<string, unknown> | undefined) : undefined;
+      const dur = num(rec.duration_seconds);
+      const start = iso(rec.session_start_time) ?? iso(rec.start_time)
+        ?? (firstStage ? iso(firstStage.start_time) : null)
+        ?? (end && dur ? new Date(new Date(end).getTime() - dur * 1000).toISOString() : null);
       if (!start || !end || end <= start) { noteSkip("sleep", r); continue; }
       sleepRows.push({
         start_ts: start, end_ts: end, quality: num(rec.quality),
