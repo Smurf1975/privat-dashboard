@@ -116,6 +116,14 @@ Deno.serve(async (req) => {
   let received = 0, upserted = 0, skipped = 0, errors = 0;
   let latestTs: string | null = null;
   const errMsgs: string[] = [];
+  const skipInfo: string[] = [];  // diagnostik: payloadnyckel + fältnamn (aldrig värden)
+  const noteSkip = (key: string, r: unknown) => {
+    skipped++;
+    if (skipInfo.length < 5) {
+      const fields = r && typeof r === "object" ? Object.keys(r as object).join(",") : typeof r;
+      skipInfo.push(`${key}{${fields}}`);
+    }
+  };
   const bump = (ts: string | null) => { if (ts && (!latestTs || ts > latestTs)) latestTs = ts; };
 
   // Metrics
@@ -125,10 +133,10 @@ Deno.serve(async (req) => {
     if (!Array.isArray(arr)) continue;
     for (const r of arr) {
       received++;
-      if (r === null || typeof r !== "object") { skipped++; continue; }
+      if (r === null || typeof r !== "object") { noteSkip(key, r); continue; }
       const { start, end } = recTimes(r);
       const value = cfg.fields.map((f) => num((r as Record<string, unknown>)[f])).find((v) => v !== null);
-      if (!start || value == null) { skipped++; continue; }
+      if (!start || value == null) { noteSkip(key, r); continue; }
       metricRows.push({ ts: start, end_ts: end, metric: cfg.metric, value, unit: cfg.unit, source, raw: r });
       bump(end ?? start);
     }
@@ -138,11 +146,11 @@ Deno.serve(async (req) => {
   if (Array.isArray(exercises)) {
     for (const r of exercises) {
       received++;
-      if (r === null || typeof r !== "object") { skipped++; continue; }
+      if (r === null || typeof r !== "object") { noteSkip("exercise", r); continue; }
       const { start, end } = recTimes(r);
-      if (!start || !end) { skipped++; continue; }
+      if (!start || !end) { noteSkip("exercise", r); continue; }
       const minutes = (new Date(end).getTime() - new Date(start).getTime()) / 60000;
-      if (minutes <= 0) { skipped++; continue; }
+      if (minutes <= 0) { noteSkip("exercise", r); continue; }
       metricRows.push({ ts: start, end_ts: end, metric: "exercise_minutes", value: Math.round(minutes), unit: "min", source, raw: r });
       bump(end);
     }
@@ -150,7 +158,10 @@ Deno.serve(async (req) => {
   // Okända arraynycklar → skipped (defensivt, aldrig gissning)
   const known = new Set([...Object.keys(METRICS), "exercise_sessions", "exercise", "sleep"]);
   for (const [key, v] of Object.entries(payload)) {
-    if (Array.isArray(v) && !known.has(key)) { received += v.length; skipped += v.length; }
+    if (Array.isArray(v) && !known.has(key)) {
+      received += v.length; skipped += v.length;
+      if (v.length && skipInfo.length < 5) skipInfo.push(`?${key}[${v.length}]`);
+    }
   }
 
   if (metricRows.length) {
@@ -164,11 +175,11 @@ Deno.serve(async (req) => {
     const sleepRows: Record<string, unknown>[] = [];
     for (const r of payload.sleep) {
       received++;
-      if (r === null || typeof r !== "object") { skipped++; continue; }
+      if (r === null || typeof r !== "object") { noteSkip("sleep", r); continue; }
       const rec = r as Record<string, unknown>;
       const start = iso(rec.session_start_time) ?? iso(rec.start_time);
       const end = iso(rec.session_end_time) ?? iso(rec.end_time);
-      if (!start || !end || end <= start) { skipped++; continue; }
+      if (!start || !end || end <= start) { noteSkip("sleep", r); continue; }
       sleepRows.push({
         start_ts: start, end_ts: end, quality: num(rec.quality),
         phases: Array.isArray(rec.stages) ? rec.stages : null, source, raw: r,
@@ -189,7 +200,10 @@ Deno.serve(async (req) => {
       records_received: received, upserted_count: upserted,
       skipped_count: skipped, error_count: errors,
       latest_record_ts: latestTs,
-      error_summary: errMsgs.length ? errMsgs.slice(0, 5).join(" | ").slice(0, 500) : null,
+      error_summary: [
+        ...errMsgs.slice(0, 5),
+        ...(skipInfo.length ? ["skipped: " + skipInfo.join(" ")] : []),
+      ].join(" | ").slice(0, 500) || null,
     }).eq("id", logId);
   }
 
