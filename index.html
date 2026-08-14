@@ -773,6 +773,74 @@
         </div>
 
       </div>
+
+      <!-- ONYX INNEBANDY – egen sektion under Liverpool, rör inte det ovan -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;margin-top:14px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">ONYX INNEBANDY <span style="{{ onyx.badgeStyle }}">{{ onyx.badge }}</span></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <sc-for list="{{ onyx.tabs }}" as="t">
+              <button onclick="{{ t.onClick }}" style="{{ t.btnStyle }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="{{ onyx.gridStyle }}">
+
+          <!-- Nästa matcher -->
+          <div>
+            <div style="font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(238,240,245,0.4);margin-bottom:10px;">Nästa</div>
+            <sc-for list="{{ onyx.next }}" as="m" hint-placeholder-count="3">
+              <div style="background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 12px;margin-bottom:7px;">
+                <div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:3px;">
+                  <span style="font-size:12.5px;font-weight:600;color:oklch(0.82 0.24 130);">{{ m.when }}</span>
+                  <span style="font-size:10.5px;color:rgba(238,240,245,0.35);text-align:right;">{{ m.serie }}</span>
+                </div>
+                <div style="font-size:13px;color:#eef0f5;line-height:1.4;">{{ m.teams }}</div>
+                <div style="font-size:11px;color:rgba(238,240,245,0.4);margin-top:2px;">{{ m.arena }}</div>
+              </div>
+            </sc-for>
+            <div style="{{ onyx.nextEmptyStyle }}">{{ onyx.nextEmpty }}</div>
+          </div>
+
+          <!-- Senaste resultat -->
+          <div>
+            <div style="font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(238,240,245,0.4);margin-bottom:10px;">Resultat</div>
+            <sc-for list="{{ onyx.results }}" as="r" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                <span style="{{ r.dotStyle }}"></span>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:12.5px;color:#eef0f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ r.teams }}</div>
+                  <div style="font-size:10.5px;color:rgba(238,240,245,0.35);">{{ r.date }} · {{ r.serie }}</div>
+                </div>
+                <span style="font-size:13px;font-weight:700;color:{{ r.scoreColor }};font-variant-numeric:tabular-nums;">{{ r.score }}</span>
+              </div>
+            </sc-for>
+            <div style="{{ onyx.resEmptyStyle }}">{{ onyx.resEmpty }}</div>
+          </div>
+
+          <!-- Tabell(er) – en per nivå -->
+          <div style="{{ onyx.tableColStyle }}">
+            <div style="font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(238,240,245,0.4);margin-bottom:10px;">Tabell</div>
+            <sc-for list="{{ onyx.standings }}" as="s" hint-placeholder-count="1">
+              <div style="margin-bottom:14px;">
+                <div style="font-size:11px;font-weight:600;color:rgba(238,240,245,0.6);margin-bottom:6px;">{{ s.serie }}</div>
+                <sc-for list="{{ s.rows }}" as="row">
+                  <div style="{{ row.rowStyle }}">
+                    <span style="font-size:11px;color:rgba(238,240,245,0.35);width:18px;font-variant-numeric:tabular-nums;">{{ row.pos }}</span>
+                    <span style="font-size:12px;color:{{ row.color }};flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ row.team }}</span>
+                    <span style="font-size:11px;color:rgba(238,240,245,0.35);width:26px;text-align:right;font-variant-numeric:tabular-nums;">{{ row.m }}</span>
+                    <span style="font-size:12px;font-weight:700;color:{{ row.color }};width:30px;text-align:right;font-variant-numeric:tabular-nums;">{{ row.p }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+            <div style="{{ onyx.tabEmptyStyle }}">{{ onyx.tabEmpty }}</div>
+          </div>
+
+        </div>
+      </div>
+
     </sc-if>
 
     <!-- ══ VÄDER ══ -->
@@ -1182,6 +1250,8 @@ class Component extends DCLogic {
     familjVaror:[], familjSenast:null, familjGodkanna:0,
     // Nyheter (news-proxy: AI, teknik, smart home, sport)
     newsItems:[], newsCat:'all',
+    // Onyx Innebandy (onyx-proxy, svenskalag.se)
+    onyxTeams:[], onyxTeam:'p13',
     // Elpris hourly
     elHourly:[],
     // Liverpool
@@ -1216,10 +1286,11 @@ class Component extends DCLogic {
     this.restoreCache();   // visa senaste kända värden direkt, innan API:erna svarar
     this.fetchAll();
     this.fetchLiverpool();
+    this.fetchOnyx();
     setTimeout(() => this.fetchAiBriefing(), 6000);   // vänta in Homey/Google-data innan AI-briefingen byggs
     this._refresh = setInterval(() => this.fetchAll(), 5*60*1000);
     this._briefingRefresh = setInterval(() => this.fetchAiBriefing(), 30*60*1000);   // kollar var 30:e min, gör bara ett anrop om >4h gammal
-    this._lfcRefresh = setInterval(() => this.fetchLiverpool(), 60*60*1000);
+    this._lfcRefresh = setInterval(() => { this.fetchLiverpool(); this.fetchOnyx(); }, 60*60*1000);
     this.scheduleMorningRefresh();   // garanterad ren uppdatering varje morgon kl 08:00
     this.initSpotify();
     this.initSupabase();   // startar initGoogle() först när Supabase-sessionen finns
@@ -2143,6 +2214,17 @@ class Component extends DCLogic {
     } catch(e) { console.warn('Familjeappen:', e.message); }
   }
 
+  // Onyx Innebandy via onyx-proxy (svenskalag.se saknar API, proxyn skrapar
+  // de publika lagsidorna). Egen hämtning med samma takt som Liverpool.
+  async fetchOnyx() {
+    try {
+      const res = await fetch(`${this.SB_URL}/functions/v1/onyx-proxy`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const d = await res.json();
+      if (Array.isArray(d.teams) && d.teams.length) this.setState({ onyxTeams: d.teams });
+    } catch(e) { console.warn('Onyx:', e.message); }
+  }
+
   // Nyheter via news-proxy (RSS-källorna saknar CORS, därav proxyn).
   async fetchNews() {
     try {
@@ -2769,6 +2851,68 @@ class Component extends DCLogic {
         ? 'Skapa en spellista i YouTube som heter "Titta senare" och lägg videos i den – de visas här.'
         : 'Inga videos i din "Titta senare"-spellista ännu.';
 
+    // ── Onyx Innebandy ───────────────────────────────────────────
+    // Egen sektion under Liverpool. Lagvalet är en flik, inte sex kort —
+    // sex lag samtidigt skulle dränka Liverpool-blocket ovanför.
+    const onyxAll = this.state.onyxTeams || [];
+    const onyxKey = this.state.onyxTeam;
+    const oTeam = onyxAll.find(t => t.key === onyxKey) || onyxAll[0] || null;
+    // Ordningen speglar hur Mats pratar om lagen: barnens först.
+    const ORDER = [['p13','P12/13'],['f15','F15'],['herra','Herrar A'],['dama','Damer A'],
+                   ['hjas','HJAS'],['djas','DJAS']];
+    const wd = ['sön','mån','tis','ons','tor','fre','lör'];
+    const onyx = {
+      badge: onyxAll.length ? '● LIVE' : 'Laddar…',
+      badgeStyle: {fontSize:'9px',fontWeight:'400',letterSpacing:'0',marginLeft:'8px',
+        color: onyxAll.length ? G : 'rgba(238,240,245,0.25)'},
+      tabs: ORDER.map(([k,label]) => ({
+        label, onClick: () => this.setState({onyxTeam:k}),
+        btnStyle:{padding:'4px 11px',borderRadius:'7px',fontSize:'11.5px',fontWeight:'500',
+          fontFamily:'inherit',cursor:'pointer',
+          border:`1px solid ${onyxKey===k?'rgba(130,220,50,0.4)':'rgba(255,255,255,0.1)'}`,
+          background:onyxKey===k?'rgba(130,220,50,0.12)':'rgba(255,255,255,0.04)',
+          color:onyxKey===k?G:'rgba(238,240,245,0.6)'},
+      })),
+      next: (oTeam?.next || []).map(m => {
+        const d = new Date(m.ts);
+        return { when: `${wd[d.getDay()]} ${m.date}${m.time?' · '+m.time:''}`,
+          teams: `${m.home} – ${m.away}`, arena: m.arena || '', serie: m.serie || '' };
+      }),
+      results: (oTeam?.results || []).map(r => {
+        // Vinst/förlust ur Onyx synvinkel, oavsett hemma eller borta.
+        const home = /onyx/i.test(r.home);
+        const own = home ? r.hs : r.as, opp = home ? r.as : r.hs;
+        const win = own > opp, draw = own === opp;
+        const c = win ? G : draw ? 'rgba(238,240,245,0.55)' : 'oklch(0.68 0.19 25)';
+        return { teams:`${r.home} – ${r.away}`, score:`${r.hs}–${r.as}`,
+          date:r.date, serie:r.serie || '', scoreColor:c,
+          dotStyle:{width:'6px',height:'6px',borderRadius:'50%',background:c,flexShrink:0} };
+      }),
+      standings: (oTeam?.standings || []).map(s => ({
+        serie: s.serie,
+        rows: s.rows.map(r => ({
+          pos:r.pos, team:r.team, m:r.m, p:r.p,
+          color: r.onyx ? G : 'rgba(238,240,245,0.75)',
+          rowStyle:{display:'flex',alignItems:'center',gap:'8px',padding:'4px 6px',borderRadius:'5px',
+            background: r.onyx ? 'rgba(130,220,50,0.09)' : 'transparent'},
+        })),
+      })),
+    };
+    // F15 spelar sammandrag utan serietabell — dölj kolumnen helt för dem
+    // i stället för att visa en tom ruta.
+    const oHasTable = onyx.standings.length > 0;
+    onyx.gridStyle = {display:'grid',gap:'18px',
+      gridTemplateColumns: cols>=3 ? (oHasTable?'1fr 1fr 1fr':'1fr 1fr') : '1fr'};
+    onyx.tableColStyle = {display: oHasTable ? 'block' : 'none'};
+    onyx.nextEmpty = onyxAll.length ? 'Inga kommande matcher publicerade.' : '';
+    onyx.nextEmptyStyle = {fontSize:'11.5px',color:'rgba(238,240,245,0.32)',
+      display: onyx.next.length===0 && onyxAll.length ? 'block' : 'none'};
+    onyx.resEmpty = 'Inga spelade matcher ännu.';
+    onyx.resEmptyStyle = {fontSize:'11.5px',color:'rgba(238,240,245,0.32)',
+      display: onyx.results.length===0 && onyxAll.length ? 'block' : 'none'};
+    onyx.tabEmpty = 'Ingen tabell publicerad för laget.';
+    onyx.tabEmptyStyle = {fontSize:'11.5px',color:'rgba(238,240,245,0.32)',display:'none'};
+
     // ── Nyheter: news-proxy (AI · teknik · smart home · sport) ──
     const newsCat = this.state.newsCat;
     const newsRaw = this.state.newsItems || [];
@@ -3119,7 +3263,7 @@ class Component extends DCLogic {
           staleBadge: stale ? '⚠ Äldre än 24 h' : '',
         };
       })(),
-      news, newsCats, newsBadge, newsBadgeStyle,
+      news, newsCats, newsBadge, newsBadgeStyle, onyx,
     };
   }
 }
