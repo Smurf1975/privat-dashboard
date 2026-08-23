@@ -69,6 +69,16 @@ Kvitto per synk: räknare (received/upserted/skipped/errors), `latest_record_ts`
 
 **`halsa_status_v`** — en rad: `last_sync_at` (senaste lyckade ingest), `latest_record_ts`, senaste vikt/kroppsfett/vilopuls oavsett dag (vikten kan vara dagar gammal och ska ändå visas).
 
+**`halsa_natt_v`** (Fas 2) — en rad per natt: start/slut, timmar, fasfördelning (`djup_h`/`rem_h`/`latt_h`/`vaken_h`), härledd `vilopuls`, och `hypnogram` — en kompakt array `[offset_min, längd_min, stage]` per segment, mätt från sömnstart. Den formen är ~10× mindre än rå `phases`-jsonb och ritas direkt av klienten.
+
+**`halsa_puls_15m_v`** (Fas 2) — puls per 15-minutersfönster och dag: `lo`/`snitt`/`hi`. `lo` och `hi` läses ur `raw`-fältets min/max per Samsung-bucket, så bandet visar sant lägsta–högsta, inte bara spridningen mellan snittvärden.
+
+### Härledd vilopuls
+Samsung delar **inte** `RestingHeartRate` via Health Connect — `resting_heart_rate` var därför alltid null. `halsa_natt_v` härleder den i stället som **10:e percentilen av pulsen under sömnfönstret**, samma proxy klockor använder. Percentil i stället för rent min-värde gör den robust mot enstaka artefakter. `halsa_daily_v.resting_heart_rate` hämtas numera härifrån.
+
+### Health Connect sleep stage-koder
+`1` = vaken · `2` = sover (ospecificerat) · `3` = ur sängen · `4` = lätt · `5` = djup · `6` = REM · `7` = vaken i sängen. Vyn slår ihop 2/4/0 → lätt och 1/3/7 → vaken.
+
 Båda är vanliga vyer med `security_invoker = true` → RLS på undertabellerna gäller den som frågar. Ingen materialized view, ingen RPC — datavolymen (~10³–10⁴ rader/år) motiverar det inte.
 
 ## Säkerhet
@@ -82,7 +92,17 @@ Båda är vanliga vyer med `security_invoker = true` → RLS på undertabellerna
 
 ## Frontend
 
-`fetchHalsa()` läser de två vyerna — aldrig råtabeller — i befintlig `fetchAll`-poll (5 min) och triggas vid inloggning (`onSession`). Cache: `halsaDaily`/`halsaStatus` i `lcc_cache` (additiva nycklar — gammal cache krockar inte; ingen versionsbump behövdes).
+`fetchHalsa()` läser fyra vyer — aldrig råtabeller — i befintlig `fetchAll`-poll (5 min) och triggas vid inloggning (`onSession`). Hypnogrammet hämtas bara för senaste natten (`limit 1`); trendernas fasstaplar klarar sig på `halsa_daily_v`, så payloaden hålls liten. Cache: `halsaDaily`/`halsaStatus`/`halsaNatt`/`halsaPuls` i `lcc_cache` (additiva nycklar — gammal cache krockar inte).
+
+### Grafer i DCLogic-runtimen
+Runtimens `sc-for` bygger noder via `template.innerHTML`, vilket parsar barnen i **HTML**-namnrymden — `<rect>`/`<path>` blir då HTMLUnknownElement och renderas aldrig. Därför får diagrammen **aldrig** byggas med `sc-for` inuti `<svg>`. I stället är varje SVG-element författat direkt i markupen och får sin geometri via en `d`-attributbindning till en path-sträng som `renderVals` räknar fram. Fem diagram, tretton paths, noll DOM-churn per omrendering.
+
+Alla diagram använder `preserveAspectRatio="none"` med fast CSS-höjd, så x- och y-skalan sätts oberoende. Linjer bär `vector-effect="non-scaling-stroke"` så att streckbredden inte deformeras av den icke-uniforma skalningen; ytor är fyllda utan stroke. Pulskurvan bryts vid luckor över 45 minuter i stället för att dra en påhittad linje över dem.
+
+**Känd kosmetisk bieffekt:** vid sidladdning loggar webbläsaren ett `<path> attribute d`-fel per bunden path, eftersom den literala `{{ … }}`-texten står i attributet tills första renderingen ersätter den. Rent kosmetiskt och engångs — alternativen (CSS `d: path()`) riskerar tomma diagram i webbläsare utan stöd, vilket är ett sämre felläge.
+
+### Responsivitet
+Hälsa-fliken använder CSS-klasser med media queries (`.h-g21`, `.h-g11`, `.h-hypno`, `.h-rad`, `.h-axel` i `<style>`) i stället för appens JS-breakpoint `state.cols`. Skälet: `cols` sätts från `window.innerWidth`, som i vissa inbäddade vyer rapporterar en annan bredd än den faktiska layoutbredden — då blev pulsgrafen 158 px bred mitt i en enkolumnslayout. CSS läser rätt bredd alltid.
 
 **States:** `loading` (första hämtning) · `empty` ("Ingen hälsodata ännu" — ärligt, ingen demo) · `data` · `data + fel` (cachade värden visas med "kunde inte uppdatera") · `errorOnly` (t.ex. "Ej inloggad") · **stale-badge** "⚠ Äldre än 24 h" när `last_sync_at` passerat tröskeln.
 **Stale-tröskel (Ä3):** `STALE_TIMMAR = 24` — konstant i `renderVals` i `index.html`. Vald med marginal för dygnssynk; justeras när bryggans verkliga frekvens är känd (Fas 1).
@@ -91,6 +111,8 @@ Båda är vanliga vyer med `security_invoker = true` → RLS på undertabellerna
 
 1. Payloadens fältnamn verifierade mot verklig data 2026-08-12 för steps/heart_rate/exercise/total_calories (221 poster, 0 skipped). Sömn, vikt, HRV m.fl. återstår att se i verklig payload. Bonus: posterna bär `metadata.data_origin` (käll-app!) — sparas i `raw`; kan bli eget `origin_app`-fält om behov uppstår (ändrar inte `source`-semantiken, Ä5).
 2. Raderingar i Health Connect propageras inte (bryggan skickar inga deletes) — manuell SQL-städning vid behov.
+2b. **Vikt saknas helt:** EufyLife skriver ingen vikt till Health Connect trots att appen står i behörighetslistan. Kroppskortet redovisar det öppet i stället för att visa ett tomt värde utan förklaring. Kvarstår tills Eufy-kopplingen är löst.
+2c. **Kalorier och distans gäller bara träningspass**, inte hela dygnet — Samsung skickar `TotalCaloriesBurned`/`Distance` enbart för `ExerciseSession`. De redovisas därför som passets värden i rörelsekortet och används aldrig som dygnstotaler.
 3. Bryggans lookback är 48 h — luckor däröver kräver recovery (se `HEALTH-RECOVERY.md`).
 4. Empty-staten med aktiv session är verifierad i kod men inte i browser (kräver inloggad session — verifieras av Mats vid deploy).
 5. `quality` i sömn är null tills en källa faktiskt levererar score.

@@ -38,6 +38,20 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
     @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
     @keyframes spin{to{transform:rotate(360deg);}}
+    /* Hälsa-fliken: layouten följer verklig viewportbredd via CSS i stället för
+       JS-breakpointen, så graferna får full bredd även när window.innerWidth ljuger. */
+    .h-g21{display:grid;grid-template-columns:1.9fr 1fr;gap:14px;}
+    .h-g11{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
+    .h-hypno{width:100%;height:138px;display:block;}
+    .h-rad{display:flex;align-items:center;gap:14px;}
+    .h-rad>span{font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(238,240,245,0.5);width:64px;flex-shrink:0;}
+    .h-axel{display:flex;justify-content:space-between;margin-top:9px;margin-left:78px;font-size:10px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;}
+    @media(max-width:760px){
+      .h-g21,.h-g11{grid-template-columns:1fr;}
+      .h-hypno{height:110px;}
+      .h-rad{gap:10px;} .h-rad>span{width:52px;font-size:9.5px;letter-spacing:0.02em;}
+      .h-axel{margin-left:62px;}
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.min.js" integrity="sha384-sgcvElP/LlNRtORGYFLO/9K/bENcpJK19HgvqslWXog6d8f/Va4TpltGiBlGntCM" crossorigin="anonymous"></script>
 </helmet>
@@ -1159,33 +1173,138 @@
       </sc-if>
 
       <sc-if value="{{ health.hasData }}" hint-placeholder-val="{{ false }}">
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SÖMN INATT</div>
-            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.sleepH }}<span style="font-size:22px;color:rgba(238,240,245,0.44);">{{ health.sleepUnit }}</span></div>
-            <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">{{ health.sleepRange }}</div>
+
+        <!-- ── NATTEN — hypnogram + faser + härledd vilopuls ── -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px 24px 18px;margin-bottom:14px;animation:fadeUp 0.4s ease both;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">NATTEN</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.5);">{{ health.nattLabel }}</div>
           </div>
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">STEG IDAG</div>
-            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:8px;">{{ health.steps }}</div>
-            <div style="background:rgba(255,255,255,0.08);border-radius:3px;height:3px;margin-bottom:5px;"><div style="{{ health.stepsBarStyle }}"></div></div>
-            <div style="font-size:11.5px;color:rgba(238,240,245,0.44);">{{ health.stepsPct }}% av {{ health.stepsGoal }}</div>
+
+          <sc-if value="{{ health.harNatt }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-bottom:20px;">
+              <div>
+                <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;line-height:0.95;">{{ health.sleepH }}<span style="font-size:20px;font-weight:300;color:rgba(238,240,245,0.5);"> h</span></div>
+                <div style="font-size:13px;color:rgba(238,240,245,0.5);margin-top:9px;font-variant-numeric:tabular-nums;">{{ health.sleepRange }} · <span style="color:{{ health.sleepVsColor }};">{{ health.sleepVs }}</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:30px;font-weight:200;letter-spacing:-0.03em;color:oklch(0.70 0.15 302);line-height:1;">{{ health.restingHr }}<span style="font-size:14px;color:rgba(238,240,245,0.5);"> bpm</span></div>
+                <div style="font-size:11.5px;color:rgba(238,240,245,0.5);margin-top:7px;">{{ health.restingLabel }}</div>
+              </div>
+            </div>
+
+            <!-- Hypnogram: 4 banor (vaken överst → djup nederst), en path per fas -->
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none" class="h-hypno" role="img" aria-label="Sömnfaser över natten">
+              <path d="M0 6h1000v16H0Z M0 28h1000v16H0Z M0 50h1000v16H0Z M0 72h1000v16H0Z" fill="rgba(255,255,255,0.025)"/>
+              <path d="{{ health.hypno.vaken }}" fill="oklch(0.77 0.13 62)"/>
+              <path d="{{ health.hypno.rem }}"   fill="oklch(0.70 0.15 302)"/>
+              <path d="{{ health.hypno.latt }}"  fill="oklch(0.70 0.11 228)"/>
+              <path d="{{ health.hypno.djup }}"  fill="oklch(0.56 0.14 266)"/>
+            </svg>
+            <div style="display:flex;justify-content:space-between;margin-top:7px;font-size:10.5px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">
+              <sc-for list="{{ health.hypnoTider }}" as="t"><span>{{ t }}</span></sc-for>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);">
+              <sc-for list="{{ health.faser }}" as="f">
+                <div style="display:flex;align-items:baseline;gap:8px;">
+                  <span style="width:7px;height:7px;border-radius:2px;background:{{ f.col }};display:inline-block;flex-shrink:0;transform:translateY(-1px);"></span>
+                  <span style="font-size:11.5px;color:rgba(238,240,245,0.55);">{{ f.namn }}</span>
+                  <span style="font-size:13px;color:#eef0f5;font-variant-numeric:tabular-nums;">{{ f.tim }}</span>
+                  <span style="font-size:11px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">{{ f.pct }}%</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ health.saknarNatt }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:14px 0 6px;font-size:13px;color:rgba(238,240,245,0.55);">Ingen sömn registrerad ännu i natt.</div>
+          </sc-if>
+        </div>
+
+        <!-- ── PULS IDAG + I RÖRELSE ── -->
+        <div class="h-g21">
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px 16px;animation:fadeUp 0.4s ease 0.06s both;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px;">
+              <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">PULS IDAG</div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">{{ health.pulsSpann }}</div>
+            </div>
+
+            <sc-if value="{{ health.harPuls }}" hint-placeholder-val="{{ true }}">
+              <div style="position:relative;">
+                <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="width:100%;height:112px;display:block;overflow:visible;" role="img" aria-label="Puls över dygnet">
+                  <path d="{{ health.pulsBand }}" fill="oklch(0.82 0.24 130 / 0.13)"/>
+                  <path d="{{ health.pulsVilo }}" stroke="oklch(0.70 0.15 302 / 0.55)" stroke-width="1" stroke-dasharray="3 4" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="{{ health.pulsLinje }}" stroke="oklch(0.82 0.24 130)" stroke-width="1.75" fill="none" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+                  <path d="{{ health.pulsNu }}" stroke="rgba(238,240,245,0.22)" stroke-width="1" fill="none" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <div style="position:absolute;top:-2px;right:0;font-size:10px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">{{ health.pulsYMax }}</div>
+                <div style="position:absolute;bottom:1px;right:0;font-size:10px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">{{ health.pulsYMin }}</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10.5px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">
+                <span>00</span><span>06</span><span>12</span><span>18</span><span>24</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ health.saknarPuls }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:26px 0;font-size:13px;color:rgba(238,240,245,0.55);">Ingen pulsdata idag ännu.</div>
+            </sc-if>
           </div>
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VILOPULS</div>
-            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.restingHr }}<span style="font-size:18px;color:rgba(238,240,245,0.44);">{{ health.restingUnit }}</span></div>
-            <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">{{ health.hrDetail }}</div>
-          </div>
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">VIKT</div>
-            <div style="font-size:52px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;margin-bottom:4px;">{{ health.weight }}<span style="font-size:18px;color:rgba(238,240,245,0.44);">{{ health.weightUnit }}</span></div>
-            <div style="font-size:13.5px;color:rgba(238,240,245,0.52);">{{ health.weightDetail }}</div>
-          </div>
-          <div style="grid-column:span 2;display:flex;justify-content:space-between;align-items:center;gap:12px;background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:13px 20px;">
-            <div style="font-size:12px;color:rgba(238,240,245,0.44);">{{ health.syncText }}</div>
-            <div style="font-size:11.5px;color:#e0b34c;">{{ health.staleBadge }}</div>
+
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;animation:fadeUp 0.4s ease 0.1s both;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:16px;">I RÖRELSE</div>
+            <div style="font-size:44px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;line-height:0.95;">{{ health.steps }}</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.5);margin-top:8px;">steg · {{ health.stepsPct }}% av {{ health.stepsGoal }}</div>
+            <div style="background:rgba(255,255,255,0.07);border-radius:2px;height:4px;margin-top:11px;overflow:hidden;"><div style="{{ health.stepsBarStyle }}"></div></div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.05);font-size:12.5px;color:rgba(238,240,245,0.5);line-height:1.75;">{{ health.traningText }}</div>
           </div>
         </div>
+
+        <!-- ── 14 DAGAR — sömn, steg, vilopuls på gemensam tidsaxel ── -->
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px 16px;margin-top:14px;animation:fadeUp 0.4s ease 0.14s both;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">{{ health.trendRubrik }}</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.5);">{{ health.trendSnitt }}</div>
+          </div>
+
+          <div class="h-rad" style="margin-bottom:5px;">
+            <span>Sömn</span>
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="width:100%;height:52px;display:block;" role="img" aria-label="Sömn per natt">
+              <path d="{{ health.trend.latt }}" fill="oklch(0.70 0.11 228)"/>
+              <path d="{{ health.trend.rem }}"  fill="oklch(0.70 0.15 302)"/>
+              <path d="{{ health.trend.djup }}" fill="oklch(0.56 0.14 266)"/>
+            </svg>
+          </div>
+          <div class="h-rad" style="margin-bottom:5px;">
+            <span>Steg</span>
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="width:100%;height:46px;display:block;" role="img" aria-label="Steg per dag">
+              <path d="{{ health.trend.steg }}" fill="oklch(0.82 0.24 130 / 0.72)"/>
+            </svg>
+          </div>
+          <div class="h-rad">
+            <span>Vilopuls</span>
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="width:100%;height:40px;display:block;overflow:visible;" role="img" aria-label="Vilopuls per natt">
+              <path d="{{ health.trend.vilo }}" stroke="oklch(0.70 0.15 302)" stroke-width="1.75" fill="none" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+          </div>
+          <div class="h-axel">
+            <sc-for list="{{ health.trendDagar }}" as="d"><span>{{ d }}</span></sc-for>
+          </div>
+        </div>
+
+        <!-- ── KROPP + SYNK ── -->
+        <div class="h-g11">
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;animation:fadeUp 0.4s ease 0.18s both;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">KROPP</div>
+            <div style="font-size:34px;font-weight:200;letter-spacing:-0.03em;color:{{ health.weightColor }};line-height:1;">{{ health.weight }}<span style="font-size:15px;color:rgba(238,240,245,0.4);">{{ health.weightUnit }}</span></div>
+            <div style="font-size:12px;color:rgba(238,240,245,0.5);margin-top:9px;line-height:1.7;">{{ health.weightDetail }}</div>
+          </div>
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;animation:fadeUp 0.4s ease 0.22s both;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SYNK</div>
+            <div style="font-size:12.5px;color:rgba(238,240,245,0.5);line-height:1.7;">{{ health.syncText }}</div>
+            <div style="font-size:11.5px;color:#e0b34c;margin-top:7px;">{{ health.staleBadge }}</div>
+          </div>
+        </div>
+
       </sc-if>
 
     </sc-if>
@@ -1271,7 +1390,7 @@ class Component extends DCLogic {
     fardplanBookings:[],
     fpAuthed:false, fpEmail:null, fpLinkSent:false, fpLinkError:null, fpSending:false,
     // Hälsa (halsa_daily_v + halsa_status_v — RLS ger endast Mats rader)
-    halsaDaily:[], halsaStatus:null, halsaOk:true, halsaError:null, halsaLoaded:false,
+    halsaDaily:[], halsaStatus:null, halsaNatt:[], halsaPuls:[], halsaOk:true, halsaError:null, halsaLoaded:false,
   };
 
   componentDidMount() {
@@ -2060,7 +2179,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -2176,13 +2295,18 @@ class Component extends DCLogic {
     const db = this._sbClient;
     if (!db) return;
     try {
-      const [daily, status] = await Promise.all([
-        db.from('halsa_daily_v').select('*').order('day', { ascending: false }).limit(7),
+      // Hypnogrammet hämtas bara för senaste natten (limit 1) — trenderna klarar
+      // sig på fasfördelningen i halsa_daily_v, så payloaden hålls liten.
+      const idag = new Date().toLocaleDateString('sv-SE');
+      const [daily, status, natt, puls] = await Promise.all([
+        db.from('halsa_daily_v').select('*').order('day', { ascending: false }).limit(14),
         db.from('halsa_status_v').select('*').maybeSingle(),
+        db.from('halsa_natt_v').select('*').order('natt', { ascending: false }).limit(1),
+        db.from('halsa_puls_15m_v').select('min_of_day,lo,snitt,hi').eq('day', idag).order('min_of_day'),
       ]);
-      if (daily.error) throw daily.error;
-      if (status.error) throw status.error;
+      for (const r of [daily, status, natt, puls]) if (r.error) throw r.error;
       this.setState({ halsaDaily: daily.data || [], halsaStatus: status.data || null,
+                      halsaNatt: natt.data || [], halsaPuls: puls.data || [],
                       halsaOk: true, halsaError: null, halsaLoaded: true });
     } catch(e) {
       console.warn('Hälsa:', e.message);
@@ -3218,47 +3342,208 @@ class Component extends DCLogic {
         };
       })(),
       health:(() => {
-        const rows = this.state.halsaDaily || [];
-        const st = this.state.halsaStatus || {};
+        const S = this.state;
+        const rows = S.halsaDaily || [];            // fallande datum, [0] = senaste
+        const st   = S.halsaStatus || {};
+        const natt = (S.halsaNatt || [])[0] || null;
+        const puls = S.halsaPuls || [];
+        const err  = !S.halsaOk;
         const hasData = rows.length > 0 || st.latest_record_ts != null || st.last_sync_at != null;
-        const err = !this.state.halsaOk;
-        const todayKey = new Date().toLocaleDateString('sv-SE');       // lokal dag YYYY-MM-DD, matchar vyns Europe/Stockholm-gruppering
+        const todayKey = new Date().toLocaleDateString('sv-SE');   // lokal dag, matchar vyernas Europe/Stockholm
         const d0 = rows.find(r => r.day === todayKey) || null;
+
+        const nv = v => v == null ? null : Number(v);
         const n1 = v => v == null ? null : Math.round(Number(v));
-        const hhmm = iso => iso ? new Date(iso).toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}) : null;
-        // Ä3: stale-tröskel — mer än 24 h utan lyckad synk ⇒ markera datan som gammal
+        const sv = (v, d) => v == null ? '–' : Number(v).toLocaleString('sv-SE',{minimumFractionDigits:d, maximumFractionDigits:d});
+        const hhmm = iso => iso ? new Date(iso).toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}) : '';
+        const medel = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
+        const GRON = 'oklch(0.82 0.24 130)', LILA = 'oklch(0.70 0.15 302)';
+
+        // ── Natten: hypnogram ──────────────────────────────────────
+        // Fyra banor, vaken överst och djup nederst (sömnlabbets konvention).
+        // En path per fas: alla segment i samma bana får samma y.
+        const LANE = { vaken:6, rem:28, latt:50, djup:72 };
+        const laneOf = s => s===5 ? 'djup' : s===6 ? 'rem' : (s===1||s===7||s===3) ? 'vaken' : 'latt';
+        const hypno = { vaken:'', rem:'', latt:'', djup:'' };
+        let hypnoTider = [];
+        const harNatt = !!(natt && nv(natt.timmar));
+        if (harNatt) {
+          const start = new Date(natt.start_ts), slut = new Date(natt.end_ts);
+          const tot = Math.max((slut - start)/60000, 1);
+          for (const seg of (natt.hypnogram || [])) {
+            const k = laneOf(seg[2]);
+            const x0 = Math.max(0, seg[0]/tot*1000);
+            const w  = Math.max(Math.min(seg[1]/tot*1000, 1000-x0), 1.1);  // minsta bredd så 1-minuterssegment syns
+            hypno[k] += 'M'+x0.toFixed(1)+' '+LANE[k]+'h'+w.toFixed(1)+'v16h-'+w.toFixed(1)+'Z';
+          }
+          hypnoTider = [0,0.25,0.5,0.75,1].map(f => hhmm(new Date(start.getTime() + f*tot*60000)));
+        }
+        const fasDef = [['Djup','djup_h','oklch(0.56 0.14 266)'],['REM','rem_h',LILA],
+                        ['Lätt','latt_h','oklch(0.70 0.11 228)'],['Vaken','vaken_h','oklch(0.77 0.13 62)']];
+        const fasTot = harNatt ? fasDef.reduce((a,f) => a + (nv(natt[f[1]])||0), 0) : 0;
+        const faser = harNatt ? fasDef.map(f => {
+          const h = nv(natt[f[1]]) || 0;
+          return { namn:f[0], col:f[2], tim: sv(h,1)+' h', pct: fasTot>0 ? Math.round(h/fasTot*100) : 0 };
+        }) : [];
+
+        // Jämförelser mot din egen normal (föregående 7 nätter, inte inatt)
+        const sovna = rows.map(r => nv(r.sleep_hours)).filter(v => v != null);
+        const sSnitt = medel(sovna.slice(1,8));
+        let sleepVs = '', sleepVsColor = 'rgba(238,240,245,0.5)';
+        if (harNatt && sSnitt != null) {
+          const d = nv(natt.timmar) - sSnitt;
+          if (Math.abs(d) < 0.25) sleepVs = 'som din normal';
+          else { sleepVs = (d>0?'+':'−') + sv(Math.abs(d),1) + ' h mot normal';
+                 sleepVsColor = d>0 ? 'oklch(0.72 0.14 145)' : 'oklch(0.77 0.13 62)'; }
+        }
+        const vilon = rows.map(r => nv(r.resting_heart_rate)).filter(v => v != null);
+        const vSnitt = medel(vilon.slice(1,8));
+        const resting = harNatt ? n1(natt.vilopuls) : n1(st.latest_resting_hr);
+        let restingLabel = 'vilopuls · ur nattens puls';
+        if (resting != null && vSnitt != null) {
+          const d = Math.round(resting - vSnitt);
+          restingLabel = 'vilopuls · ' + (d === 0 ? 'som ditt snitt' : (d>0?'+':'−')+Math.abs(d)+' mot snittet');
+        }
+
+        // ── Puls idag: band (lägsta–högsta) + snittlinje ────────────
+        const harPuls = puls.length > 1;
+        let pulsBand='', pulsLinje='', pulsVilo='', pulsNu='', pulsYMax='', pulsYMin='', pulsSpann='';
+        if (harPuls) {
+          let dLo = Infinity, dHi = -Infinity;
+          for (const p of puls) { dLo = Math.min(dLo, Number(p.lo)); dHi = Math.max(dHi, Number(p.hi)); }
+          const yLo = Math.max(30, Math.floor((Math.min(dLo, resting ?? dLo) - 4)/10)*10);
+          const yHi = Math.ceil((dHi + 4)/10)*10;
+          const X = m => m/1440*1000;
+          const Y = v => 96 - (v - yLo)/Math.max(yHi - yLo, 1)*92;
+          // Bryt kurvan vid luckor > 45 min i stället för att dra en falsk linje över dem
+          const grupper = []; let cur = []; let prev = null;
+          for (const p of puls) {
+            const m = Number(p.min_of_day);
+            if (prev != null && m - prev > 45 && cur.length) { grupper.push(cur); cur = []; }
+            cur.push(p); prev = m;
+          }
+          if (cur.length) grupper.push(cur);
+          for (const g of grupper) {
+            if (g.length < 2) continue;
+            let upp = '', ner = '';
+            for (let i=0;i<g.length;i++) upp += (i?'L':'M') + X(Number(g[i].min_of_day)).toFixed(1)+' '+Y(Number(g[i].hi)).toFixed(1);
+            for (let i=g.length-1;i>=0;i--) ner += 'L' + X(Number(g[i].min_of_day)).toFixed(1)+' '+Y(Number(g[i].lo)).toFixed(1);
+            pulsBand += upp + ner + 'Z';
+            for (let i=0;i<g.length;i++) pulsLinje += (i?'L':'M') + X(Number(g[i].min_of_day)).toFixed(1)+' '+Y(Number(g[i].snitt)).toFixed(1);
+          }
+          if (resting != null) pulsVilo = 'M0 '+Y(resting).toFixed(1)+'L1000 '+Y(resting).toFixed(1);
+          const nu = new Date(), nuMin = nu.getHours()*60 + nu.getMinutes();
+          pulsNu = 'M'+X(nuMin).toFixed(1)+' 0L'+X(nuMin).toFixed(1)+' 96';
+          pulsYMax = yHi; pulsYMin = yLo;
+          pulsSpann = Math.round(dLo)+'–'+Math.round(dHi)+' bpm';
+        }
+
+        // ── 14 dagar: sömn staplad, steg, vilopuls ──────────────────
+        // Stigande datum, utan tomma dagar i kanterna (en dag helt utan steg och
+        // sömn ger bara en tom kolumn och en vilseledande datumetikett).
+        const harNagot = r => (nv(r.steps) || 0) > 0 || (nv(r.sleep_hours) || 0) > 0;
+        let tomma = rows.slice(0,14).slice().reverse();
+        while (tomma.length && !harNagot(tomma[0])) tomma.shift();
+        const tr = tomma;
+        const n = tr.length, steg = n ? 1000/n : 0;
+        const bw = n ? Math.min(steg*0.62, 44) : 0;
+        const cx = i => steg*i + steg/2;
+        const trend = { djup:'', rem:'', latt:'', steg:'', vilo:'' };
+        const maxSomn = Math.max(9, ...tr.map(r => nv(r.sleep_hours) || 0));
+        const maxSteg = Math.max(10000, ...tr.map(r => nv(r.steps) || 0));
+        tr.forEach((r,i) => {
+          const x = cx(i) - bw/2;
+          let bas = 96;                                          // stapla nerifrån: djup → rem → lätt
+          for (const par of [['djup','djup_h'],['rem','rem_h'],['latt','latt_h']]) {
+            const h = (nv(r[par[1]]) || 0)/maxSomn*92;
+            if (h <= 0.2) continue;
+            trend[par[0]] += 'M'+x.toFixed(1)+' '+(bas-h).toFixed(1)+'h'+bw.toFixed(1)+'v'+h.toFixed(1)+'h-'+bw.toFixed(1)+'Z';
+            bas -= h;
+          }
+          const s = nv(r.steps) || 0;
+          if (s > 0) {
+            const h = s/maxSteg*92;
+            trend.steg += 'M'+x.toFixed(1)+' '+(96-h).toFixed(1)+'h'+bw.toFixed(1)+'v'+h.toFixed(1)+'h-'+bw.toFixed(1)+'Z';
+          }
+        });
+        const vArr = tr.map(r => nv(r.resting_heart_rate));
+        const vKanda = vArr.filter(v => v != null);
+        if (vKanda.length > 1) {
+          const lo = Math.min(...vKanda) - 3, hi = Math.max(...vKanda) + 3;
+          let igang = false;
+          tr.forEach((r,i) => {
+            const v = vArr[i];
+            if (v == null) { igang = false; return; }
+            trend.vilo += (igang?'L':'M') + cx(i).toFixed(1)+' '+(88 - (v-lo)/Math.max(hi-lo,1)*76).toFixed(1);
+            igang = true;
+          });
+        }
+        const trendDagar = tr.map(r => String(new Date(r.day+'T12:00:00').getDate()));
+        const trSomn = medel(tr.map(r => nv(r.sleep_hours)).filter(v => v!=null));
+        const trSteg = medel(tr.map(r => nv(r.steps)).filter(v => v!=null));
+        const trendSnitt = [ trSomn != null ? sv(trSomn,1)+' h sömn' : null,
+                             trSteg != null ? Math.round(trSteg).toLocaleString('sv-SE')+' steg' : null
+                           ].filter(Boolean).join(' · ');
+
+        // ── Rörelse ────────────────────────────────────────────────
+        const mal = 10000;
+        const steps = d0 && d0.steps != null ? Number(d0.steps) : null;
+        const pct = steps != null ? Math.min(100, Math.round(steps/mal*100)) : 0;
+        const tMin  = d0 && d0.exercise_minutes != null ? Math.round(Number(d0.exercise_minutes)) : null;
+        const tKcal = d0 && d0.total_calories   != null ? Math.round(Number(d0.total_calories))   : null;
+        const tKm   = d0 && d0.distance_m       != null ? Number(d0.distance_m)/1000 : null;
+        // Samsung skickar kalorier och distans bara för träningspass, aldrig som
+        // dygnstotaler — därför redovisas de som passets värden, inte dagens.
+        const traningText = tMin
+          ? 'Träningspass ' + tMin + ' min' + (tKm ? ' · ' + sv(tKm,1) + ' km' : '') + (tKcal ? ' · ' + tKcal + ' kcal' : '')
+          : 'Inget träningspass registrerat idag.';
+
+        // ── Kropp ──────────────────────────────────────────────────
+        const vikt = st.latest_weight != null ? Number(st.latest_weight).toLocaleString('sv-SE',{maximumFractionDigits:1}) : null;
+        const viktDetalj = vikt
+          ? [ st.latest_body_fat != null ? 'Kroppsfett ' + sv(st.latest_body_fat,1) + ' %' : null,
+              st.latest_weight_ts ? 'vägd ' + new Date(st.latest_weight_ts).toLocaleDateString('sv-SE',{day:'numeric',month:'short'}) : null
+            ].filter(Boolean).join(' · ')
+          : 'Eufy-vågen når inte hit ännu — EufyLife delar ingen vikt till Health Connect. Väg dig och öppna EufyLife; kommer inget värde behöver kopplingen ses över.';
+
+        // ── Synk (Ä3: stale över 24 h) ─────────────────────────────
         const STALE_TIMMAR = 24;
         const lastSync = st.last_sync_at ? new Date(st.last_sync_at) : null;
         const stale = !!lastSync && (Date.now() - lastSync.getTime()) > STALE_TIMMAR*3600e3;
-        const goal = 10000;
-        const steps = d0?.steps != null ? Number(d0.steps) : null;
-        const pct = steps != null ? Math.min(100, Math.round(steps/goal*100)) : 0;
-        const sleepH = d0?.sleep_hours != null ? (Math.round(Number(d0.sleep_hours)*10)/10).toLocaleString('sv-SE') : null;
-        const weight = st.latest_weight != null ? Number(st.latest_weight).toLocaleString('sv-SE',{maximumFractionDigits:1}) : null;
-        const resting = n1(d0?.resting_heart_rate) ?? n1(st.latest_resting_hr);
         const syncBits = [ lastSync
           ? 'Senast synkad ' + lastSync.toLocaleString('sv-SE',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})
           : 'Ingen synk från telefonen ännu' ];
         if (err) syncBits.push('kunde inte uppdatera — visar senast kända värden');
+
         return {
-          loading: !this.state.halsaLoaded && !hasData && !err,
-          empty: this.state.halsaLoaded && !err && !hasData,
+          loading: !S.halsaLoaded && !hasData && !err,
+          empty: S.halsaLoaded && !err && !hasData,
           errorOnly: err && !hasData,
           hasData,
-          error: this.state.halsaError || 'Okänt fel',
-          sleepH: sleepH ?? '–', sleepUnit: sleepH ? ' h' : '',
-          sleepRange: d0?.sleep_start ? `${hhmm(d0.sleep_start)}–${hhmm(d0.wake_time)}` : 'Ingen sömndata inatt',
+          error: S.halsaError || 'Okänt fel',
+          // Natten
+          harNatt, saknarNatt: !harNatt,
+          nattLabel: harNatt ? new Date(natt.end_ts).toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'short'}) : '',
+          sleepH: harNatt ? sv(natt.timmar,1) : '–',
+          sleepRange: harNatt ? hhmm(natt.start_ts)+'–'+hhmm(natt.end_ts) : '',
+          sleepVs, sleepVsColor,
+          restingHr: resting ?? '–', restingLabel,
+          hypno, hypnoTider, faser,
+          // Puls
+          harPuls, saknarPuls: !harPuls,
+          pulsBand, pulsLinje, pulsVilo, pulsNu, pulsYMax, pulsYMin, pulsSpann,
+          // Rörelse
           steps: steps != null ? steps.toLocaleString('sv-SE') : '–',
-          stepsGoal: goal.toLocaleString('sv-SE'), stepsPct: pct,
-          stepsBarStyle:{height:'3px',borderRadius:'3px',background:A,width:pct+'%'},
-          restingHr: resting ?? '–', restingUnit: resting != null ? ' bpm' : '',
-          hrDetail: d0?.avg_heart_rate != null
-            ? `Snitt ${n1(d0.avg_heart_rate)} · Max ${n1(d0.max_heart_rate)} bpm idag`
-            : 'Ingen pulsdata idag',
-          weight: weight ?? '–', weightUnit: weight ? ' kg' : '',
-          weightDetail: st.latest_body_fat != null
-            ? `Kroppsfett ${Number(st.latest_body_fat).toLocaleString('sv-SE',{maximumFractionDigits:1})} %`
-            : (st.latest_weight_ts ? 'Vägd ' + new Date(st.latest_weight_ts).toLocaleDateString('sv-SE') : 'Ingen vägning ännu'),
+          stepsGoal: mal.toLocaleString('sv-SE'), stepsPct: pct,
+          stepsBarStyle: 'height:100%;background:'+GRON+';width:'+pct+'%;border-radius:2px;',
+          traningText,
+          // Trend
+          trend, trendDagar, trendSnitt,
+          trendRubrik: (n || 0) + ' DAGAR',
+          // Kropp + synk
+          weight: vikt ?? '–', weightUnit: vikt ? ' kg' : '',
+          weightColor: vikt ? '#eef0f5' : 'rgba(238,240,245,0.32)',
+          weightDetail: viktDetalj,
           syncText: syncBits.join(' · '),
           staleBadge: stale ? '⚠ Äldre än 24 h' : '',
         };
