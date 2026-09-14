@@ -6,6 +6,9 @@
 // Idempotens (Ä1/Ä2): upsert mot dedup-nyckeln; återlevererade poster uppdaterar.
 // source = transport (Ä5): denna funktion sätter alltid 'hc_webhook' om inte
 // anroparen anger en känd transport i fältet "source" (samsung_export | manual).
+// Alternativ auth (dashboardens Vågen-kort): Supabase-session-JWT i Authorization,
+// godkänns bara om användarens e-post är ägarens — ingen delad hemlighet i klienten.
+// CORS: endast dashboardens origins (browsern kräver preflight för POST med JSON).
 
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -16,6 +19,19 @@ const supabase = createClient(
 
 const MAX_BODY_BYTES = 20 * 1024 * 1024;  // första synken (48h, täta pulsserier) kan vara stor
 const ALLOWED_SOURCES = new Set(["hc_webhook", "samsung_export", "manual"]);
+const OWNER_EMAIL = "mats@enmarks.se";
+const ALLOWED_ORIGINS = new Set(["https://privat-dashboard-inky.vercel.app", "http://localhost:8117"]);
+
+function corsHeaders(req: Request): Record<string, string> {
+  const origin = req.headers.get("origin") ?? "";
+  if (!ALLOWED_ORIGINS.has(origin)) return {};
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "authorization, content-type, x-halsa-secret",
+    "Vary": "Origin",
+  };
+}
 
 // Payloadnycklar → kanonisk metric + enhet + kandidatfält för värdet.
 // ponytail: fältnamnen antas från HC Webhooks dokumentation; verifieras mot
@@ -79,30 +95,38 @@ async function validSecrets(): Promise<string[]> {
 }
 
 Deno.serve(async (req) => {
-  if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "method not allowed" }), { status: 405 });
-  }
+  const cors = corsHeaders(req);
+  const json = (status: number, body: unknown) =>
+    new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...cors } });
 
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
+  if (req.method !== "POST") return json(405, { error: "method not allowed" });
+
+  // Auth 1: delad hemlighet (bryggappen). Auth 2: ägarens inloggade session (dashboarden).
   const provided = req.headers.get("x-halsa-secret") ?? "";
+  const bearer = (req.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
   let ok = false;
-  try {
-    const secrets = await validSecrets();
-    ok = provided.length > 0 && secrets.some((s) => constantTimeEq(provided, s));
-  } catch {
-    return new Response(JSON.stringify({ error: "auth backend unavailable" }), { status: 503 });
+  if (provided.length > 0) {
+    try {
+      const secrets = await validSecrets();
+      ok = secrets.some((s) => constantTimeEq(provided, s));
+    } catch {
+      return json(503, { error: "auth backend unavailable" });
+    }
+  } else if (bearer) {
+    const { data } = await supabase.auth.getUser(bearer);
+    ok = data?.user?.email === OWNER_EMAIL;
   }
-  if (!ok) return new Response(JSON.stringify({ error: "unauthorized" }), { status: 401 });
+  if (!ok) return json(401, { error: "unauthorized" });
 
   const text = await req.text();
-  if (text.length > MAX_BODY_BYTES) {
-    return new Response(JSON.stringify({ error: "payload too large" }), { status: 413 });
-  }
+  if (text.length > MAX_BODY_BYTES) return json(413, { error: "payload too large" });
   let payload: Record<string, unknown>;
   try {
     payload = JSON.parse(text);
     if (payload === null || typeof payload !== "object" || Array.isArray(payload)) throw new Error();
   } catch {
-    return new Response(JSON.stringify({ error: "invalid json" }), { status: 400 });
+    return json(400, { error: "invalid json" });
   }
 
   const source = ALLOWED_SOURCES.has(payload.source as string) ? payload.source as string : "hc_webhook";
@@ -213,8 +237,5 @@ Deno.serve(async (req) => {
     }).eq("id", logId);
   }
 
-  return new Response(
-    JSON.stringify({ status, received, upserted, skipped, errors }),
-    { status: errors > 0 ? 500 : 200, headers: { "Content-Type": "application/json" } },
-  );
+  return json(errors > 0 ? 500 : 200, { status, received, upserted, skipped, errors });
 });

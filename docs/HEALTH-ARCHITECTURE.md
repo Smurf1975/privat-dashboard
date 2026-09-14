@@ -1,7 +1,7 @@
 # Hälsomodulen — arkitektur och kontrakt (Fas 0)
 
 **Skapad:** 2026-08-11 · **Status:** Fas 0 klar (foundation, ingen live-källa kopplad ännu)
-**Bakgrund & beslut:** `Knowledge Base/Sources/Hälsa/Hälsa-Know/` (Arkitekturanalys + Second Opinion, Ä1–Ä5) · BUILD_CONTRACT: `AI Native OS/04_APPS/Command-Center/BUILD_CONTRACT.md`
+**Bakgrund & beslut:** `Knowledge Base/raw/files/Hälsa/Hälsa-Know/` (Arkitekturanalys + Second Opinion, Ä1–Ä5) · BUILD_CONTRACT: `AI Native OS/04_APPS/Command-Center/BUILD_CONTRACT.md`
 
 ## Flöde
 
@@ -21,6 +21,8 @@ Sleep as Android ┘                                    │ POST + x-halsa-secre
 ```
 
 Lagren är avsiktligt separerade: **transporten (bryggappen) kan bytas utan att någon rad nedströms ändras.**
+
+**Andra dörren in (2026-09-14): Vågen-kortet i Hälsa-fliken.** EufyLife-export (CSV) eller manuell vikt → `halsa-import.js` bygger samma payload → samma `halsa-ingest`, men autentiserad med Mats inloggade Supabase-session i stället för delad hemlighet. Ingen ny tabell, funktion eller vy.
 
 ## Datamodell
 
@@ -56,7 +58,7 @@ En rad per sömnsession: `start_ts`, `end_ts`, `quality` (null tills källa ger 
 Kvitto per synk: räknare (received/upserted/skipped/errors), `latest_record_ts`, `error_summary`. **Aldrig rå-payload eller hälsovärden i loggen.** Driver stale-indikatorn.
 
 ### `source` = transport (Ä5)
-`hc_webhook` · `samsung_export` · `manual`. Betyder HUR posten kom in — **aldrig** vilken app som mätte. Käll-app finns inte i bryggans payload och får inte antas i vyer eller analys. Om framtida payload innehåller app-metadata läggs det som eget fält (`origin_app`), semantiken på `source` ändras inte.
+`hc_webhook` · `samsung_export` · `manual`. Betyder HUR posten kom in — **aldrig** vilken app som mätte. `manual` täcker både EufyLife-filimport och formuläret i Vågen-kortet (transporten är i båda fallen "Mats via dashboarden"); `raw.origin` = `eufy_export` | `manual_form` skiljer dem när det behövs. Käll-app finns inte i bryggans payload och får inte antas i vyer eller analys. Om framtida payload innehåller app-metadata läggs det som eget fält (`origin_app`), semantiken på `source` ändras inte.
 
 ## Vyer
 
@@ -89,10 +91,16 @@ Båda är vanliga vyer med `security_invoker = true` → RLS på undertabellerna
 - **Nyckelrotation** (System change — kräver Mats godkännande): 1) skapa ny nyckel som `..._current`, flytta gamla till `..._previous` (`vault.update_secret`), 2) uppdatera bryggappens header, 3) när bryggan bekräftat fungera: byt ut `..._previous`. Ingest fortsätter fungera hela vägen.
 - **Rate limiting:** beslut = ingen utöver secret-auth. Hotmodell: privat oannonserad endpoint, en användare; skadan vid läcka begränsas av idempotent upsert (ingen läsväg, ingen delete). Supabase plattformsskydd ligger utanpå. Omprövas om loggen visar missbruk.
 - verify_jwt=false på funktionen (bryggan har ingen Supabase-JWT) — auth sker i funktionskoden, samma mönster som övriga öppna proxies.
+- **Auth 2 — ägarens session (Vågen-kortet, 2026-09-14):** saknas `x-halsa-secret` läser funktionen `Authorization: Bearer <session-JWT>`, verifierar den via `auth.getUser` och godkänner bara om e-posten är `mats@enmarks.se` (samma identitet som RLS-läsningen). Ingen hemlighet i klienten. **CORS:** funktionen svarar på preflight (`OPTIONS`) och sätter `Access-Control-Allow-Origin` endast för `https://privat-dashboard-inky.vercel.app` och `http://localhost:8117`. Auth-ändring = System change (Change Management) → deployas först efter Mats godkännande; tills dess svarar produktion 401/CORS-fel på anrop från dashboarden och kortet visar "Kunde inte spara".
 
 ## Frontend
 
 `fetchHalsa()` läser fyra vyer — aldrig råtabeller — i befintlig `fetchAll`-poll (5 min) och triggas vid inloggning (`onSession`). Hypnogrammet hämtas bara för senaste natten (`limit 1`); trendernas fasstaplar klarar sig på `halsa_daily_v`, så payloaden hålls liten. Cache: `halsaDaily`/`halsaStatus`/`halsaNatt`/`halsaPuls` i `lcc_cache` (additiva nycklar — gammal cache krockar inte).
+
+### Vågen-kortet (Eufy-import + manuell vikt)
+Ligger sist i Hälsa-fliken, utanför data-/empty-/fel-tillstånden, så det nås även när ingen synk skett. Parsern bor i `halsa-import.js` — ren funktionsmodul utan DOM, körbar i Node (`parseEufy(text)`, `manuell(datum, vikt, fett)`). Inputfälten är statisk DOM med id:n (`h-eufy-fil`, `h-m-datum`, `h-m-vikt`, `h-m-fett`); runtimens `sc-if` togglar bara `display`, så värdena överlever omrenderingar. `halsaSkicka(payload)` postar med sessionens access token och anropar sedan `fetchHalsa()` så kroppskortet uppdateras direkt. Idempotent upsert → samma fil kan importeras hur många gånger som helst (verifierat: 332 rader före och efter omsändning).
+
+**EufyLife-exportens format (verifierat 2026-09-14, appens "Export data"):** en CSV per mätslag (`weight_…csv`, `circumference_…csv`), UTF-8 med BOM, kommaseparerad, nyaste först. Kolumner i viktfilen: `Time` (lokal tid `YYYY-MM-DD HH:MM:SS`, ingen zon), `Family Members` (hela familjen i samma fil, namnet har ibland avslutande blanksteg), `WEIGHT (kg)`, `BMI`, `BODY FAT %`, `HEART RATE (bpm)`, `MUSCLE MASS (kg)`, `MUSCLE MASS %`, `BMR`, `WATER`, `BODY FAT MASS (kg)`, `LEAN BODY MASS (kg)`, `BONE MASS (kg)`, `BONE MASS %`, `VISCERAL FAT`, `PROTEIN %`, `SKELETAL MUSCLE MASS (kg)`, `SUBCUTANEOUS FAT %`, `BODY AGE`, `BODY TYPE`, `HEAD SIZE (cm)`. `0.000000` betyder "saknas". Samma vägning förekommer 2–3 gånger. Parsern: filtrerar på `Mats Enmark`, dedupar per tidsstämpel, tolkar tiden i webbläsarens zon, mappar vikt → `weight_kg`, `BODY FAT %` → `body_fat_pct`, `LEAN BODY MASS` → `lean_body_mass_kg`; BMI, muskelmassa, vatten, BMR, benmassa, visceralt fett, protein och skelettmuskel följer med i viktpostens `raw` (inga kanoniska metrics — läggs till om de ska visas). Vågens pulsvärde ignoreras (punktmätning stående på vågen, skulle förorena pulsgrafen).
 
 ### Grafer i DCLogic-runtimen
 Runtimens `sc-for` bygger noder via `template.innerHTML`, vilket parsar barnen i **HTML**-namnrymden — `<rect>`/`<path>` blir då HTMLUnknownElement och renderas aldrig. Därför får diagrammen **aldrig** byggas med `sc-for` inuti `<svg>`. I stället är varje SVG-element författat direkt i markupen och får sin geometri via en `d`-attributbindning till en path-sträng som `renderVals` räknar fram. Fem diagram, tretton paths, noll DOM-churn per omrendering.
@@ -111,7 +119,9 @@ Hälsa-fliken använder CSS-klasser med media queries (`.h-g21`, `.h-g11`, `.h-h
 
 1. Payloadens fältnamn verifierade mot verklig data 2026-08-12 för steps/heart_rate/exercise/total_calories (221 poster, 0 skipped). Sömn, vikt, HRV m.fl. återstår att se i verklig payload. Bonus: posterna bär `metadata.data_origin` (käll-app!) — sparas i `raw`; kan bli eget `origin_app`-fält om behov uppstår (ändrar inte `source`-semantiken, Ä5).
 2. Raderingar i Health Connect propageras inte (bryggan skickar inga deletes) — manuell SQL-städning vid behov.
-2b. **Vikt saknas helt:** EufyLife skriver ingen vikt till Health Connect trots att appen står i behörighetslistan. Kroppskortet redovisar det öppet i stället för att visa ett tomt värde utan förklaring. Kvarstår tills Eufy-kopplingen är löst.
+2b. **Vikt via Health Connect fungerar inte** (EufyLife skriver ingen vikt dit) — löst 2026-09-14 med Vågen-kortet i stället: 112 vägningar 2025-04-02 → 2026-08-17 importerade ur EufyLife-exporten (`source=manual`, `raw.origin=eufy_export`). Nya vägningar kräver ny export eller manuell inmatning; ingen live-koppling. Kroppskortets "Eufy-vågen når inte hit"-text visas bara när ingen vikt finns alls.
+2d. **Manuell import räknas som synk:** `halsa_status_v.last_sync_at` tar max över alla `ok`-rader i `halsa_ingest_log` oavsett `source`, så en import släcker stale-badgen tillfälligt. Vyn är oförändrad (schemaändring utanför scope); åtgärda med `where source='hc_webhook'` om det stör.
+2e. **Avvikare i exporten:** 2025-04-16 17:18 har 30,45 kg på Mats profil (troligen ett barn vägt på fel profil). Ligger kvar i tabellen — radering är Mats beslut.
 2c. **Kalorier och distans gäller bara träningspass**, inte hela dygnet — Samsung skickar `TotalCaloriesBurned`/`Distance` enbart för `ExerciseSession`. De redovisas därför som passets värden i rörelsekortet och används aldrig som dygnstotaler.
 3. Bryggans lookback är 48 h — luckor däröver kräver recovery (se `HEALTH-RECOVERY.md`).
 4. Empty-staten med aktiv session är verifierad i kod men inte i browser (kräver inloggad session — verifieras av Mats vid deploy).

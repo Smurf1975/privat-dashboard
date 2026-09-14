@@ -17,6 +17,14 @@
 <meta name="apple-mobile-web-app-title" content="Enmark">
 
 <script src="./support.js"></script>
+<script src="./halsa-import.js"></script>
+<style>
+  /* Hälsa: Eufy-import + manuell vikt */
+  .h-in{background:#0f1117;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#eef0f5;font:inherit;font-size:13px;padding:8px 10px;color-scheme:dark;}
+  .h-in::file-selector-button{background:#1e2230;border:0;border-radius:6px;color:#c8ccd6;font:inherit;font-size:12px;padding:5px 9px;margin-right:8px;cursor:pointer;}
+  .h-btn{background:#1e2230;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#eef0f5;font:inherit;font-size:13px;font-weight:600;padding:8px 14px;cursor:pointer;}
+  .h-btn:hover{background:#262b3a;}
+</style>
 <script>
   if ('serviceWorker' in navigator) {
     addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
@@ -1307,6 +1315,22 @@
 
       </sc-if>
 
+      <!-- ── VÅGEN: EufyLife-export eller manuell vikt → halsa-ingest (source=manual), aldrig råtabeller ── -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;margin-top:14px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">VÅGEN</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+          <input id="h-eufy-fil" type="file" accept=".csv,text/csv" class="h-in" aria-label="EufyLife-export (weight_….csv)">
+          <button onclick="{{ health.onImport }}" class="h-btn">Importera EufyLife-fil</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px;">
+          <input id="h-m-datum" type="date" class="h-in" aria-label="Datum (tomt = idag)">
+          <input id="h-m-vikt" type="number" step="0.05" min="20" max="300" inputmode="decimal" placeholder="Vikt kg" class="h-in" style="width:100px;">
+          <input id="h-m-fett" type="number" step="0.1" min="1" max="70" inputmode="decimal" placeholder="Fett % (valfritt)" class="h-in" style="width:140px;">
+          <button onclick="{{ health.onSpara }}" class="h-btn">Spara vikt</button>
+        </div>
+        <div style="font-size:12px;color:rgba(238,240,245,0.5);margin-top:10px;line-height:1.6;">{{ health.importMsg }}</div>
+      </div>
+
     </sc-if>
 
   </main>
@@ -1390,7 +1414,7 @@ class Component extends DCLogic {
     fardplanBookings:[],
     fpAuthed:false, fpEmail:null, fpLinkSent:false, fpLinkError:null, fpSending:false,
     // Hälsa (halsa_daily_v + halsa_status_v — RLS ger endast Mats rader)
-    halsaDaily:[], halsaStatus:null, halsaNatt:[], halsaPuls:[], halsaOk:true, halsaError:null, halsaLoaded:false,
+    halsaDaily:[], halsaStatus:null, halsaNatt:[], halsaPuls:[], halsaOk:true, halsaError:null, halsaLoaded:false, halsaImportMsg:'',
   };
 
   componentDidMount() {
@@ -2291,6 +2315,21 @@ class Component extends DCLogic {
 
   // Hälsa: dagsvyn + statusvyn (aldrig råtabellerna). RLS släpper bara igenom
   // Mats session; övriga får tomma svar. Stale-logiken ligger i renderVals.
+  // Vågen → halsa-ingest. Auth = Mats inloggade session (funktionen verifierar
+  // e-posten), ingen hemlighet i klienten. Idempotent upsert → ofarligt att skicka om.
+  async halsaSkicka(payload) {
+    const { data } = await this._sbClient.auth.getSession();
+    const token = data?.session?.access_token;
+    if (!token) throw new Error('Ej inloggad');
+    const r = await fetch(this.SB_URL + '/functions/v1/halsa-ingest', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+      body: JSON.stringify(payload),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || ('ingest ' + r.status));
+    return d;
+  }
+
   async fetchHalsa() {
     const db = this._sbClient;
     if (!db) return;
@@ -3546,6 +3585,36 @@ class Component extends DCLogic {
           weightDetail: viktDetalj,
           syncText: syncBits.join(' · '),
           staleBadge: stale ? '⚠ Äldre än 24 h' : '',
+          // Vågen
+          importMsg: S.halsaImportMsg || '',
+          onImport: async () => {
+            const fil = document.getElementById('h-eufy-fil');
+            const f = fil?.files?.[0];
+            if (!f) return this.setState({ halsaImportMsg: 'Välj EufyLife-filen (weight_….csv) först.' });
+            try {
+              this.setState({ halsaImportMsg: 'Läser filen…' });
+              const p = HalsaImport.parseEufy(await f.text());
+              if (!p.vagningar) throw new Error('inga vägningar för Mats i filen');
+              this.setState({ halsaImportMsg: 'Skickar ' + p.vagningar + ' vägningar…' });
+              const d = await this.halsaSkicka(p.payload);
+              fil.value = '';
+              this.setState({ halsaImportMsg: 'Klart: ' + p.vagningar + ' vägningar sparade (' + d.upserted + ' mätvärden). Hoppade över '
+                + p.andra + ' rader för andra familjemedlemmar' + (p.dubbletter ? ' och ' + p.dubbletter + ' dubbletter' : '') + '.' });
+              this.fetchHalsa();
+            } catch (e) { this.setState({ halsaImportMsg: 'Importen misslyckades: ' + e.message }); }
+          },
+          onSpara: async () => {
+            const g = id => document.getElementById(id);
+            const p = HalsaImport.manuell(g('h-m-datum').value, g('h-m-vikt').value, g('h-m-fett').value);
+            if (!p) return this.setState({ halsaImportMsg: 'Ange vikt (t.ex. 71,5).' });
+            try {
+              this.setState({ halsaImportMsg: 'Sparar…' });
+              await this.halsaSkicka(p.payload);
+              g('h-m-vikt').value = ''; g('h-m-fett').value = '';
+              this.setState({ halsaImportMsg: 'Sparat ' + new Date(p.time).toLocaleString('sv-SE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + '.' });
+              this.fetchHalsa();
+            } catch (e) { this.setState({ halsaImportMsg: 'Kunde inte spara: ' + e.message }); }
+          },
         };
       })(),
       news, newsCats, newsBadge, newsBadgeStyle, onyx,
