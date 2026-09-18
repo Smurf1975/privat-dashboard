@@ -73,6 +73,8 @@ Kvitto per synk: räknare (received/upserted/skipped/errors), `latest_record_ts`
 
 **`halsa_natt_v`** (Fas 2) — en rad per natt: start/slut, timmar, fasfördelning (`djup_h`/`rem_h`/`latt_h`/`vaken_h`), härledd `vilopuls`, och `hypnogram` — en kompakt array `[offset_min, längd_min, stage]` per segment, mätt från sömnstart. Den formen är ~10× mindre än rå `phases`-jsonb och ritas direkt av klienten.
 
+**`halsa_kropp_v`** (2026-09-18) — en rad per vägning: `ts`, `dag`, `vikt`, `fett_pct`, `mager_kg` plus vågens egna extravärden uppackade ur viktpostens `raw` (`bmi`, `muskel_kg`, `vatten_pct`, `visceralt`, `benmassa_kg`, `bmr`). Extravärdena blev medvetet **inte** egna metrics: de kommer bara från Eufy-vågen och behövs bara för presentation, så ingest lämnades orörd (annars hade funktionen behövt deployas om för varje nytt fält). Läses av Kroppen-kortet.
+
 **`halsa_puls_15m_v`** (Fas 2) — puls per 15-minutersfönster och dag: `lo`/`snitt`/`hi`. `lo` och `hi` läses ur `raw`-fältets min/max per Samsung-bucket, så bandet visar sant lägsta–högsta, inte bara spridningen mellan snittvärden.
 
 ### Härledd vilopuls
@@ -97,6 +99,14 @@ Båda är vanliga vyer med `security_invoker = true` → RLS på undertabellerna
 
 `fetchHalsa()` läser fyra vyer — aldrig råtabeller — i befintlig `fetchAll`-poll (5 min) och triggas vid inloggning (`onSession`). Hypnogrammet hämtas bara för senaste natten (`limit 1`); trendernas fasstaplar klarar sig på `halsa_daily_v`, så payloaden hålls liten. Cache: `halsaDaily`/`halsaStatus`/`halsaNatt`/`halsaPuls` i `lcc_cache` (additiva nycklar — gammal cache krockar inte).
 
+### Kroppen-kortet (vikt och sammansättning över tid)
+Läser `halsa_kropp_v` (hela historiken i ett anrop — ~100 vägningar/år). Visar senaste vikt, tre jämförelser (sedan förra vägningen, 30 dagar, 1 år), en viktkurva med yta, två kurvrader (fett-% och muskelmassa) och fyra brickor (BMI, vatten, visceralt fett, basalförbrukning). Tre regler styr ärligheten:
+1. **X-axeln är verklig tid, inte radindex** — vägningarna är glesa och ojämna, och uppehållet dec 2025–maj 2026 ska synas som ett uppehåll.
+2. **Kurvan bryts vid uppehåll över 45 dagar** i stället för att dra en påhittad linje över dem (samma regel som pulskurvans 45-minutersluckor).
+3. **Vägningar som avviker mer än 25 % från medianen visas inte** — i praktiken någon annan som klivit på Mats profil (2025-04-16 står 30,45 kg). Antalet redovisas öppet i kortets not och raden ligger kvar i databasen; att radera produktionsdata är Mats beslut.
+
+Jämförelserna letar upp närmaste vägning minst N dagar bakåt och skriver ut referensdatumet, eftersom "30 dagar" sällan har en vägning på exakt den dagen. Kortet ligger utanför `hasData`-blocket: vikten finns även när telefonsynken är tyst.
+
 ### Vågen-kortet (Eufy-import + manuell vikt)
 Ligger sist i Hälsa-fliken, utanför data-/empty-/fel-tillstånden, så det nås även när ingen synk skett. Parsern bor i `halsa-import.js` — ren funktionsmodul utan DOM, körbar i Node (`parseEufy(text)`, `manuell(datum, vikt, fett)`). Inputfälten är statisk DOM med id:n (`h-eufy-fil`, `h-m-datum`, `h-m-vikt`, `h-m-fett`); runtimens `sc-if` togglar bara `display`, så värdena överlever omrenderingar. `halsaSkicka(payload)` postar med sessionens access token och anropar sedan `fetchHalsa()` så kroppskortet uppdateras direkt. Idempotent upsert → samma fil kan importeras hur många gånger som helst (verifierat: 332 rader före och efter omsändning).
 
@@ -119,7 +129,7 @@ Hälsa-fliken använder CSS-klasser med media queries (`.h-g21`, `.h-g11`, `.h-h
 
 1. Payloadens fältnamn verifierade mot verklig data 2026-08-12 för steps/heart_rate/exercise/total_calories (221 poster, 0 skipped). Sömn, vikt, HRV m.fl. återstår att se i verklig payload. Bonus: posterna bär `metadata.data_origin` (käll-app!) — sparas i `raw`; kan bli eget `origin_app`-fält om behov uppstår (ändrar inte `source`-semantiken, Ä5).
 2. Raderingar i Health Connect propageras inte (bryggan skickar inga deletes) — manuell SQL-städning vid behov.
-2b. **Vikt via Health Connect fungerar inte** (EufyLife skriver ingen vikt dit) — löst 2026-09-14 med Vågen-kortet i stället: 112 vägningar 2025-04-02 → 2026-08-17 importerade ur EufyLife-exporten (`source=manual`, `raw.origin=eufy_export`). Nya vägningar kräver ny export eller manuell inmatning; ingen live-koppling. Kroppskortets "Eufy-vågen når inte hit"-text visas bara när ingen vikt finns alls.
+2b. **Kroppssammansättningen bygger på bioimpedans** (vågens skattning) och rör sig långsamt — trenden bär, enskilda mätningar inte. Vikt via Health Connect fungerar inte (EufyLife skriver ingen vikt dit) — löst 2026-09-14 med Vågen-kortet i stället: 112 vägningar 2025-04-02 → 2026-08-17 importerade ur EufyLife-exporten (`source=manual`, `raw.origin=eufy_export`). Nya vägningar kräver ny export eller manuell inmatning; ingen live-koppling. Kroppskortets "Eufy-vågen når inte hit"-text visas bara när ingen vikt finns alls.
 2d. **Manuell import räknas som synk:** `halsa_status_v.last_sync_at` tar max över alla `ok`-rader i `halsa_ingest_log` oavsett `source`, så en import släcker stale-badgen tillfälligt. Vyn är oförändrad (schemaändring utanför scope); åtgärda med `where source='hc_webhook'` om det stör.
 2e. **Avvikare i exporten:** 2025-04-16 17:18 har 30,45 kg på Mats profil (troligen ett barn vägt på fel profil). Ligger kvar i tabellen — radering är Mats beslut.
 2c. **Kalorier och distans gäller bara träningspass**, inte hela dygnet — Samsung skickar `TotalCaloriesBurned`/`Distance` enbart för `ExerciseSession`. De redovisas därför som passets värden i rörelsekortet och används aldrig som dygnstotaler.

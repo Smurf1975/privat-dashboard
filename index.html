@@ -50,12 +50,14 @@
        JS-breakpointen, så graferna får full bredd även när window.innerWidth ljuger. */
     .h-g21{display:grid;grid-template-columns:1.9fr 1fr;gap:14px;}
     .h-g11{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
+    .h-g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;}
     .h-hypno{width:100%;height:138px;display:block;}
     .h-rad{display:flex;align-items:center;gap:14px;}
     .h-rad>span{font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(238,240,245,0.5);width:64px;flex-shrink:0;}
     .h-axel{display:flex;justify-content:space-between;margin-top:9px;margin-left:78px;font-size:10px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;}
     @media(max-width:760px){
       .h-g21,.h-g11{grid-template-columns:1fr;}
+      .h-g4{grid-template-columns:1fr 1fr;}
       .h-hypno{height:110px;}
       .h-rad{gap:10px;} .h-rad>span{width:52px;font-size:9.5px;letter-spacing:0.02em;}
       .h-axel{margin-left:62px;}
@@ -1299,13 +1301,8 @@
           </div>
         </div>
 
-        <!-- ── KROPP + SYNK ── -->
-        <div class="h-g11">
-          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;animation:fadeUp 0.4s ease 0.18s both;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">KROPP</div>
-            <div style="font-size:34px;font-weight:200;letter-spacing:-0.03em;color:{{ health.weightColor }};line-height:1;">{{ health.weight }}<span style="font-size:15px;color:rgba(238,240,245,0.4);">{{ health.weightUnit }}</span></div>
-            <div style="font-size:12px;color:rgba(238,240,245,0.5);margin-top:9px;line-height:1.7;">{{ health.weightDetail }}</div>
-          </div>
+        <!-- ── SYNK ── (kroppsdata bor i Kroppen-kortet nedan) -->
+        <div style="margin-top:14px;">
           <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;animation:fadeUp 0.4s ease 0.22s both;">
             <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">SYNK</div>
             <div style="font-size:12.5px;color:rgba(238,240,245,0.5);line-height:1.7;">{{ health.syncText }}</div>
@@ -1313,6 +1310,72 @@
           </div>
         </div>
 
+      </sc-if>
+
+      <!-- ── KROPPEN — vikt, fett och sammansättning över tid (Eufy-vågen via Vågen-kortet) ── -->
+      <sc-if value="{{ health.harKropp }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px 16px;margin-top:14px;animation:fadeUp 0.4s ease 0.18s both;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">KROPPEN</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.5);">{{ health.kAntal }}</div>
+          </div>
+
+          <div style="display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:18px;">
+            <div>
+              <div style="font-size:44px;font-weight:200;letter-spacing:-0.04em;color:#eef0f5;line-height:0.95;">{{ health.kVikt }}<span style="font-size:16px;color:rgba(238,240,245,0.4);"> kg</span></div>
+              <div style="font-size:11.5px;color:rgba(238,240,245,0.5);margin-top:8px;">{{ health.kVagd }}</div>
+            </div>
+            <div style="display:flex;gap:22px;flex-wrap:wrap;">
+              <sc-for list="{{ health.kDeltas }}" as="d">
+                <div>
+                  <div style="font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(238,240,245,0.5);">{{ d.etikett }}</div>
+                  <div style="font-size:18px;font-weight:300;margin-top:4px;color:{{ d.farg }};font-variant-numeric:tabular-nums;">{{ d.txt }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="position:relative;">
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="width:100%;height:120px;display:block;overflow:visible;" role="img" aria-label="Vikt över tid">
+              <path d="{{ health.kViktYta }}" fill="oklch(0.70 0.11 228 / 0.14)"/>
+              <path d="{{ health.kViktLinje }}" stroke="oklch(0.70 0.11 228)" stroke-width="1.75" fill="none" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <div style="position:absolute;top:-2px;right:0;font-size:10px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">{{ health.kYMax }}</div>
+            <div style="position:absolute;bottom:2px;right:0;font-size:10px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;">{{ health.kYMin }}</div>
+          </div>
+          <div style="position:relative;height:14px;margin-top:5px;">
+            <sc-for list="{{ health.kManader }}" as="m">
+              <span style="{{ m.stil }}">{{ m.txt }}</span>
+            </sc-for>
+          </div>
+
+          <div class="h-rad" style="margin-top:12px;">
+            <span>Fett</span>
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="flex:1;min-width:0;height:40px;display:block;overflow:visible;" role="img" aria-label="Kroppsfett i procent över tid">
+              <path d="{{ health.kFett }}" stroke="oklch(0.70 0.15 302)" stroke-width="1.75" fill="none" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <span style="width:auto;flex-shrink:0;text-transform:none;letter-spacing:0;font-size:12px;font-variant-numeric:tabular-nums;color:rgba(238,240,245,0.62);">{{ health.kFettNu }}</span>
+          </div>
+          <div class="h-rad" style="margin-top:6px;">
+            <span>Muskler</span>
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="flex:1;min-width:0;height:40px;display:block;overflow:visible;" role="img" aria-label="Muskelmassa över tid">
+              <path d="{{ health.kMuskel }}" stroke="oklch(0.82 0.24 130)" stroke-width="1.75" fill="none" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <span style="width:auto;flex-shrink:0;text-transform:none;letter-spacing:0;font-size:12px;font-variant-numeric:tabular-nums;color:rgba(238,240,245,0.62);">{{ health.kMuskelNu }}</span>
+          </div>
+
+          <div class="h-g4">
+            <sc-for list="{{ health.kBrickor }}" as="b">
+              <div style="background:rgba(255,255,255,0.03);border-radius:9px;padding:12px 13px;">
+                <div style="font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(238,240,245,0.5);">{{ b.etikett }}</div>
+                <div style="font-size:20px;font-weight:300;color:#eef0f5;margin-top:5px;font-variant-numeric:tabular-nums;">{{ b.varde }}<span style="font-size:11px;color:rgba(238,240,245,0.4);"> {{ b.enhet }}</span></div>
+                <div style="font-size:10.5px;color:rgba(238,240,245,0.45);margin-top:3px;">{{ b.delta }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="font-size:11px;color:rgba(238,240,245,0.38);margin-top:14px;line-height:1.6;">{{ health.kNot }}</div>
+        </div>
       </sc-if>
 
       <!-- ── VÅGEN: EufyLife-export eller manuell vikt → halsa-ingest (source=manual), aldrig råtabeller ── -->
@@ -1415,7 +1478,7 @@ class Component extends DCLogic {
     fardplanBookings:[],
     fpAuthed:false, fpEmail:null, fpLinkSent:false, fpLinkError:null, fpSending:false,
     // Hälsa (halsa_daily_v + halsa_status_v — RLS ger endast Mats rader)
-    halsaDaily:[], halsaStatus:null, halsaNatt:[], halsaPuls:[], halsaOk:true, halsaError:null, halsaLoaded:false, halsaImportMsg:'',
+    halsaDaily:[], halsaStatus:null, halsaNatt:[], halsaPuls:[], halsaKropp:[], halsaOk:true, halsaError:null, halsaLoaded:false, halsaImportMsg:'',
   };
 
   componentDidMount() {
@@ -2204,7 +2267,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -2331,15 +2394,17 @@ class Component extends DCLogic {
       // Hypnogrammet hämtas bara för senaste natten (limit 1) — trenderna klarar
       // sig på fasfördelningen i halsa_daily_v, så payloaden hålls liten.
       const idag = new Date().toLocaleDateString('sv-SE');
-      const [daily, status, natt, puls] = await Promise.all([
+      const [daily, status, natt, puls, kropp] = await Promise.all([
         db.from('halsa_daily_v').select('*').order('day', { ascending: false }).limit(14),
         db.from('halsa_status_v').select('*').maybeSingle(),
         db.from('halsa_natt_v').select('*').order('natt', { ascending: false }).limit(1),
         db.from('halsa_puls_15m_v').select('min_of_day,lo,snitt,hi').eq('day', idag).order('min_of_day'),
+        // Vägningarna är få (~100/år) — hela historiken ryms i ett anrop.
+        db.from('halsa_kropp_v').select('*').order('ts', { ascending: false }).limit(400),
       ]);
-      for (const r of [daily, status, natt, puls]) if (r.error) throw r.error;
+      for (const r of [daily, status, natt, puls, kropp]) if (r.error) throw r.error;
       this.setState({ halsaDaily: daily.data || [], halsaStatus: status.data || null,
-                      halsaNatt: natt.data || [], halsaPuls: puls.data || [],
+                      halsaNatt: natt.data || [], halsaPuls: puls.data || [], halsaKropp: kropp.data || [],
                       halsaOk: true, halsaError: null, halsaLoaded: true });
     } catch(e) {
       console.warn('Hälsa:', e.message);
@@ -3531,13 +3596,102 @@ class Component extends DCLogic {
           ? 'Träningspass ' + tMin + ' min' + (tKm ? ' · ' + sv(tKm,1) + ' km' : '') + (tKcal ? ' · ' + tKcal + ' kcal' : '')
           : 'Inget träningspass registrerat idag.';
 
-        // ── Kropp ──────────────────────────────────────────────────
-        const vikt = st.latest_weight != null ? Number(st.latest_weight).toLocaleString('sv-SE',{maximumFractionDigits:1}) : null;
-        const viktDetalj = vikt
-          ? [ st.latest_body_fat != null ? 'Kroppsfett ' + sv(st.latest_body_fat,1) + ' %' : null,
-              st.latest_weight_ts ? 'vägd ' + new Date(st.latest_weight_ts).toLocaleDateString('sv-SE',{day:'numeric',month:'short'}) : null
-            ].filter(Boolean).join(' · ')
-          : 'Eufy-vågen når inte hit ännu — EufyLife delar ingen vikt till Health Connect. Väg dig och öppna EufyLife; kommer inget värde behöver kopplingen ses över.';
+        // ── Kroppen: vikt, fett och sammansättning över tid ────────
+        // Vägningar är glesa och ojämna, så x-axeln är verklig tid (inte index)
+        // och kurvan bryts vid uppehåll över 45 dagar i stället för att dra en
+        // påhittad linje över dem — samma ärlighetsregel som pulskurvan.
+        const kAlla = (S.halsaKropp || []).slice().reverse();    // stigande tid
+        // En vägning som avviker mer än 25 % från medianen är i praktiken någon
+        // annan som klivit på Mats profil (t.ex. 30 kg). Den utesluts ur kurvan —
+        // men raden finns kvar i databasen och antalet redovisas i noten.
+        const kMed = (() => {
+          const v = kAlla.map(r => nv(r.vikt)).filter(v => v != null).sort((a,b) => a-b);
+          return v.length ? v[Math.floor(v.length/2)] : null;
+        })();
+        const kr = kMed ? kAlla.filter(r => Math.abs(nv(r.vikt) - kMed) / kMed <= 0.25) : kAlla;
+        const kUte = kAlla.length - kr.length;
+        const harKropp = kr.length > 1;
+        let kViktLinje='', kViktYta='', kFett='', kMuskel='', kYMax='', kYMin='';
+        let kVikt='–', kVagd='', kAntal='', kFettNu='', kMuskelNu='', kNot='';
+        const kDeltas = [], kManader = [], kBrickor = [];
+        if (harKropp) {
+          const tid = r => new Date(r.ts).getTime();
+          const sista = kr[kr.length-1];
+          const t0 = tid(kr[0]), t1 = tid(sista), spann = Math.max(t1-t0, 1);
+          const LUCKA = 45*864e5;
+          const X = ms => (ms-t0)/spann*1000;
+          // Linje (och valfri yta) för ett fält, skalad till sitt eget spann.
+          const kurva = (falt, medYta) => {
+            const pts = kr.map(r => ({ x: tid(r), v: nv(r[falt]) })).filter(p => p.v != null);
+            if (pts.length < 2) return { d:'', yta:'', lo:null, hi:null };
+            const vs = pts.map(p => p.v);
+            const lo = Math.min(...vs), hi = Math.max(...vs);
+            const pad = (hi-lo)*0.16 || 0.5;
+            const Y = v => 94 - (v-(lo-pad))/((hi+pad)-(lo-pad))*88;
+            let d='', yta='', grupp=[];
+            const stang = () => {
+              if (grupp.length > 1) {
+                yta += 'M'+X(grupp[0].x).toFixed(1)+' 98'
+                     + grupp.map(p => 'L'+X(p.x).toFixed(1)+' '+Y(p.v).toFixed(1)).join('')
+                     + 'L'+X(grupp[grupp.length-1].x).toFixed(1)+' 98Z';
+              }
+              grupp = [];
+            };
+            pts.forEach((p,i) => {
+              const brott = i > 0 && p.x - pts[i-1].x > LUCKA;
+              if (brott) stang();
+              d += (i === 0 || brott ? 'M' : 'L') + X(p.x).toFixed(1)+' '+Y(p.v).toFixed(1);
+              grupp.push(p);
+            });
+            stang();
+            return { d, yta, lo, hi };
+          };
+          const v = kurva('vikt', true);
+          kViktLinje = v.d; kViktYta = v.yta;
+          kYMax = sv(v.hi,1)+' kg'; kYMin = sv(v.lo,1);
+          kFett = kurva('fett_pct').d;
+          kMuskel = kurva('muskel_kg').d;
+          kVikt = sv(sista.vikt,1);
+          kVagd = 'Senast vägd ' + new Date(sista.ts).toLocaleDateString('sv-SE',{day:'numeric',month:'short',year:'numeric'});
+          const manad = (d, medAr) => d.toLocaleDateString('sv-SE',{month:'short'}).replace('.','') + (medAr ? ' ' + String(d.getFullYear()).slice(2) : '');
+          kAntal = kr.length + ' vägningar sedan ' + manad(new Date(kr[0].ts), true).replace(/ (\d\d)$/, ' 20$1');
+          kFettNu = nv(sista.fett_pct) != null ? sv(sista.fett_pct,1)+' %' : '';
+          kMuskelNu = nv(sista.muskel_kg) != null ? sv(sista.muskel_kg,1)+' kg' : '';
+          // Jämförelser: närmaste vägning minst N dagar före den senaste.
+          const bakat = dagar => { const mal = t1 - dagar*864e5; for (let i=kr.length-1;i>=0;i--) if (tid(kr[i]) <= mal) return kr[i]; return null; };
+          const jmf = (r, etikett) => {
+            if (!r) return;
+            const d = Number(sista.vikt) - Number(r.vikt);
+            kDeltas.push({ etikett, txt: (d>=0?'+':'−') + sv(Math.abs(d),1) + ' kg',
+                           farg: Math.abs(d) < 0.3 ? 'rgba(238,240,245,0.6)' : (d>0 ? '#e0b34c' : 'oklch(0.82 0.24 130)') });
+          };
+          jmf(kr[kr.length-2], 'Sedan förra');
+          jmf(bakat(30), '30 dagar');
+          jmf(bakat(365), '1 år');
+          // Månadsetiketter längs tidsaxeln, max sex stycken.
+          const d0 = new Date(t0); const alla = [];
+          for (let d = new Date(d0.getFullYear(), d0.getMonth()+1, 1); d.getTime() <= t1; d = new Date(d.getFullYear(), d.getMonth()+1, 1)) alla.push(d.getTime());
+          const hopp = Math.ceil(alla.length/6) || 1;
+          alla.filter((_,i) => i % hopp === 0).forEach(ms => {
+            const d = new Date(ms);
+            const txt = manad(d, d.getMonth() === 0 || kManader.length === 0);
+            kManader.push({ txt, stil: 'position:absolute;left:'+(X(ms)/10).toFixed(2)+'%;transform:translateX(-50%);font-size:10px;color:rgba(238,240,245,0.5);white-space:nowrap;' });
+          });
+          // Brickor: värde nu + förändring mot närmaste vägning minst 90 dagar bak.
+          const ref = bakat(90);
+          for (const b of [['BMI','bmi','',1], ['Vatten','vatten_pct','%',1], ['Visceralt','visceralt','',0], ['Basalförbrukning','bmr','kcal',0]]) {
+            const nu = nv(sista[b[1]]);
+            if (nu == null) continue;
+            const fore = ref ? nv(ref[b[1]]) : null;
+            const d = fore != null ? nu - fore : null;
+            kBrickor.push({ etikett: b[0], varde: sv(nu,b[3]), enhet: b[2],
+                            delta: d == null ? 'ingen jämförelse'
+                                   : (Math.abs(d) < Math.pow(10,-b[3])/2 ? 'oförändrat' : (d>0?'+':'−') + sv(Math.abs(d),b[3]))
+                                     + ' sedan ' + manad(new Date(ref.ts), true) });
+          }
+          kNot = 'Eufy-vågen mäter kroppssammansättning med bioimpedans — värdena är riktvärden, trenden säger mer än enskilda mätningar.'
+               + (kUte ? ' ' + kUte + ' vägning' + (kUte>1?'ar':'') + ' utanför rimligt spann visas inte (någon annan på profilen); de ligger kvar i databasen.' : '');
+        }
 
         // ── Synk (Ä3: stale över 24 h) ─────────────────────────────
         const STALE_TIMMAR = 24;
@@ -3574,11 +3728,11 @@ class Component extends DCLogic {
           trend, trendDagar, trendSnitt,
           trendRubrik: (n || 0) + ' DAGAR',
           // Kropp + synk
-          weight: vikt ?? '–', weightUnit: vikt ? ' kg' : '',
-          weightColor: vikt ? '#eef0f5' : 'rgba(238,240,245,0.32)',
-          weightDetail: viktDetalj,
           syncText: syncBits.join(' · '),
           staleBadge: stale ? '⚠ Äldre än 24 h' : '',
+          // Kroppen
+          harKropp, kVikt, kVagd, kAntal, kViktLinje, kViktYta, kYMax, kYMin,
+          kFett, kFettNu, kMuskel, kMuskelNu, kDeltas, kManader, kBrickor, kNot,
           // Vågen
           importMsg: S.halsaImportMsg || '',
           onImport: async () => {
