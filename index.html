@@ -3747,7 +3747,8 @@ class Component extends DCLogic {
               const d = await this.halsaSkicka(p.payload);
               fil.value = '';
               this.setState({ halsaImportMsg: 'Klart: ' + p.vagningar + ' vägningar sparade (' + d.upserted + ' mätvärden). Hoppade över '
-                + p.andra + ' rader för andra familjemedlemmar' + (p.dubbletter ? ' och ' + p.dubbletter + ' dubbletter' : '') + '.' });
+                + p.andra + ' rader för andra familjemedlemmar' + (p.dubbletter ? ', ' + p.dubbletter + ' dubbletter' : '')
+                + (p.orimliga ? ' och ' + p.orimliga + ' vägning' + (p.orimliga>1?'ar':'') + ' utanför rimligt spann (någon annan på profilen)' : '') + '.' });
               this.fetchHalsa();
             } catch (e) { this.setState({ halsaImportMsg: 'Importen misslyckades: ' + e.message }); }
           },

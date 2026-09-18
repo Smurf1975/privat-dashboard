@@ -39,7 +39,20 @@
       const mager = ix.mager >= 0 ? tal(c[ix.mager]) : null;
       if (mager) lean_body_mass.push({ time, mass_kg: mager, origin: 'eufy_export' });
     }
-    return { payload: { source: 'manual', weight, body_fat, lean_body_mass }, vagningar: weight.length, andra, dubbletter, utanVikt };
+    // En vägning som avviker mer än 25 % från medianen är i praktiken någon annan
+    // på Mats profil (exporten har en post på 30,45 kg). Den importeras inte — annars
+    // återuppstår den vid varje ny import av samma fil.
+    const vikter = weight.map(w => w.weight_kg).sort((a, b) => a - b);
+    const median = vikter.length ? vikter[Math.floor(vikter.length/2)] : null;
+    const rimlig = t => !median || Math.abs(t - median) / median <= 0.25;
+    const ok = new Set(weight.filter(w => rimlig(w.weight_kg)).map(w => w.time));
+    const orimliga = weight.length - ok.size;
+    return {
+      payload: { source: 'manual', weight: weight.filter(w => ok.has(w.time)),
+                 body_fat: body_fat.filter(r => ok.has(r.time)),
+                 lean_body_mass: lean_body_mass.filter(r => ok.has(r.time)) },
+      vagningar: ok.size, andra, dubbletter, utanVikt, orimliga,
+    };
   }
 
   // Manuell inmatning: datum (tomt = idag) + vikt + valfri fett-%. Dagens datum → nu, annars 08:00.
