@@ -1388,7 +1388,8 @@ class Component extends DCLogic {
     bathingSpots:[], bathingOk:false,
     // Skollunch (Kunskapsskolan Nyköping via matsedel-proxy)
     lunchDays:[], lunchWeek:null, lunchStale:false,
-    // Uppgifter – VoxMats (voxmats_items) + Familjeappen (familj_todos)
+    // Uppgifter – VoxMats (voxmats_items). Familjeappens todo-lista finns inte
+    // längre för föräldrar; den fliken visar barnens aktivitet i stället.
     todoItems:[], todosOk:false,
     familjVaror:[], familjSenast:null, familjGodkanna:0,
     // Nyheter (news-proxy: AI, teknik, smart home, sport)
@@ -2279,27 +2280,20 @@ class Component extends DCLogic {
     }
   }
 
-  // Uppgifter från två appar i samma Supabase-projekt. Läses direkt med den
-  // inloggade sessionen — RLS gör jobbet: voxmats_items är låst till Mats
-  // e-post, och familj_todos släpper bara igenom hans egna rader, så barnens
-  // uppgifter kan inte råka hamna här.
+  // Uppgifter från VoxMats. Läses direkt med den inloggade sessionen — RLS gör
+  // jobbet: voxmats_items är låst till Mats e-post.
   async fetchTodos() {
     const db = this._sbClient;
     if (!db) return;
     try {
-      const [vox, fam] = await Promise.all([
+      const [vox] = await Promise.all([
         db.from('voxmats_items').select('id,content,due_date,created_at')
           .eq('kind','uppgift').eq('done',false).eq('included',true),
-        db.from('familj_todos').select('id,title,created_at').eq('done',false),
       ]);
       const items = [
         ...(vox.data || []).map(r => ({
           id:`v${r.id}`, title:r.content, src:'Anteckning',
           due:r.due_date || null, created:r.created_at,
-        })),
-        ...(fam.data || []).map(r => ({
-          id:`f${r.id}`, title:r.title, src:'Familj',
-          due:null, created:r.created_at,
         })),
       ].filter(t => t.title);
       // Med förfallodatum först, tidigast överst; odaterade sist, nyast överst.
@@ -2309,7 +2303,7 @@ class Component extends DCLogic {
         if (b.due) return 1;
         return (b.created||'').localeCompare(a.created||'');
       });
-      this.setState({ todoItems: items, todosOk: !vox.error && !fam.error });
+      this.setState({ todoItems: items, todosOk: !vox.error });
     } catch(e) { console.warn('Uppgifter:', e.message); }
   }
 
