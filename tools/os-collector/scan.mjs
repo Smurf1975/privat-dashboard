@@ -59,4 +59,4 @@ export function gitInfo(dir) {
   } catch { return null; }
 }
 
-export const liveUrl = (cell) => cell.match(/https:\/\/[^\s`|)]+/)?.[0] ?? null;
+export const liveUrl = (cell) => cell.match(/https:\/\/[^\s`|)*,]+/)?.[0].replace(/[.:;]+$/, '') ?? null;

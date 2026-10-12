@@ -24,6 +24,18 @@
   .h-in::file-selector-button{background:#1e2230;border:0;border-radius:6px;color:#c8ccd6;font:inherit;font-size:12px;padding:5px 9px;margin-right:8px;cursor:pointer;}
   .h-btn{background:#1e2230;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#eef0f5;font:inherit;font-size:13px;font-weight:600;padding:8px 14px;cursor:pointer;}
   .h-btn:hover{background:#262b3a;}
+  /* OS-fliken */
+  .os-row{display:flex;gap:12px;align-items:flex-start;width:100%;padding:11px 6px;border:0;border-top:1px solid rgba(255,255,255,0.05);background:none;color:inherit;font:inherit;text-align:left;border-radius:0;}
+  button.os-row{cursor:pointer;}
+  button.os-row:hover{background:rgba(255,255,255,0.025);}
+  .os-chip{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:7px;color:#eef0f5;font:inherit;font-size:12px;padding:4px 10px;cursor:pointer;}
+  .os-chip:hover{background:rgba(255,255,255,0.08);}
+  .os-row:focus-visible,.os-chip:focus-visible,.os-in:focus-visible{outline:2px solid oklch(0.82 0.24 130);outline-offset:2px;}
+  .os-kv{display:grid;grid-template-columns:170px 1fr;gap:8px 18px;font-size:13px;line-height:1.55;}
+  .os-kv dt{color:rgba(238,240,245,0.5);font-size:12px;padding-top:1px;}
+  .os-kv dd{color:#eef0f5;overflow-wrap:anywhere;}
+  .os-in{background:#0f1117;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#eef0f5;font:inherit;font-size:13px;padding:8px 11px;width:100%;max-width:340px;color-scheme:dark;}
+  @media(max-width:760px){.os-kv{grid-template-columns:1fr;gap:2px;} .os-kv dt{margin-top:10px;}}
 </style>
 <script>
   if ('serviceWorker' in navigator) {
@@ -1396,6 +1408,149 @@
 
     </sc-if>
 
+    <!-- ══ OS: AI Native OS ur os_items (tools/os-collector → os-ingest). Ingen demodata. ══ -->
+    <sc-if value="{{ isOs }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">AI NATIVE OS</div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.45);margin-top:4px;">{{ os.summary }} · {{ os.collected }}</div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <sc-for list="{{ os.views }}" as="t">
+            <button onclick="{{ t.onClick }}" style="{{ t.btnStyle }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-if value="{{ os.loading }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;font-size:13px;color:rgba(238,240,245,0.45);">Hämtar systemet…</div>
+      </sc-if>
+      <sc-if value="{{ os.error }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;font-size:13px;color:rgba(238,240,245,0.6);">{{ os.error }}</div>
+      </sc-if>
+
+      <!-- Översikt: det som behöver Mats först, sedan en rad per app -->
+      <sc-if value="{{ os.isOversikt }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:8px;">VÄNTAR PÅ DIG</div>
+          <sc-for list="{{ os.attn }}" as="x">
+            <button class="os-row" onclick="{{ x.onClick }}" style="{{ x.rowStyle }}">
+              <span style="{{ x.dotStyle }}"></span>
+              <span style="display:block;min-width:0;">
+                <span style="display:block;font-size:14px;font-weight:600;color:#eef0f5;">{{ x.title }}</span>
+                <span style="display:block;font-size:12.5px;color:rgba(238,240,245,0.55);margin-top:2px;line-height:1.5;">{{ x.why }}</span>
+              </span>
+            </button>
+          </sc-for>
+          <div style="{{ os.attnEmpty }}">Inget väntar på dig.</div>
+        </div>
+
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;margin-top:14px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:8px;">APPARNA</div>
+          <sc-for list="{{ os.appRows }}" as="a">
+            <button class="os-row" onclick="{{ a.onClick }}">
+              <span style="{{ a.dotStyle }}"></span>
+              <span style="display:block;flex:1;min-width:0;">
+                <span style="display:block;font-size:14px;font-weight:600;color:#eef0f5;">{{ a.name }}</span>
+                <span style="display:block;font-size:12.5px;color:rgba(238,240,245,0.55);margin-top:2px;line-height:1.5;">{{ a.status }}</span>
+              </span>
+              <span style="display:block;text-align:right;flex-shrink:0;">
+                <span style="{{ a.healthStyle }}">{{ a.health }}</span>
+                <span style="display:block;font-size:11px;color:rgba(238,240,245,0.38);margin-top:3px;white-space:nowrap;">{{ a.changed }}</span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- Appar: vilka databaser apparna delar, sedan alla appar -->
+      <sc-if value="{{ os.isAppar }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:4px;">DATABASER</div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.45);margin-bottom:6px;">Vilka appar som delar samma databas, enligt registret.</div>
+          <sc-for list="{{ os.dbGroups }}" as="g">
+            <div style="padding:12px 0;border-top:1px solid rgba(255,255,255,0.05);">
+              <div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;">
+                <span style="font-size:13.5px;font-weight:600;color:#eef0f5;">{{ g.label }}</span>
+                <span style="font-size:11.5px;color:rgba(238,240,245,0.45);">{{ g.count }}</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <sc-for list="{{ g.apps }}" as="c">
+                  <button class="os-chip" onclick="{{ c.onClick }}">{{ c.name }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;margin-top:14px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:8px;">ALLA APPAR</div>
+          <sc-for list="{{ os.appRows }}" as="a">
+            <button class="os-row" onclick="{{ a.onClick }}">
+              <span style="{{ a.dotStyle }}"></span>
+              <span style="display:block;flex:1;min-width:0;">
+                <span style="display:block;font-size:14px;font-weight:600;color:#eef0f5;">{{ a.name }}</span>
+                <span style="display:block;font-size:12.5px;color:rgba(238,240,245,0.55);margin-top:2px;">{{ a.stack }}</span>
+              </span>
+              <span style="{{ a.healthStyle }}">{{ a.health }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- En app i detalj -->
+      <sc-if value="{{ os.isDetalj }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;">
+          <button class="os-chip" onclick="{{ os.detail.back }}">← Alla appar</button>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:18px 0 4px;">
+            <div style="font-size:24px;font-weight:300;color:#eef0f5;">{{ os.detail.name }}</div>
+            <span style="{{ os.detail.healthStyle }}">{{ os.detail.health }}</span>
+          </div>
+          <div style="font-size:12.5px;color:rgba(238,240,245,0.45);margin-bottom:18px;">{{ os.detail.alias }}</div>
+          <dl class="os-kv">
+            <sc-for list="{{ os.detail.rows }}" as="r">
+              <dt>{{ r.k }}</dt><dd>{{ r.v }}</dd>
+            </sc-for>
+          </dl>
+          <sc-if value="{{ os.detail.hasMismatch }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:oklch(0.75 0.14 65);margin-bottom:6px;">Registret och koden säger olika</div>
+              <sc-for list="{{ os.detail.mismatch }}" as="m">
+                <div style="font-size:13px;color:#eef0f5;line-height:1.6;">{{ m.t }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- Verktyg: skills, MCP, plugins. Sökrutan är statisk DOM (id os-sok) och läses via delegering. -->
+      <sc-if value="{{ os.isVerktyg }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px 22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <sc-for list="{{ os.toolTabs }}" as="t">
+                <button onclick="{{ t.onClick }}" style="{{ t.btnStyle }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <input id="os-sok" type="search" class="os-in" placeholder="Sök namn eller beskrivning" aria-label="Sök bland verktygen">
+          </div>
+          <div style="font-size:12px;color:rgba(238,240,245,0.45);margin-bottom:6px;">{{ os.toolNote }}</div>
+          <sc-for list="{{ os.toolRows }}" as="r">
+            <div class="os-row">
+              <span style="display:block;flex:1;min-width:0;">
+                <span style="display:flex;justify-content:space-between;gap:10px;">
+                  <span style="font-size:13.5px;font-weight:600;color:#eef0f5;">{{ r.name }}</span>
+                  <span style="font-size:11px;color:rgba(238,240,245,0.45);text-align:right;">{{ r.meta }}</span>
+                </span>
+                <span style="display:block;font-size:12.5px;color:rgba(238,240,245,0.65);margin-top:2px;line-height:1.5;">{{ r.text }}</span>
+                <span style="{{ r.subStyle }}">{{ r.sub }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </sc-if>
+
   </main>
 </div>
 </x-dc>
@@ -1479,6 +1634,8 @@ class Component extends DCLogic {
     fpAuthed:false, fpEmail:null, fpLinkSent:false, fpLinkError:null, fpSending:false,
     // Hälsa (halsa_daily_v + halsa_status_v — RLS ger endast Mats rader)
     halsaDaily:[], halsaStatus:null, halsaNatt:[], halsaPuls:[], halsaKropp:[], halsaOk:true, halsaError:null, halsaLoaded:false, halsaImportMsg:'',
+    // OS-fliken (os_items + os_collect_log — RLS ger endast Mats rader)
+    osItems:[], osLog:null, osLoaded:false, osError:null, osView:'oversikt', osApp:null, osTool:'skill', osQuery:'',
   };
 
   componentDidMount() {
@@ -1490,6 +1647,10 @@ class Component extends DCLogic {
     }, 1000);
     const upd = () => this.setState({cols: window.innerWidth<620?1:window.innerWidth<1100?2:3});
     upd(); window.addEventListener('resize', upd); this._resize = upd;
+    // OS-fliken: runtimen binder bara onclick, så sökrutan läses via delegering.
+    // Rutan är statisk DOM (inte i sc-for) och behåller värde och fokus vid omrendering.
+    this._osSok = e => { if (e.target.id === 'os-sok') this.setState({ osQuery: e.target.value }); };
+    document.addEventListener('input', this._osSok);
     this.restoreCache();   // visa senaste kända värden direkt, innan API:erna svarar
     this.fetchAll();
     this.fetchLiverpool();
@@ -1700,7 +1861,7 @@ class Component extends DCLogic {
       // Utan session ger anon-nyckeln 0 rader helt tyst — därav inloggningen nedan.
       const onSession = session => {
         this.setState({ fpAuthed: !!session, fpEmail: session?.user?.email || null });
-        if (!session) { this.setState({ googleAuthed: false, halsaLoaded: true, halsaOk: false, halsaError: 'Ej inloggad' }); return; }
+        if (!session) { this.setState({ googleAuthed: false, halsaLoaded: true, halsaOk: false, halsaError: 'Ej inloggad', osLoaded: true, osError: 'Ej inloggad' }); return; }
         // google-proxy kräver en inloggad användare. Utan session finns ingen
         // Google-data att hämta, så init körs först här (en gång).
         // Samma sak gäller homey-proxy — den kräver också inloggning nu.
@@ -1712,6 +1873,7 @@ class Component extends DCLogic {
           this.fetchTodos();
           this.fetchFamiljeapp();
           this.fetchHalsa();
+          this.fetchOs();
         }
         fetchAll();
         if (this._fpChannel) return;               // prenumerera bara en gång
@@ -2146,6 +2308,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     clearInterval(this._tick); clearInterval(this._refresh); clearInterval(this._lfcRefresh); clearInterval(this._briefingRefresh);
     window.removeEventListener('resize', this._resize);
+    document.removeEventListener('input', this._osSok);
   }
 
   async fetchLiverpool() {
@@ -2276,7 +2439,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2409,6 +2572,25 @@ class Component extends DCLogic {
     } catch(e) {
       console.warn('Hälsa:', e.message);
       this.setState({ halsaOk: false, halsaError: e.message || 'Nätverksfel', halsaLoaded: true });
+    }
+  }
+
+  // OS-fliken: ögonblicksbild av AI Native OS (tools/os-collector → os-ingest). Läser bara
+  // os_items/os_collect_log; RLS ger 0 rader utan Mats session.
+  async fetchOs() {
+    const db = this._sbClient;
+    if (!db) return;
+    try {
+      const [items, log] = await Promise.all([
+        db.from('os_items').select('kind,id,data,collected_at'),
+        db.from('os_collect_log').select('completed_at,counts').eq('status', 'ok')
+          .order('id', { ascending: false }).limit(1).maybeSingle(),
+      ]);
+      for (const r of [items, log]) if (r.error) throw r.error;
+      this.setState({ osItems: items.data || [], osLog: log.data || null, osLoaded: true, osError: null });
+    } catch(e) {
+      console.warn('OS:', e.message);
+      this.setState({ osLoaded: true, osError: e.message || 'Nätverksfel' });
     }
   }
 
@@ -2588,7 +2770,7 @@ class Component extends DCLogic {
     const tabDefs = [{id:'hem',label:'Hem'},{id:'smarthome',label:'Smart Home'},
       {id:'bilar',label:'Bil'},
       {id:'media',label:'Media'},{id:'sport',label:'Sport'},{id:'resor',label:'Resor'},{id:'vader',label:'Väder'},{id:'halsa',label:'Hälsa'},
-      {id:'familj',label:'Familj'}];
+      {id:'familj',label:'Familj'},{id:'os',label:'OS'}];
     const tabs = tabDefs.map(t => ({
       ...t, onClick: () => this.setState({activeTab:t.id}),
       btnStyle: {padding:'8px 18px 5px',borderRadius:'8px',border:'none',
@@ -3364,6 +3546,139 @@ class Component extends DCLogic {
       godkannColor: this.state.familjGodkanna ? '#FDB454' : 'rgba(238,240,245,0.38)',
     };
 
+    // ── OS-fliken: AI Native OS ur os_items. Allt härleds ur insamlade fakta; inget demoinnehåll. ──
+    const os = (() => {
+      const st = this.state, all = st.osItems || [];
+      const MUTED = 'rgba(238,240,245,0.45)';
+      const of = k => all.filter(i => i.kind === k).map(i => ({ id: i.id, ...i.data }));
+      const byName = (a, b) => (a.name || '').localeCompare(b.name || '', 'sv');
+      const apps = of('app').sort(byName), mcps = of('mcp').sort(byName);
+      const skills = of('skill').sort(byName), plugins = of('plugin').sort(byName);
+      const ago = ts => {
+        if (!ts) return 'okänt';
+        const m = Math.round((Date.now() - new Date(ts).getTime()) / 60000);
+        return m < 2 ? 'nyss' : m < 60 ? `${m} min sedan` : m < 1440 ? `${Math.floor(m/60)} h sedan` : `${Math.floor(m/1440)} d sedan`;
+      };
+      // Registerstatusen är lång prosa — plocka ut den del som matchar, max 150 tecken.
+      const clause = (s, re) => {
+        const part = (s || '').split(/\s[·—]\s|;\s|\.\s/).find(p => re.test(p)) || '';
+        return part.length > 150 ? part.slice(0, 147) + '…' : part;
+      };
+      const WAIT = /väntar/i;
+      const health = a => a.live && !a.live.ok ? 'nere'
+        : (a.mismatch?.length || WAIT.test(a.status || '')) ? 'titta' : a.live?.ok ? 'uppe' : 'okänd';
+      const H = { nere:['Nere', R], titta:['Titta på', O], uppe:['Uppe', G], okänd:['Ingen adress', MUTED] };
+      const dot = c => `width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;background:${c};`;
+      const word = c => `font-size:11.5px;font-weight:600;color:${c};white-space:nowrap;`;
+      const dbLabel = a => {
+        const r = a.dbRegistry || '';
+        const sb = r.match(/Supabase\s*"([^"]+)"/i); if (sb) return `Supabase · ${sb[1]}`;
+        const ne = r.match(/Neon\s+["`]?([A-Za-z][\w-]*)/); if (ne) return `Neon · ${ne[1]}`;
+        if (/neon/i.test(r)) return 'Neon';
+        if (/firebase|firestore/i.test(r)) return 'Firebase';
+        if (/google sheets/i.test(r)) return 'Google Sheets';
+        return 'Ingen databas angiven';
+      };
+      const openApp = id => () => this.setState({ osView:'appar', osApp:id });
+
+      // Väntar på dig: varje rad bär sitt skäl. 0 = trasigt, 1 = väntar, 2 = att städa.
+      const attn = [];
+      const log = st.osLog;
+      const logAgeH = log?.completed_at ? (Date.now() - new Date(log.completed_at).getTime()) / 3.6e6 : Infinity;
+      if (st.osLoaded && logAgeH > 2) attn.push({ lvl:1, title:'Insamlingen har stannat',
+        why: log ? `Senaste lyckade körning ${ago(log.completed_at)}, så det som står här kan vara inaktuellt.` : 'Ingen insamling har körts ännu.' });
+      for (const a of apps) {
+        if (a.live && !a.live.ok) attn.push({ lvl:0, title:`${a.name} svarar inte`,
+          why: a.live.code ? `${a.liveUrl} gav HTTP ${a.live.code}.` : `${a.liveUrl} gick inte att nå.`, onClick: openApp(a.id) });
+        if (WAIT.test(a.status || '')) attn.push({ lvl:1, title:`${a.name}: något väntar`, why: clause(a.status, WAIT), onClick: openApp(a.id) });
+        for (const m of a.mismatch || []) attn.push({ lvl:2, title:`${a.name}: registret stämmer inte med koden`, why: m, onClick: openApp(a.id) });
+      }
+      for (const m of mcps) if (/^unknown/i.test(m.status || '')) attn.push({ lvl:2, title:`${m.name}: status okänd`,
+        why: 'MCP Inventory kan inte bekräfta att kopplingen fungerar.' });
+      attn.sort((a, b) => a.lvl - b.lvl);
+      const LVL = [R, O, MUTED];
+
+      const appRows = apps.map(a => {
+        const [w, c] = H[health(a)];
+        return { name: a.name, health: w, healthStyle: word(c), dotStyle: dot(c),
+          status: clause(a.status, /\S/) || 'Ingen status i registret',
+          stack: a.stackCode?.length ? a.stackCode.join(' · ') : (a.stackRegistry || 'Okänd stack'),
+          changed: a.git?.date ? `ändrad ${ago(a.git.date)}` : '', onClick: openApp(a.id) };
+      });
+
+      const groups = {};
+      for (const a of apps) (groups[dbLabel(a)] ||= []).push(a);
+      const dbGroups = Object.entries(groups)
+        .sort((x, y) => (x[0].startsWith('Ingen') ? 1 : 0) - (y[0].startsWith('Ingen') ? 1 : 0)
+          || y[1].length - x[1].length || x[0].localeCompare(y[0], 'sv'))
+        .map(([label, list]) => ({ label, count: `${list.length} ${list.length === 1 ? 'app' : 'appar'}`,
+          apps: list.map(a => ({ name: a.name, onClick: openApp(a.id) })) }));
+
+      const sel = apps.find(a => a.id === st.osApp) || null;
+      let detail = {};
+      if (sel) {
+        const [w, c] = H[health(sel)];
+        const g = sel.git;
+        detail = { name: sel.name, alias: sel.alias ? `Även kallad ${sel.alias}` : '', health: w, healthStyle: word(c),
+          back: () => this.setState({ osApp:null }),
+          hasMismatch: !!sel.mismatch?.length, mismatch: (sel.mismatch || []).map(t => ({ t })),
+          rows: [
+            ['Status', sel.status || '—'],
+            ['Byggd med (koden)', sel.stackCode?.length ? sel.stackCode.join(' · ') : 'Hittade ingen kod att läsa'],
+            ['Byggd med (registret)', sel.stackRegistry || '—'],
+            ['Databas (registret)', sel.dbRegistry || '—'],
+            ['Databas (koden)', sel.dbCode?.length ? sel.dbCode.map(d => {
+              const [typ, ref] = d.split(':');
+              return ({ supabase:'Supabase', firebase:'Firebase', neon:'Neon' }[typ] || typ) + (ref ? ` (projekt ${ref})` : '');
+            }).join(' · ') : 'Inga databasanrop hittade'],
+            ['Live', sel.liveUrl ? `${sel.liveUrl} · ${sel.live?.ok ? 'svarar' : 'svarar inte'} (kollat ${ago(sel.live?.at)})` : 'Ingen adress i registret'],
+            ['Kodmapp', sel.codePath || 'Ingen kodmapp i registret'],
+            ['GitHub', sel.repo || '—'],
+            ['Senaste ändring', g ? `${g.commit} på ${g.branch}, ${ago(g.date)}${g.dirty ? ' · osparade ändringar finns' : ''}` : '—'],
+          ].map(([k, v]) => ({ k, v })) };
+      }
+
+      // Verktyg: egna skills först, sedan plugin-skills.
+      const q = (st.osQuery || '').trim().toLowerCase();
+      const hit = (...f) => !q || f.some(x => (x || '').toLowerCase().includes(q));
+      const SUB = 'display:block;font-size:11.5px;color:rgba(238,240,245,0.42);margin-top:3px;';
+      const rowsBy = {
+        skill: skills.filter(s => hit(s.name, s.summary))
+          .sort((a, b) => (a.origin === 'egen' ? 0 : 1) - (b.origin === 'egen' ? 0 : 1) || byName(a, b))
+          .map(s => ({ name: s.name, text: s.summary || '—', meta: s.origin === 'egen' ? 'Egen' : s.origin.replace(/^plugin:/, ''), sub:'' })),
+        mcp: mcps.filter(m => hit(m.name, m.purpose, m.consumers)).map(m => ({ name: m.name, text: m.purpose || '—',
+          meta: [m.status, m.transport === 'connector' ? 'moln' : m.transport === 'http' ? 'fjärr' : 'lokal', m.risk && `risk ${m.risk.toLowerCase()}`].filter(Boolean).join(' · '),
+          sub: m.consumers ? `Används av: ${m.consumers}` : '' })),
+        plugin: plugins.filter(p => hit(p.name, p.marketplace)).map(p => ({ name: p.name,
+          text: [p.skills && `${p.skills} skills`, p.agents && `${p.agents} agenter`, p.hooks && 'hooks'].filter(Boolean).join(' · ') || 'Inga skills eller agenter',
+          meta: `v${p.version} · ${p.marketplace}`, sub:'' })),
+      };
+      const toolRows = (rowsBy[st.osTool] || []).map(r => ({ ...r, subStyle: r.sub ? SUB : 'display:none;' }));
+
+      const pill = on => ({padding:'4px 11px',borderRadius:'7px',fontSize:'11.5px',fontWeight:'500',fontFamily:'inherit',cursor:'pointer',
+        border:`1px solid ${on?'rgba(130,220,50,0.4)':'rgba(255,255,255,0.1)'}`,
+        background:on?'rgba(130,220,50,0.12)':'rgba(255,255,255,0.04)', color:on?G:'rgba(238,240,245,0.6)'});
+      const has = all.length > 0;
+      return {
+        loading: !st.osLoaded && !has,
+        error: st.osError && !has ? (st.osError === 'Ej inloggad' ? 'Logga in (samma inloggning som Färdplan) för att se systemet.' : `Kunde inte hämta systemet: ${st.osError}`) : '',
+        views: [['oversikt','Översikt'],['appar','Appar'],['verktyg','Verktyg']].map(([k, label]) => ({
+          label, onClick: () => this.setState({ osView:k, osApp:null }), btnStyle: pill(st.osView === k) })),
+        isOversikt: has && st.osView === 'oversikt', isAppar: has && st.osView === 'appar' && !sel,
+        isDetalj: has && st.osView === 'appar' && !!sel, isVerktyg: has && st.osView === 'verktyg',
+        summary: `${apps.length} ${apps.length === 1 ? 'app' : 'appar'} · ${skills.length} skills · ${mcps.length} MCP · ${plugins.length} ${plugins.length === 1 ? 'plugin' : 'plugins'}`,
+        collected: log ? `insamlat ${ago(log.completed_at)}` : 'aldrig insamlat',
+        attn: attn.map(x => ({ title: x.title, why: x.why, onClick: x.onClick || null,
+          dotStyle: dot(LVL[x.lvl]), rowStyle: x.onClick ? '' : 'cursor:default;' })),
+        attnEmpty: attn.length ? 'display:none;' : 'font-size:13px;color:rgba(238,240,245,0.55);padding:10px 0 2px;',
+        appRows, dbGroups, detail,
+        toolTabs: [['skill','Skills',skills.length],['mcp','MCP',mcps.length],['plugin','Plugins',plugins.length]].map(([k, l, n]) => ({
+          label: `${l} ${n}`, onClick: () => this.setState({ osTool:k }), btnStyle: pill(st.osTool === k) })),
+        toolRows,
+        toolNote: q ? `${toolRows.length} ${toolRows.length === 1 ? 'träff' : 'träffar'} på "${st.osQuery.trim()}"` : '',
+      };
+    })();
+
     return {
       fpLogin, familjeapp,
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle,
@@ -3383,7 +3698,7 @@ class Component extends DCLogic {
       carList, volvo,
       isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome', isBilar:activeTab==='bilar',
       isMedia:activeTab==='media', isSport:activeTab==='sport', isResor:activeTab==='resor', isVader:activeTab==='vader', isHalsa:activeTab==='halsa',
-      isFamilj:activeTab==='familj',
+      isFamilj:activeTab==='familj', isOs:activeTab==='os', os,
 
       // Family members
       familyMembers: (() => {

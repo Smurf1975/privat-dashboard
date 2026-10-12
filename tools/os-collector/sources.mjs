@@ -92,7 +92,7 @@ export function apps(registryPath, root) {
     return { kind: 'app', id: clean(r['Canonical name']), data: {
       name: clean(r['Canonical name']), alias: clean(r.Alias), tier: clean(r.Tier),
       status: clean(r[t.headers[3]]), stackRegistry: clean(r.Stack), dbRegistry,
-      codePath: rel ?? null, liveUrl: liveUrl(codeCell), repo: codeCell.match(/GitHub `([^`]+)`/)?.[1] ?? null,
+      codePath: rel ?? null, liveUrl: liveUrl(codeCell) ?? liveUrl(r[t.headers[3]] ?? ''), repo: codeCell.match(/GitHub `([^`]+)`/)?.[1] ?? null,
       stackCode: has ? stackOf(dir) : [], dbCode, git: has ? gitInfo(dir) : null, mismatch,
     } };
   });
