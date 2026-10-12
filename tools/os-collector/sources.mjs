@@ -76,9 +76,9 @@ export function apps(registryPath, root) {
   const t = parseTables(read(registryPath)).find((t) => t.headers[0] === 'Canonical name');
   return t.rows.map((r) => {
     const codeCell = r['Code location'] ?? '';
-    const rel = codeCell.match(/`([^`]+\/)`/)?.[1];
+    const rel = codeCell.match(/`([^`]+[\\/])`/)?.[1].replace(/\\/g, '/');
     const dir = rel ? join(root, rel) : null;
-    const has = !!dir && existsSync(dir);
+    const has = !!dir && existsSync(dir) && readdirSync(dir).length > 0;
     const dbRegistry = clean(r.Database);
     const dbCode = has ? dbsInCode(dir) : [];
     const mismatch = [];
@@ -88,7 +88,7 @@ export function apps(registryPath, root) {
     claim('neon', /neon/i, 'Neon');
     claim('firebase', /firebase|firestore/i, 'Firebase');
     claim('supabase', /supabase/i, 'Supabase');
-    if (rel && !has) mismatch.push(`Kodmappen ${rel} finns inte`);
+    if (rel && !has) mismatch.push(`Kodmappen ${rel} finns inte eller är tom`);
     return { kind: 'app', id: clean(r['Canonical name']), data: {
       name: clean(r['Canonical name']), alias: clean(r.Alias), tier: clean(r.Tier),
       status: clean(r[t.headers[3]]), stackRegistry: clean(r.Stack), dbRegistry,
