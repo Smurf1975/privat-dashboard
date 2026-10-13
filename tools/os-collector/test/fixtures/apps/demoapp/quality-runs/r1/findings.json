@@ -1,0 +1,1 @@
+{"findings":[{"id":"CR-001","reviewer":"code","severity":"HIGH","status":"open","title":"Knapp raderar fel bokning","file":"app/x.tsx","line":9,"evidence":["evidence/code/CR-001.txt"],"repro":{"steps":["HEMLIG REPRO"]},"actual":"HEMLIGT UTFALL","severity_note":"Produktbeslut väntar hos Mats."}]}

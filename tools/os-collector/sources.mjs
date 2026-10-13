@@ -72,6 +72,55 @@ export function mcps(claudeJsonPath, inventoryPath) {
   return [...byId.values()];
 }
 
+// Quality-körningar: <appsDir>/<app>/quality-runs/<run>/. Bara metadata — aldrig repro, kod eller evidensinnehåll.
+const REVIEW_FILES = { code: 'findings-code.json', ui: 'findings-ui.json', qa: 'findings-qa.json', sec: 'findings-security.json', diff: 'findings-diff.json' };
+const tryJson = (p) => { try { return JSON.parse(read(p)); } catch { return null; } };
+const trim = (s, n) => (s ?? '').length > n ? s.slice(0, n - 1) + '…' : (s ?? '');
+const base = (p) => p.split(/[\\/]/).pop();
+// Absoluta sökvägar på datorn (C:\Users\…) kortas till filnamnet innan något skickas.
+const noPaths = (s) => (s ?? '').replace(/[A-Za-z]:[\\/][^\s"'`]*/g, (m) => base(m));
+const NEEDS_MATS = /väntar (hos|på) mats|mats beslut|produktbeslut|beslut väntar/i;
+
+export function runs(appsDir) {
+  const out = [];
+  for (const app of dirs(appsDir)) {
+    const qr = join(appsDir, app, 'quality-runs');
+    for (const name of dirs(qr)) {
+      const d = join(qr, name), run = tryJson(join(d, 'run.json'));
+      if (!run) continue;
+      const verdict = tryJson(join(d, 'verdict.json'));
+      const gatesRaw = tryJson(join(d, 'gates.json')) ?? {};
+      const merged = tryJson(join(d, 'findings.json'))?.findings ?? [];
+      const reviewers = {};
+      for (const [k, f] of Object.entries(REVIEW_FILES)) {
+        const r = tryJson(join(d, f));
+        if (r) reviewers[k] = { agent: r.agent ?? null, ids: (r.findings ?? []).map((x) => x.id) };
+      }
+      const review = (f) => { const r = tryJson(join(d, f)); return r ? { agent: r.agent ?? null, verdict: r.verdict ?? null } : null; };
+      out.push({ kind: 'run', id: `${run.project}/${name}`, data: {
+        project: run.project, run: name, mode: run.mode ?? null, env: run.env ?? null, created: run.created ?? null,
+        verdict: verdict?.verdict ?? null, computedAt: verdict?.computed_at ?? null,
+        blockers: verdict?.blockers ?? [],
+        agents: (run.agents ?? []).map((a) => ({ id: a.id, role: a.role, model: a.model ?? null, at: a.at })),
+        cycles: (run.cycles ?? []).map((c) => ({ n: c.n, started: c.started, findings: c.findings ?? [] })),
+        gates: Object.entries(verdict?.gates ?? {}).map(([g, v]) => ({
+          name: g, status: v.status, detail: trim(noPaths(v.detail), 160), at: gatesRaw[g]?.at ?? null })),
+        reviewers, second: review('second-review.json'), final: review('final-review.json'),
+        findings: merged.map((f) => ({
+          id: f.id, reviewer: f.reviewer, severity: f.severity, status: f.status, cycle: f.cycle ?? null,
+          title: trim(f.title, 180), where: f.file ? `${f.file}${f.line ? ':' + f.line : ''}` : null,
+          evidence: (f.evidence ?? []).slice(0, 8).map(base), evidenceCount: (f.evidence ?? []).length,
+          verifiedBy: f.verified_by ?? null,
+          needsMats: NEEDS_MATS.test(f.severity_note ?? ''),
+          // Gäller fyndet ett beslut av Mats: skicka meningen som säger det, inte början av noteringen.
+          note: trim(noPaths((f.severity_note ?? '').split(/(?<=[.;])\s+/).find((p) => NEEDS_MATS.test(p)) ?? f.severity_note), 240),
+        })),
+      } });
+    }
+  }
+  return out;
+}
+
 export function apps(registryPath, root) {
   const t = parseTables(read(registryPath)).find((t) => t.headers[0] === 'Canonical name');
   return t.rows.map((r) => {

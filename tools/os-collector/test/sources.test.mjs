@@ -43,3 +43,17 @@ test('plugin: räknar skills', () => {
   assert.equal(p.data.skills, 1);
   assert.equal(p.data.version, '1.0.0');
 });
+
+import { runs } from '../sources.mjs';
+test('run: metadata, inga repro/utfall/sökvägar, beslut flaggas', () => {
+  const [r] = runs(join(F, 'apps'));
+  assert.equal(r.id, 'Demo/r1');
+  assert.equal(r.data.verdict, 'NOT READY');
+  assert.deepEqual(r.data.reviewers.code, { agent: 'code-reviewer-f1', ids: ['CR-001'] });
+  assert.equal(r.data.gates.find((g) => g.name === 'build').at, '2026-10-01T11:30:00Z');
+  const f = r.data.findings[0];
+  assert.equal(f.needsMats, true);
+  assert.deepEqual(f.evidence, ['CR-001.txt']);
+  const s = JSON.stringify(r);
+  for (const bad of ['HEMLIG', 'hemlig', 'repro', 'actual']) assert.ok(!s.includes(bad), bad);
+});

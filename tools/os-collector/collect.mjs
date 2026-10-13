@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
-import { apps, skills, plugins, mcps } from './sources.mjs';
+import { apps, skills, plugins, mcps, runs } from './sources.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '../../../..');               // Claude Co-Work OS
@@ -36,9 +36,10 @@ const all = [
   ...skills(skillSources),
   ...plugins(installedPath),
   ...mcps(join(homedir(), '.claude.json'), join(OS, '07_MCP', 'MCP Inventory.md')),
+  ...runs(join(ROOT, 'Apps & Dashboards')),
 ];
 const items = [...new Map(all.map((i) => [`${i.kind}\u0000${i.id}`, i])).values()];   // samma id två gånger → behåll sista
-const body = { kinds: ['app', 'skill', 'mcp', 'plugin'], items };
+const body = { kinds: ['app', 'skill', 'mcp', 'plugin', 'run'], items };
 
 if (process.argv.includes('--dry')) { console.log(JSON.stringify(body, null, 1)); process.exit(0); }
 

@@ -1,0 +1,1 @@
+{"project":"Demo","mode":"change","env":"demo","created":"2026-10-01T10:00:00Z","repo":"C:/hemlig/sokvag","agents":[{"role":"orchestrator","id":"orchestrator","at":"2026-10-01T10:00:00Z"},{"role":"code-reviewer","id":"code-reviewer-f1","model":"sonnet","at":"2026-10-01T10:05:00Z"}],"cycles":[{"n":1,"fixer":"orchestrator","findings":["CR-001"],"started":"2026-10-01T11:00:00Z"}]}

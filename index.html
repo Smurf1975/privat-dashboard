@@ -36,6 +36,24 @@
   .os-kv dd{color:#eef0f5;overflow-wrap:anywhere;}
   .os-in{background:#0f1117;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#eef0f5;font:inherit;font-size:13px;padding:8px 11px;width:100%;max-width:340px;color-scheme:dark;}
   @media(max-width:760px){.os-kv{grid-template-columns:1fr;gap:2px;} .os-kv dt{margin-top:10px;}}
+  /* OS · Körningar: agentgraf där paketet färdas mellan noderna */
+  .os-cr{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px;}
+  .os-stage{position:relative;height:360px;}
+  .os-stage svg{position:absolute;inset:0;width:100%;height:100%;}
+  .os-node{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:4px;border-radius:10px;}
+  .os-node:focus-visible{outline:2px solid oklch(0.82 0.24 130);}
+  .os-disc{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:0.05em;background:#0f1117;border:2px solid rgba(255,255,255,0.15);transition:border-color .4s,background .4s;}
+  .os-node-ork .os-disc{width:66px;height:66px;font-size:12px;}
+  .os-nlabel{font-size:11px;color:rgba(238,240,245,0.7);white-space:nowrap;}
+  .os-working{animation:osPulse 1.6s ease-in-out infinite;}
+  @keyframes osPulse{0%,100%{box-shadow:0 0 0 0 rgba(253,180,84,0.35);}50%{box-shadow:0 0 0 7px rgba(253,180,84,0);}}
+  .os-pkt{position:absolute;width:11px;height:11px;border-radius:50%;background:oklch(0.82 0.24 130);transform:translate(-50%,-50%);transition:left .9s cubic-bezier(.45,0,.2,1),top .9s cubic-bezier(.45,0,.2,1),opacity .3s;pointer-events:none;box-shadow:0 0 10px oklch(0.82 0.24 130 / 0.6);}
+  .os-ev{display:grid;grid-template-columns:10px 210px 1fr;gap:10px;align-items:baseline;width:100%;padding:8px 6px;border:0;border-top:1px solid rgba(255,255,255,0.05);background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:opacity .3s,background .3s;}
+  .os-ev:hover{background:rgba(255,255,255,0.03);}
+  @media(max-width:900px){.os-cr{grid-template-columns:1fr;}}
+  @media(max-width:760px){.os-stage{height:300px;} .os-disc{width:40px;height:40px;font-size:9.5px;} .os-node-ork .os-disc{width:52px;height:52px;} .os-nlabel{font-size:9.5px;}
+    .os-ev{grid-template-columns:10px 1fr;} .os-ev .os-ev-text{grid-column:2;}}
+  @media(prefers-reduced-motion:reduce){.os-working{animation:none;} .os-pkt,.os-disc,.os-ev{transition:none;}}
 </style>
 <script>
   if ('serviceWorker' in navigator) {
@@ -1549,6 +1567,125 @@
           </sc-for>
         </div>
       </sc-if>
+
+      <!-- Körningar: Control Room — uppspelning av riktiga quality-runs. Noderna är statiska (inte sc-for)
+           så att paketets CSS-övergång överlever omrenderingar. -->
+      <sc-if value="{{ os.noRuns }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:22px;font-size:13px;color:rgba(238,240,245,0.55);">Inga granskningskörningar hittade ännu. De dyker upp här när Quality Review körs på en app.</div>
+      </sc-if>
+      <sc-if value="{{ os.isKorningar }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+          <sc-for list="{{ os.runPicker }}" as="p">
+            <button onclick="{{ p.onClick }}" style="{{ p.btnStyle }}">{{ p.label }}</button>
+          </sc-for>
+        </div>
+
+        <div class="os-cr">
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+              <div style="font-size:15px;font-weight:600;color:#eef0f5;">{{ os.run.title }}</div>
+              <span style="{{ os.run.verdictStyle }}">{{ os.run.verdict }}</span>
+            </div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.45);margin-top:3px;">{{ os.run.meta }}</div>
+
+            <div class="os-stage" role="group" aria-label="Agenterna i körningen">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="50" y1="50" x2="50" y2="11" stroke="{{ os.run.e.code }}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                <line x1="50" y1="50" x2="83" y2="25" stroke="{{ os.run.e.ui }}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                <line x1="50" y1="50" x2="91" y2="62" stroke="{{ os.run.e.qa }}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                <line x1="50" y1="50" x2="69" y2="89" stroke="{{ os.run.e.sec }}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                <line x1="50" y1="50" x2="31" y2="89" stroke="{{ os.run.e.diff }}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                <line x1="50" y1="50" x2="9" y2="62" stroke="{{ os.run.e.second }}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                <line x1="50" y1="50" x2="17" y2="25" stroke="{{ os.run.e.final }}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <div class="os-pkt" style="{{ os.run.pkt }}"></div>
+              <button class="os-node os-node-ork" style="{{ os.run.nodes.ork.wrap }}" onclick="{{ os.run.nodes.ork.onClick }}">
+                <span class="{{ os.run.nodes.ork.cls }}" style="{{ os.run.nodes.ork.disc }}">ORK</span>
+                <span class="os-nlabel">{{ os.run.nodes.ork.label }}</span><span style="{{ os.run.nodes.ork.wordStyle }}">{{ os.run.nodes.ork.word }}</span>
+              </button>
+              <button class="os-node" style="{{ os.run.nodes.code.wrap }}" onclick="{{ os.run.nodes.code.onClick }}">
+                <span class="{{ os.run.nodes.code.cls }}" style="{{ os.run.nodes.code.disc }}">KOD</span>
+                <span class="os-nlabel">{{ os.run.nodes.code.label }}</span><span style="{{ os.run.nodes.code.wordStyle }}">{{ os.run.nodes.code.word }}</span>
+              </button>
+              <button class="os-node" style="{{ os.run.nodes.ui.wrap }}" onclick="{{ os.run.nodes.ui.onClick }}">
+                <span class="{{ os.run.nodes.ui.cls }}" style="{{ os.run.nodes.ui.disc }}">UI</span>
+                <span class="os-nlabel">{{ os.run.nodes.ui.label }}</span><span style="{{ os.run.nodes.ui.wordStyle }}">{{ os.run.nodes.ui.word }}</span>
+              </button>
+              <button class="os-node" style="{{ os.run.nodes.qa.wrap }}" onclick="{{ os.run.nodes.qa.onClick }}">
+                <span class="{{ os.run.nodes.qa.cls }}" style="{{ os.run.nodes.qa.disc }}">QA</span>
+                <span class="os-nlabel">{{ os.run.nodes.qa.label }}</span><span style="{{ os.run.nodes.qa.wordStyle }}">{{ os.run.nodes.qa.word }}</span>
+              </button>
+              <button class="os-node" style="{{ os.run.nodes.sec.wrap }}" onclick="{{ os.run.nodes.sec.onClick }}">
+                <span class="{{ os.run.nodes.sec.cls }}" style="{{ os.run.nodes.sec.disc }}">SÄK</span>
+                <span class="os-nlabel">{{ os.run.nodes.sec.label }}</span><span style="{{ os.run.nodes.sec.wordStyle }}">{{ os.run.nodes.sec.word }}</span>
+              </button>
+              <button class="os-node" style="{{ os.run.nodes.diff.wrap }}" onclick="{{ os.run.nodes.diff.onClick }}">
+                <span class="{{ os.run.nodes.diff.cls }}" style="{{ os.run.nodes.diff.disc }}">DIFF</span>
+                <span class="os-nlabel">{{ os.run.nodes.diff.label }}</span><span style="{{ os.run.nodes.diff.wordStyle }}">{{ os.run.nodes.diff.word }}</span>
+              </button>
+              <button class="os-node" style="{{ os.run.nodes.second.wrap }}" onclick="{{ os.run.nodes.second.onClick }}">
+                <span class="{{ os.run.nodes.second.cls }}" style="{{ os.run.nodes.second.disc }}">2:A</span>
+                <span class="os-nlabel">{{ os.run.nodes.second.label }}</span><span style="{{ os.run.nodes.second.wordStyle }}">{{ os.run.nodes.second.word }}</span>
+              </button>
+              <button class="os-node" style="{{ os.run.nodes.final.wrap }}" onclick="{{ os.run.nodes.final.onClick }}">
+                <span class="{{ os.run.nodes.final.cls }}" style="{{ os.run.nodes.final.disc }}">SLUT</span>
+                <span class="os-nlabel">{{ os.run.nodes.final.label }}</span><span style="{{ os.run.nodes.final.wordStyle }}">{{ os.run.nodes.final.word }}</span>
+              </button>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <button class="os-chip" onclick="{{ os.run.onPrev }}" aria-label="Föregående händelse">◀</button>
+              <button class="h-btn" onclick="{{ os.run.onPlay }}">{{ os.run.playLabel }}</button>
+              <button class="os-chip" onclick="{{ os.run.onNext }}" aria-label="Nästa händelse">▶</button>
+              <span style="font-size:12px;color:rgba(238,240,245,0.45);font-variant-numeric:tabular-nums;margin-left:4px;">{{ os.run.counter }}</span>
+            </div>
+
+            <div style="margin-top:16px;">
+              <div style="font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(238,240,245,0.4);margin-bottom:8px;">Grindar</div>
+              <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                <sc-for list="{{ os.run.gates }}" as="g">
+                  <span title="{{ g.title }}" aria-label="{{ g.title }}" style="{{ g.style }}"></span>
+                </sc-for>
+              </div>
+              <div style="{{ os.run.gatesNoteStyle }}">{{ os.run.gatesNote }}</div>
+            </div>
+          </div>
+
+          <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
+            <div style="font-size:15px;font-weight:600;color:#eef0f5;">{{ os.run.panel.title }}</div>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.45);margin-top:2px;">{{ os.run.panel.sub }}</div>
+            <div style="font-size:13.5px;color:#eef0f5;margin-top:10px;line-height:1.55;">{{ os.run.panel.text }}</div>
+            <sc-if value="{{ os.run.hasAgentFindings }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:8px;max-height:430px;overflow:auto;">
+                <sc-for list="{{ os.run.agentFindings }}" as="f">
+                  <div class="os-row" style="display:block;">
+                    <span style="display:flex;gap:8px;align-items:baseline;">
+                      <span style="{{ f.sevStyle }}">{{ f.sev }}</span>
+                      <span style="font-size:12px;font-weight:600;color:#eef0f5;">{{ f.id }}</span>
+                      <span style="font-size:11px;color:rgba(238,240,245,0.45);margin-left:auto;">{{ f.status }}</span>
+                    </span>
+                    <span style="display:block;font-size:12.5px;color:rgba(238,240,245,0.75);margin-top:3px;line-height:1.5;">{{ f.title }}</span>
+                    <span style="{{ f.noteStyle }}">{{ f.note }}</span>
+                    <span style="display:block;font-size:11px;color:rgba(238,240,245,0.4);margin-top:3px;overflow-wrap:anywhere;">{{ f.meta }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <div style="font-size:11.5px;color:rgba(238,240,245,0.38);margin-top:14px;">Tryck på en agent för att se vad den hittade.</div>
+          </div>
+        </div>
+
+        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;margin-top:14px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:6px;">TIDSLINJE</div>
+          <sc-for list="{{ os.run.events }}" as="e">
+            <button class="os-ev" onclick="{{ e.onClick }}" style="{{ e.rowStyle }}">
+              <span style="{{ e.dotStyle }}"></span>
+              <span class="os-ev-when" style="font-size:11.5px;color:rgba(238,240,245,0.45);font-variant-numeric:tabular-nums;">{{ e.when }}</span>
+              <span class="os-ev-text" style="font-size:13px;color:#eef0f5;">{{ e.text }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
     </sc-if>
 
   </main>
@@ -1636,6 +1773,7 @@ class Component extends DCLogic {
     halsaDaily:[], halsaStatus:null, halsaNatt:[], halsaPuls:[], halsaKropp:[], halsaOk:true, halsaError:null, halsaLoaded:false, halsaImportMsg:'',
     // OS-fliken (os_items + os_collect_log — RLS ger endast Mats rader)
     osItems:[], osLog:null, osLoaded:false, osError:null, osView:'oversikt', osApp:null, osTool:'skill', osQuery:'',
+    osRun:null, osStep:-1, osPkt:null, osAgent:null, osPlaying:false,
   };
 
   componentDidMount() {
@@ -2309,6 +2447,7 @@ class Component extends DCLogic {
     clearInterval(this._tick); clearInterval(this._refresh); clearInterval(this._lfcRefresh); clearInterval(this._briefingRefresh);
     window.removeEventListener('resize', this._resize);
     document.removeEventListener('input', this._osSok);
+    clearInterval(this._osTimer);
   }
 
   async fetchLiverpool() {
@@ -2593,6 +2732,71 @@ class Component extends DCLogic {
       this.setState({ osLoaded: true, osError: e.message || 'Nätverksfel' });
     }
   }
+
+  // Körningar: händelser härleds ur run.json/findings/gates i ordning. Ingen påhittad tid:
+  // en agents resultat placeras där nästa agent startar (då var den klar).
+  OS_ROLES = { 'code-reviewer':'code', 'ui-reviewer':'ui', 'browser-qa':'qa', 'security-reviewer':'sec',
+               'diff-reviewer':'diff', 'second-reviewer':'second', 'final-reviewer':'final', orchestrator:'ork' };
+  OS_LABEL = { ork:'Orkestrerare', code:'Kodgranskare', ui:'UI-granskare', qa:'Browser-QA', sec:'Säkerhet',
+               diff:'Diffgranskare', second:'Andra granskning', final:'Slutgranskare' };
+  _osEvents(run) {
+    if (!run) return [];
+    const ev = [], ag = (run.agents || []).filter(a => a.role !== 'orchestrator').sort((a, b) => a.at.localeCompare(b.at));
+    const sev = ids => {
+      const c = {};
+      for (const f of run.findings || []) if (ids.includes(f.id)) c[f.severity] = (c[f.severity] || 0) + 1;
+      return ['CRITICAL','HIGH','MEDIUM','LOW','INFO'].filter(s => c[s]).map(s => `${c[s]} ${s}`).join(', ');
+    };
+    if (run.created) ev.push({ t: run.created, actor:'ork', kind:'start', text:`Orkestreraren startar körningen${run.mode ? ` (${[run.mode, run.env].filter(Boolean).join(' · ')})` : ''}` });
+    ag.forEach((a, i) => {
+      // Klar senast när nästa sak startar: nästa agent eller en fixrunda efter den här agenten.
+      const k = this.OS_ROLES[a.role] || a.role;
+      const end = [ag[i + 1]?.at, ...(run.cycles || []).map(c => c.started).filter(t => t > a.at),
+                   ...(run.gates || []).map(g => g.at).filter(t => t && t > a.at), run.computedAt]
+        .filter(Boolean).sort()[0] || a.at;
+      ev.push({ t: a.at, actor:k, from:'ork', to:k, kind:'start', text:`${this.OS_LABEL[k] || k} får uppdraget${a.model ? ' · ' + a.model : ''}` });
+      const rv = run.reviewers?.[k], gr = k === 'second' ? run.second : k === 'final' ? run.final : null;
+      const text = rv && rv.agent === a.id ? (rv.ids.length ? `${rv.ids.length} fynd tillbaka: ${sev(rv.ids)}` : 'Inga fynd')
+        : gr && gr.agent === a.id ? `Granskningen: ${gr.verdict}` : 'Lämnar sin rapport';
+      ev.push({ t: end, actor:k, from:k, to:'ork', kind:'result', text, agentId: a.id });
+    });
+    for (const c of run.cycles || []) ev.push({ t: c.started, actor:'ork', kind:'fix', text:`Fixrunda ${c.n}: ${c.findings.join(', ')}` });
+    const g = run.gates || [];
+    if (g.length) {
+      const fail = g.filter(x => x.status !== 'PASS');
+      const t = g.map(x => x.at).filter(Boolean).sort().pop() || run.computedAt;
+      ev.push({ t, actor:'ork', kind:'gates', text:`${g.length} grindar körs: ${g.length - fail.length} PASS${fail.length ? ` · ${fail.length} FAIL` : ''}` });
+    }
+    if (run.verdict) ev.push({ t: run.computedAt, actor:'ork', kind:'verdict',
+      text: run.verdict === 'READY' ? 'Dom: READY · allt grönt' : `Dom: ${run.verdict} · stoppad av ${(run.blockers || []).join(', ')}` });
+    return ev.map((e, i) => ({ ...e, i })).sort((a, b) => (a.t || '').localeCompare(b.t || '') || a.i - b.i);
+  }
+  _osRun() {
+    const runs = (this.state.osItems || []).filter(i => i.kind === 'run').map(i => i.data)
+      .sort((a, b) => (b.computedAt || b.created || '').localeCompare(a.computedAt || a.created || ''));
+    return runs.find(r => `${r.project}/${r.run}` === this.state.osRun) || runs[0] || null;
+  }
+  osGo(i) {
+    const ev = this._osEvents(this._osRun()), e = ev[i];
+    if (!e) return;
+    const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (e.from && e.to && !still) {
+      // Paketet ställs på avsändaren och flyttas i nästa bildruta — CSS-övergången ritar resan.
+      this.setState({ osStep: i, osPkt: e.from });
+      setTimeout(() => this.setState({ osPkt: e.to }), 30);
+    } else this.setState({ osStep: i, osPkt: e.to || null });
+  }
+  osPlay() {
+    if (this._osTimer) { clearInterval(this._osTimer); this._osTimer = null; this.setState({ osPlaying:false }); return; }
+    const n = this._osEvents(this._osRun()).length;
+    let i = this.state.osStep < 0 || this.state.osStep >= n - 1 ? 0 : this.state.osStep + 1;
+    this.setState({ osPlaying:true }); this.osGo(i);
+    this._osTimer = setInterval(() => {
+      if (++i >= n) { clearInterval(this._osTimer); this._osTimer = null; this.setState({ osPlaying:false }); return; }
+      this.osGo(i);
+    }, 1500);
+  }
+  osStop() { if (this._osTimer) { clearInterval(this._osTimer); this._osTimer = null; } this.setState({ osPlaying:false }); }
 
   // Familjeappen: inköpslistan + vad som väntar på godkännande. Samma inloggade
   // session som uppgifterna ovan — RLS ger Mats läsrätt som familjemedlem.
@@ -3658,12 +3862,109 @@ class Component extends DCLogic {
       const pill = on => ({padding:'4px 11px',borderRadius:'7px',fontSize:'11.5px',fontWeight:'500',fontFamily:'inherit',cursor:'pointer',
         border:`1px solid ${on?'rgba(130,220,50,0.4)':'rgba(255,255,255,0.1)'}`,
         background:on?'rgba(130,220,50,0.12)':'rgba(255,255,255,0.04)', color:on?G:'rgba(238,240,245,0.6)'});
+
+      // ── Körningar (Control Room): uppspelning av riktiga quality-runs ──
+      const runsAll = of('run').sort((a, b) => (b.computedAt || b.created || '').localeCompare(a.computedAt || a.created || ''));
+      const run = this._osRun();
+      const ev = this._osEvents(run);
+      const last = ev.length - 1, step = st.osStep < 0 || st.osStep > last ? last : st.osStep;
+      const cur = ev[step] || null;
+      const SEVC = { CRITICAL:R, HIGH:R, MEDIUM:O, LOW:'rgba(238,240,245,0.55)', INFO:MUTED };
+      const fmt = ts => ts ? new Date(ts).toLocaleString('sv-SE', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }) : '';
+      // Status per roll vid aktuell händelse — härledd ur händelseordningen, inget annat.
+      const roleState = k => {
+        if (k === 'ork') return cur?.kind === 'fix' ? ['Fixar', O] : cur?.kind === 'verdict' ? (run?.verdict === 'READY' ? ['Klar', G] : ['Stoppad', R]) : ['Leder', G];
+        let s = null;
+        for (let i = 0; i <= step; i++) if (ev[i].actor === k && (ev[i].kind === 'start' || ev[i].kind === 'result')) s = ev[i].kind;
+        if (!s) return ev.some(e => e.actor === k) ? ['Väntar', MUTED] : ['Ingår inte', 'rgba(238,240,245,0.22)'];
+        if (s === 'start') return ['Arbetar', O];
+        if (k === 'final' && cur?.kind === 'verdict' && run?.verdict !== 'READY') return ['Stoppad', R];
+        return ['Klar', G];
+      };
+      const POS = { ork:[50,50], code:[50,11], ui:[83,25], qa:[91,62], sec:[69,89], diff:[31,89], second:[9,62], final:[17,25] };
+      const nodes = {};
+      for (const k of Object.keys(POS)) {
+        const [w, c] = roleState(k), sel = st.osAgent === k, active = cur && (cur.actor === k || cur.to === k);
+        const models = [...new Set((run?.agents || []).filter(a => this.OS_ROLES[a.role] === k && a.model).map(a => a.model))];
+        nodes[k] = { word: w, label: this.OS_LABEL[k],
+          wrap: `left:${POS[k][0]}%;top:${POS[k][1]}%;`,
+          disc: `border-color:${c};color:${w === 'Ingår inte' ? 'rgba(238,240,245,0.3)' : '#eef0f5'};${sel ? 'box-shadow:0 0 0 4px rgba(255,255,255,0.12);' : ''}${active ? 'background:#1a1e2a;' : ''}`,
+          cls: w === 'Arbetar' || w === 'Fixar' ? 'os-disc os-working' : 'os-disc',
+          wordStyle: `font-size:10.5px;font-weight:600;color:${c};`,
+          model: models.join(' · '),
+          onClick: () => this.setState({ osAgent: sel ? null : k }) };
+      }
+      const edge = k => cur && ((cur.from === k && cur.to === 'ork') || (cur.from === 'ork' && cur.to === k)) ? 'rgba(130,220,50,0.75)' : 'rgba(255,255,255,0.09)';
+      const pk = st.osPkt && POS[st.osPkt];
+
+      // Grindraden tänds när grindhändelsen passerats i uppspelningen.
+      const gatesAt = ev.findIndex(e => e.kind === 'gates');
+      const lit = gatesAt >= 0 && step >= gatesAt;
+      const gates = (run?.gates || []).map(g => {
+        const c = !lit ? 'rgba(255,255,255,0.12)' : g.status === 'PASS' ? G : g.status === 'FAIL' ? R : O;
+        return { title: `${g.name}: ${lit ? g.status : 'ej körd än'}${g.detail ? ' · ' + g.detail : ''}`,
+          style: `width:12px;height:12px;border-radius:3px;background:${c};transition:background .4s;` };
+      });
+      const failed = (run?.gates || []).filter(g => g.status !== 'PASS').map(g => g.name);
+
+      // Vald agent: dess fynd (från den agentens egen fyndfil), annars aktuell händelse.
+      const ak = st.osAgent;
+      const akIds = ak && run?.reviewers?.[ak]?.ids || [];
+      const agentFindings = (run?.findings || []).filter(f => akIds.includes(f.id)).map(f => ({
+        id: f.id, sev: f.severity, title: f.title, status: f.status,
+        sevStyle: `font-size:10.5px;font-weight:700;color:${SEVC[f.severity] || MUTED};`,
+        meta: [f.where, f.evidenceCount ? `${f.evidenceCount} bevisfiler: ${f.evidence.slice(0, 3).join(', ')}${f.evidenceCount > 3 ? '…' : ''}` : ''].filter(Boolean).join(' · '),
+        note: f.needsMats ? f.note : '', noteStyle: f.needsMats ? `display:block;font-size:12px;color:${O};margin-top:3px;` : 'display:none;' }));
+      const gr = ak === 'second' ? run?.second : ak === 'final' ? run?.final : null;
+      const panel = ak ? {
+        title: this.OS_LABEL[ak], sub: nodes[ak]?.model ? `Modell: ${nodes[ak].model}` : '',
+        text: akIds.length ? `${akIds.length} fynd i senaste rapporten` : gr ? `Granskningens dom: ${gr.verdict}` : ak === 'ork' ? `Leder körningen och fixar fynden i ${run?.cycles?.length || 0} rundor.` : 'Inga fynd sparade för den här rollen.',
+      } : { title: cur ? `Händelse ${step + 1} av ${ev.length}` : 'Ingen körning', sub: cur ? fmt(cur.t) : '', text: cur?.text || '' };
+
+      const runVm = run ? {
+        title: `${run.project} · ${run.run}`,
+        verdict: run.verdict || 'Ingen dom', verdictStyle: `font-size:13px;font-weight:700;letter-spacing:0.04em;color:${run.verdict === 'READY' ? G : run.verdict ? R : MUTED};`,
+        meta: `${(run.agents || []).length} agenter · ${(run.findings || []).length} fynd · ${(run.cycles || []).length} fixrundor · ${fmt(run.created)} → ${fmt(run.computedAt)}`,
+        nodes, pkt: pk ? `left:${pk[0]}%;top:${pk[1]}%;opacity:1;` : 'left:50%;top:50%;opacity:0;',
+        e: { code: edge('code'), ui: edge('ui'), qa: edge('qa'), sec: edge('sec'), diff: edge('diff'), second: edge('second'), final: edge('final') },
+        gates, gatesNote: !lit ? 'Grindarna tänds när de körs i uppspelningen.' : failed.length ? `Stannade på: ${failed.join(', ')}` : 'Alla grindar gröna.',
+        gatesNoteStyle: `font-size:12px;color:${lit && failed.length ? R : MUTED};margin-top:8px;`,
+        panel, agentFindings, hasAgentFindings: agentFindings.length > 0,
+        playLabel: st.osPlaying ? '❚❚ Pausa' : step >= last ? '▶ Spela upp från början' : '▶ Spela upp',
+        onPlay: () => this.osPlay(),
+        onPrev: () => { this.osStop(); this.osGo(Math.max(0, step - 1)); },
+        onNext: () => { this.osStop(); this.osGo(Math.min(last, step + 1)); },
+        counter: `${step + 1} / ${ev.length}`,
+        events: ev.map((e, i) => ({ when: `${fmt(e.t)} · ${this.OS_LABEL[e.actor] || e.actor}`, text: e.text,
+          onClick: () => { this.osStop(); this.osGo(i); },
+          rowStyle: i === step ? 'background:rgba(130,220,50,0.07);' : i > step ? 'opacity:0.45;' : '',
+          dotStyle: dot(e.kind === 'verdict' ? (run.verdict === 'READY' ? G : R) : e.kind === 'fix' ? O : e.kind === 'gates' ? (failed.length ? R : G) : i <= step ? G : MUTED) })),
+      } : null;
+      const runPicker = runsAll.map(r => {
+        const on = run && r.project === run.project && r.run === run.run;
+        return { label: `${r.project} · ${r.run.slice(0, 10)} · ${r.verdict || '?'}`,
+          onClick: () => { this.osStop(); this.setState({ osRun: `${r.project}/${r.run}`, osStep: -1, osPkt: null, osAgent: null }); },
+          btnStyle: { ...pill(on), color: on ? (r.verdict === 'READY' ? G : R) : 'rgba(238,240,245,0.6)' } };
+      });
+      // Senaste körningen per projekt styr "Väntar på dig".
+      const latestPer = {};
+      for (const r of runsAll) latestPer[r.project] ||= r;
+      for (const r of Object.values(latestPer)) {
+        const open = () => this.setState({ osView:'korningar', osRun:`${r.project}/${r.run}`, osStep:-1, osPkt:null, osAgent:null });
+        if (r.verdict && r.verdict !== 'READY') attn.push({ lvl:1, title:`${r.project}: granskningen ej godkänd`, why:`Stoppad av ${(r.blockers || []).join(', ')}.`, onClick: open });
+        for (const f of (r.findings || []).filter(f => f.needsMats))
+          attn.push({ lvl:1, title:`${r.project}: ${f.id} väntar på ditt beslut`, why: f.title, onClick: open });
+      }
+      attn.sort((a, b) => a.lvl - b.lvl);
+
       const has = all.length > 0;
       return {
         loading: !st.osLoaded && !has,
         error: st.osError && !has ? (st.osError === 'Ej inloggad' ? 'Logga in (samma inloggning som Färdplan) för att se systemet.' : `Kunde inte hämta systemet: ${st.osError}`) : '',
-        views: [['oversikt','Översikt'],['appar','Appar'],['verktyg','Verktyg']].map(([k, label]) => ({
-          label, onClick: () => this.setState({ osView:k, osApp:null }), btnStyle: pill(st.osView === k) })),
+        views: [['oversikt','Översikt'],['appar','Appar'],['verktyg','Verktyg'],['korningar','Körningar']].map(([k, label]) => ({
+          label, onClick: () => { this.osStop(); this.setState({ osView:k, osApp:null }); }, btnStyle: pill(st.osView === k) })),
+        isKorningar: has && st.osView === 'korningar' && !!runVm, noRuns: has && st.osView === 'korningar' && !runVm,
+        run: runVm || {}, runPicker,
         isOversikt: has && st.osView === 'oversikt', isAppar: has && st.osView === 'appar' && !sel,
         isDetalj: has && st.osView === 'appar' && !!sel, isVerktyg: has && st.osView === 'verktyg',
         summary: `${apps.length} ${apps.length === 1 ? 'app' : 'appar'} · ${skills.length} skills · ${mcps.length} MCP · ${plugins.length} ${plugins.length === 1 ? 'plugin' : 'plugins'}`,
