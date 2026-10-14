@@ -24,6 +24,9 @@
   .h-in::file-selector-button{background:#1e2230;border:0;border-radius:6px;color:#c8ccd6;font:inherit;font-size:12px;padding:5px 9px;margin-right:8px;cursor:pointer;}
   .h-btn{background:#1e2230;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#eef0f5;font:inherit;font-size:13px;font-weight:600;padding:8px 14px;cursor:pointer;}
   .h-btn:hover{background:#262b3a;}
+  /* Väder: Netatmo-mätning + KULING-widget sida vid sida */
+  .nt-grid{display:grid;grid-template-columns:minmax(0,1fr) 336px;gap:14px;margin-top:14px;}
+  @media(max-width:760px){.nt-grid{grid-template-columns:1fr;}}
   /* OS-fliken */
   .os-row{display:flex;gap:12px;align-items:flex-start;width:100%;padding:11px 6px;border:0;border-top:1px solid rgba(255,255,255,0.05);background:none;color:inherit;font:inherit;text-align:left;border-radius:0;}
   button.os-row{cursor:pointer;}
@@ -963,7 +966,25 @@
            så omrenderingar laddar inte om den; widgeten uppdaterar sig själv var tionde minut.
            Bara vattenstånd + åska: KULING saknar egna mätstationer i Nyköping och visar "—" för temp/vind här
            (verifierat 2026-10-13; Kungsbacka ger värden). -->
-      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px 18px;margin-top:14px;">
+      <div class="nt-grid">
+      <!-- Uppmätt i Väster: median av andras publika Netatmo-stationer (netatmo-proxy, cache 10 min) -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 20px 18px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">UPPMÄTT I VÄSTER</div>
+          <div style="{{ netatmo.badgeStyle }}">{{ netatmo.badge }}</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;">
+          <div style="font-size:46px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;line-height:1;font-variant-numeric:tabular-nums;">{{ netatmo.temp }}</div>
+          <div style="display:grid;grid-template-columns:repeat(2,auto);gap:4px 22px;font-size:13px;color:rgba(238,240,245,0.72);font-variant-numeric:tabular-nums;padding-bottom:4px;">
+            <span>Fukt {{ netatmo.humidity }}</span><span>Tryck {{ netatmo.pressure }}</span>
+            <span>Regn 1 h {{ netatmo.rain1h }}</span><span>Regn 24 h {{ netatmo.rain24h }}</span>
+            <span>Vind {{ netatmo.wind }}</span><span>Byar {{ netatmo.gust }}</span>
+          </div>
+        </div>
+        <div style="font-size:11.5px;color:rgba(238,240,245,0.42);margin-top:12px;line-height:1.5;">{{ netatmo.note }}</div>
+      </div>
+
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px 18px;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">KULING · VÄSTER</div>
           <a href="https://kulingapp.se" target="_blank" rel="noopener" style="font-size:11px;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Öppna KULING ↗</a>
@@ -971,6 +992,7 @@
         <iframe src="https://kulingapp.se/embed?lat=58.7525&lon=17.0023&units=water%2Cthunder&theme=dark&size=compact&name=V%C3%A4ster%2C%20Nyk%C3%B6ping"
                 width="300" height="150" loading="lazy" title="KULING väderwidget Väster, Nyköping"
                 style="display:block;border:0;border-radius:12px;max-width:100%;"></iframe>
+      </div>
       </div>
 
       <!-- Badvatten · Nyköping med omnejd -->
@@ -1755,6 +1777,8 @@ class Component extends DCLogic {
     wxHourly:[],
     // Badvatten (Havs- och vattenmyndigheten via bathing-proxy)
     bathingSpots:[], bathingOk:false,
+    // Netatmo: median av publika stationer runt Väster (netatmo-proxy)
+    netatmo:null, netatmoError:null,
     // Skollunch (Kunskapsskolan Nyköping via matsedel-proxy)
     lunchDays:[], lunchWeek:null, lunchStale:false,
     // Uppgifter – VoxMats (voxmats_items). Familjeappens todo-lista finns inte
@@ -2583,7 +2607,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp','netatmo'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -2592,7 +2616,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs(), this.fetchNetatmo()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2874,6 +2898,19 @@ class Component extends DCLogic {
         lunchStale: !!d.stale,
       });
     } catch(e) { console.warn('Matsedel:', e.message); }
+  }
+
+  // Öppen proxy (offentlig väderdata), ingen inloggning — som bathing-proxy.
+  async fetchNetatmo() {
+    try {
+      const r = await fetch(`${this.SB_URL}/functions/v1/netatmo-proxy`);
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || `HTTP ${r.status}`);
+      this.setState({ netatmo: d, netatmoError: null });
+    } catch(e) {
+      console.warn('Netatmo:', e.message);
+      this.setState({ netatmoError: e.message });
+    }
   }
 
   async fetchBathing() {
@@ -3994,8 +4031,24 @@ class Component extends DCLogic {
       };
     })();
 
+    // Uppmätt i Väster (Netatmo): medianer, och alltid hur många stationer de bygger på.
+    const netatmo = (() => {
+      const n = this.state.netatmo, err = this.state.netatmoError;
+      const f = (v, unit, d = 1) => v == null ? '—' : `${Number(v).toFixed(d).replace('.', ',')}${unit}`;
+      const age = n?.measuredAt ? Math.round((Date.now() - new Date(n.measuredAt).getTime()) / 60000) : null;
+      const old = n?.stale || (age != null && age > 60);
+      return {
+        temp: f(n?.temp, '°'), humidity: f(n?.humidity, ' %', 0), pressure: f(n?.pressure, ' hPa', 0),
+        rain1h: f(n?.rain1h, ' mm'), rain24h: f(n?.rain24h, ' mm'), wind: f(n?.wind, ' m/s'), gust: f(n?.gust, ' m/s'),
+        badge: !n ? (err ? 'Ingen kontakt' : 'Hämtar…') : old ? `⚠ Mätt för ${age} min sedan` : `● ${n.stations} stationer`,
+        badgeStyle: `font-size:11px;font-weight:600;color:${!n ? 'rgba(238,240,245,0.4)' : old ? O : G};`,
+        note: n ? `Median av ${n.counts?.temperature ?? 0} temperaturmätare, ${n.counts?.rain_60min ?? 0} regnmätare och ${n.counts?.wind_strength ?? 0} vindmätare inom ca 2 km. Andras publika Netatmo-stationer${n.measuredAt ? ', senast ' + new Date(n.measuredAt).toLocaleTimeString('sv-SE', { hour:'2-digit', minute:'2-digit' }) : ''}.`
+          : err ? `Kunde inte hämta Netatmo: ${err}` : '',
+      };
+    })();
+
     return {
-      fpLogin, familjeapp,
+      fpLogin, familjeapp, netatmo,
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
