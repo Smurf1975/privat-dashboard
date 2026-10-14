@@ -27,6 +27,17 @@
   /* Väder: Netatmo-mätning + KULING-widget sida vid sida */
   .nt-grid{display:grid;grid-template-columns:minmax(0,1fr) 336px;gap:14px;margin-top:14px;}
   @media(max-width:760px){.nt-grid{grid-template-columns:1fr;}}
+  /* Väder: vägkameror */
+  .tv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+  .tv-cam{position:relative;display:block;padding:0;border:0;border-radius:9px;overflow:hidden;background:#0f1117;cursor:zoom-in;aspect-ratio:16/10;}
+  .tv-cam img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;}
+  .tv-cam:hover img{transform:scale(1.03);}
+  .tv-cam:focus-visible{outline:2px solid oklch(0.82 0.24 130);outline-offset:2px;}
+  .tv-cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:8px;padding:16px 10px 7px;font-size:12px;color:#eef0f5;text-align:left;background:linear-gradient(transparent,rgba(8,10,14,0.85));}
+  .tv-cap span{color:rgba(238,240,245,0.65);font-size:11px;white-space:nowrap;}
+  .tv-box{position:fixed;inset:0;z-index:50;background:rgba(6,8,12,0.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;}
+  .tv-box img{max-width:100%;max-height:80vh;border-radius:10px;}
+  @media(prefers-reduced-motion:reduce){.tv-cam img{transition:none;}}
   /* OS-fliken */
   .os-row{display:flex;gap:12px;align-items:flex-start;width:100%;padding:11px 6px;border:0;border-top:1px solid rgba(255,255,255,0.05);background:none;color:inherit;font:inherit;text-align:left;border-radius:0;}
   button.os-row{cursor:pointer;}
@@ -995,6 +1006,73 @@
       </div>
       </div>
 
+      <!-- Vägkameror: Trafikverkets öppna API via trafik-proxy. Åtta FASTA platser (inte sc-for) så att
+           bilderna inte laddas om vid varje omrendering; src byts bara när kameran tagit en ny bild. -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 20px 18px;margin-top:14px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">VÄGKAMEROR · NÄRA VÄSTER</div>
+          <div style="font-size:11px;color:rgba(238,240,245,0.42);">{{ trafik.note }}</div>
+        </div>
+        <div class="tv-grid">
+          <sc-if value="{{ trafik.c0.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c0.open }}" aria-label="{{ trafik.c0.label }}">
+              <img src="{{ trafik.c0.src }}" alt="{{ trafik.c0.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c0.name }}</b><span>{{ trafik.c0.meta }}</span></span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ trafik.c1.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c1.open }}" aria-label="{{ trafik.c1.label }}">
+              <img src="{{ trafik.c1.src }}" alt="{{ trafik.c1.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c1.name }}</b><span>{{ trafik.c1.meta }}</span></span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ trafik.c2.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c2.open }}" aria-label="{{ trafik.c2.label }}">
+              <img src="{{ trafik.c2.src }}" alt="{{ trafik.c2.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c2.name }}</b><span>{{ trafik.c2.meta }}</span></span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ trafik.c3.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c3.open }}" aria-label="{{ trafik.c3.label }}">
+              <img src="{{ trafik.c3.src }}" alt="{{ trafik.c3.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c3.name }}</b><span>{{ trafik.c3.meta }}</span></span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ trafik.c4.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c4.open }}" aria-label="{{ trafik.c4.label }}">
+              <img src="{{ trafik.c4.src }}" alt="{{ trafik.c4.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c4.name }}</b><span>{{ trafik.c4.meta }}</span></span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ trafik.c5.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c5.open }}" aria-label="{{ trafik.c5.label }}">
+              <img src="{{ trafik.c5.src }}" alt="{{ trafik.c5.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c5.name }}</b><span>{{ trafik.c5.meta }}</span></span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ trafik.c6.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c6.open }}" aria-label="{{ trafik.c6.label }}">
+              <img src="{{ trafik.c6.src }}" alt="{{ trafik.c6.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c6.name }}</b><span>{{ trafik.c6.meta }}</span></span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ trafik.c7.show }}" hint-placeholder-val="{{ false }}">
+            <button class="tv-cam" onclick="{{ trafik.c7.open }}" aria-label="{{ trafik.c7.label }}">
+              <img src="{{ trafik.c7.src }}" alt="{{ trafik.c7.label }}" loading="lazy">
+              <span class="tv-cap"><b>{{ trafik.c7.name }}</b><span>{{ trafik.c7.meta }}</span></span>
+            </button>
+          </sc-if>
+        </div>
+        <div style="{{ trafik.emptyStyle }}">{{ trafik.empty }}</div>
+      </div>
+      <sc-if value="{{ trafik.isOpen }}" hint-placeholder-val="{{ false }}">
+        <div class="tv-box" onclick="{{ trafik.close }}" role="dialog" aria-label="{{ trafik.big.label }}">
+          <img src="{{ trafik.big.src }}" alt="{{ trafik.big.label }}">
+          <div style="margin-top:10px;font-size:14px;color:#eef0f5;"><b>{{ trafik.big.name }}</b> <span style="color:rgba(238,240,245,0.55);">{{ trafik.big.meta }}</span></div>
+          <div style="font-size:11.5px;color:rgba(238,240,245,0.4);margin-top:4px;">Tryck var som helst för att stänga · Bild: Trafikverket</div>
+        </div>
+      </sc-if>
+
       <!-- Badvatten · Nyköping med omnejd -->
       <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-top:14px;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
@@ -1779,6 +1857,8 @@ class Component extends DCLogic {
     bathingSpots:[], bathingOk:false,
     // Netatmo: median av publika stationer runt Väster (netatmo-proxy)
     netatmo:null, netatmoError:null,
+    // Vägkameror (trafik-proxy, Trafikverket)
+    trafikCams:[], trafikError:null, trafikOpen:null,
     // Skollunch (Kunskapsskolan Nyköping via matsedel-proxy)
     lunchDays:[], lunchWeek:null, lunchStale:false,
     // Uppgifter – VoxMats (voxmats_items). Familjeappens todo-lista finns inte
@@ -2607,7 +2687,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp','netatmo'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp','netatmo','trafikCams'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -2616,7 +2696,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs(), this.fetchNetatmo()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs(), this.fetchNetatmo(), this.fetchTrafik()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2910,6 +2990,20 @@ class Component extends DCLogic {
     } catch(e) {
       console.warn('Netatmo:', e.message);
       this.setState({ netatmoError: e.message });
+    }
+  }
+
+  // Vägkameror närmast Väster. Listan via proxyn (nyckeln stannar server-side), bilderna direkt från
+  // Trafikverket — de är offentliga.
+  async fetchTrafik() {
+    try {
+      const r = await fetch(`${this.SB_URL}/functions/v1/trafik-proxy?km=30`);
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || `HTTP ${r.status}`);
+      this.setState({ trafikCams: (d.cameras || []).slice(0, 8), trafikError: null });
+    } catch(e) {
+      console.warn('Trafik:', e.message);
+      this.setState({ trafikError: e.message });
     }
   }
 
@@ -4047,8 +4141,28 @@ class Component extends DCLogic {
       };
     })();
 
+    // Vägkameror: åtta fasta platser c0–c7. src bär fotots tidsstämpel → ny bild bara när kameran fotat.
+    const trafik = (() => {
+      const cams = this.state.trafikCams || [], err = this.state.trafikError;
+      const ago = t => { if (!t) return ''; const m = Math.round((Date.now() - new Date(t).getTime()) / 60000); return m < 1 ? 'nyss' : m < 60 ? `${m} min` : `${Math.floor(m/60)} h`; };
+      const vm = c => c ? { show: true, name: c.name, label: `Vägkamera ${c.name}`,
+        meta: `${String(c.km).replace('.', ',')} km · ${ago(c.photoTime)}`,
+        src: `${c.photoUrl}?t=${encodeURIComponent(c.photoTime || '')}`,
+        open: () => this.setState({ trafikOpen: c.id }) } : { show: false };
+      const out = {};
+      for (let i = 0; i < 8; i++) out[`c${i}`] = vm(cams[i]);
+      const sel = cams.find(c => c.id === this.state.trafikOpen);
+      return { ...out, isOpen: !!sel,
+        big: sel ? { name: sel.name, meta: `${String(sel.km).replace('.', ',')} km från Väster · bild ${ago(sel.photoTime)} gammal`,
+          label: `Vägkamera ${sel.name}`, src: `${sel.fullUrl}${sel.fullUrl.includes('?') ? '&' : '?'}t=${encodeURIComponent(sel.photoTime || '')}` } : {},
+        close: () => this.setState({ trafikOpen: null }),
+        note: cams.length ? `${cams.length} kameror inom 3 mil · Trafikverket` : '',
+        empty: cams.length ? '' : err ? `Kunde inte hämta kamerorna: ${err}` : 'Hämtar kameror…',
+        emptyStyle: cams.length ? 'display:none;' : 'font-size:12.5px;color:rgba(238,240,245,0.45);' };
+    })();
+
     return {
-      fpLogin, familjeapp, netatmo,
+      fpLogin, familjeapp, netatmo, trafik,
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
