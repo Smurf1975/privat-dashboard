@@ -18,7 +18,31 @@
 
 <script src="./support.js"></script>
 <script src="./halsa-import.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="./vaderradar.js" defer></script>
 <style>
+  /* Väder: radarkarta (vaderradar.js) */
+  .vr-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px;}
+  .vr-btns{display:flex;gap:2px;background:#0f1117;border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:2px;}
+  .vr-btn{border:0;border-radius:7px;background:transparent;color:rgba(238,240,245,0.72);font:inherit;font-size:12.5px;font-weight:600;padding:7px 12px;min-height:34px;cursor:pointer;}
+  .vr-btn:hover{background:rgba(255,255,255,0.05);}
+  .vr-btn:focus-visible,.vr-play:focus-visible,#vr-slide:focus-visible{outline:2px solid oklch(0.82 0.24 130);outline-offset:2px;}
+  .vr-map{position:relative;height:480px;background:#0b0e14;}
+  .vr-map #vr-karta,.vr-map #vr-windy{position:absolute;inset:0;}
+  .vr-map #vr-windy{display:none;}
+  .vr-map #vr-windy iframe{width:100%;height:100%;border:0;display:block;}
+  .vr-map .leaflet-container{background:#0b0e14;font:inherit;}
+  .vr-map .leaflet-bar a{background:#1e2230;color:#eef0f5;border-bottom-color:rgba(255,255,255,0.1);}
+  .vr-map .leaflet-control-attribution{background:rgba(14,16,24,0.78);color:rgba(238,240,245,0.55);font-size:10px;}
+  .vr-map .leaflet-control-attribution a{color:rgba(238,240,245,0.75);}
+  .vr-ctl{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid rgba(255,255,255,0.06);}
+  .vr-play{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);background:#1e2230;color:#eef0f5;font-size:13px;cursor:pointer;}
+  .vr-play:hover{background:#262b3a;}
+  #vr-slide{flex:1;min-width:0;accent-color:#b6f23c;height:28px;}
+  #vr-tid{flex:none;min-width:104px;text-align:right;font-size:12.5px;font-variant-numeric:tabular-nums;color:#eef0f5;}
+  @media(max-width:900px){.vr-grid{grid-template-columns:1fr;}}
+  @media(max-width:760px){.vr-map{height:380px;} .vr-btn{padding:7px 10px;} #vr-tid{min-width:90px;}}
   /* Hälsa: Eufy-import + manuell vikt */
   .h-in{background:#0f1117;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#eef0f5;font:inherit;font-size:13px;padding:8px 10px;color-scheme:dark;}
   .h-in::file-selector-button{background:#1e2230;border:0;border-radius:6px;color:#c8ccd6;font:inherit;font-size:12px;padding:5px 9px;margin-right:8px;cursor:pointer;}
@@ -939,19 +963,32 @@
       </div>
 
       <!-- Regnradar + timprognos -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div class="vr-grid">
 
-        <!-- Regnradar iframe -->
-        <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;">
-          <div style="padding:14px 18px 10px;display:flex;align-items:center;justify-content:space-between;">
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">REGNRADAR · NYKÖPING</div>
-            <a href="https://regnradar.se/" target="_blank" style="font-size:11px;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Öppna ↗</a>
+        <!-- Väderradar: statisk DOM, kartan byggs av vaderradar.js första gången kortet syns -->
+        <div id="vr-kort" style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;min-width:0;">
+          <div style="padding:14px 18px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+            <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">VÄDERRADAR · NYKÖPING</div>
+            <div class="vr-btns" role="group" aria-label="Kartlager">
+              <button type="button" class="vr-btn" data-vr="rain" aria-pressed="true">Regn</button>
+              <button type="button" class="vr-btn" data-vr="sat" aria-pressed="false">Satellit</button>
+              <button type="button" class="vr-btn" data-vr="wind" aria-pressed="false">Vind</button>
+              <button type="button" class="vr-btn" data-vr="temp" aria-pressed="false">Temp</button>
+            </div>
           </div>
-          <div style="position:relative;overflow:hidden;height:480px;background:#070d0f;">
-            <img src="https://dela.regnradar.se/animation/latest3.gif"
-                 style="position:absolute;width:100%;height:auto;transform:scale(3);transform-origin:62% 67%;"
-                 alt="Regnradar Nyköping">
-            <div style="position:absolute;bottom:10px;right:12px;font-size:10px;color:rgba(238,240,245,0.3);">© SMHI · Met Norway</div>
+          <div class="vr-map">
+            <div id="vr-karta" role="application" aria-label="Väderkarta över Nyköping"></div>
+            <div id="vr-windy"><iframe id="vr-windy-if" title="Windy: vind och temperatur"></iframe></div>
+          </div>
+          <div id="vr-ctl" class="vr-ctl">
+            <button type="button" id="vr-play" class="vr-play" aria-label="Spela">▶</button>
+            <input id="vr-slide" type="range" min="0" max="0" value="0" step="1" aria-label="Tid">
+            <div id="vr-tid" aria-live="off"></div>
+          </div>
+          <div style="padding:8px 14px 12px;font-size:11px;line-height:1.5;color:rgba(238,240,245,0.42);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+            <span id="vr-status" role="status"></span>
+            <span id="vr-tips"></span>
+            <span id="vr-attr-windy" style="display:none;">Vind och temperatur: <a href="https://www.windy.com" target="_blank" rel="noopener" style="color:inherit;">Windy.com</a> (ECMWF)</span>
           </div>
         </div>
 
