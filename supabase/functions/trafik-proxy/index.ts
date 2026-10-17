@@ -20,6 +20,51 @@ Deno.serve(async (req) => {
   const json = (s: number, b: unknown) => new Response(JSON.stringify(b), { status: s, headers: h });
   if (req.method !== "GET") return json(405, { error: "method not allowed" });
   if (!KEY) return json(503, { error: "not_connected" });
+  if (new URL(req.url).searchParams.get("what") === "weather") {
+    try {
+      const res = await fetch("https://api.trafikinfo.trafikverket.se/v2/data.json", {
+        method: "POST", headers: { "Content-Type": "text/xml" },
+        body: `<REQUEST><LOGIN authenticationkey="${KEY}"/>
+          <QUERY objecttype="WeatherMeasurepoint" schemaversion="2" limit="10">
+            <FILTER><AND><EQ name="Deleted" value="false"/>
+              <NEAR name="Geometry.WGS84" value="${CENTER.lon} ${CENTER.lat}" mindistance="0" maxdistance="30000"/></AND></FILTER>
+          </QUERY></REQUEST>`,
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok) return json(502, { error: `trafikverket_${res.status}` });
+      const st = (out?.RESPONSE?.RESULT?.[0]?.WeatherMeasurepoint ?? [])
+        .map((s: Record<string, any>) => {
+          const [lon, lat] = (String(s.Geometry?.WGS84 ?? "").match(/[\d.]+/g) ?? []).map(Number);
+          return { s, km: lon && lat ? km(lon, lat) : 999 };
+        })
+        .filter((x: { s: Record<string, any> }) => x.s.Observation)
+        .sort((a: { km: number }, b: { km: number }) => a.km - b.km)[0];
+      if (!st) return json(200, { station: null, fetchedAt: new Date().toISOString() });
+      const ob = st.s.Observation, v = (x: any) => (typeof x?.Value === "number" ? x.Value : null);
+      const surface = v(ob.Surface?.Temperature), air = v(ob.Air?.Temperature), dew = v(ob.Air?.Dewpoint);
+      const w = (ob.Wind ?? [])[0] ?? {};
+      const p5 = ob.Aggregated5minutes?.Precipitation ?? {};
+      const rain = p5.Rain === true, snow = p5.Snow === true;
+      const precip = ob.Weather?.Precipitation ?? null;
+      // Halkrisk: vägbanan nära/under noll är grunden; nederbörd eller vägbana vid/under daggpunkt (rimfrost) höjer.
+      let risk = "unknown", why = "Vägbanans temperatur saknas";
+      if (surface !== null) {
+        const wet = rain || snow || (dew !== null && surface <= dew);
+        if (surface <= 0.5 && wet) { risk = "high"; why = `Vägbana ${surface} °C och ${rain || snow ? "nederbörd" : "fukt (vid/under daggpunkten)"}`; }
+        else if (surface <= 2) { risk = "elevated"; why = `Vägbana ${surface} °C, nära fryspunkten`; }
+        else { risk = "low"; why = `Vägbana ${surface} °C`; }
+      }
+      return json(200, {
+        station: { id: st.s.Id, name: st.s.Name, km: st.km }, sample: ob.Sample ?? null,
+        surfaceTemp: surface, airTemp: air, dewpoint: dew, humidity: v(ob.Air?.RelativeHumidity),
+        windSpeed: v(w.Speed), windDir: v(w.Direction), windGust: v(ob.Aggregated10minutes?.Wind?.SpeedMax),
+        rain, snow, rainMm5: v(p5.RainSum), precipitation: precip,
+        risk, riskWhy: why, fetchedAt: new Date().toISOString(),
+      });
+    } catch (e) {
+      return json(502, { error: (e as Error).message });
+    }
+  }
   const radius = Math.min(50, Math.max(5, Number(new URL(req.url).searchParams.get("km")) || 30));
   try {
     const res = await fetch("https://api.trafikinfo.trafikverket.se/v2/data.json", {

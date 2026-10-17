@@ -1006,6 +1006,29 @@
       </div>
       </div>
 
+      <!-- Vägväder: närmaste vägväderstation (VViS) via trafik-proxy?what=weather. -->
+      <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 20px 18px;margin-top:14px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">{{ vagvader.title }}</div>
+          <div style="{{ vagvader.riskStyle }}">{{ vagvader.risk }}</div>
+        </div>
+        <div style="{{ vagvader.emptyStyle }}">{{ vagvader.empty }}</div>
+        <sc-if value="{{ vagvader.has }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:12.5px;color:#c8ccd6;margin-bottom:12px;">{{ vagvader.riskWhy }}</div>
+          <div style="display:flex;gap:18px 28px;flex-wrap:wrap;align-items:baseline;">
+            <div><div style="font-size:11px;color:rgba(238,240,245,0.42);text-transform:uppercase;letter-spacing:0.06em;">Vägbana</div>
+              <div style="font-size:34px;font-weight:200;color:#eef0f5;line-height:1.1;font-variant-numeric:tabular-nums;">{{ vagvader.surface }}</div></div>
+            <div><div style="font-size:11px;color:rgba(238,240,245,0.42);text-transform:uppercase;letter-spacing:0.06em;">Luft</div>
+              <div style="font-size:34px;font-weight:200;color:#eef0f5;line-height:1.1;font-variant-numeric:tabular-nums;">{{ vagvader.air }}</div></div>
+            <div style="display:flex;gap:6px 18px;flex-wrap:wrap;font-size:12.5px;color:#c8ccd6;">
+              <span>Daggpunkt {{ vagvader.dew }}</span><span>Fukt {{ vagvader.humidity }}</span>
+              <span>Vind {{ vagvader.wind }}</span><span>Byar {{ vagvader.gust }}</span><span>Nederbörd {{ vagvader.precip }}</span>
+            </div>
+          </div>
+          <div style="font-size:11.5px;color:rgba(238,240,245,0.42);margin-top:12px;line-height:1.5;">{{ vagvader.meta }}<br>{{ vagvader.rule }}</div>
+        </sc-if>
+      </div>
+
       <!-- Vägkameror: Trafikverkets öppna API via trafik-proxy. Åtta FASTA platser (inte sc-for) så att
            bilderna inte laddas om vid varje omrendering; src byts bara när kameran tagit en ny bild. -->
       <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 20px 18px;margin-top:14px;">
@@ -1859,6 +1882,8 @@ class Component extends DCLogic {
     netatmo:null, netatmoError:null,
     // Vägkameror (trafik-proxy, Trafikverket)
     trafikCams:[], trafikError:null, trafikOpen:null,
+    // Vägväder: Trafikverkets närmaste vägväderstation (trafik-proxy?what=weather)
+    vagvader:null, vagvaderError:null,
     // Skollunch (Kunskapsskolan Nyköping via matsedel-proxy)
     lunchDays:[], lunchWeek:null, lunchStale:false,
     // Uppgifter – VoxMats (voxmats_items). Familjeappens todo-lista finns inte
@@ -2688,7 +2713,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','lfcSeason','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp','netatmo','trafikCams'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','lfcSeason','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp','netatmo','trafikCams','vagvader'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -2697,7 +2722,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs(), this.fetchNetatmo(), this.fetchTrafik()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs(), this.fetchNetatmo(), this.fetchTrafik(), this.fetchVagvader()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2991,6 +3016,19 @@ class Component extends DCLogic {
     } catch(e) {
       console.warn('Netatmo:', e.message);
       this.setState({ netatmoError: e.message });
+    }
+  }
+
+  // Vägväderstation (VViS) närmast Väster: vägbanetemp, luft, vind, nederbörd och halkrisk (beräknas i proxyn).
+  async fetchVagvader() {
+    try {
+      const r = await fetch(`${this.SB_URL}/functions/v1/trafik-proxy?what=weather`);
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || `HTTP ${r.status}`);
+      this.setState({ vagvader: d, vagvaderError: null });
+    } catch(e) {
+      console.warn('Vägväder:', e.message);
+      this.setState({ vagvaderError: e.message });
     }
   }
 
@@ -4162,8 +4200,32 @@ class Component extends DCLogic {
         emptyStyle: cams.length ? 'display:none;' : 'font-size:12.5px;color:rgba(238,240,245,0.45);' };
     })();
 
+    // Vägväder: halkrisken kommer färdigräknad från proxyn (risk + riskWhy); här görs bara ord, färg och formatering.
+    const vagvader = (() => {
+      const d = this.state.vagvader, err = this.state.vagvaderError;
+      const t = x => x == null ? '—' : `${String(Math.round(x * 10) / 10).replace('.', ',')} °C`;
+      const ms = x => x == null ? '—' : `${String(Math.round(x * 10) / 10).replace('.', ',')} m/s`;
+      const dirs = ['norr','nordost','öst','sydost','syd','sydväst','väst','nordväst'];
+      const R = { high: ['HÖG HALKRISK', 'oklch(0.6 0.18 15)'], elevated: ['FÖRHÖJD HALKRISK', 'oklch(0.75 0.14 65)'],
+                  low: ['LÅG HALKRISK', 'oklch(0.82 0.24 130)'], unknown: ['HALKRISK OKÄND', '#c8ccd6'] };
+      if (!d || !d.station) return { has: false, emptyStyle: 'font-size:12.5px;color:rgba(238,240,245,0.45);', empty: d ? 'Ingen vägväderstation hittades inom 3 mil.' : err ? `Kunde inte hämta vägvädret: ${err}` : 'Hämtar vägväder…',
+        title: 'VÄGVÄDER', riskStyle: 'display:none;' };
+      const [word, col] = R[d.risk] || R.unknown;
+      const ago = d.sample ? Math.round((Date.now() - new Date(d.sample).getTime()) / 60000) : null;
+      const precip = d.snow ? 'Snö' : d.rain ? 'Regn' : d.precipitation && d.precipitation !== 'no' ? d.precipitation : 'Ingen';
+      return { has: true, emptyStyle: 'display:none;', title: `VÄGVÄDER · ${d.station.name}`, empty: '',
+        risk: word, riskWhy: d.riskWhy,
+        riskStyle: `font-size:15px;font-weight:700;letter-spacing:0.05em;color:${col};border:1px solid ${col};border-radius:8px;padding:6px 12px;`,
+        surface: t(d.surfaceTemp), air: t(d.airTemp), dew: t(d.dewpoint),
+        humidity: d.humidity == null ? '—' : `${Math.round(d.humidity)} %`,
+        wind: d.windSpeed == null ? '—' : `${ms(d.windSpeed)}${d.windDir != null ? ' från ' + dirs[Math.round(d.windDir / 45) % 8] : ''}`,
+        gust: ms(d.windGust), precip: d.rainMm5 ? `${precip} (${String(d.rainMm5).replace('.', ',')} mm/5 min)` : precip,
+        meta: `Station ${d.station.name}, ${String(d.station.km).replace('.', ',')} km från Väster · mätt ${d.sample ? new Date(d.sample).toLocaleTimeString('sv-SE', { hour:'2-digit', minute:'2-digit' }) : '—'}${ago != null && ago >= 0 ? ` (${ago < 1 ? 'nyss' : ago < 60 ? ago + ' min sedan' : Math.floor(ago / 60) + ' h sedan'})` : ''} · Trafikverket`,
+        rule: 'Hög: vägbana ≤ 0,5 °C med nederbörd eller fukt (vägbana vid/under daggpunkten). Förhöjd: vägbana ≤ 2 °C. Annars låg.' };
+    })();
+
     return {
-      fpLogin, familjeapp, netatmo, trafik,
+      fpLogin, familjeapp, netatmo, trafik, vagvader,
       activeTab, timeStr, dateStr, tabs, gridStyle, gridStyle2, mediaGridStyle,
       liveStyle, refreshStr, homeyBadgeStyle, homeyBadge,
       elBars, elCurrentStr, elColor, elRec,
