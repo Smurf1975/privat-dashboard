@@ -4214,7 +4214,7 @@ class Component extends DCLogic {
       const ago = d.sample ? Math.round((Date.now() - new Date(d.sample).getTime()) / 60000) : null;
       const precip = d.snow ? 'Snö' : d.rain ? 'Regn' : d.precipitation && d.precipitation !== 'no' ? d.precipitation : 'Ingen';
       return { has: true, emptyStyle: 'display:none;', title: `VÄGVÄDER · ${d.station.name}`, empty: '',
-        risk: word, riskWhy: d.riskWhy,
+        risk: word, riskWhy: String(d.riskWhy).replace(/(\d)\.(\d)/g, '$1,$2'),
         riskStyle: `font-size:15px;font-weight:700;letter-spacing:0.05em;color:${col};border:1px solid ${col};border-radius:8px;padding:6px 12px;`,
         surface: t(d.surfaceTemp), air: t(d.airTemp), dew: t(d.dewpoint),
         humidity: d.humidity == null ? '—' : `${Math.round(d.humidity)} %`,
