@@ -819,13 +819,13 @@
 
         <!-- Höger: PL Tabell (täcker båda vänstra korten) -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
-          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">PREMIER LEAGUE · TABELL 2024–25</div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">PREMIER LEAGUE · TABELL {{ liverpool.season }}</div>
           <div style="display:grid;grid-template-columns:18px 1fr 28px 28px 28px 32px;gap:0 6px;margin-bottom:6px;padding:0 4px;">
             <span style="font-size:9.5px;color:rgba(238,240,245,0.28);">#</span>
             <span style="font-size:9.5px;color:rgba(238,240,245,0.28);">Lag</span>
             <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">M</span>
-            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">GS</span>
-            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">GM</span>
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">V</span>
+            <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:center;">+/−</span>
             <span style="font-size:9.5px;color:rgba(238,240,245,0.28);text-align:right;">P</span>
           </div>
           <sc-for list="{{ liverpool.table }}" as="t" hint-placeholder-count="20">
@@ -1872,7 +1872,7 @@ class Component extends DCLogic {
     // Elpris hourly
     elHourly:[],
     // Liverpool
-    lfcNext:null, lfcLast:null, lfcForm:[], lfcResults:[], lfcTable:[],
+    lfcNext:null, lfcLast:null, lfcForm:[], lfcResults:[], lfcTable:[], lfcSeason:'',
     // Google
     googleAuthed:false, googleError:null, calEvents:[], gmailMsgs:[],
     // Trip photo
@@ -2664,6 +2664,7 @@ class Component extends DCLogic {
       this.setState({
         lfcResults: results,
         lfcTable: table,
+        lfcSeason: (tableData?.children?.[0]?.name || tableData?.season?.displayName || '').match(/\d{4}-\d{2}/)?.[0]?.replace('-','–') || '',
         lfcNext: next ? {
           opp: next.strHomeTeam?.includes('Liverpool') ? next.strAwayTeam : next.strHomeTeam,
           home: next.strHomeTeam?.includes('Liverpool'),
@@ -2687,7 +2688,7 @@ class Component extends DCLogic {
   }
 
   // ── Snabbladdning: spara/återställ senaste live-värden i localStorage ──
-  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp','netatmo','trafikCams'];
+  _cacheKeys = ['outdoorTemp','bedroomTemp','bedroomHumidity','pm25','filterLife','elCurrentOre','elCheapest','elExpensive','elAvgToday','doorLocked','doorBattery','carBattery','carRange','carLocation','carLocked','matsHome','nannyHome','simonHome','vanessaHome','matsLast','nannyLast','simonLast','vanessaLast','semesterMode','vakenMode','wxTemp','wxIcon','wxCondition','wxFeels','wxWind','wxHumidity','wxPrecip','wxHourly','elHourly','lfcNext','lfcLast','lfcForm','lfcResults','lfcTable','lfcSeason','aiBriefing','aiBriefingTime','lunchDays','lunchWeek','lunchStale','halsaDaily','halsaStatus','halsaNatt','halsaPuls','halsaKropp','netatmo','trafikCams'];
   saveCache() {
     try { const o = {}; for (const k of this._cacheKeys) o[k] = this.state[k]; localStorage.setItem('lcc_cache', JSON.stringify(o)); } catch(e) {}
   }
@@ -3093,7 +3094,7 @@ class Component extends DCLogic {
       elHourly, googleAuthed, googleError, calEvents, gmailMsgs,
       ytVideos, ytWatchLater, ytWlFound,
       spotifyAuthed, spotifyRecent, spotifyPodcasts, spotifyDiscovery, spotifyNowPlaying, spotifyLoading,
-      lfcNext, lfcLast, lfcForm, lfcResults, lfcTable,
+      lfcNext, lfcLast, lfcForm, lfcResults, lfcTable, lfcSeason,
       entreTemp, hallenSimonTemp, badrumTemp, balkongOpen, kylskapOpen, frysOpen, motion, lamps,
       tvVardagsrum, tvSovrum, rocky, rockyActiveRoom, rockyReturning,
     } = this.state;
@@ -4234,6 +4235,7 @@ class Component extends DCLogic {
           form: (lfcForm.length>0 ? lfcForm : ['W','W','D','W','L']).map(fI),
           results: lfcResults.length>0 ? lfcResults : [],
           table: lfcTable.length>0 ? lfcTable : [],
+          season: lfcSeason,
         };
       })(),
       health:(() => {
