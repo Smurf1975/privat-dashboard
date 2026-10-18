@@ -8,16 +8,19 @@
 // CACHEN LIGGER I DATABASEN. Edge-funktioners modulvariabler delas inte
 // mellan anrop — verifierat 2026-08-08 med news-proxy. Rör inte det.
 //
-// TABELLER: lagsidans "Visa tabell" listar föregående säsongs serier och är
+// TABELLER: primärt officiella stats.innebandy.se (se openApi nedan). Reserv
+// för serier som bara finns på svenskalag (t.ex. DM): lagsidans "Visa tabell" listar föregående säsongs serier och är
 // därför fel i början av en ny säsong. Serierna som laget spelar NU är
 // filterlänkarna (id="link-<seasonId>") på /matcher; tabellen för varje
 // seasonId hämtas från /seasons/standings (verifierat 2026-10-17).
 
-type Team = { key: string; name: string; slug: string; full: boolean };
+// also = serier som laget spelar enligt förbundet men som saknas i svenskalag-filtret.
+type Team = { key: string; name: string; slug: string; full: boolean; also?: string[] };
 
 // full=false → F15 spelar sammandrag; tabellen blir tom och döljs av dashboarden.
 const TEAMS: Team[] = [
   { key: 'p13',   name: 'P12/13',   slug: 'onyxinnebandy-p12-13',      full: true  },
+  { key: 'p14',   name: 'P14',      slug: 'onyxinnebandy-p14',         full: true  },
   { key: 'f15',   name: 'F15',      slug: 'onyxinnebandy-f15nykoping', full: false },
   { key: 'herra', name: 'Herrar A', slug: 'onyxinnebandy-herr',        full: true  },
   { key: 'dama',  name: 'Damer A',  slug: 'onyxinnebandy-damera',      full: true  },
@@ -113,6 +116,57 @@ function parseStandings(html: string) {
   return rows;
 }
 
+// ── Officiella tabeller: stats.innebandy.se (Svensk Innebandy) ───
+// Sajten är en SPA som hämtar JSON från api.innebandy.se med en anonym token
+// (auth/startkit — samma som alla besökare får). Tabellerna där ligger före
+// svenskalag.se, som uppdateras manuellt. Fungerar inget här faller vi tillbaka
+// på svenskalag-tabellen för serien.
+const API = 'https://api.innebandy.se/v2/api';
+const FEDERATIONS = [9, 8, 1, 16];   // Södermanland, Stockholm, Svenska IBF, Östergötland
+const normSerie = (s: string) => s.toLowerCase().replace(/\s*\([^)]*\)\s*$/, '').replace(/\s+/g, ' ').trim();
+
+async function openApi() {
+  const kit = await (await fetch(`${API}/auth/startkit`, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(12000) })).json();
+  const headers = { 'User-Agent': UA, Authorization: `Bearer ${kit.accessToken}` };
+  const j = async (path: string) => {
+    const r = await fetch(`${API}/public/${path}`, { headers, signal: AbortSignal.timeout(12000) });
+    if (!r.ok) throw new Error(`API ${r.status}`);
+    return r.json();
+  };
+  const seasons = await j('seasons/');
+  const season = (seasons.find((s: any) => s.IsCurrentSeason) ?? seasons[0]).SeasonID;
+
+  const byName = new Map<string, number[]>();
+  for (const fed of FEDERATIONS) {
+    try {
+      for (const c of await j(`seasons/${season}/federations/${fed}/competitions`)) {
+        const k = normSerie(c.Name);
+        byName.set(k, [...new Set([...(byName.get(k) ?? []), c.CompetitionID])]);
+      }
+    } catch { /* en förbundslista som fallerar räcker inte för att stoppa resten */ }
+  }
+
+  const memo = new Map<number, Promise<any[]>>();
+  const rowsOf = (id: number) => {
+    if (!memo.has(id)) memo.set(id, j(`competitions/${id}/standings`).then((d: any) =>
+      // TeamStatusID 5 (t.ex. Torshälla 0 matcher) visas inte på stats.innebandy.se.
+      (d.StandingsRows ?? []).filter((r: any) => r.TeamStatusID !== 5).map((r: any) => {
+        const team = String(r.TeamName ?? '').trim();
+        return { pos: r.Position, team, m: r.PlayedMatchesHome + r.PlayedMatchesAway, p: r.Points, onyx: isOnyx(team) };
+      })).catch(() => []));
+    return memo.get(id)!;
+  };
+
+  // Samma seriename kan finnas i flera förbund — välj den där Onyx spelar.
+  return async (serie: string) => {
+    for (const id of byName.get(normSerie(serie)) ?? []) {
+      const rows = await rowsOf(id);
+      if (rows.some(r => r.onyx)) return rows;
+    }
+    return null;
+  };
+}
+
 async function get(url: string) {
   const r = await fetch(url, {
     headers: { 'User-Agent': UA, Accept: 'text/html', 'Accept-Language': 'sv' },
@@ -125,6 +179,10 @@ async function get(url: string) {
 async function refresh() {
   const now = Date.now();
   const diag: any[] = [];
+  const official = await openApi().catch((e) => {
+    diag.push({ official: false, err: String(e?.message || e).slice(0, 60) });
+    return async (_: string) => null as any[] | null;
+  });
 
   const teams = await Promise.all(TEAMS.map(async t => {
     try {
@@ -136,16 +194,25 @@ async function refresh() {
       const upcoming = all.filter(m => m.hs === null && m.ts >= now - 6 * 3600e3);
 
       // En tabell per aktuell serie (träningsmatcher har ingen tabell).
+      // Officiell tabell först; svenskalag-tabellen om serien saknas där.
+      const wanted: { id?: string; name: string }[] = [
+        ...Object.entries(series).filter(([, n]) => !/träning/i.test(n)).map(([id, name]) => ({ id, name })),
+        ...(t.also ?? []).map(name => ({ name })),
+      ];
+      const seen = new Set<string>();
       const standings = (await Promise.all(
-        Object.entries(series)
-          .filter(([, name]) => !/träning/i.test(name))
-          .map(async ([id, name]) => {
-            try {
-              const h = await get(`${BASE}/${t.slug}/seasons/standings/-1/?seasonid=${id}&type=detailed&cssclass=table-head-default&matchgroupid=`);
-              const rows = parseStandings(h);
-              return rows.length ? { serie: name, rows } : null;
-            } catch { return null; }
-          }),
+        wanted.filter(w => { const k = normSerie(w.name); return !seen.has(k) && !!seen.add(k); }).map(async w => {
+          try {
+            const rows = await official(w.name);
+            if (rows?.length) return { serie: w.name, src: 'innebandy.se', rows };
+          } catch { /* faller tillbaka */ }
+          if (!w.id) return null;
+          try {
+            const h = await get(`${BASE}/${t.slug}/seasons/standings/-1/?seasonid=${w.id}&type=detailed&cssclass=table-head-default&matchgroupid=`);
+            const rows = parseStandings(h);
+            return rows.length ? { serie: w.name, src: 'svenskalag.se', rows } : null;
+          } catch { return null; }
+        }),
       )).filter(Boolean);
 
       diag.push({ team: t.key, ok: true, matcher: all.length, kommande: upcoming.length, tabeller: standings.length });
