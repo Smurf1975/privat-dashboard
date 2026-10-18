@@ -19,9 +19,11 @@ function cors(req: Request): Record<string, string> {
   return ORIGINS.has(o) ? { "Access-Control-Allow-Origin": o, "Vary": "Origin" } : {};
 }
 
-async function accessToken(): Promise<string> {
+// force=true: Netatmo kan ogiltigförklara en access-token före expires_at (sett 2026-10-17: 403
+// "Invalid access token" i nio timmar trots giltig tid). Då förnyas den direkt i stället för att vänta.
+async function accessToken(force = false): Promise<string> {
   const { data: row } = await db.from("netatmo_auth").select("*").eq("id", "me").maybeSingle();
-  if (row?.access_token && row.expires_at && new Date(row.expires_at).getTime() > Date.now() + 60_000) return row.access_token;
+  if (!force && row?.access_token && row.expires_at && new Date(row.expires_at).getTime() > Date.now() + 60_000) return row.access_token;
   const refresh = row?.refresh_token ?? Deno.env.get("NETATMO_REFRESH_TOKEN");
   const id = Deno.env.get("NETATMO_CLIENT_ID"), secret = Deno.env.get("NETATMO_CLIENT_SECRET");
   if (!refresh || !id || !secret) throw new Error("not_connected");
@@ -91,13 +93,17 @@ Deno.serve(async (req) => {
   if (cached && Date.now() - new Date(cached.fetched_at).getTime() < TTL_MS) return json(200, { ...cached.data, fetchedAt: cached.fetched_at, cached: true });
 
   try {
-    const token = await accessToken();
     const q = new URLSearchParams({
       lat_ne: String(CENTER.lat + BOX.dLat), lon_ne: String(CENTER.lon + BOX.dLon),
       lat_sw: String(CENTER.lat - BOX.dLat), lon_sw: String(CENTER.lon - BOX.dLon), filter: "true",
     });
-    const res = await fetch(`https://api.netatmo.com/api/getpublicdata?${q}`, { headers: { Authorization: `Bearer ${token}` } });
-    const out = await res.json().catch(() => ({}));
+    const call = async (force: boolean) => {
+      const r = await fetch(`https://api.netatmo.com/api/getpublicdata?${q}`, { headers: { Authorization: `Bearer ${await accessToken(force)}` } });
+      return { res: r, out: await r.json().catch(() => ({})) };
+    };
+    let { res, out } = await call(false);
+    // Netatmo felkod 2 = ogiltig token, 3 = utgången token → förnya en gång och försök igen.
+    if (res.status === 403 && [2, 3].includes(out?.error?.code)) ({ res, out } = await call(true));
     if (!res.ok || !Array.isArray(out.body)) throw new Error(`getpublicdata_${res.status}`);
     const data = aggregate(out.body);
     const fetchedAt = new Date().toISOString();
