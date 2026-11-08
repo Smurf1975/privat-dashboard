@@ -6,7 +6,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
-const KINDS = new Set(["app", "skill", "mcp", "plugin", "run"]);
+const KINDS = new Set(["app", "skill", "mcp", "plugin", "run", "kb"]);
 const MAX_BODY_BYTES = 5 * 1024 * 1024;
 
 function constantTimeEq(a: string, b: string): boolean {

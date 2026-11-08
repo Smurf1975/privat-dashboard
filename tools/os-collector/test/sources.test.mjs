@@ -57,3 +57,16 @@ test('run: metadata, inga repro/utfall/sökvägar, beslut flaggas', () => {
   const s = JSON.stringify(r);
   for (const bad of ['HEMLIG', 'hemlig', 'repro', 'actual']) assert.ok(!s.includes(bad), bad);
 });
+
+import { kbGraph } from '../sources.mjs';
+test('kb: bara namn och kopplingar, källor anonyma, borttagna och testkällor saknas', () => {
+  const [{ data }] = kbGraph(join(F, 'kb'));
+  const s = JSON.stringify(data);
+  for (const bad of ['HEMLIG', 'lonevaxling', 'src_', 'raw/', 'borttagen', 'test.pdf', 'evidence']) assert.ok(!s.includes(bad), bad);
+  assert.equal(data.nodes.filter((n) => n.k === 'src').length, 1);
+  const a = data.nodes.findIndex((n) => n.l === 'Org A'), src = data.nodes.findIndex((n) => n.k === 'src');
+  assert.equal(data.nodes[a].d, 'alfa');                                  // område härlett ur källan
+  assert.ok(data.edges.some(([x, y, t]) => x === a && y === src && t === 'källa'));
+  assert.ok(data.edges.some(([x, , t]) => x === a && t === 'part_of'));
+  assert.ok(data.nodes.some((n) => n.k === 'page' && n.l === 'Amnet'));
+});

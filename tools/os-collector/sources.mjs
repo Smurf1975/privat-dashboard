@@ -146,3 +146,54 @@ export function apps(registryPath, root) {
     } };
   });
 }
+
+// Kunskapsbasen som karta (kind 'kb'). Vitlista enligt Mats val 2026-11-08: namn på områden, entiteter och
+// wikisidor. Källdokument blir namnlösa punkter (område, typ, datum) — filnamn och sökvägar lämnar aldrig datorn.
+const SKIP_DOMAINS = new Set(['system-test']);
+const SKIP_STATUS = new Set(['retracted', 'duplicate']);
+const fmField = (t, k) => t.split(/\r?\n/).find((l) => l.startsWith(`${k}:`))?.slice(k.length + 1).trim().replace(/^["']|["']$/g, '') ?? null;
+
+export function kbGraph(kb) {
+  const reg = (f) => JSON.parse(read(join(kb, 'registries', `${f}.json`)));
+  const domains = reg('domains').domains.filter((d) => !SKIP_DOMAINS.has(d.id));
+  const domainIds = new Set(domains.map((d) => d.id));
+  const nodes = [], edges = [], at = new Map();
+  const add = (key, n) => { at.set(key, nodes.length); nodes.push(n); return nodes.length - 1; };
+  const majority = (l) => [...l.reduce((m, x) => m.set(x, (m.get(x) ?? 0) + 1), new Map())].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+
+  const hub = add('hub', { k: 'hub', l: 'Kunskapsbasen' });
+  for (const d of domains) { const i = add(`d:${d.id}`, { k: 'dom', l: d.name, g: d.group || 'Övrigt', d: d.id }); edges.push([hub, i, 'domän']); }
+  const sources = Object.values(reg('sources').sources).filter((s) => !SKIP_STATUS.has(s.processing_status) && !SKIP_DOMAINS.has(s.domain));
+  const srcDomain = new Map(sources.map((s) => [s.source_id, domainIds.has(s.domain) ? s.domain : 'unsorted']));
+
+  // Sidornas källhänvisningar samlas först: entiteter och sidor utan eget område får källornas vanligaste.
+  const pages = readdirSync(join(kb, 'wiki'), { recursive: true }).map((p) => String(p).split('\\').join('/'))
+    .filter((p) => p.endsWith('.md') && p !== 'index.md' && !p.startsWith('indexes/'))
+    .map((p) => { const t = read(join(kb, 'wiki', p)); return { p, t, refs: [...new Set(t.match(/src_[0-9a-f]{16}/g) ?? [])].filter((r) => srcDomain.has(r)) }; });
+  const byEntity = new Map(pages.filter((x) => /^(entities|concepts)\/[^/]+\/README\.md$/.test(x.p)).map((x) => [x.p.split('/')[1], x]));
+  const domainOf = (given, refs) => domainIds.has(given) ? given : (majority(refs.map((r) => srcDomain.get(r))) ?? 'unsorted');
+
+  for (const e of reg('entities').entities) {
+    const pg = byEntity.get(e.id);
+    const d = domainOf(e.domain, pg?.refs ?? []);
+    const i = add(`e:${e.id}`, { k: 'ent', l: e.name, t: e.type, d });
+    edges.push([at.get(`d:${d}`), i, 'område']);
+    if (pg) pg.node = i;
+  }
+  for (const pg of pages) {
+    if (pg.node !== undefined || /^(entities|concepts)\//.test(pg.p)) continue;
+    const d = domainOf(fmField(pg.t, 'domain'), pg.refs);
+    const title = fmField(pg.t, 'title') ?? pg.t.match(/^#\s+(.+)$/m)?.[1] ?? pg.p.split('/').pop().replace(/\.md$/, '');
+    pg.node = add(`p:${pg.p}`, { k: 'page', l: title.slice(0, 90), t: pg.p.split('/')[0], d, u: fmField(pg.t, 'updated') });
+    edges.push([at.get(`d:${d}`), pg.node, 'område']);
+  }
+  const linked = new Set();
+  sources.forEach((s, n) => add(`s:${s.source_id}`, { k: 'src', t: s.source_type, d: srcDomain.get(s.source_id), a: (s.imported_at ?? '').slice(0, 10) || null }));
+  for (const pg of pages) for (const r of pg.refs) if (pg.node !== undefined) { edges.push([pg.node, at.get(`s:${r}`), 'källa']); linked.add(r); }
+  for (const s of sources) if (!linked.has(s.source_id)) edges.push([at.get(`d:${srcDomain.get(s.source_id)}`), at.get(`s:${s.source_id}`), 'område']);
+  for (const r of reg('relationships').relationships) {
+    const a = at.get(`e:${r.from}`), b = at.get(`e:${r.to}`);
+    if (a !== undefined && b !== undefined) edges.push([a, b, r.type]);
+  }
+  return [{ kind: 'kb', id: 'graph', data: { generated: new Date().toISOString(), nodes, edges } }];
+}

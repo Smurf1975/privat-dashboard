@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script src="./vaderradar.js" defer></script>
+<script src="./kbgraf.js" defer></script>
 <style>
   /* Väder: radarkarta (vaderradar.js) */
   .vr-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px;}
@@ -62,6 +63,49 @@
   .tv-box{position:fixed;inset:0;z-index:50;background:rgba(6,8,12,0.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;}
   .tv-box img{max-width:100%;max-height:80vh;border-radius:10px;}
   @media(prefers-reduced-motion:reduce){.tv-cam img{transition:none;}}
+  /* Kunskap: karta över Knowledge Base (kbgraf.js) */
+  .kb-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:12px;}
+  .kb-stats{display:flex;gap:26px;flex-wrap:wrap;}
+  .kb-stat b{display:block;font-size:24px;font-weight:300;color:#eef0f5;font-variant-numeric:tabular-nums;line-height:1.1;}
+  .kb-stat span{font-size:11px;color:rgba(238,240,245,0.5);}
+  #kb-stage{position:relative;height:min(72vh,720px);min-height:420px;background:#0a0e14;border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;}
+  #kb-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y;}
+  #kb-legend{position:absolute;left:12px;top:12px;width:176px;padding:8px;background:rgba(10,14,20,0.78);border:1px solid rgba(255,255,255,0.07);border-radius:9px;}
+  .kb-leg{display:flex;align-items:center;gap:7px;width:100%;padding:3px 5px;background:none;border:0;border-radius:5px;color:rgba(238,240,245,0.78);font:inherit;font-size:12px;cursor:pointer;text-align:left;}
+  .kb-leg:hover,.kb-leg.on{background:rgba(255,255,255,0.08);color:#fff;}
+  .kb-leg i{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .kb-leg span{flex:1;} .kb-leg em{font-style:normal;font-size:11px;color:rgba(238,240,245,0.5);font-variant-numeric:tabular-nums;}
+  .kb-bars{display:flex;align-items:flex-end;gap:2px;height:28px;margin:3px 5px 0;}
+  .kb-bars i{flex:1;background:#f2c14e;border-radius:1px;opacity:.85;}
+  .kb-cap{font-size:10.5px;color:rgba(238,240,245,0.45);margin:8px 5px 0;}
+  #kb-panel{position:absolute;right:12px;top:12px;bottom:12px;width:300px;padding:16px;overflow:auto;background:rgba(14,18,26,0.94);border:1px solid rgba(255,255,255,0.09);border-radius:10px;}
+  .kb-x{position:absolute;right:8px;top:6px;width:30px;height:30px;background:none;border:0;color:rgba(238,240,245,0.6);font-size:20px;cursor:pointer;}
+  .kb-kind{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(238,240,245,0.5);padding-right:24px;}
+  .kb-name{font-size:18px;font-weight:500;color:#eef0f5;margin-top:4px;line-height:1.3;overflow-wrap:anywhere;}
+  .kb-meta{font-size:12px;color:rgba(238,240,245,0.55);margin-top:6px;line-height:1.5;}
+  .kb-note{font-size:12px;color:rgba(238,240,245,0.5);margin-top:10px;line-height:1.5;}
+  .kb-sub{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(238,240,245,0.45);margin-top:16px;}
+  .kb-list{display:flex;flex-direction:column;margin-top:4px;}
+  .kb-link{padding:6px 2px;background:none;border:0;border-top:1px solid rgba(255,255,255,0.05);color:#eef0f5;font:inherit;font-size:12.5px;text-align:left;cursor:pointer;}
+  .kb-link:hover{color:oklch(0.82 0.24 130);}
+  .kb-tools{position:absolute;right:12px;bottom:12px;display:flex;gap:6px;}
+  #kb-panel:not([style*="none"]) ~ .kb-tools{right:324px;}
+  .kb-tools button,.kb-tools input{background:rgba(10,14,20,0.86);border:1px solid rgba(255,255,255,0.12);border-radius:7px;color:#eef0f5;font:inherit;font-size:12.5px;padding:6px 10px;}
+  .kb-tools button{cursor:pointer;} .kb-tools button:hover{background:rgba(255,255,255,0.1);}
+  .kb-tools input{width:170px;color-scheme:dark;}
+  #kb-stage button:focus-visible,#kb-stage input:focus-visible{outline:2px solid oklch(0.82 0.24 130);outline-offset:1px;}
+  #kb-hint{position:absolute;left:14px;bottom:12px;font-size:11px;color:rgba(238,240,245,0.38);}
+  #kb-msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:13.5px;color:rgba(238,240,245,0.6);background:#0a0e14;}
+  @media(max-width:760px){
+    #kb-legend{position:static;width:auto;margin:0;border-radius:0;display:grid;grid-template-columns:1fr 1fr;border-width:0 0 1px;}
+    #kb-legend .kb-bars,#kb-legend .kb-cap{grid-column:1 / -1;}
+    #kb-stage{height:auto;min-height:0;}
+    #kb-canvas{position:relative;height:60vh;}
+    #kb-panel{position:relative;right:auto;top:auto;bottom:auto;width:auto;border-width:1px 0 0;border-radius:0;max-height:none;}
+    .kb-tools{position:static;padding:10px;flex-wrap:wrap;} .kb-tools input{flex:1 1 100%;width:auto;}
+    #kb-panel:not([style*="none"]) ~ .kb-tools{right:auto;}
+    #kb-hint{display:none;} .kb-stats{gap:18px;}
+  }
   /* OS-fliken */
   .os-row{display:flex;gap:12px;align-items:flex-start;width:100%;padding:11px 6px;border:0;border-top:1px solid rgba(255,255,255,0.05);background:none;color:inherit;font:inherit;text-align:left;border-radius:0;}
   button.os-row{cursor:pointer;}
@@ -1600,6 +1644,31 @@
 
     </sc-if>
 
+    <!-- ══ KUNSKAP: Knowledge Base som karta. Statisk DOM, allt ritas av kbgraf.js. ══ -->
+    <sc-if value="{{ isKb }}" hint-placeholder-val="{{ false }}">
+      <div class="kb-head">
+        <div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;">KUNSKAPSBASEN</div>
+          <div id="kb-age" style="font-size:12px;color:rgba(238,240,245,0.45);margin-top:4px;"></div>
+        </div>
+        <div class="kb-stats" id="kb-stats"></div>
+      </div>
+      <div id="kb-stage">
+        <canvas id="kb-canvas" role="img" aria-label="Karta över kunskapsbasen: områden, entiteter, wikisidor och källor"></canvas>
+        <div id="kb-legend"></div>
+        <div id="kb-panel" style="display:none"></div>
+        <div class="kb-tools">
+          <input id="kb-sok" type="search" placeholder="Sök på kartan" aria-label="Sök på kartan">
+          <button id="kb-spin" type="button"></button>
+          <button id="kb-in" type="button" aria-label="Zooma in">+</button>
+          <button id="kb-ut" type="button" aria-label="Zooma ut">−</button>
+          <button id="kb-hem" type="button">Hela kartan</button>
+        </div>
+        <div id="kb-hint">Klicka i kartan för att zooma med mushjulet</div>
+        <div id="kb-msg">Hämtar kunskapsbasen…</div>
+      </div>
+    </sc-if>
+
     <!-- ══ OS: AI Native OS ur os_items (tools/os-collector → os-ingest). Ingen demodata. ══ -->
     <sc-if value="{{ isOs }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
@@ -2179,7 +2248,7 @@ class Component extends DCLogic {
       // Utan session ger anon-nyckeln 0 rader helt tyst — därav inloggningen nedan.
       const onSession = session => {
         this.setState({ fpAuthed: !!session, fpEmail: session?.user?.email || null });
-        if (!session) { this.setState({ googleAuthed: false, halsaLoaded: true, halsaOk: false, halsaError: 'Ej inloggad', osLoaded: true, osError: 'Ej inloggad' }); return; }
+        if (!session) { this.setState({ googleAuthed: false, halsaLoaded: true, halsaOk: false, halsaError: 'Ej inloggad', osLoaded: true, osError: 'Ej inloggad' }); window.KbGraf?.message('Logga in (samma inloggning som Färdplan) för att se kunskapsbasen.'); return; }
         // google-proxy kräver en inloggad användare. Utan session finns ingen
         // Google-data att hämta, så init körs först här (en gång).
         // Samma sak gäller homey-proxy — den kräver också inloggning nu.
@@ -2192,6 +2261,7 @@ class Component extends DCLogic {
           this.fetchFamiljeapp();
           this.fetchHalsa();
           this.fetchOs();
+          this.fetchKb();
         }
         fetchAll();
         if (this._fpChannel) return;               // prenumerera bara en gång
@@ -2759,7 +2829,7 @@ class Component extends DCLogic {
   }
 
   async fetchAll() {
-    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs(), this.fetchNetatmo(), this.fetchTrafik(), this.fetchVagvader()]);
+    await Promise.allSettled([this.fetchHomey(), this.fetchSMHI(), this.fetchElpris(), this.fetchBathing(), this.fetchHallCam(), this.fetchLunch(), this.fetchTodos(), this.fetchFamiljeapp(), this.fetchNews(), this.fetchHalsa(), this.fetchOs(), this.fetchKb(), this.fetchNetatmo(), this.fetchTrafik(), this.fetchVagvader()]);
     this.setState({lastRefresh: new Date()});
     this.saveCache();
   }
@@ -2911,6 +2981,21 @@ class Component extends DCLogic {
     } catch(e) {
       console.warn('OS:', e.message);
       this.setState({ osLoaded: true, osError: e.message || 'Nätverksfel' });
+    }
+  }
+
+  // Kunskap-fliken: kartan läses bakom Mats session och hålls bara i minnet (aldrig i lcc_cache).
+  async fetchKb() {
+    const db = this._sbClient;
+    if (!db || !window.KbGraf) return;
+    try {
+      const { data, error } = await db.from('os_items').select('data,collected_at').eq('kind', 'kb').eq('id', 'graph').maybeSingle();
+      if (error) throw error;
+      if (data) window.KbGraf.setData(data.data, data.collected_at);
+      else window.KbGraf.message('Ingen karta insamlad ännu.');
+    } catch(e) {
+      console.warn('Kunskap:', e.message);
+      window.KbGraf.message(`Kunde inte hämta kunskapsbasen: ${e.message}`);
     }
   }
 
@@ -3195,7 +3280,7 @@ class Component extends DCLogic {
     const tabDefs = [{id:'hem',label:'Hem'},{id:'smarthome',label:'Smart Home'},
       {id:'bilar',label:'Bil'},
       {id:'media',label:'Media'},{id:'sport',label:'Sport'},{id:'resor',label:'Resor'},{id:'vader',label:'Väder'},{id:'halsa',label:'Hälsa'},
-      {id:'familj',label:'Familj'},{id:'os',label:'OS'}];
+      {id:'familj',label:'Familj'},{id:'kb',label:'Kunskap'},{id:'os',label:'OS'}];
     const tabs = tabDefs.map(t => ({
       ...t, onClick: () => this.setState({activeTab:t.id}),
       btnStyle: {padding:'8px 18px 5px',borderRadius:'8px',border:'none',
@@ -4280,7 +4365,7 @@ class Component extends DCLogic {
       carList, volvo,
       isHem:activeTab==='hem', isSmartHome:activeTab==='smarthome', isBilar:activeTab==='bilar',
       isMedia:activeTab==='media', isSport:activeTab==='sport', isResor:activeTab==='resor', isVader:activeTab==='vader', isHalsa:activeTab==='halsa',
-      isFamilj:activeTab==='familj', isOs:activeTab==='os', os,
+      isFamilj:activeTab==='familj', isOs:activeTab==='os', isKb:activeTab==='kb', os,
 
       // Family members
       familyMembers: (() => {
