@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // OS-insamlaren — se README.md. Skickar aldrig hemligheter; varje källa har vitlista.
 // Användning: node collect.mjs [--dry]   (--dry skriver JSON till stdout i stället för att skicka)
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -12,6 +12,12 @@ const ROOT = resolve(HERE, '../../../..');               // Claude Co-Work OS
 const OS = join(ROOT, 'AI Native OS');
 const CLAUDE = join(homedir(), '.claude');
 const ENDPOINT = 'https://ncgxerxkgoxptcwvramn.supabase.co/functions/v1/os-ingest';
+
+// Titthål för den dolda timkörningen: steg med klockslag, aldrig data eller nycklar.
+const LOG = join(homedir(), '.os-ingest', 'last-run.log');
+writeFileSync(LOG, '');
+const step = (m) => appendFileSync(LOG, `${new Date().toISOString()} ${m}\n`);
+step(`start cwd=${process.cwd()}`);
 
 async function ping(url) {
   const at = new Date().toISOString();
@@ -29,7 +35,9 @@ const skillSources = [
 ];
 
 const appItems = apps(join(OS, '10_REGISTRY', 'Projects Registry.md'), ROOT);
+step(`appar ${appItems.length}`);
 await Promise.all(appItems.map(async (a) => { if (a.data.liveUrl) a.data.live = await ping(a.data.liveUrl); }));
+step('ping klart');
 
 const all = [
   ...appItems,
@@ -44,11 +52,17 @@ const body = { kinds: ['app', 'skill', 'mcp', 'plugin', 'run', 'kb'], items };
 
 if (process.argv.includes('--dry')) { console.log(JSON.stringify(body, null, 1)); process.exit(0); }
 
+step(`samlat ${items.length} poster`);
 const secret = readFileSync(join(homedir(), '.os-ingest', 'secret'), 'utf8').trim();
+step('skickar');
 const res = await fetch(ENDPOINT, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json', 'x-os-secret': secret },
   body: JSON.stringify(body),
+  signal: AbortSignal.timeout(60000),
 });
-console.log(res.status, await res.text());
+const answer = await res.text();
+step(`svar ${res.status} ${answer.slice(0, 200)}`);
+console.log(res.status, answer);
+step('klart');
 process.exit(res.ok ? 0 : 1);
