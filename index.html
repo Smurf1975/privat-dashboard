@@ -106,6 +106,27 @@
     #kb-panel:not([style*="none"]) ~ .kb-tools{right:auto;}
     #kb-hint{display:none;} .kb-stats{gap:18px;}
   }
+  /* Sidhuvud och block: tål smala fönster och webbläsarzoom */
+  .cc-head{max-width:1440px;margin:0 auto;padding:0 24px;display:flex;align-items:center;flex-wrap:wrap;min-height:52px;gap:0 16px;}
+  .cc-nav{display:flex;flex-wrap:wrap;gap:1px;flex:1;min-width:0;}
+  .cc-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;}
+  @media(max-width:1480px){.cc-nav{order:3;flex:1 0 100%;padding-bottom:4px;}}
+  @media(max-width:760px){.cc-head{padding:0 16px;}}
+  .cc-fill>*{min-width:0;}
+  @media(min-width:620px) and (max-width:1099px){.cc-fill>:last-child:nth-child(odd){grid-column:1/-1;}}
+  @media(max-width:1000px){.cc-4{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
+  @media(max-width:520px){.cc-4{grid-template-columns:minmax(0,1fr)!important;}}
+  @media(max-width:760px){.cc-2{grid-template-columns:minmax(0,1fr)!important;}}
+  /* Hem: bockruta på uppgifter och klickbara mail */
+  .td-box{width:20px;height:20px;padding:0;border-radius:5px;border:1.5px solid rgba(255,255,255,0.28);background:none;color:#0e1018;font-size:13px;font-weight:700;line-height:1;cursor:pointer;flex-shrink:0;display:grid;place-items:center;}
+  .td-box:hover{border-color:oklch(0.82 0.24 130);}
+  .td-box:focus-visible,.mail-row:focus-visible,#mail-card button:focus-visible,#mail-card a:focus-visible{outline:2px solid oklch(0.82 0.24 130);outline-offset:2px;}
+  .mail-row{display:block;width:100%;border-top:0;border-right:0;border-bottom:0;color:inherit;font:inherit;text-align:left;}
+  #mail-box{display:none;position:fixed;inset:0;z-index:200;background:rgba(6,8,12,0.82);align-items:center;justify-content:center;padding:24px;}
+  #mail-card{width:min(860px,100%);height:min(86vh,900px);display:flex;flex-direction:column;background:#151821;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;}
+  #mail-text{flex:1;overflow:auto;padding:18px 20px;font-size:14px;line-height:1.6;color:#eef0f5;white-space:pre-wrap;overflow-wrap:anywhere;}
+  #mail-html{flex:1;width:100%;border:0;background:#fff;}
+  @media(max-width:760px){#mail-box{padding:0;} #mail-card{height:100%;border-radius:0;border:0;}}
   /* OS-fliken */
   .os-row{display:flex;gap:12px;align-items:flex-start;width:100%;padding:11px 6px;border:0;border-top:1px solid rgba(255,255,255,0.05);background:none;color:inherit;font:inherit;text-align:left;border-radius:0;}
   button.os-row{cursor:pointer;}
@@ -182,18 +203,18 @@
 
   <!-- HEADER -->
   <header style="position:sticky;top:0;z-index:100;background:rgba(14,16,24,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);">
-    <div style="max-width:1440px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:52px;gap:16px;">
+    <div class="cc-head">
       <div style="flex-shrink:0;">
         <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;color:oklch(0.82 0.24 130);">LIFE</div>
         <div style="font-size:7px;font-weight:600;letter-spacing:0.12em;color:rgba(238,240,245,0.25);text-transform:uppercase;">Command Center</div>
       </div>
       <div style="width:1px;height:20px;background:rgba(255,255,255,0.08);flex-shrink:0;"></div>
-      <nav style="display:flex;gap:1px;flex:1;overflow-x:auto;">
+      <nav class="cc-nav" aria-label="Flikar">
         <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
           <button onClick="{{ tab.onClick }}" style="{{ tab.btnStyle }}">{{ tab.label }}</button>
         </sc-for>
       </nav>
-      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <div class="cc-right">
         <sc-if value="{{ googleNotAuthed }}" hint-placeholder-val="{{ false }}">
           <button onClick="{{ loginGoogle }}" style="{{ googleBtnStyle }}">
             <span style="font-size:13px;">🔑</span> Google
@@ -245,7 +266,7 @@
       </div>
 
       <!-- ROW 1 -->
-      <div style="{{ gridStyle }}">
+      <div class="cc-fill" style="{{ gridStyle }}">
 
         <!-- WEATHER -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.05s both;">
@@ -297,13 +318,13 @@
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:14px;">MAIL · PRIORITERADE <span style="{{ mailBadgeStyle }}">{{ mailBadge }}</span></div>
           <div style="display:flex;flex-direction:column;">
             <sc-for list="{{ emails }}" as="em" hint-placeholder-count="5">
-              <div style="{{ em.rowStyle }}">
-                <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px;">
+              <button class="mail-row" onclick="{{ em.open }}" style="{{ em.rowStyle }}">
+                <span style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px;">
                   <span style="font-size:12.5px;font-weight:600;color:rgba(238,240,245,0.82);">{{ em.from }}</span>
                   <span style="font-size:10.5px;color:rgba(238,240,245,0.4);flex-shrink:0;margin-left:8px;">{{ em.time }}</span>
-                </div>
-                <div style="font-size:12.5px;color:rgba(238,240,245,0.52);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ em.subject }}</div>
-              </div>
+                </span>
+                <span style="display:block;font-size:12.5px;color:rgba(238,240,245,0.52);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ em.subject }}</span>
+              </button>
             </sc-for>
           </div>
         </div>
@@ -311,7 +332,7 @@
       </div>
 
       <!-- ROW 2 -->
-      <div style="{{ gridStyle4 }}">
+      <div class="cc-fill" style="{{ gridStyle4 }}">
 
         <!-- SMART HOME LIVE -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;animation:fadeUp 0.4s ease 0.2s both;">
@@ -372,9 +393,9 @@
           <div style="display:flex;flex-direction:column;gap:2px;">
             <sc-for list="{{ tasks }}" as="task" hint-placeholder-count="5">
               <div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;background:rgba(255,255,255,0.025);">
-                <div style="width:14px;height:14px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.2);flex-shrink:0;"></div>
+                <button class="td-box" onclick="{{ task.toggle }}" style="{{ task.boxStyle }}" aria-label="{{ task.boxLabel }}">{{ task.mark }}</button>
                 <div style="flex:1;min-width:0;">
-                  <div style="font-size:13.5px;color:#eef0f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ task.title }}</div>
+                  <div style="{{ task.titleStyle }}">{{ task.title }}</div>
                   <div style="{{ task.dueStyle }}">{{ task.due }}</div>
                 </div>
               </div>
@@ -844,7 +865,7 @@
     <sc-if value="{{ isSport }}" hint-placeholder-val="{{ false }}">
 
       <!-- Sport: vänster = staplade kort, höger = PL-tabell full höjd -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch;">
+      <div class="cc-2" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch;">
 
         <!-- Vänster: Nästa match + Senaste 5 (staplade) -->
         <div style="display:flex;flex-direction:column;gap:14px;">
@@ -983,7 +1004,7 @@
     <sc-if value="{{ isVader }}" hint-placeholder-val="{{ false }}">
 
       <!-- Nuläge rad -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;">
+      <div class="cc-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;">
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:10px;">TEMPERATUR</div>
           <div style="font-size:42px;font-weight:200;letter-spacing:-0.03em;color:#eef0f5;line-height:1;">{{ weather.tempStr }}</div>
@@ -1208,7 +1229,7 @@
     <sc-if value="{{ isResor }}" hint-placeholder-val="{{ false }}">
 
       <!-- Rad 1: Hero-info (vänster) + Destinationsbild (höger) -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;align-items:stretch;">
+      <div class="cc-2" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;align-items:stretch;">
 
         <!-- Vänster: destination + resenärer -->
         <div style="background:linear-gradient(135deg,rgba(130,220,50,0.09) 0%,rgba(14,16,24,0.25) 70%);border:1px solid rgba(130,220,50,0.2);border-radius:14px;padding:24px;animation:fadeUp 0.35s ease both;display:flex;flex-direction:column;">
@@ -1287,7 +1308,7 @@
             <button onClick="{{ refreshActivities }}" style="padding:4px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:rgba(238,240,245,0.5);font-size:11px;font-family:inherit;cursor:pointer;">↻ Hämta nya</button>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+        <div class="cc-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
           <sc-for list="{{ tripActivities }}" as="act" hint-placeholder-count="8">
             <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px;">
               <div style="font-size:22px;margin-bottom:6px;">{{ act.emoji }}</div>
@@ -1302,7 +1323,7 @@
       </div>
 
       <!-- Rad 3: Hotell (vänster) + Flyg (höger) -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div class="cc-2" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
 
         <!-- Hotell – alla bokade nätter -->
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
@@ -1353,7 +1374,7 @@
       </div>
 
       <!-- Personkort -->
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
+      <div class="cc-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
         <sc-for list="{{ familyMembers }}" as="m" hint-placeholder-count="4">
           <div style="{{ m.cardStyle }}">
             <div style="display:flex;align-items:center;gap:12px;">
@@ -1932,6 +1953,25 @@
     </sc-if>
 
   </main>
+
+  <!-- Mailläsare: statisk DOM, fylls av openMail -->
+  <div id="mail-box" role="dialog" aria-modal="true" aria-labelledby="mail-subj">
+    <div id="mail-card">
+      <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.07);">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div id="mail-subj" style="flex:1;min-width:0;font-size:17px;font-weight:600;color:#eef0f5;line-height:1.3;overflow-wrap:anywhere;"></div>
+          <button id="mail-x" type="button" aria-label="Stäng" style="width:30px;height:30px;background:none;border:0;color:rgba(238,240,245,0.7);font-size:20px;cursor:pointer;flex-shrink:0;">×</button>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;margin-top:4px;font-size:12.5px;color:rgba(238,240,245,0.6);">
+          <span id="mail-from"></span><span id="mail-time" style="color:rgba(238,240,245,0.4);"></span>
+          <a id="mail-gmail" target="_blank" rel="noopener" style="margin-left:auto;color:oklch(0.82 0.24 130);text-decoration:none;font-weight:600;">Svara i Gmail ↗</a>
+        </div>
+        <div style="font-size:11px;color:rgba(238,240,245,0.38);margin-top:4px;">Bilder från internet är blockerade. Mailet förblir oläst i Gmail.</div>
+      </div>
+      <div id="mail-text"></div>
+      <iframe id="mail-html" sandbox="allow-popups allow-popups-to-escape-sandbox" title="Mailets innehåll" style="display:none"></iframe>
+    </div>
+  </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
@@ -1994,7 +2034,7 @@ class Component extends DCLogic {
     lunchDays:[], lunchWeek:null, lunchStale:false,
     // Uppgifter – VoxMats (voxmats_items). Familjeappens todo-lista finns inte
     // längre för föräldrar; den fliken visar barnens aktivitet i stället.
-    todoItems:[], todosOk:false,
+    todoItems:[], todosOk:false, todoDone:{}, todoError:'',
     familjVaror:[], familjSenast:null, familjGodkanna:0,
     // Nyheter (news-proxy: AI, teknik, smart home, sport)
     newsItems:[], newsCat:'all',
@@ -2456,6 +2496,45 @@ class Component extends DCLogic {
     } catch(e){ console.error('Calendar:', e.message); this.setState({googleError:e.message}); }
   }
 
+  // Läser ett mail. Scope är gmail.readonly: mailet förblir oläst i Gmail och inget kan ändras härifrån.
+  // HTML-mail visas i en sandlåda utan skript, och CSP stoppar externa bilder (spårningspixlar).
+  async openMail(e) {
+    const g = n => document.getElementById(n), box = g('mail-box'), txt = g('mail-text'), fr = g('mail-html');
+    if (!box) return;
+    if (!this._mailWired) {
+      this._mailWired = true;
+      const stang = () => { box.style.display = 'none'; fr.srcdoc = ''; };
+      g('mail-x').onclick = stang;
+      box.addEventListener('click', ev => { if (ev.target === box) stang(); });
+      document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && box.style.display === 'flex') stang(); });
+    }
+    g('mail-from').textContent = e.from; g('mail-subj').textContent = e.subject; g('mail-time').textContent = e.time;
+    g('mail-gmail').href = `https://mail.google.com/mail/u/0/#inbox/${e.id}`;
+    txt.textContent = 'Hämtar mailet…'; txt.style.display = ''; fr.style.display = 'none'; fr.srcdoc = '';
+    box.style.display = 'flex';
+    g('mail-x').focus();
+    try {
+      if (!await this._ensureGoogleToken()) throw new Error('Inte inloggad på Google');
+      const r = await fetch(`https://www.googleapis.com/gmail/v1/users/me/messages/${e.id}?format=full`, { headers: { Authorization: `Bearer ${this._gToken}` } });
+      if (!r.ok) throw new Error(`Gmail ${r.status}`);
+      const d = await r.json();
+      const dec = b => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0)));
+      const finn = (p, typ) => {
+        if (p.mimeType === typ && p.body?.data) return dec(p.body.data);
+        for (const c of p.parts || []) { const f = finn(c, typ); if (f) return f; }
+        return null;
+      };
+      const html = finn(d.payload, 'text/html'), plain = finn(d.payload, 'text/plain');
+      if (html) {
+        fr.srcdoc = `<!doctype html><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src data:"><base target="_blank"><style>body{font-family:system-ui,sans-serif;margin:16px;overflow-wrap:anywhere;}img{max-width:100%;height:auto;}</style>${html}`;
+        fr.style.display = ''; txt.style.display = 'none';
+      } else txt.textContent = plain || d.snippet || '(Mailet har ingen text att visa.)';
+    } catch (err) {
+      console.warn('Mail:', err.message);
+      txt.textContent = `Kunde inte hämta mailet: ${err.message}`;
+    }
+  }
+
   async fetchGmail() {
     if (!await this._ensureGoogleToken()) return;
     try {
@@ -2469,7 +2548,7 @@ class Component extends DCLogic {
         let from = hd('From').replace(/<[^>]*>/,'').replace(/"/g,'').trim();
         const dt = new Date(parseInt(d.internalDate||'0'));
         const today = new Date().toDateString()===dt.toDateString();
-        return { from: from||hd('From')||'—', subject: hd('Subject')||'(inget ämne)',
+        return { id: m.id, from: from||hd('From')||'—', subject: hd('Subject')||'(inget ämne)',
           time: today?`${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`:dt.toLocaleDateString('sv-SE',{day:'numeric',month:'short'}),
           u: 'medel' };
       }));
@@ -2898,6 +2977,24 @@ class Component extends DCLogic {
 
   // Uppgifter från VoxMats. Läses direkt med den inloggade sessionen — RLS gör
   // jobbet: voxmats_items är låst till Mats e-post.
+  // Bocka av i voxmats_items (RLS: bara Mats). Raden står kvar överstruken i 6 s så att ett felklick går att ångra.
+  async toggleTodo(rid) {
+    const db = this._sbClient;
+    if (!db) return;
+    this._todoTimers = this._todoTimers || {};
+    const nu = !this.state.todoDone[rid];
+    clearTimeout(this._todoTimers[rid]);
+    const satt = v => { const d = { ...this.state.todoDone }; if (v) d[rid] = true; else delete d[rid]; this.setState({ todoDone: d }); };
+    satt(nu);
+    const { error } = await db.from('voxmats_items').update({ done: nu }).eq('id', rid);
+    if (error) { satt(!nu); this.setState({ todoError: `Kunde inte spara: ${error.message}` }); return; }
+    this.setState({ todoError: '' });
+    if (nu) this._todoTimers[rid] = setTimeout(() => {
+      satt(false);
+      this.setState({ todoItems: this.state.todoItems.filter(t => t.rid !== rid) });
+    }, 6000);
+  }
+
   async fetchTodos() {
     const db = this._sbClient;
     if (!db) return;
@@ -2908,7 +3005,7 @@ class Component extends DCLogic {
       ]);
       const items = [
         ...(vox.data || []).map(r => ({
-          id:`v${r.id}`, title:r.content, src:'Anteckning',
+          id:`v${r.id}`, rid:r.id, title:r.content, src:'Anteckning',
           due:r.due_date || null, created:r.created_at,
         })),
       ].filter(t => t.title);
@@ -2919,7 +3016,9 @@ class Component extends DCLogic {
         if (b.due) return 1;
         return (b.created||'').localeCompare(a.created||'');
       });
-      this.setState({ todoItems: items, todosOk: !vox.error });
+      // Rader som just bockats av behåller sin plats tills ångra-tiden är slut.
+      const kvar = this.state.todoItems.filter(t => this.state.todoDone[t.rid] && !items.some(x => x.rid === t.rid));
+      this.setState({ todoItems: [...items, ...kvar], todosOk: !vox.error });
     } catch(e) { console.warn('Uppgifter:', e.message); }
   }
 
@@ -3283,9 +3382,9 @@ class Component extends DCLogic {
       {id:'familj',label:'Familj'},{id:'kb',label:'Kunskap'},{id:'os',label:'OS'}];
     const tabs = tabDefs.map(t => ({
       ...t, onClick: () => this.setState({activeTab:t.id}),
-      btnStyle: {padding:'8px 18px 5px',borderRadius:'8px',border:'none',
+      btnStyle: {padding:'8px 13px 5px',borderRadius:'8px',border:'none',
         borderBottom:`3px solid ${activeTab===t.id?G:'transparent'}`,
-        fontSize:'17px',fontWeight:activeTab===t.id?'600':'500',
+        fontSize:'15.5px',fontWeight:activeTab===t.id?'600':'500',
         fontFamily:'inherit',cursor:'pointer',transition:'all 0.15s',whiteSpace:'nowrap',
         background:'transparent',
         color: activeTab===t.id?G:'rgba(238,240,245,0.58)'},
@@ -3701,7 +3800,7 @@ class Component extends DCLogic {
       {from:'ICA Banken',subject:'Betalning mottagen',time:'Igår',u:'låg'},
     ];
     const emailSrc = (googleAuthed && gmailMsgs.length>0) ? gmailMsgs : demoEmails;
-    const emails = emailSrc.map(e=>({...e,subject:e.subject||'',rowStyle:{padding:'9px 10px',borderRadius:'7px',marginBottom:'2px',
+    const emails = emailSrc.map(e=>({...e,subject:e.subject||'',open:e.id?()=>this.openMail(e):null,rowStyle:{cursor:e.id?'pointer':'default',padding:'9px 10px',borderRadius:'7px',marginBottom:'2px',
       borderLeft:`2px solid ${e.u==='hög'?R:e.u==='medel'?O:'rgba(255,255,255,0.1)'}`,
       background:e.u==='hög'?'rgba(239,68,68,0.05)':'rgba(255,255,255,0.02)'}}));
     const mailBadge = googleAuthed ? (gmailMsgs.length>0?'● LIVE':'◌ ...') : 'Demo';
@@ -3879,18 +3978,27 @@ class Component extends DCLogic {
     const tasks = tasksLive
       ? todoItems.slice(0, 6).map(t => {
           const d = dueLabel(t.due);
+          const klar = !!(this.state.todoDone || {})[t.rid];
           return {
+            toggle: () => this.toggleTodo(t.rid),
+            mark: klar ? '✓' : '',
+            boxLabel: klar ? `Ångra klar: ${t.title}` : `Markera klar: ${t.title}`,
+            boxStyle: klar ? {background:G,borderColor:G} : {},
+            titleStyle: {fontSize:'13.5px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',
+              color: klar ? 'rgba(238,240,245,0.45)' : '#eef0f5', textDecoration: klar ? 'line-through' : 'none'},
             title: t.title,
             due: d ? `${d.text} · ${t.src}` : t.src,
             dueStyle: {fontSize:'11.5px',marginTop:'1px',
               color: d?.late ? 'oklch(0.68 0.19 25)' : 'rgba(238,240,245,0.44)'},
           };
         })
-      : demoTasks.map(t => ({...t, dueStyle:{fontSize:'11.5px',marginTop:'1px',color:'rgba(238,240,245,0.44)'}}));
+      : demoTasks.map(t => ({...t, toggle:null, mark:'', boxLabel:'Demouppgift', boxStyle:{cursor:'default',opacity:0.5},
+          titleStyle:{fontSize:'13.5px',color:'#eef0f5',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'},
+          dueStyle:{fontSize:'11.5px',marginTop:'1px',color:'rgba(238,240,245,0.44)'}}));
     const tasksBadge = tasksLive ? '● LIVE' : (todosOk ? 'Klart' : 'Demo');
     const tasksBadgeStyle = {fontSize:'9px',fontWeight:'400',letterSpacing:'0',marginLeft:'8px',
       color: tasksLive ? G : 'rgba(238,240,245,0.25)'};
-    const tasksNote = todosOk && todoItems.length === 0 ? 'Inga öppna uppgifter. Snyggt.' : '';
+    const tasksNote = this.state.todoError || (todosOk && todoItems.length === 0 ? 'Inga öppna uppgifter. Snyggt.' : '');
     const tasksNoteStyle = {fontSize:'11px',color:'rgba(238,240,245,0.32)',marginTop:'10px',
       display: tasksNote ? 'block' : 'none'};
 
