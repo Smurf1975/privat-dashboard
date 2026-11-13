@@ -117,6 +117,16 @@
   @media(max-width:1000px){.cc-4{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
   @media(max-width:520px){.cc-4{grid-template-columns:minmax(0,1fr)!important;}}
   @media(max-width:760px){.cc-2{grid-template-columns:minmax(0,1fr)!important;}}
+  /* Smal skärm (mobil stående): sidhuvudet får aldrig bli bredare än skärmen, annars zoomar
+     telefonen ut hela sidan och blocken hamnar snett. */
+  @media(max-width:600px){
+    .cc-head{gap:4px 10px;padding-top:6px;}
+    .cc-head > div:nth-child(2){display:none;}
+    .cc-right{gap:8px;flex-wrap:wrap;justify-content:flex-end;min-width:0;}
+    .cc-upd{display:none!important;}
+    .cc-right button{padding:5px 9px!important;font-size:12px!important;}
+  }
+  .h-in{max-width:100%;}
   /* Hem: bockruta på uppgifter och klickbara mail */
   .td-box{width:20px;height:20px;padding:0;border-radius:5px;border:1.5px solid rgba(255,255,255,0.28);background:none;color:#0e1018;font-size:13px;font-weight:700;line-height:1;cursor:pointer;flex-shrink:0;display:grid;place-items:center;}
   .td-box:hover{border-color:oklch(0.82 0.24 130);}
@@ -225,7 +235,7 @@
             <span style="font-size:13px;">🎵</span> Spotify
           </button>
         </sc-if>
-        <div style="display:flex;align-items:center;gap:5px;">
+        <div class="cc-upd" style="display:flex;align-items:center;gap:5px;">
           <div style="{{ liveStyle }}"></div>
           <span style="font-size:10px;color:rgba(238,240,245,0.35);letter-spacing:0.05em;">{{ refreshStr }}</span>
         </div>
@@ -505,7 +515,7 @@
       </div>
 
       <!-- TV + SCENER -->
-      <div style="display:grid;grid-template-columns:1fr 230px;gap:14px;margin-bottom:14px;">
+      <div class="cc-2" style="display:grid;grid-template-columns:1fr 230px;gap:14px;margin-bottom:14px;">
         <div style="background:#151821;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 22px;">
           <div style="font-size:13px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#c8ccd6;margin-bottom:12px;">📺 TV</div>
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
