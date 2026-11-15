@@ -36,6 +36,7 @@ const SRK = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
 const REST = `${SB_URL}/rest/v1/onyx_cache`;
 const dbHeaders = { apikey: SRK, Authorization: `Bearer ${SRK}`, 'Content-Type': 'application/json' };
 const TTL_MS = 60 * 60 * 1000;
+const FORCE_MIN_AGE_MS = 2 * 60 * 1000;
 
 const cors = {
   'Access-Control-Allow-Origin': '*',
@@ -260,7 +261,10 @@ Deno.serve(async (req) => {
 
   try {
     const cached = await readCache();
-    if (!force && cached && cached.age < TTL_MS) {
+    // force=1 bara när cachen är äldre än 2 min (säkerhetsrevision 2026-11-15:
+    // öppen force gav vem som helst sju lags skrapning av svenskalag.se per anrop).
+    const honorForce = force && (!cached || cached.age > FORCE_MIN_AGE_MS);
+    if (!honorForce && cached && cached.age < TTL_MS) {
       return new Response(JSON.stringify({ ...shape(cached.payload), cached: true, ageMin: Math.round(cached.age / 60000) }), { headers: cors });
     }
     const payload = await refresh();
