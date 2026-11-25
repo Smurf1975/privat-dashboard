@@ -1,0 +1,290 @@
+[
+ {
+  "url": "https://www.tradera.com/search?q=thinkpad%2032gb",
+  "checkedAt": "2026-11-25T20:32:06.112Z",
+  "method": "playwright-chromium",
+  "status": "ERROR",
+  "error": "page.goto: Timeout 60000ms exceeded."
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/search?q=thinkpad+32gb",
+  "checkedAt": "2026-11-25T20:33:06.166Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/search?q=thinkpad+32gb",
+  "title": "\"thinkpad 32gb\" | Till salu | Blocket",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "&quot;thinkpad 32gb&quot; | Till salu | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "9 891 kr",
+   "8 499 kr",
+   "11 241 kr",
+   "13 895 kr",
+   "14 895 kr",
+   "17 091 kr",
+   "5 000 kr",
+   "2 600 kr",
+   "10 341 kr",
+   "11 691 kr"
+  ],
+  "hits": {
+   "keyboard": [],
+   "ram": [
+    "32GB 512GB RTX 4000 8GB GDDR6 A-Klass",
+    "32GB Ram, 256GB NVMe, 14\" skärm",
+    "32GB 512GB RTX A2000 8GB GDDR6",
+    "32GB 512GB RTX 3000 6GB GDDR6 A-Klass",
+    "32GB Ram 512GB SSD",
+    "32GB RAM / 512GB SSD / 2024)",
+    "32GB Ram",
+    "32GB RAM, 1TB SSD",
+    "32GB DDR5 5600MHz SoDIMM RAM-minne",
+    "32GB RAM, Quadro M2000M, 512GB SSD Laptop",
+    "32GB RAM, 1TB SSD, Win 11 Pro",
+    "32GB 512GB RTX A2000 4GB GDDR6 A-Klass"
+   ],
+   "os": [],
+   "warranty": [
+    "Garanti till 2028 Som ny"
+   ],
+   "returns": [],
+   "battery": [],
+   "condition": [
+    "Skick",
+    "skickas",
+    "skick"
+   ],
+   "delivery": [
+    "Leveransalternativ",
+    "frakt"
+   ],
+   "charger": []
+  },
+  "text": "Gå till filtren\nGå till resultaten\nBlocket\nTorget\nFilter\nKategori\nMärke\nLeveransalternativ\nPlats\nPlats på kartan\nPris\nSkick\nTyp av säljare\nTyp av annons\nPublicerad\nSortering\nMest relevanta\nNärmaste\nPris högt–lågt\nPris lågt–högt\nSenaste först\nÄldsta först\nLista\nKarta\nSkapa bevakning\n53 annonser\nGå till filtren\n53 annonser\n9 891 kr\nLenovo ThinkPad P15 G2 – i7 | 32GB | 512GB | RTX A2000 | FHD\nLenovo\nStockholm\n1 dag\nTeknikFix\nLägg till i favoriter\nGå till annonsen\n8 499 kr\nLenovo ThinkPad P1 Gen3 15,6\" FHD IPS Core i7-10750H 32GB 512GB Quadro T2000 4GB\nLenovo\nBunkeflostrand\n1 dag\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n11 241 kr\nLenovo ThinkPad X1 Carbon Gen 11 – i7 | 32GB | 512GB | FHD\nLenovo\nStockholm\n1 dag\nTeknikFix\nLägg till i favoriter\nGå till annonsen\n13 895 kr\nLenovo ThinkPad P16 G1 16\" UHD+ i7-12850HX 32GB 512GB RTX A1000 8GB A-Klass\nLenovo\nBunkeflostrand\n1 dag\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n14 895 kr\nLenovo ThinkPad P15 G1 15,6\" FHD i9-10885H 32GB 512GB RTX 4000 8GB GDDR6 A-Klass\nLenovo\nBunkeflostrand\n1 dag\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n17 091 kr\nLenovo ThinkPad X1 Carbon G13 Aura Edition – 14\" FHD+ | Core Ultra 7 | 32GB | 1T\nLenovo\nStockholm\n3 dagar\nTeknikFix\nLägg till i favoriter\nGå till annonsen\n5 000 kr\nLenovo Thinkpad P52 i7 32GB\nLenovo\nLuleå\n5 dagar\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n2 600 kr\nDOCKA & Lenovo ThinkPad L480, i5-8250U, 32GB Ram, 256GB NVMe, 14\" skärm\nLenovo\nGöteborg\n6 dagar\nKan skickas\nLägg till i favoriter\nGå till annonsen\n10 341 kr\nLenovo ThinkPad P16s G1 (Intel) – 16\" FHD+ | Core i7 | 32GB | 512GB SSD | NVIDIA\nLenovo\nStockholm\n15 nov\nTeknikFix\nLägg till i favoriter\nGå till annonsen\n11 691 kr\nLenovo ThinkPad P15 G1 – 15.6\" FHD | Core i7 | 32GB | 1TB SSD | NVIDIA Quadro RT\nStockholm\n12 nov\nTeknikFix\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n18 500 kr\nLenovo ThinkPad 14” Ryzen AI PRO – 32gb, 1TB\nLenovo\nMalmö\n6 nov\nKan skickas\nLägg till i favoriter\nGå till annonsen\n8 991 kr\nLenovo ThinkPad P53 G1 – 15.3\" UHD | Core i7 | 32GB | 1TB SSD | NVIDIA Quadro RT\nLenovo\nStockholm\n23 okt\nTeknikFix\nLägg till i favoriter\nGå till annonsen\n14 995 kr\nLenovo ThinkPad P16 G1 16\" Core i7-12850HX 32GB 512GB RTX A2000 8GB GDDR6\nLenovo\nBunkeflostrand\n13 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n11 899 kr\nLenovo ThinkPad P15 G1 15,6\" i7-10850H 32GB 512GB RTX 3000 6GB GDDR6 A-Klass\nLenovo\nBunkeflostrand\n22 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n6 495 kr\nLenovo ThinkPad P1 | i7 | 32GB | 1TB SSD | Quadro P2000 | 4K Touch / Win 11 Pro\nLenovo\nBromma\n21 okt\nIT-Auktion Nordic AB\nLägg till i favoriter\nGå till annonsen\n4 000 kr\nLenovo Thinkpad 14\" Full HD i7 32GB Ram 512GB SSD\nLenovo\nJönköping\n2 okt\nLägg till i favoriter\nGå till annonsen\n8 500 kr\nSuperkraftig Lenovo ThinkPad T14 Gen 4 (32GB RAM / 512GB SSD / 2024)\nLenovo\nMalmö\n27 sep\nLägg till i favoriter\nGå till annonsen\n6 999 kr\nLenovo ThinkPad laptop 32GB Ram\nLenovo\nLinköping\n18 sep\nLägg till i favoriter\nGå till annonsen\n9 500 kr\nLenovo ThinkPad P16s Gen 1, Ryzen i7 PRO, 32GB RAM, 1TB SSD\nLenovo\nÄlvängen\n3 sep\nKan skickas\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n4 000 kr\nOanvänd Lenovo ThinkPad 1X 32GB DDR5 5600MHz SoDIMM RAM-minne\nSundbyberg\n1 sep\nKan skickas\nLägg till i favoriter\nGå till annonsen\n3 000 kr\nLenovo ThinkPad P50 – 4K IPS, Xeon, 32GB RAM, Quadro M2000M, 512GB SSD Laptop\nLenovo\nJönköping\n26 aug\nKan skickas\nLägg till i favoriter\nGå till annonsen\n17 000 kr\nLenovo ThinkPad T16 Gen 2 – i5-1335U, 32GB RAM, 1TB SSD, Win 11 Pro\nLenovo\nPartille\n15 aug\nKan skickas\nLägg till i favoriter\nGå till annonsen\n11 895 kr\nLenovo ThinkPad P15 G2 15,6\" i7-11850H 32GB 512GB Nvidia RTX A3000 4GB A-Klass\nLenovo\nBunkeflostrand\n11 aug\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n7 999 kr\nLenovo ThinkPad T15P G1 15,6\" i7-10750H 32GB 512GB GeForce GTX 1050 3GB A-Klass\nLenovo\nBunkeflostrand\n11 aug\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n10 995 kr\nLenovo ThinkPad P15 G2 15,6 FHD i7-11850H 32GB 512GB RTX A2000 4GB GDDR6 A-Klass\nLenovo\nBunkeflostrand\n15 aug\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n9 000 kr\nLenovo ThinkPad P15 G1 | 15.6″ | Core i7 | 32GB | 1TB SSD | 4G | NVIDIA RTX3000\nLenovo\nJärna\n4 jul\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n8 000 kr\nLenovo thinkpad P15V gen 3 i nyskick\nLenovo\nHässelby\n3 dagar\nKan skickas\nLägg till i favoriter\nGå till annonsen\n15 995 kr\nLenovo ThinkPad X1 Carbon Gen 12 Ultra 7 / 32GB / 512GB / W11 Pro\nLenovo\nBromma\n29 jun\nIT-Auktion Nordic AB\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n7 000 kr\nLenovo ThinkPad P1 Gen3\nLenovo\nSkogås\n12 nov\nKan skickas\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n20 000 kr\nLenovo ThinkPad X1 Carbon Gen 13 – Core Ultra 7, 32 GB RAM, 1 TB SSD – Nyskick\nLenovo\nArlöv\n5 nov\nKan skickas\nLägg till i favoriter\nGå till annonsen\n5 499 kr\nLenovo ThinkPad T15 Gen2 15,6\" i5-1145G7 16GB 256GB A-Klass\nLenovo\nBunkeflostrand\n29 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n3 999 kr\nLenovo ThinkPad T14s 14\" FHD Core i5-10310U 16GB 256GB Win11\nLenovo\nBunkeflostrand\n13 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n2 799 kr\nLenovo ThinkPad T470 14\" i5-7200U 8GB 256GB A-Klass\nLenovo\nBunkeflostrand\n13 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n5 999 kr\nLenovo ThinkPad P1 Gen1 15,6\" i7-8750H 16GB 512GB P1000 4GB GDDR5 A-Klass\nLenovo\nBunkeflostrand\n22 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n5 999 kr\nLenovo ThinkPad P1 Gen1 15,6\" i7-8750H 16GB 512GB P1000 4GB GDDR5 A-Klass\nLenovo\nBunkeflostrand\n22 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n6 999 kr\nLenovo ThinkPad P1 Gen1 15,6\" i7-8850H 16GB 512GB P2000 4GB GDDR5 A-Klass\nLenovo\nBunkeflostrand\n22 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n7 499 kr\nLenovo ThinkPad P1 Gen1 15,6\" i7-8850H 16GB 512GB P2000 4GB GDDR5 A-Klass\nLenovo\nBunkeflostrand\n22 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n6 499 kr\nLenovo ThinkPad P52s 15,6\" i7-8550U 16GB 512GB Quadro P500 GDDR5 A-Klass\nLenovo\nBunkeflostrand\n22 okt\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n13 500 kr\nLenovo ThinkPad P1 Gen 6 | i7-13700H NVIDIA RTX A1000 | Garanti till 2028 Som ny\nLenovo\nMalmö\n13 aug\nLägg till i favoriter\nGå till annonsen\n4 899 kr\nLenovo ThinkPad T480 14\" i7-8650U 16GB 256GB A-Klass\nLenovo\nBunkeflostrand\n26 aug\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n12 500 kr\nLenovo ThinkPad X13 2-in-1 Gen 5 – Ultra 7 / 32 GB RAM / Touch – foldable\nLenovo\nHägersten\n5 jul\nKan skickas\nLägg till i favoriter\nGå till annonsen\n3 499 kr\nLenovo ThinkPad T480 14\" HD i5-8250U 16GB 256GB A-Klass\nLenovo\nBunkeflostrand\n2 jul\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n3 299 kr\nLenovo ThinkPad L490 14\" FHD Core i7-8565U 8GB 256GB Win11\nLenovo\nBunkeflostrand\n26 jun\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n4 799 kr\nLenovo ThinkPad T490 14\" FHD IPS Core i7-8665U 16GB 256GB GeForce MX250 GDDR5\nLenovo\nBunkeflostrand\n26 jun\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n2 799 kr\nLenovo ThinkPad L480 14\" FHD IPS Core i5-8250U 8GB 256GB\nLenovo\nBunkeflostrand\n25 jun\nTeknikfronten Sverige AB\nLägg till i favoriter\nGå till annonsen\n8 000 kr\nKomplett arbetsstation m laptop, två skärmar 27” och tillbehör\nStockholm\n15 okt\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n8 000 kr\nThinkPad P1 Gen 4, i7-11800H, 32 GB, 512 GB, RTX A2000, 16 tum 4K\nLenovo\nVeddige\n2 dagar\nKan skickas\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n4 500 kr\nLenovo ThinkPad T480 | i5 | 32 GB RAM | 512 GB SSD\nLenovo\nLidingö\n4 dagar\nKan skickas\nLägg till i favoriter\nGå till annonsen\n3 500 kr\n32 Gb Ddr5 4800mhz\nGävle\n3 dagar\nLägg till i favoriter\nGå till annonsen\n9 000 kr\nLenovo IdeaPad Slim 5 OLED 14\" – Ryzen AI 7 350, 32 GB, 1 TB\nLenovo\nGöteborg\n1 dag\nLägg till i favoriter\nGå till annonsen\n18 500 kr\nLenovo ThinkPad X1 Carbon Gen12\nLenovo\nStockholm\n5 dagar\nKan skickas\nLägg till i favoriter\nGå till annonsen\nGratis frakt\n2 500 kr\nLenovo ThinkPad T14 i fint skick\nLenovo\nHässelby\n9 tim\nKan skickas\nLägg till i favoriter\nGå till annonsen\n600 kr\nLenovo ThinkPad T520 laptop, 4 GB RAM, Intel Core i5, svart\nLenovo\nSorunda\n2 tim\nLägg till i favoriter\nGå till annonsen\nVill du få notiser när det finns nya resultat för den här bevakningen?\nSkapa bevakning\n\"thinkpad 32gb\" | Till salu",
+  "links": [
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/23712746",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24325956",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/23712500",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26137340",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28507678",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28390666",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28402040",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28384514",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26508616",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27683499",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27611328",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27081522",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24326645",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27610584",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27589906",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27059483",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26933977",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26675737",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26122312",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26240133",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26049814",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/25727838",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24423379",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24423196",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/25733172",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/22967863",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28468756",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24407940",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28189338",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27988858",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27807958",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24326440",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/25714948",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27610458",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27610415",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27610377",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27610359",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27610336",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/22669428",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/26062573",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/21313543",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24421739",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24351693",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24352297",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/24327298",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/27434845",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28497416",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28373832",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28458417",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28509781",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28401963",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28536657",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/recommerce/forsale/item/28547390",
+    "text": ""
+   },
+   {
+    "href": "https://www.blocket.se/om/villkor/annonseringsregler",
+    "text": "Annonseringsregler"
+   }
+  ],
+  "status": "OK"
+ }
+]

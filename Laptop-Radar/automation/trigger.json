@@ -1,0 +1,1 @@
+{"trigger_id":"trig_019Pp33opQ8PMtttUx6Umg2T","name":"Laptop Radar daily","cron":"CRON_TZ=Europe/Stockholm 43 7 * * *","session":"session_01SvhDghRKaPFuf7dsKc43hw","created":"2026-11-25","first_run":"2026-11-26T07:43+01:00"}
