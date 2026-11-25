@@ -1,0 +1,1054 @@
+[
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/23712500",
+  "checkedAt": "2026-11-25T20:34:49.821Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/23712500",
+  "title": "Lenovo ThinkPad X1 Carbon Gen 11 – i7 | 32GB | 512GB | FHD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad X1 Carbon Gen 11 – i7 | 32GB | 512GB | FHD",
+    "brand": "Lenovo",
+    "sku": "23712500",
+    "offers": [
+     {
+      "price": "11241",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+       "@type": "Organization"
+      }
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad X1 Carbon Gen 11 – i7 | 32GB | 512GB | FHD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/26933977",
+  "checkedAt": "2026-11-25T20:34:59.020Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/26933977",
+  "title": "Superkraftig Lenovo ThinkPad T14 Gen 4 (32GB RAM / 512GB SSD / 2024) | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Superkraftig Lenovo ThinkPad T14 Gen 4 (32GB RAM / 512GB SSD / 20",
+    "brand": "Lenovo",
+    "sku": "26933977",
+    "offers": [
+     {
+      "price": "8500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Superkraftig Lenovo ThinkPad T14 Gen 4 (32GB RAM / 512GB SSD / 2024) | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/27059483",
+  "checkedAt": "2026-11-25T20:35:06.896Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/27059483",
+  "title": "Lenovo Thinkpad 14&quot; Full HD i7 32GB Ram 512GB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo Thinkpad 14\" Full HD i7 32GB Ram 512GB SSD",
+    "brand": "Lenovo",
+    "sku": "27059483",
+    "offers": [
+     {
+      "price": "4000",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo Thinkpad 14&quot; Full HD i7 32GB Ram 512GB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28350716",
+  "checkedAt": "2026-11-25T20:35:14.687Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28350716",
+  "title": "Lenovo ThinkPad X1 Carbon Gen 9 – i7 / 32 GB / 1 TB / 4G | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad X1 Carbon Gen 9 – i7 / 32 GB / 1 TB / 4G",
+    "brand": "Lenovo",
+    "sku": "28350716",
+    "offers": [
+     {
+      "price": "6600",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad X1 Carbon Gen 9 – i7 / 32 GB / 1 TB / 4G | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28509781",
+  "checkedAt": "2026-11-25T20:35:22.259Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28509781",
+  "title": "Lenovo IdeaPad Slim 5 OLED 14&quot; – Ryzen AI 7 350, 32 GB, 1 TB | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo IdeaPad Slim 5 OLED 14\" – Ryzen AI 7 350, 32 GB, 1 TB",
+    "brand": "Lenovo",
+    "sku": "28509781",
+    "offers": [
+     {
+      "price": "9000",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo IdeaPad Slim 5 OLED 14&quot; – Ryzen AI 7 350, 32 GB, 1 TB | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28228758",
+  "checkedAt": "2026-11-25T20:35:29.619Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28228758",
+  "title": "Oöppnad - 14&quot; Ultratunn premiumdesign, OLED touch skärm , AI kraft. U7/32GB/1TB | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Oöppnad - 14\" Ultratunn premiumdesign, OLED touch skärm , AI kraf",
+    "brand": "Asus",
+    "sku": "28228758",
+    "offers": [
+     {
+      "price": "13900",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Oöppnad - 14&quot; Ultratunn premiumdesign, OLED touch skärm , AI kraft. U7/32GB/1TB | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28535586",
+  "checkedAt": "2026-11-25T20:35:37.148Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28535586",
+  "title": "ASUS Zenbook Duo – dubbla 3K OLED-touchskärmar, 32 GB/1 TB – nyskick | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "ASUS Zenbook Duo – dubbla 3K OLED-touchskärmar, 32 GB/1 TB – nysk",
+    "brand": "Asus",
+    "sku": "28535586",
+    "offers": [
+     {
+      "price": "11995",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "ASUS Zenbook Duo – dubbla 3K OLED-touchskärmar, 32 GB/1 TB – nyskick | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28508802",
+  "checkedAt": "2026-11-25T20:35:44.634Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28508802",
+  "title": "Asus Zenbook S 16 OLED – Ryzen AI 9 / 32 GB / 1 TB – Kvitto finns | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Asus Zenbook S 16 OLED – Ryzen AI 9 / 32 GB / 1 TB – Kvitto finns",
+    "brand": "Asus",
+    "sku": "28508802",
+    "offers": [
+     {
+      "price": "12900",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Asus Zenbook S 16 OLED – Ryzen AI 9 / 32 GB / 1 TB – Kvitto finns | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/26951509",
+  "checkedAt": "2026-11-25T20:35:52.549Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/26951509",
+  "title": "ASUS ZenBook Duo 14 UX482EG – i7, 32 GB RAM, 1 TB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "ASUS ZenBook Duo 14 UX482EG – i7, 32 GB RAM, 1 TB SSD",
+    "brand": "Asus",
+    "sku": "26951509",
+    "offers": [
+     {
+      "price": "14999",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "ASUS ZenBook Duo 14 UX482EG – i7, 32 GB RAM, 1 TB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/21313543",
+  "checkedAt": "2026-11-25T20:36:00.032Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/21313543",
+  "title": "Lenovo ThinkPad X13 2-in-1 Gen 5 – Ultra 7 / 32 GB RAM / Touch – foldable | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad X13 2-in-1 Gen 5 – Ultra 7 / 32 GB RAM / Touch – ",
+    "brand": "Lenovo",
+    "sku": "21313543",
+    "offers": [
+     {
+      "price": "12500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad X13 2-in-1 Gen 5 – Ultra 7 / 32 GB RAM / Touch – foldable | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/27731894",
+  "checkedAt": "2026-11-25T20:36:07.642Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/27731894",
+  "title": "Bärbar dator | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Bärbar dator",
+    "brand": "Asus",
+    "sku": "27731894",
+    "offers": [
+     {
+      "price": "2500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Bärbar dator | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28526905",
+  "checkedAt": "2026-11-25T20:36:15.287Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28526905",
+  "title": "Elitebook 840 G8 | 32GB RAM | 1TB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Elitebook 840 G8 | 32GB RAM | 1TB SSD",
+    "brand": "HP",
+    "sku": "28526905",
+    "offers": [
+     {
+      "price": "6500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Elitebook 840 G8 | 32GB RAM | 1TB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28514396",
+  "checkedAt": "2026-11-25T20:36:23.444Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28514396",
+  "title": "HP Elitebook 840 G8 Core i5 11th Gen 32GB RAM Och 500GB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP Elitebook 840 G8 Core i5 11th Gen\n32GB RAM Och 500GB SSD",
+    "brand": "HP",
+    "sku": "28514396",
+    "offers": [
+     {
+      "price": "3500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "HP Elitebook 840 G8 Core i5 11th Gen\n32GB RAM Och 500GB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28514245",
+  "checkedAt": "2026-11-25T20:36:30.633Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28514245",
+  "title": "HP Elitebook 845 G8 Touch Skärm / Ryzen 5 Pro /32GB RAM/500GB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP Elitebook 845 G8 Touch\nSkärm / Ryzen 5 Pro /32GB\nRAM/500GB SSD",
+    "brand": "HP",
+    "sku": "28514245",
+    "offers": [
+     {
+      "price": "4000",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "HP Elitebook 845 G8 Touch\nSkärm / Ryzen 5 Pro /32GB\nRAM/500GB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28395007",
+  "checkedAt": "2026-11-25T20:36:38.464Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28395007",
+  "title": "HP Elitebook 845 G8 Ryzen 5 Pro / Touch Skärm / 32GB RAM / 500GB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP Elitebook 845 G8 Ryzen 5 Pro / Touch Skärm / 32GB RAM / 500GB ",
+    "brand": "HP",
+    "sku": "28395007",
+    "offers": [
+     {
+      "price": "4000",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "HP Elitebook 845 G8 Ryzen 5 Pro / Touch Skärm / 32GB RAM / 500GB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28261640",
+  "checkedAt": "2026-11-25T20:36:55.811Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28261640",
+  "title": "LAPTOP DELL LATITUDE 7520 I7-1185G7/512 GB SSD/32 GB | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "LAPTOP DELL LATITUDE 7520 I7-1185G7/512 GB SSD/32 GB",
+    "brand": "Dell",
+    "sku": "28261640",
+    "offers": [
+     {
+      "price": "4000",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "LAPTOP DELL LATITUDE 7520 I7-1185G7/512 GB SSD/32 GB | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/25379480",
+  "checkedAt": "2026-11-25T20:37:03.643Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/25379480",
+  "title": "Dell Latitude 7320 Intel Core i7 | 32 GB RAM | 512 GB SSD | Windows 11 Pro | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Dell Latitude 7320 Intel Core i7 | 32 GB RAM | 512 GB SSD | Windo",
+    "brand": "Dell",
+    "sku": "25379480",
+    "offers": [
+     {
+      "price": "5490",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+       "@type": "Organization"
+      }
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Dell Latitude 7320 Intel Core i7 | 32 GB RAM | 512 GB SSD | Windows 11 Pro | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/25534590",
+  "checkedAt": "2026-11-25T20:37:11.524Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/25534590",
+  "title": "Dell Latitude 7320 Intel Core i7 | 32 GB RAM | 512 GB SSD | Windows 11 Pro | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Dell Latitude 7320 Intel Core i7 | 32 GB RAM | 512 GB SSD | Windo",
+    "brand": "Dell",
+    "sku": "25534590",
+    "offers": [
+     {
+      "price": "4199",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+       "@type": "Organization"
+      }
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Dell Latitude 7320 Intel Core i7 | 32 GB RAM | 512 GB SSD | Windows 11 Pro | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/27270524",
+  "checkedAt": "2026-11-25T20:37:19.230Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/27270524",
+  "title": "HP EliteBook - i7-1.80--2.30GHz_ RAM 32 GB - SSD-512 GB, Win-11 Pro. - 14 tum. | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP EliteBook  - i7-1.80--2.30GHz_ RAM 32 GB - SSD-512 GB, Win-11 ",
+    "brand": "HP",
+    "sku": "27270524",
+    "offers": [
+     {
+      "price": "6700",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "HP EliteBook  - i7-1.80--2.30GHz_ RAM 32 GB - SSD-512 GB, Win-11 Pro. - 14 tum. | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28062069",
+  "checkedAt": "2026-11-25T20:37:26.797Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28062069",
+  "title": "HP EliteBook G8 850 15.6&quot; /i5 11gen./32GB/ SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP EliteBook G8 850 15.6\" /i5 11gen./32GB/ SSD",
+    "brand": "HP",
+    "sku": "28062069",
+    "offers": [
+     {
+      "price": "5500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "HP EliteBook G8 850 15.6&quot; /i5 11gen./32GB/ SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/23712746",
+  "checkedAt": "2026-11-25T20:37:34.079Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/23712746",
+  "title": "Lenovo ThinkPad P15 G2 – i7 | 32GB | 512GB | RTX A2000 | FHD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad P15 G2 – i7 | 32GB | 512GB | RTX A2000 | FHD",
+    "brand": "Lenovo",
+    "sku": "23712746",
+    "offers": [
+     {
+      "price": "9891",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+       "@type": "Organization"
+      }
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad P15 G2 – i7 | 32GB | 512GB | RTX A2000 | FHD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/24325956",
+  "checkedAt": "2026-11-25T20:37:41.422Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/24325956",
+  "title": "Lenovo ThinkPad P1 Gen3 15,6&quot; FHD IPS Core i7-10750H 32GB 512GB Quadro T2000 4GB | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad P1 Gen3 15,6\" FHD IPS Core i7-10750H 32GB 512GB Q",
+    "brand": "Lenovo",
+    "sku": "24325956",
+    "offers": [
+     {
+      "price": "8499",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+       "@type": "Organization"
+      }
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad P1 Gen3 15,6&quot; FHD IPS Core i7-10750H 32GB 512GB Quadro T2000 4GB | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/27683499",
+  "checkedAt": "2026-11-25T20:37:49.323Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/27683499",
+  "title": "Lenovo ThinkPad P15 G1 – 15.6&quot; FHD | Core i7 | 32GB | 1TB SSD | NVIDIA Quadro RT | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad P15 G1 – 15.6\" FHD | Core i7 | 32GB | 1TB SSD | N",
+    "sku": "27683499",
+    "offers": [
+     {
+      "price": "11691",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+       "@type": "Organization"
+      }
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad P15 G1 – 15.6&quot; FHD | Core i7 | 32GB | 1TB SSD | NVIDIA Quadro RT | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/24407940",
+  "checkedAt": "2026-11-25T20:37:57.177Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/24407940",
+  "title": "Lenovo ThinkPad X1 Carbon Gen 12 Ultra 7 / 32GB / 512GB / W11 Pro | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad X1 Carbon Gen 12 Ultra 7 / 32GB / 512GB / W11 Pro",
+    "brand": "Lenovo",
+    "sku": "24407940",
+    "offers": [
+     {
+      "price": "15995",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+       "@type": "Organization"
+      }
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad X1 Carbon Gen 12 Ultra 7 / 32GB / 512GB / W11 Pro | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ }
+]

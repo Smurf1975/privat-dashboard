@@ -1,0 +1,2175 @@
+[
+ {
+  "url": "https://www.lenovo.com/se/sv/d/deals/laptops/",
+  "checkedAt": "2026-11-25T20:32:57.431Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/laptops/?cid=flash_redirect_2p3o1i",
+  "title": "Utforska högpresterande bärbara datorer och 2-i-1-datorer | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "LOQ 15i Gen 11 (15\" Intel)",
+    "brand": "loq-laptops",
+    "sku": "83SLCTO1WWSE3",
+    "mpn": "LEN101Q0017",
+    "offers": [
+     {
+      "price": "22519.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-in-1 Gen 11 Aura Edition (16\" Intel)",
+    "brand": "yoga",
+    "sku": "83TECTO1WWSE1",
+    "mpn": "LEN101Y0072",
+    "offers": [
+     {
+      "price": "21303.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-in-1 Gen 11 Aura Edition (16\" Intel)",
+    "brand": "yoga",
+    "sku": "83TECTO1WWSE2",
+    "mpn": "LEN101Y0072",
+    "offers": [
+     {
+      "price": "23904.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14s 2-in-1 Gen 2",
+    "brand": "thinkpad",
+    "sku": "21YYCTO1WWSE4",
+    "mpn": "LEN101T0163",
+    "offers": [
+     {
+      "price": "24863.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14s 2-in-1 Gen 2",
+    "brand": "thinkpad",
+    "sku": "21YYCTO1WWSE5",
+    "mpn": "LEN101T0163",
+    "offers": [
+     {
+      "price": "32334.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad X13 Gen 7",
+    "brand": "thinkpad",
+    "sku": "21YHCTO1WWSE4",
+    "mpn": "LEN101T0172",
+    "offers": [
+     {
+      "price": "25679.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad X13 Gen 7",
+    "brand": "thinkpad",
+    "sku": "21YHCTO1WWSE5",
+    "mpn": "LEN101T0172",
+    "offers": [
+     {
+      "price": "35129.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad X9-15 Gen 1",
+    "brand": "thinkpad",
+    "sku": "21Q6CTO1WWSE4",
+    "mpn": "LEN101T0111",
+    "offers": [
+     {
+      "price": "24979.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Legion 5i Gen 11 (15″ Intel)",
+    "brand": "legion-laptops",
+    "sku": "83RWCTO1WWSE1",
+    "mpn": "LEN101G0050",
+    "offers": [
+     {
+      "price": "22600.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Legion 5i Gen 11 (15″ Intel)",
+    "brand": "legion-laptops",
+    "sku": "83RWCTO1WWSE2",
+    "mpn": "LEN101G0050",
+    "offers": [
+     {
+      "price": "27188.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad L16 Gen 2 (16″ AMD)",
+    "brand": "thinkpad",
+    "sku": "21SCCTO1WWSE1",
+    "mpn": "LEN101T0132",
+    "offers": [
+     {
+      "price": "15410.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad P16s Gen 4 (AMD)",
+    "brand": "thinkpad",
+    "sku": "21QR005UMX",
+    "mpn": "LEN101T0122",
+    "offers": [
+     {
+      "price": "35699.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14s Gen 6 (AMD)",
+    "brand": "thinkpad",
+    "sku": "21TBCTO1WWSE1",
+    "mpn": "LEN101T0109",
+    "offers": [
+     {
+      "price": "32895.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo LOQ 17i Gen 10 (17” Intel)",
+    "brand": "loq-laptops",
+    "sku": "83JHCTO1WWSE3",
+    "mpn": "LEN101Q0013",
+    "offers": [
+     {
+      "price": "17249.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Legion 5a Gen 11 (15\" AMD)",
+    "brand": "legion-laptops",
+    "sku": "83Q7CTO1WWSE1",
+    "mpn": "LEN101G0051",
+    "offers": [
+     {
+      "price": "29303.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Legion 5a Gen 11 (15\" AMD)",
+    "brand": "legion-laptops",
+    "sku": "83Q7CTO1WWSE2",
+    "mpn": "LEN101G0051",
+    "offers": [
+     {
+      "price": "33703.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad P1 Gen 9",
+    "brand": "thinkpad",
+    "sku": "21UECTO1WWSE3",
+    "mpn": "LEN101T0180",
+    "offers": [
+     {
+      "price": "45149.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad P1 Gen 9",
+    "brand": "thinkpad",
+    "sku": "21UECTO1WWSE4",
+    "mpn": "LEN101T0180",
+    "offers": [
+     {
+      "price": "63999.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T1g Gen 9",
+    "brand": "thinkpad",
+    "sku": "21UGCTO1WWSE3",
+    "mpn": "LEN101T0181",
+    "offers": [
+     {
+      "price": "46219.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T1g Gen 9",
+    "brand": "thinkpad",
+    "sku": "21UGCTO1WWSE4",
+    "mpn": "LEN101T0181",
+    "offers": [
+     {
+      "price": "58279.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [
+   "Kan jag anpassa konfigurationen av min bärbara Lenovo-dator innan jag köper den?"
+  ],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "30 000 kr",
+   "23 000 kr",
+   "29 999 kr",
+   "17 000 kr",
+   "22 999 kr",
+   "22 519,00 kr",
+   "23 670,00 kr",
+   "21 303,00 kr",
+   "26 560,00 kr",
+   "23 904,00 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord och ultratunn profil",
+    "tangentbord, avancerade säkerhetsfunktioner och varaktiga batteritid är dessa bärbara dator",
+    "tangentbords- och pekskärmslägen, vilket ger en flexibel användarupplevelse",
+    "tangentbord för frekvent skrivande och är byggda för att vara hållbara för resor",
+    "tangentbord och styrplatta göra stor skillnad när du navigerar i nya världar eller står i k",
+    "tangentbordet",
+    "tangentbord och möss samt skyddsfodral – är utformade med precision och kompletterar din te"
+   ],
+   "ram": [
+    "8GB GDDR7",
+    "16 GB DDR5 - 5 600MT/s (SODIMM)",
+    "32 GB LPDDR5X - 7 467MT/s (lött)",
+    "16 GB LPDDR5X - 8 533MT/s (lött)",
+    "32 GB LPDDR5X - 8 533MT/s (lött)",
+    "32 GB LPDDR5X - 8 533MT/s (Memory On-paket)",
+    "32 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 16 GB)",
+    "8 GB RAM stöder de flesta applikationer, program och moderna spel för att fungera smidigt"
+   ],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Home 64",
+    "Windows 11 Home",
+    "Windows 11 Pro för företag",
+    "Windows 11 Pro 64",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garanti",
+    "garantierbjudanden, allt en del av vårt pålitliga skyddsnät för din nya tekniska följes",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritiden för Lenovos bärbara datorer?",
+    "batteritiden på min bärbara Lenovo-dator?",
+    "batteritid och bärbarhet, vilket gör dem lämpliga för en bred demografi av användare",
+    "batteritid är dessa bärbara datorer en motståndskraftig och pålitlig partner under hela",
+    "batteritiden gör också Ultrabooks mycket portabla",
+    "batteritid för att undvika strömpanik mitt i föreläsningen",
+    "batteritid och bärbarhet till två av de mest kritiska faktorerna när du väljer en ny bä",
+    "batteritid som kan ta dig igenom en hel dags arbete eller en lång pendling så att du in",
+    "batteritid med snabbladdningsmöjligheter",
+    "batteritid kompletterad med Rapid Charge-teknik – att koppla in den i bara några minute",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e",
+    "batterier"
+   ],
+   "condition": [
+    "Skickas",
+    "demo"
+   ],
+   "delivery": [
+    "Leveransklara Datorer (85)",
+    "leverans mellan 09/12 och 11/12Leveransalternativ för 164+28",
+    "LEVERANS",
+    "leverans mellan 04/12 och 08/12Leveransalternativ för 164+28",
+    "leverans mellan 03/12 och 07/12Leveransalternativ för 164+28",
+    "leverans mellan 08/12 och 10/12Leveransalternativ för 164+28",
+    "Frakt"
+   ],
+   "charger": [
+    "laddare"
+   ]
+  },
+  "text": "Handla bärbara datorer, 2-i-1-datorer och mycket mer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nBlack Friday | Black Friday-erbjudandena är nu LIVE! Spara upp till 54%. Handla nu .\nCurrently displaying item 1 of 1\n    \nBärbara datorer\nThinkPad\nPålitlig kvalitet för företag. Förbättrad säkerhet och beprövad hållbarhet.\nThinkBook\nKraftfulla, mångsidiga och portabla för alla arbetsstilar.\nYoga\nFlera lägen. Anpassad för arbete, spel och avkoppling.\nIdeaPad\nDesign, stil och funktion med prestanda du kan lita på.\nLegion\nEn trimmad dataspelsupplevelse som med lätthet hanterar de senaste spelen.\nLOQ\nBärbara speldatorer som överträffar alla förväntningar – nu till budgetpris.\nLenovo\nFrån lätta bärbara datorer till Chromebooks för arbete, hem och skola.\nGooglebook\nKraftfull prestanda. Gemini Intelligence. Sömlös Android™-synkronisering.\nskip to product list\nFilter\nVisa färre\nRea\nrea (238)\nMärke\nThinkPad (153)\nThinkBook (19)\nYoga (69)\nIdeaPad (110)\nLegion (61)\nVisa mer\nProdukt typ\nBygg Din Egen Dator (352)\nLeveransklara Datorer (85)\nAI (artificiell intelligens)\nCopilot+ PC (238)\nVisa mer\nProcessor\nAlla Intel®-processorer (235)\nAlla AMD-processorer (170)\nAlla Snapdragon®-processorer (28)\nAlla NVIDIA-processorer (4)\nNVIDIA RTX Spark™ (4)\nVisa mer\nMinne (GB)\n64 GB (17)\n96 GB (1)\n32 GB (179)\nVisa mer\nSkärmstorlek\n13\" - 13.9\" (27)\n14\" - 14.9\" (183)\n15\" - 16.9\" (216)\nVisa mer\nGrafik\nQualcomm™ Adreno (28)\nNVIDIA RTX™ (109)\nIntel® UHD (5)\nVisa mer\nHårddisk\n2 TB (9)\n1 TB (178)\n512 GB (155)\nVisa mer\nAnvändning\nArbete (234)\nSpel (84)\nStudent (382)\nVisa mer\nPris\nÖver 30 000 kr (95)\n23 000 kr - 29 999 kr (96)\n17 000 kr - 22 999 kr (102)\nVisa mer\nFunktioner\nSerien\nBy Type\nSkärmupplösning\nFärg\nTouch Screen\nVikt\nSkickas\nBetyg\n& Upp\nVisa mer\n437 träffar\nSortera efter : Senaste\nJämför\nLOQ 15i Gen 11 (15\" Intel)\nCopilot+ PC\n65W-100W USB PD\n22 519,00 kr\ninkl. moms\nIntel® Core™ Ultra 7 355-processor (LPE-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5050 grafikkort för bärbar dator 8GB GDDR7\n16 GB DDR5 - 5 600MT/s (SODIMM)\n512 GB SSD M.2 2242 PCIe Gen4 QLC\n15,3\" WUXGA (1 920 × 1 200), IPS, antireflex, ingen pekskärm, 100 % sRGB, 300 cd/m² (nit), 165 Hz\nVisa fler specifikationer\nFunktioner\nByggd för AAA-spel med Intel® Core™ Ultra-processorer\nNVIDIA RTX®-grafik som driver spelprestanda\nLättare och elegantare och byggd för livet på språng\nBygg Din Dator\nBeräknad leverans mellan 09/12 och 11/12Leveransalternativ för 164+28\nArtikelnummer: 83SLCTO1WWSE3\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7i 2-in-1 Gen 11 Aura Edition (16\" Intel)\nCopilot+ PC\n4.8\n(23)\n45W-65W USB PD\nWebbpris\n23 670,00 kr\n21 303,00 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 355-processor (LPE-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n32 GB LPDDR5X - 7 467MT/s (lött)\n512 GB SSD M.2 2242 PCIe Gen4 QLC\n16\" WUXGA (1 920 × 1 200), IPS, reflex, pekskärm, 45 % NTSC, 400 cd/m² (nit), 60 Hz, glas\nVisa fler specifikationer\nFunktioner\nMångsidig 16 tums konvertibel bärbar dator\nDrivs av Intel® Core™ Ultra-processorer\nCopilot+-dator med avancerade AI-funktioner\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 04/12 och 08/12Leveransalternativ för 164+28\nArtikelnummer: 83TECTO1WWSE1\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7i 2-in-1 Gen 11 Aura Edition (16\" Intel)\nCopilot+ PC\n4.8\n(23)\n45W-65W USB PD\nWebbpris\n26 560,00 kr\n23 904,00 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 355-processor (LPE-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n32 GB LPDDR5X - 7 467MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\n16\" WUXGA (1 920 × 1 200), OLED, reflex, pekskärm, 100 % DCI-P3, 300 cd/m² (nit), 60 Hz, glas\nVisa fler specifikationer\nFunktioner\nMångsidig 16 tums konvertibel bärbar dator\nDrivs av Intel® Core™ Ultra-processorer\nCopilot+-dator med avancerade AI-funktioner\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 04/12 och 08/12Leveransalternativ för 164+28\nArtikelnummer: 83TECTO1WWSE2\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nThinkPad T14s 2-in-1 Gen 2\nCopilot+ PC\n4.5\n(2)\n65W-65W USB PD\nWebbpris\n29 099,00 kr\n24 863,15 kr\n14% rabatt\ninkl. moms\nIntel® Core™ Ultra 5 325-processor (LPE-kärnor upp till 3,40 GHz P-kärnor upp till 4,50 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n16 GB LPDDR5X - 8 533MT/s (lött)\n256 GB SSD M.2 2280 PCIe Gen4 TLC Opal\n14\" WUXGA (1 920 × 1 200), IPS, antireflex/fläcktålig, pekskärm, 45 % NTSC, 400 cd/m² (nit), 60 Hz, DBEF5\nVisa fler specifikationer\nFunktioner\nSeriöst AI-drivet kraftpaket med adaptiv användning\nFörlängd livscykel med utbytbara delar som kan bytas själv\nBekväm, alltid laddad integrerad penna ingår\nBygg Din Dator\nBeräknad leverans mellan 03/12 och 07/12Leveransalternativ för 164+28\nArtikelnummer: 21YYCTO1WWSE4\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nThinkPad T14s 2-in-1 Gen 2\nCopilot+ PC\n4.5\n(2)\n65W-65W USB PD\nWebbpris\n37 889,00 kr\n32 334,65 kr\n14% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 355-processor (LPE-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Pro 64\nInbyggd Intel® grafik\n32 GB LPDDR5X - 8 533MT/s (lött)\n512 GB SSD M.2 2280 PCIe Gen4 TLC Opal\n14\" WUXGA (1 920 × 1 200), IPS, antireflex/fläcktålig, pekskärm, 45 % NTSC, 400 cd/m² (nit), 60 Hz, DBEF5\nVisa fler specifikationer\nFunktioner\nSeriöst AI-drivet kraftpaket med adaptiv användning\nFörlängd livscykel med utbytbara delar som kan bytas själv\nBekväm, alltid laddad integrerad penna ingår\nBygg Din Dator\nBeräknad leverans mellan 03/12 och 07/12Leveransalternativ för 164+28\nArtikelnummer: 21YYCTO1WWSE5\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nThinkPad X13 Gen 7\nCopilot+ PC\n4.8\n(7)\n15W-65W USB PD\n25 679,00 kr\ninkl. moms\nIntel® Core™ Ultra 5 332 vPro®-processor (LPE-kärnor upp till 3,30 GHz P-kärnor upp till 4,40 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n16 GB LPDDR5X - 8 533MT/s (lött)\n256 GB SSD M.2 2280 PCIe Gen4 TLC Opal\n13,3\" WUXGA (1 920 × 1 200), IPS, antireflex, ingen pekskärm, 100 % sRGB, 400 cd/m² (nit), 60 Hz\nVisa fler specifikationer\nFunktioner\nLättaste 13,3″ bärbara datorn i vårt nuvarande ThinkPad-sortiment\nMed Intel® Core™ Ultra Series 3-prestanda\nEnkel att uppgradera med utbytbara delar\nBygg Din Dator\nBeräknad leverans mellan 08/12 och 10/12Leveransalternativ för 164+28\nArtikelnummer: 21YHCTO1WWSE4\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nThinkPad X13 Gen 7\nCopilot+ PC\n4.8\n(7)\n15W-65W USB PD\n35 129,00 kr\ninkl. moms\nIntel® Core™ Ultra 7 355-processor (LPE-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Pro 64\nInbyggd Intel® grafik\n32 GB LPDDR5X - 8 533MT/s (lött)\n512 GB SSD M.2 2280 PCIe Gen4 TLC Opal\n13,3\" WUXGA (1 920 × 1 200), IPS, antireflex, ingen pekskärm, 100 % sRGB, 400 cd/m² (nit), 60 Hz\nVisa fler specifikationer\nFunktioner\nLättaste 13,3″ bärbara datorn i vårt nuvarande ThinkPad-sortiment\nMed Intel® Core™ Ultra Series 3-prestanda\nEnkel att uppgradera med utbytbara delar\nBygg Din Dator\nBeräknad leverans mellan 08/12 och 10/12Leveransalternativ för 164+28\nArtikelnummer: 21YHCTO1WWSE5\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nThinkPad X9-15 Gen 1\nCopilot+ PC\n4.5\n(174)\n65W-65W USB PD\n24 979,00 kr\ninkl. moms\nIntel® Core™ Ultra 5 228V-processor (LPE-kärnor upp till 3,50 GHz P-kärnor upp till 4,50 GHz/32 GB MOP)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® ARC™-grafik\n32 GB LPDDR5X - 8 533MT/s (Memory On-paket)\n256 GB SSD M.2 2242 PCIe Gen4 TLC Opal\n15,3\" 2,8K (2 880 × 1 800), OLED, antireflex/fläcktålig, ingen pekskärm, HDR 600 True Black, 100 % DCI-P3, 500 cd/m² (nit), 120 Hz\nVisa fler specifikationer\nFunktioner\n15,3\" Lenovo Aura Edition för en förstklassig upplevelse och support\nNeural bearbetningsenhet (NPU) med upp till 48 TOPS AI-prestanda\nNy ThinkPad-estetik med Engine Hub-design, uppdaterat tangentbord och ultratunn profil\nBygg Din Dator\nBeräknad leverans mellan 04/12 och 08/12Leveransalternativ för 164+28\nTillägg\nLägg till Lenovo TWS Earbuds (X9 Edition) i ditt system 1 139,00 kr\nLägg till Lenovo Origami 15\" X9 Sleeve i ditt system 475,30 kr\nArtikelnummer: 21Q6CTO1WWSE4\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nLegion 5i Gen 11 (15″ Intel)\nCopilot+ PC\n4.0\n(5)\n65W-100W USB PD\nWebbpris\n26 589,00 kr\n22 600,65 kr\n15% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 356H-processor (E-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nEj operativsystem\nNVIDIA® GeForce RTX™ 5050 grafikkort för bärbar dator 8GB GDDR7\n16 GB DDR5 - 5 600MT/s (SODIMM)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\n15,3\" WQXGA (2 560 × 1 600), OLED, reflex, ingen pekskärm, HDR 1 000 True Black, 100 % DCI-P3, 500 cd/m² (nit), 165 Hz, låg avgivning av blått ljus\nVisa fler specifikationer\nFunktioner\nDrivs av Intel® Core™ Ultra och NVIDIA® GeForce RTX™\nPureSight OLED-skärm med livfull färg\nAI-justerad Legion-kylning för topprestanda\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 04/12 och 08/12Leveransalternativ för 164+28\nTillägg\nLägg till Legion 27-10 27\" 240 Hz FHD-gamingmonitor i ditt system 2 590,00 kr\nArtikelnummer: 83RWCTO1WWSE1\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nLegion 5i Gen 11 (15″ Intel)\nCopilot+ PC\n4.0\n(5)\n65W-100W USB PD\nWebbpris\n30 209,00 kr\n27 188,10 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 356H-processor (E-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nEj operativsystem\nNVIDIA® GeForce RTX™ 5050 grafikkort för bärbar dator 8GB GDDR7\n32 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 16 GB)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\n15,3\" WQXGA (2 560 × 1 600), OLED, reflex, ingen pekskärm, HDR 1 000 True Black, 100 % DCI-P3, 500 cd/m² (nit), 165 Hz, låg avgivning av blått ljus\nVisa fler specifikationer\nFunktioner\nDrivs av Intel® Core™ Ultra och NVIDIA® GeForce RTX™\nPureSight OLED-skärm med livfull färg\nAI-justerad Legion-kylning för topprestanda\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 04/12 och 08/12Leveransalternativ för 164+28\nTillägg\nLägg till Legion 27-10 27\" 240 Hz FHD-gamingmonitor i ditt system 2 590,00 kr\nArtikelnummer: 83RWCTO1WWSE2\nVisa färre\nVisar 1 - 10 av 437 Resultat\nKan jag anpassa konfigurationen av min bärbara Lenovo-dator innan jag köper den?\nVad är batteritiden för Lenovos bärbara datorer?\nHur kan jag förlänga batteritiden på min bärbara Lenovo-dator?\nKommer Lenovos bärbara datorer med Windows förinstallerat?\nKan jag använda en bärbar dator från Lenovo för spel?\nÄr Lenovos bärbara datorer hållbara?\nHur uppdaterar jag drivrutiner och programvara för min bärbara Lenovo-dator?\nHur mycket kostar en bärbar dator från Lenovo?\nVad är vikten på Lenovos bärbara datorer? \nHur ansluter jag min bärbara Lenovo-dator till ett trådlöst nätverk?\nKan jag använda en bärbar dator från Lenovo för videoredigering?\nVad är skärmupplösningen på Lenovos bärbara datorer?\nHur mycket lagringsutrymme har Lenovos bärbara datorer? \nHur säkerhetskopierar jag min bärbara Lenovo-dator?\nKan jag använda en bärbar dator från Lenovo för grafisk design?\nHur tar jag en skärmdump på min bärbara Lenovo-dator?\nÄr Lenovos bärbara datorer bra för företag?\nHur ansluter jag min bärbara Lenovo-dator till en extern bildskärm?\nHur kan jag välja rätt storlek på den bärbara datorn för mina behov?\nVad är skillnaden mellan en traditionell hårddisk (HDD) och en solid state-enhet (SSD)?\nKomma igång – En guidad tur i Lenovos bärbara datorer\nAtt köpa en ny bärbar dator kan vara överväldigande. Från att navigera i tekniska specifikationer till att jämföra modeller och priser är det ingen liten bedrift att hitta rätt bärbar dator. Men frukta inte, vi är här för att hjälpa till på Lenovo.\nAtt köpa en ny bärbar dator kan vara överväldigande. Från att navigera i tekniska specifikationer till att jämföra modeller och priser är det ingen liten bedrift att hitta rätt bärbar dator. Men frukta inte, vi är här för att hjälpa till på Lenovo.\nMed vår guide hjälper vi dig att förstå det väsentliga och ser till att du är utrustad med kunskapen för att välja den perfekta bärbara datorn från vår mångsidiga samling. Nu sätter vi igång!\nFörstå specifikationer för bärbara datorer\nÄven om varje del av en bärbar dator är viktig, är det kärntekniken som gör att din enhet snabbt kan hantera vardagliga uppgifter. Tänk på att högre specifikationer vanligtvis leder till förbättrad prestanda, men också bidrar till ett högre pris. Det är klokt att sikta på de bästa specifikationerna inom din budget.\nProcessor\nHjärtat i varje bärbar dator är processorn eller CPU:n (Central Processing Unit). Processorn, som ofta betraktas som den bärbara datorns hjärna, ansvarar för att utföra instruktioner och bearbeta information. Processorns prestanda har en direkt inverkan på hur smidigt och snabbt din bärbara dator kan köra program, svara på kommandon och hantera de uppgifter du vill utföra.\nEn snabb och effektiv processor är avgörande för en sömlös datorupplevelse. Oavsett om du arbetar med affärsprojekt, organiserar ditt fotobibliotek eller ägnar dig åt de senaste speläventyren, säkerställer processorns kapacitet att din bärbara dator kan hålla jämna steg med ditt tempo utan att släpa efter eller frysa.\nProcessorns prestanda\nNär det gäller att förstå processorns prestanda är hastigheten avgörande. Mätt i gigahertz (GHz) indikerar ett högre tal vanligtvis att en processor kan hantera fler uppgifter. Hastigheten är dock inte den enda faktorn som bidrar till prestanda; Processorer med flera kärnor ökar också den totala prestandan avsevärt.\nMed processorer med flera kärnor kan din bärbara dator effektivt dela upp och erövra och tilldela olika uppgifter till olika kärnor. Denna multitasking-funktion är avgörande för prestanda, särskilt när det handlar om krävande applikationer som kräver mycket beräkningskraft. Oavsett om du renderar video, kompilerar kod eller spelar grafikintensiva spel kan det göra stor skillnad att ha en processor med gott om kärnor.\nHur mycket processorkraft behöver jag?\nDen processorkraft som krävs är skräddarsydd för din bärbara dators avsedda användning. För rutinuppgifter som webbsurfning och kontorsprogram kommer en grundläggande processor att säkerställa smidig daglig drift.\nMen om du gillar kreativa sysselsättningar, krävande spel eller dataintensiva program, kommer ditt arbetsflöde att vara flytande och lyhört om du väljer en processor på högre nivå med ökad hastighet och kärnor.\nBAGGE\nRAM-minnet, eller RAM-minnet, fungerar som din bärbara dators omedelbara minneslagring, vilket är viktigt för att hantera de uppgifter du aktivt arbetar med. Till skillnad från långtidslagring lagrar RAM-minnet tillfälligt data för snabb åtkomst av processorn. Detta snabbåtkomstutrymme är avgörande för driften av din bärbara dator eftersom det direkt interagerar med de applikationer du har öppna. Oavsett om du redigerar ett dokument eller surfar på webben arbetar RAM-minnet hårt och ser till att allt fungerar smidigt.\nVikten av RAM kan inte underskattas, särskilt när det gäller multitasking. Tillräckligt med RAM-minne gör att du kan växla mellan program och köra flera applikationer samtidigt utan att uppleva fördröjning. Om du någonsin har haft för många webbläsarflikar öppna och känt att din bärbara dator är långsam att krypa, beror det troligen på otillräckligt RAM-minne.\nHur mycket RAM-minne behöver jag?\nRAM-kapaciteten, mätt i gigabyte (GB), finns i en mängd olika konfigurationer för att tillgodose dina datorbehov. Mängden RAM-minne i din bärbara dator är som bredden på en motorväg – den avgör hur mycket trafik, eller data, som snabbt kan färdas till och från processorn. En riklig mängd RAM-minne säkerställer att ditt system bibehåller sin lyhördhet och enkelt kan hantera flera processer samtidigt. Här är några vanliga RAM-konfigurationer för bärbara datorer:\n4GB\nDetta är lämpligt för dem som ägnar sig åt grundläggande uppgifter, som ordbehandling och internetsurfning, och är idealiskt för lättare, vardagligt bruk.\n8GB\n8 GB RAM stöder de flesta applikationer, program och moderna spel för att fungera smidigt.\n16GB\n16 GB är utformat för krävande datoruppgifter som videoredigering och spel och  ger snabb och konsekvent prestanda som uppfyller höga krav.\nMed Lenovos bärbara datorer kan du hitta skräddarsydda lösningar med olika RAM-kapacitet, vilket ger ett balanserat system som tillgodoser både dina prestandabehov och budgetöverväganden.\nLagringskapacitet\nLagringen i din bärbara dator fungerar som ett valv för alla dina data – det är där dina program, dokument och mediefiler finns. Det finns två huvudtyper av lagring att överväga: HDD (hårddiskar) och SSD (Solid State Drives).\nHårddiskar är den traditionella lagringstekniken, känd för att erbjuda stor lagringskapacitet till en lägre kostnad. SSD-enheter är dock nyare och snabbare, vilket ger snabbare dataåtkomst och starttider, vilket förbättrar den övergripande responsen på bärbara datorer, om än vanligtvis till ett högre pris.\nKraven på lagringskapacitet varierar beroende på vilka typer av uppgifter du utför. Grundläggande datoraktiviteter som att skapa dokument och surfa på webben tar inte upp för mycket lagringsutrymme, men om du är någon som hanterar stora filer, till exempel högupplösta foton, videor eller komplexa applikationer, behöver du mer omfattande lagringsutrymme.\nHur kan jag välja rätt lagringskapacitet för min bärbara dator?\nNär det gäller att välja rätt lagringsstorlek är det en balans mellan dina nuvarande behov och framtida krav. Även om en mindre kapacitet kan vara tillräcklig för lätta användare och visa sig vara kostnadseffektiv, erbjuder större lagringskapacitet utrymme för omfattande samlingar av filer och applikationer, samt bekvämligheten med att inte behöva hantera lagringsutrymme så ofta.\nFörutom lagringsstorleken spelar typen av lagring också en avgörande roll. Solid State Drives (SSD) har blivit allt populärare på grund av deras snabba starttider och snabba datahämtningsmöjligheter som avsevärt påskyndar ditt arbetsflöde.\nGrafiska funktioner\nGrafikkort, även kända som GPU:er (Graphics Processing Units), är viktiga komponenter i bärbara datorer som återger bilder, videor och animationer på din skärm.\nDe finns i två huvudtyper: integrerad grafik, som är inbyggd i processorn och delar minne med CPU:n, och dedikerad grafik, som är separata hårdvarukomponenter med eget minne.\nMedan integrerad grafik är tillräcklig för allmän användning och kan hantera grundläggande uppgifter som strömmande video och enkel fotoredigering, erbjuder dedikerade grafikkort förbättrad prestanda för mer grafiskt intensiva uppgifter, vilket ger jämnare bilder och snabbare rendering.\nEn bärbar dators grafikkapacitet blir avgörande när man tar itu med uppgifter som kräver överlägsen visuell kvalitet och flytande prestanda. För spelare kan en bärbar dator med kraftfull grafik betyda skillnaden mellan en hackig och uppslukande spelupplevelse. För kreatörer som arbetar med videoredigering, animering eller grafisk design säkerställer dessa funktioner att renderingstiderna förkortas och att slutprodukterna återges med högsta återgivning.\nAtt välja rätt bärbar dator för dina behov\nPå Lenovo är vi glada över att kunna matcha den perfekta bärbara datorn med din livsstil. Utforska vår samling där varje bärbar dator är mer än bara ett verktyg, den är en katalysator för din kreativitet, spelförmåga och produktivitet.\nTyper av bärbara datorer\nTraditionella bärbara datorer\nTraditionella bärbara datorer, som IdeaPad-serien som erbjuds av Lenovo, utmärker sig för sin mångsidighet. De är datorvärldens allrounder, utformade för att hantera ett brett spektrum av uppgifter från webbsurfning och ordbehandling till mer krävande arbete som grafisk design och lätt spel. De erbjuder i allmänhet en balans mellan prestanda, batteritid och bärbarhet, vilket gör dem lämpliga för en bred demografi av användare.\nBärbara datorer för företag\nFör bärbara företagsdatorer där prestanda och tillförlitlighet är avgörande  kombinerar Lenovo ThinkPad-serien innovation med tradition för att tillhandahålla pålitliga enheter som är skräddarsydda för proffsens krav. Med sina ergonomiska tangentbord, avancerade säkerhetsfunktioner och varaktiga batteritid är dessa bärbara datorer en motståndskraftig och pålitlig partner under hela arbetsdagen.\nMobila arbetsstationer\nMobila arbetsstationer som erbjuds av Lenovo är utformade för professionella användare som behöver ström på stationär nivå när de är på språng.\nThinkPad-  och ThinkBook-serier erbjuder toppmoderna specifikationer, utmärkt byggkvalitet och är konstruerade för att hantera resurskrävande uppgifter som 3D-rendering, komplex dataanalys och innehållsskapande av professionell kvalitet.\nThinkBook P-serien bygger vidare på detta arv genom att erbjuda en balans mellan form och funktion. Med en tunn aluminiumexteriör och flerkärniga processorer är den utformad för att hålla jämna steg med det rigorösa tempot hos kreativa proffs överallt.\nUltrabooks\nUltrabooks, som Lenovo Slim och ThinkPad-serien, sticker ut på grund av sin tunna, lätta design och effektiva prestanda. Dessa bärbara datorer kännetecknas av sin användning av högeffektiva processorer och solid-state-enheter (SSD), vilket ger snabba uppstarter och snabba programstarter. Den eleganta formfaktorn och den förlängda batteritiden gör också Ultrabooks mycket portabla.\nBärbara datorer för spel\nBärbara speldatorer är byggda för prestanda. Lenovos Legion-serie har avancerade processorer, grafikkort i toppklass och gott om RAM-minne för att hantera de mest grafiskt krävande spelen. De kommer ofta med förbättrade kylsystem för att hålla saker och ting igång smidigt under intensiva spelsessioner. När du köper en bärbar dator för spel ska du leta efter en skärm med hög uppdateringsfrekvens och anpassningsbara spelfunktioner. För en optimal spelupplevelse kan du överväga att utforska Lenovos Legion-serie, som erbjuder ett sortiment som är särskilt utformat för att möta spelarnas behov.\n2-i-1 bärbara datorer eller konvertibla bärbara datorer\n2-i-1 eller konvertibla bärbara datorer kombinerar funktionaliteten hos en traditionell bärbar dator med bärbarheten hos en surfplatta. Tack vare sin konvertibla eller löstagbara design kan dessa mångsidiga enheter växla mellan tangentbords- och pekskärmslägen, vilket ger en flexibel användarupplevelse. De är särskilt användbara för dem som värdesätter pekfunktioner för uppgifter som att anteckna, rita eller surfa på webben. Upptäck mångsidigheten hos Lenovos ThinkPad-, IdeaPad- och Yoga-serier för att hitta en bärbar 2-i-1-dator som enkelt anpassar sig till dina pekbaserade uppgifter och kreativa sysselsättningar.\nChromebooks\nChromebooks körs på ett molnbaserat operativsystem och är optimerade för internetanvändning och appar från Chrome Web Store. De är kända för sitt användarvänliga gränssnitt och säkerhetsfunktioner. Dessa enheter är optimala för användare som är starkt beroende av molntjänster och webbaserade program. På grund av deras prisvärdhet och säkra operativsystem fungerar Chromebooks som utmärkta bärbara datorer på nybörjarnivå, särskilt för barn.\nBudgetvänliga bärbara datorer\nPå Lenovo förstår vi behovet av kostnadseffektiva datorlösningar utan att kompromissa med kvaliteten. Oavsett om du är student, en ny entreprenör eller helt enkelt behöver en pålitlig bärbar dator för dagligt bruk, ser Lenovo till att du kan hitta en modell som passar din budget.\nNär du har hittat en bärbar dator som passar din livsstil kan du utforska de budgetvänliga versionerna i våra mest populära serier, inklusive Yoga, IdeaPad, ThinkPad och ThinkBook. Med Lenovo får du tillgång till en värld där premiumprestanda möter prisvärdhet, vilket säkerställer att du inte behöver kompromissa.\nTyper av användningsområden\nFör arbete\nFör alla som jobbar där ute måste din bärbara dator vara ett kraftpaket för multitasking som kan hålla jämna steg med ditt tempo. Överväg en bärbar dator i ThinkPad- eller ThinkBook-serien som är utrustad med en robust processor, gott om RAM-minne och stort lagringsutrymme för att enkelt köra flera program. De är också utrustade med ett bekvämt tangentbord för frekvent skrivande och är byggda för att vara hållbara för resor. När allt kommer omkring är din bärbara dator inte bara en pryl; Det är ditt kontor borta från kontoret.\nFör skolan\nFör studenter bör din bärbara dator vara lika anpassningsbar som dina studievanor. Se till att din bärbara dator är lätt så att du enkelt kan flytta mellan lektionerna. Sök efter maskiner med lång batteritid för att undvika strömpanik mitt i föreläsningen. Anständiga prestationer för forskning, uppsatsskrivning och enstaka studieuppehåll (vi kommer inte att berätta) är ett måste. Tänk på Lenovos IdeaPad- eller Yoga-serie som erbjuder en kombination av prestanda och värde.\nFör underhållning\nFör underhållningsentusiaster kan en bärbar dator i Lenovo Legion- eller ThinkPad-serien även fungera som en personlig biograf och spelstation. Låt dig uppslukas av skarpa, högupplösta skärmar och fylligt ljud för binge-watching-sessioner. Om spel är din favorit, snåla inte med grafikkortet. Solid state-enheter kan också erbjuda snabbare laddningstider för media och spel. Och när du ändå håller på kan ett bekvämt tangentbord och styrplatta göra stor skillnad när du navigerar i nya världar eller står i kö till nästa show.\nFör den ständiga anslutningen\nI dagens snabba värld är förmågan att arbeta, vara kreativ och leka på resande fot inte förhandlingsbar. Detta gör batteritid och bärbarhet till två av de mest kritiska faktorerna när du väljer en ny bärbar dator. Välj en enhet som lovar en batteritid som kan ta dig igenom en hel dags arbete eller en lång pendling så att du inte ständigt är bunden till ett eluttag.\nUtforska Lenovos samling av bärbara datorer\nLenovos flaggskeppsmodeller för bärbara datorer\nLenovos flaggskeppsmodeller av bärbara datorer är utformade med variation och mångsidighet i åtanke, vilket säkerställer att det finns en perfekt passform för varje livsstil och användningsområde. Oavsett om du är professionell, student eller spelare har Lenovo en bärbar dator som är redo att överträffa dina förväntningar.\nYoga: Den flexibla artisten\nFör dem som kräver mångsidighet utan kompromisser  är Yoga-serien din målarduk. Dess karakteristiska 360-graders gångjärns- och pekskärmsfunktioner innebär att du kan växla mellan lägen – bärbar dator, surfplatta, tält eller stativ – för att matcha dina nuvarande behov och blanda produktivitet med kreativitet.\nLenovo Slim: Den eleganta resenären\nFör dem som prioriterar bärbarhet utan att kompromissa med kraften är Lenovo Slim-serien en match. Dessa ultraportabla bärbara datorer har en snygg och lätt design i kombination med prestanda som uppfyller kraven på produktivitet och underhållning på resande fot.\nThinkPad: Följeslagaren till företaget\nThinkPad är synonymt med prestanda i företagsklass och den senaste tekniken. Gynnad av proffs för sina kraftfulla funktioner och robusta säkerhet, det är arbetshästen som definierar branschstandarder och överträffar dem.\nThinkBook: Det moderna proffsets val\nMed ThinkBook  hittar moderna proffs den perfekta balansen mellan prestanda på företagsnivå och konsumentvänlig estetik. Den här serien levererar effektivitet med stil, vilket gör den lämplig för dynamiska affärsmiljöer.\nLegion: Perfekt för spelare\nFör spelare är Legion-serien ditt slagfält. Den är konstruerad för den ultimata spelupplevelsen och har skärmar med hög uppdateringsfrekvens, banbrytande GPU:er och processorer som kan hantera även de mest resurskrävande spelen.\nIdeaPad: Det viktigaste i vardagen\nIdeaPad betjänar den vanliga användaren som söker tillförlitlighet och värde. Det är den bästa serien för dem som vill ha en bärbar dator som täcker alla baser från arbete till spel utan att hoppa över ett slag.\nVäxla enkelt från arbete till fritid med IdeaPad Flex, en bärbar dator som är utformad för mångsidighet och som gör att du kan växla mellan traditionellt läge, stativ, tält och surfplatta för att passa din uppgift, var du än är.\nChromebooks\nLenovos Chromebooks ger en strömlinjeformad, molncentrerad datorupplevelse, perfekt för dem som är integrerade i Googles ekosystem. Lenovos Chromebooks är lätta, säkra och användarvänliga  och  passar utmärkt för utbildning, avslappnad webbsurfning och för alla som anammar effektiviteten i molnlagring och applikationer.\nInnovativa funktioner och tekniker\nVälkommen till den uppfinningsrika sfären av Lenovos tekniska framsteg, där varje detalj är konstruerad för att inspirera. Med en pionjäranda följer Lenovo inte bara trender, de sätter dem. Upptäck funktionerna som sätter Lenovos bärbara datorer i en klass för sig.\nHögupplösta, färgexakta skärmar\nLenovos bärbara datorer har högupplösta skärmar som ger liv åt den digitala världen med fantastisk skärpa. Färgnoggrannhet är av största vikt, vilket ger kreativa proffs förtroende för att deras arbete återspeglar verklighetstrogna nyanser och oklanderliga detaljer.\nLång batteritid med snabbladdningsmöjligheter\nDin tid är viktig, och Lenovo vet det. Det är därför utvalda bärbara datorer har lång batteritid kompletterad med Rapid Charge-teknik – att koppla in den i bara några minuter ger dig timmar av produktivitet och underhållning.\nIntegrerade säkerhetsfunktioner\nMed fler hot än någonsin som lurar i den digitala världen fördubblar Lenovo säkerheten. Funktioner som TPM-chip (Trusted Platform Module) skapar en fästning för dina data och",
+  "links": [
+   {
+    "href": "https://www.lenovo.com/se/sv/gaming/shop/?IPromoID=LEN376344",
+    "text": "Gaming"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/laptops/",
+    "text": "Bärbara datorer"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/loq-laptops/lenovo-loq-15iph11-(intel)-laptop/83slcto1wwse3",
+    "text": "LOQ 15i Gen 11 (15\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-7i-2-in-1-gen-11-aura-edition-16-inch-intel/83tecto1wwse1",
+    "text": "Yoga 7i 2-in-1 Gen 11 Aura Edition (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-7i-2-in-1-gen-11-aura-edition-16-inch-intel/83tecto1wwse1#reviews",
+    "text": "4.8 (23)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-7i-2-in-1-gen-11-aura-edition-16-inch-intel/83tecto1wwse2",
+    "text": "Yoga 7i 2-in-1 Gen 11 Aura Edition (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-7i-2-in-1-gen-11-aura-edition-16-inch-intel/83tecto1wwse2#reviews",
+    "text": "4.8 (23)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-2-in-1-gen-2-14-inch-intel/21yycto1wwse4",
+    "text": "ThinkPad T14s 2-in-1 Gen 2"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-2-in-1-gen-2-14-inch-intel/21yycto1wwse4#reviews",
+    "text": "4.5 (2)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-2-in-1-gen-2-14-inch-intel/21yycto1wwse5",
+    "text": "ThinkPad T14s 2-in-1 Gen 2"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-2-in-1-gen-2-14-inch-intel/21yycto1wwse5#reviews",
+    "text": "4.5 (2)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadx/thinkpad-x13-gen-7-13-inch-intel-laptop/21yhcto1wwse4",
+    "text": "ThinkPad X13 Gen 7"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadx/thinkpad-x13-gen-7-13-inch-intel-laptop/21yhcto1wwse4#reviews",
+    "text": "4.8 (7)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadx/thinkpad-x13-gen-7-13-inch-intel-laptop/21yhcto1wwse5",
+    "text": "ThinkPad X13 Gen 7"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadx/thinkpad-x13-gen-7-13-inch-intel-laptop/21yhcto1wwse5#reviews",
+    "text": "4.8 (7)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadx9/thinkpad-x9-aura-edition-15-inch-intel/21q6cto1wwse4",
+    "text": "ThinkPad X9-15 Gen 1"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadx9/thinkpad-x9-aura-edition-15-inch-intel/21q6cto1wwse4#reviews",
+    "text": "4.5 (174)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/legion-laptops/legion-5-series/legion-5i-gen-11-15-inch-intel/83rwcto1wwse1",
+    "text": "Legion 5i Gen 11 (15″ Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/legion-laptops/legion-5-series/legion-5i-gen-11-15-inch-intel/83rwcto1wwse1#reviews",
+    "text": "4.0 (5)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/legion-laptops/legion-5-series/legion-5i-gen-11-15-inch-intel/83rwcto1wwse2",
+    "text": "Legion 5i Gen 11 (15″ Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/legion-laptops/legion-5-series/legion-5i-gen-11-15-inch-intel/83rwcto1wwse2#reviews",
+    "text": "4.0 (5)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/legion-laptops/",
+    "text": "spelförmåga"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/",
+    "text": "Lenovo ThinkPad-serien"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpadp",
+    "text": "ThinkPad"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkbook/",
+    "text": "ThinkBook-serier"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/yoga/products/",
+    "text": "Yoga-serien"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/lenovo/lenovo_slim_series/",
+    "text": "ultraportabla bärbara datorer"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/business/laptops/",
+    "text": "proffs"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/ideapad/ideapad-flex-series",
+    "text": "IdeaPad Flex"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/gaming/shop/",
+    "text": "Spelmaskinen"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpadt/",
+    "text": "T-serien"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpadx/",
+    "text": "X-serien"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/ideapad/",
+    "text": "IdeaPad"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/laptops/?cid=flash_redirect_2p3o1i#",
+    "text": "verktyg för samtycke till cookies."
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/laptops/thinkpad/thinkpad-t-series/c/thinkpadt",
+  "checkedAt": "2026-11-25T20:33:08.436Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpadt/",
+  "title": "ThinkPad T Series | Våra bärbara flaggskeppsdatorer för företag | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "ThinkPad T14s Gen 7 (14\" Snapdragon)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0184",
+    "mpn": "LEN101T0184",
+    "offers": [
+     {
+      "price": "32351.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T1g Gen 9 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0181",
+    "mpn": "LEN101T0181",
+    "offers": [
+     {
+      "price": "46219.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14s Gen 7 (14\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0171",
+    "mpn": "LEN101T0171",
+    "offers": [
+     {
+      "price": "28994.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14s 2-i-1 Gen 2 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0163",
+    "mpn": "LEN101T0163",
+    "offers": [
+     {
+      "price": "24863.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T16 Gen 5 (16\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0166",
+    "mpn": "LEN101T0166",
+    "offers": [
+     {
+      "price": "18463.31",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14 Gen 7 (14\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0168",
+    "mpn": "LEN101T0168",
+    "offers": [
+     {
+      "price": "27569.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14 Gen 7 (14\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0156",
+    "mpn": "LEN101T0156",
+    "offers": [
+     {
+      "price": "22984.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T16 Gen 5 (16\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0157",
+    "mpn": "LEN101T0157",
+    "offers": [
+     {
+      "price": "19992.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T16 Gen 5 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0158",
+    "mpn": "LEN101T0158",
+    "offers": [
+     {
+      "price": "19924.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14 Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0154",
+    "mpn": "LEN101T0154",
+    "offers": [
+     {
+      "price": "23035.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14s Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0155",
+    "mpn": "LEN101T0155",
+    "offers": [
+     {
+      "price": "20664.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14 Gen 6 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0127",
+    "mpn": "LEN101T0127",
+    "offers": [
+     {
+      "price": "18090.21",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T16 Gen 4 (16\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0121",
+    "mpn": "LEN101T0121",
+    "offers": [
+     {
+      "price": "14199.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T14s Gen 6 (14\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0109",
+    "mpn": "LEN101T0109",
+    "offers": [
+     {
+      "price": "24299.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T16 Gen 4 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0152",
+    "mpn": "LEN101T0152",
+    "offers": [
+     {
+      "price": "17323.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad T16g Gen 3 (16 tum Intel) bärbar dator",
+    "brand": "thinkpad",
+    "sku": "LEN101T0151",
+    "mpn": "LEN101T0151",
+    "offers": [
+     {
+      "price": "53058.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "32 351,65 kr",
+   "46 219,00 kr",
+   "28 994,15 kr",
+   "24 863,15 kr",
+   "18 463,31 kr",
+   "27 569,00 kr",
+   "22 984,65 kr",
+   "19 992,65 kr",
+   "19 924,65 kr",
+   "23 035,65 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentborden till alla färgstarka bildskärmar och miljöcertifieringar – det finns en bärba",
+    "tangentbordet ut på den bärbara datorn i T-serien?"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (14)",
+    "Windows 11 Home 64 (13)",
+    "Windows 11 Home Arm64 (1)",
+    "Windows 11 Pro (som datorn har",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garantitiden för bärbara datorer i T-serien?",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid med snabbladdningsteknik, blixtsnabb inläsning av filer, datorstart på bara",
+    "batteritiden för bärbara datorer i T-serien?",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e",
+    "batterier",
+    "batterier och ger inga garantier för fel eller skador som uppstår på grund av att de an",
+    "Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde",
+    "batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funk",
+    "batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom vik"
+   ],
+   "condition": [],
+   "delivery": [
+    "Leveransklara Datorer (3)"
+   ],
+   "charger": []
+  },
+  "text": "ThinkPad T-serien bärbara datorer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nHem > Bärbara Datorer > ThinkPad > ThinkPad T Series\nÖka företagets prestationsförmåga med T-serien\nLenovo ThinkPad T-serien, vår flaggskeppsserie med företagsdatorer, har skapats för att prestera och konstruerats för att hålla, och innehåller våra mest anpassningsbara bärbara datorer. Med blixtsnabbt minne och toppmoderna lagringsalternativ, och den senaste tekniken från Intel®, AMD och NVIDIA®, är ThinkPad T-serien det perfekta valet för att ta din affärsverksamhet till nästa nivå.\nJÄMFÖR BÄRBARA T-SERIEN\nExklusiva B2B-priser, dedikerad support med en Lenovo Pro Account Manager och mycket mer.  Ring till oss : 08 580 062 01\nGå med nu KOSTNADSFRITT\nThinkPad T-Serien Bärbara Datorer\nskip to product list\nFilter\nVisa färre\nProdukt typ\nBygg Din Egen Dator (15)\nLeveransklara Datorer (3)\nAI (artificiell intelligens)\nCopilot+ PC (13)\nAlla AI PCs (11)\nVisa mer\nProcessor\nAlla Intel®-processorer (8)\nAlla AMD-processorer (7)\nAlla Snapdragon®-processorer (1)\nIntel® Core™ Ultra 9 vPro® (1)\nIntel® Core™ Ultra 7 vPro® (1)\nVisa mer\nOperativsystem\nWindows 11 Pro 64 (14)\nWindows 11 Home 64 (13)\nWindows 11 Home Arm64 (1)\nVisa mer\nGrafik\nQualcomm™ Adreno (1)\nNVIDIA RTX™ (2)\nIntel® Arc™ (4)\nIntegrated (10)\nAMD Radeon™ (7)\nMinne (GB)\n64 GB (1)\n32 GB (14)\n16 GB (13)\nHårddisk\n2 TB (1)\n1 TB (14)\n512 GB (12)\nVisa mer\nSkärmupplösning\nWQUXGA (3840 x 2400) (1)\nFull HD (16)\nPris\nFärg\n16 träffar\nSortera efter : Senaste\nJämför\nThinkPad T14s Gen 7 (14\" Snapdragon)\nCopilot+ PC\n15W-65W USB PD\nPris från:\n32 351,65 kr\ninkl. moms\nTunn och lätt 14” bärbar Copilot+-företagsdator\nAccelererad datorprestanda med Snapdragon®-processorer\nUppgraderingsbar och reparerbar för en lång livscykel\nVisa modell\nJämför\nThinkPad T1g Gen 9 (16\" Intel)\nCopilot+ PC\n4.7\n(7)\nUSB PD\nPris från:\n46 219,00 kr\ninkl. moms\n16″ Copilot+-laptop som drivs av Intel® Core™ Ultra\nAvancerad visuell upplevelse med tillvalet NVIDIA® GeForce RTX®-grafik\nAI på enheten för produktivitet, integritet och förbättrad säkerhet\nVisa 3 modeller\nJämför\nThinkPad T14s Gen 7 (14\" AMD)\nCopilot+ PC\n5.0\n(2)\n15W-65W USB PD\nPris från:\n28 994,15 kr\ninkl. moms\nTunn och lätt 14” Copilot+ bärbar företagsdator\nDrivs av AMD Ryzen™ AI PRO-processorer\nJärnstark säkerhet och MIL-SPEC-testad hållbarhet\nVisa 3 modeller\nJämför\nThinkPad T14s 2-i-1 Gen 2 (14\" Intel)\nCopilot+ PC\n4.5\n(2)\n15W-65W USB PD\nPris från:\n24 863,15 kr\ninkl. moms\nSeriöst AI-drivet kraftpaket med adaptiv användning\nFörlängd livscykel med utbytbara delar som kan bytas själv\nBekväm, alltid laddad integrerad penna ingår\nVisa 3 modeller\nJämför\nThinkPad T16 Gen 5 (16\" AMD)\n4.5\n(11)\n15W-100W USB PD\nPris från:\n18 463,31 kr\ninkl. moms\n16-tums bärbar dator som drivs av AMD Ryzen™ AI PRO\nAnpassningsbar och uppgraderingsbar med branschledande reparationsmöjligheter\nThinkShield-säkerhet och MIL-SPEC-testad hållbarhet\nVisa 3 modeller\nJämför\nThinkPad T14 Gen 7 (14\" AMD)\n4.8\n(7)\nPris från:\n27 569,00 kr\ninkl. moms\n14” AI-bärbar dator som drivs av AMD Ryzen™ AI PRO\nUppgraderbar och reparerbar för längre livscykel\nThinkShield-säkerhet och MIL-SPEC-testad hållbarhet\nVisa 3 modeller\nJämför\nThinkPad T14 Gen 7 (14\" AMD)\nCopilot+ PC\n4.9\n(14)\n15W-100W USB PD\nPris från:\n22 984,65 kr\ninkl. moms\n14-tums Copilot+-dator som drivs av AMD Ryzen™ AI PRO\nEnkel att uppgradera och reparera för längre livscykel\nThinkShield-säkerhet och MIL-SPEC-testad hållbarhet\nVisa 3 modeller\nJämför\nThinkPad T16 Gen 5 (16\" AMD)\nCopilot+ PC\n4.4\n(9)\n15W USB PD\nPris från:\n19 992,65 kr\ninkl. moms\n16-tums Copilot+-dator som drivs av AMD Ryzen™ AI PRO\nAnpassningsbar och uppgraderingsbar med branschledande reparationsmöjligheter\nThinkShield-säkerhet och MIL-SPEC-testad hållbarhet\nVisa 3 modeller\nJämför\nThinkPad T16 Gen 5 (16\" Intel)\nCopilot+ PC\n4.7\n(30)\n15W USB PD\nPris från:\n19 924,65 kr\ninkl. moms\n16″ Copilot+-dator som drivs av Intel® Core™ Ultra\nEnkel att anpassa, uppgradera och reparera\nThinkShield-säkerhet och MIL-SPEC-testad hållbarhet\nVisa 3 modeller\nJämför\nThinkPad T14 Gen 7 (14\" Intel)\nCopilot+ PC\n4.5\n(21)\n15W-100W USB PD\nPris från:\n23 035,65 kr\ninkl. moms\n14-tums Copilot+-laptop som drivs av Intel® Core™ Ultra\nSäker, konfigurerbar och uppgraderingsbar\nThinkShield-säkerhet och MIL-SPEC-testad hållbarhet\nVisa 3 modeller\nVisar 1 - 10 av 16 Resultat\nBetrodd kvalitet är en självklarhet\nEftersom ThinkPad-datorerna har mer än 30 år av innovation och tillförlitlighet bakom sig, får du all den pålitlighet du uppskattar och förväntar dig av vår T-serie. Oavsett om det handlar om produktivitetshöjande funktioner som ökar personalens effektivitet eller erbjudanden som förbättrar samarbetet på distans har dessa kraftfulla enheter allt – och lite till. Från våra berömda TrackPoints och de ergonomiska tangentborden till alla färgstarka bildskärmar och miljöcertifieringar – det finns en bärbar dator i T-serien som är passar perfekt för ditt företag.\nÖppna i ny flik\nHänger med när du är på språng\nOavsett om du behöver en lång batteritid med snabbladdningsteknik, blixtsnabb inläsning av filer, datorstart på bara några sekunder eller förstklassiga grafikalternativ har vår T-serie det du behöver. Dessa kraftfulla bärbara datorer, som har en matchvikt på långt under 1,25 kg för de tunna modellerna, håller jämna steg med dig under sena nätter och tidiga morgnar.\nÖppna i ny flik\nKonstruerad för att hålla\nVi testar ThinkPad-enheterna enligt tolv specifikationer i militärklass 810H och i fler än 200 kvalitetskontroller för att vara säkra på att de fungerar i extrema förhållanden. Från den arktiska tundran till sandstormar i öknen, från tyngdlöshet till spill och droppar – de bärbara datorerna i T-serien har konstruerats för att tåla allt.\nÖppna i ny flik\nSäkerhet som är lika inbyggd som ditt DNA\nBiometritekniken ger våra bärbara datorer i ThinkPad T-serien ett extra lager säkerhet – från fingeravtrycksläsare som byggts in i strömknappen till programvara för ansiktsigenkänning som fungerar med IR-kameror. ThinkShield, vår heltäckande serie säkerhetslösningar som bygger på de senaste tekniska innovationerna, finns inbyggd i alla våra bärbara ThinkPad-datorer. I kombination med de inbyggda säkerhetsfunktionerna i Windows 11 Pro (som datorn har i det mest avancerade utförandet) innebär det att vi har gjort din säkerhet till vår prioritet.\nÖppna i ny flik\nMicrosoft Secured-Core PC\nOmfattande säkerhet på alla nivåer\nVi presenterar datorer med Microsoft Secured-Core, som ger dig en hög säkerhet tack vare en omfattande integrering av fast programvara samt maskin- och programvara. Våra ThinkPad- och ThinkCentre-datorer har både Lenovos ThinkShield-alternativ och säkerhetsfunktionerna i Microsofts operativsystem, och erbjuder på så sätt den högsta skyddsnivån som går att få direkt ur förpackningen – och de kan köpas direkt på vår webbplats.\nLäs mer\nFörbättra användarupplevelsen med Premier Support Plus    \nPremier Support Plus ger VIP-support, löser dina IT-problem bättre – och snabbare. Du får direkt tillgång, dygnet runt, alla dagar i veckan, till specialiserade tekniker som ger dig lösningar utan skript som alltid fungerar. Och eftersom du kanske arbetar hemifrån eller ibland har väldigt bråttom till arbetet inkluderar Premier Support Plus även Accidental Damage Protection – din nya enhet är helt skyddad.\nÖppna i ny flik\nMer information\nVad är den bärbara datorn i T-serien från Lenovo?\nVilka är funktionerna i den bärbara datorn i T-serien?\nVad är lagringskapaciteten för den bärbara datorn i T-serien?\nVad är skärmstorleken på den bärbara datorn i T-serien?\nVad är upplösningen på skärmen på den bärbara datorn i T-serien?\nVilket grafikkort används i den bärbara datorn i T-serien?\nVad väger den bärbara datorn i T-serien?\nHur lång är batteritiden för bärbara datorer i T-serien?\nVilka säkerhetsfunktioner finns tillgängliga på bärbara datorer i T-serien?\nVilka anslutningsmöjligheter finns tillgängliga på bärbara datorer i T-serien?\nHur lång är garantitiden för bärbara datorer i T-serien?\nVad är skillnaden mellan de bärbara datorerna i T-serien och X-serien från Lenovo?\nVilket operativsystem (OS) körs bärbara datorer i T-serien på?\nVilken typ av RAM-minne finns tillgängligt på bärbara datorer i T-serien?\nKan den bärbara datorn i T-serien uppgraderas?\nVilken är den högsta upplösningen som stöds av T-seriens bärbara datorer?\nHur ser tangentbordet ut på den bärbara datorn i T-serien?\nHur är ljudkvaliteten på den bärbara datorn i T-serien?\nKommer bärbara datorer i T-serien med pekskärmar?\nKan de bärbara datorerna i T-serien anpassas för att passa specifika behov?\nKlicka för att se all viktig information avseende priser, begränsningar, garantier och mer på lenovo.com.\nBegränsningar: Beställningar är begränsade till 5 datorer per kund. För större kvantiteter gå till avsnittet \"Var kan man handla\" på webbsidan för uppgifter om återförsäljare av Lenovo-produkter\nErbjudanden och tillgänglighet: Alla erbjudanden är villkorade av tillgänglighet. Erbjudanden, priser, specifikationer och tillgänglighet kan ändras när som helst utan förvarning.Produkterbjudanden och specifikationer som beskrivs på denna webbplats kan ändras när som helst utan förvarning. Modellerna visas enbart i illustrationssyfte. Lenovo ansvarar inte för fotografiska eller typografiska fel. Datorer som visas här levereras med ett operativsystem.\nPriser: De webbpriser som visas inkluderar moms. Priser och erbjudanden i vagnen kan ändras tills ordern läggs. *Priser – de besparingar som visas är jämfört med Lenovos standardpriser på webben. Återförsäljarpriser kan variera och de kan vara högre än de som visas här.\nAlla priser är i svenska kronor och inkluderar moms\nBatteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade eller godkända. Systemen kommer att starta upp men laddar eventuellt inte icke godkända batterier. Lenovo har inget ansvar för prestanda eller säkerhet för icke godkända batterier och ger inga garantier för fel eller skador som uppstår på grund av att de används. **Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde. Faktisk batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funktioner, inställningar för energihantering, batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom viktig information från Microsoft® som kan gälla för ditt köp, inklusive detaljer om Windows 10, Windows 8, Windows 7 samt potentiella upp- eller nedgraderingar. Lenovo varken representerar eller utfäster garantier för produkter eller tjänster från tredje part.\nVarumärken: Lenovo, ThinkPad, IdeaPad, ThinkCentre, ThinkStation och Lenovos logotyp är varumärken som tillhör Lenovo. Microsoft, Windows, Windows NT och Windows logotyp är varumärken som tillhör Microsoft Corporation. Ultrabook, Celeron, Celeron Inside, Core Inside, Intel, Intel logotyp, Intel Atom, Intel Atom Inside, Intel Core, Intel Inside, Intel Inside logotyp, Intel vPro, Itanium, Itanium Inside, Pentium, Pentium Inside, vPro Inside, Xeon, Xeon Phi, Xeon Inside och Intel Optane är varumärken som tillhör Intel Corporation eller dess dotterbolag i USA och/eller andra länder. Andra namn på företag, produkter eller tjänster kan vara varumärken eller servicemärken som tillhör andra.\n*Köp hos Lenovo och få garanterat lägsta pris – gäller alla reor till och med den 31/12/2026 | Läs mer\nCurrently displaying item 1 of 1\nAnge din e-postadress om du vill ta emot viktiga uppdateringar\nE-post\nVälj land/region:\nOM LENOVO\nOm Lenovo\nNyheter\nInvesterarrelationer\nWebbtillgänglighet (på engelska)\nCompliance\nESG\nAvtalsvillkor\nJobba hos Lenovo\nLenovo Affiliate Program\nLÖSNINGAR\nPRODUKTER OCH TJÄNSTER\nBärbara datorer och Ultrabooks\nSmartare AI för dig\nSpelmaskinen\nSurfplatta\nStationära datorer\nArbetsstationer\nData Center Solutions\nTillbehör och program\nTjänster och garanti\nProduktåterkallningar\nUtbytesdelar\nRESURSER\nLenovo Creator Community\nLenovo Pro Community\nLegion Community\nE-postprenumeration\nForum\nBloggar\nÅterförsäljare\nProduktvillkor\nAffiliate Program\nKöpprogram för medarbetare\nLenovo Partner Hub\nOrdlista\nKunskapsbas\nCUSTOMER SUPPORT\nKontakta oss\nOrderstatus\nSupport\nVanliga frågor om produkter\nVanliga frågor om köp\nFörsäljningsvillkor\nPORTFOLIO\nT-serien\nX-serien\nThinkPad\nIdeaPad\nYoga\nSmartphone & Watches\nM-seriens stationära datorer\nThinkCentre\nIdeaCentre\nSurfplatta\nThinkStation\nData Center Solutions\n© 2026 Lenovo. Med ensamrätt.\nSekretessverktyg för samtycke till cookiesAnvändningsvillkorÖversiktExtern inlämningspolicyUttalande mot slaveri och människohandelÅngerrätt\n系統將會開啟新視窗。\n☺\nFyll I Undersökningen.\nBehöver du hjälp? Mån-ons: 08-18, Tors 08-20, Fre 08-22. Ring: \n08 580 062 01\nVi använder cookies för att förstärka din upplevelse, förbättra kvaliteten på vår webbplats och hjälpa oss att visa dig saker som är mer sannolika att vara relevanta för dig. Vi respekterar din integritet och strävar efter att ge dig den bästa Lenovo.com-upplevelsen i enlighet med GDPR. Du kan hantera dina inställningar i vårt verktyg för samtycke till cookies. Läs mer om vårt sekretessmeddelande.\nCookie-inställningar\nNej tack, bara nödvändiga kakor\nGodta cookies",
+  "links": [
+   {
+    "href": "https://www.lenovo.com/se/sv/gaming/shop/?IPromoID=LEN376344",
+    "text": "Gaming"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/laptops/",
+    "text": "Bärbara datorer"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/",
+    "text": "ThinkPad"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t14s-gen-7-14-inch-snapdragon/len101t0184",
+    "text": "ThinkPad T14s Gen 7 (14\" Snapdragon)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t1g-gen-9-16-inch-intel-/len101t0181",
+    "text": "ThinkPad T1g Gen 9 (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t1g-gen-9-16-inch-intel-/len101t0181#reviews",
+    "text": "4.7 (7)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-gen-7-14-inch-amd/len101t0171",
+    "text": "ThinkPad T14s Gen 7 (14\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-gen-7-14-inch-amd/len101t0171#reviews",
+    "text": "5.0 (2)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-2-in-1-gen-2-14-inch-intel/len101t0163",
+    "text": "ThinkPad T14s 2-i-1 Gen 2 (14\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-2-in-1-gen-2-14-inch-intel/len101t0163#reviews",
+    "text": "4.5 (2)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t16-gen-5-16-inch-amd-laptop/len101t0166",
+    "text": "ThinkPad T16 Gen 5 (16\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t16-gen-5-16-inch-amd-laptop/len101t0166#reviews",
+    "text": "4.5 (11)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t14-gen-7-14-inch-amd/len101t0168",
+    "text": "ThinkPad T14 Gen 7 (14\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t14-gen-7-14-inch-amd/len101t0168#reviews",
+    "text": "4.8 (7)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14-gen-7-14-inch-amd/len101t0156",
+    "text": "ThinkPad T14 Gen 7 (14\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/thinkpad-t14-gen-7-14-inch-amd/len101t0156#reviews",
+    "text": "4.9 (14)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t16-gen-5-16-inch-amd-laptop/len101t0157",
+    "text": "ThinkPad T16 Gen 5 (16\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t16-gen-5-16-inch-amd-laptop/len101t0157#reviews",
+    "text": "4.4 (9)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t16-gen-5-16-inch-intel/len101t0158",
+    "text": "ThinkPad T16 Gen 5 (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t16-gen-5-16-inch-intel/len101t0158#reviews",
+    "text": "4.7 (30)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t14-gen-7-14-inch-intel-laptop/len101t0154",
+    "text": "ThinkPad T14 Gen 7 (14\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpadt/lenovo-thinkpad-t14-gen-7-14-inch-intel-laptop/len101t0154#reviews",
+    "text": "4.5 (21)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/secured-pc/",
+    "text": "Läs mer"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpadx/",
+    "text": "bärbara datorerna X-serien"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/gaming/shop/",
+    "text": "Spelmaskinen"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpadt/",
+    "text": "T-serien"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/ideapad/",
+    "text": "IdeaPad"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpadt/#",
+    "text": "系統將會開啟新視窗。 ☺ Fyll I Undersökningen."
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.hp.com/se-sv/shop/laptops-tablets.html",
+  "checkedAt": "2026-11-25T20:33:16.973Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.hp.com/se-sv/shop/laptops-tablets.html",
+  "title": "Home Page",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "100 000 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Tangentbord"
+   ],
+   "ram": [],
+   "os": [],
+   "warranty": [
+    "garantier för konsumenter"
+   ],
+   "returns": [
+    "Returnera och begär återbetalning eller ersättningsprodukt",
+    "ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "klass A kan den, vid användning i bostadsområde"
+   ],
+   "delivery": [
+    "leveransinformation",
+    "frakt på alla beställningar över 200 kr, för ordrar som understig",
+    "fraktkostnad med 49 kr"
+   ],
+   "charger": []
+  },
+  "text": "Utforska\nHandla\nSupport\nBärbara\nKATEGORI\nAlla bärbara datorer\nBärbara för hemmet\nBärbara för företag\nBärbara för gaming\nPRODUKTTYP\n2-i-1 bärbara datorer\nChromebooks\nWorkstations\nAI Co-pilot + PCs\nUPPTÄCK VÅRT SORTIMENT\nHP for Business\nHP Studentbutik\nHP Gamingcenter\nHP Care Packs\nDeals\nStationära\nKATEGORI\nAlla stationära datorer\nStationära för hemmet\nStationära för företag\nStationära för gaming\nPRODUKTTYP\nAllt-i-Ett datorer\nTower\nMini PC\nWorkstations\nUPPTÄCK VÅRT SORTIMENT\nHP for Business\nHP Studentbutik\nHP Gamingcenter\nHP Care Packs\nDeals\nSkärmar\nKATEGORI\nAlla skärmar\nSkärmar för hemmet\nSkärmar för företag\nSkärmar för gaming\nPRODUKTTYP\nDatorskärm 27'' & större\nHögupplösta skärmar\nCurved datorskärm\nDatorskärm med USB-C\nUPPTÄCK VÅRT SORTIMENT\nHP for Business\nHP Studentbutik\nHP Gamingcenter\nHP Care Packs\nDeals\nSkrivare\nKATEGORI\nAlla skrivare\nSkrivare för hemmet\nSkrivare för hemmakontor\nSkrivare för företag\nPRODUKTTYP\nBläckstråleskrivare\nLaserskrivare\nStorformatsskrivare\nTankskrivare\nScanner\nUPPTÄCK VÅRT SORTIMENT\nHP for Business\nHP Studentbutik\nHP Care Packs\nDeals\nInstant Ink\nBläck, Toner & Papper\nKATEGORI\nBläck\nToner\nPapper\nSkrivarhuvud\nInstant Ink\nÅtervinningsprogram\nDatortillbehör\nKATEGORI\nDatormus\nTangentbord\nStylus\nDockningsstation\nStrömadapter\nPRODUKTTYP\nVäskor & Fodral\nAudio & Headset\nWebbkamera & Mikrofon\nGamingtillbehör\nPC-komponenter\nUPPTÄCK VÅRT SORTIMENT\nHP for Business\nHP Studentbutik\nHP Gamingcenter\nHP Care Packs\nDeals\nHP for Business\nVARFÖR HP\nHP Advantage for Business\nFöretagserbjudanden\nVarför välja en företagsdator?\nPRODUKTKATEGORIER\nLaptops för företag\nStationära datorer för företag\nWorkstations\nSkrivare för företag\nSäkerhet och tjänster\nAI-smarta företagsdatorer\nHybridarbete\nKontorsmiljö\nFinansiering och Leasing\nDrivrutiner och program\nTeknisk Support\nSpåra min beställning\nKontakta oss\nVanliga frågor\nVÄLKOMMEN\nLOGGA IN\nInte medlem?\nSKAPA KONTO\nSPÅRA MIN BESTÄLLNING\nDet finns inga produkter i din varukorg.\nInkludera moms\nFÖRLÅT! DEN HÄR SIDAN ÄR TRASIG.\nTILL SKILLNAD FRÅN VÅRA PRODUKTER.\nKanske har den flyttats, eller så är webbadressen felaktig.\nDu kan alltid återvända till vår Hemsida.\nKUNDSUPPORT\nVanliga Frågor\nSpåra din beställning\nKontakta oss\nAllmän leveransinformation\nReturnera och begär återbetalning eller ersättningsprodukt\nTa del av erbjudanden\nHP Care Pack-tjänster\nAvtalsångerrätt\nMITT HP\nRegistrering / Logga in\nMitt konto\nMina beställningar\nMina adresser\nMina offerter\nINSTANT INK\nLogga in\nVad är Instant Ink?\nPriser\nVanliga frågor och svar\nOM HP\nOm HP\nHållbar påverkan på HP\nHP Labs\nÅtervinning\nKarriär\nHandikappanpassning\nANVÄNDBARA LÄNKAR\nBlack Friday 2026\nAllmänna villkor för konsumentköp\nAllmänna villkor för företag och offentlig sektor\nDrivrutiner och programvara\nSupport och felsökning\nHP Reservdelar\nAktivera ditt Carepack\nGratis återtagning för konsumenter\nHP Studenterbjudanden\nHP för företag\nHP Live Experter\nPrenumerera på vårt nyhetsbrev\n© Copyright 2025 HP Development Company, L.P.\nHP:s sekretesspolicy\nRättigheter som rör dina personuppgifter\nHP:s allmänna villkor\nRättsliga garantier för konsumenter\n \n Alla funktioner är inte tillgängliga i alla utgåvor eller versioner av Windows. För att du ska kunna dra full nytta av funktionerna i Windows kan systemen behöva uppgraderas och/eller det kan krävas separat inköpt maskinvara, drivrutiner och/eller mjukvara. Se https://www.microsoft.com\n \n*HP Store erbjuder fri frakt på alla beställningar över 200 kr, för ordrar som understiger 200 kr tillkommer en fraktkostnad med 49 kr.\n \nVänligen kontrollera produkspecifikationerna under datablad/dokument. För det fall produktens klassificering stämmer överens med EN 55032 klass A kan den, vid användning i bostadsområden (under missgynsamma förhållanden), orsaka störningar i Tv/radiomottagningen hos andra enheter.\n \nHP Store offentliga priser & rabatter kan variera och vissa produkter i medlemsbutiken kommer inte att vara rabatterade jämfört med HP Store offentliga priser och erbjudanden. Rabatten kan variera beroende på tid och kampanj.\nAnsvarsfriskrivning:\nErbjudandena går ej att kombinera med andra erbjudanden, kampanjer eller rabattkoder. Erbjudandena omfattar inte bläck, toner och papper. Utvalda produkter kan vara undantagna från erbjudandet. Produkterna är ej avsedda för vidareförsäljning. Max 10 enheter per kund. Max orderbelopp 100 000 kr inkl. moms. HP förbehåller rätten att när som helst och utan förvarning ändra villkoren för kampanjen, alternativt ändra eller avsluta kampanjen. \n \nBolagets information",
+  "links": [
+   {
+    "href": "https://www.hp.com/se-sv/shop/",
+    "text": ""
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops",
+    "text": "Bärbara"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops?segment=home",
+    "text": "Bärbara för hemmet"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops?segment=business",
+    "text": "Bärbara för företag"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops?segment=gaming",
+    "text": "Bärbara för gaming"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops?formfactor=convertible",
+    "text": "2-i-1 bärbara datorer"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops?subbrand=hp-chromebook",
+    "text": "Chromebooks"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops?subbrand=hp-z-book",
+    "text": "Workstations"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/laptops?aipc=next-gen-ai-pc",
+    "text": "AI Co-pilot + PCs"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/barbara-efter-serie",
+    "text": "UPPTÄCK VÅRT SORTIMENT"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-business",
+    "text": "HP for Business"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/students-offers",
+    "text": "HP Studentbutik"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-gaming",
+    "text": "HP Gamingcenter"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-care-packs-home#laptop-desktop",
+    "text": "HP Care Packs"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/erbjudanden",
+    "text": "Deals"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops",
+    "text": "Stationära"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops?segment=home",
+    "text": "Stationära för hemmet"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops?segment=business",
+    "text": "Stationära för företag"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops?segment=gaming",
+    "text": "Stationära för gaming"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops?formfactor=all-in-one",
+    "text": "Allt-i-Ett datorer"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops?formfactor=tower",
+    "text": "Tower"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops?formfactor=mini",
+    "text": "Mini PC"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/desktops?subbrand=z-workstation",
+    "text": "Workstations"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/stationara-efter-serie",
+    "text": "UPPTÄCK VÅRT SORTIMENT"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors",
+    "text": "Skärmar"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors?segment=home",
+    "text": "Skärmar för hemmet"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors?segment=business",
+    "text": "Skärmar för företag"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors?segment=gaming",
+    "text": "Skärmar för gaming"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors?scrnsizeus=26-28-66-71cm+29-31-73-5-78-7-cm+32+32-34-81-83-cm+35-and-more-88-9-cm",
+    "text": "Datorskärm 27'' & större"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors?maxres=4k-3840-x-2160+dqhd-5120-x-1440+uwqhd-3840-x-1600+wqhd-3440-x-1440+wuhd-5120-2160",
+    "text": "Högupplösta skärmar"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors?feat=curved-display",
+    "text": "Curved datorskärm"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/monitors?interface=usb-c",
+    "text": "Datorskärm med USB-C"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/skarmar-efter-serie",
+    "text": "UPPTÄCK VÅRT SORTIMENT"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-care-packs-home",
+    "text": "HP Care Packs"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers",
+    "text": "Skrivare"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?segment=home",
+    "text": "Skrivare för hemmet"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?segment=smalloffice",
+    "text": "Skrivare för hemmakontor"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?segment=business",
+    "text": "Skrivare för företag"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?prodtype=inkjet-printers",
+    "text": "Bläckstråleskrivare"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?prodtype=laser-printers",
+    "text": "Laserskrivare"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?prodtype=large-format-printers",
+    "text": "Storformatsskrivare"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?subbrand=smart-tank",
+    "text": "Tankskrivare"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/printers?prodtype=flatbed",
+    "text": "Scanner"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/skrivare-efter-serie",
+    "text": "UPPTÄCK VÅRT SORTIMENT"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-care-packs-home#print",
+    "text": "HP Care Packs"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/instant-ink",
+    "text": "Instant Ink"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/ink-toner-paper-finder",
+    "text": "Bläck, Toner & Papper"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/ink-toner-paper-finder?tab=1",
+    "text": "Bläck"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/ink-toner-paper-finder?tab=2",
+    "text": "Toner"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/supplies?prntech=paper",
+    "text": "Papper"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/ink-toner-paper-finder?tab=3",
+    "text": "Skrivarhuvud"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/faq/recycling/recycling",
+    "text": "Återvinningsprogram"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories",
+    "text": "Datortillbehör"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=mice+mice-keyboards-combos",
+    "text": "Datormus"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=keyboards+mice-keyboards-combos",
+    "text": "Tangentbord"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=stylus",
+    "text": "Stylus"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=docking-stations",
+    "text": "Dockningsstation"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=batteries-adapters-and-chargers",
+    "text": "Strömadapter"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=bags-cases",
+    "text": "Väskor & Fodral"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=audio-video-multimedia",
+    "text": "Audio & Headset"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=webcams+microphones",
+    "text": "Webbkamera & Mikrofon"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?segment=gaming",
+    "text": "Gamingtillbehör"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/listings/accessories?prodtype=cables-components",
+    "text": "PC-komponenter"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/accessories-by-product-type",
+    "text": "UPPTÄCK VÅRT SORTIMENT"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/smb-business-deals",
+    "text": "Företagserbjudanden"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/smb-hp-business-pc",
+    "text": "Varför välja en företagsdator?"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-z-workstations",
+    "text": "Workstations"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/smb-business-security-and-services",
+    "text": "Säkerhet och tjänster"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/smb-ai-smart-business",
+    "text": "AI-smarta företagsdatorer"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/smb-hybrid-work",
+    "text": "Hybridarbete"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/smb-workplace-setup",
+    "text": "Kontorsmiljö"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/business-finance",
+    "text": "Finansiering och Leasing"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/orderstatus",
+    "text": "Spåra min beställning"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/contact-hp-store",
+    "text": "Kontakta oss"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/faq",
+    "text": "Vanliga frågor"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/faq/my-orders/how-to-track-my-order",
+    "text": "Spåra din beställning"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/faq/deliveries/delivery-information",
+    "text": "Allmän leveransinformation"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/faq/returns/how-to-return-and-request-refund-or-replacement",
+    "text": "Returnera och begär återbetalning eller ersättningsprodukt"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/faq/promotions",
+    "text": "Ta del av erbjudanden"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/faq/care-packs/services-for-hp-products",
+    "text": "HP Care Pack-tjänster"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/withdrawal",
+    "text": "Avtalsångerrätt"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/register",
+    "text": "Registrering / Logga in"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/myaccount/",
+    "text": "Mitt konto"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/myaccount/my-orders",
+    "text": "Mina beställningar"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/myaccount/my-addresses",
+    "text": "Mina adresser"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/myaccount/my-quotes",
+    "text": "Mina offerter"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-sustainability",
+    "text": "Hållbar påverkan på HP"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/blackfriday",
+    "text": "Black Friday 2026"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/html/Terms_SE.pdf#page=1",
+    "text": "Allmänna villkor för konsumentköp"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/html/Terms_SE.pdf#page=9",
+    "text": "Allmänna villkor för företag och offentlig sektor"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-sverige-studentbutik",
+    "text": "HP Studenterbjudanden"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-live-experts",
+    "text": "HP Live Experter"
+   },
+   {
+    "href": "https://www.hp.com/se-sv/shop/hp-newsletter",
+    "text": "Prenumerera på vårt nyhetsbrev"
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.dell.com/sv-se/shop/scc/sc/laptops",
+  "checkedAt": "2026-11-25T20:33:25.972Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.dell.com/sv-se/shop/scc/scr/laptop",
+  "title": "Bärbara datorer – köp bärbara datorer för företag, spel och studenter | Dell Sverige",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "Köp bärbara Dell-datorer – de senaste datorerna för arbete, spel och företag | Dell Sverige"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "11 666,89 kr",
+   "9 776,89 kr",
+   "29 930,16 kr",
+   "50 649,39 kr",
+   "20 490,64 kr",
+   "15 367,98 kr",
+   "5 122,66 kr",
+   "12 294,37 kr",
+   "27 510,00 kr",
+   "23 010,00 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Tangentbord med bakgrundsbelysning (63)"
+   ],
+   "ram": [
+    "16 GB LPDDR5X",
+    "32 GB LPDDR5X"
+   ],
+   "os": [
+    "Windows 11 Pro (63)",
+    "Windows 11 Home (45)",
+    "Windows 11 Home eller Windows",
+    "Windows 11 Home",
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garantin",
+    "garantin och inte kan lösas på distans skickas en tekniker eller reservdel ut, vanligen"
+   ],
+   "returns": [
+    "Retur- och Ångerrätt"
+   ],
+   "battery": [
+    "batteritid*",
+    "batteritid",
+    "batteritid med 2K*-skärm",
+    "batteritid för strömning med 2K-skärm* (vid 250 cd/m2)",
+    "batteritid på upp till 27 timmar på 2K*",
+    "Battery Boost, Reflex, DLSS, CUDA, FXAA, GameStream, G-SYNC, G-SYNC Ultimate, NVLINK, S"
+   ],
+   "condition": [
+    "skickas en tekniker eller reservdel ut, vanligen inom 1–2 arbetsd",
+    "skickas separat och således anlända efter systemet"
+   ],
+   "delivery": [
+    "Leveransvillkor:",
+    "Leveransen är den snabbast tillgängliga och inom 3-6 dagar, beroende på var kunden befin",
+    "leveransdatum är inte garanterat"
+   ],
+   "charger": []
+  },
+  "text": "Gå vidare till huvudinnehållet\nLogga in\nKontakta oss\nSE/SV\nVarukorg\nArtificiell intelligens\nIT-infrastruktur\nDatorer och tillbehör\nTjänster\nSupport\nErbjudanden\nDell Premier för företag\nHome\nBärbara datorer\nIntel® Core™ Ultra processorer\nMer information om Intel\nAlla bärbara datorer\nPersonligt\nProfessionell\nArbetsstationer\nSpel\nStudenter\nBärbara datorer\nKöp bästa bärbara datorer och notebooks från Dell.\nOm du väljer filter uppdateras resultaten och modeller som innehåller dina val visas som alternativ i konfigurationen.\nProduktlinje\nPersonligt\nXPS (7)\nDell (17)\nProfessionell\nDell Pro (21)\nDell Pro Essential (3)\nDell Pro Rugged (6)\nWorkstations\nDell Pro Precision & Dell Pro Max (10)\nSpel\nAlienware (6)\nLärare och pedagoger\nDell Pro Education (2)\nDell Chromebook (4)\nAI (artificiell intelligens)\nAI-datorer (57)\nAI-workstations (2)\nCopilot+ PC (46)\nSkärmstorlek\n18 inch (2)\n16 tum (22)\n15 tum (5)\n14 tum (34)\n13 tum (8)\nVisa fler\nSkärmstorlek\nFormfaktor\n2-i-1 eller löstagbar (11)\nBärbar dator (63)\nSurfplatta (2)\nProcessormärke\nAlla processorer från Intel (51)\nAlla AMD-processorer (20)\nAlla Mediatek-processorer (2)\nAlla Snapdragon-processorer (2)\nAlla NVIDIA-processorer (1)\nProcessor\nSök\nSeries 3 Intel Core Ultra X9 (4)\nSeries 3 Intel Core Ultra X7 (5)\nSeries 3 Intel Core Ultra 9 (8)\nSeries 3 Intel Core Ultra 7 (16)\nSeries 3 Intel Core Ultra 5 (14)\nVisa fler\nProcessor\nOperativsystem\nWindows 11 Pro (63)\nWindows 11 Home (45)\nUbuntu (11)\nChrome (4)\nMinne\n128 GB (3)\n96 GB (1)\n64 GB (37)\n48 GB (2)\n32 GB (63)\nVisa fler\nMinne\nGrafikvarumärke\nAll NVIDIA-grafik (13)\nAll AMD-grafik (8)\nAllt inom Intel grafik (22)\nGrafikkort\nSök\nNVIDIA GeForce RTX 5090 (2)\nNVIDIA GeForce RTX 5070 (4)\nNVIDIA GeForce RTX 5070 Ti (1)\nNVIDIA GeForce RTX 5060 (2)\nNVIDIA GeForce RTX 3050 (1)\nVisa fler\nGrafikkort\nVikt på den bärbara datorn\nMindre än 1,5 kg (23)\n1,5 kg - 2 kg (31)\nMer än 2 kg (18)\nHårddiskstorlek\n4 TB (11)\n2 TB (46)\n1 TB (69)\n512 GB (68)\n256 GB (38)\nVisa fler\nHårddiskstorlek\nFunktioner\nTangentbord med bakgrundsbelysning (63)\nFingeravtrycksläsare (11)\nLättvikt (mindre än 2 kg) (54)\nNumerisk knappsats (34)\nGrafikkort (38)\nVisa fler\nFunktioner\nPekskärm\nSkärm utan pekfunktion (60)\nPekskärm (50)\nBildförhållande\n16:10 (69)\n16:9 (11)\n15:9 (1)\nSkärmtyp\nOLED (13)\nTN (2)\nWLED (69)\nWVA (70)\nMini-LED (2)\nLCD (2)\nSkärmupplösning\n4K UHD+ (3)\n2,8 K (2)\nQHD+ (27)\n2 K (56)\n3 2k (1)\nVisa fler\nSkärmupplösning\nFärgalternativ\nSvart (18)\nBlå (8)\nDark Grey (24)\nGrön (1)\nGrå (4)\nVisa fler\nFärgalternativ\nKundbetyg\n4 stjärnor och mer (42)\n3 stjärnor och mer (3)\nMobilt bredbandsfunktion\n5G mobilt bredband (30)\n4G LTE mobilt bredband (20)\nEkomärkning\nTCO-alternativ (34)\nProcessorplattform\nIntel vPro med Series 3 Intel Core Ultra (12)\nIntel Evo (11)\nIntel vPro (25)\nIntel vPro With Evo (8)\n1 till 12 av 76 resultat\nSortera efter:\nJämför\nVisa produktsidan\nDX13260 Roma Dell XPS 13 Sky-konfiguration bärbar dator\nDX13260 Roma Dell XPS 13 Sky-konfiguration bärbar dator\nDX13260 Roma Dell XPS 13 Sky-konfiguration bärbar dator\nDX13260 Roma Dell XPS 13 Sky-konfiguration bärbar dator\n \n1/4\nPrevious\n \nNext\nNy XPS 13 bärbar dator\nMODELLDX13260 SKÄRM13,4 4.1 (101)\n4.1 out of 5 stars. 101 reviews\nSeries 3 Intel® Core™ processorer, AI-dator\nWindows 11 Home eller Windows 11 Pro\n13,4-tums 2,5K pekskärm\nUpp till 17 timmars batteritid*\n12,70 mm och vikt från 1 kg (2,2 lb)*\n UTGÅNGSPRIS 11 666,89 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nNy XPS 13 bärbar dator\nNytt\nJämför\nVisa produktsidan\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\nDell Inspiron DS14270 bärbar dator\n \n \n \n1/4\nPrevious\n \nNext\nDell 14S bärbar dator\nMODELLDS14270 SKÄRM14\"\nSeries 3 Intel® Core™ processorer\nWindows 11 Home eller Windows 11 Pro\nNya trendiga färgalternativ\nSlimmad och lätt design\nOslagbar batteritid\n UTGÅNGSPRIS 9 776,89 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nDell 14S bärbar dator\nJämför\nVisa produktsidan\nDell 16\nDell 16\nDell 16\nDell 16\n1/4\nPrevious\n \nNext\nXPS 16 bärbar dator\nMODELLDA16250 SKÄRM16,3 4.0 (439)\n4.0 out of 5 stars. 439 reviews\nIntel® Core™ Ultra-processorer, AI-dator\nWindows 11 Home eller Windows 11 Pro\nUpp till NVIDIA RTX 5070-grafik*\nUpp till 27 timmars strömmande batteritid med 2K*-skärm\nUpp till 4K OLED-skärm\n UTGÅNGSPRIS 29 930,16 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nXPS 16 bärbar dator\nNytt\nJämför\nVisa produktsidan\nDX16263 XPS 16 bärbar dator\nDX16263 XPS 16 bärbar dator\nDX16263 XPS 16 bärbar dator\nDX16263 XPS 16 bärbar dator\n1/4\nPrevious\n \nNext\nNy XPS 16 Creator Edition bärbar dator\nMODELLDX16263 SKÄRM16\nUpp till NVIDIA RTX Spark N1X med 20-kärnig processor (upp till 4,0 GHz)\nWindows 11 Home eller Windows 11 Pro\nUpp till NVIDIA Blackwell RTX 6144-kärnig GPU\n16-tums 3,2K OLED-pekskärm med en toppljusstyrka på 1 000 cd/m²\nFullständig SD-kortplats, HDMI, 3 × USB4\n UTGÅNGSPRIS 50 649,39 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nNy XPS 16 Creator Edition bärbar dator\nRekommenderade Black Friday Bärbara datorer-erbjudanden\nBlack Friday\nVisa produktsidan\n \nXPS 13 bärbar dator\nErbjudande-ID 9350_reg_01\n 4.1 (754)\n4.1 out of 5 stars. 754 reviews\nFrån\n20 490,64 kr\n15 367,98 kr Spara 5 122,66 kr (25%)\n12 294,37 kr exklusive moms\nIntel® Core™ Ultra 7 256V, 8 kärnor\nWindows 11 Home\nIntel® Arc™ Graphics\n16 GB LPDDR5X\n512 GB SSD\n13,4-tums QHD+-pekskärm (2 560 × 1 600)\nAnpassa och köp\nXPS 13 bärbar dator\nBlack Friday\nVisa produktsidan\nDell Pro 14 Plus bärbar dator eller 2-i-1\nErbjudande-ID pb14250_fixed_69\n 4.3 (584)\n4.3 out of 5 stars. 584 reviews\nFrån\n27 510,00 kr\n23 010,00 kr Spara 4 500,00 kr (16,36%)\n18 408,00 kr exklusive moms\nIntel® Core™ Ultra 5 236 V, 8 kärnor\nWindows 11 Pro\n16 GB LPDDR5X\n512 GB SSD\n14-tums FHD+-skärm utan pekfunktion (1 920 × 1 200)\nAnpassa och köp\nDell Pro 14 Plus bärbar dator eller 2-i-1\nBlack Friday\nVisa produktsidan\nXPS 14 bärbar dator\nErbjudande-ID da14260_reg_01\n 4.0 (218)\n4.0 out of 5 stars. 218 reviews\nFrån\n28 343,14 kr\n26 359,12 kr Spara 1 984,02 kr (7%)\n21 087,29 kr exklusive moms\nIntel® Core™ Ultra 7 355, 8 kärnor\nWindows 11 Home\nIntel® UMA Graphics\n16 GB LPDDR5X\n512 GB SSD\n14-tums FHD+-skärm utan pekfunktion (1 920 × 1 200)\nAnpassa och köp\nXPS 14 bärbar dator\nBlack Friday\nVisa produktsidan\nXPS 16 bärbar dator\nErbjudande-ID da16250_reg_01\n 4.0 (439)\n4.0 out of 5 stars. 439 reviews\nFrån\n39 906,89 kr\n29 930,16 kr Spara 9 976,73 kr (25%)\n23 944,12 kr exklusive moms\nIntel® Core™ Ultra 7 255H, 16 kärnor\nWindows 11 Home\nNVIDIA® GeForce RTX™ 5050\n32 GB LPDDR5X\n1 TB SSD\n16.3\" Non Touch FHD+ (1920x1200)\nAnpassa och köp\nXPS 16 bärbar dator\nShowing page 1 of 1\nHitta vårabästa Black Friday-erbjudanden.\nJämför\nVisa produktsidan\nDell Pro 14 Essential Intel Non Touch Laptop\nDell Pro 14250\nDell Pro 14250\nDell Pro 14250\nDell Pro 14250\nDell Pro 14250\nDell Pro 14250\nDell Pro 14250\n \n1/4\nPrevious\n \nNext\nDell Pro 14 Essential bärbar dator\nMODELLPV14250 SKÄRM14\" 3.9 (24)\n3.9 out of 5 stars. 24 reviews\nIntel® Core-processorer™\nWindows 11 Pro\nStor 16:10-skärm\nTåligt chassi klarar MIL-STD-tester\nGrundläggande säkerhet för småföretag\n UTGÅNGSPRIS 11 705,00 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nDell Pro 14 Essential bärbar dator\nJämför\nVisa produktsidan\nDell Pro 14 Plus-2-i-1\nDell Pro 14 Plus-2-i-1.\nDell Pro 14 Plus-2-i-1.\nDell Pro 14 Plus-2-i-1.\n1/4\nPrevious\n \nNext\nDell Pro 14 Plus bärbar dator eller 2-i-1\nMODELLPB14250 SKÄRM14\" 4.3 (584)\n4.3 out of 5 stars. 584 reviews\nUpp till Intel® Core™ Ultra-processorer, AI PC-alternativ inklusive Copilot+ PC\nWindows 11 Pro\nSkalbar standarddator med färre BIOS-installationsprogram\nTåligt aluminiumchassi klarar MIL-STD-testning\nVälj mellan bärbar dator eller 2-i-1\n UTGÅNGSPRIS 23 010,00 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nDell Pro 14 Plus bärbar dator eller 2-i-1\nJämför\nVisa produktsidan\nXPS 14 (modell DA14260) bärbar dator med pekfunktion\nXPS 14 (modell DA14260) bärbar dator med pekfunktion\nXPS 14 (modell DA14260) bärbar dator med pekfunktion\nXPS 14 (modell DA14260) bärbar dator med pekfunktion\n1/4\nPrevious\n \nNext\nXPS 14 bärbar dator\nMODELLDA14260 SKÄRM14\" 4.0 (218)\n4.0 out of 5 stars. 218 reviews\nUpp till Series 3 Intel® Core™ Ultra X9 processorer, Copilot+ PC*\nWindows 11 Home eller Windows 11 Pro\nUpp till Intel® Arc™ grafik\nUpp till 31 timmars batteritid för strömning med 2K-skärm* (vid 250 cd/m2)\nFrån 1,36 kg, 14,62 mm tunn\n UTGÅNGSPRIS 26 359,12 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nXPS 14 bärbar dator\nJämför\nVisa produktsidan\nFramåtvänd XPS 13 bärbar dator\nHögervänd XPS 13 bärbar dator\nVänstervänd XPS 13 bärbar dator\nUppifrån i vinkel, XPS 13 bärbar dator\nFramåtvänd XPS 13 bärbar dator\nHögervänd XPS 13 bärbar dator\nVänstervänd XPS 13 bärbar dator\nUppifrån i vinkel, XPS 13 bärbar dator\n \n1/4\nPrevious\n \nNext\nXPS 13 bärbar dator\nMODELL9350 SKÄRM13,4 4.1 (754)\n4.1 out of 5 stars. 754 reviews\nIntel® Core™ Ultra-processorer, Copilot+-dator med AI på enheten\nWindows 11 Home eller Windows 11 Pro\nVikt från endast 1,18 kg*\nEnastående batteritid på upp till 27 timmar på 2K*\nUpp till 3K OLED-skärm\n UTGÅNGSPRIS 15 367,98 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nXPS 13 bärbar dator\nJämför\nVisa produktsidan\nDell Pro Precision PW516260\nDell Pro Precision PW516260\nDell Pro Precision PW516260\nDell Pro Precision PW516260\nDell Pro Precision PW516260\nDell Pro Precision PW516260\n1/4\nPrevious\n \nNext\nDell Pro Precision 5-serien 16S bärbar dator\nMODELLPW516260 SKÄRM16\nIntel® Core™ Ultra processorer, Copilot+ PC med inbyggd AI\nWindows 11 Pro\nTunnaste mobila workstation-dator på 16 tum med processorer i H-klass\nErbjuder den bästa kameraupplösningen bland mobila workstation-datorer på ingångsnivå\nAluminiumhölje med 3 sidor för elegant utseende och robust känsla\n UTGÅNGSPRIS 26 107,50 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nDell Pro Precision 5-serien 16S bärbar dator\nJämför\nVisa produktsidan\nDell Pro Precision 7-serien bärbar dator 16 PW716260\nDell Pro Precision 7-serien bärbar dator 16 PW716260\nDell Pro Precision 7-serien bärbar dator 16 PW716260\nDell Pro Precision 7-serien bärbar dator 16 PW716260\n1/4\nPrevious\n \nNext\nDell Pro Precision 7-serien 16 bärbar dator\nMODELLPW716260 SKÄRM16 4.2 (11)\n4.2 out of 5 stars. 11 reviews\nIntel® Core™ Ultra H-Series\nWindows 11 Pro\nUpp till NVIDIA RTX Pro 3000\nCopilot+ PC* med inbyggd AI\nKompakt dator med lång batteritid\nKostnadseffektiv prestanda med tillval för dedikerad grafikprocessor\n UTGÅNGSPRIS 42 059,73 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nDell Pro Precision 7-serien 16 bärbar dator\nJämför\nVisa produktsidan\nXPS 16 (modell DA16260) bärbar dator med pekfunktion\nXPS 16 (modell DA16260) bärbar dator med pekfunktion\nXPS 16 (modell DA16260) bärbar dator med pekfunktion\nXPS 16 (modell DA16260) bärbar dator med pekfunktion\n1/4\nPrevious\n \nNext\nXPS 16 bärbar dator\nMODELLDA16260 SKÄRM16 4.3 (248)\n4.3 out of 5 stars. 248 reviews\nUpp till Series 3 Intel® Core™ Ultra X9 processorer, Copilot+ PC*\nWindows 11 Home eller Windows 11 Pro\nUpp till Intel® Arc™ grafik\nUpp till 31 timmars batteritid för strömning med 2K-skärm* (vid 250 cd/m2)\nFrån 1,65 kg, 14,62 mm tunn\n UTGÅNGSPRIS 31 070,64 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nXPS 16 bärbar dator\nJämför\nVisa produktsidan\nDell Pro 16 bärbar dator med HD-/FHD-kamera\nDell Pro 16 bärbar dator med HD-/FHD-kamera\nDell Pro 16 bärbar dator med HD-/FHD-kamera\nDell Pro 16 bärbar dator med HD-/FHD-kamera\nDell Pro 16 bärbar dator med HD-/FHD-kamera\nDell Pro 16 bärbar dator med HD-/FHD-kamera\nDell Pro 16 bärbar dator med HD-/FHD-kamera\nDell Pro 16 bärbar dator med HD-/FHD-kamera\n \n1/4\nPrevious\n \nNext\nDell Pro 16 bärbar dator\nMODELLPC16250 SKÄRM16 4.5 (1123)\n4.5 out of 5 stars. 1123 reviews\nUpp till Intel® Core™ Ultra-processorer, AI-dator alternativ\nWindows 11 Pro\nStor 16:10-skärm och numerisk knappsats för snabb datainmatning\nTåligt chassi klarar MIL-STD-tester\nVälj mellan två färg- och finishalternativ\n UTGÅNGSPRIS 18 700,00 kr\n Pris för den förkonfigurerade baskonfigurationen för den här modellen\nVisa modeller\nDell Pro 16 bärbar dator\nFöregående\nSida\nav 7\nNästa\nDell Advantage\nDra nytta av tidsbegränsade erbjudanden på bärbara datorer, stationära datorer, skärmar och tillbehör.\nLära sig mer\nDärför Ska Du Handla Direkt Från Dell\nSmartare inköp börjar här.\nLära sig mer\nVisa alla\nDölj alla\nMer information om Dells bärbara datorer\nDell erbjuder ett omfattande utbud av bärbara datorer som utformats för att tillgodose olika behov. Dells bärbara datorer är utrustade med processorer från Intel eller AMD och har ofta den senaste tekniken, högupplösta skärmar och en robust ...\nVisa mer\nVanliga frågor och svar:\nHur väljer jag rätt bärbar Dell-dator för mina behov?\nFinns det några exklusiva erbjudanden på bärbara datorer från Dell?\nÄr bärbara Dell-datorer kompatibla med externa tillbehör och kringutrustning?\nVad är Dells engagemang för hållbarhet vid tillverkning av bärbara datorer?\nÄr bärbara datorer från Dell lämpliga för spel?\nEU-garanti\nDin reklamationsrätt enligt konsumentgarantin\nSE/SV\nWebbplatsöversikt\nKonto\nMitt konto\nBeställningsstatus\nProfilinställningar\nMina produkter\nSupport\nSupport – Hem\nKontakta den tekniska supporten\nRetur- och Ångerrätt\nKontakta oss\nCommunity\nKontakta oss\nVåra erbjudanden\nArtificiell intelligens\nprodukter\nLösningar\nTjänster\nErbjudanden\nVårt företag\nVilka vi är\nUppförandekod och Speak Up\nJobbtillfällen\nDell Technologies Capital\nInvesterare\nPressrum\nÅTERVINNING\nPåverkan på företaget\nKundberättelser\nVåra partner\nHitta en partner\nHitta en återförsäljare\nOEM-lösningar\nPartner Program\nResurser\nBlogg\nEvenemang\nRegistrering för e-postmeddelanden\nPrivacy Center\nSäkerhetscenter\nHämtningsbara testversioner av programvara\nDell Technologies\nDell Premier för företag\nCopyright © 2026 Dell Inc.\nFörsäljningsvillkor\nSekretess\nMina sekretessval \nCookies, Annonser och e-postmeddelanden\nJuridiska och Föreskrifter\nTillgänglighet\nInformation/friskrivningar för marknadsföringskampanjer\nRabatterbjudande:\nSpara 20% på Dell-skärmar och tillbehör när du köper en PC och använder rabattkoden PROMO20. Rabatten visas på kvalificerade produkter i kassan. Kupongen kan kombineras med vissa andra erbjudanden, men inte med andra rabattkoder. Max 5 produkter per beställning. Kupongen gäller till och med 31/01/2027.\nService på plats efter fjärrdiagnos och annan viktig information:\nService på plats innebär att en tekniker fastställer orsaken till ett problem. Det kan inbegripa att kunden öppnar datorn och det kan kräva flera eller långa sessioner. Om problemet täcks av garantin och inte kan lösas på distans skickas en tekniker eller reservdel ut, vanligen inom 1–2 arbetsdagar efter att fjärrdiagnostik har genomförts. Service på plats levereras av Dell Marketing L.P. Tillgänglighet och villkor varierar utifrån land och produkt. Fullständig information finns på Dell.com/servicecontracts (på engelska).\nMöjlighet till service på plats varierar beroende på land och vilken tjänst som köpts. Service på plats erbjuds efter fjärrdiagnostik på enheter som kan servas på fältet.\nPrissättning:\nPrissättningen som finns på den här webbplatsen är Dells pris för köp endast via Dells webbutik. Inga rabatter gäller utöver de rabatter som uttryckligen anges, såvida inte en ytterligare kupong används. Om du har avtalsvillkor med Dell som hänvisar till listpriser, kontakta din säljare hos Dell för att få information om Dells listprissättning. Eventuella kampanjrabatter beräknas mot ett tidigare onlinepris för samma produkt eller tjänst. Om det uttryckligen anges kan en tredjepartsprodukt även inkludera tillverkarens föreslagna eller rekommenderade försäljningspris.\nPriser och specifikationer gäller vid publicering, i mån av tillgänglighet, och kan komma att ändras utan meddelande. Bilderna är endast avsedda som illustrationer - verkliga produkter kan skilja sig från bilderna. Dell ansvarar inte för fel som förekommer i text och bilder. Erbjudandena är begränsade till fem system per kund per kampanjperiod. Vid köp över fem enheter finns våra Small Business Technology-rådgivare här för att hjälpa dig. Klicka för att chatta.\nErbjudandet om att spara upp till 5 % ytterligare med Dell Premier och få Dells bästa onlinepris med Dell Premier omfattar inte följande: erbjudanden med begränsat antal, tidsbegränsade erbjudanden, klientkringutrustning, Dell, Dell Premium, XPS och Alienware.\nLeveransvillkor:\nSystemen skeppas nästa arbetsdag (exkl. röda dagar och helger); Gäller för beställningar som görs senast kl. 16 mån-fre, och under förutsättning att beställningen är förbetald eller har kreditgodkänts. Leveransen är den snabbast tillgängliga och inom 3-6 dagar, beroende på var kunden befinner sig. Begränsat antal system att tillgå. Exakt leveransdatum är inte garanterat. Dell är inte ansvarigt för eventuella förluster, utlägg, avgifter, omkostnader eller skador som orsakas av en eventuell försening. Programvara och tillbehör kan skickas separat och således anlända efter systemet.\nVarumärken:\nDell Technologies, Dell och andra varumärken är varumärken som tillhör Dell Inc. eller dess dotterbolag. Microsoft och Windows är registrerade varumärken som tillhör Microsoft Corporation i USA. Ultrabook, Celeron, Celeron Inside, Core Inside, Intel, Intel-logotypen, Intel Atom, Intel Atom Inside, Intel Core, Intel Inside, Intel Inside-logotypen, Intel vPro, Itanium, Itanium Inside, Intel Evo, Intel Optane, Iris, Itanium, MAX, Pentium, Pentium Inside, vPro Inside, Xeon, Xeon Phi och Xeon Inside är varumärken som tillhör Intel Corporation eller dess dotterbolag i USA och/eller andra länder. AMD och AMD Arrow-logotypen, samt kombinationer av dessa, är varumärken som tillhör Advanced Micro Devices, Inc. NVIDIA-logotypen, GeForce, GeForce RTX, GeForce RTX Super, GeForce GTX, GeForce GTX Super, GRID, SHIELD, Battery Boost, Reflex, DLSS, CUDA, FXAA, GameStream, G-SYNC, G-SYNC Ultimate, NVLINK, ShadowPlay, SLI, TXAA, PhysX, GeForce Experience, GeForce NOW, Maxwell, Pascal och Turing är varumärken och/eller registrerade varumärken som tillhör NVIDIA Corporation i USA och andra länder. Snapdragon är ett varumärke eller registrerat varumärke som tillhör Qualcomm Incorporated. Andra varumärken kan vara varumärken som tillhör sina respektive ägare.\nDenna webbplats använder cookies och andra spårningsteknologier för att förbättra användarupplevelsen och för att analysera prestanda och trafik på vår webbplats. Vi delar också information om din användning av vår webbplats med våra partners inom sociala medier, reklam och analys. Om vi har upptäckt en signal för att avstå från spårning kommer detta att respekteras. Mer information finns i vår Cookiepolicy. \nHantera\nAvböj Alla Acceptera Alla",
+  "links": [
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/scr/laptop#mh-main",
+    "text": "Gå vidare till huvudinnehållet"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/lp/contact-us",
+    "text": "Kontakta oss"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/sc/artificial-intelligence",
+    "text": "Artificiell intelligens"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/sc/servers",
+    "text": "Servrar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/sc/storage-products",
+    "text": "Datalagring"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/sc/cyber-resilience",
+    "text": "Cyberelasticitet"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/sc/private-cloud-solutions",
+    "text": "Privata moln"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/sc/networking-products",
+    "text": "Nätverk"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/power-cooling-data-center-infrastructure/ac/4116",
+    "text": "Infrastrukturtillbehör"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/dell-aiops/sl/aiops",
+    "text": "AIOps och IT – Observerbarhet"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/servers/lp/enterprise-upgrades",
+    "text": "Enterprise Upgrades"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/artificial-intelligence/sc/ai-data-platform",
+    "text": "Datahantering"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/solutions/sl/multicloud-solutions",
+    "text": "Flermolnslösningar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/scc/sc/apex",
+    "text": "Dell APEX-prenumerationer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop",
+    "text": "Visa alla bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/dell-laptops/scr/laptop/appref=dell-product-line",
+    "text": "Dell bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=xps-product-line",
+    "text": "Bärbara XPS-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=dell-pro-product-line",
+    "text": "Dell Pro bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=dell-pro-essential-product-line",
+    "text": "Dell Pro Essential bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=precision-product-line",
+    "text": "Dell Pro Precision Mobile workstation-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=alienware-product-line",
+    "text": "Bärbara Alienware-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=dell-product-line",
+    "text": "Bärbara Inspiron-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=dell-pro-rugged-product-line",
+    "text": "Dell Pro Rugged bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=dell-pro-education-product-line",
+    "text": "Dell Pro Education bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=dell-chromebook-product-line",
+    "text": "Bärbara Chromebook-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-pcs/lp/connected-pc",
+    "text": "Bärbara 4G/5G-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=copilot-pcs-artificial-intelligence",
+    "text": "Copilot+ PCs"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=tco-option-ecolabel",
+    "text": "TCO-certifierade bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop",
+    "text": "Visa alla stationära datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop/appref=dell-product-line",
+    "text": "Dell stationära datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop/appref=dell-pro-product-line",
+    "text": "Dell Pro stationära datorer och allt-i-ett-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop/appref=dell-pro-essential-product-line",
+    "text": "Dell Pro Essential stationära datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop/appref=precision-product-line",
+    "text": "Dell Pro Precision stationära Workstation-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop/appref=alienware-product-line",
+    "text": "Stationära Alienware-datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop/appref=tco-option-ecolabel",
+    "text": "TCO-certifierade stationära datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/all-monitors",
+    "text": "Visa alla skärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/everyday-monitors",
+    "text": "Dell-skärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/professional-monitors",
+    "text": "Dell Pro skärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/performance-monitors",
+    "text": "Dell UltraSharp-skärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/gaming-monitors",
+    "text": "Alienware skärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/all-monitors/appref=ultrawide-features",
+    "text": "Extremt breda skärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/all-monitors/appref=6k-6144-x-2560-6144-x-3456-screen-resolution,wuhd-5120-x-2160-screen-resolution,dual-qhd-5120-x-1440-screen-resolution,4k-uhd-3840-x-2160-screen-resolution",
+    "text": "Skärmar med 4K-upplösning eller högre"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/computer-monitors/sac/monitors/all-monitors/appref=curved-features",
+    "text": "Böjda bildskärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/monitor-accessories/ar/monitor-accessories",
+    "text": "Skärmtillbehör"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/alienware/gaming",
+    "text": "Alienware"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/gaming",
+    "text": "Bärbara speldatorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/desktop-computers/scr/desktop/gaming",
+    "text": "Stationära speldatorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/pc-accessories/ar/gaming-accessories",
+    "text": "Speltillbehör"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/accessories",
+    "text": "Visa alla tillbehör för datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/pc-accessories/ar/docking-stations-accessories",
+    "text": "Dockningsstationer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/pc-accessories/ar/audio",
+    "text": "Ljud"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/pc-accessories/ar/keyboards-mice",
+    "text": "Tangentbord och möss"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/pc-accessories/ar/power-adapters",
+    "text": "Nätaggregat"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/pc-accessories/ar/laptop-bags-cases",
+    "text": "Väskor och fodral till bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/pc-accessories/ar/camera-webcams",
+    "text": "Webbkameror"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/dell-parts/partsforyourdell",
+    "text": "Reservdelar, batterier och uppgraderingar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/accessories/lp/dell-video-conferencing-room-solutions",
+    "text": "Videokonferensrumslösningar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/thin-clients/lp/thin-client-solutions",
+    "text": "Tunna klienter"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/deals/dc",
+    "text": "Black Friday-erbjudanden"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/deals/dc/laptop-deals",
+    "text": "Erbjudanden på bärbara datorer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/deals/dc/desktop-deals",
+    "text": "Stationära datorer erbjudanden"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/deals/dc/monitor-deals",
+    "text": "Erbjudanden på bildskärmar"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/deals/dc/pc-accessories-deals",
+    "text": "Erbjudanden på PC-tillbehör"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/lp/dell-experience",
+    "text": "Därför ska du handla direkt från Dell"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/dell-experience/lp/price-match-guarantee",
+    "text": "Dells prisgaranti"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/member/lp/dell-advantage",
+    "text": "Visa alla studenter och anställda rabatter"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/member/lp/students",
+    "text": "Dell Advantage for Students"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/dell-employee-purchase-program/lp/employees",
+    "text": "Dell Advantage for anställda"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/lp/dell-premier",
+    "text": "Dell Premier för företag"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/everyday",
+    "text": "Personligt"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/business",
+    "text": "Professionell"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/performance",
+    "text": "Arbetsstationer"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/students",
+    "text": "Studenter"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=ai-pcs-artificial-intelligence",
+    "text": "AI-datorer (57)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=ai-workstations-artificial-intelligence",
+    "text": "AI-workstations (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=18-inch-screen-size",
+    "text": "18 inch (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=16-inch-screen-size",
+    "text": "16 tum (22)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=15-inch-screen-size",
+    "text": "15 tum (5)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=14-inch-screen-size",
+    "text": "14 tum (34)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=13-inch-screen-size",
+    "text": "13 tum (8)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=12-inch-screen-size",
+    "text": "12 tum (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=11-inch-screen-size",
+    "text": "11 tum (3)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=10-inch-screen-size",
+    "text": "10 inch (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=2-in-1-or-detachable-form-factor",
+    "text": "2-i-1 eller löstagbar (11)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=laptop-form-factor",
+    "text": "Bärbar dator (63)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=tablet-form-factor",
+    "text": "Surfplatta (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-intel-processors-processor-brand",
+    "text": "Alla processorer från Intel (51)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-amd-processors-processor-brand",
+    "text": "Alla AMD-processorer (20)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-mediatek-processors-processor-brand",
+    "text": "Alla Mediatek-processorer (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-snapdragon-processors-processor-brand",
+    "text": "Alla Snapdragon-processorer (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-nvidia-processors-processor-brand",
+    "text": "Alla NVIDIA-processorer (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-ultra-x9-processor",
+    "text": "Series 3 Intel Core Ultra X9 (4)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-ultra-x7-processor",
+    "text": "Series 3 Intel Core Ultra X7 (5)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=series-3-intel-core-ultra-9-processor",
+    "text": "Series 3 Intel Core Ultra 9 (8)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=series-3-intel-core-ultra-7-processor",
+    "text": "Series 3 Intel Core Ultra 7 (16)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=series-3-intel-core-ultra-5-processor",
+    "text": "Series 3 Intel Core Ultra 5 (14)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=series-3-intel-core-7-processor",
+    "text": "Series 3 Intel Core 7 (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=series-3-intel-core-5-processor",
+    "text": "Series 3 Intel Core 5 (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-ultra-9-processor",
+    "text": "Intel Core Ultra 9 (9)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-ultra-7-processor",
+    "text": "Intel Core Ultra 7 (16)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-ultra-5-processor",
+    "text": "Intel Core Ultra 5 (9)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-9-processor",
+    "text": "Intel Core 9 (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-7-processor",
+    "text": "Intel Core 7 (7)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-5-processor",
+    "text": "Intel Core 5 (7)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-3-processor",
+    "text": "Intel Core 3 (5)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-i7-processor",
+    "text": "Intel Core i7 (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-i5-processor",
+    "text": "Intel Core i5 (3)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-i3-processor",
+    "text": "Intel Core i3 (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-core-n-series-processor",
+    "text": "Intel Core N-Series (4)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=intel-pentium-processor",
+    "text": "Intel Pentium (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-ryzen-ai-9-processor",
+    "text": "AMD Ryzen AI 9 (8)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-ryzen-ai-7-processor",
+    "text": "AMD Ryzen AI 7 (8)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-ryzen-ai-5-processor",
+    "text": "AMD Ryzen AI 5 (11)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-ryzen-9-processor",
+    "text": "AMD Ryzen 9 (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-ryzen-7-processor",
+    "text": "AMD Ryzen 7 (7)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-ryzen-5-processor",
+    "text": "AMD Ryzen 5 (9)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-ryzen-3-processor",
+    "text": "AMD Ryzen 3 (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=snapdragon-x-plus-processor",
+    "text": "Snapdragon X Plus (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-core-x-20-cores-processor",
+    "text": "NVIDIA N1x RTX Spark (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=mediatek-kompanio-540-processor",
+    "text": "Mediatek Kompanio 540 (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=windows-11-pro-operating-system",
+    "text": "Windows 11 Pro (63)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=windows-11-home-operating-system",
+    "text": "Windows 11 Home (45)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=ubuntu-operating-system",
+    "text": "Ubuntu (11)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=chrome-operating-system",
+    "text": "Chrome (4)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=128-gb-memory",
+    "text": "128 GB (3)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=96-gb-memory",
+    "text": "96 GB (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=64-gb-memory",
+    "text": "64 GB (37)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=48-gb-memory",
+    "text": "48 GB (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=32-gb-memory",
+    "text": "32 GB (63)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=24-gb-memory",
+    "text": "24 GB (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=16-gb-memory",
+    "text": "16 GB (67)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=8-gb-memory",
+    "text": "8 GB (29)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=4-gb-memory",
+    "text": "4 GB (5)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-nvidia-graphics-graphics-brand",
+    "text": "All NVIDIA-grafik (13)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-amd-graphics-graphics-brand",
+    "text": "All AMD-grafik (8)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=all-intel-graphics-graphics-brand",
+    "text": "Allt inom Intel grafik (22)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=geforce-rtx-5090-graphics-card",
+    "text": "NVIDIA GeForce RTX 5090 (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=geforce-rtx-5070-graphics-card",
+    "text": "NVIDIA GeForce RTX 5070 (4)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=geforce-rtx-5070-ti-graphics-card",
+    "text": "NVIDIA GeForce RTX 5070 Ti (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=geforce-rtx-5060-graphics-card",
+    "text": "NVIDIA GeForce RTX 5060 (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=geforce-rtx-3050-graphics-card",
+    "text": "NVIDIA GeForce RTX 3050 (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-spark-6144-blackwell-graphics-card",
+    "text": "NVIDIA RTX Spark 6144-core Blackwell (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-spark-5120-blackwell-graphics-card",
+    "text": "NVIDIA RTX Spark 5120-core Blackwell (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-pro-5000-blackwell-graphics-card",
+    "text": "NVIDIA RTX PRO 5000 Blackwell (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-pro-4000-blackwell-graphics-card",
+    "text": "NVIDIA RTX PRO 4000 Blackwell (2)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-pro-3000-blackwell-graphics-card",
+    "text": "NVIDIA RTX PRO 3000 Blackwell (3)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-pro-2000-blackwell-graphics-card",
+    "text": "NVIDIA RTX PRO 2000 Blackwell (5)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-pro-1000-blackwell-graphics-card",
+    "text": "NVIDIA RTX PRO 1000 Blackwell (5)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=nvidia-rtx-pro-500-blackwell-graphics-card",
+    "text": "NVIDIA RTX PRO 500 Blackwell (1)"
+   },
+   {
+    "href": "https://www.dell.com/sv-se/shop/laptop-computers/scr/laptop/appref=amd-radeon-780m-graphics-card",
+    "text": "AMD Radeon 780M (1)"
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.asus.com/se/",
+  "checkedAt": "2026-11-25T20:33:39.694Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera alla",
+  "finalUrl": "https://www.asus.com/se/",
+  "title": "ASUS Sverige",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "ASUS Sverige"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [
+   "Meddela mig"
+  ],
+  "priceTexts": [
+   "35 490,00 SEK"
+  ],
+  "hits": {
+   "keyboard": [
+    "Tangentbord"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [],
+   "returns": [
+    "returer",
+    "returer inom 14 dagar"
+   ],
+   "battery": [],
+   "condition": [],
+   "delivery": [
+    "frakt",
+    "frakt på alla ordrar över 1100 SEK"
+   ],
+   "charger": [
+    "laddare"
+   ]
+  },
+  "text": "Switch to your local site to shop online and see relevant promotions.\nStanna här\nSwitch to the US website\nHoppa till innehåll\nHjälp med tillgänglighet\nStore\nAI\nMobile / Handhelds\nLaptops\nDesktops / Skärmar\nModerkort / Komponenter\nNätverk / IoT / Servrar\nTillbehör\nSupport\nSe erbjudanden\nBlack Friday-erbjudandena är live nu! Spara stort på ASUS-laptops i ASUS Store. \nLogga in nu!\nPOWERING EVERY AI CHOICE\nTHE RIGHT AGENT COMPUTER FOR CLOUD, LOCAL, OR HYBRID AI.\nLearn More\nProArt P16 & P14\nRevolutionary AI for Agents & Creativity\nLevel up your laptop\nLearn More\nLevel up your laptop\nLearn More\nHeta erbjudanden\nBärbara Datorer Erbjudanden\nSkärmar / Stationära datorer Erbjudanden\nModerkort / komponenter Erbjudanden\nTillbehör Erbjudanden\nSe Alla Deals\n13.3”\nProArt PX13 (HN7306); Copilot+ PC\nHN7306WI-LX008X\n4.6\n(12)\n4.6 (12) — 4.6 av 5 stjärnor. 12 recensioner\nASUS estore-pris\n35 490,00 SEK\nWindows 11 Pro\nNVIDIA® GeForce RTX™ 4070 Laptop GPU, AMD Radeon™ Graphics\nAMD XDNA™ NPU up to 50TOPS\n13.3\" 3K (2880 x 1800) 16:10 60Hz 400nits OLED touchscreen\n2TB M.2 NVMe™ PCIe® 4.0 SSD storage\nSe mindre\nMeddela mig\nLäs mer\nFri frakt\nFri frakt på alla ordrar över 1100 SEK\nFå hjälp med köpet\nDu kan maila eller ringa oss\nEnkla returer\nSmidiga returer inom 14 dagar\nSäker betalning\nMed krypterad betalningshantering\nKöp och läs mer\nMobile / Handhelds\nTelefon\nTillbehör\nLaptops\nFör hemmet\nFör gaming\nFör jobb\nFör kreatörer\nFör studenter\nTillbehör\nDesktops / Skärmar\nBildskärmar\nAllt-i-ett-datorer\nTower PC\nGaming Tower-datorer\nMini PCs\nNUCs\nProjektorer\nGlasögon\nModerkort / Komponenter\nModerkort\nGrafikkort\nChassi\nKylning\nNätaggregat\nLjudkort\nOptiska enheter\nExterna grafikdockor\nNätverk / IoT / Servrar\nRouters\nMesh-system för hela hemmet\nTrådlösa nätverkskort\nWired Solutions\nLösningar för företagsnätverk\nSuperdator för AI för stationära datorer\nTillbehör\nTangentbord\nMöss och musmattor\nHeadset och ljud\nStreaming Kit\nKläder, väskor och utrustning\nFodral och skydd\nAdaptrar och laddare\nDockor, donglar och kabel\nPowerbanks\nOm oss\nOm ASUS\nKarriär\nNyheter och Press\nASUSTOR Inc.\nLediga tjänster\nASUSTOR Inc.\nASUS Cloud Corporation\nUniMax Electronics Inc.\nFind Jobs\nSe Mer\nAI PC\nEducation Store\nASUS Design Center\nROG\nProArt\nZenBook\nArmoury Crate\nAura\nASUS Blog\nSupport\nService och support\nMaila oss\nRing oss\nProduktregistrering\nDrivrutiner\nSecurity Advisory\nASUS Support Videos\nMyASUS\nSustainability\nESG\nEnvironment\nFå de senaste erbjudandena och mer\nRegistrera dig\nSweden / Svenska\n©ASUSTeK Computer Inc. Med ensamrätt.\nMeddelande om användarvillkor\nSekretesspolicy\nCookieinställning\nYour cookie preferences have been saved. All cookies accepted.",
+  "links": [
+   {
+    "href": "https://www.asus.com/se/deals/laptops/",
+    "text": "Erbjudanden"
+   },
+   {
+    "href": "https://www.asus.com/se/store/laptops/",
+    "text": "Nyheter"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-home/all-series/filter?Spec=126640",
+    "text": "Laptops"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-gaming/all-series/filter?Spec=126644",
+    "text": "Gaming"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-creators/proart/filter?Series=ProArt&Spec=414803",
+    "text": ""
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-creators/proart/proart-p16-h7607/",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.asus.com/se/Laptops/For-Work/ExpertBook/ASUS-ExpertBook-Ultra",
+    "text": ""
+   },
+   {
+    "href": "https://www.asus.com/se/deals/black-friday/laptops/for-gaming/",
+    "text": ""
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-work/expertbook/asus-expertbook-ultra/",
+    "text": ""
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-creators/proart/proart-px13-hn7306/",
+    "text": ""
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-home/all-series/",
+    "text": "För hemmet"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-gaming/all-series/",
+    "text": "För gaming"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-work/all-series/",
+    "text": "För jobb"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-creators/all-series/",
+    "text": "För kreatörer"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-students/all-series/",
+    "text": "För studenter"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/accessories/all-series/",
+    "text": "Tillbehör"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/zenbook-series-home/",
+    "text": "ZenBook"
+   }
+  ],
+  "status": "OK"
+ }
+]

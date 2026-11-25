@@ -1,0 +1,504 @@
+[
+ {
+  "url": "https://www.elgiganten.se/search?q=laptop%2032gb",
+  "checkedAt": "2026-11-25T20:32:12.406Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera alla",
+  "finalUrl": "https://www.elgiganten.se/search?q=laptop%2032gb",
+  "title": "Sökresultat för \"laptop 32gb\" – Elgiganten",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [
+    "öppet köp för klubbmedlemmar"
+   ],
+   "battery": [],
+   "condition": [],
+   "delivery": [
+    "leverans",
+    "Leverans- och installationsavtal"
+   ],
+   "charger": []
+  },
+  "text": "Äntligen Black Friday! På fredag öppnar våra butiker redan kl 8.00. Lokala avvikelser kan förekomma\nHoppa över navigation\nKundtjänst\nPrivatkundFöretagskund\nMina Favoriter\nMeny\nHitta butik\nLogga in\nKundvagn\nHoppa över filter\nFILTER\n \n \nBoka & Hämta inom 60 min\n50 dagars öppet köp för klubbmedlemmar\nPrismatch\nKundtjänst\nKundtjänst\nHitta butik/varuhus\nSpåra din leverans\nSupport via fjärrhjälp\nBluffmail m.m.\nKontakta oss\nÅngra din beställning\nInformation\nLeverans- och installationsavtal\nCookies på Elgiganten\nMarketplace\nPersonuppgiftspolicy\nVisselblåsning\nInspiration\nKampanjer\nGuider & inspiration\nJulklappstips 2026\nBlack Friday / Black Week 2026\nMellandagsrea 2026\nOm Elgiganten\nOm oss\nOm Elkjøp Nordic\nLedningsgrupp\nJobba hos oss\nElgigantenfonden\nElgiganten Företag\nKundklubb\nPressrum\nHållbarhet\nKöpvillkor\nProduktkategorier\nVarumärken\nTillgänglighetsredogörelse\nReklamationsrätt\nCookieinställningar\n©2026 Elgiganten AB. All rights reserved. Organisationsnummer: 556471-4474.\nProdukter valda för jämförelse: 0.",
+  "links": [],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.power.se/search/?q=laptop%2032gb",
+  "checkedAt": "2026-11-25T20:32:19.727Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera alla",
+  "finalUrl": "https://www.power.se/search/?q=laptop+32gb",
+  "title": "Sökresultat - Power.se",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "Sökresultat - Power.se"
+  },
+  "buyButtons": [
+   "Lägg till i jämförelse"
+  ],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [
+    "tangentbord med hög precision"
+   ],
+   "ram": [
+    "32 GB RAM, 2 TB M",
+    "32 GB RAM, 1 TB M"
+   ],
+   "os": [],
+   "warranty": [],
+   "returns": [
+    "ÖPPET KÖP"
+   ],
+   "battery": [],
+   "condition": [],
+   "delivery": [
+    "i lager online",
+    "LEVERANS"
+   ],
+   "charger": []
+  },
+  "text": "Kundservice\nHitta varuhus\nVarukorg\nMyPOWER\nUpp till 60% rabatt på utvalda vitvaror - se dealsen här!\nSÖKRESULTAT: ”LAPTOP 32GB”\nPRODUKTER\nKategori\nVarumärke\nPris\nAlla filter\nMest relevant\n3 \nprodukter\n \nMest relevant\nRazer Blade 16 (32GB/2TB/RTX 5090) 16\" bärbar dator\n(0)\nIntel® Core™ Ultra 9 386H\nNVIDIA GeForce RTX 5090 24 GB\n32 GB RAM, 2 TB M.2 NVMe SSD\n16\" WQXGA-skärm (2560 x 1600), OLED-panel\nUltrasnabb uppdateringsfrekvens på 240 Hz\nUppslukande högtalarsystem med 6 högtalare och THX Spatial Audio\nRevolutionerande kylning och gamingtangentbord med hög precision\nNästa generations anslutningar: Thunderbolt 5, Wi-Fi 7 och Bluetooth 6.0\nFå i lager online\nClick&Collect\nSpara\nLägg till i jämförelse\n65990\nSEK\nRazer Blade 16 (32GB/1TB/RTX 5080) 16\" bärbar dator\n(0)\nIntel® Core™ Ultra 9 386H\nNVIDIA GeForce RTX 5080 16 GB\n32 GB RAM, 1 TB M.2 NVMe SSD\n16\" WQXGA-skärm (2560 x 1600), OLED-panel\nUltrasnabb uppdateringsfrekvens på 240 Hz\nUppslukande högtalarsystem med 6 högtalare och THX Spatial Audio\nRevolutionerande kylning och gamingtangentbord med hög precision\nNästa generations anslutningar: Thunderbolt 5, Wi-Fi 7 och Bluetooth 6.0\nInte i lager online\nClick&Collect\nSpara\nLägg till i jämförelse\n52999\nSEK\nRazer Blade 16 (32GB/1TB/RTX 5070 Ti) 16\" bärbar dator\n(0)\nIntel® Core™ Ultra 9 386H\nNVIDIA GeForce RTX 5070 Ti 12 GB\n32 GB RAM, 1 TB M.2 NVMe SSD\n16\" WQXGA-skärm (2560 x 1600), OLED-panel\nUltrasnabb uppdateringsfrekvens på 240 Hz\nUppslukande högtalarsystem med 6 högtalare och THX Spatial Audio\nRevolutionerande kylning och gamingtangentbord med hög precision\nNästa generations anslutningar: Thunderbolt 5, Wi-Fi 7 och Bluetooth 6.0\n2026-11-27\nHämta i varuhus\nSpara\nLägg till i jämförelse\n46999\nSEK\nSök\n60\nDAGARS ÖPPET KÖP\nSNABB\nLEVERANS\n20.000+\nPRODUKTER I SORTIMENTET\n2% BONUS\nUNIK KUNDKLUBB\nTips & inspiration\nProdukter\nKöpguider\nInformation och teknik\nInspiration\nHjälp & vägledning\nVanliga frågor\nKundservice\nVillkor\nIntegritetspolicy\nÅngra din beställning\nTipsar\nBlack Friday 2026\nKarriär hos POWER\nMyPOWER\nPOWER Företag\nSäkerhet och rapportering av sårbarheter\nVi är POWER\nOm POWER\nMyPOWER\nPress\nVisselblåsning\nVarumärken\nLadda ner dina lagstadgade reklamationsrättigheter\nCookie- och datainställningar\nSäker betalning med:\nVi levererar med:",
+  "links": [
+   {
+    "href": "https://www.power.se/gaming/pc-och-tillbehor/gaming-laptop/razer-blade-16-32gb2tbrtx-5090-16-barbar-dator/p-4520909/?q=laptop%2032gb",
+    "text": "Razer Blade 16 (32GB/2TB/RTX 5090) 16\" bärbar dator"
+   },
+   {
+    "href": "https://www.power.se/gaming/pc-och-tillbehor/gaming-laptop/razer-blade-16-32gb1tbrtx-5080-16-barbar-dator/p-4520905/?q=laptop%2032gb",
+    "text": "Razer Blade 16 (32GB/1TB/RTX 5080) 16\" bärbar dator"
+   },
+   {
+    "href": "https://www.power.se/gaming/pc-och-tillbehor/gaming-laptop/razer-blade-16-32gb1tbrtx-5070-ti-16-barbar-dator/p-4520903/?q=laptop%2032gb",
+    "text": "Razer Blade 16 (32GB/1TB/RTX 5070 Ti) 16\" bärbar dator"
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.netonnet.se/search?query=laptop%2032gb",
+  "checkedAt": "2026-11-25T20:32:28.521Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.netonnet.se/search?query=laptop%2032gb",
+  "title": "Sök: laptop 32gb",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "Hemelektronik till Lagerpris"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [
+   "Bevaka"
+  ],
+  "priceTexts": [
+   "32 190:-",
+   "12 990:-",
+   "23 995:-"
+  ],
+  "hits": {
+   "keyboard": [],
+   "ram": [
+    "32 GB RAM",
+    "32 GB LPDDR5X minne",
+    "12GB lagring och 32GB RAM"
+   ],
+   "os": [],
+   "warranty": [
+    "garantibevis"
+   ],
+   "returns": [
+    "öppet köp",
+    "Ångerrätt",
+    "Öppet köp och retur"
+   ],
+   "battery": [],
+   "condition": [
+    "Outlet"
+   ],
+   "delivery": [
+    "i lager",
+    "Leveranstider"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till huvudinnehåll\nÄntligen Black Week på NetOnNet! Se alla erbjudanden här.\nKundservice\nHitta Lagershop & Öppettider\nHandla som företag\nTill startsidan\nLogga in\nKundvagn\nMeny\nSök\nHoppa över filter till sökresultat\nSökresultat för \"laptop 32gb\"\nVi har hittat 4 produkter som matchar din sökning.\nSortera efter\nRekommenderat\nKategori\nDator & Surfplatta\n(4)\nVarumärke\nASUS\n(2)\nApple\n(2)\nPris\nFrån\nTill\nKundbetyg\nBetyg\n(2)\nFinns i lager\nWebblager\n(2)\nNyhet\nBetyg\n(1)\nApple 14-inch MacBook Pro: Apple M6 chip with 12‑core CPU 12‑core GPU, 32GB, 1TB SSD - Space Black\nMacbook Pro 14 M6 (2026) 1TB (space black)\n•\nApple 12-kärnig M6 CPU\n•\n1 TB SSD\n•\n32 GB RAM\nPris att betala:\n32 190:-\nWebblager\nLägg i kundvagn\nNyhet\nBetyg\n(1)\nApple 14-inch MacBook Pro: Apple M6 chip with 12‑core CPU 12‑core GPU, 32GB, 1TB SSD - Silver\nMacbook Pro 14 M6 (2026) 1TB (sliver)\n•\nApple 12-kärnig M6 CPU\n•\n1 TB SSD\n•\n32 GB RAM\nPris att betala:\n32 190:-\nWebblager\nLägg i kundvagn\nNyhet\nBetyg\n(0)\nASUS S5406SA/U7-258V/32/1024/11H\n14\" laptop med Intel Core Ultra 7 och 32 GB RAM\n•\nIntel Core Ultra 7 processor\n•\n32 GB LPDDR5X minne\n•\n14\" WUXGA Lumina OLED-skärm\nPris att betala:\n12 990:-\nWebblager\nBevaka produkt\nNyhet\nBetyg\n(0)\nASUS UX5406SA-PV243X\n14\" Zenbook S 14 OLED, Intel Core Ultra 7, 32GB/512GB\n•\nIntel Core Ultra 7, 47 TOPS\n•\n512GB lagring och 32GB RAM\n•\n3K 120Hz OLED, fyra högtalare\nPris att betala:\n23 995:-\nWebblager\nBevaka produkt\nSida 1 av 1\nSå rangordnar vi produkterna här ovanför\nSom medlem får du ännu fler fördelar!\n90 dagars öppet köp\nSparade kvitton och garantibevis\nMedlemspriser\nLäs mer om NetOnNet Medlem\nBli medlem\nLogga in\nPopulära sidor\nTV\nApple\nOutlet\nLaptop\nNyheter\nGuider\nHem & Fritid\nMobiltelefoner\nBlack Friday 2026\nJulklappstips 2026\nKundservice\nLeveranstider\nKöpvillkor\nPresentkort\nKontakta oss\nÅngerrätt\nÖppet köp och retur\nVanliga frågor och svar\nServiceärenden\nLagershop och öppettider\nReklamationsrätt\nOm NetOnNet\nVilka är vi?\nPress\nHållbarhet\nLediga jobb\nVisselblåsning\nKomplett Group\nNetOnNet Norge\nNetOnNet Medlem\nTillgänglighetsredogörelse\nFölj oss\nVanliga frågor\nKontakta oss\nCookies\nIntegritetspolicy\nNetOnNet AB\nFöretagsgatan 69, 504 64 Borås\nOrg.nr: 5565204137",
+  "links": [
+   {
+    "href": "https://www.netonnet.se/art/black-friday",
+    "text": "Se alla erbjudanden här."
+   },
+   {
+    "href": "https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/apple-14-inch-macbook-pro-apple-m6-chip-with-12core-cpu-12core-gpu-32gb-1tb-ssd-space-black/1069344.8906/",
+    "text": "Apple 14-inch MacBook Pro: Apple M6 chip with 12‑core CPU 12‑core GPU, 32GB, 1TB SSD - Space Black Macbook Pro 14 M6 (2026) 1TB (space black)"
+   },
+   {
+    "href": "https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/apple-14-inch-macbook-pro-apple-m6-chip-with-12core-cpu-12core-gpu-32gb-1tb-ssd-silver/1069317.8906/",
+    "text": "Apple 14-inch MacBook Pro: Apple M6 chip with 12‑core CPU 12‑core GPU, 32GB, 1TB SSD - Silver Macbook Pro 14 M6 (2026) 1TB (sliver)"
+   },
+   {
+    "href": "https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/asus-asus-s5406sau7-258v32102411h/1065346.8906/",
+    "text": "ASUS S5406SA/U7-258V/32/1024/11H 14\" laptop med Intel Core Ultra 7 och 32 GB RAM"
+   },
+   {
+    "href": "https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/asus-asus-ux5406sa-pv243x/1068125.8906/",
+    "text": "ASUS UX5406SA-PV243X 14\" Zenbook S 14 OLED, Intel Core Ultra 7, 32GB/512GB"
+   },
+   {
+    "href": "https://www.netonnet.se/art/tv",
+    "text": "TV"
+   },
+   {
+    "href": "https://www.netonnet.se/art/outlet",
+    "text": "Outlet"
+   },
+   {
+    "href": "https://www.netonnet.se/art/dator-surfplatta/laptop",
+    "text": "Laptop"
+   },
+   {
+    "href": "https://www.netonnet.se/art/nyheter?sortBy=1",
+    "text": "Nyheter"
+   },
+   {
+    "href": "https://www.netonnet.se/art/hem-fritid",
+    "text": "Hem & Fritid"
+   },
+   {
+    "href": "https://www.netonnet.se/art/mobil-smartwatch/mobiltelefoner",
+    "text": "Mobiltelefoner"
+   },
+   {
+    "href": "https://www.netonnet.se/art/julklappstips",
+    "text": "Julklappstips 2026"
+   },
+   {
+    "href": "https://www.netonnet.se/art/dator-surfplatta",
+    "text": "Dator & Surfplatta"
+   },
+   {
+    "href": "https://www.netonnet.se/art/datorkomponenter",
+    "text": "Datorkomponenter"
+   },
+   {
+    "href": "https://www.netonnet.se/art/gaming",
+    "text": "Gaming"
+   },
+   {
+    "href": "https://www.netonnet.se/art/grill",
+    "text": "Grill"
+   },
+   {
+    "href": "https://www.netonnet.se/art/personvard",
+    "text": "Personvård"
+   },
+   {
+    "href": "https://www.netonnet.se/art/ljud",
+    "text": "Ljud"
+   },
+   {
+    "href": "https://www.netonnet.se/art/mobil-smartwatch",
+    "text": "Mobil & Smartwatch"
+   },
+   {
+    "href": "https://www.netonnet.se/art/vitvaror",
+    "text": "Vitvaror"
+   },
+   {
+    "href": "https://www.netonnet.se/art/lego",
+    "text": "LEGO"
+   },
+   {
+    "href": "https://www.netonnet.se/art/refurbished",
+    "text": "Refurbished"
+   },
+   {
+    "href": "https://www.netonnet.se/art/fyndvaror",
+    "text": "Fyndvaror"
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.webhallen.com/se/search?searchString=laptop%2032gb",
+  "checkedAt": "2026-11-25T20:32:36.372Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.webhallen.com/se/search?searchString=laptop%2032gb",
+  "title": "Sökresultat för laptop 32gb | Webhallen",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "13 000 kr",
+   "36 990 kr",
+   "49 990 kr",
+   "6 000 kr",
+   "17 990 kr",
+   "23 990 kr",
+   "32 190 kr",
+   "19 499 kr",
+   "44 990 kr",
+   "12 000 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 11 Home",
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "Garantivillkor"
+   ],
+   "returns": [
+    "Ångerrätt och öppet köp"
+   ],
+   "battery": [
+    "Batteritid (upp till)"
+   ],
+   "condition": [
+    "FYNDVARA",
+    "Fyndvara",
+    "skickar beställda varor som finns i vårt webblager inom 24 timmar"
+   ],
+   "delivery": [
+    "frakt över 800 kr",
+    "I lager i",
+    "frakt",
+    "Leveransvillkor"
+   ],
+   "charger": []
+  },
+  "text": " \n \nLogga in\nSkapa konto\nLogga in\n Samla XP till ditt konto\n Spara kvitton digitalt\nInte medlem? Skapa konto\n \nSpel\nGaming\nDatorer & Tillbehör\nDatorkomponenter\nNätverk & Smarta Hem\nTV, Ljud & Bild\nApple\nMobil\nHem & Hälsa\nLeksaker & Hobby\nFyndvaror\nBlack Week\nSe allt från BLACK WEEKS\nFri frakt över 800 kr.\nKundservice\nButiker\nFöretag\nCardboard\nFilter\nKategorier\nLaptop / Bärbar dator\n(42)\nMac\n(2)\nDatorer & Tillbehör\n(34)\nSurfplatta\n(1)\nMobil\n(1)\nI lager i\nWebblager\n(54)\nBredden (InfraCity)\n(24)\nHötorget, Sveavägen\n(11)\nFridhemsplan\n(7)\nRingen\n(9)\nVisa fler\nPris (kr)\n-\nTillverkare\nASUS\n(39)\nLenovo\n(10)\nAcer\n(12)\nApple\n(2)\nGigabyte\n(1)\nVisa fler\nSkärmstorlek\n16 tum\n(30)\n14 tum\n(17)\n15.6 tum\n(15)\n14.2 tum\n(2)\n13.3 tum\n(3)\nVisa fler\nUpplösning\n2880 x 1800\n(17)\n2560 x 1600\n(20)\n1920 x 1080\n(11)\n3024 x 1964\n(2)\n1920 x 1200\n(17)\nVisa fler\nUppdateringsfrekvens\n120 Hz\n(21)\n144 Hz\n(10)\n165 Hz\n(11)\n60 Hz\n(12)\n240 Hz\n(10)\nProcessorfamilj\nCore Ultra 9\n(6)\nRyzen 7\n(8)\nM6\n(2)\nRyzen AI 7\n(6)\nCore Ultra 7\n(11)\nVisa fler\nProcessor\nRAM storlek\nHårddiskutrymme\nGrafikkort\nOperativsystem\nVikt\nBatteritid (upp till)\nPekskärm\nBakgrundsbelysning\nNumeriskt tangentbord\nAntal USB-C-portar\nUSB-C-funktioner\nFingeravtrycksläsare\nAntal processorkärnor\nRAM Teknik\nMinneshastighet\nDedikerat grafikkort\nSökresultat för \"laptop 32gb\"\nAutoladdning av\nVisar 78 av 78 resultat\nVisar 78 av 78 resultat\nVisar 78 av 78 resultat\nFiltrera\nSortera på: Rekommenderad\nMenade du: laptop\nBlack Weeks!\n-13 000 kr\nAcer Predator Helios Neo 16 AI PHN16-I71\nÖver 16\" / 16\" / 2560 x 1600 / Core Ultra 9 / 290HX Plus / 32 GB / 1.024 TB / GeForce RTX 5080 / Windows 11 Home\n36 990 kr\n49 990 kr\n \nWebblager\n \nButiker \nBlack Weeks!\n-6 000 kr\nLenovo LOQ 15AHP10\n15\"-15,9\" / 15.6\" / 1920 x 1080 / 144 Hz / Ryzen 7 / 16 GB / 1 TB / GeForce RTX 5060 / Windows 11 Home\n17 990 kr\n23 990 kr\n \nWebblager\n \nButiker \nApple MacBook Pro 14\" M6 chip\nM6 / 14.2\" / 3024 x 1964 / 1 TB / 12-kärnor / 32 GB / Apple M6 12-core / Silver\n32 190 kr\n \nWebblager\n \nButiker \nASUS Zenbook S16 | Ryzen AI 7 | 32GB | 1TB\n16\" / 2880 x 1800 / 120 Hz / Ryzen AI 7 / 32 GB / 1 TB / AMD Radeon 840M / Windows 11 Home\n19 499 kr\n \nWebblager\n \nButiker \nASUS ROG Zephyrus G14 GU405AR 14\"\nGaming laptop / 14\" / 2880 x 1800 / 120 Hz / Core Ultra 9 / 386H / 32 GB / 1 TB / GeForce RTX 5070 Ti / Windows 11 Home\n44 990 kr\n \nWebblager\n \nButiker \nBlack Weeks!\n-12 000 kr\nASUS ZenBook Duo UX8407AA\n14\" / 2880 x 1800 / 144 Hz / Core Ultra X7 / 358H / 32 GB / 512 GB / Intel Arc Graphics / Windows 11 Pro\n31 990 kr\n43 990 kr\n \nWebblager\n \nButiker \nASUS TUF Gaming A16 16\" 2.5K 165 Hz\nGaming laptop / 16\" / 2560 x 1600 / 165 Hz / Ryzen 7 / 32 GB / 1 TB / GeForce RTX 5060 / Windows 11 Home\n29 990 kr\n \nWebblager\n \nButiker \nGIGABYTE AORUS ELITE 16 | RTX 5070 | Core Ultra 9 | 32GB | 2TB / 16\" / Intel Core Ultra 9 275 / Win 11 / AORUS ELITE 16 BWHC3NEC\nGaming laptop\n46 490 kr\n \nWebblager\n \nButiker \nASUS ProArt P16 H7607BA-SR337X\n16\" / 2880 x 1800 / 120 Hz / RTX Spark / NX1 / 32 GB / 1 TB / NVIDIA Blackwell RTX / Windows 11 Pro\n37 990 kr\n \nWebblager\n \nButiker \nLenovo Legion 5 15AHP10 / 15,1\" / RTX 5060 / Ryzen 7 260 / 16GB / 512GB / Win 11\n15\"-15,9\" / 15.1\" / 2560 x 1600 / 165 Hz / Ryzen 7 / 16 GB / 512 GB / GeForce RTX 5060 / Windows 11 Home\n25 990 kr\n \nWebblager\n \nButiker \nLenovo Legion Pro 5\nGaming laptop / 16\" / 2560 x 1600 / 165 Hz / Ryzen 9 / 9955HX / 32 GB / 1 TB / GeForce RTX 5070 / Windows 11 Home\n39 990 kr\n \nWebblager\n \nButiker \nASUS V14 X1407CA-LY048W\n14\" / 1920 x 1200 / Core Ultra 5 / 225H / 16 GB / 512 GB / Intel Arc Graphics / Windows 11 Home\n11 990 kr\n \nWebblager\n \nButiker \nASUS ProArt 13 HN7306EA-LX018W\n13.3\" / 2880 x 1800 / 60 Hz / Ryzen AI Max+ / 32 GB / 1 TB / AMD Radeon 8060S / Windows 11 Home\n25 990 kr\n \nWebblager\n \nButiker \nASUS Zenbook S 16 | Intel Arc | Core Ultra 7 | 32GB | 512GB\n16\" / 2880 x 1800 / 120 Hz / Core Ultra 7 / 258V / 32 GB / 512 GB / Intel Arc Graphics / Windows 11 Home\n19 999 kr\n \nWebblager\n \nButiker \nASUS ProArt P16 | RTX 5070 | Ryzen AI 9 | 32GB | 1TB\n16\" / 2880 x 1800 / 120 Hz / Ryzen AI 9 / 32 GB / 1 TB / GeForce RTX 5070 / Windows 11 Pro\n41 999 kr\n \nWebblager\n \nButiker \nASUS Zenbook S14 | Core Ultra 7 | 32GB | 512GB\n14\" / 2880 x 1800 / 120 Hz / Core Ultra 7 / 32 GB / 512 GB / Intel Graphics / Windows 11 Pro\n25 999 kr\n \nWebblager\n \nButiker \nASUS ROG Strix G16 WQXGA\nGaming laptop / 16\" / 2560 x 1600 / 240 Hz / Ryzen 9 / 9955HX / 32 GB / 1 TB / GeForce RTX 5070 / Windows 11 Home\n30 990 kr\n \nWebblager\n \nButiker \nBlack Weeks!\n-7 000 kr\nASUS ROG Strix G635LR-RW018W\nGaming laptop / 16\" / 2560 x 1600 / 240 Hz / Core Ultra 9 / R9-9955HX / 32 GB / 1 TB / GeForce RTX 5070 Ti / Windows 11 Home\n38 490 kr\n45 490 kr\n \nWebblager\n \nButiker \nBlack Weeks!\n-1 500 kr\nASUS Zenbook D14 UX8406CA-QL305W\n14\" / 1920 x 1200 / 60 Hz / Core Ultra 7 / 255H / 32 GB / 1 TB / Intel Arc Graphics / Windows 11 Home\n20 990 kr\n22 490 kr\n \nWebblager\n \nButiker \nBlack Weeks!\n-3 000 kr\nASUS Vivobook S16 D3607GA-SH063W\n11 990 kr\n14 990 kr\n \nWebblager\n \nButiker \nreMarkable Paper Pure 10,3\" + Marker Plus + Sleeve Folio - Mist Green\nDigitala anteckningsblock / 10.3\" / 32 GB / Paper Pure / reMarkable OS (based on Linux)\n5 990 kr\n \nWebblager\n \nButiker \nApple MacBook Pro 14\" M6 chip\nM6 / 14.2\" / 3024 x 1964 / 1 TB / 12-kärnor / 32 GB / Apple M6 12-core / Space black\n32 190 kr\n \nWebblager\n \nButiker \nASUS Zenbook S16 UM5606GA-SS207W\n16\" / 2880 x 1800 / 120 Hz / Ryzen AI 9 / 32 GB / 1 TB / AMD Radeon 880M / Windows 11 Home\n21 990 kr\n \nWebblager\n \nButiker \nASUS VivoBook S14 S5406SA 14\"\n14\" / 1920 x 1200 / 60 Hz / Core Ultra 7 / 258V / 32 GB / 1 TB / Intel Arc Graphics / Windows 11 Home\n(4)\n14 499 kr\n \nWebblager\n \nButiker \nVisar 24 av 78 produkter\nGå till toppen av sidan\nVisa fler produkter\nDu kanske även är intresserad av dessa produkter\n-5 000 kr\nLenovo LOQ 15AHP11 15,3\" WUXGA 165 Hz\nGaming laptop / 15.3\" / 1920 x 1200 / 165 Hz / Ryzen 7 / 16 GB / 512 GB / GeForce RTX 5050 / Windows 11 Home\n15 990 kr\n20 990 kr\n \nWebblager\n \nButiker \n-8 000 kr\nAcer Predator Helios Neo | RTX 5070 | Core i9 | 16GB | 1TB / 16\" / Intel Core i9-14900X / Win 11 / NH.U4QED.002\nÖver 16\" / 16\" / 2560 x 1600 / 180 Hz / Core i9 / 14900HX / 16 GB / 1.024 TB / NVIDIA GeForce RTX 5070 / Windows 11 Home\n24 490 kr\n32 490 kr\n \nWebblager\n \nButiker \n-4 000 kr\nAcer Aspire Go 15 AG15-42P 15,6\"\n15\"-15,9\" / 15.6\" / 1920 x 1080 / Ryzen 5 / 7430U / 16 GB / 512 GB / AMD Radeon Graphics / Windows 11 Home\n(1)\n7 990 kr\n11 990 kr\n \nWebblager\n \nButiker \n-8 500 kr\nAcer Predator Helios Neo 16 PHN16-I31\nÖver 16\" / 16\" / 2560 x 1600 / 180 Hz / Core i7 / I7-14650HX / 16 GB / 1.024 TB / NVIDIA GeForce RTX 5070 / Windows 11 Home\n(1)\n23 490 kr\n31 990 kr\n \nWebblager\n \nButiker \n-4 500 kr\nLenovo IdeaPad Slim 5 14IMH\n14\"-14,9\" / 14\" / 1920 x 1200 / 60 Hz / Core Ultra 9 / 185H / 16 GB / 512 GB / Intel Arc Graphics / Windows 11 Home\n11 990 kr\n16 490 kr\n \nWebblager\n \nButiker \nAcer Aspire Go AG16 WU 16\"\n16\" / 1920 x 1200 / 120 Hz / Core 5 / 120U / 16 GB / 512 GB / Intel Graphics / Windows 11 Home\n7 990 kr\n \nWebblager\n \nButiker \nASUS ROG Zephyrus G16\nGaming laptop / 16\" / 2560 x 1600 / 240 Hz / Core Ultra 9 / 386H / 32 GB / 1 TB / GeForce RTX 5070 / Windows 11 Home\n43 490 kr\n \nWebblager\n \nButiker \nASUS Vivobook S14 WUXGA OLED\n14\" / 1920 x 1200 / 60 Hz / Ryzen AI 7 / 32 GB / 512 GB / AMD Radeon 860M / Windows 11 Home\n(4)\n14 990 kr\n \nWebblager\n \nButiker \nASUS ROG Zephyrus G14 GU405AP OLED\n14\" / 2880 x 1800 / 120 Hz / Core Ultra 9 / 386H / 32 GB / 1 TB / GeForce RTX 5070 / Inget operativsystem\n37 999 kr\n \nWebblager\n \nButiker \nFYNDVARA KLASS 1\nAcer Predator Helios 18 AI PH18-73-937V (Fyndvara klass 1)\nGaming laptop / 18\" / 2560 x 1600 / 250 Hz / Core Ultra 9 / 275HX / 32 GB / 1.024 TB / 1.024 TB / GeForce RTX 5080 / Windows 11 Home\n(1)\n43 690 kr\n \nWebblager\n \nButiker \n-5 000 kr\nASUS Vivobook S16 K3607AA-SH080W\n16\" / 1920 x 1200 / 60 Hz / Core Ultra 7 / 16 GB / 1 TB / Intel Graphics / Windows 11 Home\n12 990 kr\n17 990 kr\n \nWebblager\n \nButiker \n-13 500 kr\nASUS ROG Zephyrus G14\nGaming laptop / 14\" / 2880 x 1800 / 120 Hz / Core Ultra 9 / 386H / 32 GB / 1 TB / GeForce RTX 5070 / Windows 11 Home\n36 490 kr\n49 990 kr\n \nWebblager\n \nButiker \nSida 1 av 3\nWebhallen skickar beställda varor som finns i vårt webblager inom 24 timmar om du väljer expressfrakt. Alla priser är i svenska kronor inklusive moms och gäller även i butik.\nVisa priser inklusive moms\nInformation\nKöpvillkor\nLeveransvillkor\nGarantivillkor\nÅngerrätt och öppet köp\nReklamation\nPersonuppgifter\nIntegritetspolicy\nCookieinställningar\nBlack Friday\nOm Webhallen\nVåra butiker\nOm Webhallen\nMiljöpolicy\nLediga tjänster\nTillverkare\nWebhallen Företag\nKöp presentkort\nMedlemsförmåner\nKontakta oss\nWebhallens nyhetsbrev\nEmail\nSkriv upp mig!\n© 1999-2026 Webhallen Sverige AB, Org.Nr: 556558-8224",
+  "links": [
+   {
+    "href": "https://www.webhallen.com/se/product/399445-Acer-Predator-Helios-Neo-16-AI-PHN16-I71",
+    "text": "Black Weeks! -13 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399446-Lenovo-LOQ-15AHP10",
+    "text": "Black Weeks! -6 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/403670-Apple-MacBook-Pro-14-M6-chip-12-core-CPU-12-core-GPU-32GB-1TB-SSD-Silver",
+    "text": "Apple MacBook Pro 14\" M6 chip"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/403200-ASUS-Zenbook-S16-Ryzen-AI-7-32GB-1TB-16-AMD-Ryzen-AI-7-445-Win-11-UM5606GA-SS265W",
+    "text": "ASUS Zenbook S16 | Ryzen AI 7 | 32GB | 1TB"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394559-ASUS-ROG-Zephyrus-G14-GU405AR-14",
+    "text": "ASUS ROG Zephyrus G14 GU405AR 14\""
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/401390-ASUS-ZenBook-Duo-UX8407AA-14-Intel-Arc-Core-Ultra-X7-358H-32GB-512GB-Win-11-Pro",
+    "text": "Black Weeks! -12 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394550-ASUS-TUF-Gaming-A16-16-2-5K-165-Hz",
+    "text": "ASUS TUF Gaming A16 16\" 2.5K 165 Hz"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/403419-GIGABYTE-AORUS-ELITE-16-RTX-5070-Core-Ultra-9-32GB-2TB-16-Intel-Core-Ultra-9-275-Win-11-AORUS-ELITE-16-BWHC3NEC",
+    "text": "GIGABYTE AORUS ELITE 16 | RTX 5070 | Core Ultra 9 | 32GB | 2TB / 16\" / Intel Core Ultra 9 275 / Win 11 / AORUS ELITE 16 BWHC3NEC"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/402762-ASUS-ProArt-P16-H7607BA-SR337X-NVIDIA-RTX-Spark-N1X-32GB-RAM-1TB-SSD-16-OLED-Win-11-Pro",
+    "text": "ASUS ProArt P16 H7607BA-SR337X"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399444-Lenovo-Legion-5-15AHP10-15-1-RTX-5060-Ryzen-7-260-16GB-512GB-Win-11",
+    "text": "Lenovo Legion 5 15AHP10 / 15,1\" / RTX 5060 / Ryzen 7 260 / 16GB / 512GB / Win 11"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/381836-Lenovo-Legion-Pro-5-16-RTX-5070-Ryzen-9-9955HX-32GB-1TB-Win-11",
+    "text": "Lenovo Legion Pro 5"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394536-ASUS-V14-X1407CA-LY048W-14-Ultra-5-Processor-225H-16GB-512GB",
+    "text": "ASUS V14 X1407CA-LY048W"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394554-ASUS-ProArt-13-HN7306EA-LX018W-13-3-Ryzen-AI-MAX-388-32GB-1TB",
+    "text": "ASUS ProArt 13 HN7306EA-LX018W"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/403195-ASUS-Zenbook-S-16-Intel-Arc-Core-Ultra-7-32GB-512GB-16-Intel-Core-Ultra-7-258V-Win-11-UX5606SA-RK255W",
+    "text": "ASUS Zenbook S 16 | Intel Arc | Core Ultra 7 | 32GB | 512GB"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/403197-ASUS-ProArt-P16-RTX-5070-Ryzen-AI-9-32GB-1TB-16-AMD-Ryzen-AI-9-465-Win11-H7606GP-SR010X",
+    "text": "ASUS ProArt P16 | RTX 5070 | Ryzen AI 9 | 32GB | 1TB"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/403198-ASUS-Zenbook-S14-Core-Ultra-7-32GB-512GB-14-Intel-Core-Ultra-7-355-Win-11-UX5406AA-SU535X",
+    "text": "ASUS Zenbook S14 | Core Ultra 7 | 32GB | 512GB"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/391204-ASUS-ROG-Strix-G16-WQXGA-16-GeForce-RTX-5070-Ryzen-9-9955HX-240Hz-32GB-1TB",
+    "text": "ASUS ROG Strix G16 WQXGA"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/377088-ASUS-ROG-Strix-G635LR-RW018W-16-RTX5070-Ti-R9-9955HX-32-GB-1-TB",
+    "text": "Black Weeks! -7 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394549-ASUS-Zenbook-D14-UX8406CA-QL305W-14-Ultra-7-255H-32GB-1TB",
+    "text": "Black Weeks! -1 500 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394540-ASUS-Vivobook-S16-Ryzen-AI-7-32GB-1TB-16-AMD-Ryzen-AI-7-445-Win-11-D3607GA-SH063W",
+    "text": "Black Weeks! -3 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/400585-reMarkable-Paper-Pure-10-3-Marker-Plus-Sleeve-Folio-Mist-Green",
+    "text": "reMarkable Paper Pure 10,3\" + Marker Plus + Sleeve Folio - Mist Green"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/403685-Apple-MacBook-Pro-14-M6-chip-12-core-CPU-12-core-GPU-32GB-1TB-SSD-Space-Black",
+    "text": "Apple MacBook Pro 14\" M6 chip"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394569-ASUS-Zenbook-S16-UM5606GA-SS207W-16-Ryzen-AI-9-465-32GB-1TB",
+    "text": "ASUS Zenbook S16 UM5606GA-SS207W"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/401389-ASUS-VivoBook-S14-S5406SA-14",
+    "text": "ASUS VivoBook S14 S5406SA 14\""
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399454-Lenovo-LOQ-15AHP11-15-3-WUXGA-165-Hz",
+    "text": "-5 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399451-Acer-Predator-Helios-Neo-RTX-5070-Core-i9-16GB-1TB-16-Intel-Core-i9-14900X-Win-11-NH-U4QED-002",
+    "text": "-8 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399456-Acer-Aspire-Go-15-AG15-42P-15-6",
+    "text": "-4 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399467-Acer-Predator-Helios-Neo-16-PHN16-I31",
+    "text": "-8 500 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399465-Lenovo-IdeaPad-Slim-5-14IMH",
+    "text": "-4 500 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/390874-Acer-Aspire-Go-AG16-WU-16-Intel-C5-120U-16GB-512GB-Win-11",
+    "text": "Acer Aspire Go AG16 WU 16\""
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394563-ASUS-ROG-Zephyrus-G16-16-Core-Ultra-9-386H-RTX-5070-240Hz-OLED",
+    "text": "ASUS ROG Zephyrus G16"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/390999-ASUS-Vivobook-S14-WUXGA-OLED-14-Radeon-860M-Ryzen-AI-7-350-32GB-512GB",
+    "text": "ASUS Vivobook S14 WUXGA OLED"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/399103-ASUS-ROG-Zephyrus-G14-GU405AP-OLED-14-3K-RTX-5070-Core-Ultra-9-386H-32GB-1TB-No-OS",
+    "text": "ASUS ROG Zephyrus G14 GU405AP OLED"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/396732-Acer-Predator-Helios-18-AI-PH18-73-937V-18-RTX-5080-U9275HX-32GB-2TB-Fyndvara-klass-1",
+    "text": "FYNDVARA KLASS 1"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394567-ASUS-Vivobook-S16-K3607AA-SH080W-16-Ultra-7-355-16GB-1TB",
+    "text": "-5 000 kr"
+   },
+   {
+    "href": "https://www.webhallen.com/se/product/394546-ASUS-ROG-Zephyrus-G14-Intel-Core-Ultra-9-386H-NVIDIA-GeForce-RTX-5070-14-3K-OLED-120-Hz-Windows-11",
+    "text": "-13 500 kr"
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.dustin.se/search?q=laptop%2032gb",
+  "checkedAt": "2026-11-25T20:32:44.317Z",
+  "method": "playwright-chromium",
+  "httpStatus": 403,
+  "finalUrl": "https://www.dustin.se/search?q=laptop%2032gb",
+  "title": "Vänta...",
+  "blocked": true,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": " \nBekräfta att du är en människa. Det kan ta några sekunder.\n \nClient IP: 160.79.106.18 - RAY ID: a6036ca9ee74731a",
+  "links": [],
+  "status": "BLOCKED"
+ },
+ {
+  "url": "https://www.komplett.se/search?q=laptop%2032gb",
+  "checkedAt": "2026-11-25T20:32:51.534Z",
+  "method": "playwright-chromium",
+  "httpStatus": 502,
+  "finalUrl": "https://www.komplett.se/search?q=laptop%2032gb",
+  "title": "",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "upstream request failed",
+  "links": [],
+  "status": "OK"
+ }
+]

@@ -1,0 +1,62 @@
+[
+ {
+  "url": "https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-fair",
+  "checkedAt": "2026-11-25T20:37:49.967Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-fair",
+  "title": "HP EliteBook 840 G9 - Intel Core i7-1265U / 32GB / 1TB / Svenskt | Reuseit",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "HP EliteBook 840 G9 - Intel Core i7-1265U / 32GB / 1TB / Svenskt | Reuseit"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "404!\nPage not Found\nsomething went wrong!\nReload Page",
+  "status": "OK"
+ },
+ {
+  "url": "https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-new-battery-fair",
+  "checkedAt": "2026-11-25T20:37:57.699Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-new-battery-fair",
+  "title": "HP EliteBook 840 G9 Touch - Nytt batteri | Reuseit",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "HP EliteBook 840 G9 Touch - Nytt batteri | Reuseit"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "404!\nPage not Found\nsomething went wrong!\nReload Page",
+  "status": "OK"
+ }
+]

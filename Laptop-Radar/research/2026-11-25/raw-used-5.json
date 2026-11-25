@@ -1,0 +1,30 @@
+[
+ {
+  "url": "https://www.facebook.com/marketplace/stockholm/search?query=thinkpad%2032gb",
+  "checkedAt": "2026-11-25T20:41:30.210Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fmarketplace%2Fstockholm%2Fsearch%3Fquery%3Dthinkpad%2B32gb",
+  "title": "Facebook",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Utforska de saker som du älskar.\nLogga in på Facebook\nE-postadress eller mobilnummer\nLösenord\nLogga in\nHar du glömt lösenordet?\nSkapa nytt konto\nSvenska\nEnglish (US)\nEspañol\nFrançais (France)\n中文(简体)\nالعربية\nPortuguês (Brasil)\nFler språk ...\nRegistrera dig\nLogga in\nMessenger\nFacebook Lite\nVideo\nMeta Pay\nMeta-butiken\nMeta Quest\nRay-Ban Meta\nMeta AI\nMuse\nInstagram\nThreads\nIntegritetspolicy\nIntegritet gällande konsumenthälsa\nIntegritetscenter\nOm\nSkapa annons\nSkapa sida\nUtvecklare\nJobb\nCookies\nAnnonsval\nAnvändarvillkor\nHjälp\nUppladdning av kontakter och icke-användare",
+  "status": "OK"
+ }
+]

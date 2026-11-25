@@ -1,0 +1,1155 @@
+[
+ {
+  "url": "https://www.looptop.se/products/lenovo-thinkpad-t14-gen-4?variant=50454273622344",
+  "checkedAt": "2026-11-25T20:34:44.037Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera",
+  "finalUrl": "https://www.looptop.se/products/lenovo-thinkpad-t14-gen-4?variant=50454273622344",
+  "title": "Begagnad Lenovo ThinkPad T14 Gen 4 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad T14 Gen 4",
+    "brand": "Lenovo",
+    "sku": "C/T14G4/32/512/ND",
+    "offers": [
+     {
+      "price": 10395,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 10195,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 10295,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad Lenovo ThinkPad T14 Gen 4 | Looptop",
+   "price": "9995.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "9 995 kr",
+   "16 000 kr",
+   "6 005 kr",
+   "13 205 kr",
+   "7 995 kr",
+   "10 605 kr",
+   "3 295 kr",
+   "13 405 kr",
+   "2 995 kr",
+   "11 405 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout",
+    "tangentbordsavtryck på skärmen"
+   ],
+   "ram": [
+    "32GB RAM / 512GB SSD / TOUCH"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "skicken",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nLenovo ThinkPad T14 Gen 4\nKod & arbete · Studier & vardag\nLenovo ThinkPad T14 Gen 4\nKraftfull, byggd för att hålla.\nLenovo ThinkPad T14 Gen 4 med Intel eller Ryzen PRO, 14 tum i 1920x1200 och 1,3 kilo. Oftast 32GB minne.\nPris\n9 995 kr\nNypris 16 000 kr\nDu sparar 6 005 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\nRyzen 7 PRO 7840U / 32GB RAM / 512GB SSD / TOUCH\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bra\nBäst\nBättre\nBra\nTydliga spår av användning. Det kan finnas repor, märken och bucklor på chassit, och repor eller tangentbordsavtryck på skärmen. Fungerar lika bra som de andra skicken.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke Lenovo\nModell ThinkPad T14 Gen 4\nProcessor AMD Ryzen 7 PRO 7840U\nRAM-minne 32GB\nLagring 512GB\nGrafikkort AMD Radeon 780M\nSkärm 14\" WUXGA (1920x1200)\nOperativsystem Windows 11 Pro\nFärg Black\nWebbkamera Ja\nVikt 1,32 kg\nÅrsmodell 2023\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 13 205 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2024\nLenovo ThinkPad T14 Gen 5\nKod & arbete · Studier & vardag\nPris\nFrån 7 995 kr\nDu sparar upp till 10 605 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nLenovo ThinkPad T14 Gen 1\nKod & arbete · Studier & vardag\nPris\nFrån 3 295 kr\nDu sparar upp till 13 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nLenovo ThinkPad T14s Gen 1\nKod & arbete · Studier & vardag\nPris\nFrån 2 995 kr\nDu sparar upp till 11 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nLenovo ThinkPad T14 Gen 2\nKod & arbete · Studier & vardag\nPris\nFrån 3 795 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/lenovo-thinkpad-t14-gen-3?variant=51606734242120",
+  "checkedAt": "2026-11-25T20:34:52.088Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/lenovo-thinkpad-t14-gen-3?variant=51606734242120",
+  "title": "Begagnad Lenovo ThinkPad T14 Gen 3 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad T14 Gen 3",
+    "brand": "Lenovo",
+    "sku": "C/T14G3/ryzen7/32/512/ND",
+    "offers": [
+     {
+      "price": 6295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5795,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7495,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8695,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8595,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 9295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 8695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad Lenovo ThinkPad T14 Gen 3 | Looptop",
+   "price": "8695.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "8 695 kr",
+   "18 000 kr",
+   "9 305 kr",
+   "14 405 kr",
+   "5 295 kr",
+   "10 605 kr",
+   "3 295 kr",
+   "13 205 kr",
+   "7 995 kr",
+   "9 005 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout",
+    "tangentbordsavtryck på skärmen"
+   ],
+   "ram": [
+    "32GB RAM / 512GB SSD / TOUCH"
+   ],
+   "os": [
+    "Windows 11"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "skicken",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nLenovo ThinkPad T14 Gen 3\nKod & arbete · Studier & vardag\nLenovo ThinkPad T14 Gen 3\nKraftfull, byggd för att hålla.\nLenovo ThinkPad T14 Gen 3 med Intel eller AMD, 14 tum i 1920x1200 och 1,4 kilo. Upp till 32GB minne.\nPris\n8 695 kr\nNypris 18 000 kr\nDu sparar 9 305 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\nRyzen 7 PRO 6850U / 32GB RAM / 512GB SSD / TOUCH\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bra\nBättre\nBra\nTydliga spår av användning. Det kan finnas repor, märken och bucklor på chassit, och repor eller tangentbordsavtryck på skärmen. Fungerar lika bra som de andra skicken.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke Lenovo\nModell ThinkPad T14 Gen 3\nProcessor AMD Ryzen 7 PRO 6850U\nRAM-minne 32GB\nLagring 512GB\nGrafikkort AMD Radeon 680M\nSkärm 14\" WUXGA (1920x1200)\nOperativsystem Windows 11\nFärg Black\nWebbkamera Ja\nVikt 1,36 kg\nÅrsmodell 2022\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 14 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2022\nLenovo ThinkPad T14s Gen 3\nKod & arbete · Studier & vardag\nPris\nFrån 5 295 kr\nDu sparar upp till 10 605 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nLenovo ThinkPad T14 Gen 1\nKod & arbete · Studier & vardag\nPris\nFrån 3 295 kr\nDu sparar upp till 13 205 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2024\nLenovo ThinkPad T14 Gen 5\nKod & arbete · Studier & vardag\nPris\nFrån 7 995 kr\nDu sparar upp till 9 005 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2023\nLenovo ThinkPad T14 Gen 4\nKod & arbete · Studier & vardag\nPris\nFrån 6 995 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/hp-zbook-firefly-14-g9?variant=54522126303560",
+  "checkedAt": "2026-11-25T20:34:59.306Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/hp-zbook-firefly-14-g9?variant=54522126303560",
+  "title": "Begagnad HP ZBook Firefly 14\" G9 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP ZBook Firefly 14\" G9",
+    "brand": "HP",
+    "sku": "B/ZBook14FFG9/i7/32/512/ND",
+    "offers": [
+     {
+      "price": 9495,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad HP ZBook Firefly 14\" G9 | Looptop",
+   "price": "9495.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "9 495 kr",
+   "13 505 kr",
+   "5 995 kr",
+   "14 005 kr",
+   "6 995 kr",
+   "7 795 kr",
+   "15 995 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout"
+   ],
+   "ram": [
+    "32GB RAM, 512GB SSD och 14 tum i 1920x1200",
+    "32GB RAM / 512GB SSD"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nHP ZBook Firefly 14\" G9\nKod & arbete · Studier & vardag\nHP ZBook Firefly 14\" G9\nKraftfull, byggd för att hålla.\nHP ZBook Firefly 14 G9 med i7-1280P, 32GB RAM, 512GB SSD och 14 tum i 1920x1200. Runt 1,5 kilo.\nPris\n9 495 kr\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\ni7-1280P / 32GB RAM / 512GB SSD\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bättre\nBättre\nLätta spår av användning. Det kan finnas mindre märken eller repor på chassi och skärm. Repor på skärmen syns inte när skärmen är tänd.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke HP\nModell ZBook Firefly 14\" G9\nProcessor Intel i7-1280P\nRAM-minne 32GB\nLagring 512GB\nGrafikkort Intel Iris Xe Graphics\nSkärm 14\" WUXGA (1920x1200)\nOperativsystem Windows 11 Pro\nFärg Silver\nWebbkamera Ja\nVikt 1,47 kg\nÅrsmodell 2022\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 13 505 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nHP ZBook Firefly 14\" G8\nKod & arbete · Studier & vardag\nPris\nFrån 5 995 kr\nDu sparar upp till 14 005 kr\nSkärmstorlek:\n15.6\"\nÅrsmodell:\n2020\nHP ZBook Firefly 15\" G7\nStudier & vardag\nPris\nFrån 6 995 kr\nSkärmstorlek:\n15.6\"\nÅrsmodell:\n2021\nHP ZBook Firefly 15\" G8\nDesign & CAD · Studier & vardag\nPris\nFrån 7 795 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2025\nHP EliteBook X Flip G1i 14\"\nKod & arbete · Studier & vardag\nPris\n15 995 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/hp-elitebook-840-g10-demo?variant=53761135411528",
+  "checkedAt": "2026-11-25T20:35:06.459Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/hp-elitebook-840-g10-demo?variant=53761135411528",
+  "title": "HP EliteBook 840 G10 (Demo) - Looptop.se",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP EliteBook 840 G10",
+    "brand": "HP",
+    "sku": "DEMO/840G10/i7/32/512/ND",
+    "offers": [
+     {
+      "price": 9995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "HP EliteBook 840 G10 (Demo) - Looptop.se",
+   "price": "9995.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "9 995 kr",
+   "12 000 kr",
+   "2 005 kr",
+   "12 305 kr",
+   "3 295 kr",
+   "3 195 kr",
+   "14 105 kr",
+   "12 405 kr",
+   "3 595 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout"
+   ],
+   "ram": [
+    "32GB RAM, 512GB SSD och 14 tum WUXGA",
+    "32GB RAM / 512GB SSD"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "demo",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nHP EliteBook 840 G10\nKod & arbete · Studier & vardag\nHP EliteBook 840 G10\nKraftfull, byggd för att hålla.\nHP EliteBook 840 G10 med Intel i7-1355U, 32GB RAM, 512GB SSD och 14 tum WUXGA.\nPris\n9 995 kr\nNypris 12 000 kr\nDu sparar 2 005 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\ni7-1355U / 32GB RAM / 512GB SSD\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Demo\nDemo\nHar använts som demo- eller utställningsexemplar. Minimala spår av hantering.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke HP\nModell EliteBook 840 G10\nProcessor Intel i7-1355U\nRAM-minne 32GB\nLagring 512GB\nGrafikkort Intel Iris Xe Graphics\nSkärm 14\" WUXGA (1920x1200)\nOperativsystem Windows 11 Pro\nFärg Silver\nWebbkamera Ja\nVikt 1,36 kg\nÅrsmodell 2023\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 12 305 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nHP EliteBook 840 G7\nStudier & vardag\nPris\nFrån 3 295 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2018\nHP EliteBook 840 G5\nStudier & vardag\nPris\nFrån 3 195 kr\nDu sparar upp till 14 105 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2019\nHP EliteBook 840 G6\nStudier & vardag\nPris\nFrån 3 195 kr\nDu sparar upp till 12 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nHP EliteBook 840 G8\nStudier & vardag\nPris\nFrån 3 595 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/msi-prestige-14-ai-studio-c1veg-demo?variant=54196152533320",
+  "checkedAt": "2026-11-25T20:35:13.379Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/msi-prestige-14-ai-studio-c1veg-demo?variant=54196152533320",
+  "title": "MSI Prestige 14 AI Studio C1VEG (Demo) - Looptop.se",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "MSI Prestige 14 AI Studio C1VEG",
+    "brand": "MSI",
+    "sku": "DEMO/Prestige14AI/u7/C1VEG/32/1024/RTX4050",
+    "offers": [
+     {
+      "price": 14995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "MSI Prestige 14 AI Studio C1VEG (Demo) - Looptop.se",
+   "price": "14995.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "14 995 kr",
+   "19 000 kr",
+   "4 005 kr",
+   "16 995 kr",
+   "6 995 kr",
+   "14 005 kr",
+   "35 995 kr",
+   "8 005 kr",
+   "21 995 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout"
+   ],
+   "ram": [
+    "32GB RAM / 1024GB SSD / RTX 4050 6GB"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "demo",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nMSI Prestige 14 AI Studio C1VEG\nKod & arbete · Gaming\nMSI Prestige 14 AI Studio C1VEG\nExtra prestanda, dedikerat grafikkort.\nMSI Prestige 14 AI Studio med Core Ultra 7 155H, 32GB minne, 1TB SSD, RTX 4050 och 14 tum i 2880x1800.\nPris\n14 995 kr\nNypris 19 000 kr\nDu sparar 4 005 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\nCore Ultra 7 155H / 32GB RAM / 1024GB SSD / RTX 4050 6GB\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Demo\nDemo\nHar använts som demo- eller utställningsexemplar. Minimala spår av hantering.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke MSI\nModell Prestige 14 AI Studio C1VEG\nProcessor Intel Core Ultra 7 155H\nRAM-minne 32GB\nLagring 1024GB\nGrafikkort Nvidia RTX 4050\nSkärm 14\" 2,8K (2880x1800) 60Hz\nOperativsystem Windows 11 Pro\nFärg Grey\nWebbkamera Ja\nVikt 1,7 kg\nÅrsmodell 2024\nPassar för Kod & arbete · Gaming\nLiknande datorer\nFler datorer för kod & arbete\nSkärmstorlek:\n16\"\nÅrsmodell:\n2024\nMSI Summit E16 AI Studio A1VETG\nKod & arbete · Gaming\nPris\n16 995 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2024\nMSI Venture 14 AI A1MG\nStudier & vardag\nPris\nFrån 6 995 kr\nDu sparar 14 005 kr\nSkärmstorlek:\n16\"\nÅrsmodell:\n2024\nMSI Stealth 16 AI Studio A1VIG\nKod & arbete · Gaming\nPris\n35 995 kr\nDu sparar 8 005 kr\nSkärmstorlek:\n16\"\nÅrsmodell:\n2024\nMSI Creator A16 AI+ A3XVGG\nKod & arbete · Design & CAD · Gaming\nPris\n21 995 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/hp-elitebook-640-g9?variant=51285806121288",
+  "checkedAt": "2026-11-25T20:35:20.548Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/hp-elitebook-640-g9?variant=51285806121288",
+  "title": "Begagnad HP EliteBook 640 G9 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP EliteBook 640 G9",
+    "brand": "HP",
+    "sku": "B/640G9/i5/32/512/SWE",
+    "offers": [
+     {
+      "price": 4495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6795,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6595,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5295,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5295,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad HP EliteBook 640 G9 | Looptop",
+   "price": "6595.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "6 595 kr",
+   "13 500 kr",
+   "6 905 kr",
+   "11 005 kr",
+   "2 995 kr",
+   "12 405 kr",
+   "3 595 kr",
+   "12 305 kr",
+   "3 295 kr",
+   "8 905 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout"
+   ],
+   "ram": [
+    "32GB RAM / 512GB SSD"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nHP EliteBook 640 G9\nStudier & vardag\nHP EliteBook 640 G9\nDet här räcker för de flesta.\nHP EliteBook 640 G9 med i5 och 14 tums Full HD. 16GB med 256GB SSD eller 32GB med 512GB.\nPris\n6 595 kr\nNypris 13 500 kr\nDu sparar 6 905 kr\nVad är nypris?\nVälj tangentbordslayout\nSWE – svenska\nVälj specifikation\ni5-1245U / 32GB RAM / 512GB SSD\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bättre\nBra\nBättre\nLätta spår av användning. Det kan finnas mindre märken eller repor på chassi och skärm. Repor på skärmen syns inte när skärmen är tänd.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke HP\nModell EliteBook 640 G9\nProcessor Intel i5-1245U\nRAM-minne 32GB\nLagring 512GB\nGrafikkort Intel Iris Xe Graphics\nSkärm 14\" FHD (1920x1080)\nOperativsystem Windows 11 Pro\nFärg Silver\nWebbkamera Ja\nVikt 1,38 kg\nÅrsmodell 2022\nPassar för Studier & vardag\nLiknande datorer\nFler datorer för studier & vardag\nDu sparar upp till 11 005 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2021\nHP EliteBook 830 G8\nStudier & vardag\nPris\nFrån 2 995 kr\nDu sparar upp till 12 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nHP EliteBook 840 G8\nStudier & vardag\nPris\nFrån 3 595 kr\nDu sparar upp till 12 305 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nHP EliteBook 840 G7\nStudier & vardag\nPris\nFrån 3 295 kr\nDu sparar upp till 8 905 kr\nSkärmstorlek:\n15.6\"\nÅrsmodell:\n2021\nHP EliteBook 850 G8 (i5)\nStudier & vardag\nPris\nFrån 4 895 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/lenovo-thinkpad-p15v-gen-1?variant=55152720019784",
+  "checkedAt": "2026-11-25T20:35:27.992Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/lenovo-thinkpad-p15v-gen-1?variant=55152720019784",
+  "title": "Begagnad Lenovo ThinkPad P15v Gen 1 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad P15v Gen 1",
+    "brand": "Lenovo",
+    "sku": "B/P15vG1/i7/32/1024/P620/ND",
+    "offers": [
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7795,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad Lenovo ThinkPad P15v Gen 1 | Looptop",
+   "price": "7995.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "7 995 kr",
+   "16 405 kr",
+   "4 795 kr",
+   "8 905 kr",
+   "4 895 kr",
+   "15 405 kr",
+   "4 595 kr",
+   "12 105 kr",
+   "3 395 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout"
+   ],
+   "ram": [
+    "32GB RAM, 512GB eller 1TB SSD, Quadro P620 och 15,6 tum i 1920x1080",
+    "32GB RAM / 1024GB SSD / P620"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nLenovo ThinkPad P15v Gen 1\nDesign & CAD · Kod & arbete\nLenovo ThinkPad P15v Gen 1\nExtra prestanda, dedikerat grafikkort.\nLenovo ThinkPad P15v Gen 1 med i7-10850H, 32GB RAM, 512GB eller 1TB SSD, Quadro P620 och 15,6 tum i 1920x1080.\nPris\n7 995 kr\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\ni7-10850H / 32GB RAM / 1024GB SSD / P620\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bättre\nFinns i annan kombination\nBättre\nBra\nFinns i annan kombination\nLätta spår av användning. Det kan finnas mindre märken eller repor på chassi och skärm. Repor på skärmen syns inte när skärmen är tänd.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke Lenovo\nModell ThinkPad P15v Gen 1\nProcessor Intel i7-10850H\nRAM-minne 32GB\nLagring 1024GB\nGrafikkort Nvidia Quadro P620\nSkärm 15,6\" FHD (1920x1080)\nOperativsystem Windows 11 Pro\nFärg Black\nWebbkamera Ja\nVikt 2,07 kg\nÅrsmodell 2020\nPassar för Design & CAD · Kod & arbete\nLiknande datorer\nFler datorer för design & cad\nDu sparar upp till 16 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2022\nDell Latitude 7430\nKod & arbete · Studier & vardag\nPris\nFrån 4 795 kr\nDu sparar upp till 8 905 kr\nSkärmstorlek:\n15.6\"\nÅrsmodell:\n2021\nHP EliteBook 850 G8 (i5)\nStudier & vardag\nPris\nFrån 4 895 kr\nDu sparar upp till 15 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nDell Latitude 7410\nKod & arbete · Studier & vardag\nPris\nFrån 4 595 kr\nDu sparar upp till 12 105 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2022\nDell Latitude 5330\nStudier & vardag\nPris\nFrån 3 395 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/hp-elitebook-845-g11?variant=54315859640648",
+  "checkedAt": "2026-11-25T20:35:35.328Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/hp-elitebook-845-g11?variant=54315859640648",
+  "title": "Begagnad HP EliteBook 845 G11 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP EliteBook 845 G11",
+    "brand": "HP",
+    "sku": "C/845G11/Ryzen7/32/512/ND",
+    "offers": [
+     {
+      "price": 11995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 11695,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 11495,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad HP EliteBook 845 G11 | Looptop",
+   "price": "11495.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "11 495 kr",
+   "21 000 kr",
+   "9 505 kr",
+   "12 305 kr",
+   "3 295 kr",
+   "10 305 kr",
+   "4 695 kr",
+   "2 005 kr",
+   "9 995 kr",
+   "12 405 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout",
+    "tangentbordsavtryck på skärmen"
+   ],
+   "ram": [
+    "32GB RAM, 512GB SSD och 14 tums pekskärm i 1920x1200",
+    "32GB RAM / 512GB SSD / Touch"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "skicken",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nHP EliteBook 845 G11\nKod & arbete · Studier & vardag\nHP EliteBook 845 G11\nKraftfull, byggd för att hålla.\nHP EliteBook 845 G11 med Ryzen 7 PRO 8840U, 32GB RAM, 512GB SSD och 14 tums pekskärm i 1920x1200. 1,4 kilo.\nPris\n11 495 kr\nNypris 21 000 kr\nDu sparar 9 505 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\nRyzen 7 PRO 8840U / 32GB RAM / 512GB SSD / Touch\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bra\nBättre\nBra\nTydliga spår av användning. Det kan finnas repor, märken och bucklor på chassit, och repor eller tangentbordsavtryck på skärmen. Fungerar lika bra som de andra skicken.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke HP\nModell EliteBook 845 G11\nProcessor AMD Ryzen 7 PRO 8840U\nRAM-minne 32GB\nLagring 512GB\nGrafikkort AMD Radeon 780M\nSkärm 14\" WUXGA (1920x1200)\nOperativsystem Windows 11 Pro\nFärg Silver\nWebbkamera Ja\nVikt 1,41 kg\nÅrsmodell 2024\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 12 305 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nHP EliteBook 840 G7\nStudier & vardag\nPris\nFrån 3 295 kr\nDu sparar upp till 10 305 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nHP EliteBook 845 G8\nStudier & vardag\nPris\nFrån 4 695 kr\nDu sparar 2 005 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2023\nHP EliteBook 840 G10\nKod & arbete · Studier & vardag\nPris\n9 995 kr\nDu sparar upp till 12 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nHP EliteBook 840 G8\nStudier & vardag\nPris\nFrån 3 595 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ }
+]
