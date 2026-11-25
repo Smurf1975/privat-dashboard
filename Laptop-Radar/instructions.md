@@ -59,6 +59,11 @@ Lägg till en rad i `run-log.md`: datum/tid, status (OK / DELVIS / FEL), antal k
 ## 10. Avisering
 Sista meddelandet i körningen = kort sammanfattning (≤10 rader) av daily-report.md, inleds med `LAPTOP RADAR $D:`. Skicka också `PushNotification` (≤200 tecken) om det finns meningsfulla fynd eller om körningen fick FEL.
 
+## Kända källbeteenden (se sources.md)
+- Renderas inte i Playwright (ej blockering): Reuseit (visar 404), Tradera (timeout), Blocket-annonser (ingen text), HP Store (klientfel) → läs produktsidan med Firecrawl scrape (`maxAge: 0`, format `query`), `source: "FC"`.
+- Looptop: använd Shopify-flödet `looptop.se/collections/begagnade-laptops/products.json` för upptäckt, produktsidan för verifiering.
+- Blockerade (403/Cloudflare): Inet, Proshop, Dustin, Back Market, alla shop.asus.com/estore.asus.com. Ett försök per körning, sedan BLOCKED. Kringgå aldrig (ingen stealth-proxy).
+
 ## Felhantering
 - En källa fallerar → logga, fortsätt med övriga.
 - Playwright kraschar → starta om en gång; annars FC/TV som reserv.

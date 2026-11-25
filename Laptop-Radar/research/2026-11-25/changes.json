@@ -1,0 +1,233 @@
+[
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "21t9001rmx",
+  "offer_id": "lenovo-se:21T9001RMX"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "d70bwea-uuw",
+  "offer_id": "hp-se:D70BWEA#UUW"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "d44pyea-uuw",
+  "offer_id": "hp-se:D44PYEA#UUW"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-14-dc14255-r5-220-16gb-512gb-nordic",
+  "offer_id": "dell-se:dc14255_reg_01"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-pro-14-essential-pv14250-c5-120u-16gb-512gb-nordic",
+  "offer_id": "dell-se:pv14250_fixed_01"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "asus-expertbook-p1-p1403-90nx0871-m01900",
+  "offer_id": "asus-se:90NX0871-M01900"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "asus-vivobook-s14-oled-m5406",
+  "offer_id": "asus-se:m5406-from"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "s5406sa-qd077w",
+  "offer_id": "webhallen:401389"
+ },
+ {
+  "type": "NEW_BEST_PRICE",
+  "candidate_id": "s5406sa-qd077w",
+  "offer_id": "netonnet:1065346",
+  "old": 14499.0,
+  "new": 12990.0
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "d88lfea-uuw",
+  "offer_id": "elgiganten:1048139"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "np944xjg-kg5se",
+  "offer_id": "elgiganten:1014157"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "d3407ga-sf034w",
+  "offer_id": "power:4213612"
+ },
+ {
+  "type": "NEW_BEST_PRICE",
+  "candidate_id": "d3407ga-sf034w",
+  "offer_id": "power:4213612:outlet",
+  "old": 11990.0,
+  "new": 11391.0
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "nx-jrred-007",
+  "offer_id": "webhallen:390877"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "nx-ksjed-003",
+  "offer_id": "webhallen:395601"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "um3406ga-open1",
+  "offer_id": "webhallen:399099"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "d3407ka-sf019w",
+  "offer_id": "webhallen:390999"
+ },
+ {
+  "type": "NEW_BEST_PRICE",
+  "candidate_id": "d3407ka-sf019w",
+  "offer_id": "webhallen:396705",
+  "old": 14990.0,
+  "new": 14190.0
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "d3407ka-open1",
+  "offer_id": "webhallen:399098"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-elitebook-840g9-i7-1265u-32-1024-se",
+  "offer_id": "reuseit:S36270_UK_BF"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-t14g4amd-r7pro7840u-32-512-nordic",
+  "offer_id": "looptop:C/T14G4/32/512/ND"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-t14g3amd-r7pro6850u-32-512-nordic",
+  "offer_id": "looptop:C/T14G3/ryzen7/32/512/ND"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-zbook-firefly14g9-i7-1280p-32-512-nordic",
+  "offer_id": "looptop:B/ZBook14FFG9/i7/32/512/ND"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-elitebook-840g10-i7-1355u-32-512-nordic-demo",
+  "offer_id": "looptop:DEMO/840G10/i7/32/512/ND"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-elitebook-845g11-r7pro8840u-32-512-nordic",
+  "offer_id": "looptop:C/845G11/Ryzen7/32/512/ND"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-elitebook-640g9-i5-1245u-32-512-se",
+  "offer_id": "looptop:B/640G9/i5/32/512/SWE"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "msi-prestige14-aistudio-c1veg-u7-155h-32-1024-nordic-demo",
+  "offer_id": "looptop:DEMO/Prestige14AI/u7/C1VEG/32/1024/RTX4050"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-p15vg1-i7-10850h-32-1024-nordic",
+  "offer_id": "looptop:B/P15vG1/i7/32/1024/P620/ND"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-p14sg4-i7-1360p-32-1024-se",
+  "offer_id": "inrego:11003032831"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-precision-3490-ultra5-125u-32-1024-se",
+  "offer_id": "inrego:11002039391"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-latitude-7330-i7-1265u-32-1000-us",
+  "offer_id": "refurbed:21755833"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-zbook-power15g9-i7-12800h-32-1024-unknownkb",
+  "offer_id": "reuseit:UNKNOWN"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-p14s-g3-amd-r7pro6850u-32-1tb",
+  "offer_id": "tradera:762426734"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-ideapad-slim5-14akp10-ryzenai7-350-32-1tb-se",
+  "offer_id": "blocket:28509781"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-ideapad-slim5-14akp10-ryzenai7-350-32-1tb-tradera",
+  "offer_id": "tradera:762720389"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-x1c-g11-i7-1355u-32-512-nordic",
+  "offer_id": "blocket:23712500"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "asus-zenbook-duo-ux8406ma-pure19-u7-155h-32-1tb",
+  "offer_id": "blocket:28535586"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "asus-zenbook-s14-u7-32-1tb-oled-unopened",
+  "offer_id": "blocket:28228758"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-yoga-pro-7i-14-u7-255h-32-1tb-oled",
+  "offer_id": "tradera:763328570"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-xps-13-9320-i7-1360p-32-1tb",
+  "offer_id": "tradera:760861038"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-t14-g2-i5-1135g7-32-512-se-dock",
+  "offer_id": "tradera:759089674"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-elitebook-840-g8-i5-1135g7-32-1tb",
+  "offer_id": "tradera:690659560"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-t14s-g4-i5-1335u-32-512-4g-nordic",
+  "offer_id": "tradera:761965639"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-latitude-7520-i7-1185g7-32-512-se",
+  "offer_id": "blocket:28261640"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-x1c-g9-i7-1165g7-32-1tb-4g",
+  "offer_id": "blocket:28350716"
+ }
+]
