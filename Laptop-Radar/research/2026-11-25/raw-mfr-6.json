@@ -1,0 +1,60 @@
+[
+ {
+  "url": "https://www.hp.com/se-sv/shop/listings/laptops?subbrand=hp-elitebook",
+  "checkedAt": "2026-11-25T20:43:08.723Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.hp.com/se-sv/shop/listings/laptops?subbrand=hp-elitebook",
+  "title": "",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Application error: a client-side exception has occurred while loading www.hp.com (see the browser console for more information).",
+  "links": [],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.hp.com/se-sv/shop/listings/laptops?subbrand=hp-pavilion+omnibook-5",
+  "checkedAt": "2026-11-25T20:43:17.373Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.hp.com/se-sv/shop/listings/laptops?subbrand=hp-pavilion+omnibook-5",
+  "title": "",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Application error: a client-side exception has occurred while loading www.hp.com (see the browser console for more information).",
+  "links": [],
+  "status": "OK"
+ }
+]

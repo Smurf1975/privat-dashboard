@@ -1,0 +1,75 @@
+[
+ {
+  "url": "https://psref.lenovo.com/Detail/ThinkPad/ThinkPad_E14_Gen_7_Intel?M=21T9001RMX",
+  "checkedAt": "2026-11-25T20:42:35.161Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Accept",
+  "finalUrl": "https://psref.lenovo.com/Detail/ThinkPad/ThinkPad_E14_Gen_7_Intel?M=21T9001RMX",
+  "title": "Specifications - Lenovo PSREF",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [
+    "Keyboard",
+    "keyboard layout, and accessories may vary between models"
+   ],
+   "ram": [
+    "16GB SODIMM DDR5-5600",
+    "Slots",
+    "SODIMM slots, dual-channel capable",
+    "64GB DDR5-5600",
+    "Slot",
+    "slots",
+    "slot",
+    "Slot™, 2"
+   ],
+   "os": [],
+   "warranty": [
+    "Warranty"
+   ],
+   "returns": [],
+   "battery": [
+    "Battery"
+   ],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "PSREF\nAdvanced Search\nFilters\nCompare\nFAQ\nLaptops\nTablets\nDesktops & AIOs\nWorkstations\nMonitors\nSmart Devices\nAccessories\nSign up for Newsletter\nThinkPad E14 Gen 7 (Intel)\nModel: 21T9001RMX\n Intel Core™ 5 210H, 8C (4P + 4E) / 12T, P-core 2.2 / 4.8GHz, E-core 1.6 / 3.6GHz, 12MB Intel® Smart Cache\n 1x 16GB SODIMM DDR5-5600\n 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe® Opal 2.0\n Integrated Intel® Graphics\n Windows® 11 Pro, Nordic (DK/FI/SV/NO/EN)\n Case color - Black\nAdd to compare\nCompare (\n0\n/10)\nExcel\nPDF\n+5\nThinkPad E14 Gen 7 (Intel)\nModel: 21T9001RMX\nAdd to compare\nCompare (0)\nExcel\nPDF\nModel Configurations\nCompatible Accessories\nRecommended Services\nDocumentation\nModel Configurations\nPERFORMANCE\nProcessor \nIntel Core™ 5 210H, 8C (4P + 4E) / 12T, P-core 2.2 / 4.8GHz, E-core 1.6 / 3.6GHz, 12MB Intel® Smart Cache\nAI PC Category \nNon-AI PC\nNPU \nNone\nGraphics \nIntegrated Intel® Graphics\nChipset \nIntel® SoC (System on Chip) platform\nMemory \n1x 16GB SODIMM DDR5-5600\nMemory Slots \nRaptor Lake, Meteor Lake and Arrow Lake: two DDR5 SODIMM slots, dual-channel capable\nMax Memory \nRaptor Lake with H Series processors, Meteor Lake and Arrow Lake: up to 64GB DDR5-5600\nStorage \n512GB SSD M.2 2242 PCIe® 4.0x4 NVMe® Opal 2.0\nStorage Slot \nRaptor Lake, Meteor Lake and Arrow Lake: two M.2 slots\n• One M.2 2242 PCIe® 4.0 x4 slot\n• One M.2 2280 PCIe® 4.0 x4 slot\nMax Storage Support \nRaptor Lake, Meteor Lake and Arrow Lake: \nup to two drives, 2x M.2 SSD\n• M.2 2242 SSD up to 1TB\n• M.2 2280 SSD up to 1TB\nCard Reader \nNo card reader\nAudio Chip \nHigh Definition (HD) Audio, Senary SN6147 codec\nSpeakers \nStereo speakers, 2W x2, Dolby Atmos®, audio by HARMAN\nMicrophone \nDual-microphone array, smart noise-cancelling\nCamera \nFHD 1080p + IR Hybrid with Privacy Shutter\nBattery \n64Wh\nPower Adapter \n65W USB-C® (3-pin)\nDESIGN\nDisplay\n \n14\" WUXGA (1920x1200) IPS 300nits Anti-glare, 45% NTSC, 60Hz\nTouchscreen \nNon-touch\nScreen-to-Body Ratio \n90%\nPen \nPen Not Supported\nKeyboard \nBacklit, Nordic (DK/FI/NO/SV)\nDimensions (WxDxH)\n \n313 x 220.3 x 10.1/15.25 (front/rear), 19.7 (maximum) mm;\n12.32 x 8.67 x 0.40/0.60 (front/rear), 0.78 (maximum) inches\nWeight\n \nStarting at 1.34 kg (2.95 lbs)\nCase Color \nBlack\nCase Material \nAluminium (Top), Aluminium (Bottom)\nSOFTWARE\nOperating System \nWindows® 11 Pro, Nordic (DK/FI/SV/NO/EN)\nBundled Software \nNone\nCONNECTIVITY\nWLAN + Bluetooth \nIntel® Wi-Fi® 6E AX211, 802.11ax 2x2 + BT5.3\nWWAN \nWWAN Not Supported\nSIM Card \nNo physical SIM card included\nEthernet \n100/1000M (RJ-45)\nNFC \nNo support\nStandard Ports \n1x USB-A (USB 5Gbps / USB 3.2 Gen 1)\n1x USB-A (USB 10Gbps / USB 3.2 Gen 2), Always On\n1x USB-C® (Thunderbolt™ 4 / USB4® 40Gbps), with USB PD 15-65W and DisplayPort™ 2.1\n1x HDMI® 2.1, up to 4K/60Hz\n1x Headphone / microphone combo jack (3.5mm)\n1x Ethernet (RJ-45)\nOptional Ports (configured) \n1x USB-C® (USB 20Gbps / USB 3.2 Gen 2x2), with USB PD 15-65W and DisplayPort™ 1.4\nDocking \nVarious docking solutions supported via Thunderbolt™ / USB-C®.\nFor more compatible docking solutions, please visit Docking for ThinkPad® E14 Gen 7 (Intel®)\nSECURITY & PRIVACY\nThinkShield \nThinkShield is a comprehensive security solution that encompasses hardware, software, and supply chain components. For more details, visit here\nSecurity Chip \nDiscrete TPM 2.0 Enabled\nPhysical Locks \nKensington Nano Security Slot™, 2.5 x 6 mm\nSmart Card Reader \nNo Smart Card Reader\nFingerprint Reader \nTouch Style, Match-on-Chip, Integrated in Power Button\nOther Security \nCamera privacy shutter\nIR camera for Windows® Hello (facial recognition)\nMANAGEABILITY\nSystem Management \nNon-vPro\nSERVICE\nBase Warranty \n1-year courier or carry-in service\nIncluded Upgrade \nNone\nACCESSORIES\nBundled Accessories \nNone\nCERTIFICATIONS\nGreen Certifications \nENERGY STAR® 9.0\nEPEAT 1.0 Gold Registered\nErP Lot 6/26\nRoHS compliant\nTCO Certified, generation 10\nMil-Spec Test \nMIL-STD-810H military test passed\nOther Certifications \nTÜV Rheinland® Low Blue Light (Software Solution)\nMODEL INFORMATION\nModel \n21T9001RMX\nMachine Type \n21T9\nRegion \nWE\nCountry/Region \nNordics\nTopSeller \nYes\nEAN / UPC / JAN \n0199271902813\nAnnounce Date \n2025-06-21\nEnd of Support \n2031-11-22\nNote :\nLenovo reserves the right to change specifications or other product information without notice.\nThe product images are for illustration only. The actual product appearance, color, ports, keyboard layout, and accessories may vary between models.\nActual port transfer speeds will vary and may be slower than the theoretical speed depending on many factors such as the processing speed of the host device, file attributes, and other factors related to your system configuration and operating environment.\nView product platform specifications\nAccessories & Services\nCountry / Region \nPlease select country/region to enable compatible accessories and recommended services.\nRecommended Services\nPlease click here to check recommended services.\nThe PSREF website is a specification query platform. For actual availability of displayed product / models, please refer to official Lenovo store website or consult local Lenovo sales.\n© 2026 Lenovo. All rights reserved. | Privacy | Terms of Use | Cookie Settings | About PSREF\nPSREF AI (Beta)\nPSREF AI (Beta)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.dell.com/support/manuals/en-us/dell-dc14255-laptop/dell-14-dc14255-ss/memory?guid=guid-e9d2ea83-38a4-431d-803c-96d63c1dbc34&lang=en-us",
+  "checkedAt": "2026-11-25T20:42:43.214Z",
+  "method": "playwright-chromium",
+  "httpStatus": 403,
+  "finalUrl": "https://www.dell.com/support/manuals/en-us/dell-dc14255-laptop/dell-14-dc14255-ss/memory?guid=guid-e9d2ea83-38a4-431d-803c-96d63c1dbc34&lang=en-us",
+  "title": "Access Denied",
+  "blocked": true,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Access Denied\nYou don't have permission to access \"http://www.dell.com/support/manuals/en-us/dell-dc14255-laptop/dell-14-dc14255-ss/memory?\" on this server.\nReference #18.b1423917.1795639363.8d810e2f\nhttps://errors.edgesuite.net/18.b1423917.1795639363.8d810e2f",
+  "status": "BLOCKED"
+ }
+]

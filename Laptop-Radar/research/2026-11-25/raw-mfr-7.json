@@ -1,0 +1,58 @@
+[
+ {
+  "url": "https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-7-laptop-ai-14-fr0074nox-d70bwea-uuw",
+  "checkedAt": "2026-11-25T20:44:24.983Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-7-laptop-ai-14-fr0074nox-d70bwea-uuw",
+  "title": "",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Application error: a client-side exception has occurred while loading www.hp.com (see the browser console for more information).",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-x-flip-2-in-1-laptop-next-gen-ai-14-kc0023no-d44pyea-uuw",
+  "checkedAt": "2026-11-25T20:44:34.440Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-x-flip-2-in-1-laptop-next-gen-ai-14-kc0023no-d44pyea-uuw",
+  "title": "",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Application error: a client-side exception has occurred while loading www.hp.com (see the browser console for more information).",
+  "status": "OK"
+ }
+]
