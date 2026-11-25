@@ -50,6 +50,14 @@ plus en rad om ev. blockerade källor.
 Annars, per fynd: modell · SKU/MPN · pris · butik · lager · nyckelspecar (CPU/RAM/SSD/skärm/tangentbord/OS) · skick · garanti · retur · länk · verifieringsstatus · varför intressant.
 Avsnitt: Nya kandidater · Prissänkningar · Lager/kampanj · Försvunna · Blockerat/ej verifierat · Körstatus.
 
+## 7b. LÄNKKONTROLL – obligatorisk före publicering
+Krav från användaren: **varje produkt i rapport och ranking ska ha en direktlänk till produktsidan som öppnats och bekräftats samma dag.**
+1. Varje rad/fynd i daily-report.md och current-ranking.md har en fullständig direkt-URL (aldrig bara domän eller annons-ID).
+2. Kör `python3 scripts/check_links.py $D` (öppnar alla länkar i Chromium).
+3. Länkar som ger ERROR/tom titel (Tradera, Reuseit, Blocket, HP) → kontrollera med Firecrawl scrape (`maxAge: 0`) att sidan är aktiv och stämmer (titel, pris).
+4. Länk som är död, såld, avslutad eller visar annan produkt → ta bort fyndet från rapporten (markera GONE i historiken). Ingen overifierad länk får stå kvar.
+5. Avsluta daily-report.md med: `Länkkontroll: X/Y länkar öppnade och bekräftade <datum tid> (PW: n, FC: m).`
+
 ## 8. Loggning
 Lägg till en rad i `run-log.md`: datum/tid, status (OK / DELVIS / FEL), antal kontrollerade erbjudanden, nya kandidater, förändringar, blockerade källor, fel. **Rapportera aldrig OK om researchen misslyckades.**
 

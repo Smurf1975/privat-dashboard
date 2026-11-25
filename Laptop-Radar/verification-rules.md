@@ -12,7 +12,8 @@
 5. Köpbar (`buyable`): true endast om köpknapp syns och inte är avaktiverad. Klicka aldrig köp. Slutför aldrig köp.
 6. Tangentbord: läs exakt (t.ex. "Nordiskt", "Svenskt/Finskt", "Nordic (SE/FI)", "Tyskt QWERTZ"). Saknas → UNKNOWN.
 7. Pris i SEK inkl. moms. EU-butik i EUR → omräkna (ange kurs + datum), lägg till frakt.
-8. Hitta aldrig på värden. Okänt = "UNKNOWN".
+8. Varje presenterad produkt ska ha en direktlänk till produktsidan, öppnad och bekräftad samma dag (se instructions.md 7b). Ingen länk = presenteras inte.
+9. Hitta aldrig på värden. Okänt = "UNKNOWN".
 
 ## offers.json – ett objekt per erbjudande
 ```json
