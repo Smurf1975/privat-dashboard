@@ -1,0 +1,24 @@
+[OK] 200 https://www.elgiganten.se/brand/lenovo/lenovo-barbar-dator
+   Bärbar dator från Lenovo | Gamingdator: Hitta din nya bärbara dator här - Elgiganten
+   sku=- price=4 990 kr avail=- buyable=false oos=
+[OK] 200 https://www.elgiganten.se/brand/lenovo/lenovo-barbar-dator/page-2
+   Bärbar dator från Lenovo | Gamingdator: Hitta din nya bärbara dator här - sida 2 - Elgiganten
+   sku=- price=17 990 kr avail=- buyable=false oos=
+[OK] 200 https://www.elgiganten.se/brand/lenovo/thinkpad-for-ditt-foretag
+   Hitta bästa bärbara ThinkPad för ditt företag - Elgiganten
+   sku=- price=9 495 kr avail=- buyable=false oos=
+[OK] 404 https://www.elgiganten.se/brand/asus/asus-barbar-dator
+   Sidan hittades inte
+   sku=- price=2 389 kr avail=- buyable=true oos=
+[OK] 200 https://www.elgiganten.se/brand/hp
+   Hp - laptops, datorer, tillbehör & mycker mer - Elgiganten
+   sku=- price=6 390 kr avail=- buyable=false oos=Ej i lager
+[OK] 200 https://www.elgiganten.se/datorer-kontor/datorer/laptop/windows-laptop
+   Windows laptop - Köp online här - Elgiganten
+   sku=- price=4 990 kr avail=- buyable=false oos=
+[OK] 200 https://www.elgiganten.se/datorer-kontor/datorer/laptop/windows-laptop/page-2
+   Windows laptop - Köp online här - sida 2 - Elgiganten
+   sku=- price=7 990 kr avail=- buyable=false oos=
+[OK] 200 https://www.elgiganten.se/datorer-kontor/datorer/laptop/windows-laptop/page-3
+   Windows laptop - Köp online här - sida 3 - Elgiganten
+   sku=- price=86 190 kr avail=- buyable=false oos=Ej i lager

@@ -1,0 +1,1843 @@
+[
+ {
+  "url": "https://www.lenovo.com/se/sv/d/deals/laptops/",
+  "checkedAt": "2026-11-26T06:45:51.963Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/laptops/?cid=flash_redirect_2p3o1i",
+  "title": "Utforska högpresterande bärbara datorer och 2-i-1-datorer | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Yoga 7a 2-in-1 Gen 11 (16\" AMD)",
+    "brand": "yoga",
+    "sku": "83TFCTO1WWSE1",
+    "mpn": "LEN101Y0070",
+    "offers": [
+     {
+      "price": "15999.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7a 2-in-1 Gen 11 (16\" AMD)",
+    "brand": "yoga",
+    "sku": "83TFCTO1WWSE2",
+    "mpn": "LEN101Y0070",
+    "offers": [
+     {
+      "price": "25089.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7a 2-in-1 Gen 11 (14\" AMD)",
+    "brand": "yoga",
+    "sku": "83TDCTO1WWSE1",
+    "mpn": "LEN101Y0067",
+    "offers": [
+     {
+      "price": "19997.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7a 2-in-1 Gen 11 (14\" AMD)",
+    "brand": "yoga",
+    "sku": "83TDCTO1WWSE2",
+    "mpn": "LEN101Y0067",
+    "offers": [
+     {
+      "price": "26019.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5i Gen 11 (16\" Intel)",
+    "brand": "ideapad",
+    "sku": "83S6CTO1WWSE1",
+    "mpn": "LEN101I0132",
+    "offers": [
+     {
+      "price": "12248.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5i Gen 11 (16\" Intel)",
+    "brand": "ideapad",
+    "sku": "83S6CTO1WWSE2",
+    "mpn": "LEN101I0132",
+    "offers": [
+     {
+      "price": "16069.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-in-1 Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "83TCCTO1WWSE1",
+    "mpn": "LEN101Y0071",
+    "offers": [
+     {
+      "price": "16335.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-in-1 Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "83TCCTO1WWSE2",
+    "mpn": "LEN101Y0071",
+    "offers": [
+     {
+      "price": "28840.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "LOQ 15i Gen 11 (15\" Intel)",
+    "brand": "loq-laptops",
+    "sku": "83SLCTO1WWSE1",
+    "mpn": "LEN101Q0017",
+    "offers": [
+     {
+      "price": "23066.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "LOQ 15i Gen 11 (15\" Intel)",
+    "brand": "loq-laptops",
+    "sku": "83SLCTO1WWSE2",
+    "mpn": "LEN101Q0017",
+    "offers": [
+     {
+      "price": "26684.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-in-1 Gen 10 (16\" Intel)",
+    "brand": "yoga",
+    "sku": "83JTCTO1WWSE6",
+    "mpn": "LEN101Y0057",
+    "offers": [
+     {
+      "price": "14313.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-in-1 Gen 10 (16\" Intel)",
+    "brand": "yoga",
+    "sku": "83JTCTO1WWSE5",
+    "mpn": "LEN101Y0057",
+    "offers": [
+     {
+      "price": "14719.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo LOQ 15 Gen 11 (15\" AMD)",
+    "brand": "loq-laptops",
+    "sku": "83TNCTO1WWSE1",
+    "mpn": "LEN101Q0016",
+    "offers": [
+     {
+      "price": "18116.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo LOQ 15 Gen 11 (15\" AMD)",
+    "brand": "loq-laptops",
+    "sku": "83TNCTO1WWSE2",
+    "mpn": "LEN101Q0016",
+    "offers": [
+     {
+      "price": "23867.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Legion 5i Gen 11 (15″ Intel)",
+    "brand": "legion-laptops",
+    "sku": "83VKCTO1WWSE1",
+    "mpn": "LEN101G0053",
+    "offers": [
+     {
+      "price": "27260.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Legion 5i Gen 11 (15″ Intel)",
+    "brand": "legion-laptops",
+    "sku": "83VKCTO1WWSE2",
+    "mpn": "LEN101G0053",
+    "offers": [
+     {
+      "price": "28925.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (16\" AMD)",
+    "brand": "ideapad",
+    "sku": "83S2CTO1WWSE1",
+    "mpn": "LEN101I0140",
+    "offers": [
+     {
+      "price": "12374.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (16\" AMD)",
+    "brand": "ideapad",
+    "sku": "83S2CTO1WWSE2",
+    "mpn": "LEN101I0140",
+    "offers": [
+     {
+      "price": "17621.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7",
+    "brand": "thinkpad",
+    "sku": "21U2CTO1WWSE1",
+    "mpn": "LEN101T0143",
+    "offers": [
+     {
+      "price": "17404.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "LOQ 15i Gen 11 (15\" Intel)",
+    "brand": "loq-laptops",
+    "sku": "83SLCTO1WWSE3",
+    "mpn": "LEN101Q0017",
+    "offers": [
+     {
+      "price": "22519.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [
+   "Kan jag anpassa konfigurationen av min bärbara Lenovo-dator innan jag köper den?"
+  ],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "30 000 kr",
+   "23 000 kr",
+   "29 999 kr",
+   "17 000 kr",
+   "22 999 kr",
+   "19 999,00 kr",
+   "15 999,20 kr",
+   "25 089,00 kr",
+   "22 219,00 kr",
+   "19 997,10 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord, avancerade säkerhetsfunktioner och varaktiga batteritid är dessa bärbara dator",
+    "tangentbords- och pekskärmslägen, vilket ger en flexibel användarupplevelse",
+    "tangentbord för frekvent skrivande och är byggda för att vara hållbara för resor",
+    "tangentbord och styrplatta göra stor skillnad när du navigerar i nya världar eller står i k",
+    "tangentbordet",
+    "tangentbord och möss samt skyddsfodral – är utformade med precision och kompletterar din te"
+   ],
+   "ram": [
+    "16 GB LPDDR5X - 8 000MT/s (lött)",
+    "32 GB LPDDR5X - 8 00MT/s (lött)",
+    "16 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 8 GB)",
+    "16 GB LPDDR5X - 7 467MT/s (lött)",
+    "8GB GDDR7",
+    "32 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 16 GB)",
+    "8 GB RAM stöder de flesta applikationer, program och moderna spel för att fungera smidigt"
+   ],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Home",
+    "Windows 11 Pro för företag",
+    "Windows 11 Pro 64",
+    "Windows 11 Home 64",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garanti",
+    "garantierbjudanden, allt en del av vårt pålitliga skyddsnät för din nya tekniska följes",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batteritiden för Lenovos bärbara datorer?",
+    "batteritiden på min bärbara Lenovo-dator?",
+    "batteritid och bärbarhet, vilket gör dem lämpliga för en bred demografi av användare",
+    "batteritid är dessa bärbara datorer en motståndskraftig och pålitlig partner under hela",
+    "batteritiden gör också Ultrabooks mycket portabla",
+    "batteritid för att undvika strömpanik mitt i föreläsningen",
+    "batteritid och bärbarhet till två av de mest kritiska faktorerna när du väljer en ny bä",
+    "batteritid som kan ta dig igenom en hel dags arbete eller en lång pendling så att du in",
+    "batteritid med snabbladdningsmöjligheter",
+    "batteritid kompletterad med Rapid Charge-teknik – att koppla in den i bara några minute",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e"
+   ],
+   "condition": [
+    "Skickas",
+    "demo"
+   ],
+   "delivery": [
+    "Leveransklara Datorer (85)",
+    "LEVERANS",
+    "leverans mellan 07/12 och 09/12Leveransalternativ för 164+28",
+    "Frakt"
+   ],
+   "charger": [
+    "laddare"
+   ]
+  },
+  "text": "Handla bärbara datorer, 2-i-1-datorer och mycket mer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nBlack Friday | Black Friday-erbjudandena är nu LIVE! Spara upp till 54%. Handla nu .\nCurrently displaying item 1 of 1\n    \nBärbara datorer\nThinkPad\nPålitlig kvalitet för företag. Förbättrad säkerhet och beprövad hållbarhet.\nThinkBook\nKraftfulla, mångsidiga och portabla för alla arbetsstilar.\nYoga\nFlera lägen. Anpassad för arbete, spel och avkoppling.\nIdeaPad\nDesign, stil och funktion med prestanda du kan lita på.\nLegion\nEn trimmad dataspelsupplevelse som med lätthet hanterar de senaste spelen.\nLOQ\nBärbara speldatorer som överträffar alla förväntningar – nu till budgetpris.\nLenovo\nFrån lätta bärbara datorer till Chromebooks för arbete, hem och skola.\nGooglebook\nKraftfull prestanda. Gemini Intelligence. Sömlös Android™-synkronisering.\nskip to product list\nFilter\nVisa färre\nRea\nrea (257)\nMärke\nThinkPad (154)\nThinkBook (19)\nYoga (77)\nIdeaPad (114)\nLegion (63)\nVisa mer\nProdukt typ\nBygg Din Egen Dator (371)\nLeveransklara Datorer (85)\nAI (artificiell intelligens)\nCopilot+ PC (253)\nVisa mer\nProcessor\nAlla Intel®-processorer (246)\nAlla AMD-processorer (178)\nAlla Snapdragon®-processorer (28)\nAlla NVIDIA-processorer (4)\nNVIDIA RTX Spark™ (4)\nVisa mer\nMinne (GB)\n64 GB (17)\n96 GB (1)\n32 GB (188)\nVisa mer\nSkärmstorlek\n13\" - 13.9\" (27)\n14\" - 14.9\" (188)\n15\" - 16.9\" (230)\nVisa mer\nGrafik\nQualcomm™ Adreno (28)\nNVIDIA RTX™ (115)\nIntel® UHD (5)\nVisa mer\nHårddisk\n2 TB (9)\n1 TB (188)\n512 GB (163)\nVisa mer\nAnvändning\nArbete (241)\nSpel (90)\nStudent (400)\nVisa mer\nPris\nÖver 30 000 kr (92)\n23 000 kr - 29 999 kr (103)\n17 000 kr - 22 999 kr (107)\nVisa mer\nFunktioner\nSerien\nBy Type\nSkärmupplösning\nFärg\nTouch Screen\nVikt\nSkickas\nBetyg\n& Upp\nVisa mer\n456 träffar\nSortera efter : Senaste\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7a 2-in-1 Gen 11 (16\" AMD)\nCopilot+ PC\n4.4\n(28)\n45W-65W USB PD\nWebbpris\n19 999,00 kr\n15 999,20 kr\n20% rabatt\ninkl. moms\nAMD Ryzen™ AI 7 445-processor (2,00 GHz upp till 4,60 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nAMD Radeon™ 840M / 880M\n16 GB LPDDR5X - 8 000MT/s (lött)\n512 GB SSD M.2 2242 PCIe Gen4 QLC\n16\" WUXGA (1 920 × 1 200), OLED, reflex, pekskärm, 100 % DCI-P3, 300 cd/m² (nit), 60 Hz, glas\nVisa fler specifikationer\nFunktioner\nCopilot+ PC med AMD Ryzen™ AI 400 Series-processorer\n360° konvertibel design för mångsidig användning\n2-månaders Adobe Creative Cloud medlemskap\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83TFCTO1WWSE1\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7a 2-in-1 Gen 11 (16\" AMD)\nCopilot+ PC\n4.4\n(28)\n45W-65W USB PD\n25 089,00 kr\ninkl. moms\nAMD Ryzen™ AI 7 445-processor (2,00 GHz upp till 4,60 GHz)\nWindows 11 Pro 64\nAMD Radeon™ 840M / 880M\n32 GB LPDDR5X - 8 00MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\n16\" 2,8K (2 880 × 1 800), OLED, reflex, pekskärm, HDR 1 000 True Black, 100 % DCI-P3, 500 cd/m² (nit), 120 Hz, glas\nVisa fler specifikationer\nFunktioner\nCopilot+ PC med AMD Ryzen™ AI 400 Series-processorer\n360° konvertibel design för mångsidig användning\n2-månaders Adobe Creative Cloud medlemskap\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83TFCTO1WWSE2\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7a 2-in-1 Gen 11 (14\" AMD)\nCopilot+ PC\n4.3\n(32)\n45W-65W USB PD\nWebbpris\n22 219,00 kr\n19 997,10 kr\n10% rabatt\ninkl. moms\nAMD Ryzen™ AI 7 445-processor (2,00 GHz upp till 4,60 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nAMD Radeon™ 840M\n32 GB LPDDR5X - 8 00MT/s (lött)\n512 GB SSD M.2 2242 PCIe Gen4 QLC\n14\" 2,8K (2 880 × 1 800), OLED, reflex, pekskärm, HDR 1000 True Black, 100 % DCI-P3, 1 100 cd/m² (nit) (HDR Peak)/500 cd/m² (nit) (SDR Typical), 120 Hz, glas\nVisa fler specifikationer\nFunktioner\nMångsidig 14\" konvertibel bärbar dator\nDrivs av AMD Ryzen™ AI 400 Series-processorer\nCopilot+-dator med avancerade AI-funktioner\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83TDCTO1WWSE1\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7a 2-in-1 Gen 11 (14\" AMD)\nCopilot+ PC\n4.3\n(32)\n45W-65W USB PD\n26 019,00 kr\ninkl. moms\nAMD Ryzen™ AI 7 445-processor (2,00 GHz upp till 4,60 GHz)\nWindows 11 Pro 64\nAMD Radeon™ 840M\n32 GB LPDDR5X - 8 00MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\n14\" 2,8K (2 880 × 1 800), OLED, reflex, pekskärm, HDR 1000 True Black, 100 % DCI-P3, 1 100 cd/m² (nit) (HDR Peak)/500 cd/m² (nit) (SDR Typical), 120 Hz, glas\nVisa fler specifikationer\nFunktioner\nMångsidig 14\" konvertibel bärbar dator\nDrivs av AMD Ryzen™ AI 400 Series-processorer\nCopilot+-dator med avancerade AI-funktioner\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83TDCTO1WWSE2\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nIdeaPad Slim 5i Gen 11 (16\" Intel)\nCopilot+ PC\n4.5\n(6)\n65W-100W USB PD\nWebbpris\n13 609,00 kr\n12 248,10 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra 5 322-processor (LPE-kärnor upp till 3,30 GHz P-kärnor upp till 4,40 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n16 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 8 GB)\n512 GB SSD M.2 2242 PCIe Gen4 QLC\n16\" WUXGA (1 920 × 1 200), IPS, antireflex, ingen pekskärm, 100 % sRGB, 400 cd/m² (nit), 120 Hz\nVisa fler specifikationer\nFunktioner\n16\" tunn och lätt Copilot+-dator med Intel® Core™ Ultra-processorer\nFantastisk grafik med olika OLED-skärmalternativ\nUppgraderingsbar lagring och minne samt lång batteritid\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83S6CTO1WWSE1\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nIdeaPad Slim 5i Gen 11 (16\" Intel)\nCopilot+ PC\n4.5\n(6)\n65W-100W USB PD\n16 069,00 kr\ninkl. moms\nIntel® Core™ Ultra 5 322-processor (LPE-kärnor upp till 3,30 GHz P-kärnor upp till 4,40 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n16 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 8 GB)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\n16\" WUXGA (1 920 × 1 200), OLED, reflex, ingen pekskärm, 100 % DCI-P3, 300 cd/m² (nit), 60 Hz\nVisa fler specifikationer\nFunktioner\n16\" tunn och lätt Copilot+-dator med Intel® Core™ Ultra-processorer\nFantastisk grafik med olika OLED-skärmalternativ\nUppgraderingsbar lagring och minne samt lång batteritid\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83S6CTO1WWSE2\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7i 2-in-1 Gen 11 Aura Edition (14\" Intel)\nCopilot+ PC\n4.6\n(21)\n45W-65W USB PD\nWebbpris\n18 150,00 kr\n16 335,00 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra 5 325-processor (LPE-kärnor upp till 3,40 GHz P-kärnor upp till 4,50 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n16 GB LPDDR5X - 7 467MT/s (lött)\n512 GB SSD M.2 2242 PCIe Gen4 QLC\n14\" 2,8K (2 880 × 1 800), OLED, reflex, pekskärm, HDR 1000 True Black, 100 % DCI-P3, 1 100 cd/m² (nit) (HDR Peak)/500 cd/m² (nit) (SDR Typical), 120 Hz, glas\nVisa fler specifikationer\nFunktioner\nMångsidig konvertibel bärbar dator med 360° gångjärn\nsom drivs av Intel® Core™ Ultra-processorer\nCopilot+-dator med avancerade AI-funktioner\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83TCCTO1WWSE1\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nYoga 7i 2-in-1 Gen 11 Aura Edition (14\" Intel)\nCopilot+ PC\n4.6\n(21)\n45W-65W USB PD\n28 840,00 kr\ninkl. moms\nIntel® Core™ Ultra 5 325-processor (LPE-kärnor upp till 3,40 GHz P-kärnor upp till 4,50 GHz)\nWindows 11 Home\nLenovo rekommenderar Windows 11 Pro för företag\nInbyggd Intel® grafik\n16 GB LPDDR5X - 7 467MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\n14\" 2,8K (2 880 × 1 800), OLED, reflex, pekskärm, HDR 1000 True Black, 100 % DCI-P3, 1 100 cd/m² (nit) (HDR Peak)/500 cd/m² (nit) (SDR Typical), 120 Hz, glas\nVisa fler specifikationer\nFunktioner\nMångsidig konvertibel bärbar dator med 360° gångjärn\nsom drivs av Intel® Core™ Ultra-processorer\nCopilot+-dator med avancerade AI-funktioner\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83TCCTO1WWSE2\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nLOQ 15i Gen 11 (15\" Intel)\nCopilot+ PC\n65W-100W USB PD\nWebbpris\n25 629,00 kr\n23 066,10 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 355-processor (LPE-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5060 grafikkort för bärbar dator 8GB GDDR7\n32 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 16 GB)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\n15,3\" WUXGA (1 920 × 1 200), IPS, antireflex, ingen pekskärm, 100 % sRGB, 300 cd/m² (nit), 165 Hz\nVisa fler specifikationer\nFunktioner\nByggd för AAA-spel med Intel® Core™ Ultra-processorer\nNVIDIA RTX®-grafik som driver spelprestanda\nLättare och elegantare och byggd för livet på språng\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83SLCTO1WWSE1\nVisa färre\nJämför\nKONFIGURERBAR + SNABB LEVERANS\nLOQ 15i Gen 11 (15\" Intel)\nCopilot+ PC\n65W-100W USB PD\nWebbpris\n29 649,00 kr\n26 684,10 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 356H-processor (E-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5060 grafikkort för bärbar dator 8GB GDDR7\n32 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 16 GB)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\n15,3\" WQXGA (2 560 × 1 600), IPS, antireflex, ingen pekskärm, 100 % sRGB, 400 cd/m² (nit), 180 Hz\nVisa fler specifikationer\nFunktioner\nByggd för AAA-spel med Intel® Core™ Ultra-processorer\nNVIDIA RTX®-grafik som driver spelprestanda\nLättare och elegantare och byggd för livet på språng\nAnvänd e-kupongBLACK\nBygg Din Dator\nBeräknad leverans mellan 07/12 och 09/12Leveransalternativ för 164+28\nArtikelnummer: 83SLCTO1WWSE2\nVisa färre\nVisar 1 - 10 av 456 Resultat\nKan jag anpassa konfigurationen av min bärbara Lenovo-dator innan jag köper den?\nVad är batteritiden för Lenovos bärbara datorer?\nHur kan jag förlänga batteritiden på min bärbara Lenovo-dator?\nKommer Lenovos bärbara datorer med Windows förinstallerat?\nKan jag använda en bärbar dator från Lenovo för spel?\nÄr Lenovos bärbara datorer hållbara?\nHur uppdaterar jag drivrutiner och programvara för min bärbara Lenovo-dator?\nHur mycket kostar en bärbar dator från Lenovo?\nVad är vikten på Lenovos bärbara datorer? \nHur ansluter jag min bärbara Lenovo-dator till ett trådlöst nätverk?\nKan jag använda en bärbar dator från Lenovo för videoredigering?\nVad är skärmupplösningen på Lenovos bärbara datorer?\nHur mycket lagringsutrymme har Lenovos bärbara datorer? \nHur säkerhetskopierar jag min bärbara Lenovo-dator?\nKan jag använda en bärbar dator från Lenovo för grafisk design?\nHur tar jag en skärmdump på min bärbara Lenovo-dator?\nÄr Lenovos bärbara datorer bra för företag?\nHur ansluter jag min bärbara Lenovo-dator till en extern bildskärm?\nHur kan jag välja rätt storlek på den bärbara datorn för mina behov?\nVad är skillnaden mellan en traditionell hårddisk (HDD) och en solid state-enhet (SSD)?\nKomma igång – En guidad tur i Lenovos bärbara datorer\nAtt köpa en ny bärbar dator kan vara överväldigande. Från att navigera i tekniska specifikationer till att jämföra modeller och priser är det ingen liten bedrift att hitta rätt bärbar dator. Men frukta inte, vi är här för att hjälpa till på Lenovo.\nAtt köpa en ny bärbar ",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/search?text=32GB",
+  "checkedAt": "2026-11-26T06:46:01.347Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/search?text=32GB&rows=20",
+  "title": "Sök Lenovo-produkter och lösningar | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [
+   "Lägg till i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "1 000 kr",
+   "2 999 kr",
+   "3 000 kr",
+   "5 999 kr",
+   "6 000 kr",
+   "8 999 kr",
+   "18 990,00 kr",
+   "37 990,00 kr",
+   "32 490,00 kr",
+   "23 590,00 kr"
+  ],
+  "hits": {
+   "keyboard": [],
+   "ram": [
+    "32 GB LPDDR5X - 8 000MT/s (lött)",
+    "8GB GDDR7",
+    "32 GB LPDDR5X - 8 533MT/s (lött)",
+    "32 GB LPDDR5X - 8 533MT/s (Memory On-paket)",
+    "32 GB LPDDR5X - 7 500MT/s (lött)",
+    "6GB GDDR6",
+    "32 GB LPDDR5X-9600MT/s (lött)",
+    "32 GB DDR5 - 5 600MT/s (SODIMM)(2 x 16 GB)",
+    "32 GB LPDDR5X - 7 467MT/s (lött)",
+    "12GB GDDR7",
+    "32 GB DDR5 - 5 600MT/s (UDIMM)(2 x 16 GB)",
+    "32 GB DDR5 - 5 200MT/s (SODIMM)(2 x 16 GB)"
+   ],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Home 64 (69)",
+    "Windows 11 Pro 64 (10)",
+    "Windows 11 Home-32GB-1TB)",
+    "Windows 11 Home 64",
+    "Windows 11 Pro-32GB-1TB-RTX 50",
+    "Windows 11 Pro 64",
+    "Windows 11 Pro-32GB-1TB)",
+    "Windows 11 Pro-32GB-1TB-RTX 40",
+    "Windows 11 Home-32GB-1TB-RTX 5",
+    "Windows 11 Home-32GB-512GB)"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "Batteritid som räcker hela dagen för att hjälpa dig att hålla dig produktiv på språng",
+    "Batteri med stor kapacitet"
+   ],
+   "condition": [
+    "Skickas",
+    "SKICKA"
+   ],
+   "delivery": [
+    "i lager nu (25)"
+   ],
+   "charger": [
+    "Laddare"
+   ]
+  },
+  "text": "Kontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nBlack Friday | Black Friday-erbjudandena är nu LIVE! Spara upp till 54%. Handla nu .\nCurrently displaying item 1 of 1\nSökresultat för '32GB'\nProdukter(108)\nInnehåll(0)\nSupportportal för sökning\n108 products found\nskip to product list\nFilter\nFilter\nKomprimera alla\nPris\n1 000 kr - 2 999 kr (10)\n3 000 kr - 5 999 kr (2)\n6 000 kr - 8 999 kr (6)\nVisa mer\nHårddisk\n2 TB (2)\n1 TB (82)\n512 GB (6)\nVisa mer\nSkärmstorlek\nLess than 7'' (4)\n8'' - 8.9'' (17)\n9'' - 9.9'' (1)\nVisa mer\nMinne (GB)\n64 GB (1)\n32 GB (85)\n16 GB (3)\nVisa mer\nProduktkategori\nPCs Tablets (90)\nAccessories (11)\nPhones (7)\nTillgänglighet\nFinns i lager nu (25)\nTyp\nMinne (5)\nBusiness (2)\nGaming (2)\nVisa mer\nAI (artificiell intelligens)\nLenovo Qira (57)\nCopilot+ PC (35)\nAlla AI PCs (25)\nVisa mer\nMärke\nLegion (58)\nLenovo Legion (58)\nYoga (29)\nVisa mer\nSerien\nLegion 5 Series (25)\nLegion Go Series (17)\nYoga 2-in-1 Series (13)\nVisa mer\nProcessor\nAlla AMD-processorer (53)\nAlla Intel®-processorer (36)\nAMD Ryzen™ AI (21)\nVisa mer\nSkickas\nNext Business Day (4)\n1-3 Arbetsdagar (51)\n4-6 Arbetsdagar (2)\nVisa mer\nAnvändning\nSpel (62)\nKreatörer (60)\nStudent (51)\nVisa mer\nFunktioner\nNon-Touch (61)\nTouch Screen (37)\nPen Included (19)\nVisa mer\nBetyg\n& Upp\n& Upp\nSkärmupplösning\n2K/QHD (38)\nFull HD (18)\n2.8K (17)\nVisa mer\nBesparingar (%)\n31%-40% (1)\n21%-30% (2)\n11%-20% (12)\nVisa mer\nOperativsystem\nWindows 11 Home 64 (69)\nSteamOS (10)\nWindows 11 Pro 64 (10)\nVisa mer\nFärg\nBlack (39)\nGrey (21)\nBlue (10)\nVisa mer\nGrafik\nNVIDIA RTX™ (48)\nIntegrated (43)\nAMD Radeon™ (27)\nVisa mer\nGrafik Kort\nNVIDIA® GeForce RTX™ 5060 (23)\nNVIDIA® GeForce RTX™ 5070 (21)\nIntegrated AMD Radeon™ (13)\nVisa mer\nPopulära filter\n1 TB\n14'' - 14.9''\n32 GB\nLenovo Qira\nLegion\nLegion 5 Series\nAlla AMD-processorer\n1-3 Arbetsdagar\n108 träffar\nSortera efter : Populära produkter\nJämför\nKLARA ATT SKICKA\nYoga 7 2-in-1 14 (AI-R7-Windows 11 Home-32GB-1TB)\n4.3\n(31)\n45W-65W USB PD\n18 990,00 kr\ninkl. moms\nAMD Ryzen™ AI 7 445-processor (2,00 GHz upp till 4,60 GHz)\nWindows 11 Home 64\nInbyggd AMD Radeon™ 840M\n32 GB LPDDR5X - 8 000MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\nVisa fler specifikationer\nFunktioner\nMångsidig 14\" konvertibel bärbar dator\nDrivs av AMD Ryzen™ AI 400 Series-processorer\nCopilot+-dator med avancerade AI-funktioner\nLägg till i kundvagn\nVisa mer\nJämför\nKLARA ATT SKICKA\nYoga Pro 7i 15 (Ultra 9-Windows 11 Pro-32GB-1TB-RTX 5060)\n3.5\n(4)\n65W-100W USB PD\nWebbpris\n37 990,00 kr\n32 490,00 kr\n14% rabatt\ninkl. moms\nIntel® Core™ Ultra 9 386H Processor (E-kärnor upp till 3,70 GHz P-kärnor upp till 4,90 GHz)\nWindows 11 Pro 64\nNVIDIA® GeForce RTX™ 5060 grafikkort för bärbar dator 8GB GDDR7\n32 GB LPDDR5X - 8 533MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nKraftfull 15” Copilot+ bärbar dator för kreativa\nDrivs av Intel® Core™ Ultra-processorer\nUtformad för exakt ritning och design\nAnvänd e-kupongBLACK\nLägg till i kundvagn\nVisa mer\nJämför\nYoga Slim 9i 14 (Ultra 7-Windows 11 Pro-32GB-1TB)\n4.7\n(20)\n45W-65W\n23 590,00 kr\ninkl. moms\nIntel® Core™ Ultra 7 258V-processor (LPE-kärnor upp till 3,70 GHz P-kärnor upp till 4,80 GHz/32 GB MOP)\nWindows 11 Pro 64\nInbyggd Intel® Arc™ 140V-grafikkort\n32 GB LPDDR5X - 8 533MT/s (Memory On-paket)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nCopilot+-dator som drivs av Intel® Core™ Ultra\nBanbrytande kamera under skärm med 98 % förhållande mellan skärm och kropp\nBländande, reflekterande skyddsglas; elegant design\nLägg till i kundvagn\nVisa mer\nJämför\nExkl. Laddare\nLegion Go S (32GB 1TB)\n4.7\n(139)\n12 990,00 kr\ninkl. moms\nAMD Ryzen™ Z1 Extreme-processor (3,30 GHz upp till 5,10 GHz)\nSteamOS\nInbyggd AMD Radeon™-grafik\n32 GB LPDDR5X - 7 500MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nKonsolprestanda i en handhållen enhet, som drivs av SteamOS\nSkarp grafik på en 8″ PureSight-skärm\nErgonomisk design och TrueStrike-kontroller\nLägg till i kundvagn\nVisa mer\nJämför\nKLARA ATT SKICKA\nYoga AIO 32i (Ultra 7-Windows 11 Pro-32GB-1TB-RTX 4050)\n4.7\n(23)\nWebbpris\n29 990,00 kr\n26 590,00 kr\n11% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 258V-processor (LPE-kärnor upp till 3,70 GHz P-kärnor upp till 4,80 GHz/32 GB MOP)\nWindows 11 Pro 64\nNVIDIA® GeForce RTX™ 4050 6GB GDDR6\n32 GB LPDDR5X - 8 533MT/s (Memory On-paket)\n1 TB SSD M.2 2280 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nDen första Lenovo Copilot+ allt-i-ett-datorn med AI-aktiverade funktioner\nEnastående prestanda med Intel® Core™ Ultra-processorer och diskret grafik\nExpansiv 31,5\" UHD-skärm för en uppslukande visningsupplevelse\nAnvänd e-kupongBLACK\nLägg till i kundvagn\nNästan slutsålt, köp nu!\nVisa mer\nJämför\nMEGADEAL\nYoga AIO 32 (Ultra X7-Windows 11 Pro-32GB-1TB)\n4.5\n(4)\nWebbpris\n37 990,00 kr\n33 990,00 kr\n10% rabatt\ninkl. moms\nIntel® Core™ Ultra X7 358H Processor (E-kärnor upp till 3,50 GHz P-kärnor upp till 4,80 GHz)\nWindows 11 Pro 64\nInbyggd Intel® Arc™ B390-grafik\n32 GB LPDDR5X-9600MT/s (lött)\n1 TB SSD M.2 2280 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nA 31.5\" Aura Edition AIO with a 4K OLED-skärm\nAI-justerad Adaptiv belysning för en uppslukande upplevelse\nDrivs av Intel® Core™ Ultra Series 3-processor\nAnvänd e-kupongBLACK\nLägg till i kundvagn\nVisa mer\nJämför\nMEGADEAL\nLegion 5 15 (R7-Windows 11 Home-32GB-1TB-RTX 5060)\n4.5\n(79)\n95W-100W USB PD\nWebbpris\n23 990,00 kr\n20 690,00 kr\n13% rabatt\ninkl. moms\nAMD Ryzen™ 7 260-processor (3,80 GHz upp till 5,10 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5060 grafikkort för bärbar dator 8GB GDDR7\n32 GB DDR5 - 5 600MT/s (SODIMM)(2 x 16 GB)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\n15″ bärbar speldator – livfull grafik och Nahimic®-audio.\nLegion Space förhöjer din spelupplevelse.\nFörbättrad kylning med Legion Coldfront: Hyper.\nAnvänd e-kupongBLACK\nLägg till i kundvagn\nVisa mer\nJämför\nMEGADEAL\nYoga AIO 27 (Ultra 7-Windows 11 Pro-32GB-1TB)\n5.0\n(1)\nWebbpris\n26 990,00 kr\n23 590,00 kr\n12% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 356H Processor (E-kärnor upp till 3,50 GHz P-kärnor upp till 4,70 GHz)\nWindows 11 Pro 64\nInbyggd Intel®-grafik\n32 GB LPDDR5X - 7 467MT/s (lött)\n1 TB SSD M.2 2280 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\n27\" AIO för kreatörer, med QHD-skärm\nIntel® Core™ Ultra-driven Copilot+-PC\nFlexibel design, bekväma visningsalternativ\nAnvänd e-kupongBLACK\nLägg till i kundvagn\nVisa mer\nJämför\nKLARA ATT SKICKA\nLegion 7 16 (AI-R7-Windows 11 Home-32GB-1TB-RTX 5060)\n4.7\n(5)\n65W-100W USB PD\n27 990,00 kr\ninkl. moms\nAMD Ryzen™ AI 7 450-processor (2,00 GHz upp till 5,10 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5060 grafikkort för bärbar dator 8GB GDDR7\n32 GB LPDDR5X - 8 533MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\n16″ Copilot+-dator för spelande med PureSight OLED.\nLegion Space omformar din spelupplevelse.\nTyst prestanda med Legion Coldfront: Hyper\nLägg till i kundvagn\nVisa mer\nJämför\nKLARA ATT SKICKA\nYoga 7 2-in-1 16 (AI-R7-Windows 11 Home-32GB-1TB)\n4.4\n(27)\n45W-65W USB PD\n22 990,00 kr\ninkl. moms\nAMD Ryzen™ AI 7 445-processor (2,00 GHz upp till 4,60 GHz)\nWindows 11 Home 64\nInbyggd AMD Radeon™ 840M\n32 GB LPDDR5X - 8 000MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 QLC\nVisa fler specifikationer\nFunktioner\nCopilot+ PC med AMD Ryzen™ AI 400 Series-processorer\n360° konvertibel design för mångsidig användning\n2-månaders Adobe Creative Cloud medlemskap\nLägg till i kundvagn\nBegränsat lager, köp nu!\nVisa mer\nJämför\nKLARA ATT SKICKA\nYoga Pro 7 15 (AI-MAX+ 388-Windows 11 Pro-32GB-1TB)\n4.0\n(1)\n65W-180W USB PD\n28 990,00 kr\ninkl. moms\nAMD Ryzen™ AI Max+ 388-processor (3,60 GHz upp till 5,00 GHz)\nWindows 11 Pro 64\nInbyggd AMD Radeon 8060S-grafik\n32 GB LPDDR5X - 8 000MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nKraftfull 15\" Copilot+-dator för kreativa\nDrivs av AMD Ryzen™ AI Max-seriens processorer\nUtformad för att rita och designa med precision\nLägg till i kundvagn\nVisa mer\nJämför\nKLARA ATT SKICKA\nLegion T5i (Ultra 7-Windows 11 Home-32GB-1TB-RTX 5070)\n4.8\n(54)\nWebbpris\n31 990,00 kr\n26 590,00 kr\n16% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 270K Plus Processor (E-kärnor upp till 4,70 GHz P-kärnor upp till 5,40 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5070 12GB GDDR7\n32 GB DDR5 - 5 600MT/s (UDIMM)(2 x 16 GB)\n1 TB SSD M.2 2280 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nIntel® Core™ Ultra-processorer för extrem prestanda\nMer än snabb NVIDIA® GeForce RTX®-grafik\nUltrasnabb anslutning, uppgraderingsbart minne och lagring\nAnvänd e-kupongBLACK\nLägg till i kundvagn\nBegränsat lager, köp nu!\nVisa mer\nJämför\nMEGADEAL\nLegion 5i 15 (Ultra 7-Windows 11 Home-32GB-1TB-RTX 5060)\n4.5\n(143)\n95W-100W USB PD\nWebbpris\n26 990,00 kr\n22 190,00 kr\n17% rabatt\ninkl. moms\nIntel® Core™ Ultra 7 255HX-processor (E-kärnor upp till 4,50 GHz P-kärnor upp till 5,20 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5060 grafikkort för bärbar dator 8GB GDDR7\n32 GB DDR5 - 5 600MT/s (SODIMM)(2 x 16 GB)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nSpelprestanda på stationär nivå\nAvancerad kylteknik för utökat spelande\nAI-optimering\nAnvänd e-kupongBLACK\nLägg till i kundvagn\nVisa mer\nJämför\nKLARA ATT SKICKA\nYoga Slim 7 14 (AI-R7-Windows 11 Home-32GB-512GB)\n4.6\n(9)\n45W-65W USB PD\n19 990,00 kr\ninkl. moms\nAMD Ryzen™ AI 7 445-processor (2,00 GHz upp till 4,60 GHz)\nWindows 11 Home 64\nInbyggd AMD Radeon™ 840M\n32 GB LPDDR5X - 8 000MT/s (lött)\n512 GB SSD M.2 2242 PCIe Gen4 QLC\nVisa fler specifikationer\nFunktioner\n14\" Copilot+-dator med AMD Ryzen™ AI 400 Series-processorer\nFantastisk OLED-skärm och uppslukande ljud med klarhet\nBatteritid som räcker hela dagen för att hjälpa dig att hålla dig produktiv på språng\nLägg till i kundvagn\nVisa mer\nJämför\nKLARA ATT SKICKA\nLegion Pro 5 16 (R9-Windows 11 Home-32GB-1TB-RTX 5070)\n4.4\n(164)\n65W-100W USB PD\n27 990,00 kr\ninkl. moms\nAMD Ryzen™ 9 8945HX-processor (2,50 GHz upp till 5,40 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5070 grafikkort för bärbar dator 8GB GDDR7\n32 GB DDR5 - 5 200MT/s (SODIMM)(2 x 16 GB)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nUtformad för e-sportspelare\n16″ OLED-spelskärm\nAvancerad kylteknik för tyst kraft\nLägg till i kundvagn\nBegränsat lager, köp nu!\nVisa mer\nJämför\nKLARA ATT SKICKA\nLegion Pro 5i 16 (Ultra 9-Windows 11 Home-32GB-1TB-RTX 5070 Ti)\n4.5\n(349)\n65W-100W USB PD\n35 990,00 kr\ninkl. moms\nIntel® Core™ Ultra 9 275HX-processor (E-kärnor upp till 4,60 GHz P-kärnor upp till 5,40 GHz)\nWindows 11 Home 64\nNVIDIA® GeForce RTX™ 5070 Ti grafikkort för bärbar dator 12GB GDDR7\n32 GB DDR5 - 5 600MT/s (SODIMM)(2 x 16 GB)\n1 TB SSD M.2 2280 PCIe Gen4 TLC\nVisa fler specifikationer\nFunktioner\nUltimat ersättare för stationär dator för e-sport\nAI-förbättrad prestanda\nLegion ColdFront: Hyperkylningsteknik\nLägg till i kundvagn\nVisa mer\nJämför\nLegion Go Gen 2 (8.8″)\n4.6\n(85)\nWebbpris\n34 839,00 kr\n31 355,10 kr\n10% rabatt\ninkl. moms\nAMD Ryzen™ Z2 Extreme-processor (2,00 GHz upp till 5,00 GHz)\nWindows 11 Home 64\nInbyggd grafik\n32 GB LPDDR5X - 8 00MT/s (lött)\n2 TB SSD M.2 2280 PCIe Gen4 Performance TLC\nVisa fler specifikationer\nFunktioner\nLöstagbara Legion Truestrike-kontroller\n8.8″ Lenovo PureSight OLED-gamingskärm\nBatteri med stor kapacitet\nAnvänd e-kupongBLACK\nBygg Din Dator\nVisa mer\nJämför\nLegion Go Gen 2 (8.8″)\n4.6\n(85)\nWebbpris\n23 949,00 kr\n21 554,10 kr\n10% rabatt\ninkl. moms\nAMD Ryzen™ Z2 Extreme-processor (2,00 GHz upp till 5,00 GHz)\nWindows 11 Home 64\nInbyggd grafik\n32 GB LPDDR5X - 8 00MT/s (lött)\n1 TB SSD M.2 2242 PCIe Gen4 TLC\nVisa fler spec",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpade/",
+  "checkedAt": "2026-11-26T06:46:10.095Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpade/",
+  "title": "ThinkPad E-serien - Prisvärda bärbara datorer för företag | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "ThinkPad E16 Gen 4 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0186",
+    "mpn": "LEN101T0186",
+    "offers": [
+     {
+      "price": "16939.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0143",
+    "mpn": "LEN101T0143",
+    "offers": [
+     {
+      "price": "17404.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 8 (14\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0182",
+    "mpn": "LEN101T0182",
+    "offers": [
+     {
+      "price": "23770.11",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 8 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0187",
+    "mpn": "LEN101T0187",
+    "offers": [
+     {
+      "price": "13009.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 4 (16\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0183",
+    "mpn": "LEN101T0183",
+    "offers": [
+     {
+      "price": "16664.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 4 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0170",
+    "mpn": "LEN101T0170",
+    "offers": [
+     {
+      "price": "15243.91",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 8 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0167",
+    "mpn": "LEN101T0167",
+    "offers": [
+     {
+      "price": "17059.51",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 3 (16\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0136",
+    "mpn": "LEN101T0136",
+    "offers": [
+     {
+      "price": "11252.21",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 3 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0120",
+    "mpn": "LEN101T0120",
+    "offers": [
+     {
+      "price": "21712.61",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 3 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0125",
+    "mpn": "LEN101T0125",
+    "offers": [
+     {
+      "price": "16699.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0124",
+    "mpn": "LEN101T0124",
+    "offers": [
+     {
+      "price": "11499.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14″ AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0133",
+    "mpn": "LEN101T0133",
+    "offers": [
+     {
+      "price": "14024.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0119",
+    "mpn": "LEN101T0119",
+    "offers": [
+     {
+      "price": "27877.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "16 939,00 kr",
+   "17 404,00 kr",
+   "23 770,11 kr",
+   "13 009,00 kr",
+   "16 664,00 kr",
+   "15 243,91 kr",
+   "17 059,51 kr",
+   "11 252,21 kr",
+   "21 712,61 kr",
+   "16 699,00 kr"
+  ],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (12)",
+    "Windows 11 Home 64 (7)",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid med smart termisk design",
+    "batteritid",
+    "batteritid för förbättrad produktivitet",
+    "batteritid för att förstärka produktiviteten",
+    "batteritid som räcker hela dagen",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e",
+    "batterier",
+    "batterier och ger inga garantier för fel eller skador som uppstår på grund av att de an",
+    "Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde",
+    "batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funk",
+    "batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom vik"
+   ],
+   "condition": [],
+   "delivery": [
+    "Leveransklara Datorer (2)"
+   ],
+   "charger": []
+  },
+  "text": "ThinkPad E-serien bärbara datorer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nHem > Bärbara Datorer > ThinkPad > ThinkPad E Series\nBärbara datorer i E-serien\nSnygg och prisvärd produktivitet med E-serien\nHjälp ditt småföretag att skilja sig från mängden med dessa bärbara företagsdatorer i Lenovo ThinkPad E-serien, som är attraktiva både utanpå och inuti. De är konstruerade för säkerhet och produktivitet och har en design som ger ditt företag en personlig touch.\nJÄMFÖR BÄRBARA DATORER I E-SERIEN\nExklusiva B2B-priser, dedikerad support med en Lenovo Pro Account Manager och mycket mer.  Ring till oss : 08 580 062 01\nGå med nu KOSTNADSFRITT\nThinkPad E-Serien Bärbara Datorer\nskip to product list\nFilter\nVisa färre\nProdukt typ\nBygg Din Egen Dator (10)\nLeveransklara Datorer (2)\nAI (artificiell intelligens)\nCopilot+ PC (5)\nAlla AI PCs (9)\nVisa mer\nProcessor\nAlla Intel®-processorer (8)\nAlla AMD-processorer (4)\nIntel® Core™ Ultra 5 vPro® (1)\nIntel® Core™ 7 (2)\nIntel® Core™ 3 (2)\nVisa mer\nOperativsystem\nWindows 11 Pro 64 (12)\nWindows 11 Home 64 (7)\nGrafik\nIntel® Arc™ (2)\nIntegrated (10)\nAMD Radeon™ (4)\nMinne (GB)\n32 GB (10)\n16 GB (9)\n8 GB (2)\nPris\nFärg\nBetyg\n& Upp\n& Upp\n& Upp\nVisa mer\nSkärmstorlek\n14\" - 14.9\" (6)\n15\" - 16.9\" (6)\n13 träffar\nSortera efter : Senaste\nJämför\nThinkPad E16 Gen 4 (16\" Intel)\n15W-65W\nPris från:\n16 939,00 kr\ninkl. moms\nGenerös 16-tums bärbar dator för mindre skrollning\nUtbytbara delar för enkla byten och uppgraderingar\nAI-drivna produktivitetsfunktioner\nVisa 3 modeller\nJämför\nThinkPad E14 Gen 7 (14\" Intel)\nCopilot+ PC\n4.0\n(18)\n15W-65W USB PD\nPris från:\n17 404,00 kr\ninkl. moms\n14\" Copilot+-dator med förhöjd AI-teknik\nUpp till Intel® Core™ Ultra 7-processorer (Series 2) med Intel vPro®\nFantastiska skärmalternativ\nVisa modell\nJämför\nThinkPad E14 Gen 8 (14\" AMD)\nCopilot+ PC\n4.5\n(14)\n15W-65W USB PD\nPris från:\n23 770,11 kr\ninkl. moms\n14\" laptop med AMD Ryzen™ AI 400-seriens processor\nLång batteritid med smart termisk design\nThinkShield-säkerhet för att skydda dina data och din enhet\nVisa 2 modeller\nJämför\nThinkPad E14 Gen 8 (14\" Intel)\nPris från:\n13 009,00 kr\ninkl. moms\nAI-drivna funktioner för att effektivisera arbetsflödet\n14ʺ lätt bärbar dator med lång batteritid\nUtbytbara delar för enkla byten och uppgraderingar\nVisa 3 modeller\nJämför\nThinkPad E16 Gen 4 (16\" AMD)\nCopilot+ PC\n5.0\n(9)\n15W-65W USB PD\nPris från:\n16 664,00 kr\ninkl. moms\nAMD Ryzen™ AI 400-seriens processor med AI på enheten\nTillförlitlig batteritid med smart termisk design\nInbyggd ThinkShield-säkerhet för att skydda din enhet\nVisa 3 modeller\nJämför\nThinkPad E16 Gen 4 (16\" Intel)\nCopilot+ PC\n4.8\n(9)\n15W-65W USB PD\nPris från:\n15 243,91 kr\ninkl. moms\nAccelererad AI-prestanda med Intel® Core™ Ultra-processorer\nSömlöst samarbete med smarta Copilot+-funktioner\nLång batteritid för förbättrad produktivitet\nVisa 3 modeller\nJämför\nThinkPad E14 Gen 8 (14\" Intel)\nCopilot+ PC\n4.5\n(5)\n15W-65W USB PD\nPris från:\n17 059,51 kr\ninkl. moms\nAI-driven prestanda med Intel® Core™ Ultra-processorer\nCopilot+-upplevelser för smartare samarbeten\nLång batteritid för att förstärka produktiviteten\nVisa 3 modeller\nJämför\nThinkPad E16 Gen 3 (16\" AMD)\n4.6\n(73)\n15W-65W USB PD\nPris från:\n11 252,21 kr\ninkl. moms\nAMD Ryzen™ 200 Series-processorer och AI-upplevelser\n16\" bärbar dator med överlägsen skärmkvalitet\nSmart, hållbar design med batteritid som räcker hela dagen\nVisa 3 modeller\nJämför\nThinkPad E16 Gen 3 (16\" Intel)\n4.3\n(53)\n15W\nPris från:\n21 712,61 kr\ninkl. moms\n16\" tunn, AI-driven bärbar dator för yrkesverksamma på språng\nRobusta Intel® Core™ Ultra processorer och grafik\nEnkelt uppgraderingsbar med generösa minnes- och lagringsalternativ\nVisa modell\nJämför\nThinkPad E16 Gen 3 (16\" Intel)\n4.5\n(139)\n15W-65W USB PD\nPris från:\n16 699,00 kr\ninkl. moms\n16\" bärbar företagsdator med fantastisk skärm och grafik\nOöverträffad prestanda med Intel® Core™-processorer\nKompakt och hållbar bärbar företagsdator med lång batteritid\nVisa modell\nVisar 1 - 10 av 13 Resultat\nFörbättra användarupplevelsen med Premier Support Plus    \nPremier Support Plus ger VIP-support, löser dina IT-problem bättre – och snabbare. Du får direkt tillgång, dygnet runt, alla dagar i veckan, till specialiserade tekniker som ger dig lösningar utan skript som alltid fungerar. Och eftersom du kanske arbetar hemifrån eller ibland har väldigt bråttom till arbetet inkluderar Premier Support Plus även Accidental Damage Protection – din nya enhet är helt skyddad.\nÖppna i ny flik\nMer information\nKlicka för att se all viktig information avseende priser, begränsningar, garantier och mer på lenovo.com.\nBegränsningar: Beställningar är begränsade till 5 datorer per kund. För större kvantiteter gå till avsnittet \"Var kan man handla\" på webbsidan för uppgifter om återförsäljare av Lenovo-produkter\nErbjudanden och tillgänglighet: Alla erbjudanden är villkorade av tillgänglighet. Erbjudanden, priser, specifikationer och tillgänglighet kan ändras när som helst utan förvarning.Produkterbjudanden och specifikationer som beskrivs på denna webbplats kan ändras när som helst utan förvarning. Modellerna visas enbart i illustrationssyfte. Lenovo ansvarar inte för fotografiska eller typografiska fel. Datorer som visas här levereras med ett operativsystem.\nPriser: De webbpriser som visas inkluderar moms. Priser och erbjudanden i vagnen kan ändras tills ordern läggs. *Priser – de besparingar som visas är jämfört med Lenovos standardpriser på webben. Återförsäljarpriser kan variera och de kan vara högre än de som visas här.\nAlla priser är i svenska kronor och inkluderar moms\nBatteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade eller godkända. Systemen kommer att starta upp men laddar eventuellt inte icke godkända batterier. Lenovo har inget ansvar för prestanda eller säkerhet för icke godkända batterier och ger inga garantier för fel eller skador som uppstår på grund av att de används. **Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde. Faktisk batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funktioner, inställningar för energihantering, batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom viktig information från Microsoft® som kan gälla för ditt köp, inklusive detaljer om Windows 10, Windows 8, Windows 7 samt potentiella upp- eller nedgraderingar. Lenovo varken representerar eller utfäster garantier för produkter eller tjänster från tredje part.\nVarumärken: Lenovo, ThinkPad, IdeaPad, ThinkCentre, ThinkStation och Lenovos logotyp är varumärken som tillhör Lenovo. Microsoft, Windows, Windows NT och Windows logotyp är varumärken som tillhör Microsoft Corporation. Ultrabook, Celeron, Celeron Inside, Core Inside, Intel, Intel logotyp, Intel Atom, Intel Atom Inside, Intel Core, Intel Inside, Intel Inside logotyp, Intel vPro, Itanium, Itanium Inside, Pentium, Pentium Inside, vPro Inside, Xeon, Xeon Phi, Xeon Inside och Intel Optane är varumärken som tillhör Intel Corporation eller dess dotterbolag i USA och/eller andra länder. Andra namn på företag, produkter eller tjänster kan vara varumärken eller servicemärken som tillhör andra.\n*Köp hos Lenovo och få garanterat lägsta pris – gäller alla reor till och med den 31/12/2026 | Läs mer\nCurrently displaying item 1 of 1\nAnge din e-postadress om du vill ta emot viktiga uppdateringar\nE-post\nVälj land/region:\nOM LENOVO\nOm Lenovo\nNyheter\nInvesterarrelationer\nWebbtillgänglighet (på engelska)\nCompliance\nESG\nAvtalsvillkor\nJobba hos Lenovo\nLenovo Affiliate Program\nLÖSNINGAR\nPRODUKTER OCH TJÄNSTER\nBärbara datorer och Ultrabooks\nSmartare AI för dig\nSpelmaskinen\nSurfplatta\nStationära datorer\nArbetsstationer\nData Center Solutions\nTillbehör och program\nTjänster och garanti\nProduktåterkallningar\nUtbytesdelar\nRESURSER\nLenovo Creator Community\nLenovo Pro Community\nLegion Community\nE-postprenumeration\nForum\nBloggar\nÅterförsäljare\nProduktvillkor\nAffiliate Program\nKöpprogram för medarbetare\nLenovo Partner Hub\nOrdlista\nKunskapsbas\nCUSTOMER SUPPORT\nKontakta oss\nOrderstatus\nSupport\nVanliga frågor om produkter\nVanliga frågor om köp\nFörsäljningsvillkor\nPORTFOLIO\nT-serien\nX-serien\nThinkPad\nIdeaPad\nYoga\nSmartphone & Watches\nM-seriens stationära datorer\nThinkCentre\nIdeaCentre\nSurfplatta\nThinkStation\nData Center Solutions\n© 2026 Lenovo. Med ensamrätt.\nSekretessverktyg för samtycke till cookiesAnvändningsvillkorÖversiktExtern inlämningspolicyUttalande mot slaveri och människohandelÅngerrätt\n系統將會開啟新視窗。\n☺\nFyll I Undersökningen.\nBehöver du hjälp? Tors 08-20, Fre 08-22, Lör-sön (chat) 10-21, Mån 8-20. Ring: \n08 580 062 01\nVi använder cookies för att förstärka din upplevelse, förbättra kvaliteten på vår webbplats och hjälpa oss att visa dig saker som är mer sannolika att vara relevanta för dig. Vi respekterar din integritet och strävar efter att ge dig den bästa Lenovo.com-upplevelsen i enlighet med GDPR. Du kan hantera dina inställningar i vårt verktyg för samtycke till cookies. Läs mer om vårt sekretessmeddelande.\nCookie-inställningar\nNej tack, bara nödvändiga kakor\nGodta cookies",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/c/laptops/ideapad/ideapad500/",
+  "checkedAt": "2026-11-26T06:46:18.047Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/c/laptops/ideapad/?cid=flash_redirect_2p3o1i",
+  "title": "Lenovo IdeaPad bärbara datorer | Mångsidiga, tillförlitliga bärbara datorer och 2-i-1-enheter | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "IdeaPad Slim 3i Gen 8 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0069",
+    "mpn": "LEN101I0069",
+    "offers": [
+     {
+      "price": "4090.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (14ʺ Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0165",
+    "mpn": "LEN101I0165",
+    "offers": [
+     {
+      "price": "8990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (15\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0166",
+    "mpn": "LEN101I0166",
+    "offers": [
+     {
+      "price": "8990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3x Gen 11 (15\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0167",
+    "mpn": "LEN101I0167",
+    "offers": [
+     {
+      "price": "9159.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3x Gen 11 (14\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0168",
+    "mpn": "LEN101I0168",
+    "offers": [
+     {
+      "price": "9199.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3 Gen 10 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0117",
+    "mpn": "LEN101I0117",
+    "offers": [
+     {
+      "price": "9510.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0149",
+    "mpn": "LEN101I0149",
+    "offers": [
+     {
+      "price": "9639.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo IdeaPad Slim 3i Gen 11 16 inch Intel",
+    "brand": "ideapad",
+    "sku": "LEN101I0151",
+    "mpn": "LEN101I0151",
+    "offers": [
+     {
+      "price": "9689.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0150",
+    "mpn": "LEN101I0150",
+    "offers": [
+     {
+      "price": "9709.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (17\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0152",
+    "mpn": "LEN101I0152",
+    "offers": [
+     {
+      "price": "9908.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (15\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0161",
+    "mpn": "LEN101I0161",
+    "offers": [
+     {
+      "price": "9990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0160",
+    "mpn": "LEN101I0160",
+    "offers": [
+     {
+      "price": "9990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-in-1 Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0163",
+    "mpn": "LEN101I0163",
+    "offers": [
+     {
+      "price": "10539.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-in-1 Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0162",
+    "mpn": "LEN101I0162",
+    "offers": [
+     {
+      "price": "10589.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-i-1 Gen 10 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0123",
+    "mpn": "LEN101I0123",
+    "offers": [
+     {
+      "price": "10649.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0143",
+    "mpn": "LEN101I0143",
+    "offers": [
+     {
+      "price": "11258.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0135",
+    "mpn": "LEN101I0135",
+    "offers": [
+     {
+      "price": "11366.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (16\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0137",
+    "mpn": "LEN101I0137",
+    "offers": [
+     {
+      "price": "11510.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0131",
+    "mpn": "LEN101I0131",
+    "offers": [
+     {
+      "price": "11672.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5i Gen 10 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0111",
+    "mpn": "LEN101I0111",
+    "offers": [
+     {
+      "price": "11797.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "23 000 kr",
+   "29 999 kr",
+   "17 000 kr",
+   "22 999 kr",
+   "12 000 kr",
+   "16 999 kr",
+   "4 090,00 kr",
+   "8 990,00 kr",
+   "9 159,00 kr",
+   "9 199,00 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord och pekplatta"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (5)",
+    "Windows 11 Home 64 (29)",
+    "Windows 11 Home S Mode 64 (1)",
+    "Windows 11?",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batteritid stöder maratonstudier eller spelsessioner på dessa bärbara datorer och säker",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e",
+    "batterier",
+    "batterier och ger inga garantier för fel eller skador som uppstår på grund av att de an",
+    "Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde",
+    "batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funk",
+    "batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom vik"
+   ],
+   "condition": [
+    "klass av datorer",
+    "skickliga tekniker omedelbart hem till dig för att hjälpa till"
+   ],
+   "delivery": [
+    "Leveransklara Datorer (3)"
+   ],
+   "charger": []
+  },
+  "text": "IdeaPad-bärbara datorer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\n    \n            \n                \nHandla IdeaPad            \nUtforska dina idéer\nMed Lenovo IdeaPad\nIdeaPad är för allt du brukar göra, samtidigt som du arbetar, spelar, studerar och skapar. Den levererar otroligt värde och tillförlitlig prestanda med mångsidig teknik som fungerar för dig.\n                \nHandla efter serie\n                     \n                   \nPro\nDet smartare valet för kraft\n               \n                     \n                   \nSlim\nDet smartare valet för mobilitet\n               \n                     \n                   \n2-i-1\nDet smartare valet för mångsidighet\n               \n                     \n                   \nVibe\nDet smartare valet för personlig stil\n               \nDet smartare valet\n                           \nEn ny klass av datorer\nHastighet. Kraft. Smartare teknik.\nMed Lenovo IdeaPad tar du inte bara till dig AI, du omfamnar ett partnerskap byggt på tillförlitlighet, design som är centrerad på dig och friheten att skräddarsy din digitala resa. Lita på att Lenovo navigerar i det ständigt föränderliga AI-landskapet, där din upplevelse är personlig, din säkerhet tas på allvar och din potential är obegränsad.\n                           \nHisnande visuella upplevelser\nMer utrymme, mindre belastning\nOavsett om du tittar på film, avslutar sena kvällsuppgifter eller ägnar dig åt episka speläventyr levererar Lenovo IdeaPad. Har ett 16:10 bildförhållande och nästan kantfri design för att säkerställa livfulla färger, djup svärta och skarp kontrast som får varje detalj att lysa – utan att anstränga dina ögon tack vare TÜV Low Blue Light-teknologi.\n                           \nFramtidsklar för dynamiska behov\nUppgraderingsbart SSD-lagringsutrymme och minne\nUppgradera ditt lagringsutrymme på dina villkor med Lenovo IdeaPad. Den utbyggbara SSD-platsen gör det enkelt att lägga till utrymme för filer, appar eller spel när du behöver det. Inga servicecenter, inget krångel – bara gör-det-själv uppgraderingsbart SSD-lagringsutrymme och minne som växer med dig och håller jämna steg med ditt liv.\n                           \nKoppla ur och slappna av\nLång batteritid. Snabbladdning.\nSäg adjö till jakten på eluttag. Imponerande batteritid stöder maratonstudier eller spelsessioner på dessa bärbara datorer och säkerställer oavbrutna stunder. Behöver du en snabb boost? Rapid Charge laddar över den tid det tar för en kaffepaus och ger timmar av mer kraft när du behöver det som mest.\n                           \nTuff nog för alla äventyr\nTillförlitlighet testad\nLenovo IdeaPad bärbara datorer är utformade för att uppfylla de rigorösa certifieringsstandarderna för MIL-STD-810H (Military Standard 810H) för tillförlitlighet och hållbarhet och kan klara extrema temperaturer, höjder, luftfuktighet, vibrationer och plötsliga stötar och fall. Så oavsett om du hoppar från lektionen till ett café eller flyttar från konferensrum till spelrum kan den överleva de oväntade missödena på vägen.\n                           \nFenomenal uppkoppling\nUtökade portar för alla dina behov\nFå tillgång till hastighet och anslutning på nästa nivå med ett avancerat I/O-gränssnitt och en utökad uppsättning portar för att säkerställa att dina mest använda enheter ansluter, samtidigt som de levererar blixtsnabba dataöverföringshastigheter.\n     \n     \n     \n     \n     \n           \nHitta rätt\nIdeaPad för dig\n                               \nFörhöjd upplevelse av tangentbord och pekplatta\nKliv in i smartare datoranvändning med de bärbara datorerna IdeaPad Pro Series, utformade för topprestanda, produktivitet och ultimat komfort. De responsiva tangenterna – inklusive fullstora piltangenter – är perfekta för när e-postmeddelanden blir till längre texter, medan den expansiva glaspekplattan är perfekt för långvariga tryck och bläddring.\nPro: Utformad\nför prestanda\noch produktivitet\nSlim: Utformad\nför mobilitet\noch bärbarhet\n2-i-1: Utformad\nför mångsidighet\noch engagemang\n                    \nInbyggd hållbarhet\nLenovo Co2 Offset Services*\nVi erbjuder Co2 Offset Services för kunder som vill kompensera utsläpp från sin dator över enhetens genomsnittliga livscykel. Detta är ett enkelt och transparent sätt att ta ytterligare steg för att hjälpa miljön och stödja klimatåtgärdsprojekt som verifierats av Förenta nationerna, Gold Standard, Climate Action och mycket mer.\n                           \nTransparens och spårbarhet\n                           \nMake your Positive Impact Felt\n                           \nSmartare teknik för en mer hållbar framtid\n*Endast tillgänglig i specifika regioner och marknader.\nLenovo Services\nAlltid här för att skydda och stödja din Lenovo-enhet.\n                        \n                           \nAccidental Damage Protection - Täcker fall, spill, elektriska överspänningar och trasiga skärmar utan extra avgifter.\n                           \nPreventative PC Health Check – Årliga hälsokontroller upptäcker problem tidigt, vilket minskar driftstopp och ökar produktiviteten.\n                           \n“Komma igång” och “instruktionsguide” – Vårt team är redo att svara på dina vardagliga programvarufrågor.\n                           \nTillgänglig 24/7/365* - Snabb, personlig service som du inte behöver vänta på.\n                           \nSupport vid din dörr* – Om ett problem inte kan åtgärdas på distans kommer våra skickliga tekniker omedelbart hem till dig för att hjälpa till.\n                           \nÖkad datorprestanda - Åtgärdar prestanda- och säkerhetsproblem och säkerställer skydd mot skadlig kod.\n                           \nFjärrdataskydd - Överför alla dina uppgifter och datorinställningar i bara ett steg.\n*Vissa marknader kanske inte har supportkapacitet och kommer att följa bästa tillgängliga servicenivåavtal.\n   \n            \n                    \nHåll det enkelt, håll det smart med Copilot+\nUpplev den smarta fördelen med en bärbar dator med inbyggd AI som gör ditt vardagsliv enklare och bättre på alla sätt.\nUtforska förbättrade funktioner på utvalda Lenovo IdeaPad-modeller utrustade med AI-driven Copilot+. Dessa enheter anpassar sig till dina behov och håller dig steget före oavsett om det är multitasking, anteckningsskrivande eller hantering av dina projekt.\n                    \nskip to product list\nFilter\nVisa färre\nProdukt typ\nBygg Din Egen Dator (35)\nLeveransklara Datorer (3)\nAI (artificiell intelligens)\nCopilot+ PC (19)\nAlla AI PCs (21)\nVisa mer\nSkärmstorlek\n13\" - 13.9\" (1)\n14\" - 14.9\" (18)\n15\" - 16.9\" (18)\nVisa mer\nProcessor\nAlla Intel®-processorer (20)\nAlla AMD-processorer (11)\nAlla Snapdragon®-processorer (7)\nIntel® Core™ 3 (5)\nIntel® Core™ 5 (8)\nIntel® Core™ Ultra 7 (9)\nIntel® Core™ Ultra 9 (1)\nIntel® Core™ Ultra 5 (8)\nIntel® Core™ i3 (1)\nAMD Ryzen™ 7 (2)\nAMD Ryzen™ 5 (1)\nAMD Ryzen™ AI (9)\nSnapdragon® X2 Plus (3)\nSnapdragon® X (2)\nMinne (GB)\n32 GB (11)\n24 GB (2)\n16 GB (27)\nVisa mer\nHårddisk\n1 TB (12)\n512 GB (27)\n256 GB (19)\nVisa mer\nPris\n23 000 kr - 29 999 kr (1)\n17 000 kr - 22 999 kr (4)\n12 000 kr - 16 999 kr (13)\nVisa mer\nOperativsystem\nWindows 11 Pro 64 (5)\nWindows 11 Home 64 (29)\nWindows 11 Home S Mode 64 (1)\nVisa mer\nBetyg\nAnvändning\nFunktioner\n38 träffar\nSortera efter : Populära produkter\nJämför\nIdeaPad Slim 3i Gen 8 (15\" Intel)\n4.1\n(58)\n45W-65W\nPris från:\n4 090,00 kr\ninkl. moms\nVisa 3 modeller\nJämför\nNYHET\nIdeaPad Vibe Gen 12 (14ʺ Snapdragon)\n45W-65W\nPris från:\n8 990,00 kr\ninkl. moms\nVisa 7 modeller\nJämför\nNYHET\nIdeaPad Vibe Gen 12 (15\" Snapdragon)\n45W-65W\nPris från:\n8 990,00 kr\ninkl. moms\nVisa 7 modeller\nJämför\nNYHET\nIdeaPad Slim 3x Gen 11 (15\" Snapdragon)\n45W-65W\nPris från:\n9 159,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nIdeaPad Slim 3x Gen 11 (14\" Snapdragon)\n45W-65W\nPris från:\n9 199,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nIdeaPad Slim 3 Gen 10 (14\" AMD)\n4.5\n(59)\n45W-65W\nPris från:\n9 510,65 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nIdeaPad Slim 3i Gen 11 (15\" Intel)\n4.5\n(2)\nPris från:\n9 639,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nLenovo IdeaPad Slim 3i Gen 11 16 inch Intel\n4.0\n(1)\nPris från:\n9 689,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nIdeaPad Slim 3i Gen 11 (14\" Intel)\nUSB PD\nPris från:\n9 709,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nIdeaPad Slim 3i Gen 11 (17\" Intel)\nPris från:\n9 908,10 kr\ninkl. moms\nVisa 2 modeller\nVisar 1 - 10 av 38 Resultat\nVanliga frågor\nVad är Lenovo IdeaPad-serien utformad för?\nVilka typer av arbetsbelastningar har IdeaPad-serien stöd för?\nHur skiljer sig Lenovo IdeaPad från andra bärbara Lenovo-datorer?\nVilka olika Lenovo IdeaPad-serier finns tillgängliga?\nVad är skillnaden mellan Lenovo IdeaPad Slim och IdeaPad Pro-datorer?\nVilka funktioner hjälper Lenovo IdeaPad-serien att stödja underhållning och media?\nHur kraftfull är IdeaPad Slim 3 för multitasking?\nVad är skillnaden mellan bärbara datorer i IdeaPad Slim 3 och IdeaPad Slim 5?\nVilka anslutningsportar kan jag förvänta mig på en bärbar IdeaPad-dator?\nHar den bärbara datorn IdeaPad Pro 5 pekskärm?\nÄr IdeaPad-datorer bra för videokonferenser?\nVad är Lenovo IdeaPad 2-i-1-serien?\nVilken Lenovo IdeaPad är utformad för spel?\nVilka säkerhetsfunktioner erbjuder IdeaPad-datorer?\nÄr den bärbara datorn Lenovo IdeaPad 1 bra för studenter?\nHur integreras Lenovo IdeaPad-datorer med Windows 11?\nVilka Lenovo IdeaPad-specifikationer bör du överväga för dina behov?\nHur påverkar lagringstypen prestandan hos en Lenovo IdeaPad?\nVilka ljudfunktioner inkluderar Lenovo IdeaPad-datorer?\nHur väljer jag rätt Lenovo IdeaPad-modell?\nKlicka för att se all viktig information avseende priser, begränsningar, garantier och mer på lenovo.com.\nBegränsningar: Beställningar är begränsade till 5 datorer per kund. För större kvantiteter gå till avsnittet \"Var kan man handla\" på webbsidan för uppgifter om återförsäljare av Lenovo-produkter\nErbjudanden och tillgänglighet: Alla erbjudanden är villkorade av tillgänglighet. Erbjudanden, priser, specifikationer och tillgänglighet kan ändras när som helst utan förvarning.Produkterbjudanden och specifikationer som beskrivs på denna webbplats kan ändras när som helst utan förvarning. Modellerna visas enbart i illustrationssyfte. Lenovo ansvarar inte för fotografiska eller typografiska fel. Datorer som visas här levereras med ett operativsystem.\nPriser: De webbpriser som visas inkluderar moms. Priser och erbjudanden i vagnen kan ändras tills ordern läggs. *Priser – de besparingar som visas är jämfört med Lenovos standardpriser på webben. Återförsäljarpriser kan variera och de kan vara högre än de som visas här.\nAlla priser är i svenska kronor och inkluderar moms\nBatteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade eller godkända. Systemen kommer att starta upp men laddar eventuellt inte icke godkända batterier. Lenovo har inget ansvar för prestanda eller säkerhet för icke godkända batterier och ger inga garantier för fel eller skador som uppstår på grund av att de används. **Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde. Faktisk batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funktioner, inställningar för energihantering, batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom viktig information från Microsoft® som kan gälla för ditt köp, inklusive detaljer om Windows 10, Windows 8, Windows 7 samt potentiella upp- eller nedgraderingar. Lenovo varken representerar eller utfäster garantier för produkter eller tjänster från tredje part.\nVarumärken: Lenovo, ThinkPad, IdeaPad, ThinkCentre, ThinkStation och Lenovos l",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/c/laptops/ideapad/ideapadpro/",
+  "checkedAt": "2026-11-26T06:46:26.755Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/c/laptops/ideapad/?cid=flash_redirect_2p3o1i",
+  "title": "Lenovo IdeaPad bärbara datorer | Mångsidiga, tillförlitliga bärbara datorer och 2-i-1-enheter | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "IdeaPad Slim 3i Gen 8 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0069",
+    "mpn": "LEN101I0069",
+    "offers": [
+     {
+      "price": "4090.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (14ʺ Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0165",
+    "mpn": "LEN101I0165",
+    "offers": [
+     {
+      "price": "8990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (15\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0166",
+    "mpn": "LEN101I0166",
+    "offers": [
+     {
+      "price": "8990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3x Gen 11 (15\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0167",
+    "mpn": "LEN101I0167",
+    "offers": [
+     {
+      "price": "9159.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3x Gen 11 (14\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0168",
+    "mpn": "LEN101I0168",
+    "offers": [
+     {
+      "price": "9199.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3 Gen 10 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0117",
+    "mpn": "LEN101I0117",
+    "offers": [
+     {
+      "price": "9510.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0149",
+    "mpn": "LEN101I0149",
+    "offers": [
+     {
+      "price": "9639.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo IdeaPad Slim 3i Gen 11 16 inch Intel",
+    "brand": "ideapad",
+    "sku": "LEN101I0151",
+    "mpn": "LEN101I0151",
+    "offers": [
+     {
+      "price": "9689.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0150",
+    "mpn": "LEN101I0150",
+    "offers": [
+     {
+      "price": "9709.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (17\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0152",
+    "mpn": "LEN101I0152",
+    "offers": [
+     {
+      "price": "9908.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (15\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0161",
+    "mpn": "LEN101I0161",
+    "offers": [
+     {
+      "price": "9990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0160",
+    "mpn": "LEN101I0160",
+    "offers": [
+     {
+      "price": "9990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-in-1 Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0163",
+    "mpn": "LEN101I0163",
+    "offers": [
+     {
+      "price": "10539.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-in-1 Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0162",
+    "mpn": "LEN101I0162",
+    "offers": [
+     {
+      "price": "10589.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-i-1 Gen 10 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0123",
+    "mpn": "LEN101I0123",
+    "offers": [
+     {
+      "price": "10649.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0143",
+    "mpn": "LEN101I0143",
+    "offers": [
+     {
+      "price": "11258.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0135",
+    "mpn": "LEN101I0135",
+    "offers": [
+     {
+      "price": "11366.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (16\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0137",
+    "mpn": "LEN101I0137",
+    "offers": [
+     {
+      "price": "11510.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0131",
+    "mpn": "LEN101I0131",
+    "offers": [
+     {
+      "price": "11672.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5i Gen 10 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0111",
+    "mpn": "LEN101I0111",
+    "offers": [
+     {
+      "price": "11797.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "23 000 kr",
+   "29 999 kr",
+   "17 000 kr",
+   "22 999 kr",
+   "12 000 kr",
+   "16 999 kr",
+   "4 090,00 kr",
+   "8 990,00 kr",
+   "9 159,00 kr",
+   "9 199,00 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord och pekplatta"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (5)",
+    "Windows 11 Home 64 (29)",
+    "Windows 11 Home S Mode 64 (1)",
+    "Windows 11?",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batteritid stöder maratonstudier eller spelsessioner på dessa bärbara datorer och säker",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e",
+    "batterier",
+    "batterier och ger inga garantier för fel eller skador som uppstår på grund av att de an",
+    "Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde",
+    "batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funk",
+    "batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom vik"
+   ],
+   "condition": [
+    "klass av datorer",
+    "skickliga tekniker omedelbart hem till dig för att hjälpa till"
+   ],
+   "delivery": [
+    "Leveransklara Datorer (3)"
+   ],
+   "charger": []
+  },
+  "text": "IdeaPad-bärbara datorer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\n    \n            \n                \nHandla IdeaPad            \nUtforska dina idéer\nMed Lenovo IdeaPad\nIdeaPad är för allt du brukar göra, samtidigt som du arbetar, spelar, studerar och skapar. Den levererar otroligt värde och tillförlitlig prestanda med mångsidig teknik som fungerar för dig.\n                \nHandla efter serie\n                     \n                   \nPro\nDet smartare valet för kraft\n               \n                     \n                   \nSlim\nDet smartare valet för mobilitet\n               \n                     \n                   \n2-i-1\nDet smartare valet för mångsidighet\n               \n                     \n                   \nVibe\nDet smartare valet för personlig stil\n               \nDet smartare valet\n                           \nEn ny klass av datorer\nHastighet. Kraft. Smartare teknik.\nMed Lenovo IdeaPad tar du inte bara till dig AI, du omfamnar ett partnerskap byggt på tillförlitlighet, design som är centrerad på dig och friheten att skräddarsy din digitala resa. Lita på att Lenovo navigerar i det ständigt föränderliga AI-landskapet, där din upplevelse är personlig, din säkerhet tas på allvar och din potential är obegränsad.\n                           \nHisnande visuella upplevelser\nMer utrymme, mindre belastning\nOavsett om du tittar på film, avslutar sena kvällsuppgifter eller ägnar dig åt episka speläventyr levererar Lenovo IdeaPad. Har ett 16:10 bildförhållande och nästan kantfri design för att säkerställa livfulla färger, djup svärta och skarp kontrast som får varje detalj att lysa – utan att anstränga dina ögon tack vare TÜV Low Blue Light-teknologi.\n                           \nFramtidsklar för dynamiska behov\nUppgraderingsbart SSD-lagringsutrymme och minne\nUppgradera ditt lagringsutrymme på dina villkor med Lenovo IdeaPad. Den utbyggbara SSD-platsen gör det enkelt att lägga till utrymme för filer, appar eller spel när du behöver det. Inga servicecenter, inget krångel – bara gör-det-själv uppgraderingsbart SSD-lagringsutrymme och minne som växer med dig och håller jämna steg med ditt liv.\n                           \nKoppla ur och slappna av\nLång batteritid. Snabbladdning.\nSäg adjö till jakten på eluttag. Imponerande batteritid stöder maratonstudier eller spelsessioner på dessa bärbara datorer och säkerställer oavbrutna stunder. Behöver du en snabb boost? Rapid Charge laddar över den tid det tar för en kaffepaus och ger timmar av mer kraft när du behöver det som mest.\n                           \nTuff nog för alla äventyr\nTillförlitlighet testad\nLenovo IdeaPad bärbara datorer är utformade för att uppfylla de rigorösa certifieringsstandarderna för MIL-STD-810H (Military Standard 810H) för tillförlitlighet och hållbarhet och kan klara extrema temperaturer, höjder, luftfuktighet, vibrationer och plötsliga stötar och fall. Så oavsett om du hoppar från lektionen till ett café eller flyttar från konferensrum till spelrum kan den överleva de oväntade missödena på vägen.\n                           \nFenomenal uppkoppling\nUtökade portar för alla dina behov\nFå tillgång till hastighet och anslutning på nästa nivå med ett avancerat I/O-gränssnitt och en utökad uppsättning portar för att säkerställa att dina mest använda enheter ansluter, samtidigt som de levererar blixtsnabba dataöverföringshastigheter.\n     \n     \n     \n     \n     \n           \nHitta rätt\nIdeaPad för dig\n                               \nFörhöjd upplevelse av tangentbord och pekplatta\nKliv in i smartare datoranvändning med de bärbara datorerna IdeaPad Pro Series, utformade för topprestanda, produktivitet och ultimat komfort. De responsiva tangenterna – inklusive fullstora piltangenter – är perfekta för när e-postmeddelanden blir till längre texter, medan den expansiva glaspekplattan är perfekt för långvariga tryck och bläddring.\nPro: Utformad\nför prestanda\noch produktivitet\nSlim: Utformad\nför mobilitet\noch bärbarhet\n2-i-1: Utformad\nför mångsidighet\noch engagemang\n                    \nInbyggd hållbarhet\nLenovo Co2 Offset Services*\nVi erbjuder Co2 Offset Services för kunder som vill kompensera utsläpp från sin dator över enhetens genomsnittliga livscykel. Detta är ett enkelt och transparent sätt att ta ytterligare steg för att hjälpa miljön och stödja klimatåtgärdsprojekt som verifierats av Förenta nationerna, Gold Standard, Climate Action och mycket mer.\n                           \nTransparens och spårbarhet\n                           \nMake your Positive Impact Felt\n                           \nSmartare teknik för en mer hållbar framtid\n*Endast tillgänglig i specifika regioner och marknader.\nLenovo Services\nAlltid här för att skydda och stödja din Lenovo-enhet.\n                        \n                           \nAccidental Damage Protection - Täcker fall, spill, elektriska överspänningar och trasiga skärmar utan extra avgifter.\n                           \nPreventative PC Health Check – Årliga hälsokontroller upptäcker problem tidigt, vilket minskar driftstopp och ökar produktiviteten.\n                           \n“Komma igång” och “instruktionsguide” – Vårt team är redo att svara på dina vardagliga programvarufrågor.\n                           \nTillgänglig 24/7/365* - Snabb, personlig service som du inte behöver vänta på.\n                           \nSupport vid din dörr* – Om ett problem inte kan åtgärdas på distans kommer våra skickliga tekniker omedelbart hem till dig för att hjälpa till.\n                           \nÖkad datorprestanda - Åtgärdar prestanda- och säkerhetsproblem och säkerställer skydd mot skadlig kod.\n                           \nFjärrdataskydd - Överför alla dina uppgifter och datorinställningar i bara ett steg.\n*Vissa marknader kanske inte har supportkapacitet och kommer att följa bästa tillgängliga servicenivåavtal.\n   \n            \n                    \nHåll det enkelt, håll det smart med Copilot+\nUpplev den smarta fördelen med en bärbar dator med inbyggd AI som gör ditt vardagsliv enklare och bättre på alla sätt.\nUtforska förbättrade funktioner på utvalda Lenovo IdeaPad-modeller utrustade med AI-driven Copilot+. Dessa enheter anpassar sig till dina behov och håller dig steget före oavsett om det är multitasking, anteckningsskrivande eller hantering av dina projekt.\n                    \nskip to product list\nFilter\nVisa färre\nProdukt typ\nBygg Din Egen Dator (35)\nLeveransklara Datorer (3)\nAI (artificiell intelligens)\nCopilot+ PC (19)\nAlla AI PCs (21)\nVisa mer\nSkärmstorlek\n13\" - 13.9\" (1)\n14\" - 14.9\" (18)\n15\" - 16.9\" (18)\nVisa mer\nProcessor\nAlla Intel®-processorer (20)\nAlla AMD-processorer (11)\nAlla Snapdragon®-processorer (7)\nIntel® Core™ 3 (5)\nIntel® Core™ 5 (8)\nIntel® Core™ Ultra 7 (9)\nIntel® Core™ Ultra 9 (1)\nIntel® Core™ Ultra 5 (8)\nIntel® Core™ i3 (1)\nAMD Ryzen™ 7 (2)\nAMD Ryzen™ 5 (1)\nAMD Ryzen™ AI (9)\nSnapdragon® X2 Plus (3)\nSnapdragon® X (2)\nMinne (GB)\n32 GB (11)\n24 GB (2)\n16 GB (27)\nVisa mer\nHårddisk\n1 TB (12)\n512 GB (27)\n256 GB (19)\nVisa mer\nPris\n23 000 kr - 29 999 kr (1)\n17 000 kr - 22 999 kr (4)\n12 000 kr - 16 999 kr (13)\nVisa mer\nOperativsystem\nWindows 11 Pro 64 (5)\nWindows 11 Home 64 (29)\nWindows 11 Home S Mode 64 (1)\nVisa mer\nBetyg\nAnvändning\nFunktioner\n38 träffar\nSortera efter : Populära produkter\nJämför\nIdeaPad Slim 3i Gen 8 (15\" Intel)\n4.1\n(58)\n45W-65W\nPris från:\n4 090,00 kr\ninkl. moms\nVisa 3 modeller\nJämför\nNYHET\nIdeaPad Vibe Gen 12 (14ʺ Snapdragon)\n45W-65W\nPris från:\n8 990,00 kr\ninkl. moms\nVisa 7 modeller\nJämför\nNYHET\nIdeaPad Vibe Gen 12 (15\" Snapdragon)\n45W-65W\nPris från:\n8 990,00 kr\ninkl. moms\nVisa 7 modeller\nJämför\nNYHET\nIdeaPad Slim 3x Gen 11 (15\" Snapdragon)\n45W-65W\nPris från:\n9 159,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nIdeaPad Slim 3x Gen 11 (14\" Snapdragon)\n45W-65W\nPris från:\n9 199,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nIdeaPad Slim 3 Gen 10 (14\" AMD)\n4.5\n(59)\n45W-65W\nPris från:\n9 510,65 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nIdeaPad Slim 3i Gen 11 (15\" Intel)\n4.5\n(2)\nPris från:\n9 639,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nLenovo IdeaPad Slim 3i Gen 11 16 inch Intel\n4.0\n(1)\nPris från:\n9 689,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nNYHET\nIdeaPad Slim 3i Gen 11 (14\" Intel)\nUSB PD\nPris från:\n9 709,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nIdeaPad Slim 3i Gen 11 (17\" Intel)\nPris från:\n9 908,10 kr\ninkl. moms\nVisa 2 modeller\nVisar 1 - 10 av 38 Resultat\nVanliga frågor\nVad är Lenovo IdeaPad-serien utformad för?\nVilka typer av arbetsbelastningar har IdeaPad-serien stöd för?\nHur skiljer sig Lenovo IdeaPad från andra bärbara Lenovo-datorer?\nVilka olika Lenovo IdeaPad-serier finns tillgängliga?\nVad är skillnaden mellan Lenovo IdeaPad Slim och IdeaPad Pro-datorer?\nVilka funktioner hjälper Lenovo IdeaPad-serien att stödja underhållning och media?\nHur kraftfull är IdeaPad Slim 3 för multitasking?\nVad är skillnaden mellan bärbara datorer i IdeaPad Slim 3 och IdeaPad Slim 5?\nVilka anslutningsportar kan jag förvänta mig på en bärbar IdeaPad-dator?\nHar den bärbara datorn IdeaPad Pro 5 pekskärm?\nÄr IdeaPad-datorer bra för videokonferenser?\nVad är Lenovo IdeaPad 2-i-1-serien?\nVilken Lenovo IdeaPad är utformad för spel?\nVilka säkerhetsfunktioner erbjuder IdeaPad-datorer?\nÄr den bärbara datorn Lenovo IdeaPad 1 bra för studenter?\nHur integreras Lenovo IdeaPad-datorer med Windows 11?\nVilka Lenovo IdeaPad-specifikationer bör du överväga för dina behov?\nHur påverkar lagringstypen prestandan hos en Lenovo IdeaPad?\nVilka ljudfunktioner inkluderar Lenovo IdeaPad-datorer?\nHur väljer jag rätt Lenovo IdeaPad-modell?\nKlicka för att se all viktig information avseende priser, begränsningar, garantier och mer på lenovo.com.\nBegränsningar: Beställningar är begränsade till 5 datorer per kund. För större kvantiteter gå till avsnittet \"Var kan man handla\" på webbsidan för uppgifter om återförsäljare av Lenovo-produkter\nErbjudanden och tillgänglighet: Alla erbjudanden är villkorade av tillgänglighet. Erbjudanden, priser, specifikationer och tillgänglighet kan ändras när som helst utan förvarning.Produkterbjudanden och specifikationer som beskrivs på denna webbplats kan ändras när som helst utan förvarning. Modellerna visas enbart i illustrationssyfte. Lenovo ansvarar inte för fotografiska eller typografiska fel. Datorer som visas här levereras med ett operativsystem.\nPriser: De webbpriser som visas inkluderar moms. Priser och erbjudanden i vagnen kan ändras tills ordern läggs. *Priser – de besparingar som visas är jämfört med Lenovos standardpriser på webben. Återförsäljarpriser kan variera och de kan vara högre än de som visas här.\nAlla priser är i svenska kronor och inkluderar moms\nBatteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade eller godkända. Systemen kommer att starta upp men laddar eventuellt inte icke godkända batterier. Lenovo har inget ansvar för prestanda eller säkerhet för icke godkända batterier och ger inga garantier för fel eller skador som uppstår på grund av att de används. **Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde. Faktisk batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funktioner, inställningar för energihantering, batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom viktig information från Microsoft® som kan gälla för ditt köp, inklusive detaljer om Windows 10, Windows 8, Windows 7 samt potentiella upp- eller nedgraderingar. Lenovo varken representerar eller utfäster garantier för produkter eller tjänster från tredje part.\nVarumärken: Lenovo, ThinkPad, IdeaPad, ThinkCentre, ThinkStation och Lenovos l",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/c/laptops/yoga/",
+  "checkedAt": "2026-11-26T06:46:35.333Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/yoga/products/",
+  "title": "Köp Lenovo Yoga-datorer, bärbara datorer med mera | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Yoga 9n 2-i-1 Gen 11 (16\" NVIDIA)",
+    "brand": "yoga",
+    "sku": "LEN101Y0076",
+    "mpn": "LEN101Y0076",
+    "offers": [
+     {
+      "price": "45540.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 7i Gen 11 Aura Edition (15\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0068",
+    "mpn": "LEN101Y0068",
+    "offers": [
+     {
+      "price": "28550.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 7a Gen 11 (15\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0075",
+    "mpn": "LEN101Y0075",
+    "offers": [
+     {
+      "price": "24809.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7x Gen 11 (14\" Snapdragon)",
+    "brand": "yoga",
+    "sku": "LEN101Y0066",
+    "mpn": "LEN101Y0066",
+    "offers": [
+     {
+      "price": "14498.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga AIO i Gen 11 Aura Edition (32\" Intel)",
+    "brand": "yoga-desktops",
+    "sku": "LEN102Y0007",
+    "mpn": "LEN102Y0007",
+    "offers": [
+     {
+      "price": "31848.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Mini Gen 11 (Intel)",
+    "brand": "yoga-desktops",
+    "sku": "LEN102Y0008",
+    "mpn": "LEN102Y0008",
+    "offers": [
+     {
+      "price": "12852.55",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7a 2-in-1 Gen 11 (16\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0070",
+    "mpn": "LEN101Y0070",
+    "offers": [
+     {
+      "price": "15671.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7a Gen 11 (14\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0065",
+    "mpn": "LEN101Y0065",
+    "offers": [
+     {
+      "price": "10990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga AIO i Gen 11 (27\" Intel)",
+    "brand": "yoga-desktops",
+    "sku": "LEN102Y0006",
+    "mpn": "LEN102Y0006",
+    "offers": [
+     {
+      "price": "15551.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7i Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0069",
+    "mpn": "LEN101Y0069",
+    "offers": [
+     {
+      "price": "13346.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 9i 2-i-1 Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0074",
+    "mpn": "LEN101Y0074",
+    "offers": [
+     {
+      "price": "25189.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 9i Gen 11 Aura Edition (16″ Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0073",
+    "mpn": "LEN101Y0073",
+    "offers": [
+     {
+      "price": "34701.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7a 2-i-1 Gen 11 (14\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0067",
+    "mpn": "LEN101Y0067",
+    "offers": [
+     {
+      "price": "16990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-i-1 Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0071",
+    "mpn": "LEN101Y0071",
+    "offers": [
+     {
+      "price": "15427.50",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-i-1 Gen 11 Aura Edition (16\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0072",
+    "mpn": "LEN101Y0072",
+    "offers": [
+     {
+      "price": "21303.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7i Ultra Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0064",
+    "mpn": "LEN101Y0064",
+    "offers": [
+     {
+      "price": "22643.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo Yoga Tab",
+    "brand": "android-tablets",
+    "sku": "LEN103L0031",
+    "mpn": "LEN103L0031",
+    "offers": [
+     {
+      "price": "5490.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 9i Gen 10 Aura Edition (16\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0063",
+    "mpn": "LEN101Y0063",
+    "offers": [
+     {
+      "price": "44290.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7 Gen 10 (14'' AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0060",
+    "mpn": "LEN101Y0060",
+    "offers": [
+     {
+      "price": "12658.29",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Book 9i Gen 10 (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0054",
+    "mpn": "LEN101Y0054",
+    "offers": [
+     {
+      "price": "28429.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "45 540,00 kr",
+   "28 550,65 kr",
+   "24 809,00 kr",
+   "14 498,10 kr",
+   "31 848,65 kr",
+   "12 852,55 kr",
+   "15 671,20 kr",
+   "10 990,00 kr",
+   "15 551,10 kr",
+   "13 346,10 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Keyboard (16)"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (13)",
+    "Windows 11 Home 64 (20)",
+    "Windows 11 Home Arm64 (3)"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid (3)"
+   ],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Lenovo Yoga-datorer, bärbara datorer och mer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nLenovo YOGA\nHäpnadsväckande, smart med hållbart anskaffade material. Förstärkt med AI. Vad du än drömmer om hjälper Yoga-datorerna dig med det hela vägen på din kreativa resa.\n1 of 8 filter by category - Visa alla selected\nVisa alla\n2 of 8 filter by category - Pro not selected\nPro\n3 of 8 filter by category - Slim not selected\nSlim\n4 of 8 filter by category - 2-in-1 & Yoga Book not selected\n2-in-1 & Yoga Book\n5 of 8 filter by category - Surfplattor not selected\nSurfplattor\n6 of 8 filter by category - Yoga AIO not selected\nYoga AIO\n7 of 8 filter by category - Yoga Mini not selected\nYoga Mini\n8 of 8 filter by category - Tillbehör not selected\nTillbehör\nskip to product list\nFilter\nVisa färre\nProduct Category\nLaptops (21)\nDesktops (1)\nTablets (2)\nVisa mer\nProcessor\nAlla Intel®-processorer (17)\nAlla AMD-processorer (5)\nAlla Snapdragon®-processorer (3)\nAlla NVIDIA-processorer (2)\nNVIDIA RTX Spark™ (2)\nVisa mer\nOperativsystem\nWindows 11 Pro 64 (13)\nWindows 11 Home 64 (20)\nAndroid (2)\nWindows 11 Home Arm64 (3)\nGrafik\nQualcomm™ Adreno (1)\nNVIDIA RTX™ (6)\nIntel® Arc™ (9)\nIntegrated (20)\nAMD Radeon™ (5)\nHårddisk\n2 TB (2)\n1 TB (21)\n512 GB (16)\n256 GB (2)\nMinne (GB)\n64 GB (5)\n32 GB (17)\n16 GB (12)\n12 GB (1)\n8 GB (1)\nSkärmstorlek\n10\" - 12.9\" (2)\n14\" - 14.9\" (12)\n15\" - 16.9\" (9)\n27\" - 29.9\" (1)\nOver 30\" (2)\nSerien\nYoga Tab Serie (1)\nTab Series (1)\nYoga Pro Series (4)\nYoga 2-in-1 Series (8)\nYoga Slim Series (6)\nVisa mer\nFunktioner\nLång batteritid (3)\nTouch Screen (11)\nNon-Touch (22)\nBacklit Keyboard (16)\nFingeravtrycksläsare (8)\nVisa mer\nSkärmupplösning\n2.8K (11)\nFull HD (10)\n2K/QHD (2)\nWQHD (1)\n4K UHD (3840 x 2160) (2)\nVisa mer\nAI (artificiell intelligens)\nAnvändning\nPris\nBy Type\n27 träffar\nSortera efter : Senaste\nJämför\nNYHET\nYoga 9n 2-i-1 Gen 11 (16\" NVIDIA)\nCopilot+ PC\n65W-100W\nPris från:\n45 540,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nYoga Pro 7i Gen 11 Aura Edition (15\" Intel)\nCopilot+ PC\n3.5\n(4)\n65W-100W USB PD\nPris från:\n28 550,65 kr\ninkl. moms\nVisa 5 modeller\nJämför\nYoga Pro 7a Gen 11 (15\" AMD)\nCopilot+ PC\n4.0\n(1)\nPris från:\n24 809,00 kr\ninkl. moms\nVisa 5 modeller\nJämför\nYoga Slim 7x Gen 11 (14\" Snapdragon)\nCopilot+ PC\n4.0\n(14)\nPris från:\n14 498,10 kr\ninkl. moms\nVisa modell\nJämför\nYoga AIO i Gen 11 Aura Edition (32\" Intel)\nCopilot+ PC\n4.5\n(4)\nPris från:\n31 848,65 kr\ninkl. moms\nVisa 2 modeller\nJämför\nYoga Mini Gen 11 (Intel)\nCopilot+ PC\nPris från:\n12 852,55 kr\ninkl. moms\nVisa 2 modeller\nJämför\nYoga 7a 2-in-1 Gen 11 (16\" AMD)\nCopilot+ PC\n4.4\n(27)\n45W-65W USB PD\nPris från:\n15 671,20 kr\ninkl. moms\nVisa 6 modeller\nJämför\nYoga Slim 7a Gen 11 (14\" AMD)\nCopilot+ PC\n4.6\n(9)\n45W-65W\nPris från:\n10 990,00 kr\ninkl. moms\nVisa 8 modeller\nJämför\nYoga AIO i Gen 11 (27\" Intel)\nCopilot+ PC\n5.0\n(1)\nPris från:\n15 551,10 kr\ninkl. moms\nVisa 2 modeller\nJämför\nYoga Slim 7i Gen 11 Aura Edition (14\" Intel)\nCopilot+ PC\n4.5\n(2)\n45W-65W USB PD\nPris från:\n13 346,10 kr\ninkl. moms\nVisa 6 modeller\nVisar 1 - 10 av 27 Resultat\n*Köp hos Lenovo och få garanterat lägsta pris – gäller alla reor till och med den 31/12/2026 | Läs mer\nCurrently displaying item 1 of 1\nAnge din e-postadress om du vill ta emot viktiga uppdateringar\nE-post\nVälj land/region:\nOM LENOVO\nOm Lenovo\nNyheter\nInvesterarrelationer\nWebbtillgänglighet (på engelska)\nCompliance\nESG\nAvtalsvillkor\nJobba hos Lenovo\nLenovo Affiliate Program\nLÖSNINGAR\nPRODUKTER OCH TJÄNSTER\nBärbara datorer och Ultrabooks\nSmartare AI för dig\nSpelmaskinen\nSurfplatta\nStationära datorer\nArbetsstationer\nData Center Solutions\nTillbehör och program\nTjänster och garanti\nProduktåterkallningar\nUtbytesdelar\nRESURSER\nLenovo Creator Community\nLenovo Pro Community\nLegion Community\nE-postprenumeration\nForum\nBloggar\nÅterförsäljare\nProduktvillkor\nAffiliate Program\nKöpprogram för medarbetare\nLenovo Partner Hub\nOrdlista\nKunskapsbas\nCUSTOMER SUPPORT\nKontakta oss\nOrderstatus\nSupport\nVanliga frågor om produkter\nVanliga frågor om köp\nFörsäljningsvillkor\nPORTFOLIO\nT-serien\nX-serien\nThinkPad\nIdeaPad\nYoga\nSmartphone & Watches\nM-seriens stationära datorer\nThinkCentre\nIdeaCentre\nSurfplatta\nThinkStation\nData Center Solutions\n© 2026 Lenovo. Med ensamrätt.\nSekretessverktyg för samtycke till cookiesAnvändningsvillkorÖversiktExtern inlämningspolicyUttalande mot slaveri och människohandelÅngerrätt\n系統將會開啟新視窗。\n☺\nFyll I Undersökningen.\nBehöver du hjälp? Tors 08-20, Fre 08-22, Lör-sön (chat) 10-21, Mån 8-20. Ring: \n08 580 062 01\nVi använder cookies för att förstärka din upplevelse, förbättra kvaliteten på vår webbplats och hjälpa oss att visa dig saker som är mer sannolika att vara relevanta för dig. Vi respekterar din integritet och strävar efter att ge dig den bästa Lenovo.com-upplevelsen i enlighet med GDPR. Du kan hantera dina inställningar i vårt verktyg för samtycke till cookies. Läs mer om vårt sekretessmeddelande.\nCookie-inställningar\nNej tack, bara nödvändiga kakor\nGodta cookies",
+  "status": "OK"
+ }
+]

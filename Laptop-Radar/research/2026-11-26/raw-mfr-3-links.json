@@ -1,0 +1,1178 @@
+[
+ {
+  "url": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpade/",
+  "checkedAt": "2026-11-26T06:47:01.010Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/c/laptops/thinkpad/thinkpade/",
+  "title": "ThinkPad E-serien - Prisvärda bärbara datorer för företag | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "ThinkPad E16 Gen 4 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0186",
+    "mpn": "LEN101T0186",
+    "offers": [
+     {
+      "price": "16939.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0143",
+    "mpn": "LEN101T0143",
+    "offers": [
+     {
+      "price": "17404.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 8 (14\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0182",
+    "mpn": "LEN101T0182",
+    "offers": [
+     {
+      "price": "23770.11",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 8 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0187",
+    "mpn": "LEN101T0187",
+    "offers": [
+     {
+      "price": "13009.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 4 (16\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0183",
+    "mpn": "LEN101T0183",
+    "offers": [
+     {
+      "price": "16664.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 4 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0170",
+    "mpn": "LEN101T0170",
+    "offers": [
+     {
+      "price": "15243.91",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 8 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0167",
+    "mpn": "LEN101T0167",
+    "offers": [
+     {
+      "price": "17059.51",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 3 (16\" AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0136",
+    "mpn": "LEN101T0136",
+    "offers": [
+     {
+      "price": "11252.21",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 3 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0120",
+    "mpn": "LEN101T0120",
+    "offers": [
+     {
+      "price": "21712.61",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E16 Gen 3 (16\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0125",
+    "mpn": "LEN101T0125",
+    "offers": [
+     {
+      "price": "16699.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0124",
+    "mpn": "LEN101T0124",
+    "offers": [
+     {
+      "price": "11499.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14″ AMD)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0133",
+    "mpn": "LEN101T0133",
+    "offers": [
+     {
+      "price": "14024.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "ThinkPad E14 Gen 7 (14\" Intel)",
+    "brand": "thinkpad",
+    "sku": "LEN101T0119",
+    "mpn": "LEN101T0119",
+    "offers": [
+     {
+      "price": "27877.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "16 939,00 kr",
+   "17 404,00 kr",
+   "23 770,11 kr",
+   "13 009,00 kr",
+   "16 664,00 kr",
+   "15 243,91 kr",
+   "17 059,51 kr",
+   "11 252,21 kr",
+   "21 712,61 kr",
+   "16 699,00 kr"
+  ],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (12)",
+    "Windows 11 Home 64 (7)",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid med smart termisk design",
+    "batteritid",
+    "batteritid för förbättrad produktivitet",
+    "batteritid för att förstärka produktiviteten",
+    "batteritid som räcker hela dagen",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e",
+    "batterier",
+    "batterier och ger inga garantier för fel eller skador som uppstår på grund av att de an",
+    "Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde",
+    "batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funk",
+    "batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom vik"
+   ],
+   "condition": [],
+   "delivery": [
+    "Leveransklara Datorer (2)"
+   ],
+   "charger": []
+  },
+  "text": "ThinkPad E-serien bärbara datorer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nHem > Bärbara Datorer > ThinkPad > ThinkPad E Series\nBärbara datorer i E-serien\nSnygg och prisvärd produktivitet med E-serien\nHjälp ditt småföretag att skilja sig från mängden med dessa bärbara företagsdatorer i Lenovo ThinkPad E-serien, som är attraktiva både utanpå och inuti. De är konstruerade för säkerhet och produktivitet och har en design som ger ditt företag en personlig touch.\nJÄMFÖR BÄRBARA DATORER I E-SERIEN\nExklusiva B2B-priser, dedikerad support med en Lenovo Pro Account Manager och mycket mer.  Ring till oss : 08 580 062 01\nGå med nu KOSTNADSFRITT\nThinkPad E-Serien Bärbara Datorer\nskip to product list\nFilter\nVisa färre\nProdukt typ\nBygg Din Egen Dator (10)\nLeveransklara Datorer (2)\nAI (artificiell intelligens)\nCopilot+ PC (5)\nAlla AI PCs (9)\nVisa mer\nProcessor\nAlla Intel®-processorer (8)\nAlla AMD-processorer (4)\nIntel® Core™ Ultra 5 vPro® (1)\nIntel® Core™ 7 (2)\nIntel® Core™ 3 (2)\nVisa mer\nOperativsystem\nWindows 11 Pro 64 (12)\nWindows 11 Home 64 (7)\nGrafik\nIntel® Arc™ (2)\nIntegrated (10)\nAMD Radeon™ (4)\nMinne (GB)\n32 GB (10)\n16 GB (9)\n8 GB (2)\nPris\nFärg\nBetyg\n& Upp\n& Upp\n& Upp\nVisa mer\nSkärmstorlek\n14\" - 14.9\" (6)\n15\" - 16.9\" (6)\n13 träffar\nSortera efter : Senaste\nJämför\nThinkPad E16 Gen 4 (16\" Intel)\n15W-65W\nPris från:\n16 939,00 kr\ninkl. moms\nGenerös 16-tums bärbar dator för mindre skrollning\nUtbytbara delar för enkla byten och uppgraderingar\nAI-drivna produktivitetsfunktioner\nVisa 3 modeller\nJämför\nThinkPad E14 Gen 7 (14\" Intel)\nCopilot+ PC\n4.0\n(18)\n15W-65W USB PD\nPris från:\n17 404,00 kr\ninkl. moms\n14\" Copilot+-dator med förhöjd AI-teknik\nUpp till Intel® Core™ Ultra 7-processorer (Series 2) med Intel vPro®\nFantastiska skärmalternativ\nVisa modell\nJämför\nThinkPad E14 Gen 8 (14\" AMD)\nCopilot+ PC\n4.5\n(14)\n15W-65W USB PD\nPris från:\n23 770,11 kr\ninkl. moms\n14\" laptop med AMD Ryzen™ AI 400-seriens processor\nLång batteritid med smart termisk design\nThinkShield-säkerhet för att skydda dina data och din enhet\nVisa 2 modeller\nJämför\nThinkPad E14 Gen 8 (14\" Intel)\nPris från:\n13 009,00 kr\ninkl. moms\nAI-drivna funktioner för att effektivisera arbetsflödet\n14ʺ lätt bärbar dator med lång batteritid\nUtbytbara delar för enkla byten och uppgraderingar\nVisa 3 modeller\nJämför\nThinkPad E16 Gen 4 (16\" AMD)\nCopilot+ PC\n5.0\n(9)\n15W-65W USB PD\nPris från:\n16 664,00 kr\ninkl. moms\nAMD Ryzen™ AI 400-seriens processor med AI på enheten\nTillförlitlig batteritid med smart termisk design\nInbyggd ThinkShield-säkerhet för att skydda din enhet\nV",
+  "links": [
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e16-gen-4-16-inch-intel/len101t0186",
+    "text": "ThinkPad E16 Gen 4 (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e14-gen-7-14-inch-intel-laptop/len101t0143",
+    "text": "ThinkPad E14 Gen 7 (14\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e14-gen-7-14-inch-intel-laptop/len101t0143#reviews",
+    "text": "4.0 (18)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e14-gen-8-14-inch-amd/len101t0182",
+    "text": "ThinkPad E14 Gen 8 (14\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e14-gen-8-14-inch-amd/len101t0182#reviews",
+    "text": "4.5 (14)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e14-gen-8-14-inch-intel/len101t0187",
+    "text": "ThinkPad E14 Gen 8 (14\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e16-gen-4-16-inch-amd/len101t0183",
+    "text": "ThinkPad E16 Gen 4 (16\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/thinkpad-e16-gen-4-16-inch-amd/len101t0183#reviews",
+    "text": "5.0 (9)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-4-16-inch-intel-laptop/len101t0170",
+    "text": "ThinkPad E16 Gen 4 (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-4-16-inch-intel-laptop/len101t0170#reviews",
+    "text": "4.8 (9)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e14-gen-8-14-inch-intel-laptop/len101t0167",
+    "text": "ThinkPad E14 Gen 8 (14\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e14-gen-8-14-inch-intel-laptop/len101t0167#reviews",
+    "text": "4.5 (5)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-3-16-inch-amd-laptop/len101t0136",
+    "text": "ThinkPad E16 Gen 3 (16\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-3-16-inch-amd-laptop/len101t0136#reviews",
+    "text": "4.6 (73)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-3-16-inch-intel/len101t0120",
+    "text": "ThinkPad E16 Gen 3 (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-3-16-inch-intel/len101t0120#reviews",
+    "text": "4.3 (53)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-3-16-inch-intel/len101t0125",
+    "text": "ThinkPad E16 Gen 3 (16\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-3-16-inch-intel/len101t0125#reviews",
+    "text": "4.5 (139)"
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/c/laptops/yoga/",
+  "checkedAt": "2026-11-26T06:47:09.821Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/yoga/products/",
+  "title": "Köp Lenovo Yoga-datorer, bärbara datorer med mera | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Yoga 9n 2-i-1 Gen 11 (16\" NVIDIA)",
+    "brand": "yoga",
+    "sku": "LEN101Y0076",
+    "mpn": "LEN101Y0076",
+    "offers": [
+     {
+      "price": "45540.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 7i Gen 11 Aura Edition (15\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0068",
+    "mpn": "LEN101Y0068",
+    "offers": [
+     {
+      "price": "28550.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 7a Gen 11 (15\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0075",
+    "mpn": "LEN101Y0075",
+    "offers": [
+     {
+      "price": "24809.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7x Gen 11 (14\" Snapdragon)",
+    "brand": "yoga",
+    "sku": "LEN101Y0066",
+    "mpn": "LEN101Y0066",
+    "offers": [
+     {
+      "price": "14498.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga AIO i Gen 11 Aura Edition (32\" Intel)",
+    "brand": "yoga-desktops",
+    "sku": "LEN102Y0007",
+    "mpn": "LEN102Y0007",
+    "offers": [
+     {
+      "price": "31848.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Mini Gen 11 (Intel)",
+    "brand": "yoga-desktops",
+    "sku": "LEN102Y0008",
+    "mpn": "LEN102Y0008",
+    "offers": [
+     {
+      "price": "12852.55",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7a 2-in-1 Gen 11 (16\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0070",
+    "mpn": "LEN101Y0070",
+    "offers": [
+     {
+      "price": "15671.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7a Gen 11 (14\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0065",
+    "mpn": "LEN101Y0065",
+    "offers": [
+     {
+      "price": "10990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga AIO i Gen 11 (27\" Intel)",
+    "brand": "yoga-desktops",
+    "sku": "LEN102Y0006",
+    "mpn": "LEN102Y0006",
+    "offers": [
+     {
+      "price": "15551.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7i Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0069",
+    "mpn": "LEN101Y0069",
+    "offers": [
+     {
+      "price": "13346.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 9i 2-i-1 Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0074",
+    "mpn": "LEN101Y0074",
+    "offers": [
+     {
+      "price": "25189.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 9i Gen 11 Aura Edition (16″ Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0073",
+    "mpn": "LEN101Y0073",
+    "offers": [
+     {
+      "price": "34701.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7a 2-i-1 Gen 11 (14\" AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0067",
+    "mpn": "LEN101Y0067",
+    "offers": [
+     {
+      "price": "16990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-i-1 Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0071",
+    "mpn": "LEN101Y0071",
+    "offers": [
+     {
+      "price": "15427.50",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga 7i 2-i-1 Gen 11 Aura Edition (16\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0072",
+    "mpn": "LEN101Y0072",
+    "offers": [
+     {
+      "price": "21303.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7i Ultra Gen 11 Aura Edition (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0064",
+    "mpn": "LEN101Y0064",
+    "offers": [
+     {
+      "price": "22643.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo Yoga Tab",
+    "brand": "android-tablets",
+    "sku": "LEN103L0031",
+    "mpn": "LEN103L0031",
+    "offers": [
+     {
+      "price": "5490.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Pro 9i Gen 10 Aura Edition (16\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0063",
+    "mpn": "LEN101Y0063",
+    "offers": [
+     {
+      "price": "44290.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Slim 7 Gen 10 (14'' AMD)",
+    "brand": "yoga",
+    "sku": "LEN101Y0060",
+    "mpn": "LEN101Y0060",
+    "offers": [
+     {
+      "price": "12658.29",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Yoga Book 9i Gen 10 (14\" Intel)",
+    "brand": "yoga",
+    "sku": "LEN101Y0054",
+    "mpn": "LEN101Y0054",
+    "offers": [
+     {
+      "price": "28429.20",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "45 540,00 kr",
+   "28 550,65 kr",
+   "24 809,00 kr",
+   "14 498,10 kr",
+   "31 848,65 kr",
+   "12 852,55 kr",
+   "15 671,20 kr",
+   "10 990,00 kr",
+   "15 551,10 kr",
+   "13 346,10 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Keyboard (16)"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (13)",
+    "Windows 11 Home 64 (20)",
+    "Windows 11 Home Arm64 (3)"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid (3)"
+   ],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "Lenovo Yoga-datorer, bärbara datorer och mer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\nLenovo YOGA\nHäpnadsväckande, smart med hållbart anskaffade material. Förstärkt med AI. Vad du än drömmer om hjälper Yoga-datorerna dig med det hela vägen på din kreativa resa.\n1 of 8 filter by category - Visa alla selected\nVisa alla\n2 of 8 filter by category - Pro not selected\nPro\n3 of 8 filter by category - Slim not selected\nSlim\n4 of 8 filter by category - 2-in-1 & Yoga Book not selected\n2-in-1 & Yoga Book\n5 of 8 filter by category - Surfplattor not selected\nSurfplattor\n6 of 8 filter by category - Yoga AIO not selected\nYoga AIO\n7 of 8 filter by category - Yoga Mini not selected\nYoga Mini\n8 of 8 filter by category - Tillbehör not selected\nTillbehör\nskip to product list\nFilter\nVisa färre\nProduct Category\nLaptops (21)\nDesktops (1)\nTablets (2)\nVisa mer\nProcessor\nAlla Intel®-processorer (17)\nAlla AMD-processorer (5)\nAlla Snapdragon®-processorer (3)\nAlla NVIDIA-processorer (2)\nNVIDIA RTX Spark™ (2)\nVisa mer\nOperativsystem\nWindows 11 Pro 64 (13)\nWindows 11 Home 64 (20)\nAndroid (2)\nWindows 11 Home Arm64 (3)\nGrafik\nQualcomm™ Adreno (1)\nNVIDIA RTX™ (6)\nIntel® Arc™ (9)\nIntegrated (20)\nAMD Radeon™ (5)\nHårddisk\n2 TB (2)\n1 TB (21)\n512 GB (16)\n256 GB (2)\nMinne (GB)\n64 GB (5)\n32 GB (17)\n16 GB (12)\n12 GB (1)\n8 GB (1)\nSkärmstorlek\n10\" - 12.9\" (2)\n14\" - 14.9\" (12)\n15\" - 16.9\" (9)\n27\" - 29.9\" (1)\nOver 30\" (2)\nSerien\nYoga Tab Serie (1)\nTab Series (1)\nYoga Pro Series (4)\nYoga 2-in-1 Series (8)\nYoga Slim Series (6)\nVisa mer\nFunktioner\nLång batteritid (3)\nTouch Screen (11)\nNon-Touch (22)\nBacklit Keyboard (16)\nFingeravtrycksläsare (8)\nVisa mer\nSkärmupplösning\n2.8K (11)\nFull HD (10)\n2K/QHD (2)\nWQHD (1)\n4K UHD (3840 x 2160) (2)\nVisa mer\nAI (artificiell intelligens)\nAnvändning\nPris\nBy Type\n27 träffar\nSortera efter : Senaste\nJämför\nNYHET\nYoga 9n 2-i-1 Gen 11 (16\" NVIDIA)\nCopilot+ PC\n65W-100W\nPris från:\n45 540,00 kr\ninkl. moms\nVisa 2 modeller\nJämför\nYoga Pro 7i Gen 11 Aura Edition (15\" Intel)\nCopilot+ PC\n3.5\n(4)\n65W-100W USB PD\nPris från:\n28 550,65 kr\ninkl. moms\nVisa 5 modeller\nJämför\nYoga Pro 7a Gen 11 (15\" AMD)\nCopilot+ PC\n4.0\n(1)\nPris från:\n24 809,00 kr\ninkl. moms\nVisa 5 modeller\nJämför\nYoga Slim 7x Gen 11 (14\" Snapdragon)\nCopilot+ PC\n4.0\n(14)\nPris från:\n14 498,10 kr\ninkl. moms\nVisa modell\nJämför\nYoga AIO i Gen 11 Aura Edition (32\" Intel)\nCopilot+ PC\n4.5\n(4)\nPris från:\n31 848,65 kr\ninkl. moms\nVisa 2 modeller\nJämför\nYoga Mini Gen 11 (Intel)\nCopilot+ PC\nPris från:\n12 852,55 kr\ninkl. moms\nVisa 2 modeller\nJämför\nYoga 7a 2-in-1 Gen 11 (16\" ",
+  "links": [
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-2-in-1-series/yoga-9n-2-in-1-gen-11-16-inch-nvidia/len101y0076",
+    "text": "Yoga 9n 2-i-1 Gen 11 (16\" NVIDIA)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-pro-series/lenovo-yoga-pro-7i-gen-11-aura-edition-15-inch-intel/len101y0068",
+    "text": "Yoga Pro 7i Gen 11 Aura Edition (15\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-pro-series/lenovo-yoga-pro-7i-gen-11-aura-edition-15-inch-intel/len101y0068#reviews",
+    "text": "3.5 (4)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-pro-series/yoga-pro-7a-gen-11-15-inch-amd/len101y0075",
+    "text": "Yoga Pro 7a Gen 11 (15\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-pro-series/yoga-pro-7a-gen-11-15-inch-amd/len101y0075#reviews",
+    "text": "4.0 (1)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-slim-series/lenovo-yoga-slim-7x-gen-11-14-inch-snapdragon/len101y0066",
+    "text": "Yoga Slim 7x Gen 11 (14\" Snapdragon)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-slim-series/lenovo-yoga-slim-7x-gen-11-14-inch-snapdragon/len101y0066#reviews",
+    "text": "4.0 (14)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-7a-2-in-1-gen-11-16-inch-amd/len101y0070",
+    "text": "Yoga 7a 2-in-1 Gen 11 (16\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-7a-2-in-1-gen-11-16-inch-amd/len101y0070#reviews",
+    "text": "4.4 (27)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-slim-series/yoga-slim-7a-gen-11-14-inch-amd/len101y0065",
+    "text": "Yoga Slim 7a Gen 11 (14\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-slim-series/yoga-slim-7a-gen-11-14-inch-amd/len101y0065#reviews",
+    "text": "4.6 (9)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-slim-series/lenovo-yoga-slim-7i-gen-11-aura-edition-14-inch-intel/len101y0069",
+    "text": "Yoga Slim 7i Gen 11 Aura Edition (14\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/yoga/yoga-slim-series/lenovo-yoga-slim-7i-gen-11-aura-edition-14-inch-intel/len101y0069#reviews",
+    "text": "4.5 (2)"
+   }
+  ],
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/c/laptops/ideapad/",
+  "checkedAt": "2026-11-26T06:47:17.407Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/c/laptops/ideapad/",
+  "title": "Lenovo IdeaPad bärbara datorer | Mångsidiga, tillförlitliga bärbara datorer och 2-i-1-enheter | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "IdeaPad Slim 3i Gen 8 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0069",
+    "mpn": "LEN101I0069",
+    "offers": [
+     {
+      "price": "4090.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (14ʺ Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0165",
+    "mpn": "LEN101I0165",
+    "offers": [
+     {
+      "price": "8990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (15\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0166",
+    "mpn": "LEN101I0166",
+    "offers": [
+     {
+      "price": "8990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3x Gen 11 (15\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0167",
+    "mpn": "LEN101I0167",
+    "offers": [
+     {
+      "price": "9159.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3x Gen 11 (14\" Snapdragon)",
+    "brand": "ideapad",
+    "sku": "LEN101I0168",
+    "mpn": "LEN101I0168",
+    "offers": [
+     {
+      "price": "9199.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3 Gen 10 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0117",
+    "mpn": "LEN101I0117",
+    "offers": [
+     {
+      "price": "9510.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0149",
+    "mpn": "LEN101I0149",
+    "offers": [
+     {
+      "price": "9639.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "Lenovo IdeaPad Slim 3i Gen 11 16 inch Intel",
+    "brand": "ideapad",
+    "sku": "LEN101I0151",
+    "mpn": "LEN101I0151",
+    "offers": [
+     {
+      "price": "9689.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0150",
+    "mpn": "LEN101I0150",
+    "offers": [
+     {
+      "price": "9709.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (17\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0152",
+    "mpn": "LEN101I0152",
+    "offers": [
+     {
+      "price": "9908.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (15\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0161",
+    "mpn": "LEN101I0161",
+    "offers": [
+     {
+      "price": "9990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Vibe Gen 12 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0160",
+    "mpn": "LEN101I0160",
+    "offers": [
+     {
+      "price": "9990.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-in-1 Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0163",
+    "mpn": "LEN101I0163",
+    "offers": [
+     {
+      "price": "10539.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-in-1 Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0162",
+    "mpn": "LEN101I0162",
+    "offers": [
+     {
+      "price": "10589.00",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad 5i 2-i-1 Gen 10 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0123",
+    "mpn": "LEN101I0123",
+    "offers": [
+     {
+      "price": "10649.65",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0143",
+    "mpn": "LEN101I0143",
+    "offers": [
+     {
+      "price": "11258.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (15\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0135",
+    "mpn": "LEN101I0135",
+    "offers": [
+     {
+      "price": "11366.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 3i Gen 11 (16\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0137",
+    "mpn": "LEN101I0137",
+    "offers": [
+     {
+      "price": "11510.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (14\" AMD)",
+    "brand": "ideapad",
+    "sku": "LEN101I0131",
+    "mpn": "LEN101I0131",
+    "offers": [
+     {
+      "price": "11672.10",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   },
+   {
+    "name": "IdeaPad Slim 5i Gen 10 (14\" Intel)",
+    "brand": "ideapad",
+    "sku": "LEN101I0111",
+    "mpn": "LEN101I0111",
+    "offers": [
+     {
+      "price": "11797.15",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Lenovo"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "23 000 kr",
+   "29 999 kr",
+   "17 000 kr",
+   "22 999 kr",
+   "12 000 kr",
+   "16 999 kr",
+   "4 090,00 kr",
+   "8 990,00 kr",
+   "9 159,00 kr",
+   "9 199,00 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord och pekplatta"
+   ],
+   "ram": [],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Pro 64 (5)",
+    "Windows 11 Home 64 (29)",
+    "Windows 11 Home S Mode 64 (1)",
+    "Windows 11?",
+    "Windows 10, Windows 8, Windows"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "garantier och mer på lenovo",
+    "garantier för fel eller skador som uppstår på grund av att de används",
+    "garantier för produkter eller tjänster från tredje part",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batteritid stöder maratonstudier eller spelsessioner på dessa bärbara datorer och säker",
+    "Batteri: Dessa system har inte stöd för batterier som inte är äkta Lenovo-tillverkade e",
+    "batterier",
+    "batterier och ger inga garantier för fel eller skador som uppstår på grund av att de an",
+    "Batteritid baseras på MobileMark® 2014-metodiken och är ett uppskattat maxvärde",
+    "batteritid kan variera beroende på många faktorer, som ljusstyrka, aktiva program, funk",
+    "batteriets ålder och tillstånd samt kundens övriga inställningar Allmänt: Gå igenom vik"
+   ],
+   "condition": [
+    "klass av datorer",
+    "skickliga tekniker omedelbart hem till dig för att hjälpa till"
+   ],
+   "delivery": [
+    "Leveransklara Datorer (3)"
+   ],
+   "charger": []
+  },
+  "text": "IdeaPad-bärbara datorer\nKontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgradera till Windows 11 Uppgradera nu >\nLenovo Pro Business Store\nLenovo Education Store\nhoppa vidare till huvudinnehållet\nLogga in/skapa konto\nPRODUKTER\nLÖSNINGAR\nTJÄNSTER\nSUPPORT\nOM LENOVO\nERBJUDANDEN\nFöretag\nEducation\nGaming\nKreatör\nBlack Friday\nBärbara datorer\nStationära datorer\nWorkstations\nBildskärmar\nSurfplattor\nTillbehör\nProgramvara\nMobiltelefoner\nServrar och lagring\nAI (Artificiell intelligens)\n    \n            \n                \nHandla IdeaPad            \nUtforska dina idéer\nMed Lenovo IdeaPad\nIdeaPad är för allt du brukar göra, samtidigt som du arbetar, spelar, studerar och skapar. Den levererar otroligt värde och tillförlitlig prestanda med mångsidig teknik som fungerar för dig.\n                \nHandla efter serie\n                     \n                   \nPro\nDet smartare valet för kraft\n               \n                     \n                   \nSlim\nDet smartare valet för mobilitet\n               \n                     \n                   \n2-i-1\nDet smartare valet för mångsidighet\n               \n                     \n                   \nVibe\nDet smartare valet för personlig stil\n               \nDet smartare valet\n                           \nEn ny klass av datorer\nHastighet. Kraft. Smartare teknik.\nMed Lenovo IdeaPad tar du inte bara till dig AI, du omfamnar ett partnerskap byggt på tillförlitlighet, design som är centrerad på dig och friheten att skräddarsy din digitala resa. Lita på att Lenovo navigerar i det ständigt föränderliga AI-landskapet, där din upplevelse är personlig, din säkerhet tas på allvar och din potential är obegränsad.\n                           \nHisnande visuella upplevelser\nMer utrymme, mindre belastning\nOavsett om du tittar på film, avslutar sena kvällsuppgifter eller ägnar dig åt episka speläventyr levererar Lenovo IdeaPad. Har ett 16:10 bildförhållande och nästan kantfri design för att säkerställa livfulla färger, djup svärta och skarp kontrast som får varje detalj att lysa – utan att anstränga dina ögon tack vare TÜV Low Blue Light-teknologi.\n                           \nFramtidsklar för dynamiska behov\nUppgraderingsbart SSD-lagringsutrymme och minne\nUppgradera ditt lagringsutrymme på dina villkor med Lenovo IdeaPad. Den utbyggbara SSD-platsen gör det enkelt att lägga till utrymme för filer, appar eller spel när du behöver det. Inga servicecenter, inget krångel – bara gör-det-själv uppgraderingsbart SSD-lagringsutrymme och minne som växer med dig och håller jämna steg med ditt liv.\n                           \nKoppla ur och slappna av\nLång batteritid. Snabbladdning.\nSäg adjö till jakten på eluttag. Imponerande batteritid stöder maratonstudier eller spelsessioner på dessa bärbara datorer och säkerställer oavbrutna stunder. Behöver du en snabb boost? Rapid Charge laddar över den tid det tar för en kaffepaus och ger timmar av mer kraft när du behöver det som mest.\n                           \nTuff nog",
+  "links": [
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-300/ideapad-slim-3i-gen-8-(15-inch-intel)/len101i0069",
+    "text": "IdeaPad Slim 3i Gen 8 (15\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-300/ideapad-slim-3i-gen-8-(15-inch-intel)/len101i0069#reviews",
+    "text": "4.1 (58)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-vibe-series/ideapad-vibe-gen-12-14-inch-snapdragon/len101i0165",
+    "text": "IdeaPad Vibe Gen 12 (14ʺ Snapdragon)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-vibe-series/ideapad-vibe-gen-12-15-inch-snapdragon/len101i0166",
+    "text": "IdeaPad Vibe Gen 12 (15\" Snapdragon)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/ideapad-slim-3x-gen-11-15-inch-snapdragon/len101i0167",
+    "text": "IdeaPad Slim 3x Gen 11 (15\" Snapdragon)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/ideapad-slim-3x-gen-11-14-inch-snapdragon/len101i0168",
+    "text": "IdeaPad Slim 3x Gen 11 (14\" Snapdragon)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/ideapad-slim-3-gen-10-14-inch-amd/len101i0117",
+    "text": "IdeaPad Slim 3 Gen 10 (14\" AMD)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/ideapad-slim-3-gen-10-14-inch-amd/len101i0117#reviews",
+    "text": "4.5 (59)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-3i-gen-11-15-inch-intel/len101i0149",
+    "text": "IdeaPad Slim 3i Gen 11 (15\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-3i-gen-11-15-inch-intel/len101i0149#reviews",
+    "text": "4.5 (2)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-3i-gen-11-16-inch-intel/len101i0151",
+    "text": "Lenovo IdeaPad Slim 3i Gen 11 16 inch Intel"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-3i-gen-11-16-inch-intel/len101i0151#reviews",
+    "text": "4.0 (1)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-3i-gen-11-14-inch-intel/len101i0150",
+    "text": "IdeaPad Slim 3i Gen 11 (14\" Intel)"
+   },
+   {
+    "href": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/ideapad-slim-3i-gen-11-17-inch-intel-/len101i0152",
+    "text": "IdeaPad Slim 3i Gen 11 (17\" Intel)"
+   }
+  ],
+  "status": "OK"
+ }
+]

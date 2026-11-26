@@ -1,0 +1,6 @@
+[OK] 200 https://www.elgiganten.se/product/outlet/samsung-galaxy-book6-14-u7-355321024ips-copilot-pc/1082656
+   Samsung Galaxy Book6 14" U7-355/32/1024/IPS Copilot+ PC - Elgiganten
+   sku=1082656 price=11992 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://psref.lenovo.com/Product/IdeaPad/IdeaPad_Slim_5_14IMH10
+   Product - Lenovo PSREF
+   sku=- price=- avail=- buyable=false oos=

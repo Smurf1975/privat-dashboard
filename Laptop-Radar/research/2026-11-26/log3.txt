@@ -1,0 +1,33 @@
+[OK] 200 https://www.elgiganten.se/product/1046956
+   Lenovo IdeaPad Slim 5 14IMH10 U5-135H/32/512/OLED 14" bärbar dator - Elgiganten
+   sku=1046956 price=12990 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/hp-omnibook-x-flip-14-u7-35532512oled-14-copilot-pc/1048140
+   HP OmniBook X Flip 14 U7-355/32/512/OLED 14" Copilot+ PC - Elgiganten
+   sku=1048140 price=22995 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/asus-zenbook-14-u9-285h321tb-14-barbar-dator/880044
+   Asus Zenbook 14 U9-285H/32/1TB 14" bärbar dator - Elgiganten
+   sku=880044 price=17086 avail=https://schema.org/Discontinued buyable=true oos=utgått
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/asus-vivobook-s-14-m5406-r7321tboled-14-barbar-dator/768805
+   Asus Vivobook S 14 M5406 R7/32/1TB/OLED 14" bärbar dator - Elgiganten
+   sku=768805 price=13995 avail=https://schema.org/Discontinued buyable=true oos=utgått
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/b2b-pc/b2b-barbar-pc/hp-elitebook-8-g1i-cw9p5et-14-copilot-pc/p-4282803/
+   HP EliteBook 8 G1i CW9P5ET 14" Copilot+ PC - Power.se
+   sku=4282803 price=35999 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/b2b-pc/b2b-barbar-pc/hp-elitebook-x-g1i-14-barbar-dator/p-4091841/
+   HP EliteBook X G1I 14" bärbar dator - Power.se
+   sku=4091841 price=38999 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/b2b-pc/b2b-barbar-pc/hp-elitebook-6-g1a-r7-14-barbar-dator/p-4131975/
+   HP EliteBook 6 G1A (R7) 14" bärbar dator - Power.se
+   sku=4131975 price=32999 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/b2b-pc/b2b-barbar-pc/hp-elitebook-8-13-g1a-ad3d0etuuw-133-copilot-pc/p-4131955/
+   HP EliteBook 8 13 G1a AD3D0ET#UUW 13,3" Copilot+ PC - Power.se
+   sku=4131955 price=39999 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/barbar-dator/asus-zenbook-duo-ux8407aa-sn480x-14-copilot-pc/p-4271749/
+   ASUS Zenbook Duo UX8407AA-SN480X 14" Copilot+ PC - Power.se
+   sku=4271749 price=31990 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/barbar-dator/asus-zenbook-duo-ux8406ca-pz068x-14-barbar-dator/p-3925772/
+   ASUS Zenbook DUO UX8406CA-PZ068X 14" bärbar dator - Power.se
+   sku=3925772 price=30990 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/barbar-dator/asus-zenbook-14-ux3405ca-pure1-14-copilot-pc/p-4152588/
+   ASUS Zenbook 14 UX3405CA-PURE1 14" Copilot+ PC - Power.se
+   sku=4152588 price=20999 avail=https://schema.org/OutOfStock buyable=false oos=

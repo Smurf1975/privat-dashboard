@@ -1,0 +1,18 @@
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/samsung-galaxy-book6-14-u7-355321024ips-copilot-pc/1014154
+   Samsung Galaxy Book6 14" U7-355/32/1024/IPS Copilot+ PC - Elgiganten
+   sku=1014154 price=14990 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/asus-vivobook-s-s5406sa-pp140w/1063280.8906/
+   ASUS Vivobook S S5406SA-PP140W | NetOnNet
+   sku=1063280 price=14 999:- avail=BackOrder buyable=false oos=Bevaka|Ej i lager
+[OK] 502 https://www.komplett.se/category/10000/datorutrustning/laptop
+   
+   sku=- price=- avail=- buyable=false oos=
+[BLOCKED] 403 https://www.dustin.se/search?q=laptop%2032gb%2014
+   Vänta...
+   sku=- price=- avail=- buyable=false oos=
+[BLOCKED] 403 https://www.inet.se/kategori/28/barbar-dator
+   Vänta...
+   sku=- price=- avail=- buyable=false oos=
+[BLOCKED] 403 https://www.proshop.se/Baerbar
+   Attention Required! | Cloudflare
+   sku=- price=- avail=- buyable=false oos=
