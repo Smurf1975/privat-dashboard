@@ -16,3 +16,4 @@
 - Ingen ny kandidat slår EliteBook 840 G9 (Reuseit 6 999, oförändrad).
 - Refurb-agenten stoppades av användningsgräns (429); delresultat granskat och använt. Back Market/Begagnad.se ej kontrollerade.
 - BLOCKED: Dustin, Inet, Proshop, ASUS-butiker SE+EU. Komplett 502.
+- 2026-11-26 (eftermiddag): Galaxy Book6 14 outlet (elgiganten:1082656) SLUT (JSON-LD SoldOut). Ny variant 1014154 kvar 14 990 kr i lager. Höjd till prio H på bevakningslistan.
