@@ -11,7 +11,7 @@ BLOCKED = CAPTCHA/Cloudflare/403. Respekteras – kringgås aldrig. Prisjämför
 | NetOnNet | netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum | PW | OK 2026-11-25 (JSON-LD m. SKU/MPN/EAN) |
 | Webhallen | webhallen.com/se (bärbara datorer) | PW | OK 2026-11-25 |
 | Dustin | dustin.se (inkl. outlet/Pre-owned) | PW | BLOCKED (403 bot-check) 2026-11-25 (OK tidigare samma dag) |
-| Komplett | komplett.se | PW | FEL 502 2026-11-25 – testa igen |
+| Komplett | komplett.se | PW | FEL 502 2026-11-25 och 2026-11-26 |
 | Inet | inet.se | PW | BLOCKED (bot-verifiering) 2026-11-25 |
 | Proshop | proshop.se | PW | BLOCKED (Cloudflare) 2026-11-25 |
 | Lenovo SE | lenovo.com/se/sv (+ PSREF för RAM) | PW | OK 2026-11-25. Ingen SE-outlet (404). |
@@ -32,6 +32,7 @@ Elgiganten Outlet, NetOnNet Outlet/Fyndhörna, Webhallen Fyndvaror, POWER Outlet
 | Back Market | backmarket.se | PW | BLOCKED 2026-11-25 |
 | Begagnad.se | begagnad.se | PW | FEL 520 2026-11-25 – testa igen |
 | Nuovo | nuovo.se | – | Domänen till salu. Testa nuvoo.com istället. |
+| Nuvoo | nuvoo.com/sv-se (Shopify) | PW | OK 2026-11-26 – ny källa, layout anges ofta ej |
 | NetOnNet/Webhallen refurb | | PW | OK, inga 32 GB 2026-11-25 |
 
 Övriga: Inrego (inrego.se), Refurbed (refurbed.se), Reuseit (reuseit.se), Looptop, Nuovo, Begagnad.se/Reuse, Backmarket.se, Foxway/Webhallen refurb, NetOnNet Refurbished.

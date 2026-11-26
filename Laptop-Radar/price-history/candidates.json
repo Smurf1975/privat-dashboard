@@ -19,7 +19,7 @@
   "offers": [
    "lenovo-se:21T9001RMX"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 11499.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "lenovo-se:21T9001RMX"
@@ -44,7 +44,7 @@
   "offers": [
    "hp-se:D70BWEA#UUW"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 13490.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "hp-se:D70BWEA#UUW"
@@ -69,7 +69,7 @@
   "offers": [
    "hp-se:D44PYEA#UUW"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 14990.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "hp-se:D44PYEA#UUW"
@@ -94,7 +94,7 @@
   "offers": [
    "dell-se:dc14255_reg_01"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 12324.39,
   "best_price_date": "2026-11-25",
   "best_price_offer": "dell-se:dc14255_reg_01"
@@ -119,7 +119,7 @@
   "offers": [
    "dell-se:pv14250_fixed_01"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 11705.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "dell-se:pv14250_fixed_01"
@@ -144,7 +144,7 @@
   "offers": [
    "asus-se:90NX0871-M01900"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 8890.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "asus-se:90NX0871-M01900"
@@ -264,7 +264,7 @@
    "webhallen:401389",
    "netonnet:1065346"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 12990.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "netonnet:1065346"
@@ -289,7 +289,7 @@
   "offers": [
    "elgiganten:1048139"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 12490.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "elgiganten:1048139"
@@ -314,7 +314,7 @@
   "offers": [
    "elgiganten:1014157"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 14990.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "elgiganten:1014157"
@@ -338,12 +338,13 @@
   "first_seen": "2026-11-25",
   "offers": [
    "power:4213612",
-   "power:4213612:outlet"
+   "power:4213612:outlet",
+   "netonnet:1062158"
   ],
-  "last_seen": "2026-11-25",
-  "best_price_sek": 11391.0,
-  "best_price_date": "2026-11-25",
-  "best_price_offer": "power:4213612:outlet"
+  "last_seen": "2026-11-26",
+  "best_price_sek": 10990.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "netonnet:1062158"
  },
  "nx-jrred-007": {
   "brand": "Acer",
@@ -365,7 +366,7 @@
   "offers": [
    "webhallen:390877"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 10990.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "webhallen:390877"
@@ -390,7 +391,7 @@
   "offers": [
    "webhallen:395601"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 8090.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "webhallen:395601"
@@ -415,7 +416,7 @@
   "offers": [
    "webhallen:399099"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 14499.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "webhallen:399099"
@@ -441,7 +442,7 @@
    "webhallen:390999",
    "webhallen:396705"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 14190.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "webhallen:396705"
@@ -466,7 +467,7 @@
   "offers": [
    "webhallen:399098"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 11499.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "webhallen:399098"
@@ -517,7 +518,7 @@
    "reuseit:S36270_UK_BF",
    "reuseit:S36283_UK"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 6999.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "reuseit:S36270_UK_BF"
@@ -542,7 +543,7 @@
   "offers": [
    "looptop:C/T14G4/32/512/ND"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 9995.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:C/T14G4/32/512/ND"
@@ -567,7 +568,7 @@
   "offers": [
    "looptop:C/T14G3/ryzen7/32/512/ND"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 8695.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:C/T14G3/ryzen7/32/512/ND"
@@ -592,7 +593,7 @@
   "offers": [
    "looptop:B/ZBook14FFG9/i7/32/512/ND"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 9495.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:B/ZBook14FFG9/i7/32/512/ND"
@@ -617,7 +618,7 @@
   "offers": [
    "looptop:DEMO/840G10/i7/32/512/ND"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 9995.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:DEMO/840G10/i7/32/512/ND"
@@ -642,7 +643,7 @@
   "offers": [
    "looptop:C/845G11/Ryzen7/32/512/ND"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 11495.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:C/845G11/Ryzen7/32/512/ND"
@@ -665,9 +666,10 @@
   "notes": "Billigaste 32 GB-maskinen med svenskt tangentbord och 12th gen. Skick 'Bättre'. 16:9 FHD-panel, i5. 512 GB → SECONDARY (1 TB-byte ~700–900 kr ger ~7 400 kr totalt).",
   "first_seen": "2026-11-25",
   "offers": [
-   "looptop:B/640G9/i5/32/512/SWE"
+   "looptop:B/640G9/i5/32/512/SWE",
+   "looptop:C/640G9/i5/32/512/SWE"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 6595.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:B/640G9/i5/32/512/SWE"
@@ -692,7 +694,7 @@
   "offers": [
    "looptop:DEMO/Prestige14AI/u7/C1VEG/32/1024/RTX4050"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 14995.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:DEMO/Prestige14AI/u7/C1VEG/32/1024/RTX4050"
@@ -717,7 +719,7 @@
   "offers": [
    "looptop:B/P15vG1/i7/32/1024/P620/ND"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 7995.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "looptop:B/P15vG1/i7/32/1024/P620/ND"
@@ -742,7 +744,7 @@
   "offers": [
    "inrego:11003032831"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 12499.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "inrego:11003032831"
@@ -767,7 +769,7 @@
   "offers": [
    "inrego:11002039391"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 14999.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "inrego:11002039391"
@@ -792,7 +794,7 @@
   "offers": [
    "refurbed:21755833"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 9615.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "refurbed:21755833"
@@ -839,7 +841,7 @@
   "offers": [
    "reuseit:UNKNOWN"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 11499.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "reuseit:UNKNOWN"
@@ -864,7 +866,7 @@
   "offers": [
    "tradera:762426734"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 7500.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "tradera:762426734"
@@ -889,7 +891,7 @@
   "offers": [
    "blocket:28509781"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 9000.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "blocket:28509781"
@@ -914,7 +916,7 @@
   "offers": [
    "tradera:762720389"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 8499.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "tradera:762720389"
@@ -940,7 +942,7 @@
    "blocket:23712500",
    "tradera:757181336"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 11241.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "blocket:23712500"
@@ -965,7 +967,7 @@
   "offers": [
    "blocket:28535586"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 11995.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "blocket:28535586"
@@ -990,7 +992,7 @@
   "offers": [
    "blocket:28228758"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 13900.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "blocket:28228758"
@@ -1015,7 +1017,7 @@
   "offers": [
    "tradera:763328570"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 10000.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "tradera:763328570"
@@ -1040,7 +1042,7 @@
   "offers": [
    "tradera:760861038"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 5975.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "tradera:760861038"
@@ -1065,7 +1067,7 @@
   "offers": [
    "tradera:759089674"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 6995.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "tradera:759089674"
@@ -1090,7 +1092,7 @@
   "offers": [
    "tradera:690659560"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 6249.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "tradera:690659560"
@@ -1115,7 +1117,7 @@
   "offers": [
    "tradera:761965639"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 3453.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "tradera:761965639"
@@ -1140,7 +1142,7 @@
   "offers": [
    "blocket:28261640"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 4000.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "blocket:28261640"
@@ -1165,9 +1167,560 @@
   "offers": [
    "blocket:28350716"
   ],
-  "last_seen": "2026-11-25",
+  "last_seen": "2026-11-26",
   "best_price_sek": 6600.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "blocket:28350716"
+ },
+ "c42d4ea-uuw": {
+  "brand": "HP",
+  "model": "HP OmniBook 7 Laptop AI 14-fr0075no",
+  "mpn": "C42D4EA#UUW",
+  "cpu": "Intel Core Ultra 7 255H (16C/16T, up to 5.1 GHz, 24 MB L3)",
+  "ram_gb": 32,
+  "ram_type": "LPDDR5-5200 (integrerat)",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "HP SE product page (Firecrawl, 2026-11-26): '32 GB LPDDR5-5200 MT/s (integrerat)' = onboard, not upgradeable. Already 32 GB. QuickSpecs not opened.",
+  "ssd_gb": 512,
+  "display": "14\" 2K OLED (35,6 cm)",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Home",
+  "weight_kg": 1.41,
+  "notes": "NEW in the HP SE listing memstd=32-gb&scrnsizeus=14&price=0-15000. Same CPU, RAM and panel as the known fr0074nox (D70BWEA#UUW, 13 490), but this SKU includes a 100 W USB-C adapter ('Laddare ingår') while fr0074nox does not. Total cost is therefore close: fr0074nox + charger vs fr0075no 14 990 all-in. 512 GB -> SECONDARY. Page: 'Svenskt tangentbord med åäö', 'Finns i lager', add-to-cart shown, free shipping over 200 kr. Read with Firecrawl (maxAge 0) because HP crashes in Playwright. Raw data: raw-mfr-11-hp-fc.json.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "hp-se:C42D4EA#UUW"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 14990.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "hp-se:C42D4EA#UUW"
+ },
+ "asus-vivobook14-x1407-cu5-16gb-512-nordic": {
+  "brand": "ASUS",
+  "model": "Vivobook 14 (X1407CA / X1407AA)",
+  "mpn": "UNKNOWN (estore SKU not visible; asus.com JSON-LD sku 29672)",
+  "cpu": "Intel Core Ultra 5 225H (X1407CA) or Core Ultra 5 325 (X1407AA) – priced SKU UNKNOWN",
+  "ram_gb": 16,
+  "ram_type": "16 GB DDR5 on board + 1x DDR5 SO-DIMM slot (free)",
+  "ram_soldered": "PARTIAL",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "asus.com/se techspec (opened 2026-11-26, both listed models): '16GB DDR5 on board | Max totalt systemminne upp till:32GB', expansion '1x DDR5 SO-DIMM slot', '*Stöd för tvåkanalsminne kräver minst en SO-DIMM-modul'. Add 1x16 GB DDR5 SO-DIMM -> 32 GB dual-channel (module price not verified).",
+  "ssd_gb": 512,
+  "display": "14\" WUXGA 1920x1200 IPS-level 60Hz 300 nits 45% NTSC, anti-glare",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Home",
+  "weight_kg": 1.46,
+  "notes": "NEW (ASUS SE Black Friday page). asus.com/se product page: JSON-LD price 8449 SEK InStock, 'Köp' button (links to estore.asus.com, which is BLOCKED 403, so cart/SKU not verifiable). ASUS states 'Det här priset kanske inte hänvisar till specifikationerna nedan'. Both SE-listed configs are 16 GB + 512 GB, Nordic keyboard, Win 11 Home, 65 W USB-C adapter in spec. Reaches 32 GB only after adding a 16 GB SO-DIMM (slot free per spec). Weak budget-class panel (300 nits/45% NTSC). Strong value on price only. Raw data: raw-mfr-9-asus.json (techspec), raw-mfr-10-asus.json (product page), raw-mfr-8-asus.json (deals page).",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "asus-se:x1407-29672"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 8449.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "asus-se:x1407-29672"
+ },
+ "np740vjg-kg3se": {
+  "brand": "Samsung",
+  "model": "Galaxy Book6 14 (NP740VJG-KG3SE)",
+  "mpn": "NP740VJG-KG3SE",
+  "cpu": "Intel Core Ultra 7 355 (8C, upp till 4,7 GHz)",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Elgigantens spec-flik (TV) anger ingen RAM-typ/platser; Samsungs datablad ej hämtat i dag → UNKNOWN",
+  "ssd_gb": 1024,
+  "display": "14\" 1920x1080 (Full HD) IPS, 350 nit, ej touch",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Home",
+  "weight_kg": null,
+  "notes": "Outlet: 'Nyskick – i originalförpackning. Produkten kan vara ett återköp eller tidigare visningsexemplar… alla kundfördelar gäller som ny'. JSON-LD condition UsedCondition. I lager online + 1 butik. 'Laddare ingår ej' (60–65 W USB PD) men förpackningsinnehåll listar USB-C-kabel – verifiera. Tangentbordslayout ej angiven. RAM-typ/lödd okänd. Billigaste 14\" 32/1TB i lager i segmentet i dag.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "elgiganten:1082656",
+   "elgiganten:1014154"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 11992.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "elgiganten:1082656"
+ },
+ "pm3406cka-ly0981xwew": {
+  "brand": "ASUS",
+  "model": "ExpertBook P3 (PM3406CKA)",
+  "mpn": "PM3406CKA-LY0981XWEW",
+  "cpu": "AMD Ryzen AI 7 350 (8C/16T, upp till 5,0 GHz)",
+  "ram_gb": 32,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "ASUS Global techspec PM3406CKA: 2x DDR5 SO-DIMM, max 64 GB; Elgiganten spec: 2 platser, 1 ledig (32 GB i en modul). SSD: 1x M.2 2280 + 1x M.2 2230 (Elgiganten: 2 M.2, 1 ledig)",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 16:10 IPS-nivå LED, 60 Hz, 300 nit",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.48,
+  "notes": "ASUS affärsdator (prioriterat märke), Win 11 Pro, SO-DIMM uppgraderbart till 64 GB, ledig M.2 för extra SSD. 512 GB → SECONDARY. 'Laddare ingår ej' (80–90 W USB PD) – kan vara felaktigt standardvärde, verifiera. 50+ i lager online, 5 butiker. Tangentbordslayout ej angiven. CPU från spec-flik 'AI R7-350'.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "elgiganten:1055058"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 13495.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "elgiganten:1055058"
+ },
+ "83v60051mx": {
+  "brand": "Lenovo",
+  "model": "IdeaPad Slim 5 14IMH10 OLED",
+  "mpn": "83V60051MX",
+  "cpu": "Intel Core Ultra 5 135H",
+  "ram_gb": 32,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Lenovo PSREF IdeaPad Slim 5 14IMH10 (PDF via TV): två DDR5 SODIMM-platser, max 32 GB. Elgiganten: 2 platser, 0 lediga. Andra M.2 (2242) ledig enl. PSREF.",
+  "ssd_gb": 512,
+  "display": "14\" OLED (upplösning ej läst från sidan)",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Home",
+  "weight_kg": 1.39,
+  "notes": "Kort-URL öppnad i dag (PW) – visar produktsidan för 1046956. 100+ i lager online, ej i butik. Äldre CPU-generation (Meteor Lake 135H). 512 GB, RAM redan max 32 GB. 'Laddare ingår ej' (45–65 W USB PD). Tangentbordslayout ej angiven.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "elgiganten:1046956"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 12990.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "elgiganten:1046956"
+ },
+ "90nb15r3-m00rn0": {
+  "brand": "ASUS",
+  "model": "Vivobook S 14 (S5406SA-PP140W) 3K 120 Hz OLED",
+  "mpn": "90NB15R3-M00RN0",
+  "cpu": "Intel Core Ultra 7 258V",
+  "ram_gb": 32,
+  "ram_type": "LPDDR5X (Memory on Package)",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Sidan: '32 GB LPDDR5X Memory on Package' (även felaktigt '32 GB DDR5' i kortfakta); ASUS techspec S5406 (2026-11-25): on-package, ej uppgraderbart",
+  "ssd_gb": 1024,
+  "display": "14\" 3K 120 Hz Lumina OLED",
+  "keyboard": "UNKNOWN",
+  "os": "UNKNOWN (W-suffix tyder på Windows 11 Home, ej läst)",
+  "weight_kg": null,
+  "notes": "BackOrder/ej i lager, ingen köpknapp. Skiljer sig från känd S5406SA (netonnet:1065346, WUXGA) genom 3K 120 Hz-panel. Pris 1 kr under budgettak; sämre värde än 1065346 (12 990).",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "netonnet:1063280"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 14999.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "netonnet:1063280"
+ },
+ "lenovo-thinkpad-t14-g2-i5-1135g7-32-1tb-nordic": {
+  "brand": "Lenovo",
+  "model": "ThinkPad T14 Gen 2 (Intel)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i5-1135G7 (11th gen, 4C/8T)",
+  "ram_gb": 32,
+  "ram_type": "DDR4-3200 (delvis lött + 1x SO-DIMM)",
+  "ram_soldered": "PARTIAL",
+  "ram_max_gb": 48,
+  "ram_upgrade_note": "Lenovo PSREF ThinkPad T14 Gen 2 Intel: 'One memory soldered to systemboard, one DDR4 SO-DIMM slot'; max 40 GB (8+32) / 48 GB (16+32). 32 GB redan installerat.",
+  "ssd_gb": 1024,
+  "display": "14\" (upplösning ej angiven i rubrik; bakgrundsbelyst tangentbord)",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "Sidan visar 'ND' / Nordisk (QWERTY), 32 GB, 1 TB SSD, 'Mycket bra skick', 'Nästan slutsålda', 'Lägg till i kundvagn', frakt inkluderad (leverans 27 nov–1 dec), strömadapter ingår. Enda nya fyndet som når 32 GB + 1 TB + nordiskt under 10 000 kr. Svagheter: 11:e gen i5 (4 kärnor) – lägst CPU-prestanda i listan; marknadsplatssäljare.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "refurbed:21799221"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 9849.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "refurbed:21799221"
+ },
+ "lenovo-thinkpad-x1-yoga-g6-i7-1185g7-32-1tb-se": {
+  "brand": "Lenovo",
+  "model": "ThinkPad X1 Yoga Gen 6 (2-in-1)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1185G7 (11th gen, 4C/8T, vPro)",
+  "ram_gb": 32,
+  "ram_type": "LPDDR4x lött",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Lenovo PSREF X1 Yoga Gen 6: 'Memory soldered to systemboard, no slots'; max 32 GB, ej uppgraderbart. 32 GB redan installerat.",
+  "ssd_gb": 1024,
+  "display": "14\" WUXGA (1920x1200) touch + stylus",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "'Nyskick', Svensk (QWERTY), 32 GB/1 TB, 'I lager', stylus + strömadapter ingår, frakt inkluderad (30 nov–2 dec). Premium 2-in-1 men RAM lött och 11:e gen 4-kärnig CPU. Utländsk säljare (Slovakien).",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "refurbed:19784439"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 10469.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "refurbed:19784439"
+ },
+ "dell-precision-3490-ultra5-125u-32-1024-mycketbra": {
+  "brand": "Dell",
+  "model": "Precision 3490",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core Ultra 5 125U (12C/14T, NPU)",
+  "ram_gb": 32,
+  "ram_type": "DDR5 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "Dell Precision 3490 Owner's Manual (dell.com/support, memory): 'Two-SODIMM slots', DDR5-5600, max 64 GB. Inrego anger samma (2 st SODIMM, max 64 GB).",
+  "ssd_gb": 1024,
+  "display": "14\" 1920x1080 IPS matt, 100% sRGB",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.4,
+  "notes": "'Mycket bra skick', 'Färre än 10 kvar i lager', 'Lägg i varukorg', leverans 1–3 arbetsdagar. Tangentbordslayout anges INTE i specifikationen för denna enhet (andra Inrego-annonser har fältet 'TANGENTBORD: SVENSKT') → UNKNOWN. Samma modell som känd Inrego-annons dell-precision-3490-5 (Bra skick, 14 999) men 5 000 kr billigare och bättre skick. Fraktkostnad ej angiven. Bra CPU-generation + uppgraderbart RAM till 64 GB.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "inrego:11002039381"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 9999.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "inrego:11002039381"
+ },
+ "hp-zbook-firefly14g8-i7-1165g7-32-512-t500-se": {
+  "brand": "HP",
+  "model": "ZBook Firefly 14 G8",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1165G7 (11th gen, 4C/8T) + NVIDIA Quadro T500",
+  "ram_gb": 32,
+  "ram_type": "DDR4-3200 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "HP QuickSpecs c06977950: 2 DDR4 SODIMMs; max 64 GB utan diskret grafik, max 32 GB MED diskret grafik (denna har Quadro T500) → 32 GB = max.",
+  "ssd_gb": 512,
+  "display": "14\" FHD (1920x1080)",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.35,
+  "notes": "Sidan visar 'SWE – svenska', 'i7-1165G7 / 32GB RAM / 512GB SSD / Quadro T500', skick 'Bättre', 6 995 kr, 'Lägg i kundvagn'. Shopify-flödet: variant available=true (endast detta 32 GB-exemplar i lager). JSON-LD listar alla varianter som OutOfStock (kända flödesfel – samma som 25/11). Billig 14\" mobil arbetsstation, men 11:e gen 4-kärnig CPU.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "looptop:B/ZBook14FFG8/i7/32/512/T500/SWE"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 6995.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "looptop:B/ZBook14FFG8/i7/32/512/T500/SWE"
+ },
+ "hp-elitebook-840g9-i7-1255u-32-512-nuvoo": {
+  "brand": "HP",
+  "model": "EliteBook 840 G9",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1255U (12th gen, 10C/12T)",
+  "ram_gb": 32,
+  "ram_type": "DDR5 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "HP QuickSpecs/HP Support 840 G9: 2x DDR5 SO-DIMM, max 64 GB (kontrollerat 2026-11-25). Nuvoo-sidan: 'två SO-DIMM-platser'.",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 WUXGA IPS",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.36,
+  "notes": "Skick 'Bra', '1 kvar i lager', leverans 4–6 arbetsdagar fri frakt, laddare ingår, 'Lägg i varukorgen'. Tillval: ny 1 TB NVMe +1 990 kr (= 9 780 kr för 32/1TB). Tangentbordslayout anges INTE (endast OS-språk Finska/Svenska/Engelska) → UNKNOWN; Nuvoo är finsk – finsk och svensk layout är identiska (nordisk), men inte bekräftat på sidan.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "nuvoo:840-G9-i7-B1S5W-32"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 7790.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "nuvoo:840-G9-i7-B1S5W-32"
+ },
+ "lenovo-thinkpad-x1c-g10-i7-1260p-32-512-touch-nuvoo": {
+  "brand": "Lenovo",
+  "model": "ThinkPad X1 Carbon Gen 10 (touch)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1260P (12th gen, 12C/16T)",
+  "ram_gb": 32,
+  "ram_type": "LPDDR5 lött",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Lenovo PSREF X1 Carbon Gen 10: 'Memory soldered to systemboard, no slots'; max 32 GB, ej uppgraderbart.",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 WUXGA IPS touch",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "Skick 'Bra', '14 kvar i lager', 57 Wh batteri 'kontrollerat', laddare ingår, fri frakt. Tillval ny SSD. Tangentbord ej angivet → UNKNOWN.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "nuvoo:X1-G10-i7-B1S5WT-32"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 10790.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "nuvoo:X1-G10-i7-B1S5WT-32"
+ },
+ "dell-latitude-7440-i5-1335u-32-512-nuvoo": {
+  "brand": "Dell",
+  "model": "Latitude 7440",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i5-1335U (13th gen, 10C/12T)",
+  "ram_gb": 32,
+  "ram_type": "LPDDR5-4800 lött",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Dell Latitude 7440 Setup and Specifications: 'On-board memory', 'Not upgradable', LPDDR5, max 32 GB.",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 WUXGA IPS",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "Skick 'Utmärkt', '1 kvar i lager', laddare ingår, fri frakt. Nuvoo har även outlet-variant 32/256 för 9 790 kr (ej öppnad). Tangentbord ej angivet → UNKNOWN.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "nuvoo:7440-i5-A2S5W-32"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 11190.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "nuvoo:7440-i5-A2S5W-32"
+ },
+ "lenovo-thinkpad-t14-g2-i5-1135g7-32-512-nordic": {
+  "brand": "Lenovo",
+  "model": "ThinkPad T14 Gen 2 (Intel)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i5-1135G7 (11th gen, 4C/8T)",
+  "ram_gb": 32,
+  "ram_type": "DDR4-3200 (delvis lött + 1x SO-DIMM)",
+  "ram_soldered": "PARTIAL",
+  "ram_max_gb": 48,
+  "ram_upgrade_note": "Lenovo PSREF ThinkPad T14 Gen 2 Intel: en lödd + en DDR4 SO-DIMM-plats; max 40/48 GB.",
+  "ssd_gb": 512,
+  "display": "14\" (upplösning ej angiven i rubrik)",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "Samma säljare/modell som 1 TB-varianten (9 849); 1 TB-varianten är bättre köp (+1 294 kr för 512 GB extra). 'Mycket bra skick', 'Nästan slutsålda'.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "refurbed:21532708"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 8555.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "refurbed:21532708"
+ },
+ "dell-latitude-7430-i7-1265u-32-256-touch-se": {
+  "brand": "Dell",
+  "model": "Latitude 7430 (touch)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1265U (12th gen, 10C/12T, vPro)",
+  "ram_gb": 32,
+  "ram_type": "DDR4-3200 integrerat (lött)",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Dell Latitude 7430 Setup and Specifications (memory): alla konfigurationer 'integrated', max 32 GB (DDR4 och LPDDR5). Ej uppgraderbart.",
+  "ssd_gb": 256,
+  "display": "14\" 1920x1200 IPS touch, antireflex",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "Läst med Firecrawl (Playwright visar 404 på reuseit.se). 'Mycket bra', 'I lager', köpknapp finns. Tangentbord 'Svenskt' i titel/specifikation MEN SKU-suffix '_US' → motsägelse, därför PARTIALLY VERIFIED. Endast 256 GB SSD (M.2 2230/2280, en plats enl. Dell) → SECONDARY. Billigaste 12:e gen 32 GB med svensk layout i segmentet.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "reuseit:S38148_US"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 5999.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "reuseit:S38148_US"
+ },
+ "hp-elite-x360-830g11-ultra5-125u-32-1024-se": {
+  "brand": "HP",
+  "model": "Elite x360 830 G11 (2-in-1)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core Ultra 5 125U (12C/14T, NPU)",
+  "ram_gb": 32,
+  "ram_type": "LPDDR5x lött",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "HP QuickSpecs c08876531 (Elite x360 830 G11): '32GB LPDDR5X-7500' (lött LPDDR5x). Inrego anger 'max minne som stöds 32 GB'.",
+  "ssd_gb": 1024,
+  "display": "13.3\" 1920x1200 touch",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.3,
+  "notes": "Specifikation 'TANGENTBORD: SVENSKT', 'Bra skick', 'Färre än 10 kvar i lager', 'Lägg i varukorg'. Uppfyller kraven men dåligt värde (13 874 kr för 13,3\" Ultra 5) jämfört med Precision 3490 32/1TB för 9 999. Art.nr ej utläst. Frakt ej angiven.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "inrego:hp-elite-x360-830-g11-8"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 13874.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "inrego:hp-elite-x360-830-g11-8"
+ },
+ "lenovo-thinkpad-t14g5-ultra7-155u-32-512-touch-us": {
+  "brand": "Lenovo",
+  "model": "ThinkPad T14 Gen 5 (Intel, touch)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core Ultra 7 155U (12C/14T, NPU)",
+  "ram_gb": 32,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "Lenovo PSREF ThinkPad T14 Gen 5 Intel: 'Two DDR5 SODIMM slots, dual-channel capable', max 64 GB DDR5-5600.",
+  "ssd_gb": 512,
+  "display": "14\" touch (upplösning ej läst)",
+  "keyboard": "US",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "ENG-US layout (ej nordisk). Skick 'Bättre', 12 795 kr, 'Lägg i kundvagn'. Nordiska T14 G5-varianter (Ultra 7 155U 32/1TB från 10 595) är available=false i flödet i dag – bevaka. Nyaste CPU-generation i segmentet med uppgraderbart RAM.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "looptop:B/T14G5/32/512/US"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 12795.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "looptop:B/T14G5/32/512/US"
+ },
+ "dell-latitude-7420-i7-1185g7-32-1tb-4k-se": {
+  "brand": "Dell",
+  "model": "Latitude 7420",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1185G7 (11th gen)",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Soldered/SO-DIMM not checked against Dell manual (Dell support pages 403 in earlier runs).",
+  "ssd_gb": 1024,
+  "display": "14\" 4K UHD 3840x2160",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "Gott använt skick, 'mindre tecken på användning'. Backlit Swedish keyboard, fingerprint, TPM 2.0, original Dell USB-C charger. PostNord only, no pickup. Price is the CURRENT BID, final price unknown (likely to rise a lot before 29 Nov). Battery health not stated. 4K panel = higher battery drain. 11th gen.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "tradera:762036910"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 2385.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "tradera:762036910"
+ },
+ "asus-zenbook-s14-ux5406sa-pure6w-u7-258v-32-1tb": {
+  "brand": "ASUS",
+  "model": "Zenbook S 14 OLED UX5406SA",
+  "mpn": "UX5406SA-PURE6W",
+  "cpu": "Intel Core Ultra 7 258V",
+  "ram_gb": 32,
+  "ram_type": "LPDDR5X",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Listing says '32GB LPDDR5X (inbyggt)'. Lunar Lake memory is on-package by design. Not upgradable.",
+  "ssd_gb": 1000,
+  "display": "14\" 2880x1800 3K OLED touch 16:10 120Hz",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Home",
+  "weight_kg": 1.2,
+  "notes": "'REKONDITIONERAD SOM NY DATOR', 'Mycket bra skick - som ny'. Keyboard layout NOT stated in this ad (the same seller's UX3405CA/UM3406KA ads say 'nordisk layout'). Ask before buying. Shipping cost not stated. Copilot+ PC, 2x TB4, HDMI 2.1, Wi-Fi 7. Best new-gen ASUS 14\"/32/1TB found today under 15k.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "blocket:28205689"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 13490.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "blocket:28205689"
+ },
+ "lenovo-yoga-slim-7i-aura-15-u7-258v-32-1tb": {
+  "brand": "Lenovo",
+  "model": "Yoga Slim 7i Aura Edition (15.3\")",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core Ultra 7 258V",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN (Lunar Lake on-package)",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Lunar Lake on-package memory by design. Not checked in PSREF.",
+  "ssd_gb": 1024,
+  "display": "15.3\" 2880x1800 2.8K IPS touch 120Hz",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11",
+  "weight_kg": null,
+  "notes": "Not new today (last edited 2026-10-06) but not in offers-latest. 15.3\" = within the 15.6\" limit but not 14\". 'Mycket bra skick - som ny'. Keyboard layout, receipt and warranty not stated. Near budget cap.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "blocket:25897775"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 14000.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "blocket:25897775"
+ },
+ "lenovo-yoga-slim-7-aura-14-u7-258v-32-512": {
+  "brand": "Lenovo",
+  "model": "Yoga Slim 7 Aura Edition 14\"",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core Ultra 7 258V",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN (Lunar Lake on-package)",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Lunar Lake on-package memory by design. Not checked in PSREF.",
+  "ssd_gb": 512,
+  "display": "14\" 2.8K OLED HDR600",
+  "keyboard": "UNKNOWN",
+  "os": "UNKNOWN (Copilot+ PC stated)",
+  "weight_kg": null,
+  "notes": "'Mycket bra skick - som ny', 'knappt använd'. Only 512 GB and close to the 15 000 kr cap, so weaker value than the Zenbook S 14 32/1TB at 13 490. Keyboard layout not stated.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "blocket:28545359"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 14000.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "blocket:28545359"
+ },
+ "hp-zbook-firefly-14-g8-i7-1165g7-32-512-t500": {
+  "brand": "HP",
+  "model": "ZBook Firefly 14 G8",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1165G7 (11th gen) + NVIDIA T500 4GB",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Soldered/SO-DIMM not checked in HP QuickSpecs.",
+  "ssd_gb": 512,
+  "display": "14\" FHD 1920x1080",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 (25H2)",
+  "weight_kg": 1.46,
+  "notes": "'Bra skick - varsamt använd'. Budget pick: 32 GB, 14\", B&O audio, 2x TB4. Older gen and 512 GB; keyboard layout not stated.",
+  "first_seen": "2026-11-26",
+  "offers": [
+   "blocket:28524025"
+  ],
+  "last_seen": "2026-11-26",
+  "best_price_sek": 4500.0,
+  "best_price_date": "2026-11-26",
+  "best_price_offer": "blocket:28524025"
  }
 }

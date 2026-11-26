@@ -1,0 +1,160 @@
+[
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "c42d4ea-uuw",
+  "offer_id": "hp-se:C42D4EA#UUW"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "asus-vivobook14-x1407-cu5-16gb-512-nordic",
+  "offer_id": "asus-se:x1407-29672"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "np740vjg-kg3se",
+  "offer_id": "elgiganten:1082656"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "pm3406cka-ly0981xwew",
+  "offer_id": "elgiganten:1055058"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "83v60051mx",
+  "offer_id": "elgiganten:1046956"
+ },
+ {
+  "type": "NEW_OFFER",
+  "candidate_id": "d3407ga-sf034w",
+  "offer_id": "netonnet:1062158",
+  "price": 10990.0
+ },
+ {
+  "type": "NEW_BEST_PRICE",
+  "candidate_id": "d3407ga-sf034w",
+  "offer_id": "netonnet:1062158",
+  "old": 11391.0,
+  "new": 10990.0
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "90nb15r3-m00rn0",
+  "offer_id": "netonnet:1063280"
+ },
+ {
+  "type": "STOCK_CHANGE",
+  "candidate_id": "hp-elitebook-640g9-i5-1245u-32-512-se",
+  "offer_id": "looptop:B/640G9/i5/32/512/SWE",
+  "old": "IN_STOCK",
+  "new": "OUT_OF_STOCK"
+ },
+ {
+  "type": "PRICE_RISE",
+  "candidate_id": "dell-latitude-7330-i7-1265u-32-1000-us",
+  "offer_id": "refurbed:21755833",
+  "old": 9615.0,
+  "new": 10275.0,
+  "diff": 660.0
+ },
+ {
+  "type": "CAMPAIGN_CHANGE",
+  "candidate_id": "lenovo-ideapad-slim5-14akp10-ryzenai7-350-32-1tb-tradera",
+  "offer_id": "tradera:762720389",
+  "old": "Tradera auction: current bid 2 250 kr (utropspris 1 kr), Köp nu 8 499 kr, ends 2026-12-06 19:48. Traderas köparskydd.",
+  "new": "Auktion: bud 2 400, köp nu 8 499, slutar 6 dec 19:48"
+ },
+ {
+  "type": "STOCK_CHANGE",
+  "candidate_id": "lenovo-yoga-pro-7i-14-u7-255h-32-1tb-oled",
+  "offer_id": "tradera:763328570",
+  "old": "IN_STOCK",
+  "new": "GONE"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-t14-g2-i5-1135g7-32-1tb-nordic",
+  "offer_id": "refurbed:21799221"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-x1-yoga-g6-i7-1185g7-32-1tb-se",
+  "offer_id": "refurbed:19784439"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-precision-3490-ultra5-125u-32-1024-mycketbra",
+  "offer_id": "inrego:11002039381"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-zbook-firefly14g8-i7-1165g7-32-512-t500-se",
+  "offer_id": "looptop:B/ZBook14FFG8/i7/32/512/T500/SWE"
+ },
+ {
+  "type": "NEW_OFFER",
+  "candidate_id": "hp-elitebook-640g9-i5-1245u-32-512-se",
+  "offer_id": "looptop:C/640G9/i5/32/512/SWE",
+  "price": 6795.0
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-elitebook-840g9-i7-1255u-32-512-nuvoo",
+  "offer_id": "nuvoo:840-G9-i7-B1S5W-32"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-x1c-g10-i7-1260p-32-512-touch-nuvoo",
+  "offer_id": "nuvoo:X1-G10-i7-B1S5WT-32"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-latitude-7440-i5-1335u-32-512-nuvoo",
+  "offer_id": "nuvoo:7440-i5-A2S5W-32"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-t14-g2-i5-1135g7-32-512-nordic",
+  "offer_id": "refurbed:21532708"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-latitude-7430-i7-1265u-32-256-touch-se",
+  "offer_id": "reuseit:S38148_US"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-elite-x360-830g11-ultra5-125u-32-1024-se",
+  "offer_id": "inrego:hp-elite-x360-830-g11-8"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-thinkpad-t14g5-ultra7-155u-32-512-touch-us",
+  "offer_id": "looptop:B/T14G5/32/512/US"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "dell-latitude-7420-i7-1185g7-32-1tb-4k-se",
+  "offer_id": "tradera:762036910"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "asus-zenbook-s14-ux5406sa-pure6w-u7-258v-32-1tb",
+  "offer_id": "blocket:28205689"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-yoga-slim-7i-aura-15-u7-258v-32-1tb",
+  "offer_id": "blocket:25897775"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "lenovo-yoga-slim-7-aura-14-u7-258v-32-512",
+  "offer_id": "blocket:28545359"
+ },
+ {
+  "type": "NEW_CANDIDATE",
+  "candidate_id": "hp-zbook-firefly-14-g8-i7-1165g7-32-512-t500",
+  "offer_id": "blocket:28524025"
+ }
+]

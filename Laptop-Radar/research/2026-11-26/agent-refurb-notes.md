@@ -1,0 +1,3 @@
+# Refurb 2026-11-26
+Agenten avbröts av användningsgräns (API 429) innan anteckningar skrevs. agent-refurb.json (12 erbjudanden) granskad manuellt av huvudsessionen: inga avvikande data. Källor som hann täckas: Looptop (feed + sidor), Refurbed, Inrego, Reuseit (FC), Nuvoo (nuvoo.com/sv-se – ny källa, layout ej angiven). Back Market/Begagnad.se: ej kontrollerade i dag.
+Kompletterande feed-skanning (huvudsession, Looptop products.json): 22 tillgängliga 32 GB-varianter med SWE/NORD ≤15 000 kr som inte fanns i historiken – mest 512/256 GB och äldre gen (Latitude 7410 10th gen 4 595–4 995 kr, ZBook 15 G6, Fury 15). Ej tillagda utöver agentens urval.
