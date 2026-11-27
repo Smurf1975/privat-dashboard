@@ -1,0 +1,374 @@
+[
+ {
+  "url": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse1",
+  "checkedAt": "2026-11-27T06:30:43.096Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse1",
+  "title": "IdeaPad Slim 5a Gen 11 (14 tum AMD) | Det smartare valet för mobilitet | 83S1CTO1WWSE1 | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (14\" AMD)",
+    "brand": "IdeaPad",
+    "sku": "83S1CTO1WWSE1",
+    "mpn": "LEN101I0131",
+    "offers": [
+     {
+      "price": 11023.65,
+      "currency": "SEK",
+      "availability": "http://schema.org/InStock",
+      "condition": "http://schema.org/NewCondition"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "12 969,00 kr",
+   "11 023,65 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Keyboard",
+    "nordiska språk"
+   ],
+   "ram": [
+    "16 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 8 GB)"
+   ],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Home",
+    "Windows 11 Pro för företag",
+    "Windows 11 med minst 16 GB min"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "Warranty",
+    "garantin för din bärbara dator",
+    "garanti, oavsett vilken systemgaranti du har",
+    "garantitiden för batterigarantin (om batteriet är i gott skick)",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batterikapacitet som tillval kan du hålla igång under långa timmar av multitasking och",
+    "batteri balanserar effektivitet och prestanda, vilket gör det enklare att utföra daglig",
+    "batteriet tar slut",
+    "batterigaranti, oavsett vilken systemgaranti du har",
+    "Battery Warranty",
+    "batterikraft när du köper den här uppgraderingen tillsammans med din enhet eller under",
+    "batterigarantin (om batteriet är i gott skick)",
+    "batteribyte i händelse av problem"
+   ],
+   "condition": [
+    "skick)"
+   ],
+   "delivery": [
+    "LeveransBeräknad leverans mellan 11/12 och 15/12"
+   ],
+   "charger": [
+    "nätadapter 3 stift - EU"
+   ]
+  },
+  "text": "Kontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgrader",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse2",
+  "checkedAt": "2026-11-27T06:30:52.009Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse2",
+  "title": "IdeaPad Slim 5a Gen 11 (14 tum AMD) | Det smartare valet för mobilitet | 83S1CTO1WWSE2 | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (14\" AMD)",
+    "brand": "IdeaPad",
+    "sku": "83S1CTO1WWSE2",
+    "mpn": "LEN101I0131",
+    "offers": [
+     {
+      "price": 15435.15,
+      "currency": "SEK",
+      "availability": "http://schema.org/InStock",
+      "condition": "http://schema.org/NewCondition"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "18 159,00 kr",
+   "15 435,15 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Keyboard",
+    "nordiska språk"
+   ],
+   "ram": [
+    "32 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 16 GB)"
+   ],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Home",
+    "Windows 11 Pro för företag",
+    "Windows 11 med minst 16 GB min"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "Warranty",
+    "garantin för din bärbara dator",
+    "garanti, oavsett vilken systemgaranti du har",
+    "garantitiden för batterigarantin (om batteriet är i gott skick)",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batterikapacitet som tillval kan du hålla igång under långa timmar av multitasking och",
+    "batteri balanserar effektivitet och prestanda, vilket gör det enklare att utföra daglig",
+    "batteriet tar slut",
+    "batterigaranti, oavsett vilken systemgaranti du har",
+    "Battery Warranty",
+    "batterikraft när du köper den här uppgraderingen tillsammans med din enhet eller under",
+    "batterigarantin (om batteriet är i gott skick)",
+    "batteribyte i händelse av problem"
+   ],
+   "condition": [
+    "skick)"
+   ],
+   "delivery": [
+    "LeveransBeräknad leverans mellan 11/12 och 15/12"
+   ],
+   "charger": [
+    "nätadapter 3 stift - EU"
+   ]
+  },
+  "text": "Kontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgrader",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse3",
+  "checkedAt": "2026-11-27T06:31:00.257Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse3",
+  "title": "IdeaPad Slim 5a Gen 11 (14 tum AMD) | Det smartare valet för mobilitet | 83S1CTO1WWSE3 | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (14\" AMD)",
+    "brand": "IdeaPad",
+    "sku": "83S1CTO1WWSE3",
+    "mpn": "LEN101I0131",
+    "offers": [
+     {
+      "price": 12969,
+      "currency": "SEK",
+      "availability": "http://schema.org/InStock",
+      "condition": "http://schema.org/NewCondition"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "12 969,00 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Keyboard",
+    "nordiska språk"
+   ],
+   "ram": [
+    "16 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 8 GB)"
+   ],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Home",
+    "Windows 11 Pro för företag",
+    "Windows 11 med minst 16 GB min"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "Warranty",
+    "garantin för din bärbara dator",
+    "garanti, oavsett vilken systemgaranti du har",
+    "garantitiden för batterigarantin (om batteriet är i gott skick)",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batterikapacitet som tillval kan du hålla igång under långa timmar av multitasking och",
+    "batteri balanserar effektivitet och prestanda, vilket gör det enklare att utföra daglig",
+    "batteriet tar slut",
+    "batterigaranti, oavsett vilken systemgaranti du har",
+    "Battery Warranty",
+    "batterikraft när du köper den här uppgraderingen tillsammans med din enhet eller under",
+    "batterigarantin (om batteriet är i gott skick)",
+    "batteribyte i händelse av problem"
+   ],
+   "condition": [
+    "skick)"
+   ],
+   "delivery": [
+    "LeveransBeräknad leverans mellan 11/12 och 15/12"
+   ],
+   "charger": [
+    "nätadapter 3 stift - EU"
+   ]
+  },
+  "text": "Kontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgrader",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse4",
+  "checkedAt": "2026-11-27T06:31:08.951Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.lenovo.com/se/sv/p/laptops/ideapad/ideapad-slim-series/lenovo-ideapad-slim-5a-gen-11-14-inch-amd-laptop/83s1cto1wwse4",
+  "title": "IdeaPad Slim 5a Gen 11 (14 tum AMD) | Det smartare valet för mobilitet | 83S1CTO1WWSE4 | Lenovo Sverige",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "IdeaPad Slim 5a Gen 11 (14\" AMD)",
+    "brand": "IdeaPad",
+    "sku": "83S1CTO1WWSE4",
+    "mpn": "LEN101I0131",
+    "offers": [
+     {
+      "price": 12969,
+      "currency": "SEK",
+      "availability": "http://schema.org/InStock",
+      "condition": "http://schema.org/NewCondition"
+     }
+    ]
+   }
+  ],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "12 969,00 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "Keyboard",
+    "nordiska språk"
+   ],
+   "ram": [
+    "16 GB DDR5 - 5 600MT/s (SODIMM) - (2 × 8 GB)"
+   ],
+   "os": [
+    "Windows 10 har upphört Uppgrad",
+    "Windows 11 Uppgradera nu >",
+    "Windows 11 Home",
+    "Windows 11 Pro för företag",
+    "Windows 11 med minst 16 GB min"
+   ],
+   "warranty": [
+    "garantirättigheter",
+    "Warranty",
+    "garantin för din bärbara dator",
+    "garanti, oavsett vilken systemgaranti du har",
+    "garantitiden för batterigarantin (om batteriet är i gott skick)",
+    "garanti"
+   ],
+   "returns": [
+    "Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "batterikapacitet som tillval kan du hålla igång under långa timmar av multitasking och",
+    "batteri balanserar effektivitet och prestanda, vilket gör det enklare att utföra daglig",
+    "batteriet tar slut",
+    "batterigaranti, oavsett vilken systemgaranti du har",
+    "Battery Warranty",
+    "batterikraft när du köper den här uppgraderingen tillsammans med din enhet eller under",
+    "batterigarantin (om batteriet är i gott skick)",
+    "batteribyte i händelse av problem"
+   ],
+   "condition": [
+    "skick)"
+   ],
+   "delivery": [
+    "LeveransBeräknad leverans mellan 11/12 och 15/12"
+   ],
+   "charger": [
+    "nätadapter 3 stift - EU"
+   ]
+  },
+  "text": "Kontrollera här dina lagstadgade garantirättigheter\n×\nSupporten för Windows 10 har upphört Uppgrader",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.dell.com/sv-se/shop/laptop-computers/spd/dell14plusdb14250",
+  "checkedAt": "2026-11-27T06:31:17.422Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.dell.com/sv-se",
+  "title": "Datorer, Skärmar & Tekniklösningar | Dell Sverige",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "Datorer, Skärmar & Tekniklösningar | Dell Sverige"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [
+    "Garanti & Kontrakt",
+    "garantin och inte kan lösas på distans skickas en tekniker eller reservdel ut, vanligen"
+   ],
+   "returns": [
+    "Retur- och Ångerrätt"
+   ],
+   "battery": [
+    "batteritid",
+    "Battery Boost, Reflex, DLSS, CUDA, FXAA, GameStream, G-SYNC, G-SYNC Ultimate, NVLINK, S"
+   ],
+   "condition": [
+    "skickas en tekniker eller reservdel ut, vanligen inom 1–2 arbetsd",
+    "skickas separat och således anlända efter systemet",
+    "skickas bara till Sweden"
+   ],
+   "delivery": [
+    "Leveransvillkor:",
+    "Leveransen är den snabbast tillgängliga och inom 3-6 dagar, beroende på var kunden befin",
+    "leveransdatum är inte garanterat"
+   ],
+   "charger": []
+  },
+  "text": "Gå vidare till huvudinnehållet\nLogga in\nKontakta oss\nSE/SV\nVarukorg\nArtificiell intelligens\nIT-infra",
+  "status": "OK"
+ }
+]

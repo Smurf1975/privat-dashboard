@@ -1,0 +1,87 @@
+[
+ {
+  "url": "https://www.asus.com/se/laptops/for-home/vivobook/asus-vivobook-s-14-s5406/",
+  "checkedAt": "2026-11-27T06:28:47.826Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera alla",
+  "finalUrl": "https://www.asus.com/se/laptops/for-home/vivobook/",
+  "title": "Vivobook｜Laptops｜ASUS Sverige",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "Vivobook｜Laptops｜ASUS Sverige"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [
+   "Meddela mig"
+  ],
+  "priceTexts": [
+   "10 790,00 SEK",
+   "17 990,00 SEK",
+   "10 990,00 SEK",
+   "12 490,00 SEK",
+   "1 700,00 SEK",
+   "8 990,00 SEK",
+   "2 000,00 SEK",
+   "14 990,00 SEK",
+   "4 200,00 SEK",
+   "9 990,00 SEK"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord",
+    "tangentbord med en zon",
+    "Keyboard KW100",
+    "Keyboard KW100 is a compact, ultrathin wireless keyboard with a minimalist design that b",
+    "Keyboard KW100 offers outstanding versatility that makes it ideal for daily use",
+    "Tangentbord"
+   ],
+   "ram": [
+    "32 GB DDR5, 1 TB SSD, AI-funktioner och FHD IPS-skärm för sömlös prest"
+   ],
+   "os": [
+    "Windows 11 Home - ASUS rekomme",
+    "Windows 11 Pro för företag"
+   ],
+   "warranty": [],
+   "returns": [
+    "returer",
+    "returer inom 14 dagar"
+   ],
+   "battery": [
+    "battery",
+    "batteritid",
+    "batteri",
+    "batteri på 70 Wh",
+    "battery life, MD102 is made to meet the everyday demands of both professional and perso",
+    "battery, and it features switches with a 10-million-click lifespan"
+   ],
+   "condition": [],
+   "delivery": [
+    "frakt",
+    "frakt på alla ordrar över 1100 SEK"
+   ],
+   "charger": [
+    "laddare"
+   ]
+  },
+  "text": "Switch to your local site to shop online and see relevant promotions.\nStanna här\nSwitch to the US website\nHoppa till innehåll\nHjälp med tillgänglighet\nGaming\nBusiness\nStore\nAI\nMobile / Handhelds\nLaptops\nDesktops / Skärmar\nModerkort / Komponenter\nNätverk / IoT / Servrar\nTillbehör\nSupport\nSe erbjudand",
+  "links": [
+   {
+    "href": "https://www.asus.com/se/laptops/for-home/vivobook/asus-vivobook-14-x1407q/",
+    "text": ""
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-home/vivobook/asus-vivobook-14-x1407q",
+    "text": "Läs mer"
+   },
+   {
+    "href": "https://www.asus.com/se/laptops/for-home/vivobook/asus-vivobook-s-14-oled-s5406/",
+    "text": ""
+   }
+  ],
+  "status": "OK"
+ }
+]
