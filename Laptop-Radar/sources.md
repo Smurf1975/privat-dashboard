@@ -37,8 +37,8 @@ Elgiganten Outlet, NetOnNet Outlet/Fyndhörna, Webhallen Fyndvaror, POWER Outlet
 
 Övriga: Inrego (inrego.se), Refurbed (refurbed.se), Reuseit (reuseit.se), Looptop, Nuovo, Begagnad.se/Reuse, Backmarket.se, Foxway/Webhallen refurb, NetOnNet Refurbished.
 
-## D. Begagnat
-Tradera (PW timeout → FC OK 2026-11-25), Blocket (PW sök OK; annonser utan text → FC OK), Facebook Marketplace (kräver inloggning → ej åtkomligt). Prioritera företagssäljare, köpskydd. Undvik misstänkta annonser.
+## D. Begagnat – UTESLUTET från 2026-11-28
+Blocket och Tradera tas inte med (användarens beslut 2026-11-27). Facebook Marketplace ej åtkomligt. Historiska data finns kvar i price-history/ men omkontrolleras inte.
 
 ## E. ASUS officiella EU-butiker
 shop.asus.com/{se,fi,dk,de,nl,fr} + estore.asus.com: alla 403 BLOCKED 2026-11-25. asus.com/se (info-sidor, specar) OK. Verifiera leverans till Sverige, layout, moms, frakt, garanti, retur. Anta aldrig leverans till SE.

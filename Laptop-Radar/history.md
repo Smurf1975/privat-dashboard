@@ -24,3 +24,4 @@
 - Borta: Inrego Precision 3490 (såld), Lenovo E14 Gen 7 21T9001RMX (inget pris).
 - Prisändringar: T14 G2 1 TB 9 849→9 825; X1 Yoga G6 10 469→10 649.
 - Sökagenterna stoppades av kontots veckogräns (429, nollställs 28/11 20:00). Reducerad körning; 7 kända erbjudanden ej omkontrollerade.
+- 2026-11-27 (kväll): Användarens beslut: från 2026-11-28 tas 16 GB-datorer som kan byggas ut till 32 GB med (pris + RAM = total); Blocket och Tradera utesluts. Blocket/Tradera-rader borttagna ur ranking och bevakning.
