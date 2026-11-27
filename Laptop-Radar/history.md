@@ -17,3 +17,10 @@
 - Refurb-agenten stoppades av användningsgräns (429); delresultat granskat och använt. Back Market/Begagnad.se ej kontrollerade.
 - BLOCKED: Dustin, Inet, Proshop, ASUS-butiker SE+EU. Komplett 502.
 - 2026-11-26 (eftermiddag): Galaxy Book6 14 outlet (elgiganten:1082656) SLUT (JSON-LD SoldOut). Ny variant 1014154 kvar 14 990 kr i lager. Höjd till prio H på bevakningslistan.
+
+## 2026-11-27 – Black Friday (manuell start 07:26, schema 07:43 sammanslaget)
+- Inga prissänkningar på bevakade erbjudanden. 840 G9 Reuseit 6 999 oförändrad. Galaxy Book6 14: outlet slut, ny 14 990 (ingen BF-sänkning); säljs ej med 32 GB på samsung.com/se.
+- Nya: Spectre x360 14 32/1 TB 9 000 (Blocket), X1 Yoga Gen 9 demo 32/1 TB nordiskt 14 285 (Tradera), Envy x360 14 32/1 TB 12 500, EliteBook 840 G8 32/1 TB 6 500.
+- Borta: Inrego Precision 3490 (såld), Lenovo E14 Gen 7 21T9001RMX (inget pris).
+- Prisändringar: T14 G2 1 TB 9 849→9 825; X1 Yoga G6 10 469→10 649.
+- Sökagenterna stoppades av kontots veckogräns (429, nollställs 28/11 20:00). Reducerad körning; 7 kända erbjudanden ej omkontrollerade.

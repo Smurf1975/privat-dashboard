@@ -1,0 +1,408 @@
+[
+ {
+  "url": "https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-new-battery-fair",
+  "checkedAt": "2026-11-27T07:50:39.693Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-new-battery-fair",
+  "title": "HP EliteBook 840 G9 Touch - Nytt batteri | Reuseit",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "ogTitle": "HP EliteBook 840 G9 Touch - Nytt batteri | Reuseit"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "404!\nPage not Found\nsomething went wrong!\nReload Page",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28490841",
+  "checkedAt": "2026-11-27T07:50:48.065Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28490841",
+  "title": "HP Spectre x360 14” OLED – Core Ultra 7, 32 GB RAM, 1 TB | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP Spectre x360 14” OLED – Core Ultra 7, 32 GB RAM, 1 TB",
+    "brand": "HP",
+    "sku": "28490841",
+    "offers": [
+     {
+      "price": "9000",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "HP Spectre x360 14” OLED – Core Ultra 7, 32 GB RAM, 1 TB | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.tradera.com/item/302393/763369171/ny-lenovo-thinkpad-x1-yoga-2-in-1-gen-9-med-ultra-7-32gb-1tb-ssd",
+  "checkedAt": "2026-11-27T07:50:56.881Z",
+  "method": "playwright-chromium",
+  "status": "ERROR",
+  "error": "page.goto: Timeout 60000ms exceeded."
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28564992",
+  "checkedAt": "2026-11-27T07:51:56.965Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28564992",
+  "title": "Hp Envy X360 | 2.8K OLED 120HZ, Ultra 7, 32GB, 1TB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Hp Envy X360 | 2.8K OLED 120HZ, Ultra 7, 32GB, 1TB SSD",
+    "brand": "HP",
+    "sku": "28564992",
+    "offers": [
+     {
+      "price": "12500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Hp Envy X360 | 2.8K OLED 120HZ, Ultra 7, 32GB, 1TB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.blocket.se/recommerce/forsale/item/28526905",
+  "checkedAt": "2026-11-27T07:52:05.164Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.blocket.se/recommerce/forsale/item/28526905",
+  "title": "Elitebook 840 G8 | 32GB RAM | 1TB SSD | Blocket",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Elitebook 840 G8 | 32GB RAM | 1TB SSD",
+    "brand": "HP",
+    "sku": "28526905",
+    "offers": [
+     {
+      "price": "6500",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Elitebook 840 G8 | 32GB RAM | 1TB SSD | Blocket"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/585113b/?offer=21799221",
+  "checkedAt": "2026-11-27T07:52:12.643Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/585113b/?offer=21799221",
+  "title": "Lenovo ThinkPad T14 G2 Intel Core i5-1135G7 32.0 GB 1000 GB 14.0 \" svart ND (Nordisk) – refurbed",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad T14 G2 | i5-1135G7 | 14\"",
+    "brand": "Lenovo",
+    "offers": []
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad T14 G2 Intel Core i5-1135G7 32.0 GB 1000 GB 14.0 \" svart ND (Nordisk) – refurbed"
+  },
+  "buyButtons": [
+   "Lägg till i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "1 500 kr",
+   "3 616 kr",
+   "1 810 kr",
+   "2 046 kr",
+   "1 270 kr",
+   "1 894 kr",
+   "3 560 kr",
+   "3 600 kr",
+   "2 870 kr",
+   "4 920 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord | Win 11 Pro | ND",
+    "Tangentbordslayout",
+    "Nordisk (QWERTY)"
+   ],
+   "ram": [],
+   "os": [],
+   "warranty": [
+    "garanti från leverantören:",
+    "garanti (Vad är försäkrat?)",
+    "garanti",
+    "garanti med refurbed och kan alltid testa din produkt gratis i 30 dagar",
+    "garanti och 30 dagars fri retur kan du känna dig trygg hela vägen",
+    "garanti och 30 dagars fri retur ingår alltid",
+    "Garantivillkor"
+   ],
+   "returns": [
+    "returrätt",
+    "returrätt till 15 januari",
+    "retur kan du känna dig trygg hela vägen",
+    "retur ingår alltid",
+    "Returer"
+   ],
+   "battery": [
+    "batteri",
+    "Batteritiden och stabil uppkoppling gör den till en pålitlig följeslagare för den som r"
+   ],
+   "condition": [
+    "skick",
+    "rekonditionerad",
+    "REKONDITIONERAD"
+   ],
+   "delivery": [
+    "Frakt inkluderad: Mån, 30 Nov",
+    "leverans: Preloved Electronics | Fler erbjudanden"
+   ],
+   "charger": []
+  },
+  "text": "Cookies inställningar\nVåra produkter och cookies har något gemensamt: båda återanvänds. Genom att återanvända cookies kan vi förse dig med optimerat innehåll som är relevant för dig. För att det ska fungera korrekt och för att kunna anpassa innehåll och reklam åt dig så måste vi analysera ditt surfbeteende – med första och tredje part cookies. Självklart bara med ditt samtycke. Du kan ändra dina cookie-inställningar när som helst. Läs vår integritetspolicy. Läs databehandlarens cookiepolicy.\nBegränsad användning\nCOOKIE-INSTÄLLNINGAR\nACCEPTERA ALLA COOKIES\nOm oss\nSälj\nHjälp\nAlla kategorier\n💚 Black Friday\nMobiltelefoner\nBärbara datorer\nSurfplattor\nSmartklockor\nTillbehör\niPhones\nHörlurar\nSamsung\niPads\nMacBooks\niPhone 15\niPhone 14\niPhone 17\n⚡ Flash Deal! BARA IDAG: Spara 8% EXTRA på alla laptops med koden LAPTOP8 - Villkor\nHem\nProdukter\nLaptops\nLenovo Bärbara datorer\nAndra modeller\nOmdömen\nProduktdetaljer\nFAQs\nJämför\nTill Toppen\nLenovo ThinkPad T14 G2 | i5-1135G7 | 14-tum\n32 GB | 1 TB SSD | Bakgrundsbelyst tangentbord | Win 11 Pro | ND\n(2 recensioner)\nBilden är endast för illustrationssyfte\nVälj utseende\n(Info)\nMycket bra skick\nRAM-minne\n32.0 GB\n16.0 GB\n-1 500 kr\n32.0 GB\nTillgänglig i andra konfigurationer\n8.0 GB\n-3 616 kr\n24.0 GB\n-1 810 kr\nMinne\n1000 GB\n256 GB\n-2 046 kr\n512 GB\n-1 270 kr\n1000 GB\n2000 GB\n+1 894 kr\nTillgänglig i andra konfigurationer\n128 GB\n-3 560 kr\n240 GB\n-3 600 kr\n500 GB\n-2 870 kr\n4000 GB\n+4 920 kr\nTangentbordslayout\nNordisk (QWERTY)\nTysk (QWERTZ)\n-2 816 kr\nSvensk (QWERTY)\n-2 490 kr\nFinska (QWERTY)\n-2 480 kr\nBelgisk (AZERTY)\n-1 176 kr\nFransk (AZERTY)\n-1 176 kr\nItaliensk (QWERTY)\n-1 176 kr\nNederländsk (QWERTY)\n-1 176 kr\nPolska (QWERTY)\n-1 176 kr\nPortugisisk (QWERTY)\n-1 176 kr\nSlovakiska (QWERTZ)\n-1 176 kr\nSlovenska (QWERTZ)\n-1 176 kr\nSpansk (QWERTY)\n-1 176 kr\nTjeckiska (QWERTZ)\n-1 176 kr\nUK-engelska (QWERTY)\n-1 176 kr\nDansk (QWERTY)\nNordisk (QWERTY)\nTillgänglig i andra konfigurationer\nUS-engelska (QWERTY)\n-1 810 kr\nVälj batteri\n(Info)\nOptimalt\nOptimalt\nTillgänglig i andra konfigurationer\nNytt\n-4 656 kr\nInkluderad garanti från leverantören:\n12 månader\nFörlängd garanti (Vad är försäkrat?)\nförläng med 30 månader\n42 månader försäkrad (12 + 30)\n+419,99 kr\nförläng med 36 månader\n48 månader försäkrad (12 + 36)\n+759,99 kr\nFörlängd returrätt\n9 825 kr\n17 910,03 kr (-45%)\nNästan slutsålda\nJämför konfigurationer\nFrakt inkluderad: Mån, 30 Nov. - Tors, 3 Dec.\nKöp nu – returrätt till 15 januari\ninkl.:\nströmadapter\nLägg till i kundvagn\nBeställ nu - betala senare\nYtterligare tjänster\nExpress utcheckning\nBetala senare med \nFungerar som ny\n30 dagar pengarna tillbaka\nMinst 12 månaders garanti\nFlera betalningsmetoder\nMer hållbart\nFörsäljning & leverans: Preloved Electronics | Fler erbjudanden\nLevereras från: Danmark\nSäker betalning\nJämför föreslagna konfigurationer\nsvart\n32.0 GB\n1000 GB\nND (QWERTY)\nMycket bra skick\n9 825 kr\nsvart\n8.0 GB\n256 GB\nFR (AZERTY)\nMycket bra skick\n4 339 kr\nLägsta pris\nsvart\n32.0 GB\n1000 GB\nSE (QWERTY)\nMycket bra skick\n7 335 kr\nS",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.refurbed.se/p/lenovo-tp-x1-yoga-g6-i7-1185g7/442130/?offer=19784439",
+  "checkedAt": "2026-11-27T07:52:20.305Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.refurbed.se/p/lenovo-tp-x1-yoga-g6-i7-1185g7/442130/?offer=19784439",
+  "title": "Lenovo ThinkPad X1 Yoga G6 Intel Core i7-1185G7 32.0 GB 1000 GB 14.0 \" grå SE (Svensk) – refurbed",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad X1 Yoga G6 | i7-1185G7 | 14\"",
+    "brand": "Lenovo",
+    "offers": []
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad X1 Yoga G6 Intel Core i7-1185G7 32.0 GB 1000 GB 14.0 \" grå SE (Svensk) – refurbed"
+  },
+  "buyButtons": [
+   "Lägg till i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "1 104 kr",
+   "3 516 kr",
+   "4 260 kr",
+   "10 649 kr",
+   "22 726,36 kr",
+   "5 565 kr",
+   "3 769 kr",
+   "4 149 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbord | Win 11 Pro | SE",
+    "Tangentbordslayout",
+    "Nordisk (QWERTY)"
+   ],
+   "ram": [],
+   "os": [],
+   "warranty": [
+    "garanti från leverantören:",
+    "garanti (Vad är försäkrat?)",
+    "garanti",
+    "garanti med refurbed och kan alltid testa din produkt gratis i 30 dagar",
+    "Garantivillkor"
+   ],
+   "returns": [
+    "retur-garanti",
+    "Returer"
+   ],
+   "battery": [
+    "batteri"
+   ],
+   "condition": [
+    "skick",
+    "rekonditionerad",
+    "REKONDITIONERAD"
+   ],
+   "delivery": [
+    "I lager",
+    "Frakt inkluderad: Mån, 30 Nov",
+    "leverans: furbify s"
+   ],
+   "charger": []
+  },
+  "text": "Cookies inställningar\nVåra produkter och cookies har något gemensamt: båda återanvänds. Genom att återanvända cookies kan vi förse dig med optimerat innehåll som är relevant för dig. För att det ska fungera korrekt och för att kunna anpassa innehåll och reklam åt dig så måste vi analysera ditt surfbeteende – med första och tredje part cookies. Självklart bara med ditt samtycke. Du kan ändra dina cookie-inställningar när som helst. Läs vår integritetspolicy. Läs databehandlarens cookiepolicy.\nBegränsad användning\nCOOKIE-INSTÄLLNINGAR\nACCEPTERA ALLA COOKIES\nOm oss\nSälj\nHjälp\nAlla kategorier\n💚 Black Friday\nMobiltelefoner\nBärbara datorer\nSurfplattor\nSmartklockor\nTillbehör\niPhones\nHörlurar\nSamsung\niPads\nMacBooks\niPhone 15\niPhone 14\niPhone 17\n⚡ Flash Deal! BARA IDAG: Spara 8% EXTRA på alla laptops med koden LAPTOP8 - Villkor\nHem\nProdukter\nLaptops\nLenovo Bärbara datorer\nOmdömen\nProduktdetaljer\nFAQs\nJämför\nTill Toppen\nLenovo ThinkPad X1 Yoga G6 | i7-1185G7 | 14-tum\n32 GB | 1 TB SSD | WUXGA | Stylus | Touch | Bakgrundsbelyst tangentbord | Win 11 Pro | SE\n(4,7/5)\nBilden är endast för illustrationssyfte\nVälj utseende\n(Info)\nNyskick\nBra skick\n-614 kr\nNyskick\nRAM-minne\n32.0 GB\n32.0 GB\nTillgänglig i andra konfigurationer\n16.0 GB\n-204 kr\nMinne\n1000 GB\n128 GB\n-1 104 kr\n256 GB\n-714 kr\n512 GB\n-914 kr\n1000 GB\n2000 GB\n+3 516 kr\n4000 GB\n+4 260 kr\nTangentbordslayout\nSvensk (QWERTY)\nEstniska (QWERTY)\nFinska (QWERTY)\nPortugisisk (QWERTY)\nSvensk (QWERTY)\nTjeckiska (QWERTZ)\nUK-engelska (QWERTY)\nBelgisk (AZERTY)\n+6 kr\nBulgariska (Phonetic)\n+6 kr\nFransk (AZERTY)\n+6 kr\nItaliensk (QWERTY)\n+6 kr\nKroatiska (QWERTZ)\n+6 kr\nLettiska (QWERTY)\n+6 kr\nLitauiska (QWERTY)\n+6 kr\nNederländsk (QWERTY)\n+6 kr\nPolska (QWERTY)\n+6 kr\nSlovakiska (QWERTZ)\n+6 kr\nSlovenska (QWERTZ)\n+6 kr\nSpansk (QWERTY)\n+6 kr\nTysk (QWERTZ)\n+6 kr\nTillgänglig i andra konfigurationer\nNordisk (QWERTY)\n-914 kr\nUS-engelska (QWERTY)\nVälj batteri\n(Info)\nOptimalt\nOptimalt\nNytt\n+890 kr\nInkluderad garanti från leverantören:\n12 månader\nFörlängd garanti (Vad är försäkrat?)\nförläng med 30 månader\n42 månader försäkrad (12 + 30)\n+479,99 kr\nförläng med 36 månader\n48 månader försäkrad (12 + 36)\n+839,99 kr\n10 649 kr\n22 726,36 kr (-53%)\nI lager\nJämför med liknande produkter\nFrakt inkluderad: Mån, 30 Nov. - Tors, 3 Dec.\n30-dagars gratis retur-garanti\ninkl.:\nströmadapter, Stylus\nLägg till i kundvagn\nBeställ nu - betala senare\nYtterligare tjänster\nExpress utcheckning\nBetala senare med \nFungerar som ny\n30 dagar pengarna tillbaka\nMinst 12 månaders garanti\nFlera betalningsmetoder\nMer hållbart\nFörsäljning & leverans: furbify s.r.o. | Fler erbjudanden\nLevereras från: Slovakien\nSäker betalning\nFunktioner\nSpecifikationer\nPerfekt för proffs som kräver kraft och flexibilitet\nKraftfull laptop med pekskärm och snabb processor för smidig produktivitet och kreativitet.\nMinne\n1000 GB\nTyp Av Lagring\nSSD\nRAM-Minne\n32.0 GB\nDDR4\nSkärmstorlek\n14.0 \"\n1920 x 1200 (WUXGA)\nProcessor\nIntel Core i7-1185G7\n1.20 GHz\nAntal Processorkärnor\n4\nBeskrivning\nDin nya ref",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.elgiganten.se/product/1014154",
+  "checkedAt": "2026-11-27T07:52:27.830Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera alla",
+  "finalUrl": "https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/samsung-galaxy-book6-14-u7-355321024ips-copilot-pc/1014154",
+  "title": "Samsung Galaxy Book6 14\" U7-355/32/1024/IPS Copilot+ PC - Elgiganten",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Samsung Galaxy Book6 14\" U7-355/32/1024/IPS Copilot+ PC",
+    "brand": "Samsung",
+    "sku": "1014154",
+    "mpn": "NP740VJG-KG3SE",
+    "gtin": "8806099003395",
+    "offers": [
+     {
+      "price": "14990",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Elgiganten"
+     },
+     {
+      "price": "11992",
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/NewCondition",
+      "seller": "Elgiganten"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Samsung Galaxy Book6 14\" U7-355/32/1024/IPS Copilot+ PC"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn",
+   "...\nVisa mer\nProgramvara på köpet!"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "1 199 kr"
+  ],
+  "hits": {
+   "keyboard": [],
+   "ram": [
+    "32 GB RAM; 1 TB SSD"
+   ],
+   "os": [],
+   "warranty": [],
+   "returns": [
+    "öppet köp",
+    "öppet köp för klubbmedlemmar"
+   ],
+   "battery": [
+    "batteritid och AI-förbättrad produktivitet, allt i en modern design",
+    "Batteri",
+    "batteritid på 22 timmar tillgodoser den moderna användarens behov",
+    "batteri",
+    "batteri med hög kapacitet som kan hålla upp till 22 timmar på en enda laddning",
+    "batteriet att återhämta 39% av kapaciteten på bara 30 minuter"
+   ],
+   "condition": [],
+   "delivery": [
+    "Leverans",
+    "leveransinformation",
+    "I lager online (100+)",
+    "i lager online | Finns i lager i 1 butik(er)",
+    "i lager online",
+    "I lager online",
+    "leverans",
+    "Leverans- och installationsavtal"
+   ],
+   "charger": [
+    "laddare till din nya dator!",
+    "Laddare ingår inte! Vi erbjuder flera laddare med flera USB-portar",
+    "laddare",
+    "Laddare ingår ej"
+   ]
+  },
+  "text": "Äntligen Black Friday! På fredag öppnar våra butiker redan kl 8.00. Lokala avvikelser kan förekomma\nHoppa över navigation\nKundtjänst\nPrivatkundFöretagskund\nMina Favoriter\nMeny\nHitta butik\nLogga in\nKundvagn\nSamsung Galaxy Book6 14\" U7-355/32/1024/IPS Copilot+ PC\nDenna produkt har ännu inte blivit bedömd.\n0\n14 990.-\nLägg i kundvagn\nDatorer & Kontor\nDatorer\nLaptop\nSamsung Galaxy Book6 14\" U7-355/32/1024/IPS Copilot+ PC\nVarukod 1014154\nDenna produkt har ännu inte blivit bedömd.\n0\nKort om produkten\nSamsung Galaxy Book6 14\" Copilot+ PC erbjuder optimerad prestanda med Intel Core Ultra 7, fantastisk IPS-skärm, 22 timmars batteritid och AI-förbättrad produktivitet, allt i en modern design.\nLäs mer om produkten\nLeverantörens EcoVadis score\nLäs mer om EcoVadis\nTeknisk specifikation\nIntel® Core™ Ultra 7-355\n14\" Full HD IPS-skärm\n32 GB RAM; 1 TB SSD\nSe alla specifikationer\nGlöm inte laddare till din nya dator!\nLaddare ingår inte! Vi erbjuder flera laddare med flera USB-portar som gör det möjligt att ladda både datorn och andra enheter samtidigt; det är en allt-i-ett-lösning som gör att du slipper använda flera laddare.\n...\nVisa mer\nGlöm inte laddare till din nya dator!\nSe paketlösningar\n \nProgramvara på köpet!\n1 månad Adobe Creative Cloud Pro eller 2 månader Adobe Express Premium på köpet vid köp av utvalda produkter. Kod för nedladdning av programvaran kommer på kvittot när varan är levererad, erbjudandet gäller t.o.m. 31 december. \"Läs mer\" för mer information.\n...\nVisa mer\nProgramvara på köpet!\nLäs mer\n14 990.-\nSe alternativ för delbetalning\nLaddare ingår ej\n60-65\nUSB PD\nGlöm inte laddare till din nya dator!\n+1 kampanjer och information\nSpecifikationer: Ultra 7 355 / 32GB / 1TB / IPS\nUltra 7 355 / 32GB / 1TB / IPS\nSkärmstorlek (tum): 14\n14\n16\nTrade-in:\nUppgradera för mindre\nByt in din enhet och använd dess värde som delbetalning mot en ny enhet.\nBeräkna ditt inbytesvärde\nRekommenderade tillbehör:\nLogik 65W multiport GaN-laddare\n499.-\nLogik 100W multiport GaN-laddare\n599.-\nVisa fler\nLeverans\nHämta i butik\nAnge postnummer för leveransinformation\nI lager online (100+)\nTillgänglig i 18 butik(er)\nLägg i kundvagn\nJämför\nSpara\n30 dagars öppet köp\n50 dagars öppet köp för klubbmedlemmar\nUL Benchmark\nMer\nPC\nMer PC är en produkt som uppfyller Microsofts krav på att vara en Copilot+PC vilket möjliggör unik funktionalitet i operativsystemet.info2\nDu kan hitta vårt stora utbud av Mer PC här:\nMer Prestanda\nLEVEL 1\nLEVEL 2\nLEVEL 3\nMer Batteri\nLEVEL 1\nLEVEL 2\nLEVEL 3\nMer Frihet\nLEVEL 1\nLEVEL 2\nLEVEL 3\nMer Kreativ\nLEVEL 1\nLEVEL 2\nLEVEL 3\nJobba hemmifrån 5/5\nGrundläggande spel 1/5\nFotoredigering 3/5\nBärbarhet 5/5\nTemperatur (tomgång) 2/5\nTemperatur (belastning) 3/5\nLjudnivå 3/5\nBatteri\n13h 21m\nBatteri\nSe mer information\nProduktbeskrivning\nSamsung Galaxy Book6 14 U7-355/32/1024/IPS 14\" Copilot+ PC är en högpresterande bärbar dator skapad för användare som kräver robust datorkraft och avancerade funktioner. Denna bärbara dator är utrustad med en Intel Core Ultra Series 3-proc",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.tradera.com/item/302393/762036910/dell-latitude-7420-14-4k-intel-core-i7-32-gb-ram-1-tb-ssd-windows-11-pro",
+  "checkedAt": "2026-11-27T07:52:36.742Z",
+  "method": "playwright-chromium",
+  "status": "ERROR",
+  "error": "page.goto: Timeout 60000ms exceeded."
+ }
+]
