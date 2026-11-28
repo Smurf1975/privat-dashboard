@@ -1,0 +1,48 @@
+# Förändringar 2026-11-28-kvall
+
+- NEW_CANDIDATE: candidate_id=21t0004vmx, offer_id=elgiganten:1047390
+- NEW_CANDIDATE: candidate_id=pm3406cka-ly0674xwew-outlet, offer_id=elgiganten:1184395
+- NEW_CANDIDATE: candidate_id=lap-l14g3-mx-a003, offer_id=power:4534136
+- NEW_CANDIDATE: candidate_id=lap-l14g2-mx-a008, offer_id=power:4534130
+- NEW_CANDIDATE: candidate_id=d70qmea-uuw, offer_id=hp-se:D70QMEA#UUW
+- NEW_CANDIDATE: candidate_id=dell-precision5570-i7-12700h-32-480-se, offer_id=inrego:11002037491
+- NEW_CANDIDATE: candidate_id=dell-latitude7430-i7-1265u-32-1024-se-touch-refurbed, offer_id=refurbed:20361593
+- NEW_CANDIDATE: candidate_id=dell-latitude7430-i7-1265u-32-512-se-touch-refurbed, offer_id=refurbed:20361590
+- NEW_CANDIDATE: candidate_id=dell-latitude7430-i5-1245u-32-256-nord-looptop, offer_id=looptop:54903693443400
+- NEW_CANDIDATE: candidate_id=dell-latitude7330-i5-1245u-32-256-se-touch-looptop, offer_id=looptop:54241588445512
+- NEW_CANDIDATE: candidate_id=hp-zbookfury15g7-xeon-w10885m-32-1024-se-looptop, offer_id=looptop:55192039063880
+- NEW_CANDIDATE: candidate_id=dell-precision7560-i7-11850h-32-512-se-reuseit-fair, offer_id=reuseit:S42290
+- NEW_CANDIDATE: candidate_id=dell-latitude7430-i7-1265u-32-256-touch-reuseit-good, offer_id=reuseit:S38152_US
+- STOCK_CHANGE: candidate_id=dell-latitude-7430-i7-1265u-32-256-touch-se, offer_id=reuseit:S38148_US, old=IN_STOCK, new=OUT_OF_STOCK
+- STOCK_CHANGE: candidate_id=reuseit-p15v-g3-i7-12800h-32-512-us-bra, offer_id=reuseit:S35047_US, old=IN_STOCK, new=LIMITED
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=d70bwea-uuw, offer_id=hp-se:D70BWEA#UUW, last_seen=2026-11-28, last_price=13490
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=d88lfea-uuw, offer_id=elgiganten:1048139, last_seen=2026-11-28, last_price=12490
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=np944xjg-kg5se, offer_id=elgiganten:1014157, last_seen=2026-11-28, last_price=14990
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=d3407ga-sf034w, offer_id=power:4213612, last_seen=2026-11-28, last_price=11990
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-elitebook-840g9-i7-1265u-32-1024-se, offer_id=reuseit:S36270_UK_BF, last_seen=2026-11-28, last_price=6999
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-t14g4amd-r7pro7840u-32-512-nordic, offer_id=looptop:C/T14G4/32/512/ND, last_seen=2026-11-28, last_price=9995
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-t14g3amd-r7pro6850u-32-512-nordic, offer_id=looptop:C/T14G3/ryzen7/32/512/ND, last_seen=2026-11-28, last_price=8695
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-zbook-firefly14g9-i7-1280p-32-512-nordic, offer_id=looptop:B/ZBook14FFG9/i7/32/512/ND, last_seen=2026-11-28, last_price=9495
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-elitebook-840g10-i7-1355u-32-512-nordic-demo, offer_id=looptop:DEMO/840G10/i7/32/512/ND, last_seen=2026-11-28, last_price=9995
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-elitebook-845g11-r7pro8840u-32-512-nordic, offer_id=looptop:C/845G11/Ryzen7/32/512/ND, last_seen=2026-11-28, last_price=11495
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-elitebook-640g9-i5-1245u-32-512-se, offer_id=looptop:B/640G9/i5/32/512/SWE, last_seen=2026-11-28, last_price=6595
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=msi-prestige14-aistudio-c1veg-u7-155h-32-1024-nordic-demo, offer_id=looptop:DEMO/Prestige14AI/u7/C1VEG/32/1024/RTX4050, last_seen=2026-11-28, last_price=14995
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-p15vg1-i7-10850h-32-1024-nordic, offer_id=looptop:B/P15vG1/i7/32/1024/P620/ND, last_seen=2026-11-28, last_price=7995
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=dell-precision-3490-ultra5-125u-32-1024-se, offer_id=inrego:11002039391, last_seen=2026-11-28, last_price=14999
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-zbook-power15g9-i7-12800h-32-1024-unknownkb, offer_id=reuseit:UNKNOWN, last_seen=2026-11-26, last_price=11499
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=np740vjg-kg3se, offer_id=elgiganten:1082656, last_seen=2026-11-28, last_price=11992
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=np740vjg-kg3se, offer_id=elgiganten:1014154, last_seen=2026-11-28, last_price=14990
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=pm3406cka-ly0981xwew, offer_id=elgiganten:1055058, last_seen=2026-11-28, last_price=13495
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=83v60051mx, offer_id=elgiganten:1046956, last_seen=2026-11-28, last_price=12990
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-t14-g2-i5-1135g7-32-1tb-nordic, offer_id=refurbed:21799221, last_seen=2026-11-28, last_price=10535
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-x1-yoga-g6-i7-1185g7-32-1tb-se, offer_id=refurbed:19784439, last_seen=2026-11-28, last_price=11435
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-zbook-firefly14g8-i7-1165g7-32-512-t500-se, offer_id=looptop:B/ZBook14FFG8/i7/32/512/T500/SWE, last_seen=2026-11-28, last_price=6995
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-elitebook-640g9-i5-1245u-32-512-se, offer_id=looptop:C/640G9/i5/32/512/SWE, last_seen=2026-11-28, last_price=6795
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=hp-elite-x360-830g11-ultra5-125u-32-1024-se, offer_id=inrego:hp-elite-x360-830-g11-8, last_seen=2026-11-28, last_price=13874
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-t14g5-ultra7-155u-32-512-touch-us, offer_id=looptop:B/T14G5/32/512/US, last_seen=2026-11-28, last_price=12795
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=looptop-t14-gen3-r7pro6850u-32-512-nord-battre, offer_id=looptop:B/T14G3/ryzen7/32/512/ND, last_seen=2026-11-28, last_price=8995
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=looptop-t14-gen4-r7pro7840u-32-512-nord-battre, offer_id=looptop:B/T14G4/32/512/ND, last_seen=2026-11-28, last_price=10195
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=looptop-845-g11-r7pro8840u-32-512-nord-battre, offer_id=looptop:B/845G11/Ryzen7/32/512/ND, last_seen=2026-11-28, last_price=11695
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=looptop-zbook-fury15-g8-xeon-w11955m-32-1tb-swe, offer_id=looptop:B/ZbookFury15G8/W-11955M/32/1024/RTXA3000, last_seen=2026-11-28, last_price=11495
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-e14-g6-u5-125u-16-512-nordic-demo, offer_id=looptop:DEMO/E14G6/u5/16/512/ND, last_seen=2026-11-28, last_price=8495
+- DISAPPEARED_OR_NOT_RECHECKED: candidate_id=lenovo-thinkpad-e14-g6-u7-155h-16-512-nordic-demo, offer_id=looptop:DEMO/E14G6/u7/16/512/ND, last_seen=2026-11-28, last_price=9495

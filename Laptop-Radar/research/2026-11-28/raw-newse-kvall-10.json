@@ -1,0 +1,99 @@
+[
+ {
+  "url": "https://psref.lenovo.com/Product/ThinkPad/ThinkPad_L14_Gen_3_Intel",
+  "checkedAt": "2026-11-28T19:23:22.222Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Accept",
+  "finalUrl": "https://psref.lenovo.com/Product/ThinkPad/ThinkPad_L14_Gen_3_Intel",
+  "title": "Product - Lenovo PSREF",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [
+    "64GB DDR4-3200, 2x SO-DIMM",
+    "Slot™",
+    "slot*"
+   ],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "PSREF\nAdvanced Search\nFilters\nCompare\nFAQ\nLaptops\nTablets\nDesktops & AIOs\nWorkstations\nMonitors\nSmart Devices\nAccessories\nSign up for Newsletter\nHome\nLaptops\nThinkPad\nL Series\n+6\nThinkPad L14 Gen 3 (Intel)(Withdrawn)\n Up to 12th Gen Intel Core™ i7-1260P\n Up to Windows® 11 Pro\n Up to Intel® Iris® Xe Graphics eligible (integrated)\n Up to 64GB DDR4-3200, 2x SO-DIMM\n Up to 1x 1TB M.2 PCIe® NVMe® SSD\n Up to 14” (1920x1080) IPS, 400nits, 100% sRGB, low power\nNote: some configurations are only available on selected models and may not be available in all regions\nOverview\nModels\nSpecifications\nDocumentation\nUser Guide\nAccessories\nServices\n1. Ethernet (RJ-45) 7. Smart card reader*\n2. USB-C® 3.2 Gen 1 8. microSD card reader\n3. Thunderbolt™ 4 9. USB 3.2 Gen 1\n4. HDMI® 10. Kensington Nano Security Slot™\n5. USB 3.2 Gen 1 (Always On) 11. Nano-SIM card slot*\n6. Headphone / microphone combo jack (3.5mm) \nNotes:\nItems with * are only available on selected models\nPSREF AI (Beta)\nPSREF AI (Beta)",
+  "status": "OK"
+ },
+ {
+  "url": "https://psref.lenovo.com/Product/ThinkPad/ThinkPad_L14_Gen_2_Intel",
+  "checkedAt": "2026-11-28T19:23:30.966Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://psref.lenovo.com/Product/ThinkPad/ThinkPad_L14_Gen_2_Intel",
+  "title": "Product - Lenovo PSREF",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [
+    "64GB DDR4-3200, 2x SO-DIMM",
+    "slot* 12",
+    "Slot™"
+   ],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "PSREF\nAdvanced Search\nFilters\nCompare\nFAQ\nLaptops\nTablets\nDesktops & AIOs\nWorkstations\nMonitors\nSmart Devices\nAccessories\nSign up for Newsletter\nHome\nLaptops\nThinkPad\nL Series\n+12\nThinkPad L14 Gen 2 (Intel)(Withdrawn)\n Up to 11th Gen Intel Core™ i7-1185G7\n Up to Windows® 11 Pro\n Up to NVIDIA® GeForce MX450\n Up to 64GB DDR4-3200, 2x SO-DIMM\n Up to two drives, 1x 2.5\" HDD + 1x M.2 SSD\n Up to 14” (1920x1080) IPS, 400nits, 72% NTSC, low power\nNote: some configurations are only available on selected models and may not be available in all regions\nOverview\nModels\nSpecifications\nDocumentation\nUser Guide\nAccessories\nServices\n1. USB-C® 3.2 Gen 1 7. microSD card reader\n2. Thunderbolt™ 4 8. Ethernet (RJ-45)*\n3. Side docking connector* 9. Smart card reader*\n4. USB 3.2 Gen 1 (Always On) 10. Headphone / microphone combo jack (3.5mm)\n5. HDMI® 2.0 11. USB 3.2 Gen 1\n6. Nano-SIM card slot* 12. Kensington Security Slot™\nNotes:\nItems with * are only available on selected models\nThe combination of 2 and 3 is side docking connector\nPSREF AI (Beta)\nPSREF AI (Beta)",
+  "status": "OK"
+ },
+ {
+  "url": "https://psref.lenovo.com/Product/ThinkPad/ThinkPad_T14_Gen_2_AMD",
+  "checkedAt": "2026-11-28T19:23:38.040Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://psref.lenovo.com/Product/ThinkPad/ThinkPad_T14_Gen_2_AMD",
+  "title": "Product - Lenovo PSREF",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {},
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [],
+  "hits": {
+   "keyboard": [],
+   "ram": [
+    "48GB DDR4-3200, 1x Soldered + 1x SO-DIMM",
+    "Slot™ 10",
+    "slot*"
+   ],
+   "os": [],
+   "warranty": [],
+   "returns": [],
+   "battery": [],
+   "condition": [],
+   "delivery": [],
+   "charger": []
+  },
+  "text": "PSREF\nAdvanced Search\nFilters\nCompare\nFAQ\nLaptops\nTablets\nDesktops & AIOs\nWorkstations\nMonitors\nSmart Devices\nAccessories\nSign up for Newsletter\nHome\nLaptops\nThinkPad\nT Series\n+30\nThinkPad T14 Gen 2 (AMD)(Withdrawn)\n Up to AMD Ryzen™ 7 PRO 5850U\n Up to Windows® 11 Pro\n AMD Radeon™ Graphics (integrated)\n Up to 48GB DDR4-3200, 1x Soldered + 1x SO-DIMM\n Up to 1x 2TB M.2 PCIe® NVMe® SSD\n Up to 14\" (3840x2160) IPS, 500nits, 100% Adobe® RGB\nNote: some configurations are only available on selected models and may not be available in all regions\nOverview\nModels\nSpecifications\nDocumentation\nAccessories\nServices\n1. Smart card reader* 7. Side docking connector\n2. USB 3.2 Gen 1 (Always On) 8. USB 3.2 Gen 1\n3. Ethernet (RJ-45) 9. HDMI® 2.0\n4. Kensington Security Slot™ 10. Headphone / microphone combo jack (3.5mm)\n5. USB-C® 3.2 Gen 2 11. microSD card reader\n6. USB-C® 3.2 Gen 2 12. Nano-SIM card slot*\nNotes:\nItems with * are only available on selected models\nThe combination of 6 and 7 is side docking connector\nPSREF AI (Beta)\nPSREF AI (Beta)",
+  "status": "OK"
+ }
+]

@@ -40,3 +40,39 @@ Dustin, Inet, Proshop, Back Market, ASUS-butiker blockerade. Sökagenterna körd
 
 ## Körstatus
 DELVIS – reducerad på grund av användningsgräns.
+
+---
+# Kvällskörning 2026-11-28 (full, alla agenter)
+
+Bästa köp fortfarande: **HP EliteBook 840 G9 32/1 TB, Reuseit 6 999 kr** (kontrollerad i dag).
+
+## Nya 32 GB-fynd
+1. **Dell Latitude 7430 touch** – i7-1265U · 32 GB · **1 TB** · 14" · Svenskt tangentbord. **10 215 kr**, Refurbed (säljare Rnew, skickas från Polen), i lager. VERIFIED.
+   https://www.refurbed.se/p/dell-latitude-7430-i7-1265u/403096b/?offer=20361593
+2. **Dell Precision 5570** – i7-12700H (14 kärnor) · 32 GB DDR5 (2 × SO-DIMM, max 64) · 480 GB · 15,6" · Svenskt. **8 499 kr**, Inrego. VERIFIED. Stark processor, men mindre lagring och större skärm.
+   https://shop.inrego.se/barbara/dell-precision-5570-19
+
+## Nya 16 GB som kan byggas ut (pris + RAM = total)
+RAM i dag (NetOnNet): DDR5 1×16 GB 3 749 kr · DDR4 1×16 GB 1 990 kr · DDR4 2×16 GB 4 990 kr.
+1. **ThinkPad L14 Gen 3** (RePOWER, rekond. klass A) – i5-1235U · 16 GB DDR4 · 512 GB · Nordiskt. **6 799 + 1 990 = 8 789 kr** om ledig plats, annars 6 799 + 4 990 = 11 789 kr. POWER. PARTIALLY VERIFIED (garanti/OS ej angivet).
+   https://www.power.se/datorer-och-surfplattor/datorer/repower-barbar-pc/repower-lenovo-thinkpad-l14-g3-lap-l14g3-mx-a003-14-rekonditionerad-barbar-dator/p-4534136/
+2. **ASUS ExpertBook P3** (Elgiganten Outlet) – Ryzen AI 5 330 · 1×16 GB DDR5 + ledig plats · 512 GB. **9 097 + 3 749 = 12 846 kr** + laddare (ingår ej). PARTIALLY VERIFIED.
+   https://www.elgiganten.se/product/outlet/asus-expertbook-p3-r5-16512-14-barbar-dator/1184395
+3. **ThinkPad E14 Gen 7 AMD 21T0004VMX** – Ryzen 5 220 · 1×16 GB + ledig plats · 512 GB · Nordiskt. **10 995 + 3 749 = 14 744 kr**. Elgiganten. VERIFIED. Precis under taket.
+   https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/lenovo-thinkpad-e14-gen-7-14-laptop-21t0004vmx-svart/1047390
+4. **HP 15 fd2054nox** – Ultra 5 225U · 1×16 GB + ledig plats · 512 GB · 15,6". 7 990 + 3 749 + laddare ≈ **13 238 kr**. Tangentbord ej angivet. PARTIALLY VERIFIED.
+   https://www.hp.com/se-sv/shop/products/laptops/hp-laptop-ai-15-fd2054nox-d70qmea-uuw
+
+Bedömning: 16 GB-vägen slår fortfarande inte EliteBook 840 G9. Billigast är L14 Gen 3 (8 789 kr totalt), men den har en svagare processor och kortare garanti.
+
+## Omkontroll kväll (de 7 som missades i morse)
+Oförändrat: HP OmniBook X Flip och OmniBook 7 fr0075no 14 990 kr, Reuseit 840 G9 utan nytt batteri 7 999 kr, Reuseit P15v G3 7 499 kr, Refurbed T14 G2 32/512 8 555 kr, Latitude 7330 10 285 kr. **Slut:** Reuseit Latitude 7430 32/256 (5 999 kr).
+
+## Blockerat
+Dustin, Inet, Proshop, Back Market, ASUS-butiker. Komplett 502, Begagnad.se 520. Webhallens sök visade inga produkter i kväll.
+
+## Länkkontroll kväll
+14/14 länkar öppnade och bekräftade 2026-11-28 20:27 (Playwright; HP-sidor även via Firecrawl).
+
+## Körstatus kväll
+OK – alla tre segment genomförda.

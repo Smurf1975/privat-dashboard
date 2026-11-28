@@ -12,6 +12,7 @@ Status: V = VERIFIED, P = PARTIALLY VERIFIED. Auktioner utan fast pris rankas in
 | 4b | 72 | Lenovo ThinkPad X1 Yoga Gen 6 (2-in-1) **NY 26/11** | 11 435 kr (↑ från 10 469) | Refurbed | i7-1185G7 · 32 GB lödd (max 32) · 1 TB · 14" · Svenskt · lätt premium | Refurb · 12 mån garanti · 30 d öppet köp (Refurbed) · i lager | V | [länk](https://www.refurbed.se/p/lenovo-tp-x1-yoga-g6-i7-1185g7/442130/?offer=19784439) |
 | 4c | 68 | Lenovo ThinkPad T14 Gen 2 Intel **NY 26/11** | 10 535 kr (↑ från 9 849, nästan slut) | Refurbed | i5-1135G7 · 32 GB (8 lödd + SO-DIMM) · 1 TB · 14" · Nordiskt | Refurb · begränsat lager | V | [länk](https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/585113b/?offer=21799221) |
 | 4d | 62 | HP Elite x360 830 G11 (2-in-1, 13,3") **NY 26/11** | 13 874 kr | Inrego | Core Ultra 5 125U · 32 GB · 1 TB · Svenskt | Refurb · begränsat lager | V | [länk](https://shop.inrego.se/barbara/hp-elite-x360-830-g11-8) |
+| 4e | 71 | Dell Latitude 7430 touch **NY 28/11** | 10 215 kr | Refurbed (Rnew, PL) | i7-1265U · 32 GB · 1 TB · 14" · Svenskt | Refurb · i lager | V | [länk](https://www.refurbed.se/p/dell-latitude-7430-i7-1265u/403096b/?offer=20361593) |
 | 5 | 62 | MSI Prestige 14 AI Studio C1VEG (demo) | 14 995 kr | Looptop | Core Ultra 7 · 32 GB · 1 TB · 14" · Nordiskt | Demo · i lager · konsumentklass, 5 kr under tak | V | [länk](https://www.looptop.se/products/msi-prestige-14-ai-studio-c1veg-demo?variant=54196152533320) |
 | 6 | 55 | Acer Aspire 3 A315-44P (Fyndvara klass 3) | 8 090 kr | Webhallen | Ryzen 7 5700U (motstridig spec) · 32 GB · 1 TB · 15,6" · Nordiskt · 1,8 kg | Begagnad/fyndvara · 1 st | P | [länk](https://www.webhallen.com/se/product/395601-Acer-A315-44P-R90K-15-6-Radeon-Graphics-R5-7520U-32GB-1TB-Fyndvara-klass-3) |
 
@@ -37,6 +38,10 @@ RAM-pris NetOnNet 2026-11-28: [1×16 GB DDR5-4800 3 749 kr](https://www.netonnet
 |---|---|---|---|---|---|---|
 | 66 | ThinkPad E14 Gen 6 Intel demo (Ultra 5 125U, 16 GB, 512 GB, 14" WUXGA, Nordiskt, W11 Pro) | 8 495 + 3 749 = **12 244 kr** (om 1×16) · 8 495 + 5 799 = **14 294 kr** (om 2×8 → 40 GB) | Looptop | PSREF: 2× DDR5 SO-DIMM, max 64 GB | P (modulkonfig okänd) | [länk](https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u5-demo?variant=54151144341832) |
 | 64 | ThinkPad E14 Gen 6 Intel demo (Ultra 7 155H, 16 GB, 512 GB, Nordiskt, W11 Pro) | 9 495 + 3 749 = **13 244 kr** (om 1×16) · 15 294 kr om 2×8 (över tak) | Looptop | PSREF: 2× DDR5 SO-DIMM, max 64 GB | P | [länk](https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u7-demo?variant=54151144374600) |
+
+| 65 | ThinkPad L14 Gen 3 RePOWER klass A (i5-1235U, 16 GB DDR4, 512 GB, Nordiskt) | 6 799 + 1 990 = **8 789 kr** (ledig plats) · 11 789 kr (2×8) | POWER | 2× DDR4 SO-DIMM | P | [länk](https://www.power.se/datorer-och-surfplattor/datorer/repower-barbar-pc/repower-lenovo-thinkpad-l14-g3-lap-l14g3-mx-a003-14-rekonditionerad-barbar-dator/p-4534136/) |
+| 62 | ASUS ExpertBook P3 outlet (Ryzen AI 5 330, 1×16 GB + ledig plats, 512 GB) | 9 097 + 3 749 = **12 846 kr** + laddare | Elgiganten Outlet | ASUS spec: SO-DIMM + plats | P | [länk](https://www.elgiganten.se/product/outlet/asus-expertbook-p3-r5-16512-14-barbar-dator/1184395) |
+| 60 | ThinkPad E14 Gen 7 AMD 21T0004VMX (Ryzen 5 220, 1×16 GB + ledig plats, 512 GB, Nordiskt) | 10 995 + 3 749 = **14 744 kr** | Elgiganten | PSREF | V | [länk](https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/lenovo-thinkpad-e14-gen-7-14-laptop-21t0004vmx-svart/1047390) |
 
 Slutsats 28/11: med dagens RAM-priser är 16 GB + uppgradering sällan billigare än en färdig 32 GB-dator (t.ex. EliteBook 840 G9 32/1 TB 6 999 kr).
 

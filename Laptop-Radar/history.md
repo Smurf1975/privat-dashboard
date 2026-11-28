@@ -33,3 +33,4 @@
 - Efter Black Friday: X1 Yoga G6 10 649→11 435, T14 G2 1 TB 9 825→10 535, Dell Pro 14 Essential 11 705→13 580.
 - Slut: Looptop T14 G4 AMD C (9 995), T14 G3 AMD C (8 695), ZBook Firefly G8 (6 995). Inrego P14s G4 såld.
 - EliteBook 840 G9 Reuseit 6 999 oförändrad – fortfarande bäst.
+- 2026-11-28 kväll (full körning, alla agenter): nya 32 GB: Latitude 7430 i7/32/1 TB SE 10 215 (Refurbed), Precision 5570 i7-12700H/32/480 SE 8 499 (Inrego), m.fl. Nya 16 GB-uppgraderbara: L14 Gen 3 RePOWER 8 789 totalt, ExpertBook P3 outlet 12 846 + laddare, E14 Gen 7 AMD 14 744, HP 15 fd2054nox ~13 238. DDR4 SO-DIMM 16 GB 1 990 kr. Reuseit Latitude 7430 32/256 slut. Inget slår 840 G9 6 999.

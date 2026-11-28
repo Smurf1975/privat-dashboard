@@ -69,7 +69,7 @@
   "offers": [
    "hp-se:D44PYEA#UUW"
   ],
-  "last_seen": "2026-11-28",
+  "last_seen": "2026-11-28-kvall",
   "best_price_sek": 14990.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "hp-se:D44PYEA#UUW"
@@ -518,7 +518,7 @@
    "reuseit:S36270_UK_BF",
    "reuseit:S36283_UK"
   ],
-  "last_seen": "2026-11-28",
+  "last_seen": "2026-11-28-kvall",
   "best_price_sek": 6999.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "reuseit:S36270_UK_BF"
@@ -794,7 +794,7 @@
   "offers": [
    "refurbed:21755833"
   ],
-  "last_seen": "2026-11-28",
+  "last_seen": "2026-11-28-kvall",
   "best_price_sek": 9615.0,
   "best_price_date": "2026-11-25",
   "best_price_offer": "refurbed:21755833"
@@ -1192,7 +1192,7 @@
   "offers": [
    "hp-se:C42D4EA#UUW"
   ],
-  "last_seen": "2026-11-28",
+  "last_seen": "2026-11-28-kvall",
   "best_price_sek": 14990.0,
   "best_price_date": "2026-11-26",
   "best_price_offer": "hp-se:C42D4EA#UUW"
@@ -1518,7 +1518,7 @@
   "offers": [
    "refurbed:21532708"
   ],
-  "last_seen": "2026-11-28",
+  "last_seen": "2026-11-28-kvall",
   "best_price_sek": 8555.0,
   "best_price_date": "2026-11-26",
   "best_price_offer": "refurbed:21532708"
@@ -1543,7 +1543,7 @@
   "offers": [
    "reuseit:S38148_US"
   ],
-  "last_seen": "2026-11-28",
+  "last_seen": "2026-11-28-kvall",
   "best_price_sek": 5999.0,
   "best_price_date": "2026-11-26",
   "best_price_offer": "reuseit:S38148_US"
@@ -1843,7 +1843,7 @@
   "offers": [
    "reuseit:S35047_US"
   ],
-  "last_seen": "2026-11-28",
+  "last_seen": "2026-11-28-kvall",
   "best_price_sek": 7499.0,
   "best_price_date": "2026-11-27",
   "best_price_offer": "reuseit:S35047_US"
@@ -2072,5 +2072,355 @@
   "best_price_sek": 9495.0,
   "best_price_date": "2026-11-28",
   "best_price_offer": "looptop:DEMO/E14G6/u7/16/512/ND"
+ },
+ "21t0004vmx": {
+  "brand": "Lenovo",
+  "model": "ThinkPad E14 Gen 7 (AMD)",
+  "mpn": "21T0004VMX",
+  "cpu": "AMD Ryzen 5 220 (6C/12T, upp till 4,9 GHz)",
+  "ram_gb": 16,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "PSREF ThinkPad E14 Gen 7 AMD, modell 21T0004VMX (öppnad 2026-11-28 via PW): 'Memory: 1x 16GB SODIMM DDR5-5600', 'Memory Slots: Two DDR5 SODIMM slots, dual-channel capable', 'Max Memory: Up to 64GB DDR5-5600'. Konfig: 1×16 GB + ledig plats → köp 1×16 GB. RAM-pris NetOnNet 2026-11-28 (raw-ram.json): Kingston Fury Impact 1×16 GB DDR5-4800 SO-DIMM 3 749 kr (OBS: 4800 MHz-modul gör att båda körs i 4800; en 5600-modul vore idealt).",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 WUXGA IPS 300 nits anti-glare 60Hz",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.41,
+  "notes": "16 GB uppgraderbar. Total: 10 995 + 3 749 (1×16 GB DDR5 SO-DIMM, NetOnNet) = 14 744 kr ≤ 15 000. Elgiganten-sidan: 'I lager online (100+)', JSON-LD InStock, köpknapp synlig; 'Förpackningen innehåller ... USB-C strömadapter'. Tangentbord/OS-språk från PSREF för exakt MPN 21T0004VMX: 'Backlit, Nordic (DK/FI/NO/SV)', Windows 11 Pro Nordic – Elgiganten-sidan anger inte layout. Två M.2-platser (2242 + 2280). 512 GB SSD; marginal endast 256 kr under taket.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "elgiganten:1047390"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 10995.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "elgiganten:1047390"
+ },
+ "pm3406cka-ly0674xwew-outlet": {
+  "brand": "ASUS",
+  "model": "ExpertBook P3 (PM3406CKA) – Elgiganten Outlet",
+  "mpn": "PM3406CKA-LY0674XWEW",
+  "cpu": "AMD Ryzen AI 5 330 (4C/8T, upp till 4,5 GHz, NPU 50 TOPS)",
+  "ram_gb": 16,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "ASUS SE spec-sida ExpertBook P3 (PM3406CKA) (öppnad 2026-11-28 via PW): minneskonfigurationer '16GB DDR5 SO-DIMM, Minne Max Upp till:64GB' samt '16GB DDR5 SO-DIMM x 2' (dvs två SO-DIMM-platser). Elgigantens produkttext: 'stöd för upp till 64 GB RAM. Två RAM-platser finns tillgängliga'. 16 GB-konfig = 1×16 GB SO-DIMM + ledig plats (enligt ASUS konfiglista; exakt SKU-konfig ej listad separat). RAM-pris NetOnNet 2026-11-28: Kingston Fury Impact 1×16 GB DDR5-4800 SO-DIMM 3 749 kr.",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 16:10 LED/IPS-typ 300 nits 60Hz",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.48,
+  "notes": "16 GB uppgraderbar. Total: 9 097 + 3 749 (1×16 GB DDR5) = 12 846 kr ≤ 15 000 (+ ev. USB-C-laddare ≥60 W, pris ej kontrollerat). Outlet-skick: 'Nyskick - i originalförpackning. Produkten kan vara ett återköp eller tidigare visningsexemplar'. 'I lager online', 1 butik, JSON-LD InStock, köpknapp synlig. Laddare: nyproduktsidan (1055062, 12 995 kr) säger 'Laddare ingår ej' och 'Förpackningen innehåller: Bärbar dator, Garantikort' → räkna med att laddare saknas. Tangentbord: ASUS SE spec-sida (modellfamilj) 'Nordisk tangentbordslayout'; Elgiganten anger ej → PARTIALLY VERIFIED. CPU endast 4 kärnor (svagare än övriga). Två M.2-platser. Nyprisvarianten 12 995 + 3 749 = 16 744 → NO.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "elgiganten:1184395"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 9097.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "elgiganten:1184395"
+ },
+ "lap-l14g3-mx-a003": {
+  "brand": "Lenovo",
+  "model": "ThinkPad L14 Gen 3 (Intel) – RePOWER rekonditionerad klass A",
+  "mpn": "LAP-L14G3-MX-A003",
+  "cpu": "Intel Core i5-1235U (10C, upp till 4,4 GHz)",
+  "ram_gb": 16,
+  "ram_type": "DDR4-3200 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "PSREF ThinkPad L14 Gen 3 (Intel), plattformssida (öppnad 2026-11-28 via PW): 'Up to 64GB DDR4-3200, 2x SO-DIMM'. Modulkonfiguration för just detta rekonditionerade ex. (1×16 eller 2×8) anges ej av POWER. RAM-pris NetOnNet 2026-11-28: Corsair Vengeance 1×16 GB DDR4-3200 SO-DIMM 1 990 kr; Kingston Fury Impact 2×16 GB DDR4-3200 SO-DIMM-kit 4 990 kr (sodimm-ddr4-kategorisidan).",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1080 Full HD antireflex",
+  "keyboard": "Nordic",
+  "os": "UNKNOWN",
+  "weight_kg": null,
+  "notes": "16 GB uppgraderbar (DDR4). Total: 6 799 + 1 990 (1×16 GB DDR4, om ledig plats) = 8 789 kr; om 2×8: 6 799 + 4 990 (2×16 kit) = 11 789 kr – båda ≤ 15 000 (+ frakt från 29 kr / Click&Collect gratis). Sidan: 'klass A-rekonditionerad', '16 GB snabbt DDR4-minne (3200 MHz)', 'spilltåligt nordiskt tangentbord', '10+ i lager online', JSON-LD InStock. OS, garanti, batterihälsa och laddare anges inte i sidtexten (spec-fliken renderades ej) → PARTIALLY VERIFIED. Äldre CPU (12:e gen) och 16:9 FHD. POWER säljer refurb under eget varumärke RePOWER.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "power:4534136"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 6799.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "power:4534136"
+ },
+ "lap-l14g2-mx-a008": {
+  "brand": "Lenovo",
+  "model": "ThinkPad L14 Gen 2 (Intel) – RePOWER rekonditionerad klass A",
+  "mpn": "LAP-L14G2-MX-A008",
+  "cpu": "Intel Core i5-1135G7 (4C/8T, 11:e gen)",
+  "ram_gb": 16,
+  "ram_type": "DDR4 SO-DIMM (sidan: 'snabbt DDR4')",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "PSREF ThinkPad L14 Gen 2 (Intel), plattformssida (öppnad 2026-11-28 via PW): 'Up to 64GB DDR4-3200, 2x SO-DIMM'. Modulkonfiguration för detta ex. anges ej. RAM-pris NetOnNet 2026-11-28: Corsair 1×16 GB DDR4-3200 SO-DIMM 1 990 kr; Kingston Fury Impact 2×16 GB DDR4-3200 kit 4 990 kr.",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1080 Full HD IPS antireflex",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "16 GB uppgraderbar (DDR4). Total: 5 489 + 1 990 = 7 479 kr (om 1×16 + ledig plats) eller 5 489 + 4 990 = 10 479 kr (om 2×8) – båda ≤ 15 000. Sidan: 'Rekonditionerad i klass A', 'Förinstallerad med Windows 11 Pro', 'nordiskt tangentbord', 'Få i lager online' (JSON-LD InStock). Äldsta CPU:n i listan (Tiger Lake 4 kärnor). OBS sidtexten anger vikt '1,09 kg' och tjocklek 14,9 mm – stämmer inte med L14 Gen 2 (PSREF ca 1,5–1,6 kg) → textfel, vikt satt till null. Garanti/batteri/laddare anges ej.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "power:4534130"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 5489.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "power:4534130"
+ },
+ "d92xyea-uuw": {
+  "brand": "HP",
+  "model": "HP OmniBook 5 14\" Next Gen AI Laptop (hh0078nox)",
+  "mpn": "D92XYEA#UUW",
+  "cpu": "Intel Core Ultra 7 355",
+  "ram_gb": 32,
+  "ram_type": "LPDDR5x-6800",
+  "ram_soldered": "YES",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "HP-produktsidan: '32 GB LPDDR5x-6800 MT/s (integrerat)' = lött; 32 GB räcker, ingen uppgradering behövs. Max ej angivet.",
+  "ssd_gb": 1024,
+  "display": "14\" 2880x1800 OLED 120Hz 500 nit (HDR 1100)",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Home",
+  "weight_kg": 1.33,
+  "notes": "Hittad i HP-listning memstd=32-gb (FC maxAge 0). Produktsidan: 'Finns i lager', köpknapp 'LÄGG TILL I VARUKORGEN', fri frakt >200 kr. VIKTIGT: sidan anger '65 W nätadapter (rekommenderas, säljs separat)' – laddare ingår ej, så 14 990 kr + laddare > 15 000 kr-taket (inkl. laddare) → NO. Tangentbord: sidan anger bara 'Fullstort bakgrundsbelyst tangentbord' – layout ej angiven (UUW-suffix brukar vara nordiskt, men ej verifierat). Konsumentmodell med lött RAM.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "hp-se:D92XYEA#UUW"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 14990.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "hp-se:D92XYEA#UUW"
+ },
+ "d70qmea-uuw": {
+  "brand": "HP",
+  "model": "HP 15\" AI Laptop (fd2054nox)",
+  "mpn": "D70QMEA#UUW",
+  "cpu": "Intel Core Ultra 5 225U (12 kärnor/14 trådar, upp till 4,8 GHz)",
+  "ram_gb": 16,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 32,
+  "ram_upgrade_note": "Konfig: 1×16 GB + ledig plats. HP-produktsidan (SE): '16 GB DDR5-5600 MT/s (1 x 16 GB)', 'Minnets layout: 1 x 16 GB'. Datablad: HP Maintenance and Service Guide 15-fd2xxx (kaas.hpcloud.hp.com/pdf-public/pdf_11954528_en-US-1.pdf, öppnad 2026-11-28): 'DDR5-5600, dual channel support (Ultra processors) – Supports up to 32 GB of RAM in the following configurations: 32 GB (2 × 16 GB) …'. Uppgradering: köp 1×16 GB DDR5 SO-DIMM (NetOnNet 3 749 kr, 2026-11-28; kontrollera 5600 MT/s-kompatibel modul) → 2×16 = 32 GB.",
+  "ssd_gb": 512,
+  "display": "15.6\" 1920x1080 IPS antireflex 300 nit 62,5% sRGB",
+  "keyboard": "UNKNOWN",
+  "os": "Windows 11 Home",
+  "weight_kg": 1.65,
+  "notes": "Total: 7 990 (dator) + 3 749 (1×16 GB DDR5 SO-DIMM, NetOnNet) + 1 499 (laddare – sidan: '45 W nätadapter (rekommenderas, säljs separat)'; referenspris HP 65 W GaN USB-C 600Q7AA#ABB på hp.com/se-sv i dag, där SLUT I LAGER) = 13 238 kr ≤ 15 000. Utan laddare 11 739 kr. Sidan (FC maxAge 0): 'Finns i lager', knapp 'LÄGG TILL I VARUKORGEN', fri frakt >200 kr. SECONDARY pga: tangentbordslayout ej angiven (bara 'Fullstort tangentbord i soft gray med numerisk knappsats'), 512 GB SSD, Win 11 Home, svag skärm (300 nit/62,5 % sRGB). Konsumentmodell, ej affärsklass. Systervarianter: fd2055no/fd2077no (2×8 GB, SLUT I LAGER) och fd2076nox (Ultra 7 255U 1×16, 10 990 + 3 749 + laddare 1 499 = 16 238 > 15 000) togs inte med.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "hp-se:D70QMEA#UUW"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 7990.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "hp-se:D70QMEA#UUW"
+ },
+ "dell-precision5570-i7-12700h-32-480-se": {
+  "brand": "Dell",
+  "model": "Precision 5570",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-12700H (12th gen, 14C)",
+  "ram_gb": 32,
+  "ram_type": "DDR5",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "Inrego produktsida (spec-tabell): 'RAM TEKNOLOGI DDR5', 'RAM PLATSER 2 ST SODIMM', 'MAX MINNE SOM STÖDS 64 GB'. Tillverkarens datablad ej öppnat i dag.",
+  "ssd_gb": 480,
+  "display": "15.6\" 1920x1200",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro (tillval +0 kr)",
+  "weight_kg": 1.9,
+  "notes": "'Bra skick'. 'Färre än 10 kvar i lager'. 'Lägg i varukorg' i sidtext (scriptet fångade bara tillbehörsknappar). Leverans 1-3 arbetsdagar. 480 GB → SECONDARY; i övrigt stark: 12th-gen H, 15,6\" 16:10, svenskt, 32 GB DDR5 uppgraderbart till 64. Vikt 'från 1.9 kg'. Leverantörsbild.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "inrego:11002037491"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 8499.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "inrego:11002037491"
+ },
+ "dell-latitude7430-i7-1265u-32-1024-se-touch-refurbed": {
+  "brand": "Dell",
+  "model": "Latitude 7430 (touch)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1265U (12th gen)",
+  "ram_gb": 32,
+  "ram_type": "DDR4",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "refurbed.se specifikation: 'RAM-Minne 32.0 GB DDR4'. Lödd/SO-DIMM ej verifierat (Dell-manual 403 enligt sources.md) → UNKNOWN.",
+  "ssd_gb": 1000,
+  "display": "14\" 1920x1080 FHD touch",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "'Mycket bra skick'. Tangentbord 'Svensk (QWERTY)' valt. 'Frakt inkluderad' Fre 4 Dec–Tis 8 Dec. 'inkl.: strömadapter'. Pris högre än kända 840 G9 32/1TB (6 999 Reuseit) – YES men inte topp. Batterival visar 'Nytt -990 kr' (sidans differenspris, oklart).",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "refurbed:20361593"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 10215.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "refurbed:20361593"
+ },
+ "dell-latitude7430-i7-1265u-32-512-se-touch-refurbed": {
+  "brand": "Dell",
+  "model": "Latitude 7430 (touch)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1265U (12th gen)",
+  "ram_gb": 32,
+  "ram_type": "DDR4",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "refurbed.se specifikation: 'RAM-Minne 32.0 GB DDR4'. Lödd/SO-DIMM ej verifierat → UNKNOWN.",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1080 FHD touch",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "'Mycket bra skick'. 'Svensk (QWERTY)'. 512 GB → SECONDARY. BF-rabatten kan försvinna efter Black Friday-veckan.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "refurbed:20361590"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 8238.6,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "refurbed:20361590"
+ },
+ "dell-latitude7430-i5-1245u-32-256-nord-looptop": {
+  "brand": "Dell",
+  "model": "Latitude 7430",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i5-1245U (12th gen)",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Looptop anger bara 'RAM-minne 32GB'. Typ/lödd ej angivet → UNKNOWN.",
+  "ssd_gb": 256,
+  "display": "14\" 1920x1080",
+  "keyboard": "Nordic",
+  "os": "Windows 11",
+  "weight_kg": 1.22,
+  "notes": "Skick 'Bättre'. Variant available=true i /products/…js; JSON-LD InStock. 'Fri frakt till ombud'. 256 GB → SECONDARY (billigaste 32 GB + nordiskt hittills; SSD-byte behövs för 1 TB).",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "looptop:54903693443400"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 5995.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "looptop:54903693443400"
+ },
+ "dell-latitude7330-i5-1245u-32-256-se-touch-looptop": {
+  "brand": "Dell",
+  "model": "Latitude 7330 (touch, 13.3\")",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i5-1245U (12th gen)",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Looptop anger bara 'RAM-minne 32GB'. Typ/lödd ej angivet → UNKNOWN.",
+  "ssd_gb": 256,
+  "display": "13.3\" 1920x1080 touch",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": 1.13,
+  "notes": "Skick 'Bra' (tydliga spår av användning). 13,3\" och 256 GB → SECONDARY.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "looptop:54241588445512"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 5495.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "looptop:54241588445512"
+ },
+ "hp-zbookfury15g7-xeon-w10885m-32-1024-se-looptop": {
+  "brand": "HP",
+  "model": "ZBook Fury 15 G7 (Xeon, Quadro T2000)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Xeon W-10885M (10th gen, 8C)",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Looptop anger bara 'RAM-minne 32GB'. Platser/max ej verifierat i QuickSpecs i dag → UNKNOWN.",
+  "ssd_gb": 1024,
+  "display": "15.6\" 1920x1080 FHD",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": 2.76,
+  "notes": "Skick 'Bättre'. Årsmodell 2020. Uppfyller hårda krav (15,6\", 32/1TB, svenskt, x86) men 10th-gen och 2,76 kg – svag kandidat jämfört med kända 840 G9 32/1TB 6 999 och ZBook Fury G8 11 495.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "looptop:55192039063880"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 9995.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "looptop:55192039063880"
+ },
+ "dell-precision7560-i7-11850h-32-512-se-reuseit-fair": {
+  "brand": "Dell",
+  "model": "Precision 7560 (NVIDIA T1200)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-11850H (11th gen, 8C) + NVIDIA T1200",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Reuseit anger 32GB; platser/max ej verifierat i Dell-datablad i dag → UNKNOWN.",
+  "ssd_gb": 512,
+  "display": "15.6\" 1920x1200",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "'Okej skick'. Tangentbord 'Svenskt'. 'I lager', 'Lägg till i varukorgen'. Fri frakt enligt meta-beskrivning. 11th-gen + 512 GB → SECONDARY. Fler varianter (nytt batteri 8 499–9 499) finns på kategorisidan, ej verifierade.",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "reuseit:S42290"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 7999.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "reuseit:S42290"
+ },
+ "dell-latitude7430-i7-1265u-32-256-touch-reuseit-good": {
+  "brand": "Dell",
+  "model": "Latitude 7430 (touch)",
+  "mpn": "UNKNOWN",
+  "cpu": "Intel Core i7-1265U (12th gen)",
+  "ram_gb": 32,
+  "ram_type": "UNKNOWN",
+  "ram_soldered": "UNKNOWN",
+  "ram_max_gb": null,
+  "ram_upgrade_note": "Reuseit anger 32GB; lödd/SO-DIMM ej verifierat → UNKNOWN.",
+  "ssd_gb": 256,
+  "display": "14\" 1920x1200 touch",
+  "keyboard": "Swedish",
+  "os": "Windows 11 Pro",
+  "weight_kg": null,
+  "notes": "'Bra skick'. Firecrawl-svaret anger pris '5 499 kr (5 999 kr inkl. moms)' – oklart vilket som gäller, 5 999 används konservativt. Tangentbord 'Svenskt' i titel, men SKU slutar på '_US' → layout bör bekräftas. 256 GB → SECONDARY. Annan variant än känd 'very-good' (5 999).",
+  "first_seen": "2026-11-28-kvall",
+  "offers": [
+   "reuseit:S38152_US"
+  ],
+  "last_seen": "2026-11-28-kvall",
+  "best_price_sek": 5999.0,
+  "best_price_date": "2026-11-28-kvall",
+  "best_price_offer": "reuseit:S38152_US"
  }
 }
