@@ -1,0 +1,501 @@
+[
+ {
+  "url": "https://www.looptop.se/products/dell-latitude-7430?variant=54903693443400",
+  "checkedAt": "2026-11-28T19:14:29.675Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera",
+  "finalUrl": "https://www.looptop.se/products/dell-latitude-7430?variant=54903693443400",
+  "title": "Begagnad Dell Latitude 7430 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Dell Latitude 7430",
+    "brand": "Dell",
+    "sku": "B/Latitude7430/i5/32/256/ND",
+    "offers": [
+     {
+      "price": 5295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 6595,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad Dell Latitude 7430 | Looptop",
+   "price": "5995.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "5 995 kr",
+   "21 200 kr",
+   "15 205 kr",
+   "15 905 kr",
+   "3 995 kr",
+   "12 105 kr",
+   "3 395 kr",
+   "7 995 kr",
+   "15 405 kr",
+   "4 595 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout"
+   ],
+   "ram": [
+    "32GB RAM / 256GB SSD"
+   ],
+   "os": [
+    "Windows 11"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nDell Latitude 7430\nKod & arbete · Studier & vardag\nDell Latitude 7430\nTar lite plats, ser snygg ut på kontoret.\nDell Latitude 7430 med i5 eller i7, 14 tums Full HD och 1,22 kilo. Finns med 32GB minne och pekskärm.\nPris\n5 995 kr\nNypris 21 200 kr\nDu sparar 15 205 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\ni5-1245U / 32GB RAM / 256GB SSD\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bättre\nFinns i annan kombination\nBättre\nBra\nFinns i annan kombination\nLätta spår av användning. Det kan finnas mindre märken eller repor på chassi och skärm. Repor på skärmen syns inte när skärmen är tänd.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke Dell\nModell Latitude 7430\nProcessor Intel i5-1245U\nRAM-minne 32GB\nLagring 256GB\nGrafikkort Intel Iris Xe Graphics\nSkärm 14\" 1920x1080\nOperativsystem Windows 11\nFärg Black\nWebbkamera Ja\nVikt 1,22 kg\nÅrsmodell 2022\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 15 905 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2022\nDell Latitude 7330\nKod & arbete · Studier & vardag\nPris\nFrån 3 995 kr\nDu sparar upp till 12 105 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2022\nDell Latitude 5330\nStudier & vardag\nPris\nFrån 3 395 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2023\nDell Latitude 7340\nKod & arbete · Studier & vardag\nPris\nFrån 7 995 kr\nDu sparar upp till 15 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nDell Latitude 7410\nKod & arbete · Studier & vardag\nPris\nFrån 4 595 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/dell-latitude-7330?variant=54241588445512",
+  "checkedAt": "2026-11-28T19:14:38.669Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/dell-latitude-7330?variant=54241588445512",
+  "title": "Begagnad Dell Latitude 7330 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Dell Latitude 7330",
+    "brand": "Dell",
+    "sku": "C/Latitude7330/i5/32/256/SWE",
+    "offers": [
+     {
+      "price": 4595,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 3995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4595,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4295,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 3995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4795,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5495,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 4995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 5495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad Dell Latitude 7330 | Looptop",
+   "price": "5495.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "5 495 kr",
+   "19 900 kr",
+   "14 405 kr",
+   "16 405 kr",
+   "4 795 kr",
+   "12 105 kr",
+   "3 395 kr",
+   "7 995 kr",
+   "15 405 kr",
+   "4 595 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "tangentbordsavtryck på skärmen"
+   ],
+   "ram": [
+    "32GB RAM / 256GB SSD / Touch"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "skicken",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nDell Latitude 7330\nKod & arbete · Studier & vardag\nDell Latitude 7330\nTar lite plats, ser snygg ut på kontoret.\nDell Latitude 7330 med i5 eller i7, 13,3 tums Full HD och 1,13 kilo. Finns med 32GB minne och pekskärm.\nPris\n5 495 kr\nNypris 19 900 kr\nDu sparar 14 405 kr\nVad är nypris?\nVälj tangentbordslayout\nSWE – svenska\nVälj specifikation\ni5-1245U / 32GB RAM / 256GB SSD / Touch\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bra\nFinns i annan kombination\nBättre\nFinns i annan kombination\nBra\nTydliga spår av användning. Det kan finnas repor, märken och bucklor på chassit, och repor eller tangentbordsavtryck på skärmen. Fungerar lika bra som de andra skicken.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke Dell\nModell Latitude 7330\nProcessor Intel i5-1245U\nRAM-minne 32GB\nLagring 256GB\nGrafikkort Intel Iris Xe Graphics\nSkärm 13,3\" 1920x1080\nOperativsystem Windows 11 Pro\nFärg Black\nWebbkamera Ja\nVikt 1,13 kg\nÅrsmodell 2022\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 16 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2022\nDell Latitude 7430\nKod & arbete · Studier & vardag\nPris\nFrån 4 795 kr\nDu sparar upp till 12 105 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2022\nDell Latitude 5330\nStudier & vardag\nPris\nFrån 3 395 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2023\nDell Latitude 7340\nKod & arbete · Studier & vardag\nPris\nFrån 7 995 kr\nDu sparar upp till 15 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nDell Latitude 7410\nKod & arbete · Studier & vardag\nPris\nFrån 4 595 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/hp-zbook-fury-15-g7-xeon?variant=55192039063880",
+  "checkedAt": "2026-11-28T19:14:46.665Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/hp-zbook-fury-15-g7-xeon?variant=55192039063880",
+  "title": "Begagnad HP ZBook Fury 15\" G7 (Xeon) | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "HP ZBook Fury 15\" G7 (Xeon)",
+    "brand": "HP",
+    "sku": "B/ZbookFury/W10885/32/1024/T2000",
+    "offers": [
+     {
+      "price": 9995,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad HP ZBook Fury 15\" G7 (Xeon) | Looptop",
+   "price": "9995.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "9 995 kr",
+   "12 105 kr",
+   "3 395 kr",
+   "9 705 kr",
+   "4 495 kr",
+   "10 605 kr",
+   "3 295 kr",
+   "3 795 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout"
+   ],
+   "ram": [
+    "32GB RAM, 1TB SSD, Quadro T2000 och 15,6 tum i 1920x1080",
+    "32GB RAM / 1024GB SSD / T2000"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nHP ZBook Fury 15\" G7 (Xeon)\nDesign & CAD · Kod & arbete\nHP ZBook Fury 15\" G7 (Xeon)\nExtra prestanda, dedikerat grafikkort.\nHP ZBook Fury 15 G7 med Xeon W-10885M, 32GB RAM, 1TB SSD, Quadro T2000 och 15,6 tum i 1920x1080.\nPris\n9 995 kr\nVälj tangentbordslayout\nSWE – svenska\nVälj specifikation\nXeon W-10885M / 32GB RAM / 1024GB SSD / T2000\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bättre\nBättre\nLätta spår av användning. Det kan finnas mindre märken eller repor på chassi och skärm. Repor på skärmen syns inte när skärmen är tänd.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke HP\nModell ZBook Fury 15\" G7\nProcessor Intel Xeon W-10885M\nRAM-minne 32GB\nLagring 1024GB\nGrafikkort Nvidia Quadro T2000 4GB\nSkärm 15,6\" FHD (1920x1080)\nOperativsystem Windows 11 Pro\nFärg Grey\nWebbkamera Ja\nVikt 2,76 kg\nÅrsmodell 2020\nPassar för Design & CAD · Kod & arbete\nLiknande datorer\nFler datorer för design & cad\nDu sparar upp till 12 105 kr\nSkärmstorlek:\n13.3\"\nÅrsmodell:\n2022\nDell Latitude 5330\nStudier & vardag\nPris\nFrån 3 395 kr\nDu sparar upp till 9 705 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nDell Latitude 5420 (i5)\nStudier & vardag\nPris\nFrån 4 495 kr\nDu sparar upp till 10 605 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nLenovo ThinkPad T14 Gen 1\nKod & arbete · Studier & vardag\nPris\nFrån 3 295 kr\nSkärmstorlek:\n15.6\"\nÅrsmodell:\n2019\nLenovo ThinkPad T590\nKod & arbete · Studier & vardag\nPris\nFrån 3 795 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://shop.inrego.se/barbara/dell-precision-5570-19",
+  "checkedAt": "2026-11-28T19:14:54.251Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Tillåt alla",
+  "finalUrl": "https://shop.inrego.se/barbara/dell-precision-5570-19",
+  "title": "Dell Precision 5570 i7 32GB 480GB SSD rekonditionerad",
+  "blocked": false,
+  "jsonld": [],
+  "meta": {
+   "price": "8499",
+   "currency": "SEK"
+  },
+  "buyButtons": [
+   "+  Lägg till"
+  ],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "8 499:-",
+   "1 249:-",
+   "1 499:-",
+   "1 874:-",
+   "8 749:-",
+   "8 874:-",
+   "7 249:-",
+   "9 999:-",
+   "6 874:-",
+   "14 999:-"
+  ],
+  "hits": {
+   "keyboard": [
+    "TANGENTBORD"
+   ],
+   "ram": [
+    "80GB SSD, 32GB RAM i bra skick",
+    "32GB RAM hanteras avancerade program, multitasking och professionella arbetsflöden med stabil pr",
+    "32GB - mycket bra för multitasking och tunga program",
+    "MAX MINNE SOM STÖDS",
+    "SODIMM"
+   ],
+   "os": [
+    "Windows 11 Pro",
+    "Windows 10/11 från USB-sticka?"
+   ],
+   "warranty": [
+    "garanti!"
+   ],
+   "returns": [
+    "öppet köp Alltid testat, alltid garanti!",
+    "öppet köp",
+    "retur- & betalningsinformation"
+   ],
+   "battery": [],
+   "condition": [
+    "rekonditionerad",
+    "skick",
+    "skick här",
+    "Rekonditionerad",
+    "Skick: Bra skick - Fullt testad och fungerar som ny, med synliga",
+    "begagnad",
+    "skick är de begagnade produkterna i?"
+   ],
+   "delivery": [
+    "leveranstid 30 dagars öppet köp Alltid testat, alltid garanti!",
+    "i lager",
+    "Leveranstid 1-3 arbetsdagar",
+    "Leverans-, retur- & betalningsinformation"
+   ],
+   "charger": []
+  },
+  "text": "Sveriges största E-handel för rekonditionerad IT\n1-3 arbetsdagars leveranstid 30 dagars öppet köp Alltid testat, alltid garanti!\nLogga in\n \nKundtjänst\nhar lagts i din varukorg\nTill kassan\nVårt sortiment\nTillverkare\nInspiration\nPrivat Företag\nHem Bärbara DELL PRECISION 5570\nPrevious\nBra skick\nNext\nLeverantörsbild som visar produkt av korrekt modell (vissa undantag). Ej exakt produkt.\nDELL PRECISION 5570\nINTEL CORE I7-12700H 3.5 GHz 32 GB 480 GB SSD Svenskt 15.6\" Se alla specifikationer\nOPERATIVSYSTEM\n?\nWindows 11 Pro\n+0:-\nHÅRDDISK\n?\n480 GB SSD\n(0:-)\nTRYGGHET\n?\nVälj extra trygghet\n(0:-)\n8 499:-\ninkl. moms\nKlimatbesparing: 238 kg CO2e\nLägg i varukorg\nSamma trygghet som vid köp av nytt\n30 dagars öppet köp\nMiljösmart!\nFärre än 10 kvar i lager\nLeveranstid 1-3 arbetsdagar.\nLeverans-, retur- & betalningsinformation\nBra skick\n- Samtliga produkter har genomgått vårt testprogram\nLäs mer om skick här\nProduktinformation\nArt.nr: 11002037491\nDell Precision 5570 i7-12700H, 480GB SSD, 32GB RAM i bra skick\nDell Precision 5570 är en kraftfull och modern mobil arbetsstation anpassad för krävande arbetsuppgifter. Med Intel Core i7-12700H och hela 32GB RAM hanteras avancerade program, multitasking och professionella arbetsflöden med stabil prestanda. 480GB SSD ger snabb uppstart och smidig tillgång till filer och projekt.\n15.6\" skärm med hög upplösning ger skarp bild och bra arbetsyta för design, teknik och kontorsarbete. Tunn design gör modellen smidig att ta med trots hög prestanda. Rekonditionerad enhet som är testad och redo för daglig användning.\n- Processor: Intel Core i7-12700H - kraftfull för avancerade uppgifter\n- RAM: 32GB - mycket bra för multitasking och tunga program\n- Lagring: 480GB SSD - snabb och pålitlig lagring\n- Skärm: 15.6\" - skarp bild med bra arbetsyta\n- Anslutningar: USB-C, Thunderbolt, HDMI - moderna portar\n- Skick: Bra skick - Fullt testad och fungerar som ny, med synliga spår av användning som någon repa eller märke\nSpecifikationer\nDELL PRECISION 5570\nPROCESSOR\nINTEL CORE I7-12700H 3.5 GHZ\nINTERNMINNE\n32 GB\nHÅRDDISK\n480 GB SSD\nTANGENTBORD\nSVENSKT\nSKÄRMSTORLEK\n15.6\"\nSKÄRMUPPLÖSNING\n1920 X 1200\nCPU GEN\n12TH GEN (2022-2024)\nNUMERISKT TANGENTBORD\nNEJ\nPROCESSORTYP\nINTEL CORE I7\nINSTALLERAT RAM\n32 GB\nMAX MINNE SOM STÖDS\n64 GB\nRAM TEKNOLOGI\nDDR5\nRAM PLATSER\n2 ST SODIMM\nHÅRDDISK KAPACITET\n480 GB\nHÅRDDISK TYP\nSSD\nWEBCAM UPPLÖSNING\n720P\nUSB 3 PORTAR\n0 ST\nTHUNDERBOLT 4 PORTAR\n3 ST\nVIKT FRÅN\n1.9 KG\nKLIMATBESPARING KG CO2E\n238\nLäs mer\nHar du funderingar kring begagnad IT?\nInlägg från vårt forum\nMest visade inlägg\nHur gamla är produkterna och varifrån kommer de?\nVilket skick är de begagnade produkterna i?\nHur installerar man Windows 10/11 från USB-sticka?\nJag har inte fått någon orderbekräftelse?\nVarm dator/fläkten låter mycket - hur rengör jag på bästa sätt?\nVisa alla inlägg\nKomplettera din DELL PRECISION 5570\nPrevious\nHP Usb-C Universal Dock\n1 249:-\nInkl. moms\nFler än 10 i lager\n+  Lägg till\nHP USB-C Dock G5\n1 499:-\nInkl. moms\nFler än 10 i lager\n+  Lägg till\nLENOVO THINKPAD HYBRID USB-C WITH USB-A DOCK -40AF\n1 874:-\nInkl. moms\nFler än 10 i lager\n+  Lägg till\nNy optisk mus USB\n119:-\nInkl. moms\nFler än 10 i lager\n+  Lägg till\nDELL Thunderbolt dock TB16\n999:-\nInkl. moms\nFler än 10 i lager\n+  Lägg till\nNext\n1\n2\n3\nLiknande Produkter:\nMycket bra skick\nDELL LATITUDE 5340\n480 GB SSD\n16 GB\nINTEL CORE I7-1365U 1.8GHz\n8 749:-\nInkl. moms\nBra skick\nDELL LATITUDE 7440\n1 TB SSD\n16 GB\nINTEL CORE I5-1335U 3.4 GHz\n8 874:-\nInkl. moms\nMycket bra skick\nDELL LATITUDE 7430\n480 GB SSD\n16 GB\nINTEL CORE I5-1235U 3.30GHz\n7 249:-\nInkl. moms\nBra skick\nDELL LATITUDE 7350\n240 GB SSD\n16 GB\nINTEL CORE ULTRA 5 125U 1.3 GHz\n9 999:-\nInkl. moms\nMycket bra skick\nDELL LATITUDE 7430\n256 GB SSD\n16 GB\nINTEL CORE I5-1235U 3.30GHz\n6 874:-\nInkl. moms\nBra skick\nDELL PRECISION 3490\n1 TB SSD\n32 GB\nINTEL CORE ULTRA 5 125U 1.3 GHz\n14 999:-\nInkl. moms\nMycket bra skick\nDELL LATITUDE 7440\n480 GB SSD\n16 GB\nINTEL CORE I5-1335U 3.4 GHz\n10 124:-\nInkl. moms\nBra skick\nDELL PRO 13 PLUS\n480 GB SSD\n16 GB\nINTEL CORE ULTRA 5 225U 1.5 Ghz\n12 874:-\nInkl. moms\nAndra Köpte Även:\nMycket bra skick\nDELL Thunderbolt dock TB16\n999:-\nInkl. moms\n40%\nBra skick\nDELL LATITUDE 5340\n240 GB SSD\n16 GB\nINTEL CORE I5-1335U 3.4 GHz\n4 099:-\n6 874:-\nInkl. moms\nMycket bra skick\nDELL D6000S UNIVERSAL DOCK\n999:-\nInkl. moms\n20%\nBra skick\nDELL OPTIPLEX 3000\n240 GB SSD\n8 GB\nINTEL CORE I5-12400 2.5 GHz\n4 999:-\n6 249:-\nInkl. moms\nBra skick\nDELL PROFESSIONAL P2717H\n1 874:-\nInkl. moms\nMycket bra skick\nDELL Universal dock UD22\n1 499:-\nInkl. moms\nMycket bra skick\nHP USB-C Dock G5\n1 499:-\nInkl. moms\n27%\nBra skick\nHP ELITEBOOK 640 G10\n240 GB SSD\n16 GB\nINTEL CORE I5-1335U 3.4 GHz\n5 499:-\n7 499:-\nInkl. moms\nKundtjänst\nVanliga frågor & svar\nKontakta oss\nWebshop\nKundtjänst\nCookies och Integritetspolicy\nKontaktformulär\nÅngra köp\nHyra eller offert\nKöpvillkor\nOm oss\nKunskapsbank\nLogga in / Skapa konto\nNyhetsbrev\nVill du ta del av tips & råd, nyheter och erbjudanden från oss? Fyll i din e-post nedan.\nOk\nMer information om Inrego\nHar du funderingar kring återanvändning eller hur vi på Inrego arbetar?\nÄr ni skola eller offentlig sektor?\nLäs mer om vårt arbete och hur vi kan hjälpa er!\nBesök vår infosite här\n \nE-handel av \nVälkommen till Inrego!\nÄr du privatperson eller företag?\n(Inkl. moms)\n \n(Exkl. moms)\nChatta med oss",
+  "status": "OK"
+ }
+]

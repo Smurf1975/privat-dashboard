@@ -1,0 +1,17 @@
+[
+ {
+  "candidate_id": "D92XYEA#UUW", "brand": "HP", "model": "HP OmniBook 5 14\" Next Gen AI Laptop (hh0078nox)", "mpn": "D92XYEA#UUW",
+  "cpu": "Intel Core Ultra 7 355", "ram_gb": 32, "ram_type": "LPDDR5x-6800", "ram_soldered": "YES", "ram_max_gb": 32,
+  "ram_upgrade_note": "HP-produktsidan: '32 GB LPDDR5x-6800 MT/s (integrerat)' = lött; 32 GB räcker, ingen uppgradering behövs. Max ej angivet.",
+  "ssd_gb": 1024, "display": "14\" 2880x1800 OLED 120Hz 500 nit (HDR 1100)", "keyboard": "UNKNOWN",
+  "os": "Windows 11 Home", "weight_kg": 1.33,
+  "retailer": "HP Store SE", "seller": "HP", "offer_id": "hp-se:D92XYEA#UUW", "sku": "D92XYEA#UUW",
+  "url": "https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-5-laptop-next-gen-ai-14-hh0078nox-d92xyea-uuw",
+  "price_sek": 14990, "price_orig_sek": 16990, "shipping_sek": 0, "stock": "IN_STOCK",
+  "buyable": true, "condition": "NEW",
+  "battery": "3 celler 59 Wh", "warranty": "1 år begränsad (1/1/0)", "returns": "UNKNOWN", "charger": "EXCLUDED", "campaign": "Utförsäljning",
+  "verification": "PARTIALLY VERIFIED", "qualifies": "NO",
+  "checked_at": "2026-11-28T20:00:00+01:00", "source": "FC",
+  "notes": "Hittad i HP-listning memstd=32-gb (FC maxAge 0). Produktsidan: 'Finns i lager', köpknapp 'LÄGG TILL I VARUKORGEN', fri frakt >200 kr. VIKTIGT: sidan anger '65 W nätadapter (rekommenderas, säljs separat)' – laddare ingår ej, så 14 990 kr + laddare > 15 000 kr-taket (inkl. laddare) → NO. Tangentbord: sidan anger bara 'Fullstort bakgrundsbelyst tangentbord' – layout ej angiven (UUW-suffix brukar vara nordiskt, men ej verifierat). Konsumentmodell med lött RAM."
+ }
+]
