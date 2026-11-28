@@ -33,11 +33,11 @@
   "campaign": "Black Friday; 'Använd e-kupong BLACK'; JSON-LD price 11499",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Page: 'Bakgrundsbelyst, svart - nordiska språk', Win 11 Pro, 'Lägg till i kundvagn', 'Nästan slutsålt, köp nu!', 'Beräknad leverans 30/11'. Shipping cost not shown -> UNKNOWN. 16 GB as sold: reaches 32 GB only after buying a 16GB SODIMM (verified slot free). 512 GB SSD + needs RAM purchase -> SECONDARY; would be YES-level business pick after ~16GB module. JSON-LD InStock but page text says almost sold out. | 2026-11-27: sidan visar inget pris (JSON-LD 0) – troligen ej beställbar.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "hp-se:D70BWEA#UUW": {
   "candidate_id": "d70bwea-uuw",
@@ -73,11 +73,11 @@
   "campaign": "Black Friday Deal (spara 1 500 kr)",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "FC",
   "notes": "HP listing/product pages crash in Playwright (client-side 'Application error', not a block) -> read via Firecrawl. Keyboard: 'svenskt tangentbord med åäö'. 'Laddare ingår inte' -> add USB-C charger (~65W) cost, keep total <=15 000. Free shipping over 200 kr. 512 GB -> SECONDARY; otherwise meets all hard reqs.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "hp-se:D44PYEA#UUW": {
   "candidate_id": "d44pyea-uuw",
@@ -153,11 +153,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Configurator selected: 'Nordiskt Copilot-tangentbord ... bakgrundsbelysning', 'Tålig nätadapter på 65 W' (Valt), 512 GB QLC. 'Lägg i Varukorg' visible. 16 GB -> 32 GB requires buying 16GB SODIMM (cost unverified) or Dell +4 050 kr option (=16 374 kr, over budget). Consumer plastic chassis, small 41 Wh battery.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "dell-se:pv14250_fixed_01": {
   "candidate_id": "dell-pro-14-essential-pv14250-c5-120u-16gb-512gb-nordic",
@@ -180,7 +180,7 @@
   "offer_id": "dell-se:pv14250_fixed_01",
   "sku": "pv14250_fixed_01",
   "url": "https://www.dell.com/sv-se/shop/laptop-computers/spd/dellproessential14laptoppv14250/pv14250_fixed_01?view=configurations",
-  "price_sek": 11705,
+  "price_sek": 13580,
   "price_orig_sek": 13580,
   "shipping_sek": null,
   "stock": "UNKNOWN",
@@ -190,14 +190,14 @@
   "warranty": "12 mån grundläggande hårdvaruservice hämta/lämna",
   "returns": "UNKNOWN",
   "charger": "EXCLUDED",
-  "campaign": "Black Friday (spara 1 875 kr)",
+  "campaign": "Black Friday (Dell-pris)",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Fixed config: 'Energiförsörjning: Ingen nätadapter' (charger NOT included). 'Nordiskt Copilot-tangentbord'. 16GB 1x16 -> add 16GB SODIMM for 32GB (slot info from manual snippet only). Older U-series CPU; business-class build, Win 11 Pro.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "asus-se:90NX0871-M01900": {
   "candidate_id": "asus-expertbook-p1-p1403-90nx0871-m01900",
@@ -233,11 +233,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "asus.com/se (not blocked) shows 'ASUS estore-pris 8 890,00 SEK' + JSON-LD InStock and a 'Köp' link to estore.asus.com/se/90nx0871-m01900-expertbook-p1-p1403.html, but estore.asus.com and shop.asus.com return 403 -> SKU config (CPU/RAM/SSD) and cart not verifiable; buyable set false (not verified). 'Det här priset kanske inte hänvisar till specifikationerna nedan.' Keyboard 'Nordisk tangentbordslayout' from SE techspec page. 65W USB-C adapter listed in spec. Free shipping >1100 SEK. Strong ASUS value lead: even with 8GB base, 2x SO-DIMM to 32GB likely fits budget - must be checked manually in store.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "hp-se:D44R2EA#UUW": {
   "candidate_id": "d44r2ea-uuw",
@@ -353,11 +353,11 @@
   "campaign": "Black Week (inget överstruket pris för denna artikel)",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "JSON-LD InStock + 'Lägg i varukorg' synlig, men Lagerstatus: Webblager 'Ej i lager', butik Solna Centrum 1 st. Tangentbord: endast från Q&A på produktsidan ('Har laptopen svensk tangentbordslayout?' – 'Ja! Å Ä Ö finns med'), ej formell spec. Frakt 'från 0 kr'. Samma MPN billigare på NetOnNet (12 990) men restnoterad.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "netonnet:1065346": {
   "candidate_id": "s5406sa-qd077w",
@@ -393,11 +393,11 @@
   "campaign": "Black Week-period",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "JSON-LD availability BackOrder, EAN 4711636533072; endast 'Bevaka produkt' – ingen köpknapp, 'Ej i lager'. Bästa priset för kvalificerande 1 TB-modell om den kommer i lager – bevaka. Tangentbordslayout anges ej på sidan.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "elgiganten:1048139": {
   "candidate_id": "d88lfea-uuw",
@@ -433,11 +433,11 @@
   "campaign": "Black Friday – gäller t.o.m. mån 30 nov; 'Programvara på köpet'",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "I lager online 100+. 512 GB → sekundär. Tangentbord ej angivet; HP-lokaliseringskod #UUW brukar avse nordisk layout men det står inte på sidan → UNKNOWN. Elgigantens spec-fält 'Laddningsenhet medföljer: Nej' – verifiera innan köp. EAN 0821844448076.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "elgiganten:1014157": {
   "candidate_id": "np944xjg-kg5se",
@@ -473,11 +473,11 @@
   "campaign": "'Månadens'/Black Friday – gäller t.o.m. mån 30 nov; levereras med Windows Pro",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "I lager online 100+. Nyast CPU av alla fynd, Win 11 Pro, men 512 GB och bara 10 kr under maxbudget. Tangentbord ej angivet på Elgiganten (prisjämförare hintaopas anger AZERTY/fransk för samma art.nr – opålitligt, ej verifierat). Spec-fält 'Laddningsenhet medföljer: Nej' – verifiera.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "power:4213612": {
   "candidate_id": "d3407ga-sf034w",
@@ -513,11 +513,11 @@
   "campaign": "POWER Black Friday 9/11–30/11, 'Spara 3 000:-'",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Ny: 'Produkten finns för tillfället inte i lager', inget inleveransdatum. POWER: 'Laddare ingår inte' (USB-PD 45–68 W) → lägg till ca 300–600 kr. Se separat outlet-erbjudande (1 st från 11 391 kr).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "power:4213612:outlet": {
   "candidate_id": "d3407ga-sf034w",
@@ -553,11 +553,11 @@
   "campaign": "Outlet i utvalda varuhus",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Produktsidan visar 'Outlet 1 st Från 11 391:-' / 'Inte i lager online' / Click&Collect. Outlet-enhetens skick (utställning/retur/mindre fel), varuhus och tillbehör ej synliga – outlet-länk (o-…) exponerades inte. condition satt till OPEN_BOX som närmaste, ej bekräftat.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "webhallen:390877": {
   "candidate_id": "nx-jrred-007",
@@ -593,11 +593,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Spec: Tangentbordslokalisering Nordisk, QWERTY, numeriskt tangentbord, landsspecifik: Nordiska länderna. Webblager och butiker 'Ej i lager' men 'Lägg i varukorg' visas (restorder). Uppfyller alla hårda krav men budget-konsumentchassi och ej i lager → sekundär.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "webhallen:395601": {
   "candidate_id": "nx-ksjed-003",
@@ -633,11 +633,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Fyndvara klass 3 = 'Använt skick' (kan sakna extra adaptrar, pixelfel kan förekomma). Webblager 1 st + Hötorget 1 st. Billigast kvalificerande, men äldre/svagare CPU (Zen 2/Zen 3-klass), 1,8 kg, budgetbygge. CPU-uppgift motstridig mellan titel och specifikation.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "webhallen:399099": {
   "candidate_id": "um3406ga-open1",
@@ -673,11 +673,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "JSON-LD OutOfStock; webb och butiker 'Ej i lager' (köpknapp visas). Utan Windows → +licens. Lätt (1,28 kg) premiumchassi.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "webhallen:390999": {
   "candidate_id": "d3407ka-sf019w",
@@ -713,11 +713,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "OutOfStock (webb + butiker). 512 GB. Fyndvara-exemplar finns (webhallen:396705).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "webhallen:396705": {
   "candidate_id": "d3407ka-sf019w",
@@ -753,11 +753,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Fyndvara klass 1 = 'Nyskick', kan vara öppnad/testad, komplett med tillbehör. 'Kan endast köpas i butik' – Solna Centrum 1 st. Bara 800 kr under nypris → svagt fynd.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "webhallen:399098": {
   "candidate_id": "d3407ka-open1",
@@ -793,11 +793,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Ej i lager. Svag CPU (Ryzen AI 5 330, 4 kärnor), 512 GB, utan Windows → låg prioritet.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "elgiganten:1100195": {
   "candidate_id": "21l1007bmx",
@@ -873,11 +873,11 @@
   "campaign": "Black Friday (-53% mot 'ordinarie' 14 999)",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "FC",
   "notes": "Skick 'Okej skick' (tydliga bruksspår, ev. repor på skärm). Produktsida läst via Firecrawl (Playwright renderar felsida på reuseit.se – ej blockering, klientfel). 'Lägg till i varukorgen' + 'I lager' synligt. Bäst värde i segmentet: 32/1TB/svenskt/nytt batteri/2 års garanti för 6 999 kr. | Kontroll 2026-11-25 (Firecrawl): sidan anger Svenskt tangentbord, men SKU slutar på _UK – bekräfta layout med Reuseit före köp.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "reuseit:S36283_UK": {
   "candidate_id": "hp-elitebook-840g9-i7-1265u-32-1024-se",
@@ -923,8 +923,8 @@
   "retailer": "Looptop.se",
   "seller": "Looptop.se (Cirkulär IT AB)",
   "shipping_sek": 0,
-  "stock": "IN_STOCK",
-  "buyable": true,
+  "stock": "OUT_OF_STOCK",
+  "buyable": false,
   "battery": "UNKNOWN (ej angivet på produktsidan)",
   "warranty": "12 månaders garanti (Looptop)",
   "returns": "30 dagars ångerrätt/testperiod ('Testa i 30 dagar')",
@@ -954,17 +954,17 @@
   "condition": "REFURB_C",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Skick 'Bra' (Looptops lägsta: tydliga spår, ev. bucklor). Bättre=10 195, Bäst=10 395. 512 GB → SECONDARY; 1 M.2 2280-plats (PSREF), byte till 1 TB ~700–900 kr. Starkast CPU/iGPU (780M) i urvalet. 'Nypris 16 000 kr' enl. Looptop.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:C/T14G3/ryzen7/32/512/ND": {
   "retailer": "Looptop.se",
   "seller": "Looptop.se (Cirkulär IT AB)",
   "shipping_sek": 0,
-  "stock": "IN_STOCK",
-  "buyable": true,
+  "stock": "OUT_OF_STOCK",
+  "buyable": false,
   "battery": "UNKNOWN (ej angivet på produktsidan)",
   "warranty": "12 månaders garanti (Looptop)",
   "returns": "30 dagars ångerrätt/testperiod ('Testa i 30 dagar')",
@@ -994,10 +994,10 @@
   "condition": "REFURB_C",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Skick 'Bra'. Bättre=8 995. 512 GB → SECONDARY. Windows-utgåva ej specificerad (Pro okänt).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:B/ZBook14FFG9/i7/32/512/ND": {
   "retailer": "Looptop.se",
@@ -1034,10 +1034,10 @@
   "condition": "REFURB_B",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Skick 'Bättre' (lätta spår). Arbetsstationsklass, uppgraderbart till 64 GB. 512 GB → SECONDARY.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:DEMO/840G10/i7/32/512/ND": {
   "retailer": "Looptop.se",
@@ -1074,10 +1074,10 @@
   "condition": "DEMO",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Demo/utställningsex. – minimala spår, troligen nära nytt batteri (ej angivet). 512 GB → SECONDARY.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:C/845G11/Ryzen7/32/512/ND": {
   "retailer": "Looptop.se",
@@ -1114,10 +1114,10 @@
   "condition": "REFURB_C",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Nyaste modellen (2024) i urvalet, skick 'Bra'. Bättre=11 695. 512 GB → SECONDARY. Uppgraderbart till 64 GB.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:B/640G9/i5/32/512/SWE": {
   "retailer": "Looptop.se",
@@ -1154,10 +1154,10 @@
   "condition": "REFURB_B",
   "verification": "VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Billigaste 32 GB-maskinen med svenskt tangentbord och 12th gen. Skick 'Bättre'. 16:9 FHD-panel, i5. 512 GB → SECONDARY (1 TB-byte ~700–900 kr ger ~7 400 kr totalt).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:DEMO/Prestige14AI/u7/C1VEG/32/1024/RTX4050": {
   "retailer": "Looptop.se",
@@ -1194,10 +1194,10 @@
   "condition": "DEMO",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Uppfyller alla hårda krav inkl. 1 TB men ligger 5 kr under taket; konsument/prosumer, inte affärsklass. Demo. ram_max ej verifierad.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:B/P15vG1/i7/32/1024/P620/ND": {
   "retailer": "Looptop.se",
@@ -1234,10 +1234,10 @@
   "condition": "REFURB_B",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "notes": "Uppfyller hårda krav (15,6\" = max, 32/1TB, nordiskt) men äldre (10th gen H, 2020) och tung 2,07 kg. Billigaste 1 TB-alternativet med nordiskt tangentbord.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "inrego:11003032831": {
   "candidate_id": "lenovo-thinkpad-p14sg4-i7-1360p-32-1024-se",
@@ -1263,7 +1263,7 @@
   "price_sek": 12499,
   "price_orig_sek": null,
   "shipping_sek": null,
-  "stock": "LIMITED",
+  "stock": "GONE",
   "buyable": true,
   "condition": "REFURB_B",
   "battery": "UNKNOWN",
@@ -1273,11 +1273,11 @@
   "campaign": "Black Month (ingen rabatt på denna)",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
-  "notes": "'Bra skick'. 'Färre än 10 kvar i lager'. 'Lägg i varukorg' synlig i sidtext (scriptet fångade den inte som <button>). Frakt ej angiven på sidan. Bild = leverantörsbild.",
+  "notes": "'Bra skick'. 'Färre än 10 kvar i lager'. 'Lägg i varukorg' synlig i sidtext (scriptet fångade den inte som <button>). Frakt ej angiven på sidan. Bild = leverantörsbild. | 2026-11-28: leder till butikens startsida – såld.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "inrego:11002039391": {
   "candidate_id": "dell-precision-3490-ultra5-125u-32-1024-se",
@@ -1313,11 +1313,11 @@
   "campaign": "",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "'10+ kvar i lager'. Pris 14 999 = 1 kr under taket; frakt okänd → kan överskrida 15 000 inkl. frakt. Dåligt värde jämfört med 840 G9 för 6 999. RAM-max från återförsäljare.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "refurbed:21755833": {
   "candidate_id": "dell-latitude-7330-i7-1265u-32-1000-us",
@@ -2073,11 +2073,11 @@
   "campaign": "Black Friday: 'ASUS estore-pris 8 449,00 SEK, 13 990,00 SEK, Spara 5 541,00 SEK'; 'Det lägsta priset från 30 dagar före kampanjen: 13 990,00 SEK'",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "NEW (ASUS SE Black Friday page). asus.com/se product page: JSON-LD price 8449 SEK InStock, 'Köp' button (links to estore.asus.com, which is BLOCKED 403, so cart/SKU not verifiable). ASUS states 'Det här priset kanske inte hänvisar till specifikationerna nedan'. Both SE-listed configs are 16 GB + 512 GB, Nordic keyboard, Win 11 Home, 65 W USB-C adapter in spec. Reaches 32 GB only after adding a 16 GB SO-DIMM (slot free per spec). Weak budget-class panel (300 nits/45% NTSC). Strong value on price only. Raw data: raw-mfr-9-asus.json (techspec), raw-mfr-10-asus.json (product page), raw-mfr-8-asus.json (deals page).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "elgiganten:1082656": {
   "shipping_sek": 0,
@@ -2086,7 +2086,7 @@
   "returns": "50 dagars öppet köp för klubbmedlemmar (outlet-sida)",
   "campaign": "Outlet-pris (ny 14 990 kr); Black Friday-vecka",
   "source": "PW",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "price_orig_sek": 14990,
   "candidate_id": "np740vjg-kg3se",
   "brand": "Samsung",
@@ -2117,7 +2117,7 @@
   "qualifies": "YES",
   "notes": "Outlet: 'Nyskick – i originalförpackning. Produkten kan vara ett återköp eller tidigare visningsexemplar… alla kundfördelar gäller som ny'. JSON-LD condition UsedCondition. I lager online + 1 butik. 'Laddare ingår ej' (60–65 W USB PD) men förpackningsinnehåll listar USB-C-kabel – verifiera. Tangentbordslayout ej angiven. RAM-typ/lödd okänd. Billigaste 14\" 32/1TB i lager i segmentet i dag.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "elgiganten:1014154": {
   "shipping_sek": 0,
@@ -2126,7 +2126,7 @@
   "returns": "30 dagars öppet köp (50 för klubbmedlemmar)",
   "campaign": "'Programvara på köpet' (Adobe CC/Express); inget BF-avdrag på priset",
   "source": "PW",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "price_orig_sek": null,
   "candidate_id": "np740vjg-kg3se",
   "brand": "Samsung",
@@ -2157,7 +2157,7 @@
   "qualifies": "YES",
   "notes": "Ny, 100+ i lager online, 18 butiker. Precis på budgettak 15 000. Tangentbord och RAM-detaljer UNKNOWN. Se outlet-exemplar 11 992 kr (elgiganten:1082656).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "elgiganten:1055058": {
   "shipping_sek": 0,
@@ -2166,7 +2166,7 @@
   "returns": "30 dagars öppet köp (50 för klubbmedlemmar)",
   "campaign": "Black Friday: SPARA 1 500 (tidigare 14 995), gäller t.o.m. mån 30 nov",
   "source": "PW",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "price_orig_sek": 14995,
   "candidate_id": "pm3406cka-ly0981xwew",
   "brand": "ASUS",
@@ -2197,7 +2197,7 @@
   "qualifies": "SECONDARY",
   "notes": "ASUS affärsdator (prioriterat märke), Win 11 Pro, SO-DIMM uppgraderbart till 64 GB, ledig M.2 för extra SSD. 512 GB → SECONDARY. 'Laddare ingår ej' (80–90 W USB PD) – kan vara felaktigt standardvärde, verifiera. 50+ i lager online, 5 butiker. Tangentbordslayout ej angiven. CPU från spec-flik 'AI R7-350'.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "elgiganten:1046956": {
   "shipping_sek": 0,
@@ -2206,7 +2206,7 @@
   "returns": "30 dagars öppet köp (50 för klubbmedlemmar)",
   "campaign": "Black Friday: SPARA 5 005 (tidigare 17 995), t.o.m. mån 30 nov; 1 år M365 inkl.",
   "source": "PW",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "price_orig_sek": 17995,
   "candidate_id": "83v60051mx",
   "brand": "Lenovo",
@@ -2237,7 +2237,7 @@
   "qualifies": "SECONDARY",
   "notes": "Kort-URL öppnad i dag (PW) – visar produktsidan för 1046956. 100+ i lager online, ej i butik. Äldre CPU-generation (Meteor Lake 135H). 512 GB, RAM redan max 32 GB. 'Laddare ingår ej' (45–65 W USB PD). Tangentbordslayout ej angiven.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "netonnet:1062158": {
   "shipping_sek": 0,
@@ -2246,7 +2246,7 @@
   "returns": "30 dagars öppet köp",
   "campaign": "Black Week-sajt; inget tidigare pris angivet",
   "source": "PW",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "price_orig_sek": null,
   "candidate_id": "d3407ga-sf034w",
   "brand": "ASUS",
@@ -2277,7 +2277,7 @@
   "qualifies": "SECONDARY",
   "notes": "JSON-LD BackOrder, 'Ej i lager – Lev.tid ej bekräftad', bara 'Bevaka' (ingen köpknapp). 1 000 kr billigare än POWER (11 990). 'Laddare ej inkluderad' (68 W USB PD). Bevaka – blir YES om lager kommer.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "netonnet:1063280": {
   "shipping_sek": 0,
@@ -2286,7 +2286,7 @@
   "returns": "30 dagars öppet köp",
   "campaign": "",
   "source": "PW",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "price_orig_sek": null,
   "candidate_id": "90nb15r3-m00rn0",
   "brand": "ASUS",
@@ -2317,7 +2317,7 @@
   "qualifies": "SECONDARY",
   "notes": "BackOrder/ej i lager, ingen köpknapp. Skiljer sig från känd S5406SA (netonnet:1065346, WUXGA) genom 3K 120 Hz-panel. Pris 1 kr under budgettak; sämre värde än 1065346 (12 990).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "refurbed:21799221": {
   "candidate_id": "lenovo-thinkpad-t14-g2-i5-1135g7-32-1tb-nordic",
@@ -2340,7 +2340,7 @@
   "offer_id": "refurbed:21799221",
   "sku": "21799221",
   "url": "https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/585113b/?offer=21799221",
-  "price_sek": 9825,
+  "price_sek": 10535,
   "price_orig_sek": 17956,
   "shipping_sek": 0,
   "stock": "LIMITED",
@@ -2353,11 +2353,11 @@
   "campaign": "Black Friday (-45% mot 'nypris' 17 956)",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "FC",
   "notes": "Sidan visar 'ND' / Nordisk (QWERTY), 32 GB, 1 TB SSD, 'Mycket bra skick', 'Nästan slutsålda', 'Lägg till i kundvagn', frakt inkluderad (leverans 27 nov–1 dec), strömadapter ingår. Enda nya fyndet som når 32 GB + 1 TB + nordiskt under 10 000 kr. Svagheter: 11:e gen i5 (4 kärnor) – lägst CPU-prestanda i listan; marknadsplatssäljare.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "refurbed:19784439": {
   "candidate_id": "lenovo-thinkpad-x1-yoga-g6-i7-1185g7-32-1tb-se",
@@ -2380,7 +2380,7 @@
   "offer_id": "refurbed:19784439",
   "sku": "19784439",
   "url": "https://www.refurbed.se/p/lenovo-tp-x1-yoga-g6-i7-1185g7/442130/?offer=19784439",
-  "price_sek": 10649,
+  "price_sek": 11435,
   "price_orig_sek": 22784,
   "shipping_sek": 0,
   "stock": "IN_STOCK",
@@ -2393,11 +2393,11 @@
   "campaign": "Black Friday (-54% mot 'nypris')",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "FC",
   "notes": "'Nyskick', Svensk (QWERTY), 32 GB/1 TB, 'I lager', stylus + strömadapter ingår, frakt inkluderad (30 nov–2 dec). Premium 2-in-1 men RAM lött och 11:e gen 4-kärnig CPU. Utländsk säljare (Slovakien).",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "inrego:11002039381": {
   "candidate_id": "dell-precision-3490-ultra5-125u-32-1024-mycketbra",
@@ -2463,8 +2463,8 @@
   "price_sek": 6995,
   "price_orig_sek": 19500,
   "shipping_sek": 0,
-  "stock": "IN_STOCK",
-  "buyable": true,
+  "stock": "OUT_OF_STOCK",
+  "buyable": false,
   "condition": "REFURB_B",
   "battery": "UNKNOWN (anges ej)",
   "warranty": "12 mån (Looptop)",
@@ -2473,11 +2473,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW+shopify.js",
   "notes": "Sidan visar 'SWE – svenska', 'i7-1165G7 / 32GB RAM / 512GB SSD / Quadro T500', skick 'Bättre', 6 995 kr, 'Lägg i kundvagn'. Shopify-flödet: variant available=true (endast detta 32 GB-exemplar i lager). JSON-LD listar alla varianter som OutOfStock (kända flödesfel – samma som 25/11). Billig 14\" mobil arbetsstation, men 11:e gen 4-kärnig CPU.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:C/640G9/i5/32/512/SWE": {
   "candidate_id": "hp-elitebook-640g9-i5-1245u-32-512-se",
@@ -2513,11 +2513,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW+shopify.js",
   "notes": "NY VARIANT av känd modell: den kända offerten (variant 51285806121288, 'Bättre', 6 595) är available=false i Shopify-flödet i dag; denna variant ('Bra', 6 795, SWE, 32/512) är available=true. Sidan visar 6 795 kr + 'Lägg i kundvagn'. Kan vara ersättaren för den kända offerten.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "nuvoo:840-G9-i7-B1S5W-32": {
   "candidate_id": "hp-elitebook-840g9-i7-1255u-32-512-nuvoo",
@@ -2553,11 +2553,11 @@
   "campaign": "Black Friday (-57% mot 'nypris ca 18 000')",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Skick 'Bra', '1 kvar i lager', leverans 4–6 arbetsdagar fri frakt, laddare ingår, 'Lägg i varukorgen'. Tillval: ny 1 TB NVMe +1 990 kr (= 9 780 kr för 32/1TB). Tangentbordslayout anges INTE (endast OS-språk Finska/Svenska/Engelska) → UNKNOWN; Nuvoo är finsk – finsk och svensk layout är identiska (nordisk), men inte bekräftat på sidan.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "nuvoo:X1-G10-i7-B1S5WT-32": {
   "candidate_id": "lenovo-thinkpad-x1c-g10-i7-1260p-32-512-touch-nuvoo",
@@ -2593,11 +2593,11 @@
   "campaign": "Black Friday",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Skick 'Bra', '14 kvar i lager', 57 Wh batteri 'kontrollerat', laddare ingår, fri frakt. Tillval ny SSD. Tangentbord ej angivet → UNKNOWN.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "nuvoo:7440-i5-A2S5W-32": {
   "candidate_id": "dell-latitude-7440-i5-1335u-32-512-nuvoo",
@@ -2633,11 +2633,11 @@
   "campaign": "Black Friday (-44%)",
   "verification": "PARTIALLY VERIFIED",
   "qualifies": "SECONDARY",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Skick 'Utmärkt', '1 kvar i lager', laddare ingår, fri frakt. Nuvoo har även outlet-variant 32/256 för 9 790 kr (ej öppnad). Tangentbord ej angivet → UNKNOWN.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "refurbed:21532708": {
   "candidate_id": "lenovo-thinkpad-t14-g2-i5-1135g7-32-512-nordic",
@@ -2753,11 +2753,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW",
   "notes": "Specifikation 'TANGENTBORD: SVENSKT', 'Bra skick', 'Färre än 10 kvar i lager', 'Lägg i varukorg'. Uppfyller kraven men dåligt värde (13 874 kr för 13,3\" Ultra 5) jämfört med Precision 3490 32/1TB för 9 999. Art.nr ej utläst. Frakt ej angiven.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "looptop:B/T14G5/32/512/US": {
   "candidate_id": "lenovo-thinkpad-t14g5-ultra7-155u-32-512-touch-us",
@@ -2793,11 +2793,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T07:50:16+00:00",
+  "checked_at": "2026-11-28T06:52:31+00:00",
   "source": "PW+shopify.js",
   "notes": "ENG-US layout (ej nordisk). Skick 'Bättre', 12 795 kr, 'Lägg i kundvagn'. Nordiska T14 G5-varianter (Ultra 7 155U 32/1TB från 10 595) är available=false i flödet i dag – bevaka. Nyaste CPU-generation i segmentet med uppgraderbart RAM.",
   "_file": "agent-recheck.json",
-  "date": "2026-11-27"
+  "date": "2026-11-28"
  },
  "tradera:762036910": {
   "candidate_id": "dell-latitude-7420-i7-1185g7-32-1tb-4k-se",
@@ -3033,11 +3033,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T06:40:00Z",
-  "source": "PW",
+  "checked_at": "2026-11-28T06:52:31+00:00",
+  "source": "PW+shopify.js",
   "notes": "NORD – nordisk layout / Ryzen 7 PRO 6850U / 32GB / 512GB / TOUCH / Bättre, 8 995 kr (känd 'Bra'-variant 8 695 kr). Sidan öppnad med verify.js 2026-11-27 (HTTP 200, köpknapp finns); varianten 'Bättre' available=true i Shopify /products/<handle>.js; JSON-LD listar varianter som OutOfStock (känt flödesfel). Syskonvariant till redan känd 'Bra'-variant (bättre skick, högre pris). Looptop uppger inte batterihälsa/laddare per variant.",
-  "_file": "agent-refurb.json",
-  "date": "2026-11-27"
+  "_file": "agent-recheck.json",
+  "date": "2026-11-28"
  },
  "looptop:B/T14G4/32/512/ND": {
   "candidate_id": "looptop-t14-gen4-r7pro7840u-32-512-nord-battre",
@@ -3073,11 +3073,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T06:40:00Z",
-  "source": "PW",
+  "checked_at": "2026-11-28T06:52:31+00:00",
+  "source": "PW+shopify.js",
   "notes": "NORD – nordisk layout / Ryzen 7 PRO 7840U / 32GB / 512GB / TOUCH / Bättre, 10 195 kr (känd 'Bra' 9 995 kr). Sidan öppnad med verify.js 2026-11-27 (HTTP 200, köpknapp finns); varianten 'Bättre' available=true i Shopify /products/<handle>.js; JSON-LD listar varianter som OutOfStock (känt flödesfel). Syskonvariant till redan känd 'Bra'-variant (bättre skick, högre pris). Looptop uppger inte batterihälsa/laddare per variant.",
-  "_file": "agent-refurb.json",
-  "date": "2026-11-27"
+  "_file": "agent-recheck.json",
+  "date": "2026-11-28"
  },
  "looptop:B/845G11/Ryzen7/32/512/ND": {
   "candidate_id": "looptop-845-g11-r7pro8840u-32-512-nord-battre",
@@ -3113,11 +3113,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T06:40:00Z",
-  "source": "PW",
+  "checked_at": "2026-11-28T06:52:31+00:00",
+  "source": "PW+shopify.js",
   "notes": "NORD – nordisk layout / Ryzen 7 PRO 8840U / 32GB / 512GB / Touch / Bättre, 11 695 kr (känd 'Bra' 11 495 kr; verify.js-sidans standardpris visade 11 995 kr, feed/.js 11 695 kr för varianten). Sidan öppnad med verify.js 2026-11-27 (HTTP 200, köpknapp finns); varianten 'Bättre' available=true i Shopify /products/<handle>.js; JSON-LD listar varianter som OutOfStock (känt flödesfel). Syskonvariant till redan känd 'Bra'-variant (bättre skick, högre pris). Looptop uppger inte batterihälsa/laddare per variant.",
-  "_file": "agent-refurb.json",
-  "date": "2026-11-27"
+  "_file": "agent-recheck.json",
+  "date": "2026-11-28"
  },
  "looptop:B/ZbookFury15G8/W-11955M/32/1024/RTXA3000": {
   "candidate_id": "looptop-zbook-fury15-g8-xeon-w11955m-32-1tb-swe",
@@ -3153,11 +3153,11 @@
   "campaign": "",
   "verification": "VERIFIED",
   "qualifies": "YES",
-  "checked_at": "2026-11-27T06:40:00Z",
-  "source": "PW",
+  "checked_at": "2026-11-28T06:52:31+00:00",
+  "source": "PW+shopify.js",
   "notes": "SWE – svenska / Xeon W-11955M / 32GB / 1024GB / RTX A3000 / Bättre, 11 495 kr (verify.js-sidans standardpris 11 695 kr). Tung 15,6\" mobil arbetsstation, 11:e gen men 8 kärnor; 1 TB + svenskt tangentbord. Ej ultraportabel (vikt UNKNOWN, ca 2+ kg typiskt men ej verifierat). Sidan öppnad med verify.js 2026-11-27 (HTTP 200, köpknapp finns); varianten 'Bättre' available=true i Shopify /products/<handle>.js; JSON-LD listar varianter som OutOfStock (känt flödesfel). Syskonvariant till redan känd 'Bra'-variant (bättre skick, högre pris). Looptop uppger inte batterihälsa/laddare per variant.",
-  "_file": "agent-refurb.json",
-  "date": "2026-11-27"
+  "_file": "agent-recheck.json",
+  "date": "2026-11-28"
  },
  "reuseit:S35047_US": {
   "candidate_id": "reuseit-p15v-g3-i7-12800h-32-512-us-bra",
@@ -3478,5 +3478,79 @@
   "notes": "640 series (a cheaper line than the 840), 512 GB only. 'Mycket gott skick'. Keyboard layout, battery and warranty not stated. Budget option. Listing is from about 20 Nov (not in the known offers).",
   "_file": "agent-used.json",
   "date": "2026-11-27"
+ },
+ "looptop:DEMO/E14G6/u5/16/512/ND": {
+  "brand": "Lenovo",
+  "ram_gb": 16,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "PSREF ThinkPad E14 Gen 6 Intel: 'Two DDR5 SODIMM slots, dual-channel capable', max 64 GB DDR5-5600 (öppnad 2026-11-28). Modulkonfiguration för 16 GB (1×16 eller 2×8) ej angiven av Looptop – fråga. RAM-pris NetOnNet 2026-11-28: Kingston Fury Impact 1×16 GB DDR5-4800 3 749 kr (vid ledig plats → 32 GB); Corsair 1×32 GB DDR5-4800 5 799 kr (byt en 8 GB → 40 GB om 2×8).",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 WUXGA",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Pro",
+  "retailer": "Looptop.se",
+  "seller": "Looptop",
+  "shipping_sek": 0,
+  "stock": "IN_STOCK",
+  "buyable": true,
+  "condition": "DEMO",
+  "battery": "UNKNOWN",
+  "warranty": "UNKNOWN",
+  "returns": "UNKNOWN",
+  "charger": "UNKNOWN",
+  "campaign": "",
+  "verification": "PARTIALLY VERIFIED",
+  "checked_at": "2026-11-28T06:47:51+00:00",
+  "source": "PW+shopify.js+PSREF(FC)",
+  "model": "ThinkPad E14 Gen 6 Intel (Demo)",
+  "candidate_id": "lenovo-thinkpad-e14-g6-u5-125u-16-512-nordic-demo",
+  "cpu": "Intel Core Ultra 5 125U",
+  "sku": "DEMO/E14G6/u5/16/512/ND",
+  "offer_id": "looptop:DEMO/E14G6/u5/16/512/ND",
+  "url": "https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u5-demo?variant=54151144341832",
+  "price_sek": 8495,
+  "qualifies": "YES",
+  "notes": "16 GB uppgraderbar. Totalt med RAM: 8 495 + 3 749 = 12 244 kr (om 1×16 + ledig plats) eller 8 495 + 5 799 = 14 294 kr (om 2×8, ger 40 GB).",
+  "_file": "agent-16gb.json",
+  "date": "2026-11-28"
+ },
+ "looptop:DEMO/E14G6/u7/16/512/ND": {
+  "brand": "Lenovo",
+  "ram_gb": 16,
+  "ram_type": "DDR5-5600 SO-DIMM",
+  "ram_soldered": "NO",
+  "ram_max_gb": 64,
+  "ram_upgrade_note": "PSREF ThinkPad E14 Gen 6 Intel: 'Two DDR5 SODIMM slots, dual-channel capable', max 64 GB DDR5-5600 (öppnad 2026-11-28). Modulkonfiguration för 16 GB (1×16 eller 2×8) ej angiven av Looptop – fråga. RAM-pris NetOnNet 2026-11-28: Kingston Fury Impact 1×16 GB DDR5-4800 3 749 kr (vid ledig plats → 32 GB); Corsair 1×32 GB DDR5-4800 5 799 kr (byt en 8 GB → 40 GB om 2×8).",
+  "ssd_gb": 512,
+  "display": "14\" 1920x1200 WUXGA",
+  "keyboard": "Nordic",
+  "os": "Windows 11 Pro",
+  "retailer": "Looptop.se",
+  "seller": "Looptop",
+  "shipping_sek": 0,
+  "stock": "IN_STOCK",
+  "buyable": true,
+  "condition": "DEMO",
+  "battery": "UNKNOWN",
+  "warranty": "UNKNOWN",
+  "returns": "UNKNOWN",
+  "charger": "UNKNOWN",
+  "campaign": "",
+  "verification": "PARTIALLY VERIFIED",
+  "checked_at": "2026-11-28T06:47:51+00:00",
+  "source": "PW+shopify.js+PSREF(FC)",
+  "model": "ThinkPad E14 Gen 6 Intel (Demo)",
+  "candidate_id": "lenovo-thinkpad-e14-g6-u7-155h-16-512-nordic-demo",
+  "cpu": "Intel Core Ultra 7 155H",
+  "sku": "DEMO/E14G6/u7/16/512/ND",
+  "offer_id": "looptop:DEMO/E14G6/u7/16/512/ND",
+  "url": "https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u7-demo?variant=54151144374600",
+  "price_sek": 9495,
+  "qualifies": "SECONDARY",
+  "notes": "16 GB uppgraderbar. Totalt med RAM: 9 495 + 3 749 = 13 244 kr (om 1×16 + ledig plats); om 2×8: 15 294 kr (> tak). Fråga om konfiguration.",
+  "_file": "agent-16gb.json",
+  "date": "2026-11-28"
  }
 }

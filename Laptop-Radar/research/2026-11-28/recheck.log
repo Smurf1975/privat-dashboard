@@ -85,3 +85,84 @@
 [OK] 200 https://shop.inrego.se/barbara/dell-precision-3490-5
    Dell Precision 3490 Ultra 5 32GB 1TB SSD rekonditionerad - 14"
    sku=- price=14999 avail=- buyable=false oos=
+[OK] 200 https://www.refurbed.se/p/dell-latitude-7330-i7-1265u-13-3/579300?offer=21755833
+   Dell Latitude 7330 Intel Core i7-1265U 32.0 GB 1000 GB 13.3 " grå US (US-engelska) – refurbed
+   sku=- price=5 290 kr avail=- buyable=true oos=
+[OK] 200 https://reuseit.se/sv/category/laptops/professional
+   Begagnade företagslaptops - Bärbara datorer för företag | Reuseit.se
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-7-ai-14-fr0075no-c42d4ea-uuw
+   
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://www.asus.com/se/laptops/for-home/vivobook/asus-vivobook-14-x1407/
+   ASUS Vivobook 14 (X1407)｜Laptops För hemmet｜ASUS Sverige
+   sku=29672 price=8449 avail=https://schema.org/InStock buyable=true oos=kommer snart
+[OK] 200 https://www.elgiganten.se/product/outlet/samsung-galaxy-book6-14-u7-355321024ips-copilot-pc/1082656
+   Samsung Galaxy Book6 14" U7-355/32/1024/IPS Copilot+ PC - Elgiganten
+   sku=1082656 price=11992 avail=https://schema.org/SoldOut buyable=true oos=
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/samsung-galaxy-book6-14-u7-355321024ips-copilot-pc/1014154
+   Samsung Galaxy Book6 14" U7-355/32/1024/IPS Copilot+ PC - Elgiganten
+   sku=1014154 price=14990 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/asus-expertbook-p3-r7-32512-14-barbar-dator/1055058
+   Asus ExpertBook P3 R7 32/512 14" bärbar dator - Elgiganten
+   sku=1055058 price=13495 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.elgiganten.se/product/1046956
+   Lenovo IdeaPad Slim 5 14IMH10 U5-135H/32/512/OLED 14" bärbar dator - Elgiganten
+   sku=1046956 price=12990 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/asus-vs14-wur7-ai32102411h/1062158.8906/
+   ASUS VS14 WU/R7-AI/32/1024/11H | NetOnNet
+   sku=1062158 price=10 990:- avail=BackOrder buyable=false oos=Bevaka|Ej i lager
+[OK] 200 https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/asus-vivobook-s-s5406sa-pp140w/1063280.8906/
+   ASUS Vivobook S S5406SA-PP140W | NetOnNet
+   sku=1063280 price=14 999:- avail=BackOrder buyable=false oos=Bevaka|Ej i lager
+[OK] 200 https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/585113b/?offer=21799221
+   Lenovo ThinkPad T14 G2 Intel Core i5-1135G7 32.0 GB 1000 GB 14.0 " svart ND (Nordisk) – refurbed
+   sku=- price=2 730 kr avail=- buyable=true oos=
+[OK] 200 https://www.refurbed.se/p/lenovo-tp-x1-yoga-g6-i7-1185g7/442130/?offer=19784439
+   Lenovo ThinkPad X1 Yoga G6 Intel Core i7-1185G7 32.0 GB 1000 GB 14.0 " grå SE (Svensk) – refurbed
+   sku=- price=1 236 kr avail=- buyable=true oos=
+[OK] 200 https://www.looptop.se/products/hp-zbook-firefly-14-g8?variant=53544046592328
+   Begagnad HP ZBook Firefly 14" G8 | Looptop
+   sku=B/ZBook14FFG8/i7/32/512/T500/SWE price=6595 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.looptop.se/products/hp-elitebook-640-g9?variant=51285806154056
+   Begagnad HP EliteBook 640 G9 | Looptop
+   sku=C/640G9/i5/32/512/SWE price=4495 avail=https://schema.org/OutOfStock buyable=true oos=
+[OK] 200 https://nuvoo.com/sv-se/products/hp-elitebook-840-g9-i7-win-11-pro?variant=42259219251303
+   HP EliteBook 840 G9 | i7 | Win 11 Pro | Nuvoo.com
+   sku=- price=6 790,00 avail=- buyable=true oos=Slut i lager
+[OK] 200 https://nuvoo.com/sv-se/products/lenovo-x1-carbon-gen-10-i7-kosketusnaytto-win-11-pro?variant=43774688493671
+   Lenovo X1 Carbon Gen 10 | i7 | Pekskärm | Win 11 Pro | Nuvoo.com
+   sku=- price=9 711,00 avail=- buyable=true oos=
+[OK] 200 https://nuvoo.com/sv-se/products/dell-latitude-7440-i5-win-11-pro?variant=51261286613095
+   Dell Latitude 7440 | i5 | Win 11 Pro | Nuvoo.com
+   sku=- price=9 990,00 avail=- buyable=true oos=
+[OK] 200 https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/583095b/?offer=21532708
+   Lenovo ThinkPad T14 G2 Intel Core i5-1135G7 32.0 GB 512 GB 14.0 " svart ND (Nordisk) – refurbed
+   sku=- price=2 350 kr avail=- buyable=true oos=
+[OK] 200 https://reuseit.se/sv/product/dell-latitude-7430-12th-gen-intel-core-i7-1265u-32gb-256gb-touch-win-very-good
+   Dell Latitude 7430 - Intel Core i7-1265U / 32GB / 256GB / Svenskt | Reuseit
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://shop.inrego.se/barbara/hp-elite-x360-830-g11-8
+   HP Elite x360 830 G11 Ultra 5 1TB 32GB Touch rekonditionerad
+   sku=- price=13874 avail=- buyable=false oos=
+[OK] 200 https://www.looptop.se/products/lenovo-thinkpad-t14-gen-5?variant=54903694229832
+   Begagnad Lenovo ThinkPad T14 Gen 5 | Looptop
+   sku=B/T14G5/32/512/US price=12295 avail=https://schema.org/OutOfStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/lenovo-thinkpad-t14-gen-3?variant=51606734209352
+   Begagnad Lenovo ThinkPad T14 Gen 3 | Looptop
+   sku=B/T14G3/ryzen7/32/512/ND price=6295 avail=https://schema.org/OutOfStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/lenovo-thinkpad-t14-gen-4?variant=50454273589576
+   Begagnad Lenovo ThinkPad T14 Gen 4 | Looptop
+   sku=B/T14G4/32/512/ND price=10395 avail=https://schema.org/OutOfStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/hp-elitebook-845-g11?variant=54315859607880
+   Begagnad HP EliteBook 845 G11 | Looptop
+   sku=B/845G11/Ryzen7/32/512/ND price=11995 avail=https://schema.org/OutOfStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/hp-zbook-fury-15-g8-2021?variant=54426221773128
+   Begagnad HP ZBook Fury 15" G8 (Xeon) | Looptop
+   sku=B/ZbookFury15G8/W-11955M/32/1024/RTXA3000 price=11695 avail=https://schema.org/OutOfStock buyable=true oos=
+[OK] 200 https://reuseit.se/sv/product/lenovo-thinkpad-p15v-gen-3-12th-gen-intel-core-i7-12800h-32gb-512gb-win-us-2
+   Lenovo ThinkPad P15v G3 (NVIDIA T1200) - Intel Core i7-12800H / 32GB / 512GB / Amerikansk | Reuseit
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://www.elgiganten.se/product/1014154
+   Samsung Galaxy Book6 14" U7-355/32/1024/IPS Copilot+ PC - Elgiganten
+   sku=1014154 price=14990 avail=https://schema.org/InStock buyable=true oos=

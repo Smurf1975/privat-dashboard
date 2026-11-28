@@ -1,42 +1,42 @@
-# Laptop Radar – dagsrapport 2026-11-27 (Black Friday)
+# Laptop Radar – dagsrapport 2026-11-28
 
-**Black Friday har inte sänkt några bevakade priser.** Bästa köp oförändrat: HP EliteBook 840 G9 i7/32 GB/1 TB, Reuseit 6 999 kr, i lager, svenskt tangentbord.
+Nya regler från i dag: 16 GB-datorer som kan byggas ut till 32 GB tas med (pris + RAM = total, tak 15 000 kr). Blocket och Tradera tas inte med.
+
+Bästa köp oförändrat: **HP EliteBook 840 G9 i7/32 GB/1 TB, Reuseit 6 999 kr**, i lager, svenskt tangentbord.
 https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-new-battery-fair
 
-## Nya kandidater (begagnat, Blocket/Tradera)
-1. **HP Spectre x360 14 (2024)** – 9 000 kr + 406 kr frakt/köpskydd, Blocket (privat). Core Ultra 7 155H · 32 GB · 1 TB · 14" OLED 120 Hz · batteri 89 %. PARTIALLY VERIFIED: tangentbord ej angivet. Premium 2-i-1 till lågt pris.
-   https://www.blocket.se/recommerce/forsale/item/28490841
-2. **Lenovo ThinkPad X1 Yoga Gen 9** – 14 285 kr + 115 kr frakt, Tradera (Köp nu). Core Ultra 7 155U · 32 GB · 1 TB · Nordiskt. VERIFIED: demodator, "Mycket gott skick", LPDDR5x (lödd). Be om kvitto/serienummer. Precis under taket.
-   https://www.tradera.com/item/302393/763369171/ny-lenovo-thinkpad-x1-yoga-2-in-1-gen-9-med-ultra-7-32gb-1tb-ssd
-3. **HP Envy x360 14** – 12 500 kr + 459 kr, Blocket (privat). Core Ultra 7 155U · 32 GB · 1 TB · OLED. Laddare + penna ingår. PARTIALLY VERIFIED (tangentbord/OS ej angivet).
-   https://www.blocket.se/recommerce/forsale/item/28564992
-4. **HP EliteBook 840 G8** – 6 500 kr + 290 kr köpskydd, Blocket. i5-1145G7 · 32 GB · 1 TB. Äldre generation. PARTIALLY VERIFIED.
-   https://www.blocket.se/recommerce/forsale/item/28526905
+## Nya kandidater: 16 GB som kan byggas ut
+RAM i dag (NetOnNet): 1×16 GB DDR5 3 749 kr · 1×32 GB DDR5 5 799 kr.
+https://www.netonnet.se/art/datorkomponenter/ram-minne/sodimm-ddr5/kingston-fury-impact-16gb-1x16gb-4800mhz-sodimm-ddr5-cl38-kf548s38ib-16/1043508.21796/
 
-## Pris/lager
-- ThinkPad T14 G2 32/1 TB (Refurbed): 9 849 → **9 825 kr**, nästan slut.
-  https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/585113b/?offer=21799221
-- ThinkPad X1 Yoga G6 32/1 TB (Refurbed): 10 469 → 10 649 kr.
+1. **Lenovo ThinkPad E14 Gen 6 (demo)** – Ultra 5 125U · 16 GB · 512 GB · 14" WUXGA · Nordiskt · W11 Pro. Looptop, i lager.
+   **8 495 + 3 749 = 12 244 kr** om den har 1×16 GB (ledig plats), eller **8 495 + 5 799 = 14 294 kr** om 2×8 GB (byt en → 40 GB). Lenovos datablad: 2 lösa DDR5-platser, max 64 GB. PARTIALLY VERIFIED – fråga Looptop om modulerna.
+   https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u5-demo?variant=54151144341832
+2. **Lenovo ThinkPad E14 Gen 6 (demo), Ultra 7 155H** – 9 495 + 3 749 = **13 244 kr** (om 1×16). Om 2×8: 15 294 kr, över taket.
+   https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u7-demo?variant=54151144374600
+
+Bedömning: båda är dyrare än en färdig 32 GB-dator som EliteBook 840 G9 (6 999 kr). RAM-priserna är höga just nu.
+
+## Pris/lager (efter Black Friday)
+- ThinkPad X1 Yoga G6 32/1 TB (Refurbed): 10 649 → **11 435 kr**.
   https://www.refurbed.se/p/lenovo-tp-x1-yoga-g6-i7-1185g7/442130/?offer=19784439
-- Samsung Galaxy Book6 14: outlet fortfarande **slut**. Nytt oförändrat **14 990 kr**, i lager (ingen Black Friday-sänkning). Säljs inte med 32 GB på samsung.com/se.
+- ThinkPad T14 G2 32/1 TB (Refurbed): 9 825 → **10 535 kr**, nästan slut.
+  https://www.refurbed.se/p/lenovo-thinkpad-t14-g2-1135g7/585113b/?offer=21799221
+- ThinkPad T14 Gen 4 AMD 32/512 (Looptop): 9 995-varianten **slut** – samma modell i bättre skick 10 195 kr.
+  https://www.looptop.se/products/lenovo-thinkpad-t14-gen-4?variant=50454273589576
+- ThinkPad T14 Gen 3 AMD 8 695 kr och ZBook Firefly G8 6 995 kr (Looptop): slut.
+- Dell Pro 14 Essential (16 GB): 11 705 → 13 580 kr. Med RAM över taket.
+- Galaxy Book6 14: oförändrat 14 990 kr (Elgiganten), outlet slut.
   https://www.elgiganten.se/product/1014154
 
 ## Försvunnet
-- Dell Precision 3490 (Inrego, 9 999 kr) – såld.
-- Lenovo ThinkPad E14 Gen 7 (Lenovo SE, 11 499 kr) – visar inget pris längre.
-
-## Kontrollerat, inte aktuellt
-ASUS Zenbook S14 32 GB (Webhallen/NetOnNet) 23 995–25 999 kr. Lenovo IdeaPad Slim 5a 14 BF 11 024 kr – bara 16 GB. Lenovo: inga 32 GB-modeller ≤15 000 kr.
-
-## Auktioner
-- Dell Latitude 7420 4K 32/1 TB, svenskt tb – bud 2 385 kr, slutar **29/11 20:30**.
-  https://www.tradera.com/item/302393/762036910/dell-latitude-7420-14-4k-intel-core-i7-32-gb-ram-1-tb-ssd-windows-11-pro
+- ThinkPad P14s Gen 4 32/1 TB (Inrego, 12 499 kr) – såld.
 
 ## Blockerat / ej verifierat
-Dustin, Inet, Proshop, Back Market, ASUS-butiker blockerade. Komplett 502, Begagnad.se 520. **Sökagenterna stoppades av kontots veckogräns** (nollställs 28/11 20:00) – nya butiker/tillverkare analyserades manuellt i reducerad form; 7 kända erbjudanden (Tradera ×4, Refurbed ×2, Reuseit ×1) omkontrollerades inte.
+Dustin, Inet, Proshop, Back Market, ASUS-butiker blockerade. Sökagenterna kördes inte: kontots veckogräns gäller till 28/11 20:00. Reducerad körning: omkontroll + egen sökning (NetOnNet, Elgiganten, Looptop, Lenovo PSREF). 7 kända erbjudanden omkontrollerades inte (HP ×2, Reuseit ×3, Refurbed ×2).
 
 ## Länkkontroll
-9/9 länkar öppnade och bekräftade 2026-11-27 08:54 (Playwright: 7, Firecrawl: 2 – Tradera).
+8/8 länkar öppnade och bekräftade 2026-11-28 07:54 (Playwright: 8; Reuseit även via Firecrawl).
 
 ## Körstatus
-DELVIS – startad manuellt 07:26 på begäran; schemalagd start 07:43 slogs ihop med denna.
+DELVIS – reducerad på grund av användningsgräns.

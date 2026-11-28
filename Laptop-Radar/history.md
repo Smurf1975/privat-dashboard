@@ -25,3 +25,11 @@
 - Prisändringar: T14 G2 1 TB 9 849→9 825; X1 Yoga G6 10 469→10 649.
 - Sökagenterna stoppades av kontots veckogräns (429, nollställs 28/11 20:00). Reducerad körning; 7 kända erbjudanden ej omkontrollerade.
 - 2026-11-27 (kväll): Användarens beslut: från 2026-11-28 tas 16 GB-datorer som kan byggas ut till 32 GB med (pris + RAM = total); Blocket och Tradera utesluts. Blocket/Tradera-rader borttagna ur ranking och bevakning.
+
+## 2026-11-28 – reducerad körning (veckogräns)
+- Första dagen med nya regler: 16 GB uppgraderbara tas med; Blocket/Tradera uteslutna.
+- RAM-priser NetOnNet: 1×16 GB DDR5 3 749 kr, 1×32 GB 5 799 kr, 2×16 GB 7 999 kr.
+- Nya 16 GB-kandidater: ThinkPad E14 Gen 6 demo U5 8 495 (+RAM 12 244–14 294), U7 9 495 (+RAM 13 244). PSREF: 2× DDR5 SO-DIMM max 64. T14 Gen 5 16 GB och T14 Gen 4 16 GB (Looptop) slut.
+- Efter Black Friday: X1 Yoga G6 10 649→11 435, T14 G2 1 TB 9 825→10 535, Dell Pro 14 Essential 11 705→13 580.
+- Slut: Looptop T14 G4 AMD C (9 995), T14 G3 AMD C (8 695), ZBook Firefly G8 (6 995). Inrego P14s G4 såld.
+- EliteBook 840 G9 Reuseit 6 999 oförändrad – fortfarande bäst.
