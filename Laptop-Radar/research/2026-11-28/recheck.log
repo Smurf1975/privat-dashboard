@@ -1,0 +1,87 @@
+[OK] 200 https://www.lenovo.com/se/sv/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e14-gen-7-14-inch-intel/len101t0124
+   ThinkPad E14 Gen 7 (14 tum Intel) | Elegant, kraftfull bärbar företagsdator | Lenovo Sverige
+   sku=LEN101T0124 price=11 252,21 kr avail=http://schema.org/InStock buyable=false oos=
+[OK] 200 https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-7-laptop-ai-14-fr0074nox-d70bwea-uuw
+   
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://www.hp.com/se-sv/shop/products/laptops/hp-omnibook-x-flip-2-in-1-laptop-next-gen-ai-14-kc0023no-d44pyea-uuw
+   
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://www.dell.com/sv-se/shop/laptop-computers/spd/dell14laptopdc14255
+   Dell 14 tum bärbar dator med AMD Ryzen-processorer | Dell Sverige
+   sku=dc14255_reg_01 price=12324.39 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.dell.com/sv-se/shop/laptop-computers/spd/dellproessential14laptoppv14250/pv14250_fixed_01?view=configurations
+   Dell Pro 14 Essential bärbar dator från Dell med Intel Core processorer | Dell Sverige
+   sku=pv14250_fixed_01 price=13580 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.asus.com/se/laptops/for-work/expertbook/expertbook-p1-p1403/
+   ExpertBook P1 (P1403)｜Bärbara datorer med Copilot｜ASUS SE
+   sku=26526 price=8890 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.webhallen.com/se/product/401389-ASUS-VivoBook-S14-S5406SA-14
+   ASUS VivoBook S14 S5406SA 14" - Laptop / Bärbar dator | Webhallen
+   sku=401389 price=14499.00 avail=http://schema.org/OutOfStock buyable=false oos=Ej i lager
+[OK] 200 https://www.netonnet.se/art/dator-surfplatta/laptop/laptop-12-14-tum/asus-asus-s5406sau7-258v32102411h/1065346.8906/
+   ASUS S5406SA/U7-258V/32/1024/11H | NetOnNet
+   sku=1065346 price=12 990:- avail=BackOrder buyable=false oos=Bevaka|Ej i lager
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/hp-omnibook-x-flip-14-u7-258v32512oled-14-copilot-pc/1048139
+   HP OmniBook X Flip 14 U7-258V/32/512/OLED 14" Copilot+ PC - Elgiganten
+   sku=1048139 price=12490 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.elgiganten.se/product/datorer-kontor/datorer/laptop/samsung-galaxy-book6-pro-14-u7-356h32512oledwpro-copilot-pc/1014157
+   Samsung Galaxy Book6 Pro 14" U7-356H/32/512/OLED/WPRO Copilot+ PC. - Elgiganten
+   sku=1014157 price=14990 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.power.se/datorer-och-surfplattor/datorer/barbar-dator/asus-vivobook-s-14-d3407ga-sf034w-14-copilot-pc/p-4213612/
+   ASUS Vivobook S 14 D3407GA-SF034W 14" Copilot+ PC - Power.se
+   sku=4213612 price=11990 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.webhallen.com/se/product/390877-Acer-Aspire-Go-15-6-Intel-i7-150U-32GB-1TB-Win-11
+   Acer Aspire Go 15,6" / Intel i7-150U / 32GB / 1TB / Win 11 - Laptop / Bärbar dator | Webhallen
+   sku=- price=10 990 kr avail=- buyable=true oos=Ej i lager
+[OK] 200 https://www.webhallen.com/se/product/395601-Acer-A315-44P-R90K-15-6-Radeon-Graphics-R5-7520U-32GB-1TB-Fyndvara-klass-3
+   Acer A315-44P-R90K / 15,6" / Radeon Graphics / R5-7520U / 32GB / 1TB (Fyndvara klass 3) - Datorer & Tillbehör | Webhallen
+   sku=395601 price=8090.00 avail=http://schema.org/InStock buyable=true oos=Ej i lager
+[OK] 200 https://www.webhallen.com/se/product/399099-ASUS-Zenbook-14-UM3406GA-OLED-14-WUXGA-Radeon-Graphics-Ryzen-AI-7-445-32GB-1TB-No-OS
+   ASUS Zenbook 14 UM3406GA OLED / 14" WUXGA / Radeon Graphics / Ryzen AI 7 445 / 32GB / 1TB / No OS - Laptop / Bärbar dator | Webhallen
+   sku=399099 price=14499.00 avail=http://schema.org/OutOfStock buyable=true oos=Ej i lager
+[OK] 200 https://www.webhallen.com/se/product/390999-ASUS-Vivobook-S14-WUXGA-OLED-14-Radeon-860M-Ryzen-AI-7-350-32GB-512GB
+   ASUS Vivobook S14 WUXGA OLED / 14" / Radeon 860M / Ryzen AI 7 350 / 32GB / 512GB - Laptop / Bärbar dator | Webhallen
+   sku=390999 price=14990.00 avail=http://schema.org/OutOfStock buyable=true oos=Ej i lager
+[OK] 200 https://www.webhallen.com/se/product/396705-ASUS-Vivobook-S14-WUXGA-OLED-14-Radeon-860M-Ryzen-AI-7-350-32GB-512GB-Fyndvara-klass-1
+   ASUS Vivobook S14 WUXGA OLED / 14" / Radeon 860M / Ryzen AI 7 350 / 32GB / 512GB (Fyndvara klass 1) - Datorer & Tillbehör | Webhallen
+   sku=396705 price=14190.00 avail=http://schema.org/InStock buyable=false oos=Ej i lager
+[OK] 200 https://www.webhallen.com/se/product/399098-ASUS-Vivobook-S14-D3407KA-OLED-14-Radeon-Graphics-Ryzen-AI-5-330-32GB-512GB-No-OS
+   ASUS Vivobook S14 D3407KA OLED / 14" / Radeon Graphics / Ryzen AI 5 330 / 32GB / 512GB / No OS - Laptop / Bärbar dator | Webhallen
+   sku=- price=11 499 kr avail=- buyable=true oos=Ej i lager
+[OK] 200 https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-new-battery-fair
+   HP EliteBook 840 G9 Touch - Nytt batteri | Reuseit
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://reuseit.se/sv/product/hp-elitebook-840-14-inch-g9-notebook-pc-12th-gen-intel-core-i7-1265u-32gb-1024gb-touch-win-fair
+   HP EliteBook 840 G9 - Intel Core i7-1265U / 32GB / 1TB / Svenskt | Reuseit
+   sku=- price=- avail=- buyable=false oos=
+[OK] 200 https://www.looptop.se/products/lenovo-thinkpad-t14-gen-4?variant=50454273622344
+   Begagnad Lenovo ThinkPad T14 Gen 4 | Looptop
+   sku=C/T14G4/32/512/ND price=10395 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.looptop.se/products/lenovo-thinkpad-t14-gen-3?variant=51606734242120
+   Begagnad Lenovo ThinkPad T14 Gen 3 | Looptop
+   sku=C/T14G3/ryzen7/32/512/ND price=6295 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.looptop.se/products/hp-zbook-firefly-14-g9?variant=54522126303560
+   Begagnad HP ZBook Firefly 14" G9 | Looptop
+   sku=B/ZBook14FFG9/i7/32/512/ND price=9495 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/hp-elitebook-840-g10-demo?variant=53761135411528
+   HP EliteBook 840 G10 (Demo) - Looptop.se
+   sku=DEMO/840G10/i7/32/512/ND price=9995 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/hp-elitebook-845-g11?variant=54315859640648
+   Begagnad HP EliteBook 845 G11 | Looptop
+   sku=C/845G11/Ryzen7/32/512/ND price=11995 avail=https://schema.org/OutOfStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/hp-elitebook-640-g9?variant=51285806121288
+   Begagnad HP EliteBook 640 G9 | Looptop
+   sku=B/640G9/i5/32/512/SWE price=4495 avail=https://schema.org/OutOfStock buyable=false oos=
+[OK] 200 https://www.looptop.se/products/msi-prestige-14-ai-studio-c1veg-demo?variant=54196152533320
+   MSI Prestige 14 AI Studio C1VEG (Demo) - Looptop.se
+   sku=DEMO/Prestige14AI/u7/C1VEG/32/1024/RTX4050 price=14995 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://www.looptop.se/products/lenovo-thinkpad-p15v-gen-1?variant=55152720019784
+   Begagnad Lenovo ThinkPad P15v Gen 1 | Looptop
+   sku=B/P15vG1/i7/32/1024/P620/ND price=7995 avail=https://schema.org/InStock buyable=true oos=
+[OK] 200 https://shop.inrego.se/barbara/lenovo-thinkpad-p14s-g4-5
+   Datorer – köp begagnad PC hos Inrego – Öppet köp & garanti
+   sku=- price=3 799:- avail=- buyable=false oos=
+[OK] 200 https://shop.inrego.se/barbara/dell-precision-3490-5
+   Dell Precision 3490 Ultra 5 32GB 1TB SSD rekonditionerad - 14"
+   sku=- price=14999 avail=- buyable=false oos=

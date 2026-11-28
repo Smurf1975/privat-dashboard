@@ -1,0 +1,225 @@
+[
+ {
+  "url": "https://www.looptop.se/products/lenovo-thinkpad-t14-gen-5?variant=54199693377864",
+  "checkedAt": "2026-11-28T06:47:21.699Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "cookieClicked": "Acceptera",
+  "finalUrl": "https://www.looptop.se/products/lenovo-thinkpad-t14-gen-5?variant=54199693377864",
+  "title": "Begagnad Lenovo ThinkPad T14 Gen 5 | Looptop",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad T14 Gen 5",
+    "brand": "Lenovo",
+    "sku": "B/T14G5/u5/16/512/ND",
+    "offers": [
+     {
+      "price": 12295,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 11995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 11695,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 11495,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 10995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 10595,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 7995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 12995,
+      "currency": "SEK",
+      "availability": "https://schema.org/OutOfStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     },
+     {
+      "price": 12795,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Begagnad Lenovo ThinkPad T14 Gen 5 | Looptop",
+   "price": "7995.0"
+  },
+  "buyButtons": [],
+  "buyable": false,
+  "oosText": [],
+  "priceTexts": [
+   "7 995 kr",
+   "21 200 kr",
+   "13 205 kr",
+   "9 005 kr",
+   "6 995 kr",
+   "10 605 kr",
+   "3 295 kr",
+   "15 905 kr",
+   "3 595 kr",
+   "13 405 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout"
+   ],
+   "ram": [
+    "16GB RAM / 512GB SSD / Touch"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nLenovo ThinkPad T14 Gen 5\nKod & arbete · Studier & vardag\nLenovo ThinkPad T14 Gen 5\nToppmodern, för AI workloads.\nLenovo ThinkPad T14 Gen 5 med Core Ultra eller Ryzen 7 PRO, 14 tum i 1920x1200. Upp till 32GB och 1TB.\nPris\n7 995 kr\nNypris 21 200 kr\nDu sparar 13 205 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\nUltra 5 125U / 16GB RAM / 512GB SSD / Touch\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Bättre\nFinns i annan kombination\nBättre\nFinns i annan kombination\nLätta spår av användning. Det kan finnas mindre märken eller repor på chassi och skärm. Repor på skärmen syns inte när skärmen är tänd.\nSlutsålt\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke Lenovo\nModell ThinkPad T14 Gen 5\nProcessor Intel Core Ultra 5 125U\nRAM-minne 16GB\nLagring 512GB\nGrafikkort Intel Graphics\nSkärm 14\" WUXGA (1920x1200)\nOperativsystem Windows 11 Pro\nFärg Black\nWebbkamera Ja\nVikt 1,31 kg\nÅrsmodell 2024\nPassar för Kod & arbete · Studier & vardag\nLiknande datorer\nFler datorer för kod & arbete\nDu sparar upp till 9 005 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2023\nLenovo ThinkPad T14 Gen 4\nKod & arbete · Studier & vardag\nPris\nFrån 6 995 kr\nDu sparar upp till 10 605 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nLenovo ThinkPad T14 Gen 1\nKod & arbete · Studier & vardag\nPris\nFrån 3 295 kr\nDu sparar upp till 15 905 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nLenovo ThinkPad T14s Gen 2\nKod & arbete · Studier & vardag\nPris\nFrån 3 595 kr\nDu sparar upp till 13 405 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2020\nLenovo ThinkPad T14s Gen 1\nKod & arbete · Studier & vardag\nPris\nFrån 2 995 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ },
+ {
+  "url": "https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u5-demo?variant=54151144341832",
+  "checkedAt": "2026-11-28T06:47:29.041Z",
+  "method": "playwright-chromium",
+  "httpStatus": 200,
+  "finalUrl": "https://www.looptop.se/products/lenovo-thinkpad-e14-gen-6-u5-demo?variant=54151144341832",
+  "title": "Lenovo ThinkPad E14 Gen 6 (U5) Demo - Looptop.se",
+  "blocked": false,
+  "jsonld": [
+   {
+    "name": "Lenovo ThinkPad E14 Gen 6 (U5)",
+    "brand": "Lenovo",
+    "sku": "DEMO/E14G6/u5/16/512/ND",
+    "offers": [
+     {
+      "price": 8495,
+      "currency": "SEK",
+      "availability": "https://schema.org/InStock",
+      "condition": "https://schema.org/RefurbishedCondition",
+      "seller": "Looptop.se"
+     }
+    ]
+   }
+  ],
+  "meta": {
+   "ogTitle": "Lenovo ThinkPad E14 Gen 6 (U5) Demo - Looptop.se",
+   "price": "8495.0"
+  },
+  "buyButtons": [
+   "Lägg i kundvagn"
+  ],
+  "buyable": true,
+  "oosText": [],
+  "priceTexts": [
+   "8 495 kr",
+   "13 500 kr",
+   "5 005 kr",
+   "7 505 kr",
+   "9 495 kr",
+   "13 205 kr",
+   "7 995 kr",
+   "15 905 kr",
+   "3 595 kr",
+   "9 005 kr"
+  ],
+  "hits": {
+   "keyboard": [
+    "tangentbordslayout",
+    "nordisk layout"
+   ],
+   "ram": [
+    "16GB RAM, 512GB SSD och 14 tum WUXGA",
+    "16GB RAM / 512GB SSD"
+   ],
+   "os": [
+    "Windows 11 Pro"
+   ],
+   "warranty": [
+    "garanti",
+    "garanti ingår",
+    "Garanti",
+    "Garanti och service"
+   ],
+   "returns": [
+    "Retur och ångerrätt"
+   ],
+   "battery": [],
+   "condition": [
+    "Demo",
+    "Skick",
+    "demo",
+    "Skicka tillbaka om det inte känns rätt",
+    "Skick och klassificering"
+   ],
+   "delivery": [
+    "frakt till ombud",
+    "leverans, utan krångel",
+    "Leverans",
+    "Frakt och leverans"
+   ],
+   "charger": []
+  },
+  "text": "Hoppa till innehållet\n12 månaders garanti\nFri frakt till ombud\nTesta i 30 dagar\nLooptop.se\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemo\nAlla datorer\n0\nHem\nAlla produkter\nLenovo ThinkPad E14 Gen 6 (U5)\nStudier & vardag\nLenovo ThinkPad E14 Gen 6 (U5)\nToppmodern, för AI workloads.\nLenovo ThinkPad E14 Gen 6 med Core Ultra 5 125U, 16GB RAM, 512GB SSD och 14 tum WUXGA.\nPris\n8 495 kr\nNypris 13 500 kr\nDu sparar 5 005 kr\nVad är nypris?\nVälj tangentbordslayout\nNORD – nordisk layout\nVälj specifikation\nUltra 5 125U / 16GB RAM / 512GB SSD\nHittar du inte rätt konfiguration? Kontakta oss.\nSkick\n: Demo\nDemo\nHar använts som demo- eller utställningsexemplar. Minimala spår av hantering.\nLägg i kundvagn\nÄr något inte rätt fixar vi det. 12 månaders garanti ingår.\nHos dig inom 1–3 arbetsdagar. Snabb leverans, utan krångel.\nTesta i 30 dagar. Skicka tillbaka om det inte känns rätt.\nFråga oss vad som helst. Vi kan datorerna vi säljer.\nSpecifikationer\nBeskrivning\nSkick\nGaranti\nLeverans\nSpecifikationer\nMärke Lenovo\nModell ThinkPad E14 Gen 6\nProcessor Intel Core Ultra 5 125U\nRAM-minne 16GB\nLagring 512GB\nGrafikkort Intel Graphics\nSkärm 14\" WUXGA (1920x1200)\nOperativsystem Windows 11 Pro\nFärg Black\nWebbkamera Ja\nVikt 1,42 kg\nÅrsmodell 2024\nPassar för Studier & vardag\nLiknande datorer\nFler datorer för studier & vardag\nDu sparar 7 505 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2024\nLenovo ThinkPad E14 Gen 6 (U7)\nStudier & vardag\nPris\n9 495 kr\nDu sparar upp till 13 205 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2024\nLenovo ThinkPad T14 Gen 5\nKod & arbete · Studier & vardag\nPris\nFrån 7 995 kr\nDu sparar upp till 15 905 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2021\nLenovo ThinkPad T14s Gen 2\nKod & arbete · Studier & vardag\nPris\nFrån 3 595 kr\nDu sparar upp till 9 005 kr\nSkärmstorlek:\n14\"\nÅrsmodell:\n2023\nLenovo ThinkPad T14 Gen 4\nKod & arbete · Studier & vardag\nPris\nFrån 6 995 kr\nDu kan fortfarande köpa helt nytt. Vi tycker bara inte att du behöver det.\nFråga oss vad som helst\ninfo@looptop.se\nKontaktformulär\nHandla\nKod & arbete\nStudier & vardag\nDesign & CAD\nGaming\nDemodatorer\nAlla bärbara datorer\nStationära datorer\nKundservice\nKontakta oss\nVanliga frågor\nFrakt och leverans\nRetur och ångerrätt\nGaranti och service\nSkick och klassificering\nOm Looptop\nVilka är vi?\nSå testar vi\nOmdömen på Trustpilot\nNyhetsbrev\nNya datorer och nyheter, ett par gånger i månaden.\nDin e-postadress\nPrenumerera\nCirkulär IT AB, org.nr 559372-9915, momsreg.nr SE559372991501\n© 2026 Looptop.se\nKöpvillkor\nIntegritetspolicy\nCookie-inställningar\nVi accepterar\nLand/region\nSverige (SEK kr)",
+  "status": "OK"
+ }
+]
